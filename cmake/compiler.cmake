@@ -1,0 +1,64 @@
+##======================================================================================================================
+##  Polyfloat - Extended precision floating points
+##  Copyright : POLYFLOAT Contributors & Maintainers
+##  SPDX-License-Identifier: BSL-1.0
+##======================================================================================================================
+
+##======================================================================================================================
+## Compiler options for Doc Tests
+##======================================================================================================================
+add_library(polyfloat_docs INTERFACE)
+
+target_compile_features ( polyfloat_docs INTERFACE  cxx_std_20 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
+    target_compile_options( polyfloat_docs INTERFACE /W3 /EHsc )
+  else()
+    target_compile_options( polyfloat_docs INTERFACE -Werror -Wall -Wextra -Wunused-variable -ftemplate-backtrace-limit=0)
+  endif()
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  target_compile_options( polyfloat_docs INTERFACE /W3 /EHsc /Zc:preprocessor)
+else()
+  target_compile_options( polyfloat_docs INTERFACE -Werror -Wall -Wextra -Wunused-variable)
+endif()
+
+target_include_directories( polyfloat_docs INTERFACE
+                            ${PROJECT_SOURCE_DIR}/test
+                            ${PROJECT_SOURCE_DIR}/include
+                          )
+
+target_link_libraries(polyfloat_docs INTERFACE eve::eve)
+
+##======================================================================================================================
+## Compiler options for Unit Tests
+##======================================================================================================================
+add_library(polyfloat_test INTERFACE)
+
+target_link_libraries(polyfloat_test INTERFACE polyfloat_docs tts::tts)
+
+
+##==================================================================================================
+## Gathering compiler options for Benchmarks
+##==================================================================================================
+add_library(polyfloat_bench INTERFACE)
+
+target_compile_features ( polyfloat_bench INTERFACE  cxx_std_20 )
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  target_compile_options( polyfloat_bench INTERFACE /0x /W3 /EHsc /std:c++latest)
+else()
+  target_compile_options( polyfloat_bench INTERFACE -O3 -Werror -Wall -Wpedantic -Wextra)
+endif()
+
+target_include_directories( polyfloat_bench INTERFACE
+                            ${PROJECT_SOURCE_DIR}/test
+                            ${PROJECT_SOURCE_DIR}/test/benchmarks
+                            ${PROJECT_SOURCE_DIR}/include
+                          )
+
+target_include_directories( polyfloat_bench SYSTEM INTERFACE
+                            ${Boost_INCLUDE_DIRS}
+                          )
+
+target_link_libraries(polyfloat_bench INTERFACE eve::eve tts::tts)
