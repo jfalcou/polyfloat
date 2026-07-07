@@ -1,13 +1,13 @@
 //======================================================================================================================
 /*
-  Kyosu - Complex Without Complexes
-  Copyright : KYOSU Contributors & Maintainers
-  SPDX-License-Identifier: BSL-1.0
+ POLYFLOAT - Extended precision floating points
+ Copyright : POLYFLOAT Contributors & Maintainers
+ SPDX-License-Identifier: BSL-1.0
 */
 //======================================================================================================================
 #pragma once
 #define TTS_MAIN
-#define TTS_CUSTOM_DRIVER_FUNCTION kyosu_entry_point
+#define TTS_CUSTOM_DRIVER_FUNCTION polyfloat_entry_point
 #include <sstream>
 #include <tts/tts.hpp>
 
@@ -18,7 +18,7 @@
 #include <eve/module/core.hpp>
 #include <eve/traits.hpp>
 #include <eve/wide.hpp>
-#include <kyosu/kyosu.hpp>
+#include <polyfloat/polyfloat.hpp>
 
 namespace eve
 {
@@ -42,7 +42,7 @@ namespace eve::_
   }
 }
 
-namespace kyosu
+namespace plf
 {
   using scalar_real_types = tts::types<float, double>;
   using simd_real_types = tts::types<eve::wide<float>,
@@ -64,7 +64,7 @@ namespace kyosu
 }
 
 //==================================================================================================
-// KYOSU TTS Entrypoint
+// POLYFLOAT TTS Entrypoint
 //==================================================================================================
 #include <iostream>
 
@@ -78,10 +78,10 @@ int main(int argc, char const** argv)
   constexpr auto assert_status = "Enabled";
 #endif
 
-  std::cout << "[KYOSU] - Target: " << eve::current_api << " - Assertions: " << assert_status
+  std::cout << "[POLYFLOAT] - Target: " << eve::current_api << " - Assertions: " << assert_status
             << " - PRNG Seed: " << seed << std::endl;
 
-  kyosu_entry_point(argc, argv);
+  polyfloat_entry_point(argc, argv);
   return tts::report(0, 0);
 }
 
@@ -130,29 +130,29 @@ namespace eve
   }
 }
 
-namespace kyosu
+namespace plf
 {
-  template<kyosu::concepts::cayley_dickson T> inline tts::text to_text(T const& z)
+  template<plf::concepts::polyfloat T> inline tts::text to_text(T const& z)
   {
     std::ostringstream ss;
     ss << z;
     return tts::text(ss.str().c_str());
   }
 
-  template<kyosu::concepts::cayley_dickson T> inline bool ieee_equal(T const& l, T const& r)
+  template<plf::concepts::polyfloat T> inline bool ieee_equal(T const& l, T const& r)
   {
     return kumi::all_of(kumi::map([](auto a, auto b) { return tts::ieee_check(a, b); }, l, r));
   }
 
-  template<kyosu::concepts::cayley_dickson T> double relative_distance(T const& l, T const& r)
+  template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
   {
-    return kyosu::reldist[eve::numeric](l, r);
+    return plf::reldist[eve::numeric](l, r);
   }
 
-  template<kyosu::concepts::cayley_dickson T> double absolute_distance(T const& l, T const& r)
+  template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
   {
     if (ieee_equal(l, r)) return 0.0;
-    else return kyosu::dist(l, r);
+    else return plf::dist(l, r);
   }
 }
 

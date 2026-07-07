@@ -7,9 +7,10 @@
 //======================================================================================================================
 #pragma once
 
-/// Main POLYFLOAT namespace
-namespace plf {}
+#include <eve/traits/helpers.hpp>
 
-#include <polyfloat/types.hpp>
-// #include <polyfloat/functions.hpp>
-// #include <polyfloat/constants.hpp>
+namespace plf
+{
+  using eve::coefficients;
+  using eve::nodes;
+}
