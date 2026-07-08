@@ -101,10 +101,10 @@ namespace plf
 
     /// Constructs a Poly-Float instance from an Poly-Float of smaller dimension
     template<unsigned int M>
-    requires(M > 1 && M == N / 2)
+    requires(M > 1 && M <= N)
     constexpr polyfloat(polyfloat<Type, M> const& a) noexcept
     requires(N > 1)
-      : contents(kumi::cat(a.contents, kumi::fill<M>(Type{0})))
+      : contents(kumi::cat(a.contents, kumi::fill<N-M>(Type{0})))
     {
     }
 
@@ -224,5 +224,5 @@ template<typename T, unsigned int N, std::size_t I> struct std::tuple_element<I,
 #endif
 
 #include <polyfloat/types/io.hpp>
-// #include <polyfloat/types/compounds.hpp>
+#include <polyfloat/types/compounds.hpp>
 // #include <polyfloat/types/operators.hpp>
