@@ -39,8 +39,30 @@ namespace plf
   //! @{
   //====================================================================================================================
 
+  /// Adds the floating value `other` to `self` and returns the new value of `self`.
+  template <concepts::polyfloat T1, eve::floating_value T2>
+  constexpr auto& operator+=(T1 & self, T2 & oth) noexcept
+  {
+    if constexpr(T1::static_dimension == 2u)
+    {
+      auto [xhi, xlo] = self;
+      auto [hi, lo] = eve::two_add(xhi, oth);
+      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + xlo);
+      return self = eve::two_add[eve::raw](hi1, lo1);
+    }
+    else if constexpr(T1::static_dimension == 3u)
+    {
+      auto [ahi, amd, alo] = self;
+      auto [zhi, t1] = eve::two_add(ahi, oth);
+      auto [t7, t4] = eve::two_add(t1, amd);
+      auto [zmd, zlo] = eve::two_add(t7, t4 + alo);
+      auto [zhi1, zmd1, zlo1] = _::clean0s(zhi,zmd,zlo );
+      return self = _::clean0s(zhi,zmd,zlo );
+    }
+  }
+
   /// Adds the polyflat value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, concepts::polyfloat T2>
+  template <concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator+=(T1 & self, T2 & other) noexcept
   requires( T1::static_dimension >= T2::static_dimension  )
   {
@@ -51,12 +73,8 @@ namespace plf
       auto [yhi, ylo] = oth;
       auto [hi, lo] = eve::two_add(xhi, yhi);
       auto [thi, tlo] = eve::two_add(xlo, ylo);
-      auto c = lo + thi;
-      auto [hi1, lo1] = eve::two_add[eve::raw](hi, c);
-      c = tlo + lo1;
-      auto [hi2, lo2] = eve::two_add[eve::raw](hi1, c);
-      self = eve::zip(hi2, lo2);
-      return self;
+      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + thi);
+      return self = eve::two_add[eve::raw](hi1, tlo + lo1);
     }
     else if constexpr(T1::static_dimension == 3u)
     {
@@ -69,12 +87,34 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      auto [zhi1, zmd1, zlo1] = _::clean0s(zhi,zmd,zlo );
-      self = eve::zip(zhi, zmd1, zlo1);
-      return self;
+      return self = _::clean0s(zhi,zmd,zlo );
     }
   }
 
+
+  /// Substracts the floating value `other` to `self` and returns the new value of `self`.
+  template <concepts::polyfloat T1, eve::floating_value T2>
+  constexpr auto& operator-=(T1 & self, T2 & oth) noexcept
+  {
+    if constexpr(T1::static_dimension == 2u)
+    {
+      auto [xhi, xlo] = self;
+      auto [hi, lo] = eve::two_add(xhi, oth);
+      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + xlo);
+      return self = eve::two_add[eve::raw](hi1, lo1);
+    }
+    else if constexpr(T1::static_dimension == 3u)
+    {
+      auto [ahi, amd, alo] = self;
+      auto [zhi, t1] = eve::two_sub(ahi, oth);
+      auto [t7, t4] = eve::two_sub(t1, amd);
+      auto [zmd, zlo] = eve::two_add(t7, t4 + alo);
+      auto [zhi1, zmd1, zlo1] = _::clean0s(zhi,zmd,zlo );
+      return self = _::clean0s(zhi,zmd,zlo );
+    }
+  }
+
+  
   /// Substracts the polyfloat value `other` to `self` and returns the new value of `self`.
   template <concepts::polyfloat T1, concepts::polyfloat T2>
   constexpr auto& operator-=(T1 & self, T2 & other) noexcept
