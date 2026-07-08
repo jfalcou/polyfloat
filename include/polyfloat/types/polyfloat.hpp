@@ -15,6 +15,33 @@
 
 namespace plf
 {
+  namespace _
+  {
+    template<typename T>
+    constexpr auto three_add(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
+    {
+      auto [t0, t1] = eve::two_add(a, b);
+      auto [hi, t2] = eve::two_add(t0, c);
+      auto [md, lo] = eve::two_add(t2, t1);
+      auto [hi1, md1] = eve::two_add[eve::raw](hi, md);
+      return eve::zip(hi1, md1, lo);
+    }
+
+    template<typename T>
+    constexpr auto four_add(T a, T b, T c, T d) noexcept  // TODO To put in eve adding pedantic option for inf
+    {
+      auto [t0, t1] = eve::two_add(a, b);
+      auto [t2, t3] = eve::two_add(c, d);
+      auto [hi, t4] = eve::two_add(t0, t2);
+      auto [t5, lo] = eve::two_add(t1, t3);
+      auto [hm, ml] = eve::two_add(t4, t5);
+      auto [ml1, lo1] = eve::two_add[eve::raw](ml, lo);
+      auto [hm1, ml2] = eve::two_add[eve::raw](hm, ml1);
+      auto [hi1, hm2] = eve::two_add[eve::raw](hi,hm1);
+      return eve::zip(hi1, hm2, ml2, lo1);
+    }
+  }
+
   //====================================================================================================================
   //! @addtogroup types
   //! @{
@@ -27,13 +54,14 @@ namespace plf
   //! based on the Cayley–Dickson construction.
   //====================================================================================================================
   template<eve::floating_scalar_value Type, unsigned int N>
-  requires(N > 1 && std::has_single_bit(N))
+  requires(N > 1 && N <= 4)
   struct polyfloat
   {
     using underlying_type = Type;
     using is_polyfloat = void;
 
     static constexpr auto static_dimension = N;
+    using data_type = kumi::result::fill_t<static_dimension, Type>;
 
     /// Default Poly-Float constructor
     constexpr polyfloat() noexcept : contents{} {}
@@ -44,12 +72,27 @@ namespace plf
       kumi::get<0>(contents) = v;
     }
 
-    /// Construct a Poly-Float instance from a sequences of real values supposed normalized
-    template<std::convertible_to<Type> T0, std::convertible_to<Type>... Ts>
-    requires((1 + sizeof...(Ts)) <= static_dimension)
-    constexpr polyfloat(T0 v0, Ts... vs) noexcept
-      : contents(kumi::cat(kumi::tuple{static_cast<Type>(v0), static_cast<Type>(vs)...},
-                           kumi::fill<(N - 1 - sizeof...(Ts))>(Type{0})))
+    /// Construct a Poly-Float instance from a pair of real values
+    template<std::convertible_to<Type> T0, std::convertible_to<Type> T1>
+    requires(2 <= static_dimension)
+    constexpr polyfloat(T0 v0, T1 v1) noexcept
+    : contents(kumi::cat(eve::two_add(static_cast<Type>(v0), static_cast<Type>(v1)),  kumi::fill<(N - 2)>(Type{0})))
+    {
+    }
+
+    /// Construct a Poly-Float instance from a triple of real values
+    template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2>
+    requires(2 <= static_dimension)
+    constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
+    : contents(kumi::cat(plf::_::three_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)),  kumi::fill<(N - 3)>(Type{0})))
+    {
+    }
+
+    /// Construct a Poly-Float instance from 4 real values
+    template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2, std::convertible_to<Type> T3>
+    requires(3<= static_dimension)
+    constexpr polyfloat(T0 v0, T1 v1, T2 v2, T3 v3) noexcept
+    : contents(plf::_::four_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2), static_cast<Type>(v3)))
     {
     }
 
@@ -110,7 +153,6 @@ namespace plf
     //==================================================================================================================
     //  Tuple-like behavior
     //==================================================================================================================
-    using data_type = kumi::result::fill_t<static_dimension, Type>;
 
     friend constexpr eve::as_logical_t<Type> operator==(polyfloat const& a, polyfloat const& b) noexcept
     {
@@ -145,9 +187,12 @@ namespace plf
   //! @{
   //====================================================================================================================
   /// Deduction guide for constructing from product type
-  template<eve::product_type Tuple>
-  polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
+//   template<eve::product_type Tuple>
+//   polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
 
+  /// Deduction guide for constructing from one value
+  template<typename T0, std::convertible_to<T0>... Ts>
+  polyfloat(T0) -> polyfloat<T0, 2u>;
   /// Deduction guide for constructing from sequence of values
   template<typename T0, std::convertible_to<T0>... Ts>
   polyfloat(T0, Ts...) -> polyfloat<T0, 1 + sizeof...(Ts)>;

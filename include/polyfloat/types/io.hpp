@@ -33,7 +33,6 @@ namespace plf
 //       constexpr const char* base[8] = {" ","i ","j ","k ","l ","li ","lj ", "lk "};
 //       if constexpr(CD::static_dimension < 16) return base[i]; else return "z"+ std::to_string(i) + " ";
 //     };
-
     kumi::for_each_index([&](auto i, auto v) { display_positive(os,v,i == 0); }, z);
     return os;
   }

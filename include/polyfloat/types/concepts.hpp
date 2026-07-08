@@ -22,8 +22,8 @@ namespace plf::_
 
 namespace plf::concepts
 {
-  // Value of the Cayley-Dickson algebra encompass reals and
-  // actual caley-dickson values
+  // Value of the polyfloat_like encompass reals and
+  // actual polyfloat values
   template<typename T>
   concept polyfloat_like = _::rank<std::remove_cvref_t<T>> != 0;
 
@@ -34,7 +34,7 @@ namespace plf::concepts
   concept threefloat_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 3;
 
   template<typename T>
-  concept quadfloat_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 4;
+  concept quadfloat_like = polyfloat_like<T>;
 
   /// General polyfloat concept
   template<typename T>
