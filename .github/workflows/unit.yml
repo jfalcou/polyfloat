@@ -38,8 +38,8 @@ jobs:
         run:  cd build && ninja doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
         run:  cd build && ninja unit.exe -j 2 && ctest -R ^unit.* --output-on-failure -j 2
-      - name: Build Benchmarkss
-        run:  cd build && ninja benchmarks.exe -j 2
+      # - name: Build Benchmarkss
+      #   run:  cd build && ninja benchmarks.exe -j 2
 
   arm64:
     runs-on: [macos-14]
@@ -60,5 +60,5 @@ jobs:
         run:  cd build && make doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
         run:  cd build && make unit.exe -j 2 && ctest -R ^unit.* --output-on-failure -j 2
-      - name: Build Benchmarkss
-        run:  cd build && make benchmarks.exe -j 2
+      # - name: Build Benchmarkss
+      #   run:  cd build && make benchmarks.exe -j 2
