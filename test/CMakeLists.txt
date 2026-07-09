@@ -15,7 +15,7 @@ copa_glob_unit(QUIET PATTERN "doc/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_
 ##======================================================================================================================
 ## Unit tests
 ##======================================================================================================================
-copa_glob_unit(QUIET PATTERN "unit/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch)
+copa_glob_unit(QUIET PATTERN "unit/api/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch)
 
 ##======================================================================================================================
 ## Performance tests

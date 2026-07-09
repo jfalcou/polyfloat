@@ -51,16 +51,16 @@ namespace plf
                                      eve::wide<double, eve::wide<double>::cardinal_type::combined_type>>;
   using real_types = tts::concatenate<scalar_real_types, simd_real_types>;
 
-  template<typename T> struct tts_complex_t;
+  template<typename T> struct tts_polyfloat_t;
 
-  template<typename... T> struct tts_complex_t<tts::types<T...>>
+  template<typename... T> struct tts_polyfloat_t<tts::types<T...>>
   {
-    using types_list = tts::types<complex_t<T>...>;
+    using types_list = tts::types<tts_polyfloat_t<T>...>;
   };
 
-  using scalar_complex_types = tts_complex_t<scalar_real_types>;
-  using simd_complex_types = tts_complex_t<simd_real_types>;
-  using complex_types = tts_complex_t<real_types>;
+  using scalar_polyfloat_types = tts_polyfloat_t<scalar_real_types>;
+  using simd_polyfloat_types = tts_polyfloat_t<simd_real_types>;
+  using polyfloat_types = tts_polyfloat_t<real_types>;
 }
 
 //==================================================================================================
@@ -144,16 +144,16 @@ namespace plf
     return kumi::all_of(kumi::map([](auto a, auto b) { return tts::ieee_check(a, b); }, l, r));
   }
 
-  template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
-  {
-    return plf::reldist[eve::numeric](l, r);
-  }
+//   template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
+//   {
+//     return plf::reldist[eve::numeric](l, r);
+//   }
 
-  template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
-  {
-    if (ieee_equal(l, r)) return 0.0;
-    else return plf::dist(l, r);
-  }
+//   template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
+//   {
+//     if (ieee_equal(l, r)) return 0.0;
+//     else return plf::dist(l, r);
+//   }
 }
 
 namespace tts

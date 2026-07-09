@@ -7,8 +7,7 @@
 //======================================================================================================================
 #pragma once
 
-#include "eve/module/core.hpp"
-#include "eve/deps/kumi/tuple.hpp"
+#include <eve/eve.hpp>
 #include <polyfloat/types/helpers.hpp>
 //#include <polyfloat/details/decorators.hpp>
 #include <eve/as.hpp>

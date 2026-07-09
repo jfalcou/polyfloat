@@ -6,7 +6,7 @@
 */
 //======================================================================================================================
 #pragma once
-#include <kyosu/details/abi.hpp>
+#include <polyfloat/details/abi.hpp>
 #include <eve/traits/overload.hpp>
 
 namespace polyfloat::_    { EVE_CALLABLE_NAMESPACE(); }

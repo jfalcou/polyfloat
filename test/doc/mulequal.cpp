@@ -15,19 +15,19 @@ int main()
   std::cout << a << std::endl;
   std::cout << b << std::endl;
   std::cout << c << std::endl;
-  b += a;
+  b *= a;
   std::cout << b << std::endl;
-  b += b;
+  b *= b;
   std::cout << b << std::endl;
-  c+= a;
+  c*= a;
   std::cout << c << std::endl;
-  c += b;
+  c *= b;
   std::cout << c << std::endl;
-  c += c;
+  c *= c;
   std::cout << c << std::endl;
-  b+= f;
+  b*= f;
   std::cout << b << std::endl;
-  c+= f;
+  c*= f;
   std::cout << c << std::endl;
 
   return 0;
