@@ -16,7 +16,7 @@
 namespace plf
 {
   template<eve::floating_scalar_value Type, unsigned int N>
-  requires(N > 1 && N <= 4)
+  requires(N > 1 && N <= _::MAX_N)
   struct polyfloat;
 }
 

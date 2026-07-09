@@ -6,8 +6,7 @@
 */
 //======================================================================================================================
 #pragma once
-#include <eve/module/core.hpp>
-#include <string>
+#include <eve/eve.hpp>
 
 namespace plf
 {

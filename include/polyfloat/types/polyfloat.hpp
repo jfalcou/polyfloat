@@ -9,39 +9,13 @@
 
 #include <eve/eve.hpp>
 #include <polyfloat/details/abi.hpp>
+#include <polyfloat/details/helpers.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <bit>
 
 namespace plf
 {
-  namespace _
-  {
-    template<typename T>
-    constexpr auto three_add(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
-    {
-      auto [t0, t1] = eve::two_add(a, b);
-      auto [hi, t2] = eve::two_add(t0, c);
-      auto [md, lo] = eve::two_add(t2, t1);
-      auto [hi1, md1] = eve::two_add[eve::raw](hi, md);
-      return eve::zip(hi1, md1, lo);
-    }
-
-    template<typename T>
-    constexpr auto four_add(T a, T b, T c, T d) noexcept  // TODO To put in eve adding pedantic option for inf
-    {
-      auto [t0, t1] = eve::two_add(a, b);
-      auto [t2, t3] = eve::two_add(c, d);
-      auto [hi, t4] = eve::two_add(t0, t2);
-      auto [t5, lo] = eve::two_add(t1, t3);
-      auto [hm, ml] = eve::two_add(t4, t5);
-      auto [ml1, lo1] = eve::two_add[eve::raw](ml, lo);
-      auto [hm1, ml2] = eve::two_add[eve::raw](hm, ml1);
-      auto [hi1, hm2] = eve::two_add[eve::raw](hi,hm1);
-      return eve::zip(hi1, hm2, ml2, lo1);
-    }
-  }
-
   //====================================================================================================================
   //! @addtogroup types
   //! @{
@@ -49,16 +23,15 @@ namespace plf
 
   //====================================================================================================================
   //! @class polyfloat
-  //! @brief Poly-Float algebra main abstraction
-  //! It is built so that all operation over C, Q and other such algebra can be done in a streamlined fashion
-  //! based on the Cayley–Dickson construction.
+  //! @brief representing an extended precision floating point  by a sequence of standards ones
   //====================================================================================================================
   template<eve::floating_scalar_value Type, unsigned int N>
-  requires(N > 1 && N <= 4)
+  requires(N > 1 && N <= _::MAX_N)
   struct polyfloat
   {
     using underlying_type = Type;
     using is_polyfloat = void;
+    using ptype_t = polyfloat<Type, N>;
 
     static constexpr auto static_dimension = N;
     using data_type = kumi::result::fill_t<static_dimension, Type>;
@@ -66,10 +39,34 @@ namespace plf
     /// Default Poly-Float constructor
     constexpr polyfloat() noexcept : contents{} {}
 
-    /// Construct a Poly-Float from a real value
-    template<std::convertible_to<Type> T> constexpr polyfloat(T v) noexcept : contents{}
+    /// Construct a Poly-Float from a real value of the base type
+    constexpr polyfloat(Type v) noexcept : contents{}
     {
       kumi::get<0>(contents) = v;
+    }
+
+    /// Construct a Poly-Float from a real value of another type
+    template<eve::floating_value T> constexpr polyfloat(T v) noexcept
+      requires(eve::same_lanes_or_scalar<T, Type>)
+       : contents{}
+    {
+      using elt_t =  eve::element_type_t<T>;
+      using elt_type =  eve::element_type_t<Type>;
+      if constexpr(sizeof(elt_t) < sizeof(elt_type))
+        kumi::get<0>(contents) = v;
+      else
+      {
+        auto h = eve::convert(v, eve::as<elt_type>());
+        kumi::get<0>(contents) = h;
+        auto hc = eve::convert(h, eve::as<elt_t>());
+        auto m =  eve::convert(v-hc, eve::as<elt_type>());
+        kumi::get<1>(contents) = m;
+        if constexpr(N == 3)
+        {
+          auto l = eve::convert(v -(hc + eve::convert(m, eve::as<elt_t>())), eve::as<elt_type>());
+          kumi::get<2>(contents) = l;
+        }
+      }
     }
 
     /// Construct a Poly-Float instance from a pair of real values
@@ -120,35 +117,34 @@ namespace plf
     // ++/--
     //==================================================================================================================
 
- //    //! Pre-incrementation operator
-//     POLYFLOAT_FORCEINLINE auto& operator++() noexcept
-//     {
-//       kumi::get<0>(contents)++;
-//       return *this;
-//     }
+    //! Pre-incrementation operator
+    POLYFLOAT_FORCEINLINE auto& operator++() noexcept{
+      kumi::get<0>(contents)++;
+      return *this;
+    };
 
-//     //! Pre-decrementation operator
-//     POLYFLOAT_FORCEINLINE auto& operator--() noexcept
-//     {
-//       kumi::get<0>(contents)--;
-//       return *this;
-//     }
+    //! Pre-decrementation operator
+    POLYFLOAT_FORCEINLINE auto& operator--() noexcept
+    {
+      kumi::get<0>(contents)--;
+      return *this;
+    }
 
-//     //! Post-incrementation operator
-//     POLYFLOAT_FORCEINLINE auto operator++(int) noexcept
-//     {
-//       auto that(*this);
-//       this->operator++();
-//       return that;
-//     }
+    //! Post-incrementation operator
+    POLYFLOAT_FORCEINLINE auto operator++(int) noexcept
+    {
+      auto that(*this);
+      this->operator++();
+      return that;
+    }
 
-//     //! Post-decrementation operator
-//     POLYFLOAT_FORCEINLINE auto operator--(int) noexcept
-//     {
-//       auto that(*this);
-//       this->operator--();
-//       return that;
-//     }
+    //! Post-decrementation operator
+    POLYFLOAT_FORCEINLINE auto operator--(int) noexcept
+    {
+      auto that(*this);
+      this->operator--();
+      return that;
+    }
 
     //==================================================================================================================
     //  Tuple-like behavior
@@ -225,4 +221,5 @@ template<typename T, unsigned int N, std::size_t I> struct std::tuple_element<I,
 
 #include <polyfloat/types/io.hpp>
 #include <polyfloat/types/compounds.hpp>
+//#include <polyfloat/types/unary_ops.hpp>
 // #include <polyfloat/types/operators.hpp>
