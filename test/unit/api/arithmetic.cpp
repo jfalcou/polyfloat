@@ -10,25 +10,24 @@
 //==================================================================================================
 // Types tests
 //==================================================================================================
-TTS_CASE_TPL( "Check return types of arithmetic operators", test::simd::all_types)
+TTS_CASE_TPL( "Check return types of arithmetic operators", plf::scalar_real_types)
 <typename T>(tts::type<T>)
 {
-  using v_t = eve::element_type_t<T>;
   // assigning operators
   {
     auto v = plf::polyfloat<T, 2>{};
 
-    TTS_EXPR_IS(v += v, T&);
-    TTS_EXPR_IS(v -= v, T&);
-    TTS_EXPR_IS(v *= v, T&);
+    TTS_EXPR_IS(v += v, (plf::polyfloat<T, 2>&) );
+    TTS_EXPR_IS(v -= v, (plf::polyfloat<T, 2>&) );
+    TTS_EXPR_IS(v *= v, (plf::polyfloat<T, 2>&) );
 //  TTS_EXPR_IS(v /= v, T&);
   }
   {
     auto v = plf::polyfloat<T, 3>{};
 
-    TTS_EXPR_IS(v += v, T&);
-    TTS_EXPR_IS(v -= v, T&);
-    TTS_EXPR_IS(v *= v, T&);
+    TTS_EXPR_IS(v += v, (plf::polyfloat<T, 3>&) );
+    TTS_EXPR_IS(v -= v, (plf::polyfloat<T, 3>&) );
+    TTS_EXPR_IS(v *= v, (plf::polyfloat<T, 3>&) );
 //  TTS_EXPR_IS(v /= v, T&);
   }
 
