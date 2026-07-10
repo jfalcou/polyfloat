@@ -32,7 +32,7 @@ TTS_CASE_TPL( "Check return types of arithmetic operators", plf::scalar_real_typ
   TTS_EXPR_IS( wpv    += wpv   , wpv_t&);
   TTS_EXPR_IS( wpv    -= wpv   , wpv_t&);
   TTS_EXPR_IS( wpv    *= wpv   , wpv_t&);
-  TTS_EXPR_IS( wpv    /= wpv   , wpv_t);
+  TTS_EXPR_IS( wpv    /= wpv   , wpv_t&);
 
 
   TTS_EXPR_IS( wpv    += pv    , wpv_t&);
