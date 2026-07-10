@@ -218,7 +218,8 @@ template<typename T, unsigned int N, std::size_t I> struct std::tuple_element<I,
 };
 
 #endif
-
+#include <polyfloat/types/twofloat.hpp>
+#include <polyfloat/types/threefloat.hpp>
 #include <polyfloat/types/io.hpp>
 #include <polyfloat/types/compounds.hpp>
 //#include <polyfloat/types/unary_ops.hpp>

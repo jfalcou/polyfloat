@@ -7,6 +7,7 @@
 //======================================================================================================================
 #pragma once
 #include <eve/eve.hpp>
+#include <polyfloat/polyfloat.hpp>
 
 namespace plf
 {
@@ -233,14 +234,23 @@ namespace plf
       using R = decltype(a0);
       if constexpr(dimension_v<T> == 2)
       {
-        auto x0 =  twofloat_t(a0);
+        auto x0 =  a0; //twofloat_t<R>(a0);
         return x0+x0*(T(1)-a*x0);
       }
       if constexpr(dimension_v<T> == 3)
       {
-        auto x0 =  threefloat_t(a0);
-        auto x1 = x0+x0*(T(1)-a*x0);
-        return x1 += x1*(T(1)-a*x1);
+        auto x0 =  a0; //threefloat_t<R>(a0);
+        //       return x0+(T(1)-a*x0)*x0;
+//         auto z = a*x0;
+//         auto z1(T(1));
+//         z1-= z;
+           auto z1 = T(1)-a*x0;
+         z1*= x0;
+         z1+= x0;
+         return z1;
+
+//         auto x1 = x0+x0*(T(1)-a*x0);
+//         return x1 += x1*(T(1)-a*x1);
       }
     }
   }
