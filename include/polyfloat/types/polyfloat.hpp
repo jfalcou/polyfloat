@@ -12,7 +12,6 @@
 #include <polyfloat/details/helpers.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <bit>
 
 namespace plf
 {
@@ -46,9 +45,7 @@ namespace plf
     }
 
     /// Construct a Poly-Float from a real value of another type
-    template<eve::floating_value T> constexpr polyfloat(T v) noexcept
-      requires(eve::same_lanes_or_scalar<T, Type>)
-       : contents{}
+    template<eve::floating_scalar_value T> constexpr polyfloat(T v) noexcept : contents{}
     {
       using elt_t =  eve::element_type_t<T>;
       using elt_type =  eve::element_type_t<Type>;

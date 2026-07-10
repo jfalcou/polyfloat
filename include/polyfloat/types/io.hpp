@@ -24,8 +24,8 @@ namespace plf
     auto display_positive = [](auto& os,auto e, bool first) -> decltype(auto)
     {
       if(first)                     return os << e;
-      else if(eve::is_positive(e))  return os << "+ " << e;
-      else                          return os << "- " << -e;
+      else if(eve::is_positive(e))  return os << " + " << e;
+      else                          return os << " - " << -e;
     };
 
 //     auto basis = [&](auto i)
