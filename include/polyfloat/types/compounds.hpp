@@ -234,23 +234,23 @@ namespace plf
       using R = decltype(a0);
       if constexpr(dimension_v<T> == 2)
       {
-        auto x0 =  a0; //twofloat_t<R>(a0);
-        return x0+x0*(T(1)-a*x0);
+        return a0+a0*(T(1)-a*a0);
       }
       if constexpr(dimension_v<T> == 3)
       {
-        auto x0 =  a0; //threefloat_t<R>(a0);
-        //       return x0+(T(1)-a*x0)*x0;
-//         auto z = a*x0;
-//         auto z1(T(1));
-//         z1-= z;
-           auto z1 = T(1)-a*x0;
-         z1*= x0;
-         z1+= x0;
-         return z1;
+        auto x0 =  a0;
 
-//         auto x1 = x0+x0*(T(1)-a*x0);
-//         return x1 += x1*(T(1)-a*x1);
+//         //       return x0+(T(1)-a*x0)*x0;
+// //         auto z = a*x0;
+// //         auto z1(T(1));
+// //         z1-= z;
+//            auto z1 = T(1)-a*x0;
+//          z1*= x0;
+//          z1+= x0;
+//          return z1;
+
+        auto x1 = x0+x0*(T(1)-a*x0);
+        return x1 += x1*(T(1)-a*x1);
       }
     }
   }

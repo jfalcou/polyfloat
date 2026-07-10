@@ -180,8 +180,8 @@ namespace plf
   //! @{
   //====================================================================================================================
   /// Deduction guide for constructing from product type
-//   template<eve::product_type Tuple>
-//   polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
+  //   template<eve::product_type Tuple>
+  //   polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
 
   /// Deduction guide for constructing from one value
   template<typename T0, std::convertible_to<T0>... Ts>
