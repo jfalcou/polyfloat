@@ -33,9 +33,6 @@ namespace plf::concepts
   template<typename T>
   concept threefloat_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 3;
 
-  template<typename T>
-  concept quadfloat_like = polyfloat_like<T>;
-
   /// General polyfloat concept
   template<typename T>
   concept polyfloat = polyfloat_like<T> &&  _::rank<std::remove_cvref_t<T>> > 1;

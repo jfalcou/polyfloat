@@ -52,8 +52,8 @@ namespace plf
     {
       using elt_t =  eve::element_type_t<T>;
       using elt_type =  eve::element_type_t<Type>;
-      if constexpr(sizeof(elt_t) < sizeof(elt_type))
-        kumi::get<0>(contents) = v;
+      if constexpr(sizeof(elt_t) <= sizeof(elt_type))
+        kumi::get<0>(contents) =  v;
       else
       {
         auto h = eve::convert(v, eve::as<elt_type>());

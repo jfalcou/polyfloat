@@ -1,4 +1,5 @@
 #include <eve/wide.hpp>
+#include <eve/module/math.hpp>
 #include <iostream>
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
@@ -30,5 +31,31 @@ int main()
   c*= f;
   std::cout << c << std::endl;
 
+  {
+    double sqt2 = eve::sqrt_2(eve::as<double>());
+    double tsqt2 = 3*sqt2;
+    polyfloat<float, 2> psqt2(sqt2);
+    polyfloat<float, 2> ptsqt2(tsqt2);
+    auto dd = sqt2*tsqt2;
+    auto pdd = psqt2;
+    pdd *= ptsqt2;
+    std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
+    std::cout << std::setprecision(7)  << "pdd " << pdd << std::endl;
+    auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd));
+    std::cout << rpdd-dd << std::endl;
+  }
+  {
+    double sqt2 = eve::sqrt_2(eve::as<double>());
+    double tsqt2 = 3*sqt2;
+    polyfloat<float, 3> psqt2(sqt2);
+    polyfloat<float, 3> ptsqt2(tsqt2);
+    auto dd = sqt2*tsqt2;
+    auto pdd = psqt2;
+    pdd *= ptsqt2;
+    std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
+    std::cout << std::setprecision(7)  << "pdd " << pdd << std::endl;
+    auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd)) + double(get<2>(pdd));
+    std::cout << rpdd-dd << std::endl;
+  }
   return 0;
 }
