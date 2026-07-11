@@ -11,7 +11,7 @@
 //==================================================================================================
 // Types tests
 //==================================================================================================
-TTS_CASE_TPL( "Check the hi part of a value", plf::scalar_real_types)
+TTS_CASE_TPL( "Check is_negative", plf::scalar_real_types)
 <typename T>(tts::type<T>)
 {
   using pv_t  = plf::polyfloat<T, 2>;
@@ -19,23 +19,18 @@ TTS_CASE_TPL( "Check the hi part of a value", plf::scalar_real_types)
   using wT    = eve::wide<T>;
 
   pv_t pva(1.0, 1.0e-300);
-  pv_t pvb(4.0, 0.1);
+  pv_t pvb(0.0);
+  pv_t pvc(-0.0);
   wpv_t wpva{pva};
   T a = 1.3;
   wT wa(a);
-  TTS_EQUAL(plf::hi(a), a);
-  TTS_EQUAL(plf::hi(pva), 1.0);
-  TTS_EQUAL(plf::hi(wa), wa);
-  TTS_EQUAL(plf::hi(wpva), wT(1.0));
+  TTS_EQUAL(plf::is_negative(a), eve::is_negative(plf::hi(a)));
+  TTS_EQUAL(plf::is_negative(pva), eve::is_negative(plf::hi(pva)));
+  TTS_EQUAL(plf::is_negative(wa),  eve::is_negative(plf::hi(wa)));
+  TTS_EQUAL(plf::is_negative(wpva),  eve::is_negative(plf::hi(wpva)));
+  TTS_EQUAL(plf::is_negative(pvb), eve::is_negative(plf::hi(pvb)));
+  TTS_EQUAL(plf::is_negative(pvc), eve::is_negative(plf::hi(pvc)));
+  TTS_NOT_EQUAL(plf::is_negative(pvb), eve::is_negative(plf::hi(pvc)));
 
-  TTS_EQUAL(plf::md(a), T(0));
-  TTS_EQUAL(plf::md(pva), get<1>(pva));
-  TTS_EQUAL(plf::md(wa), wT(0));
-  TTS_EQUAL(plf::md(wpva), wT(get<1>(pva)));
-
-//   TTS_EQUAL(plf::lo(a), T(0));
-//   TTS_EQUAL(plf::lo(pva), get<1>(pva));
-//   TTS_EQUAL(plf::lo(wa), wT(0));
-//   TTS_EQUAL(plf::lo(wpva), wT(get<1>(pva)));
 
 };

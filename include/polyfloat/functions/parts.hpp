@@ -71,4 +71,87 @@ namespace plf
   //====================================================================================================================
   inline constexpr auto hi = extractor<0>{};
 
+  //====================================================================================================================
+  //!   @var real
+  //!   @brief Extracts the md part of a value.
+  //!
+  //!   @groupheader{Header file}
+  //!
+  //!   @code
+  //!   #include <plf/functions.hpp>
+  //!   @endcode
+  //!
+  //!   @groupheader{Callable Signatures}
+  //!
+  //!   @code
+  //!   namespace plf
+  //!   {
+  //!     constexpr decltype(auto) md(concepts::polyfloat auto&& v)  noexcept; // 1
+  //!     constexpr decltype(auto) md(concepts::real auto&& v)       noexcept; // 2
+  //!   }
+  //!   @endcode
+  //!
+  //!   **Parameters**
+  //!
+  //!   * `v`: Value to process.
+  //!
+  //!   **Return value**
+  //!
+  //!   1. Returns a properly const-qualified reference to the md part of `v`.
+  //!   2. Returns a properly const-qualified reference to `v`.
+  //!
+  //!  @groupheader{Example}
+  //!
+  //!  @godbolt{doc/md.cpp}
+  //====================================================================================================================
+  inline constexpr auto md = extractor<1>{};
+
+  //====================================================================================================================
+  //!   @var real
+  //!   @brief Extracts the lo part of a value.
+  //!
+  //!   @groupheader{Header file}
+  //!
+  //!   @code
+  //!   #include <plf/functions.hpp>
+  //!   @endcode
+  //!
+  //!   @groupheader{Callable Signatures}
+  //!
+  //!   @code
+  //!   namespace plf
+  //!   {
+  //!     constexpr decltype(auto) lo(concepts::polyfloat auto&& v)  noexcept; // 1
+  //!     constexpr decltype(auto) lo(concepts::real auto&& v)       noexcept; // 2
+  //!   }
+  //!   @endcode
+  //!
+  //!   **Parameters**
+  //!
+  //!   * `v`: Value to process.
+  //!
+  //!   **Return value**
+  //!
+  //!   1. Returns a properly const-qualified reference to the lo part of `v`.
+  //!   2. Returns a properly const-qualified reference to `v`.
+  //!
+  //!  @groupheader{Example}
+  //!
+  //!  @godbolt{doc/lo.cpp}
+  //====================================================================================================================
+
+// TODO  
+//  template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options>
+//   {
+//     template<concepts::polyfloat Z>
+//     POLYFLOAT_FORCEINLINE constexpr plf::as_real_type_t<Z>& operator()(Z z) const noexcept
+//     {
+//       return extractor<dimension_v<Z>-1>{}(z);
+//     }
+
+//     POLYFLOAT_CALLABLE_OBJECT(lo_t, lo_);
+//   };
+//   inline constexpr auto lo = eve::functor<lo_t>;
+
+
 }

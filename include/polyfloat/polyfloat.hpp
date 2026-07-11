@@ -11,5 +11,5 @@
 namespace plf {}
 
 #include <polyfloat/types.hpp>
-// #include <polyfloat/functions.hpp>
+#include <polyfloat/functions.hpp>
 // #include <polyfloat/constants.hpp>
