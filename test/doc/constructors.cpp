@@ -5,19 +5,18 @@
 
 int main()
 {
-  using namespace plf;
   std::cout <<  std::setprecision(15);
 
-  auto a = polyfloat(1.0);
-  auto b = polyfloat(1.0, 1.0e-300);
-  auto c = polyfloat(1.0, 1.0e-10, 1.0e-300);
+  auto a = plf::polyfloat(1.0);
+  auto b = plf::polyfloat(1.0, 1.0e-300);
+  auto c = plf::polyfloat(1.0, 1.0e-10, 1.0e-300);
   std::cout << "a = " << a << std::endl;
   std::cout << "b = " << b << std::endl;
   std::cout << "c = " << c << std::endl;
   double pi = eve::pi(eve::as<double>());
 
   {
-    polyfloat<float, 2> ppi(pi);
+    plf::polyfloat<float, 2> ppi(pi);
     std::cout << std::setprecision(7) << "ppi = " << ppi << std::endl;
     std::cout << "get<0>(ppi)" << get<0>(ppi) << std::endl;
     std::cout << "get<1>(ppi)" << get<1>(ppi) << std::endl;
@@ -28,7 +27,7 @@ int main()
     std::cout << rpi-pi << std::endl;
   }
   {
-    polyfloat<float, 3> ppi(pi);
+    plf::polyfloat<float, 3> ppi(pi);
     std::cout << std::setprecision(7) << "ppi = " << ppi << std::endl;
     std::cout << "get<0>(ppi)" << get<0>(ppi) << std::endl;
     std::cout << "get<1>(ppi)" << get<1>(ppi) << std::endl;

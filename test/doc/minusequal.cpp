@@ -5,14 +5,13 @@
 
 int main()
 {
-  using namespace plf;
   std::cout <<  std::setprecision(15);
 
   auto f = 1.0;
-  auto a = polyfloat(1.0);
-  auto b = polyfloat<double, 2>(1.0, 1.0e-300);
+  auto a = plf::polyfloat(1.0);
+  auto b = plf::polyfloat<double, 2>(1.0, 1.0e-300);
   auto b1 = b;
-  auto c = polyfloat(1.0, 1.0e-10, 1.0e-300);
+  auto c = plf::polyfloat(1.0, 1.0e-10, 1.0e-300);
   auto c1 = c;
   std::cout << a << std::endl;
   std::cout << b << std::endl;
