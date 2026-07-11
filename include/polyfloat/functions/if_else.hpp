@@ -86,7 +86,7 @@ namespace plf::_
       using ret_t = eve::as_wide_as_t<type, M>;
 
       return ret_t{kumi::map([&](auto const& v, auto const& w) { return eve::if_else(m, v, w); },
-                             polyfloat::convert(t, eve::as_element<type>{}), polyfloat::convert(f, eve::as_element<type>{}))};
+                             plf::convert(t, eve::as_element<type>{}), polyfloat::convert(f, eve::as_element<type>{}))};
     }
     else
     {
