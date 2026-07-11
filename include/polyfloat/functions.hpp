@@ -8,8 +8,8 @@
 #pragma once
 
 #include <polyfloat/functions/parts.hpp>
-//#include <polyfloat/functions/if_else.hpp>
+#include <polyfloat/functions/if_else.hpp>
 #include <polyfloat/functions/is_ltz.hpp>
 #include <polyfloat/functions/is_negative.hpp>
 #include <polyfloat/functions/minus.hpp>
-//#include <polyfloat/functions/abs.hpp>
+#include <polyfloat/functions/abs.hpp>

@@ -20,7 +20,7 @@ namespace plf
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-      return -z;
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(minus_t, minus_);
@@ -60,4 +60,17 @@ namespace plf
   //======================================================================================================================
 
   inline constexpr auto minus = eve::functor<minus_t>;
+  //======================================================================================================================
+  //! @}
+  //======================================================================================================================
+}
+
+namespace plf::_
+{
+  template<typename Z, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto minus_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  {
+    return -z;
+  }
+
 }

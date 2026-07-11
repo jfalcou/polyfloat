@@ -20,7 +20,7 @@ namespace plf
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_real_type_t<Z>> operator()(Z z) const noexcept
     {
-      return eve::is_negative(hi(z));
+     return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(is_negative_t, is_negative_);
@@ -62,4 +62,17 @@ namespace plf
   //======================================================================================================================
 
   inline constexpr auto is_negative = eve::functor<is_negative_t>;
+  //======================================================================================================================
+  //! @}
+  //======================================================================================================================
+}
+
+namespace plf::_
+{
+  template<typename Z, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto minus_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  {
+    return eve::is_negative(hi(z));
+  }
+}
 }

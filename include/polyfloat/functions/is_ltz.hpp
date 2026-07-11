@@ -20,7 +20,7 @@ namespace plf
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_real_type_t<Z>> operator()(Z z) const noexcept
     {
-      return eve::is_ltz(hi(z));
+     return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(is_ltz_t, is_ltz_);
@@ -60,4 +60,16 @@ namespace plf
   //======================================================================================================================
 
   inline constexpr auto is_ltz = eve::functor<is_ltz_t>;
+  //======================================================================================================================
+  //! @}
+  //======================================================================================================================
+}
+
+namespace plf::_
+{
+  template<typename Z, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto is_ltz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  {
+    return eve::is_ltz(hi(z));
+  }
 }
