@@ -11,27 +11,26 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/minus.hpp>
-#include <polyfloat/functions/is_negative.hpp>
+#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct abs_t : eve::elementwise_callable<abs_t, Options>
+  template<typename Options> struct reldist_t : eve::elementwise_callable<reldist_t, Options>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
+      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+     return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(abs_t, abs_);
+    POLYFLOAT_CALLABLE_OBJECT(reldist_t, reldist_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var abs
-  //!   @brief return the absolute value.
+  //!   @var reldist
+  //!   @brief return the reldistance value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto abs(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto reldist(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,14 +53,15 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the absolute value of z.
+  //!      Returns the the relative distance computed as the absolute value of the arguments difference given by `dist`
+  //!        divided by the maximum of their absolute values and 1.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/abs.cpp}
+  //!  @godbolt{doc/reldist.cpp}
   //======================================================================================================================
 
-  inline constexpr auto abs = eve::functor<abs_t>;
+  inline constexpr auto reldist = eve::functor<reldist_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,12 +69,11 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto abs_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename Z2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto reldist_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Z2 const& z2) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::abs(z);
-    else
-      return minus[is_negative(z)](z);
+    auto d = dist[o](z1, z2);
+    return if_else(is_infinite(d) || is_eqz(d), d,
+                   d / max(abs(z1), abs(z2), eve::one(eve::as(abs(z1)))));
   }
 }

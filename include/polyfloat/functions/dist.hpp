@@ -11,27 +11,26 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/minus.hpp>
-#include <polyfloat/functions/is_negative.hpp>
+#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct abs_t : eve::elementwise_callable<abs_t, Options>
+  template<typename Options> struct dist_t : eve::elementwise_callable<dist_t, Options>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
+      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+     return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(abs_t, abs_);
+    POLYFLOAT_CALLABLE_OBJECT(dist_t, dist_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var abs
-  //!   @brief return the absolute value.
+  //!   @var dist
+  //!   @brief return the distance value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto abs(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto dist(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,14 +53,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the absolute value of z.
+  //!     Returns the distolute value of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/abs.cpp}
+  //!  @godbolt{doc/dist.cpp}
   //======================================================================================================================
 
-  inline constexpr auto abs = eve::functor<abs_t>;
+  inline constexpr auto dist = eve::functor<dist_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,12 +68,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto abs_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename Z2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto dist_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::abs(z);
-    else
-      return minus[is_negative(z)](z);
+    return abs(z1-z2);
   }
 }

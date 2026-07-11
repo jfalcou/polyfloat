@@ -11,27 +11,27 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/minus.hpp>
-#include <polyfloat/functions/is_negative.hpp>
+#include <polyfloat/functions/abs.hpp>
+#include <polyfloat/functions/parts.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct abs_t : eve::elementwise_callable<abs_t, Options>
+  template<typename Options> struct max_t : eve::elementwise_callable<max_t, Options>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
+      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+     return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(abs_t, abs_);
+    POLYFLOAT_CALLABLE_OBJECT(max_t, max_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var abs
-  //!   @brief return the absolute value.
+  //!   @var max
+  //!   @brief return the maximum value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +44,24 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto abs(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto max(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z, zs...`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the absolute value of z.
+  //!      Returns the maximum value of the parameters.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/abs.cpp}
+  //!  @godbolt{doc/max.cpp}
   //======================================================================================================================
 
-  inline constexpr auto abs = eve::functor<abs_t>;
+  inline constexpr auto max = eve::functor<max_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,12 +69,17 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto abs_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename ... Zs, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::abs(z);
+    using r_t = eve::common_value_t<Z1, Zs...>;
+    if constexpr(sizeof...(Zs) == 1)
+      return if_else(is_less(z1, zs...), r_t(zs)..., r_t(z1));
     else
-      return minus[is_negative(z)](z);
+    {
+      r_t that(z1);
+      ((that = max(that, r_t(zs))), ...);
+      return that;
+    }
   }
 }
