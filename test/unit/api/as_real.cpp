@@ -6,27 +6,17 @@
 */
 //======================================================================================================================
 #include "test.hpp"
-#include <polyfloat/polyfloat.hpp>
 
 //==================================================================================================
 // Types tests
 //==================================================================================================
-TTS_CASE_TPL( "Check return types of arithmetic operators", plf::scalar_real_types)
-<typename T>(tts::type<T>)
+TTS_CASE_TPL( "Check as_real", plf::scalar_real_types)
+  <typename T>(tts::type<T>)
 {
-
-  using pv2_t  = plf::polyfloat<T, 2>;
-  using wpv2_t = eve::wide<pv2_t>;
-  using pv3_t  = plf::polyfloat<T, 3>;
-  using wpv3_t = eve::wide<pv3_t>;
+  using pv_t  = plf::polyfloat<T, 2>;
+  using wpv_t = eve::wide<pv_t>;
   using wT    = eve::wide<T>;
-
-  TTS_EQUAL(plf::dimension_v<pv2_t>, 2u);
-  TTS_EQUAL(plf::dimension_v<wpv2_t>, 2u);
-  TTS_EQUAL(plf::dimension_v<pv3_t>, 3u);
-  TTS_EQUAL(plf::dimension_v<wpv3_t>, 3u);
- TTS_EQUAL(plf::dimension_v<T>, 1u);
-  TTS_EQUAL(plf::dimension_v<wT>, 1u);
-
-
+  
+  TTS_EXPR_IS( plf::as_real_type_t<wpv_t>(), wT);
+  TTS_EXPR_IS( plf::as_real_type_t<pv_t>(), T);
 };

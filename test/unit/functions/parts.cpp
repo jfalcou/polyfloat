@@ -11,22 +11,20 @@
 //==================================================================================================
 // Types tests
 //==================================================================================================
-TTS_CASE_TPL( "Check return types of arithmetic operators", plf::scalar_real_types)
+TTS_CASE_TPL( "Check the hi part of a value", plf::scalar_real_types)
 <typename T>(tts::type<T>)
 {
-
-  using pv2_t  = plf::polyfloat<T, 2>;
-  using wpv2_t = eve::wide<pv2_t>;
-  using pv3_t  = plf::polyfloat<T, 3>;
-  using wpv3_t = eve::wide<pv3_t>;
+  using pv_t  = plf::polyfloat<T, 2>;
+  using wpv_t = eve::wide<pv_t>;
   using wT    = eve::wide<T>;
 
-  TTS_EQUAL(plf::dimension_v<pv2_t>, 2u);
-  TTS_EQUAL(plf::dimension_v<wpv2_t>, 2u);
-  TTS_EQUAL(plf::dimension_v<pv3_t>, 3u);
-  TTS_EQUAL(plf::dimension_v<wpv3_t>, 3u);
- TTS_EQUAL(plf::dimension_v<T>, 1u);
-  TTS_EQUAL(plf::dimension_v<wT>, 1u);
-
-
+  pv_t pva(1.0, 1.0e-30);
+  pv_t pvb(4.0, 0.1);
+  wpv_t wpva{pva};
+  T a = 1.3;
+  wT wa(a);
+  TTS_EQUAL(plf::hi(a), a);
+  TTS_EQUAL(plf::hi(pva), 1.0);
+  TTS_EQUAL(plf::hi(wa), wa);
+  TTS_EQUAL(plf::hi(wpva), wT(1.0));
 };

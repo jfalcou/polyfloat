@@ -239,16 +239,6 @@ namespace plf
       if constexpr(dimension_v<T> == 3)
       {
         auto x0 =  a0;
-
-//         //       return x0+(T(1)-a*x0)*x0;
-// //         auto z = a*x0;
-// //         auto z1(T(1));
-// //         z1-= z;
-//            auto z1 = T(1)-a*x0;
-//          z1*= x0;
-//          z1+= x0;
-//          return z1;
-
         auto x1 = x0+x0*(T(1)-a*x0);
         return x1 += x1*(T(1)-a*x1);
       }
@@ -272,3 +262,4 @@ namespace plf
 }
 
 #include <polyfloat/types/ops2.hpp>
+#include <polyfloat/types/ops3.hpp>   
