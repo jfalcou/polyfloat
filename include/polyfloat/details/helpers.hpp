@@ -11,8 +11,8 @@ namespace plf::_
 {
   constexpr unsigned int MAX_N = 3;
 
-  template<typename O, typename T>
-  constexpr auto three_add_pedantic(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
+  template<typename T>
+  constexpr auto three_add_pedantic(T a, T b, T c) noexcept
   {
     auto [t0, t1] = eve::two_add(a, b);
     auto [hi, t2] = eve::two_add(t0, c);
@@ -28,7 +28,7 @@ namespace plf::_
   }
 
   template<typename T>
-  constexpr auto three_add(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
+  constexpr auto three_add(T a, T b, T c) noexcept
   {
     auto [t0, t1] = eve::two_add(a, b);
     auto [hi, t2] = eve::two_add(t0, c);
