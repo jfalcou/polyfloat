@@ -11,12 +11,11 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct sub_t : eve::elementwise_callable<sub_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct div_t : eve::elementwise_callable<div_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -24,13 +23,13 @@ namespace plf
      return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(sub_t, sub_);
+    POLYFLOAT_CALLABLE_OBJECT(div_t, div_);
   };
   //======================================================================================================================
-  //! @subtogroup functions
+  //! @divtogroup functions
   //! @{
-  //!   @var sub
-  //!   @brief return the difference of the values.
+  //!   @var div
+  //!   @brief return the ratio of the values.
   //!
   //!   @groupheader{Header file}
   //!
@@ -43,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto sub(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto div(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -53,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the difference of the arguments.
+  //!     Returns the ratio of the arguments.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/sub.cpp}
+  //!  @godbolt{doc/div.cpp}
   //======================================================================================================================
 
-  inline constexpr auto sub = eve::functor<sub_t>;
+  inline constexpr auto div = eve::functor<div_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,8 +68,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sub_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto div_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return z1-z2;
+    return z1/z2;
   }
 }
