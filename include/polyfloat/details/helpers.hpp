@@ -27,7 +27,7 @@ namespace plf::_
     return eve::zip(hi1, md1, lo);
   }
 
-  template<typename O, typename T>
+  template<typename T>
   constexpr auto three_add(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
   {
     auto [t0, t1] = eve::two_add(a, b);
