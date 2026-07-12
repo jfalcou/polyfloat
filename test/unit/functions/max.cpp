@@ -28,3 +28,35 @@ TTS_CASE_TPL( "Check minus", plf::scalar_real_types)
 
 
 };
+
+TTS_CASE_WITH("Check max two params",
+              plf::scalar_real_types,
+//               tts::randoms(eve::valmin, eve::valmax), //TODO
+//               tts::randoms(eve::valmin, eve::valmax),
+//               tts::randoms(eve::valmin, eve::valmax),
+//               tts::randoms(eve::valmin, eve::valmax),
+//               tts::randoms(eve::valmin, eve::valmax),
+//               tts::randoms(eve::valmin, eve::valmax)
+              tts::randoms(-1.e-37, 1.e-37),
+              tts::randoms(-1.e-37, 1.e-37),
+              tts::randoms(-1.e-37, 1.e-37),
+              tts::randoms(-1.e-37, 1.e-37),
+              tts::randoms(-1.e-37, 1.e-37),
+              tts::randoms(-1.e-37, 1.e-37)
+            )
+<typename T>(T const& a0, T const& a1, T const& a2,
+             T const& a3, T const& a4, T const& a5)
+{
+  {
+    using pv_t  = plf::polyfloat<T, 2>;
+    pv_t pa(a0, a1);
+    pv_t pb(a3, a4);
+    TTS_EQUAL(plf::max(pa, pb), plf::if_else(plf::is_less(pa, pb), pb, pa));
+  }
+  {
+    using pv_t  = plf::polyfloat<T, 3>;
+    pv_t pa(a0, a1, a2);
+    pv_t pb(a3, a4, a5);
+    TTS_EQUAL(plf::max(pa, pb), plf::if_else(plf::is_less(pa, pb), pb, pa));
+  }
+};

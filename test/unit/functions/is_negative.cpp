@@ -35,11 +35,8 @@ TTS_CASE_TPL( "Check is_negative", plf::scalar_real_types)
 
 };
 
-TTS_CASE_WITH("Check is_less",
+TTS_CASE_WITH("Check is_negative",
               plf::scalar_real_types,
-//               tts::randoms(eve::valmin, eve::valmax), //TODO
-//               tts::randoms(eve::valmin, eve::valmax),
-//               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(-1.e-37, 1.e-37),
               tts::randoms(-1.e-37, 1.e-37),
               tts::randoms(-1.e-37, 1.e-37)
@@ -49,11 +46,11 @@ TTS_CASE_WITH("Check is_less",
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
-    TTS_EQUAL(plf::is_ltz(pa), eve::is_ltz(plf::hi(pa)));
+    TTS_EQUAL(plf::is_negative(pa), eve::is_negative(plf::hi(pa)));
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
-    TTS_EQUAL(plf::is_ltz(pa), eve::is_ltz(plf::hi(pa)));
+    TTS_EQUAL(plf::is_negative(pa), eve::is_negative(plf::hi(pa)));
   }
 };

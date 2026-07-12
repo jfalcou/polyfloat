@@ -100,6 +100,9 @@ namespace plf
   //!   1. Returns a properly const-qualified reference to the md part of `v`.
   //!   2. Returns a properly const-qualified reference to `v`.
   //!
+  //!  @note the md part of a floating point value is always 0, for polyfloat the md part
+  //!    always refers to the second component.
+  //!
   //!  @groupheader{Example}
   //!
   //!  @godbolt{doc/md.cpp}
@@ -135,23 +138,29 @@ namespace plf
   //!   1. Returns a properly const-qualified reference to the lo part of `v`.
   //!   2. Returns a properly const-qualified reference to `v`.
   //!
+  //!  @note the lo part of a floating point value is always 0, for polyfloat the lo part
+  //!    always refers to the last component.
+  //!
   //!  @groupheader{Example}
   //!
   //!  @godbolt{doc/lo.cpp}
   //====================================================================================================================
 
-// TODO  
-//  template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options>
-//   {
-//     template<concepts::polyfloat Z>
-//     POLYFLOAT_FORCEINLINE constexpr plf::as_real_type_t<Z>& operator()(Z z) const noexcept
-//     {
-//       return extractor<dimension_v<Z>-1>{}(z);
-//     }
+// TODO
+ template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options>
+  {
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(Z&& z) const noexcept
+    {
+      if constexpr(dimension_v<Z> == 1)
+        return extractor<1>{}(z);
+      else
+        return extractor<dimension_v<Z>-1>{}(z);
+    }
 
-//     POLYFLOAT_CALLABLE_OBJECT(lo_t, lo_);
-//   };
-//   inline constexpr auto lo = eve::functor<lo_t>;
+    POLYFLOAT_CALLABLE_OBJECT(lo_t, lo_);
+  };
+  inline constexpr auto lo = eve::functor<lo_t>;
 
 
 }
