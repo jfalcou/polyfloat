@@ -25,7 +25,7 @@ TTS_CASE_TPL( "Check return types of arithmetic operators", plf::scalar_real_typ
   TTS_EQUAL(plf::dimension_v<wpv2_t>, 2u);
   TTS_EQUAL(plf::dimension_v<pv3_t>, 3u);
   TTS_EQUAL(plf::dimension_v<wpv3_t>, 3u);
- TTS_EQUAL(plf::dimension_v<T>, 1u);
+  TTS_EQUAL(plf::dimension_v<T>, 1u);
   TTS_EQUAL(plf::dimension_v<wT>, 1u);
 
 
