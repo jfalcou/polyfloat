@@ -9,16 +9,22 @@
 #define TTS_MAIN
 #define TTS_CUSTOM_DRIVER_FUNCTION polyfloat_entry_point
 #include <sstream>
+
 #include <tts/tts.hpp>
+#include <polyfloat/polyfloat.hpp>
 
 //==================================================================================================
 // EVE Specific testing overloads
 //==================================================================================================
-#include <eve/arch/fundamental_cardinal.hpp>
-#include <eve/module/core.hpp>
-#include <eve/traits.hpp>
-#include <eve/wide.hpp>
-#include <polyfloat/polyfloat.hpp>
+#include <eve/eve.hpp>
+
+namespace tts
+{
+  template<typename T, eve::generator V> auto convert_as(V const& v, type<T> const&)
+  {
+    return v(eve::as<T>{});
+  }
+}
 
 namespace eve
 {
@@ -33,15 +39,6 @@ namespace eve
     else return l == r;
   }
 }
-
-namespace eve::_
-{
-  template<typename T, typename V> auto as_value(callable_object<V> const& v)
-  {
-    return v(eve::as<T>{});
-  }
-}
-
 namespace plf
 {
   using scalar_real_types = tts::types<float, double>;
