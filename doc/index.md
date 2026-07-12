@@ -1,6 +1,8 @@
 Polyfloat
 =========
 
+**WORK IN PROGRESS : MANY THINGS STILL NOT AVAILABLE**
+
 **POLYFLOAT** is an implementation of extended precision floating points numbers
 using a sequence of (currently) 2 or 3 standard floating points
 numbers of sam type (`float` or `double`)
