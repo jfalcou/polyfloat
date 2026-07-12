@@ -20,7 +20,7 @@ namespace plf::_
     auto [hi1, md1] = eve::two_add[eve::raw](hi, md);
     if constexpr( eve::platform::supports_infinites)
     {
-      auto t = is_not_finite(md) || is_not_finite(lo) || is_not_finite(t0);
+      auto t = eve::is_not_finite(md) || eve::is_not_finite(lo) || eve::is_not_finite(t0);
       md1 = eve::if_else(t, eve::zero, md);
       lo  = eve::if_else(t, eve::zero, lo);
     }
