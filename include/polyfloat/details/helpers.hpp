@@ -38,7 +38,7 @@ namespace plf::_
   }
 
   template<typename T>
-  constexpr auto four_add(T a, T b, T c, T d) noexcept  // TODO To put in eve adding pedantic option for inf
+  constexpr auto four_add(T a, T b, T c, T d) noexcept
   {
     auto [t0, t1] = eve::two_add(a, b);
     auto [t2, t3] = eve::two_add(c, d);
