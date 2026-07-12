@@ -16,12 +16,12 @@ TTS_CASE_WITH("Check is_less",
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax)
-              tts::randoms(-1.e-37, 1.e-37),
-              tts::randoms(-1.e-37, 1.e-37),
-              tts::randoms(-1.e-37, 1.e-37),
-              tts::randoms(-1.e-37, 1.e-37),
-              tts::randoms(-1.e-37, 1.e-37),
-              tts::randoms(-1.e-37, 1.e-37)
+//               tts::randoms(-1.e-37, 1.e-37),
+//               tts::randoms(-1.e-37, 1.e-37),
+//               tts::randoms(-1.e-37, 1.e-37),
+//               tts::randoms(-1.e-37, 1.e-37),
+//               tts::randoms(-1.e-37, 1.e-37),
+//               tts::randoms(-1.e-37, 1.e-37)
             )
 <typename T>(T const& a0, T const& a1, T const& a2,
              T const& a3, T const& a4, T const& a5)

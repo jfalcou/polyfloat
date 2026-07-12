@@ -9,7 +9,7 @@
 
 #include <eve/eve.hpp>
 #include <polyfloat/types/helpers.hpp>
-//#include <polyfloat/details/decorators.hpp>
+#include <polyfloat/details/decorators.hpp>
 #include <eve/as.hpp>
 #include <bit>
 
