@@ -35,4 +35,15 @@ TTS_CASE_TPL( "Check constructors", plf::scalar_real_types)
   wpv_t2 wa2(wT2(1.0), wT2(0.1));
   std::cout << "wa2 " << wa2 << std::endl;
 
+  std::cout << pv_t(eve::inf(eve::as<T>())) << std::endl;
+  std::cout << pv_t(eve::nan(eve::as<T>())) << std::endl;
+  std::cout << wpv_t(eve::inf(eve::as<T>())) << std::endl;
+  std::cout << wpv_t(eve::nan(eve::as<T>())) << std::endl;
+  std::cout << pv_t(eve::inf(eve::as<T>()), eve::zero(eve::as<T>())) << std::endl;
+  std::cout << pv_t(eve::nan(eve::as<T>()), eve::zero(eve::as<T>())) << std::endl;
+  std::cout << wpv_t(eve::inf(eve::as<T>()), eve::zero(eve::as<T>())) << std::endl;
+  std::cout << wpv_t(eve::nan(eve::as<T>()), eve::zero(eve::as<T>())) << std::endl;
+  std::cout << wpv_t(eve::inf(eve::as<T>()), eve::inf(eve::as<T>()))  << std::endl;
+
+
 };

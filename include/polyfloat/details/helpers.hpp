@@ -10,8 +10,24 @@
 namespace plf::_
 {
   constexpr unsigned int MAX_N = 3;
-  
-  template<typename T>
+
+  template<typename O, typename T>
+  constexpr auto three_add_pedantic(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
+  {
+    auto [t0, t1] = eve::two_add(a, b);
+    auto [hi, t2] = eve::two_add(t0, c);
+    auto [md, lo] = eve::two_add(t2, t1);
+    auto [hi1, md1] = eve::two_add[eve::raw](hi, md);
+    if constexpr( eve::platform::supports_infinites)
+    {
+      auto t = is_not_finite(md) || is_not_finite(lo) || is_not_finite(t0);
+      md1 = eve::if_else(t, eve::zero, md);
+      lo  = eve::if_else(t, eve::zero, lo);
+    }
+    return eve::zip(hi1, md1, lo);
+  }
+
+  template<typename O, typename T>
   constexpr auto three_add(T a, T b, T c) noexcept // TODO To put in eve adding pedantic option for inf
   {
     auto [t0, t1] = eve::two_add(a, b);
@@ -20,7 +36,7 @@ namespace plf::_
     auto [hi1, md1] = eve::two_add[eve::raw](hi, md);
     return eve::zip(hi1, md1, lo);
   }
-  
+
   template<typename T>
   constexpr auto four_add(T a, T b, T c, T d) noexcept  // TODO To put in eve adding pedantic option for inf
   {

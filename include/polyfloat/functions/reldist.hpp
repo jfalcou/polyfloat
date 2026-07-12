@@ -16,7 +16,7 @@
 namespace plf
 {
 
-  template<typename Options> struct reldist_t : eve::elementwise_callable<reldist_t, Options>
+  template<typename Options> struct reldist_t : eve::elementwise_callable<reldist_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept

@@ -70,23 +70,15 @@ namespace plf
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1>
     requires(2 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1) noexcept
-    : contents(kumi::cat(eve::two_add(static_cast<Type>(v0), static_cast<Type>(v1)),  kumi::fill<(N - 2)>(Type{0})))
+    : contents(kumi::cat(eve::two_add[pedantic](static_cast<Type>(v0), static_cast<Type>(v1)),  kumi::fill<(N - 2)>(Type{0})))
     {
     }
 
     /// Construct a Poly-Float instance from a triple of real values
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2>
-    requires(2 <= static_dimension)
+    requires(3 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
-    : contents(kumi::cat(plf::_::three_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)),  kumi::fill<(N - 3)>(Type{0})))
-    {
-    }
-
-    /// Construct a Poly-Float instance from 4 real values
-    template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2, std::convertible_to<Type> T3>
-    requires(3<= static_dimension)
-    constexpr polyfloat(T0 v0, T1 v1, T2 v2, T3 v3) noexcept
-    : contents(plf::_::four_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2), static_cast<Type>(v3)))
+    : contents(plf::_::three_add_pedantic(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
     {
     }
 
@@ -219,5 +211,3 @@ template<typename T, unsigned int N, std::size_t I> struct std::tuple_element<I,
 #include <polyfloat/types/threefloat.hpp>
 #include <polyfloat/types/io.hpp>
 #include <polyfloat/types/compounds.hpp>
-//#include <polyfloat/types/unary_ops.hpp>
-// #include <polyfloat/types/operators.hpp>

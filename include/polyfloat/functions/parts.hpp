@@ -147,7 +147,7 @@ namespace plf
   //====================================================================================================================
 
 // TODO
- template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options>
+ template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(Z&& z) const noexcept
