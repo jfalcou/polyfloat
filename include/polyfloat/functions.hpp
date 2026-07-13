@@ -19,5 +19,6 @@
 #include <polyfloat/functions/minus.hpp>
 #include <polyfloat/functions/mul.hpp>
 #include <polyfloat/functions/parts.hpp>
+#include <polyfloat/functions/rec.hpp>
 #include <polyfloat/functions/reldist.hpp>
 #include <polyfloat/functions/sub.hpp>
