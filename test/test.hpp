@@ -12,6 +12,7 @@
 
 #include <tts/tts.hpp>
 #include <polyfloat/polyfloat.hpp>
+#include <mpreal.h>
 
 //==================================================================================================
 // EVE Specific testing overloads
@@ -226,4 +227,6 @@ namespace tts
 
     return poison(that);
   }
+
 }
+#include "mpfr_helpers.hpp"
