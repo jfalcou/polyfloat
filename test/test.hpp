@@ -228,5 +228,18 @@ namespace tts
     return poison(that);
   }
 
+  //================================================================================================
+  // Constant wrapper
+  //================================================================================================
+  template<typename F> struct constant : F
+  {
+    constant(F f) : F(f) {}
+    using F::operator();
+  };
+
+  template<typename T, typename V> auto as_value(constant<V> const& v)
+  {
+    return v(eve::as<T>{});
+  }
 }
 #include "mpfr_helpers.hpp"

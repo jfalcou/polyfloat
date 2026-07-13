@@ -231,21 +231,24 @@ namespace plf
     template <concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE auto rec(T a) noexcept
     {
       auto a0 = eve::rec(get<0>(a));
-      using R = decltype(a0);
       if constexpr(dimension_v<T> == 2)
       {
-        return a0+a0*(T(1)-a*a0);
+        auto x1 = a0+a0*(T(1)-a*a0);
+//        auto x2 = x1+x1*(T(1)-a*x1);
+        return x1;
       }
       if constexpr(dimension_v<T> == 3)
       {
         auto x0 =  a0;
         auto x1 = x0+x0*(T(1)-a*x0);
-        return x1 += x1*(T(1)-a*x1);
+//        auto x2 = x1+x1*(T(1)-a*x1);
+//        auto x3 = x2+x2*(T(1)-a*x2);
+        return x1;
       }
     }
   }
 
-  /// Divide  `self`by the floating value `other` toand returns the new value of `self`.
+  /// Divide  `self`by the floating value `other` and returns the new value of `self`.
   template <concepts::polyfloat T1, concepts::polyfloat T2>
   constexpr auto& operator/=(T1 & self, T2 other) noexcept
   {
@@ -262,4 +265,4 @@ namespace plf
 }
 
 #include <polyfloat/types/ops2.hpp>
-#include <polyfloat/types/ops3.hpp>   
+#include <polyfloat/types/ops3.hpp>
