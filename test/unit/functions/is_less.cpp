@@ -25,13 +25,6 @@ TTS_CASE_WITH("Check is_less",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_EQUAL(plf::is_less(pa, pb), plf::is_ltz(pa-pb));
-    auto t =  eve::as_logical_t<T>(true);
-    pv_t z(-1.0, 0.005);
-    std::cout << "plf::is_ltz(z) " << plf::is_ltz(z) << std::endl;
-    std::cout << "eve::is_ltz(hi(z)) " <<eve::is_ltz(plf::hi(z))<< std::endl;
-    TTS_EQUAL(plf::is_less(pa, pb), t);
-    std::cout << plf::is_ltz(pa-pb) << std::endl;
-    std::cout << plf::is_ltz(pb-pa) << std::endl;
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;

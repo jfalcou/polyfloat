@@ -97,9 +97,11 @@ namespace plf
 
   /// Substracts the floating value `other` to `self` and returns the new value of `self`.
   template <concepts::polyfloat T1, eve::floating_value T2>
-  constexpr auto& operator-=(T1 & self, T2  oth) noexcept
+  constexpr auto& operator-=(T1 & self, T2  other) noexcept
   requires(dimension_v<T2> == 1)
   {
+    using u_t = eve::underlying_type_t<plf::as_real_type_t<T1>>;
+    auto oth = eve::convert(other, eve::as<u_t>());
     if constexpr(dimension_v<T1> == 2u)
     {
       auto [xhi, xlo] = self;
@@ -153,8 +155,10 @@ namespace plf
 
   /// Multiply the floating value `other` to `self` and returns the new value of `self`.
   template <concepts::polyfloat T1, eve::floating_value T2>
-  constexpr auto& operator*=(T1 & self, T2 oth) noexcept
+  constexpr auto& operator*=(T1 & self, T2 other) noexcept
   {
+    using u_t = eve::underlying_type_t<plf::as_real_type_t<T1>>;
+    auto oth = eve::convert(other, eve::as<u_t>());
     if constexpr(dimension_v<T1> == 2u)
     {
       auto [xhi, xlo] = self;
@@ -171,7 +175,7 @@ namespace plf
       auto [t19, t20] = eve::two_add[eve::raw](t1, alo * oth);
       auto [t21, t22] = eve::two_add[eve::raw](t4, t5);
       auto [md, lo]   =  _::four_quick_add(t21, t22, t19, t20);
-      return self = eve::zip(hi, md, lo);
+      return self = T1(hi, md, lo);
     }
   }
 
@@ -215,13 +219,13 @@ namespace plf
 
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
       auto [t21, t22] = _::four_quick_add(t2, t3, t4, t5);
-      auto [md, lo]   =  _::four_quick_add(t21, t22, t19, t20);
-      return self = eve::zip(hi, md, lo);
+      auto [md, lo]   = _::four_quick_add(t21, t22, t19, t20);
+      return self = T1(hi, md, lo);
     }
   }
 }
 
-#include <polyfloat/types/ops1.hpp>
+#include <polyfloat/types/ops1.hpp> //define +, -, *, / * is uded by rec and /=
 
 namespace plf
 {
@@ -230,32 +234,56 @@ namespace plf
   {
     template <concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE auto rec(T a) noexcept
     {
-      auto a0 = eve::rec(get<0>(a));
-      if constexpr(dimension_v<T> == 2)
+      if constexpr(dimension_v<T> == 1)
+        return eve::rec[pedantic](a);
+      else if constexpr(dimension_v<T> == 2)
       {
-        auto x1 = a0+a0*(T(1)-a*a0);
-//        auto x2 = x1+x1*(T(1)-a*x1);
+//         auto [yhi, ylo] = a;
+//         auto hi = eve::rec[pedantic](yhi);
+//         auto [uh, ul] = eve::two_prod(hi, yhi);
+//         auto lo = ((hi - uh) - ul)/yhi;
+//         return T(eve::two_add[eve::raw](hi, lo));
+
+// TODO Tests if direct computation without newton is not speedier
+        auto [a0, b0] = a;
+        auto x0 = eve::rec[pedantic](a0);
+        auto x1 = x0+x0*(T(1)-a*x0);
         return x1;
       }
-      if constexpr(dimension_v<T> == 3)
+      else if constexpr(dimension_v<T> == 3)
       {
-        auto x0 =  a0;
+        auto [a0, b0, c0] = a;
+        auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0+x0*(T(1)-a*x0);
-//        auto x2 = x1+x1*(T(1)-a*x1);
-//        auto x3 = x2+x2*(T(1)-a*x2);
-        return x1;
+        auto x2 = x1+x1*(T(1)-a*x1);
+        return x2;
+//         auto x3 = x2+x2*(T(1)-a*x2);
+//         return x3;
       }
     }
   }
 
-  /// Divide  `self`by the floating value `other` and returns the new value of `self`.
+  /// Divide  `self` by the  value `other` and returns the new value of `self`.
   template <concepts::polyfloat T1, concepts::polyfloat T2>
   constexpr auto& operator/=(T1 & self, T2 other) noexcept
   {
-   return self *= _::rec(other);
+    if constexpr(dimension_v<T1>  ==  2)
+    {
+      auto [xhi, xlo] = self;
+      auto [yhi, ylo] = other;
+      auto hi = xhi / yhi;
+//     if !isfinite(hi)
+//         return zero_error_result(hi)
+//     end
+      auto [uh, ul] = eve::two_prod(hi, yhi);
+      auto lo = eve::fnma(hi, ylo, (((xhi - uh) - ul) + xlo))/yhi;
+      return self = eve::two_add[eve::raw](hi, lo);
+    }
+    else
+      return self *= _::rec(other);
    }
 
-  /// Divide the polyfloat  `self` by  `other` and returns the new value of `self`.
+  /// Divide the polyfloat  `self` by   the floating value `other` and returns the new value of `self`.
   template <concepts::polyfloat T1, eve::floating_value T2>
   constexpr auto& operator/=(T1 & self, T2 other) noexcept
   {

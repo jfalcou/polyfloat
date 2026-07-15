@@ -23,10 +23,26 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE auto
+  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
   operator <(T1 const& a, T2 const& b) noexcept
   {
-    return eve::is_ltz(plf::hi(a-b));
+    constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    if constexpr(N == 2)
+    {
+      auto th0 = hi(a) <  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tl0 = lo(a) <  lo(b);
+      return  th0 || (th1 && tl0);
+    }
+    else if constexpr(N == 3)
+    {
+      auto th0 = hi(a) <  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tm0 = md(a) <  md(b);
+      auto tm1 = md(a) == md(b);
+      auto tl0 = lo(a) <  lo(b);
+      return  th0 || (th1 && tm0) || (th1 && tm1 && tl0);
+    }
   }
 
   template<eve::value T1, eve::value T2>
@@ -34,7 +50,23 @@ namespace plf
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
   operator > (T1 const& a, T2 const& b) noexcept
   {
-    return  eve::is_gtz(plf::hi(a-b));
+    constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    if constexpr(N == 2)
+    {
+      auto th0 = hi(a) >  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tl0 = lo(a) >  lo(b);
+      return  th0 || (th1 && tl0);
+    }
+    else if constexpr(N == 3)
+    {
+      auto th0 = hi(a) >  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tm0 = md(a) >  md(b);
+      auto tm1 = md(a) == md(b);
+      auto tl0 = lo(a) <  lo(b);
+      return  th0 || (th1 && tm0) || (th1 && tm1 && tl0);
+    }
   }
 
   template<eve::value T1, eve::value T2>
@@ -42,7 +74,23 @@ namespace plf
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
   operator <= (T1 const& a, T2 const& b) noexcept
   {
-    return  eve::is_lez(plf::hi(a-b));
+    constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    if constexpr(N == 2)
+    {
+      auto th0 = hi(a) <= hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tl0 = lo(a) <= lo(b);
+      return  th0 || (th1 && tl0);
+    }
+    else if constexpr(N == 3)
+    {
+      auto th0 = hi(a) <=  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tm0 = md(a) <= md(b);
+      auto tm1 = md(a) == md(b);
+      auto tl0 = lo(a) <= lo(b);
+      return  th0 || (th1 && tm0) || (th1 && tm1 && tl0);
+    }
   }
 
   template<eve::value T1, eve::value T2>
@@ -50,7 +98,23 @@ namespace plf
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
   operator >= (T1 const& a, T2 const& b) noexcept
   {
-    return eve::is_gez(plf::hi(a-b));
+    constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    if constexpr(N == 2)
+    {
+      auto th0 = hi(a) >= hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tl0 = lo(a) >= lo(b);
+      return  th0 || (th1 && tl0);
+    }
+    else if constexpr(N == 3)
+    {
+      auto th0 = hi(a) >=  hi(b);
+      auto th1 = hi(a) == hi(b);
+      auto tm0 = md(a) >= md(b);
+      auto tm1 = md(a) == md(b);
+      auto tl0 = lo(a) >= lo(b);
+      return  th0 || (th1 && tm0) || (th1 && tm1 && tl0);
+    }
   }
 
   //====================================================================================================================

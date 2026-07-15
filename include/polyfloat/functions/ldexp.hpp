@@ -12,7 +12,6 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/abs.hpp>
-#include <iostream>
 
 namespace plf
 {
@@ -102,8 +101,6 @@ namespace plf::_
     if constexpr(dimension_v<Z> ==  2)
     {
       auto [zh, zl] = z;
-      std::cout << " z " << z << std::endl;
-      std::cout << " n " << n << std::endl;
       auto h = eve::ldexp(zh, n);
       auto l = eve::ldexp(zl, n);
       return Z(h, l);
@@ -111,8 +108,6 @@ namespace plf::_
     else    if constexpr(dimension_v<Z> ==  3)
     {
       auto [zh, zm, zl] = z;
-      std::cout << " z " << z << std::endl;
-      std::cout << " n " << n << std::endl;
       auto h = eve::ldexp(zh, n);
       auto m = eve::ldexp(zm, n);
       auto l = eve::ldexp(zl, n);

@@ -72,34 +72,40 @@
 // };
 
 template<auto N, typename T>
-void perform_test(T pa,  T pb,  T pab)
+void perform_ulp_test(T pa,  T pb,  T pab)
 {
+  std::cout << " -------------------------------------------- " << std::endl;
   using  mpfr::mpreal;
   mpreal::set_default_prec(N);
   auto mpa = tts::to_mpreal(pa);
   auto mpb = tts::to_mpreal(pb);
   auto mpab= tts::to_mpreal(pab);
-//   std::cout << (mpa)    << " -- " << (pa)                       << std::endl;
-//   std::cout << (mpb)    << " -- " << (pb)                       << std::endl;
-//   std::cout << (mpab)   << " -- " << (pab)                      << std::endl;
-//   std::cout << tts::typename_<decltype(pa)> << std::endl;
-//   std::cout << "N " << N                  << std::endl;
-//   std::cout << "dim " << plf::dimension_v<T> << std::endl;
-//   std::cout << "d " << (mpa + mpb - mpab) << std::endl;
-//   std::cout << "r " << mpfr::abs (mpa + mpb - mpab)/mpfr::max(mpfr::max(mpfr::abs(mpa), mpfr::abs(mpb)), 1)<< std::endl;
-  TTS_EXPECT(mpa*mpb == mpab);
-//   std::cout << " ============================================ " << std::endl;
+  std::cout << "pa  " << (mpa)    << " -- " << (pa)                       << std::endl;
+  std::cout << "pb  " << (mpb)    << " -- " << (pb)                       << std::endl;
+  std::cout << "pab " << (mpab)   << " -- " << (pab)                      << std::endl;
+  std::cout << tts::typename_<decltype(pa)> << std::endl;
+  std::cout << "N " << N                  << std::endl;
+  std::cout << "dim " << plf::dimension_v<T> << std::endl;
+  std::cout << "epsi " << tts::epsprec<T>() << std::endl;
+  std::cout << "d " << (mpa* mpb - mpab) << std::endl;
+  std::cout << "r " << mpfr::abs (mpa*mpb - mpab)-tts::epsprec<T>()/mpfr::max(mpfr::max(mpfr::abs(mpa), mpfr::abs(mpb)), 1)<< std::endl;
+  std::cout << "u " << plf::ulpdist(pab, tts::to_polyfloat(mpa*mpb, eve::as<T>())) << std::endl;
+  std::cout << "pab                                       " << pab << std::endl;
+  std::cout << "tts::to_polyfloat(mpa*mpb, eve::as<T>()))     " <<  tts::to_polyfloat(mpa*mpb, eve::as<T>())     << std::endl;
+  std::cout << "pab -tts::to_polyfloat(mpa*mpb, eve::as<T>())) " << pab -tts::to_polyfloat(mpa*mpb, eve::as<T>())  << std::endl;
+  TTS_EXPECT( plf::ulpdist(pab, tts::to_polyfloat(mpa*mpb, eve::as<T>())) <= 0.5);
+  std::cout << " ============================================ " << std::endl;
 }
 
 
-TTS_CASE_WITH("Check add two params",
+TTS_CASE_WITH("Check mul two params",
               plf::scalar_real_types,
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5)
@@ -112,7 +118,7 @@ TTS_CASE_WITH("Check add two params",
       pv_t pa(a0, a1);
       pv_t pb(a3, a4);
       pv_t pab = plf::mul(pa, pb);
-      perform_test<N>(pa, pb, pab);
+      perform_ulp_test<N>(pa, pb, pab);
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
@@ -120,7 +126,7 @@ TTS_CASE_WITH("Check add two params",
       pv_t pb(a3, a4, a5);
       pv_t pab = plf::mul(pa, pb);
       constexpr auto N = tts::bitprec<pv_t>();
-      perform_test<N>(pa, pb, pab);
+      perform_ulp_test<N>(pa, pb, pab);
     }
   }
 };

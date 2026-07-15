@@ -14,6 +14,7 @@
 #include <polyfloat/functions/abs.hpp>
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/ldexp.hpp>
+#include <iostream>
 
 namespace plf
 {
@@ -71,14 +72,14 @@ namespace plf
 namespace plf::_
 {
 
-  template <typename T> constexpr auto epsi(){ //TODO create constants
+  template <typename T> constexpr T epsi(){ //TODO create constants
     using u_t = decltype(plf::hi(T()));
     if constexpr(plf::dimension_v<T> == 1)
-      return  (sizeof(u_t) == 8 ? 1.1102e-16 : 1.1921e-07)*4;
-    if constexpr(plf::dimension_v<T> == 2)
-      return (sizeof(u_t) == 8 ? 1.2326e-32 : 1.4211e-14)*4;
+      return  (sizeof(u_t) == 4 ? 2.384185791015625e-07 :  2.220446049250313e-16);
+    else if constexpr(plf::dimension_v<T> == 2)
+      return (sizeof(u_t) == 4 ? 2.842170943040401e-14 :  3.388131789017201e-21);
     else if constexpr(plf::dimension_v<T> == 3)
-      return (sizeof(u_t) == 8 ? 1.3685e-48 : 1.6941e-21)*4;
+      return (sizeof(u_t) == 4 ? 2.465190328815662e-32 :  2.736911063134408e-48); ;
   }
 
   template<typename Z0, typename Z1, eve::callable_options O>
@@ -90,17 +91,24 @@ namespace plf::_
       return eve::ulpdist(z0, z1);
     else
     {
+      auto reps = eve::rec[pedantic](epsi<u_t>());
       auto [ m1, e1] = frexp(z0);
       auto [ m2, e2] = frexp(z1);
       auto expo = -max(e1, e2);
+      std::cout << std::endl << "eps " << epsi<r_t>() <<std::endl;
+      std::cout << std::endl << "reps " << reps <<std::endl;
+      std::cout << std::endl << "e1 " << e1 << " e2 " << e2 <<std::endl;
+      std::cout << std::endl << "m1 " << m1 << " m2 " << m2 <<std::endl;
       auto e = abs(if_else( e1 == e2
                           , m1-m2
                           , ldexp(z0, expo)-ldexp(z1, expo)
                           )
                   );
+      std::cout << std::endl << "m1 - m2 " << m1 - m2 <<std::endl;
+      std::cout << std::endl << "e       " << e       <<std::endl;
       return if_else( (is_nan(z0) && is_nan(z1)) || (z0 == z1)
                     , eve::zero
-                    , e/r_t(epsi<u_t>())
+                    , e*reps
                     );
     }
   }
