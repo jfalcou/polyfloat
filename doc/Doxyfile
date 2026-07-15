@@ -54,7 +54,7 @@ PROJECT_NUMBER         = v$(DOXYGEN_PROJECT_VERSION)
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "float nec mergitur"
+PROJECT_BRIEF          = "Complex Without Complexes"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -1414,10 +1414,10 @@ HTML_STYLESHEET        =
 # documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = $(DOXYGEN_ASSETS)/custom.css \
-                         color.css \
-                         $(DOXYGEN_ASSETS)/doxygen-awesome.css \
-                         $(DOXYGEN_ASSETS)/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_STYLESHEET  = $(AWESOME_ASSETS)/doxygen-awesome.css
+HTML_EXTRA_STYLESHEET += $(AWESOME_ASSETS)/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_STYLESHEET += $(DOXYGEN_ASSETS)/custom.css
+HTML_EXTRA_STYLESHEET += color.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1427,9 +1427,10 @@ HTML_EXTRA_STYLESHEET  = $(DOXYGEN_ASSETS)/custom.css \
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = $(DOXYGEN_ASSETS)/godbolt.js \
-                         $(DOXYGEN_ASSETS)/fragment.js \
-                         $(DOXYGEN_ASSETS)/paragraph.js
+HTML_EXTRA_FILES       = $(DOXYGEN_ASSETS)/godbolt.js
+HTML_EXTRA_FILES      += $(AWESOME_ASSETS)/doxygen-awesome-fragment-copy-button.js
+HTML_EXTRA_FILES      += $(AWESOME_ASSETS)/doxygen-awesome-paragraph-link.js
+HTML_EXTRA_FILES      += $(AWESOME_ASSETS)/doxygen-awesome-tabs.js
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
@@ -2454,7 +2455,7 @@ INCLUDE_FILE_PATTERNS  =
 # recursively expanded use the := operator instead of the = operator.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-PREDEFINED             = POLYFLOAT_DOXYGEN_INVOKED
+PREDEFINED             = KYOSU_DOXYGEN_INVOKED
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The

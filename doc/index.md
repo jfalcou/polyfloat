@@ -166,15 +166,16 @@ the minimum denormal value of the type T, meaning that the intervals are quite m
 However, the following table shows the number of bits of mantissa available for each scalar
  polyfloat element as well as an expected machine precision (eps) related to this mantissa bit size
 
-|  base  type |   dimension |   bits number  |   eps            |
-|-------------|------------------------------|------------------|
-| float       |   2         |   46           |   1.4211e-14     |
-| float       |   3         |   69           |   1.6941e-21     |
-| double      |   2         |   106          |   1.2326e-32     |
-| double      |   3         |   159          |   1.3685e-48     |
+   |             |             |                |                  |
+   |  base  type |   dimension |   bits number  |   eps            |
+   |-------------|-------------|----------------|------------------|
+   | float       |   2         |   46           |   1.4211e-14     |
+   | float       |   3         |   69           |   1.6941e-21     |
+   | double      |   2         |   106          |   1.2326e-32     |
+   | double      |   3         |   159          |   1.3685e-48     |
 
 So if an mpfr implementation of a fonction is at end, we choose to evaluate
-the relative absolute error betwween our computation converted to mpfr value
+the relative absolute error between our computation converted to mpfr value
 of the same mantissa precision and the mpfr computation with the converted inputs
 and be satisfied if it is less than the corresponding eps.
 
