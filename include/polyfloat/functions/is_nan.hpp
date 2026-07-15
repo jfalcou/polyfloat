@@ -15,21 +15,22 @@
 namespace plf
 {
 
-  template<typename Options> struct is_ltz_t : eve::elementwise_callable<is_ltz_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_nan_t : eve::elementwise_callable<is_nan_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<decltype(hi(Z()))>
+    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_real_type_t<Z>> operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return eve::is_nan(hi(z));
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_ltz_t, is_ltz_);
+    POLYFLOAT_CALLABLE_OBJECT(is_nan_t, is_nan_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_ltz
-  //!   @brief test the parameter for less than zero.
+  //!   @var is_nan
+  //!   @brief `elementwise callable` returning a logical true if and only if the element
+  //!    has its sign bit set
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_ltz(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_nan(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,24 +53,13 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the value of z < 0.
+  //!     returns true if and only if the bit of sign (most significant bit) is set.
+  //!     Of course the result on a NaN input is generally out of control.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_ltz.cpp}
+  //!  @godbolt{doc/is_nan.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_ltz = eve::functor<is_ltz_t>;
-  //======================================================================================================================
-  //! @}
-  //======================================================================================================================
-}
-
-namespace plf::_
-{
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_ltz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
-  {
-    return eve::is_ltz(hi(z));
-  }
+  inline constexpr auto is_nan = eve::functor<is_nan_t>;
 }

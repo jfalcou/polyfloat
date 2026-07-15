@@ -154,3 +154,29 @@ Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref kyosu::co
    |[tan](@ref polyfloat::tan)                             |[tanh](@ref polyfloat::tanh)                           |[tchebytchev](@ref polyfloat::tchebytchev)             |[tgamma](@ref polyfloat::tgamma)                       |
    |[tgamma_inv](@ref polyfloat::tgamma_inv)               |[to_cylindrical](@ref polyfloat::to_cylindrical)       |[to_polar](@ref polyfloat::to_polar)                   |[tricomi](@ref polyfloat::tricomi)                     |
    |[trunc](@ref polyfloat::trunc)                         |[zeta](@ref polyfloat::zeta)                           |                                                   |                                                   |
+
+
+Testing rationale
+-----------------
+
+The behaviour of polyfloat is not the same as standard floating points numbers, for instance
+for any `polyfloat` the difference between any finite T and the next representable element is
+the minimum denormal value of the type T, meaning that the intervals are quite more populated.
+
+However, the following table shows the number of bits of mantissa available for each scalar
+ polyfloat element as well as an expected machine precision (eps) related to this mantissa bit size
+
+|  base  type |   dimension |   bits number  |   eps            |
+|-------------|------------------------------|------------------|
+| float       |   2         |   46           |   1.4211e-14     |
+| float       |   3         |   69           |   1.6941e-21     |
+| double      |   2         |   106          |   1.2326e-32     |
+| double      |   3         |   159          |   1.3685e-48     |
+
+So if an mpfr implementation of a fonction is at end, we choose to evaluate
+the relative absolute error betwween our computation converted to mpfr value
+of the same mantissa precision and the mpfr computation with the converted inputs
+and be satisfied if it is less than the corresponding eps.
+
+The relative error formula between \f$a\f$ and \f$b\f$
+is chosen to be \f$|a-b|/(\max(|a|,|b|,1)\f$.

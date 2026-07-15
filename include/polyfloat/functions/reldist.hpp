@@ -12,6 +12,10 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/abs.hpp>
+#include <polyfloat/functions/is_infinite.hpp>
+#include <polyfloat/functions/is_eqz.hpp>
+#include <polyfloat/functions/max.hpp>
+
 
 namespace plf
 {
@@ -74,6 +78,6 @@ namespace plf::_
   {
     auto d = dist[o](z1, z2);
     return if_else(is_infinite(d) || is_eqz(d), d,
-                   d / max(abs(z1), abs(z2), eve::one(eve::as(abs(z1)))));
+                   d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(z1)))));
   }
 }

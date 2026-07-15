@@ -15,21 +15,21 @@
 namespace plf
 {
 
-  template<typename Options> struct is_ltz_t : eve::elementwise_callable<is_ltz_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_eqz_t : eve::elementwise_callable<is_eqz_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<decltype(hi(Z()))>
+    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_real_type_t<Z>> operator()(Z z) const noexcept
     {
      return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_ltz_t, is_ltz_);
+    POLYFLOAT_CALLABLE_OBJECT(is_eqz_t, is_eqz_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_ltz
-  //!   @brief test the parameter for less than zero.
+  //!   @var is_eqz
+  //!   @brief test the parameter for equality to zero.
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_ltz(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_eqz(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the value of z < 0.
+  //!     Returns the value of z ==  0.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_ltz.cpp}
+  //!  @godbolt{doc/is_eqz.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_ltz = eve::functor<is_ltz_t>;
+  inline constexpr auto is_eqz = eve::functor<is_eqz_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -68,8 +68,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_ltz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_eqz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
   {
-    return eve::is_ltz(hi(z));
+    return eve::is_eqz(hi(z));
   }
 }

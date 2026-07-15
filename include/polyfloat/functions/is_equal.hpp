@@ -11,25 +11,27 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_ltz_t : eve::elementwise_callable<is_ltz_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_equal_t : eve::elementwise_callable<is_equal_t, Options, raw_option, pedantic_option, numeric_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<decltype(hi(Z()))>
+    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
+      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
+    operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+     return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_ltz_t, is_ltz_);
+    POLYFLOAT_CALLABLE_OBJECT(is_equal_t, is_equal_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_ltz
-  //!   @brief test the parameter for less than zero.
+  //!   @var is_equal
+  //!   @brief return the is_equal value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,24 +44,26 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_ltz(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal(T1 z1, T2 z2)          noexcept; //1
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal[numeric](T1 z1, T2 z2) noexcept; //2
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2` : Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the value of z < 0.
+  //!     1. Returns true is  `z1` is equal to `z2`.
+  //!     2. consider nan values as equal
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_ltz.cpp}
+  //!  @godbolt{doc/is_equal.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_ltz = eve::functor<is_ltz_t>;
+  inline constexpr auto is_equal = eve::functor<is_equal_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -67,9 +71,11 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_ltz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename Z2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto is_equal_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return eve::is_ltz(hi(z));
+    auto eq = z1 ==  z2;
+    if constexpr(O::contains(numeric)) return eq || (is_nan(z1) && is_nan(z2));
+    else                               return eq;
   }
 }

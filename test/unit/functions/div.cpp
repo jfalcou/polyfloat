@@ -8,6 +8,22 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
+template < typename T > T cvt(mpfr::mpreal mpa, eve::as<T> )
+{
+  using u_t = decltype(plf::hi(T()));
+  using mu_t = decltype(mpa);
+  auto h = u_t(mpa);
+  auto m = u_t(mpa-mu_t(h));
+  if constexpr(plf::dimension_v<T> == 2)
+  {
+    return T(h, m);
+  }
+  else if constexpr(plf::dimension_v<T> == 3)
+  {
+    auto l = u_t(mpa - (mu_t(h)+mu_t(m)));
+    return T(h, m, l);
+  }
+}
 
 template<auto N, typename T>
 void perform_test(T pa,  T pb,  T pab)
@@ -26,6 +42,7 @@ void perform_test(T pa,  T pb,  T pab)
 //   std::cout << "d " << (mpa/mpb - mpab) << std::endl;
 //   std::cout << "r " << mpfr::abs (mpa/mpb - mpab)/mpfr::max(mpfr::max(mpfr::abs(mpa), mpfr::abs(mpb)), 1)<< std::endl;
   TTS_EXPECT( mpfr::abs(mpa/mpb - mpab) < tts::epsprec<T>()*mpfr::max(mpfr::max(mpfr::abs(mpa), mpfr::abs(mpb)), 1));
+  TTS_EXPECT( plf::ulpdist(pab, cvt(mpab, eve::as<T>())) <= 0.5);
 //  std::cout << " ============================================ " << std::endl;
 }
 

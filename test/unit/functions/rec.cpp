@@ -58,3 +58,50 @@ TTS_CASE_WITH("Check rec",
     }
   }
 };
+
+
+template<auto N, typename T>
+void perform_test(T pa,  T rpa)
+{
+  using  mpfr::mpreal;
+  mpreal::set_default_prec(N);
+  auto mpa = tts::to_mpreal(pa);
+  auto mrpa= tts::to_mpreal(rpa);
+  std::cout << (mpa)    << " -- " << (pa)                       << std::endl;
+  std::cout << (mrpa)   << " -- " << (rpa)                      << std::endl;
+  std::cout << tts::typename_<decltype(pa)> << std::endl;
+  std::cout << "N " << N                  << std::endl;
+  std::cout << "dim " << plf::dimension_v<T> << std::endl;
+  std::cout << "d " << (1/mpa - mrpa) << std::endl;
+  std::cout << "r " << mpfr::abs (1/mpa - mrpa)/mpfr::max(mpfr::abs(mpa), 1)<< std::endl;
+  TTS_EXPECT( mpfr::abs(1/mpa - mrpa) < tts::epsprec<T>()*mpfr::max(mpfr::abs(mpa), 1));
+ std::cout << " ============================================ " << std::endl;
+}
+
+
+TTS_CASE_WITH("Check rec",
+              plf::scalar_real_types,
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax)
+             )
+  <typename T>(T const& a0, T const& a1, T const& a2)
+{
+  using  mpfr::mpreal;
+  {
+    {
+      using pv_t  = plf::polyfloat<T, 2>;
+      constexpr auto N = tts::bitprec<pv_t>();
+      pv_t pa(a0);
+      pv_t rpa = plf::rec(pa);
+      perform_test<N>(pa, rpa);
+    }
+    {
+      using pv_t  = plf::polyfloat<T, 3>;
+      pv_t pa(a0, a1, a2);
+      pv_t rpa = plf::rec(pa);
+      constexpr auto N = tts::bitprec<pv_t>();
+      perform_test<N>(pa, rpa);
+    }
+  }
+};
