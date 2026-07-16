@@ -7,7 +7,7 @@
 int main()
 {
   std::cout <<  std::setprecision(15);
-  using plf::add;
+  using plf::sub;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);
   auto b = plf::polyfloat(1.0, 1.0e-300);
@@ -17,16 +17,16 @@ int main()
   std::cout << "a  "<< a << std::endl;
   std::cout << "b  "<< b << std::endl;
   std::cout << "c  "<< c << std::endl;
-  std::cout << "add(f, f) " << add(f, f) << std::endl;
-  std::cout << "add(a, a) " << add(a, a) << std::endl;
-  std::cout << "add(b, b) " << add(b, b) << std::endl;
-  std::cout << "add(c, c) "<<  add(c, c) << std::endl;
-  std::cout << "add(a, f) " << add(a, f) << std::endl;
-  std::cout << "add(b, a) " << add(b, a) << std::endl;
-  std::cout << "add(c, b) "<<  add(c, b) << std::endl;
-  std::cout << "add(f, a) " << add(f, a) << std::endl;
-  std::cout << "add(a, b) " << add(a, b) << std::endl;
-  std::cout << "add(b, c) "<<  add(b, c) << std::endl;
+  std::cout << "sub(f, f) " << sub(f, f) << std::endl;
+  std::cout << "sub(a, a) " << sub(a, a) << std::endl;
+  std::cout << "sub(b, b) " << sub(b, b) << std::endl;
+  std::cout << "sub(c, c) "<<  sub(c, c) << std::endl;
+  std::cout << "sub(a, f) " << sub(a, f) << std::endl;
+  std::cout << "sub(b, a) " << sub(b, a) << std::endl;
+  std::cout << "sub(c, b) "<<  sub(c, b) << std::endl;
+  std::cout << "sub(f, a) " << sub(f, a) << std::endl;
+  std::cout << "sub(a, b) " << sub(a, b) << std::endl;
+  std::cout << "sub(b, c) "<<  sub(b, c) << std::endl;
 
   using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
@@ -34,9 +34,9 @@ int main()
   pf3_t wc(c);
   std::cout << "wb          "<< wb << std::endl;
   std::cout << "wc          "<< wc << std::endl;
-  std::cout << "add(wb, wb) "<< add(wb, wb) << std::endl;
-  std::cout << "add(wc, wc) "<< add(wc, wc) << std::endl;
-//  std::cout << "add(wc, wb) "<< add(wc, wb) << std::endl;
+  std::cout << "sub(wb, wb) "<< sub(wb, wb) << std::endl;
+  std::cout << "sub(wc, wc) "<< sub(wc, wc) << std::endl;
+//  std::cout << "sub(wc, wb) "<< sub(wc, wb) << std::endl;
 
   return 0;
 }
