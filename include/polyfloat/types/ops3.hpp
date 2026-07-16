@@ -23,7 +23,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
+  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
   operator <(T1 const& a, T2 const& b) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
@@ -47,7 +47,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
+  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
   operator > (T1 const& a, T2 const& b) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
@@ -71,7 +71,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
+  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
   operator <= (T1 const& a, T2 const& b) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
@@ -95,7 +95,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_real_type_t<T1>, as_real_type_t<T2>>
+  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
   operator >= (T1 const& a, T2 const& b) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;

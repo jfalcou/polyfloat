@@ -25,11 +25,11 @@ namespace plf
      return POLYFLOAT_CALL(z1, r_t(n));
     }
 
-    template<concepts::polyfloat_like Z1,  eve::floating_value N>
-      POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
+    template<concepts::polyfloat_like Z,  eve::floating_value N>
+      POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
     {
-      using r_t = decltype(hi(Z1()));
-      return POLYFLOAT_CALL(z1, r_t(n));
+      using r_t = as_component_type_t<Z>;
+      return POLYFLOAT_CALL(z, r_t(n));
     }
 
     POLYFLOAT_CALLABLE_OBJECT(ldexp_t, ldexp_);

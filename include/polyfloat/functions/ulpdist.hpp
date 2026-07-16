@@ -73,7 +73,7 @@ namespace plf::_
 {
 
   template <typename T> constexpr T epsi(){ //TODO create constants
-    using u_t = decltype(plf::hi(T()));
+    using u_t = as_component_type_t<T>;
     if constexpr(plf::dimension_v<T> == 1)
       return  (sizeof(u_t) == 4 ? 2.384185791015625e-07 :  2.220446049250313e-16);
     else if constexpr(plf::dimension_v<T> == 2)
@@ -86,7 +86,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto ulpdist_(POLYFLOAT_DELAY(), O const& , Z0 const& z0, Z1 const& z1) noexcept
   {
     using r_t = as_polyfloat_like_t<Z0, Z1>;
-    using u_t = decltype(hi(r_t()));
+    using u_t = as_component_type_t<r_t>;
     if constexpr(dimension_v<r_t> == 1)
       return eve::ulpdist(z0, z1);
     else

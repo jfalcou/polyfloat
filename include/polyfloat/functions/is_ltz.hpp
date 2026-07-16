@@ -15,10 +15,10 @@
 namespace plf
 {
 
-  template<typename Options> struct is_ltz_t : eve::elementwise_callable<is_ltz_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_ltz_t : eve::callable<is_ltz_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<decltype(hi(Z()))>
+    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<as_component_type_t<Z>>
     {
      return POLYFLOAT_CALL(z);
     }

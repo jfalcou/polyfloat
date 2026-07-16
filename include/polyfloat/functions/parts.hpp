@@ -20,7 +20,7 @@ namespace plf
     {
       using type = eve::element_type_t<std::remove_cvref_t<Z>>;
       if constexpr (Index < type::static_dimension) return get<Index>(POLYFLOAT_FWD(z));
-      else return as_real_type_t<std::remove_cvref_t<Z>>{0};
+      else return as_component_type_t<std::remove_cvref_t<Z>>{0};
     }
 
     template<concepts::real V> POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(V&& v) const noexcept

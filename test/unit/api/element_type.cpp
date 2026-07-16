@@ -10,7 +10,7 @@
 //==================================================================================================
 // Types tests
 //==================================================================================================
-TTS_CASE_TPL( "Check as_real", plf::scalar_real_types)
+TTS_CASE_TPL( "Check as_component", plf::scalar_real_types)
   <typename T>(tts::type<T>)
 {
   using wpf2_t = eve::wide<plf::polyfloat<T, 2>>;

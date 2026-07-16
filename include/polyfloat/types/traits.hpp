@@ -77,17 +77,17 @@ namespace plf
   template<concepts::polyfloat T>
   inline constexpr auto dimension_v<T> = eve::element_type_t<std::remove_cvref_t<T>>::static_dimension;
 
-  template<typename T> struct as_real_type
+  template<typename T> struct as_component_type
   {
     using type = T;
   };
-  template<typename T, unsigned int Dim> struct as_real_type<polyfloat<T, Dim>>
+  template<typename T, unsigned int Dim> struct as_component_type<polyfloat<T, Dim>>
   {
     using type = T;
   };
-  template<typename T, typename N> struct as_real_type<eve::wide<T, N>>
+  template<typename T, typename N> struct as_component_type<eve::wide<T, N>>
   {
-    using type = eve::wide<typename as_real_type<T>::type, N>;
+    using type = eve::wide<typename as_component_type<T>::type, N>;
   };
 
   //====================================================================================================================
@@ -95,7 +95,7 @@ namespace plf
   //!
   //! @tparam T Type to convert to a real type.
   //====================================================================================================================
-  template<typename T> using as_real_type_t = typename as_real_type<T>::type;
+  template<typename T> using as_component_type_t = typename as_component_type<T>::type;
 
   template<unsigned int Dim, typename... Ts> struct as_polyfloat_n;
 
@@ -149,7 +149,7 @@ namespace plf
 {
   namespace _
   {
-    template<typename T> using common_real = eve::as_floating_point_t<as_real_type_t<T>>;
+    template<typename T> using common_real = eve::as_floating_point_t<as_component_type_t<T>>;
   }
 
   //====================================================================================================================
@@ -161,12 +161,12 @@ namespace plf
 
   template<auto Callable, typename... Ts>
   using expected_result_t =
-    as_polyfloat_n_t<std::max({dimension_v<Ts>...}), decltype(Callable(std::declval<as_real_type_t<Ts>>()...))>;
+    as_polyfloat_n_t<std::max({dimension_v<Ts>...}), decltype(Callable(std::declval<as_component_type_t<Ts>>()...))>;
 
   using eve::as;
 
   //====================================================================================================================
-  //! @struct as_real
+  //! @struct as_component
   //! @brief Lightweight type-wrapper of real value type
   //!
   //! Wraps the real type associated to `T` into a constexpr, trivially constructible empty class to optimize passing
@@ -174,10 +174,10 @@ namespace plf
   //!
   //! @tparam T Type to wrap
   //====================================================================================================================
-  template<typename T> struct as_real : as<as_real_type_t<T>>
+  template<typename T> struct as_component : as<as_component_type_t<T>>
   {
-    constexpr as_real() noexcept {}
-    explicit constexpr as_real(T const&) noexcept {}
+    constexpr as_component() noexcept {}
+    explicit constexpr as_component(T const&) noexcept {}
   };
   //====================================================================================================================
   //!  @}

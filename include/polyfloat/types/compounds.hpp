@@ -100,7 +100,7 @@ namespace plf
   constexpr auto& operator-=(T1 & self, T2  other) noexcept
   requires(dimension_v<T2> == 1)
   {
-    using u_t = eve::underlying_type_t<plf::as_real_type_t<T1>>;
+    using u_t = eve::underlying_type_t<plf::as_component_type_t<T1>>;
     auto oth = eve::convert(other, eve::as<u_t>());
     if constexpr(dimension_v<T1> == 2u)
     {
@@ -157,7 +157,7 @@ namespace plf
   template <concepts::polyfloat T1, eve::floating_value T2>
   constexpr auto& operator*=(T1 & self, T2 other) noexcept
   {
-    using u_t = eve::underlying_type_t<plf::as_real_type_t<T1>>;
+    using u_t = eve::underlying_type_t<plf::as_component_type_t<T1>>;
     auto oth = eve::convert(other, eve::as<u_t>());
     if constexpr(dimension_v<T1> == 2u)
     {
