@@ -15,10 +15,10 @@
 namespace plf
 {
 
-  template<typename Options> struct frexp_t : eve::elementwise_callable<frexp_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct frexp_t : eve::callable<frexp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept ->  kumi::tuple<Z, decltype(hi(Z()))>
+    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept ->  kumi::tuple<Z, as_real_type_t<Z>> //decltype(plf::hi(Z()))>
     {
      return POLYFLOAT_CALL(z);
     }
@@ -86,18 +86,23 @@ namespace plf
     template<typename Z, eve::callable_options O>
     POLYFLOAT_FORCEINLINE constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
-      auto [h, n] = eve::frexp[o](hi(z));
-      if constexpr(dimension_v<Z> == 2)
+      if constexpr(dimension_v<Z> == 1)
+        return eve::frexp(z);
+      else
       {
-        auto l = eve::ldexp[o](lo(z), -n);
-        return kumi::tuple{Z(h, l), n};
+        auto [h, n] = eve::frexp[o](hi(z));
+        if constexpr(dimension_v<Z> == 2)
+        {
+          auto l = eve::ldexp[o](lo(z), -n);
+          return kumi::tuple{Z(h, l), n};
+        }
+        else if constexpr(dimension_v<Z> == 3)
+        {
+          auto l = eve::ldexp[o](lo(z), -n);
+          auto m = eve::ldexp[o](md(z), -n);
+          return kumi::tuple{Z(h, m, l), n};
+        }
       }
-      else if constexpr(dimension_v<Z> == 3)
-      {
-        auto l = eve::ldexp[o](lo(z), -n);
-        auto m = eve::ldexp[o](md(z), -n);
-        return kumi::tuple{Z(h, m, l), n};
-      }
-     }
+    }
   }
 }

@@ -15,10 +15,10 @@
 namespace plf
 {
 
-  template<typename Options> struct mantissa_t : eve::elementwise_callable<mantissa_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct mantissa_t : eve::callable<mantissa_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept ->  kumi::tuple<Z, decltype(hi(Z()))>
+    POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
     {
      return POLYFLOAT_CALL(z);
     }
@@ -86,19 +86,24 @@ namespace plf
     template<typename Z, eve::callable_options O>
     POLYFLOAT_FORCEINLINE constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
-      auto n =  exponent(z);
-      auto h = eve::ldexp[o](hi(z), -n);
-      if constexpr(dimension_v<Z> == 2)
+      if constexpr(dimension_v<Z> == 1)
+        return eve::mantissa(z);
+      else
       {
-        auto l = eve::ldexp[o](lo(z), -n);
-        return Z(h, l);
+        auto n =  exponent(z);
+        auto h = eve::ldexp[o](hi(z), -n);
+        if constexpr(dimension_v<Z> == 2)
+        {
+          auto l = eve::ldexp[o](lo(z), -n);
+          return Z(h, l);
+        }
+        else if constexpr(dimension_v<Z> == 3)
+        {
+          auto m = eve::ldexp[o](md(z), -n);
+          auto l = eve::ldexp[o](lo(z), -n);
+          return Z(h, m, l);
+        }
       }
-      else if constexpr(dimension_v<Z> == 3)
-      {
-        auto m = eve::ldexp[o](md(z), -n);
-        auto l = eve::ldexp[o](lo(z), -n);
-        return Z(h, m, l);
-      }
-     }
+    }
   }
 }
