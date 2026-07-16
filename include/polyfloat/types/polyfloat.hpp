@@ -135,20 +135,6 @@ namespace plf
       return that;
     }
 
-    //==================================================================================================================
-    //  Tuple-like behavior
-    //==================================================================================================================
-
-    friend constexpr eve::as_logical_t<Type> operator==(polyfloat const& a, polyfloat const& b) noexcept
-    {
-      return a.contents == b.contents;
-    }
-
-    friend constexpr eve::as_logical_t<Type> operator!=(polyfloat const& a, polyfloat const& b) noexcept
-    {
-      return a.contents != b.contents;
-    }
-
     data_type contents;
   };
 

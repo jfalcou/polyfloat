@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup functions
   //! @{
   //!   @var add
-  //!   @brief return the addance value.
+  //!   @brief return the sum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
@@ -43,13 +43,13 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto add(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto add(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: Values to process.
   //!
   //!   **Return value**
   //!

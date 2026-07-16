@@ -23,6 +23,7 @@ namespace plf::_
       auto t = eve::is_not_finite(md) || eve::is_not_finite(lo) || eve::is_not_finite(t0);
       md1 = eve::if_else(t, eve::zero, md);
       lo  = eve::if_else(t, eve::zero, lo);
+      hi1 = eve::if_else(eve::is_infinite(a), a, hi1);
     }
     return eve::zip(hi1, md1, lo);
   }

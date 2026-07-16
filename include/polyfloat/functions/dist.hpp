@@ -49,11 +49,11 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     *  `z1`, `z2`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the distolute value of z.
+  //!     Returns the distance betweenthe parameters
   //!
   //!  @groupheader{Example}
   //!

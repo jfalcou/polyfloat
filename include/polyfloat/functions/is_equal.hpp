@@ -16,7 +16,7 @@
 namespace plf
 {
 
-  template<typename Options> struct is_equal_t : eve::elementwise_callable<is_equal_t, Options, raw_option, pedantic_option, numeric_option>
+  template<typename Options> struct is_equal_t : eve::callable<is_equal_t, Options, raw_option, pedantic_option, numeric_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>

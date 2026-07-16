@@ -26,7 +26,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(div_t, div_);
   };
   //======================================================================================================================
-  //! @divtogroup functions
+  //! @addtogroup functions
   //! @{
   //!   @var div
   //!   @brief return the ratio of the values.
@@ -48,7 +48,7 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: Values to process.
   //!
   //!   **Return value**
   //!
