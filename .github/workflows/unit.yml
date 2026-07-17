@@ -60,8 +60,11 @@ jobs:
           mkdir build && cd build
           GMP_PREFIX=$(brew --prefix gmp)
           MPFR_PREFIX=$(brew --prefix mpfr)
-          cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="${{matrix.cfg.opts }}" -DCMAKE_EXE_LINKER_FLAGS=${{ matrix.cfg.linker }}
-          -DCMAKE_EXE_LINKER_FLAGS="-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib"
+
+          cmake .. \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_CXX_FLAGS="-O0 -DEVE_NO_FORCEINLINE -I../ -I${GMP_PREFIX}/include -I${MPFR_PREFIX}/include" \
+            -DCMAKE_EXE_LINKER_FLAGS="-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib"
       - name: Build and Runs Doc Tests
         run:  cd build && make doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
