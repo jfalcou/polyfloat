@@ -15,7 +15,7 @@
 namespace plf
 {
 
-  template<typename Options> struct mantissa_t : eve::callable<mantissa_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct mantissa_t : eve::elementwise_callable<mantissa_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept

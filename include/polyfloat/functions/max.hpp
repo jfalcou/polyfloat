@@ -17,7 +17,7 @@
 namespace plf
 {
 
-  template<typename Options> struct max_t : eve::elementwise_callable<max_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct max_t : eve::strict_tuple_callable<max_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
@@ -72,7 +72,7 @@ namespace plf::_
   template<typename Z1, typename ... Zs, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
   {
-    using r_t = eve::common_value_t<Z1, Zs...>;
+    using r_t = as_polyfloat_t<Z1, Zs...>;
     if constexpr(sizeof...(Zs) == 1)
       return if_else(is_less(z1, zs...), r_t(zs)..., r_t(z1));
     else

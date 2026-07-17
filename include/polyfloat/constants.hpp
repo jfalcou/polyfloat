@@ -7,9 +7,5 @@
 //======================================================================================================================
 #pragma once
 
-/// Main POLYFLOAT namespace
-namespace plf {}
-
-#include <polyfloat/types.hpp>
-#include <polyfloat/constants.hpp>
-#include <polyfloat/functions.hpp>
+#include <polyfloat/constants/eps.hpp>
+#include <polyfloat/constants/inveps.hpp>

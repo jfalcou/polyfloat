@@ -20,7 +20,7 @@
 namespace plf
 {
 
-  template<typename Options> struct reldist_t : eve::elementwise_callable<reldist_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct reldist_t : eve::strict_elementwise_callable<reldist_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -78,6 +78,6 @@ namespace plf::_
   {
     auto d = dist[o](z1, z2);
     return if_else(is_infinite(d) || is_eqz(d), d,
-                   d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(z1)))));
+                   d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(hi(z1))))));
   }
 }
