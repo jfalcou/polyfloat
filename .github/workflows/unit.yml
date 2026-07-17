@@ -52,10 +52,19 @@ jobs:
     steps:
       - name: Fetch current branch
         uses: actions/checkout@v6.0.2
+      - name: Install GMP and MPFR libraries
+        run: |
+          brew update
+          brew install gmp mpfr
+      - name: Download MPFR C++
+        run: |
+          curl -sSLO https://raw.githubusercontent.com/advanpix/mpreal/master/mpreal.h
       - name: Running CMake for clang++ with ${{ matrix.cfg.opts }}
         run: |
           mkdir build && cd build
-          cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="${{ matrix.cfg.opts }}"  -DCMAKE_EXE_LINKER_FLAGS=${{ matrix.cfg.linker }} -DCMAKE_EXE_LINKER_FLAGS="-lmpfr -lgmp"
+          GMP_PREFIX=$(brew --prefix gmp)
+          MPFR_PREFIX=$(brew --prefix mpfr)
+          cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib ${{matrix.cfg.opts }}" -DCMAKE_EXE_LINKER_FLAGS=${{ matrix.cfg.linker }} -DCMAKE_EXE_LINKER_FLAGS="-lmpfr -lgmp"
       - name: Build and Runs Doc Tests
         run:  cd build && make doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
