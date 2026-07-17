@@ -47,15 +47,11 @@ jobs:
       fail-fast: false
       matrix:
         cfg:
-        - { opts: "-O0 -DEVE_NO_FORCEINLINE"       , linker:                 }
-        - { opts: "-O0 -DEVE_NO_FORCEINLINE -stdlib=libc++" , linker: -stdlib=libc++  }
+        - { opts: "-O0 -DEVE_NO_FORCEINLINE -I../"       , linker:                 }
+        - { opts: "-O0 -DEVE_NO_FORCEINLINE -I./. -stdlib=libc++" , linker: -stdlib=libc++  }
     steps:
       - name: Fetch current branch
         uses: actions/checkout@v6.0.2
-      - name: Install GMP and MPFR libraries
-        run: |
-          brew update
-          brew install gmp mpfr
       - name: Download MPFR C++
         run: |
           curl -sSLO https://raw.githubusercontent.com/advanpix/mpreal/master/mpreal.h
