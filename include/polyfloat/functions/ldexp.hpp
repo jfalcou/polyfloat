@@ -98,7 +98,9 @@ namespace plf::_
   template<typename Z, typename N, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto ldexp_(POLYFLOAT_DELAY(), O const& , Z const& z, N const & n) noexcept
   {
-    if constexpr(dimension_v<Z> ==  2)
+    if constexpr(dimension_v<Z> ==  1)
+      return eve::ldexp(z, n);
+    else if constexpr(dimension_v<Z> ==  2)
     {
       auto [zh, zl] = z;
       auto h = eve::ldexp(zh, n);

@@ -86,7 +86,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto ulpdist_(POLYFLOAT_DELAY(), O const& , Z0 const& z0, Z1 const& z1) noexcept
   {
     using r_t = as_polyfloat_like_t<Z0, Z1>;
-    using u_t = as_component_type_t<r_t>;
+    using u_t = eve::underlying_type_t<as_component_type_t<r_t>>;
     if constexpr(dimension_v<r_t> == 1)
       return eve::ulpdist(z0, z1);
     else
