@@ -9,9 +9,9 @@
 
 #include <eve/eve.hpp>
 #include <polyfloat/types/helpers.hpp>
+#include <polyfloat/types/concepts.hpp>
 #include <polyfloat/details/decorators.hpp>
 #include <eve/as.hpp>
-#include <bit>
 
 namespace plf
 {
@@ -230,5 +230,5 @@ namespace plf
   };
   template<typename... Ts> using as_polyfloat_like_t = typename as_polyfloat_like<Ts...>::type;
 
-  
+
 }
