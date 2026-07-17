@@ -33,7 +33,7 @@ jobs:
       - name: Running CMake for ${{ matrix.cfg.compiler }} with ${{ matrix.cfg.opts }}
         run: |
           mkdir build && cd build
-          cmake .. -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.cfg.compiler }} -DCMAKE_CXX_FLAGS="${{ matrix.cfg.opts }}" -DCMAKE_EXE_LINKER_FLAGS="-lmpfr -lgm"
+          cmake .. -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.cfg.compiler }} -DCMAKE_CXX_FLAGS="${{ matrix.cfg.opts }}"
       - name: Build and Runs Doc Tests
         run:  cd build && ninja doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
@@ -60,7 +60,8 @@ jobs:
           mkdir build && cd build
           GMP_PREFIX=$(brew --prefix gmp)
           MPFR_PREFIX=$(brew --prefix mpfr)
-          cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="${{matrix.cfg.opts }}" -DCMAKE_EXE_LINKER_FLAGS=${{ matrix.cfg.linker }} -DCMAKE_EXE_LINKER_FLAGS="-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib  -lmpfr -lgmp"
+          cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="${{matrix.cfg.opts }}" -DCMAKE_EXE_LINKER_FLAGS=${{ matrix.cfg.linker }}
+          -DCMAKE_EXE_LINKER_FLAGS="-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib"
       - name: Build and Runs Doc Tests
         run:  cd build && make doc.exe -j 2 && ctest -R ^doc.* --output-on-failure -j 2
       - name: Build and Runs Unit Tests
