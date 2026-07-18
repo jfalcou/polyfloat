@@ -142,6 +142,13 @@ namespace plf
     return kumi::all_of(kumi::map([](auto a, auto b) { return tts::ieee_check(a, b); }, l, r));
   }
 
+
+  template<plf::concepts::polyfloat T> double ulp_distance(T const& l, T const& r)
+  {
+    if (ieee_equal(l, r)) return 0.0;
+    else return plf::hi(plf::ulpdist(l, r));
+  }
+
 //   template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
 //   {
 //     return plf::reldist[eve::numeric](l, r);

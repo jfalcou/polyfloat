@@ -19,7 +19,11 @@ namespace tts
     using mu_t = decltype(mpa);
     auto h = u_t(mpa);
     auto m = u_t(mpa-mu_t(h));
-    if constexpr(plf::dimension_v<T> == 2)
+    if constexpr(plf::dimension_v<T> == 1)
+    {
+      return h;
+    }
+    else     if constexpr(plf::dimension_v<T> == 2)
     {
       return T(h, m);
     }
@@ -30,9 +34,18 @@ namespace tts
     }
   }
 
+  template <typename T> constexpr auto bitprec(){
+    using u_t = decltype(plf::hi(T()));
+    if constexpr(plf::dimension_v<T> == 2)
+      return (sizeof(u_t) == 8 ? 106 : 46);
+    else if constexpr(plf::dimension_v<T> == 3)
+      return (sizeof(u_t) == 8 ? 159 : 69);
+  }
+
   template <typename T> auto to_mpreal(T a)
   {
     using  mpfr::mpreal;
+    mpfr::mpreal::set_default_prec(bitprec<T>());
     if constexpr(plf::dimension_v<T>  == 1)
       return mpreal(a);
     else if constexpr(plf::dimension_v<T>  == 2)
@@ -41,13 +54,6 @@ namespace tts
       return mpreal(plf::hi(a))+mpreal(plf::md(a))+mpreal(plf::lo(a));
   }
 
-  template <typename T> constexpr auto bitprec(){
-    using u_t = decltype(plf::hi(T()));
-    if constexpr(plf::dimension_v<T> == 2)
-      return (sizeof(u_t) == 8 ? 106 : 46);
-    else if constexpr(plf::dimension_v<T> == 3)
-      return (sizeof(u_t) == 8 ? 159 : 69);
-  }
 
 
   template <typename T> constexpr auto epsprec(){
