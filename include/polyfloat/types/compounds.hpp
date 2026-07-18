@@ -225,7 +225,7 @@ namespace plf
   }
 }
 
-#include <polyfloat/types/ops1.hpp> //define +, -, *, / * is uded by rec and /=
+#include <polyfloat/types/ops1.hpp> //define +, -, *, / * is used by plf::rec and /=
 
 namespace plf
 {
@@ -242,11 +242,6 @@ namespace plf
         auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0+x0*(T(1)-a*x0);
         return x1;
-//         auto [yhi, ylo] = a;
-//         auto hi = eve::rec[pedantic](yhi);
-//         auto [uh, ul] = eve::two_prod(hi, yhi);
-//         auto lo = ((hi - uh) - ul)/yhi;
-//         return T(eve::two_add[eve::raw](hi, lo));
       }
       else if constexpr(dimension_v<T> == 3)
       {
@@ -254,9 +249,8 @@ namespace plf
         auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0+x0*(T(1)-a*x0);
         auto x2 = x1+x1*(T(1)-a*x1);
-//        return x2;
-         auto x3 = x2+x2*(T(1)-a*x2);
-         return x3;
+        auto x3 = x2+x2*(T(1)-a*x2);
+        return x3;
       }
     }
   }
@@ -265,21 +259,8 @@ namespace plf
   template <concepts::polyfloat T1, concepts::polyfloat T2>
   constexpr auto& operator/=(T1 & self, T2 other) noexcept
   {
-//     if constexpr(dimension_v<T1>  ==  2)
-//     {
-//       auto [xhi, xlo] = self;
-//       auto [yhi, ylo] = other;
-//       auto hi = xhi / yhi;
-// //     if !isfinite(hi)
-// //         return zero_error_result(hi)
-// //     end
-//       auto [uh, ul] = eve::two_prod(hi, yhi);
-//       auto lo = eve::fnma(hi, ylo, (((xhi - uh) - ul) + xlo))/yhi;
-//       return self = eve::two_add[eve::raw](hi, lo);
-//     }
-//     else
-      return self *= _::rec(other);
-   }
+    return self *= _::rec(other);
+  }
 
   /// Divide the polyfloat  `self` by   the floating value `other` and returns the new value of `self`.
   template <concepts::polyfloat T1, eve::floating_value T2>

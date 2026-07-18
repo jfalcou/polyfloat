@@ -9,6 +9,7 @@
 
 #include <polyfloat/functions/abs.hpp>
 #include <polyfloat/functions/add.hpp>
+#include <polyfloat/functions/convert.hpp>
 #include <polyfloat/functions/dist.hpp>
 #include <polyfloat/functions/div.hpp>
 #include <polyfloat/functions/exponent.hpp>
