@@ -36,7 +36,7 @@ int main()
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "reldist(wb, wb) "<< reldist(wb, wb) << std::endl;
   std::cout << "reldist(wc, wc) "<< reldist(wc, wc) << std::endl;
-  // std::cout << "reldist(wc, wb) "<< reldist(wc, wb) << std::endl;
+  std::cout << "reldist(wc, wb) "<< reldist(wc, wb) << std::endl;
 
   return 0;
 }

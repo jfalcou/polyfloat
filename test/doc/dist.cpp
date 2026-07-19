@@ -36,7 +36,7 @@ int main()
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "dist(wb, wb) "<< dist(wb, wb) << std::endl;
   std::cout << "dist(wc, wc) "<< dist(wc, wc) << std::endl;
-  // std::cout << "dist(wc, wb) "<< dist(wc, wb) << std::endl;
+  std::cout << "dist(wc, wb) "<< dist(wc, wb) << std::endl;
 
   return 0;
 }

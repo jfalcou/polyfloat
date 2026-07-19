@@ -36,7 +36,7 @@ int main()
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "ulpdist(wb, wb) "<< ulpdist(wb, wb) << std::endl;
   std::cout << "ulpdist(wc, wc) "<< ulpdist(wc, wc) << std::endl;
-  // std::cout << "ulpdist(wc, wb) "<< ulpdist(wc, wb) << std::endl;
+  std::cout << "ulpdist(wc, wb) "<< ulpdist(wc, wb) << std::endl;
 
   return 0;
 }

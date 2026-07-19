@@ -36,7 +36,7 @@ int main()
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "max(wb, wb) "<< max(wb, wb) << std::endl;
   std::cout << "max(wc, wc) "<< max(wc, wc) << std::endl;
-  // std::cout << "max(wc, wb) "<< max(wc, wb) << std::endl;
+  std::cout << "max(wc, wb) "<< max(wc, wb) << std::endl;
 
   return 0;
 }
