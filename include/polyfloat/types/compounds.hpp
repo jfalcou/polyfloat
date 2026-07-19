@@ -8,6 +8,7 @@
 #pragma once
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
+#include <polyfloat/functions/convert.hpp>
 
 namespace plf
 {
@@ -42,35 +43,12 @@ namespace plf
   //! @{
   //====================================================================================================================
 
-  /// Adds the floating value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, eve::floating_value T2>
-  requires(dimension_v<T2> == 1)
-  constexpr auto& operator+=(T1 & self, T2 oth) noexcept
-  {
-    if constexpr(dimension_v<T1> == 2u)
-    {
-      auto [xhi, xlo] = self;
-      auto [hi, lo] = eve::two_add(xhi, oth);
-      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + xlo);
-      return self = eve::two_add[eve::raw](hi1, lo1);
-    }
-    else if constexpr(dimension_v<T1> == 3u)
-    {
-      auto [ahi, amd, alo] = self;
-      auto [zhi, t1] = eve::two_add(ahi, oth);
-      auto [t7, t4] = eve::two_add(t1, amd);
-      auto [zmd, zlo] = eve::two_add(t7, t4 + alo);
-      auto [zhi1, zmd1, zlo1] = _::clean0s(zhi,zmd,zlo );
-      return self = _::clean0s(zhi,zmd,zlo );
-    }
-  }
-
   /// Adds the polyflat value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, concepts::polyfloat T2>
+  template <concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator+=(T1 & self, T2  other) noexcept
   requires( dimension_v<T1> >= dimension_v<T2>  )
   {
-    T1 oth(other);
+    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
     if constexpr(dimension_v<T1> == 2u)
     {
       auto [xhi, xlo] = self;
@@ -95,38 +73,12 @@ namespace plf
     }
   }
 
-  /// Substracts the floating value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, eve::floating_value T2>
-  constexpr auto& operator-=(T1 & self, T2  other) noexcept
-  requires(dimension_v<T2> == 1)
-  {
-    using u_t = eve::underlying_type_t<plf::as_component_type_t<T1>>;
-    auto oth = eve::convert(other, eve::as<u_t>());
-    if constexpr(dimension_v<T1> == 2u)
-    {
-      auto [xhi, xlo] = self;
-      auto [hi, lo] = eve::two_add(xhi, oth);
-      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + xlo);
-      return self = eve::two_add[eve::raw](hi1, lo1);
-    }
-    else if constexpr(dimension_v<T1> == 3u)
-    {
-      auto [ahi, amd, alo] = self;
-      auto [zhi, t1] = eve::two_sub(ahi, oth);
-      auto [t7, t4] = eve::two_sub(t1, amd);
-      auto [zmd, zlo] = eve::two_add(t7, t4 + alo);
-      auto [zhi1, zmd1, zlo1] = _::clean0s(zhi,zmd,zlo );
-      return self = _::clean0s(zhi,zmd,zlo );
-    }
-  }
-
-
   /// Substracts the polyfloat value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, concepts::polyfloat T2>
+  template <concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator-=(T1 & self, T2 other) noexcept
   requires( dimension_v<T1> >= dimension_v<T2>  )
   {
-    T1 oth(other);
+    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
     if constexpr(dimension_v<T1> == 2u)
     {
       auto [xhi, xlo] = self;
@@ -153,38 +105,12 @@ namespace plf
     }
   }
 
-  /// Multiply the floating value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, eve::floating_value T2>
-  constexpr auto& operator*=(T1 & self, T2 other) noexcept
-  {
-    using u_t = eve::underlying_type_t<plf::as_component_type_t<T1>>;
-    auto oth = eve::convert(other, eve::as<u_t>());
-    if constexpr(dimension_v<T1> == 2u)
-    {
-      auto [xhi, xlo] = self;
-      auto [hi, lo] = eve::two_prod(xhi, oth);
-      auto t = lo + (xlo * oth);
-      return self = eve::two_add[eve::raw](hi, t);
-    }
-    else if constexpr(dimension_v<T1> == 3u)
-    {
-      using T =  decltype(oth);
-      auto [ahi, amd, alo] = self;
-      auto [hi,t1] = eve::two_prod(ahi, oth);
-      auto [t4,t5] = eve::two_prod(amd, oth);
-      auto [t19, t20] = eve::two_add[eve::raw](t1, alo * oth);
-      auto [t21, t22] = eve::two_add[eve::raw](t4, t5);
-      auto [md, lo]   =  _::four_quick_add(t21, t22, t19, t20);
-      return self = T1(hi, md, lo);
-    }
-  }
-
   /// Multiply the polyfloat value `other` to `self` and returns the new value of `self`.
-  template <concepts::polyfloat T1, concepts::polyfloat T2>
+  template <concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator*=(T1 & self, T2 other) noexcept
   requires( dimension_v<T1> >= dimension_v<T2>  )
   {
-    T1 oth(other);
+    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
     if constexpr(dimension_v<T1> == 2u)
     {
       auto [xhi, xlo] = self;

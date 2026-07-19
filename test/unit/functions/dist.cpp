@@ -7,37 +7,37 @@
 //======================================================================================================================
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
+#include <iomanip>
 
-TTS_CASE_WITH("Check add two params",
+TTS_CASE_WITH("Check dist two params",
               plf::scalar_real_types,
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
-
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5)
 {
   using  mpfr::mpreal;
-  using plf::is_less;
-  auto mis_less = [](auto a,  auto b){return a < b; };
+  using plf::dist;
+  auto mdist = [](auto a,  auto b){return mpfr::abs(a-b); };
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
-    TTS_EQUAL(is_less(pa, pb), tts::lmpfr_exec(mis_less, pa, pb));
-    TTS_EQUAL(is_less(a0, pa), is_less(pv_t(a0), pa));
-    TTS_EQUAL(is_less(pa, a0), is_less(pa, pv_t(a0)));
+    TTS_ULP_EQUAL(dist(pa, pb), tts::mpfr_exec(mdist, pa, pb), 0.5);
+    TTS_ULP_EQUAL(dist(a0, pa), dist(pv_t(a0), pa), 0.5);
+    TTS_ULP_EQUAL(dist(pa, a0), dist(pa, pv_t(a0)), 0.5);
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
-    TTS_EQUAL(is_less(pa, pb), tts::lmpfr_exec(mis_less, pa, pb));
-    TTS_EQUAL(is_less(a0, pa), is_less(pv_t(a0), pa));
-    TTS_EQUAL(is_less(pa, a0), is_less(pa, pv_t(a0)));
+    TTS_ULP_EQUAL(dist(pa, pa), tts::mpfr_exec(mdist, pa, pb), 0.5);
+    TTS_ULP_EQUAL(dist(a0, pa), dist(pv_t(a0), pa), 0.5);
+    TTS_ULP_EQUAL(dist(pa, a0), dist(pa, pv_t(a0)), 0.5);
   }
 };

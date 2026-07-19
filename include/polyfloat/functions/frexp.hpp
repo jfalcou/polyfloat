@@ -18,7 +18,7 @@ namespace plf
   template<typename Options> struct frexp_t : eve::callable<frexp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept ->  kumi::tuple<Z, as_component_type_t<Z>> //decltype(plf::hi(Z()))>
+    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept ->  kumi::tuple<Z, as_component_type_t<Z>>
     {
      return POLYFLOAT_CALL(z);
     }

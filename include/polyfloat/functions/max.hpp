@@ -73,12 +73,14 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Zs...>;
+    using u_t = eve::element_type_t<r_t>;
+    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
     if constexpr(sizeof...(Zs) == 1)
-      return if_else(is_less(z1, zs...), r_t(zs)..., r_t(z1));
+      return if_else(is_less(z1, zs...), cvt(zs)..., cvt(z1));
     else
     {
       r_t that(z1);
-      ((that = max(that, r_t(zs))), ...);
+      ((that = max(that, zs)), ...);
       return that;
     }
   }

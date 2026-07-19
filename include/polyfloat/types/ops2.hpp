@@ -21,8 +21,7 @@ namespace plf
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   as_polyfloat_t<T1, T2> operator/(T1 const& a, T2 const& b) noexcept
   {
-    using type = as_polyfloat_t<T1, T2>;
-    return a*_::rec(b); 
+    return a*_::rec(b);
   }
 
   //====================================================================================================================

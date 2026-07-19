@@ -22,22 +22,22 @@ TTS_CASE_WITH("Check add two params",
                T const& a3, T const& a4, T const& a5)
 {
   using  mpfr::mpreal;
-  using plf::is_less;
-  auto mis_less = [](auto a,  auto b){return a < b; };
+  using plf::is_unordered;
+  auto mis_unordered = []<typename Z>(Z a,  Z b){return eve::as_logical_t<eve::element_type_t<Z>>(eve::is_unordered(plf::hi(a), plf::hi(b))); };
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
-    TTS_EQUAL(is_less(pa, pb), tts::lmpfr_exec(mis_less, pa, pb));
-    TTS_EQUAL(is_less(a0, pa), is_less(pv_t(a0), pa));
-    TTS_EQUAL(is_less(pa, a0), is_less(pa, pv_t(a0)));
+    TTS_EQUAL(is_unordered(pa, pb), mis_unordered(pa, pb));
+    TTS_EQUAL(is_unordered(a0, pa), is_unordered(pv_t(a0), pa));
+    TTS_EQUAL(is_unordered(pa, a0), is_unordered(pa, pv_t(a0)));
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
-    TTS_EQUAL(is_less(pa, pb), tts::lmpfr_exec(mis_less, pa, pb));
-    TTS_EQUAL(is_less(a0, pa), is_less(pv_t(a0), pa));
-    TTS_EQUAL(is_less(pa, a0), is_less(pa, pv_t(a0)));
+    TTS_EQUAL(is_unordered(pa, pb), mis_unordered(pa, pb));
+    TTS_EQUAL(is_unordered(a0, pa), is_unordered(pv_t(a0), pa));
+    TTS_EQUAL(is_unordered(pa, a0), is_unordered(pa, pv_t(a0)));
   }
 };

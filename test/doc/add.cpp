@@ -36,7 +36,7 @@ int main()
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "add(wb, wb) "<< add(wb, wb) << std::endl;
   std::cout << "add(wc, wc) "<< add(wc, wc) << std::endl;
-  // std::cout << "add(wc, wb) "<< add(wc, wb) << std::endl;
+  std::cout << "add(wc, wb) "<< add(wc, wb) << std::endl;
 
   return 0;
 }

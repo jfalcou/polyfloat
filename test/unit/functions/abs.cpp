@@ -8,23 +8,27 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-//==================================================================================================
-// Types tests
-//==================================================================================================
-TTS_CASE_TPL( "Check abs", plf::scalar_real_types)
-<typename T>(tts::type<T>)
+TTS_CASE_WITH("Check abs",
+              plf::scalar_real_types,
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax)
+             )
+  <typename T>(T const& a0, T const& a1, T const& a2)
 {
-  using pv_t  = plf::polyfloat<T, 2>;
-  using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
-
-  pv_t pva(1.0, 1.0e-300);
-  pv_t pvb(-1.0, -1.0e-300);
-  TTS_EQUAL(plf::abs(pvb), pva);
-  TTS_EQUAL(plf::abs(pva), pva);
-  TTS_EQUAL(plf::abs(-1.0), 1.0);
-
-  wpv_t wpva(pva, pva);
-  wpv_t wpvb(pva, pvb);
-  TTS_EQUAL(plf::abs(wpvb), wpva);
-  TTS_EQUAL(plf::abs(wpva), wpva);
+  using  mpfr::mpreal;
+  using plf::abs;
+  auto mabs = [](auto b){return mpfr::abs(b); };
+  {
+    {
+      using pv_t  = plf::polyfloat<T, 2>;
+      pv_t pa(a0, a1);
+      TTS_ULP_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), 0.5);
+    }
+    {
+      using pv_t  = plf::polyfloat<T, 3>;
+      pv_t pa(a0, a1, a2);
+      TTS_ULP_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), 0.5);
+    }
+  }
 };

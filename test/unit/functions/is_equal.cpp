@@ -8,27 +8,36 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-TTS_CASE_WITH("Check ldexp",
+TTS_CASE_WITH("Check add two params",
               plf::scalar_real_types,
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax),
+              tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax)
+
              )
-  <typename T>(T const& a0, T const& a1, T const& a2)
+  <typename T>(T const& a0, T const& a1, T const& a2,
+               T const& a3, T const& a4, T const& a5)
 {
   using  mpfr::mpreal;
-  using plf::ldexp;
-  auto mldexp = [](auto a,  auto n){return mpfr::ldexp(a, n); };
+  using plf::is_equal;
+  auto mis_equal = [](auto a,  auto b){return a == b; };
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
-    auto n = 2;
-    TTS_ULP_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), 0.5);
+    pv_t pb(a3, a4);
+    TTS_EQUAL(is_equal(pa, pb), tts::lmpfr_exec(mis_equal, pa, pb));
+    TTS_EQUAL(is_equal(a0, pa), is_equal(pv_t(a0), pa));
+    TTS_EQUAL(is_equal(pa, a0), is_equal(pa, pv_t(a0)));
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
-    auto n = 2;
-    TTS_ULP_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), 0.5);
+    pv_t pb(a3, a4, a5);
+    TTS_EQUAL(is_equal(pa, pb), tts::lmpfr_exec(mis_equal, pa, pb));
+    TTS_EQUAL(is_equal(a0, pa), is_equal(pv_t(a0), pa));
+    TTS_EQUAL(is_equal(pa, a0), is_equal(pa, pv_t(a0)));
   }
 };

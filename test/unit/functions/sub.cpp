@@ -8,12 +8,6 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-template < typename T> auto mpfr_sub(T a,  T b)
-{
-  return tts::to_polyfloat(tts::to_mpreal(a)-tts::to_mpreal(b), eve::as<T>());
-}
-
-
 TTS_CASE_WITH("Check add two params",
               plf::scalar_real_types,
               tts::randoms(eve::valmin, eve::valmax),
@@ -27,20 +21,24 @@ TTS_CASE_WITH("Check add two params",
                T const& a3, T const& a4, T const& a5)
 {
   using  mpfr::mpreal;
+  using plf::sub;
+  auto msub = [](auto a,  auto b){return a-b; };
   {
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t pb(a3, a4);
-      pv_t pab = plf::sub(pa, pb);
-      TTS_ULP_EQUAL(pab, mpfr_sub(pa, pb), 0.5);
+      TTS_ULP_EQUAL(plf::sub(pa, pb), tts::mpfr_exec(msub, pa, pb), 0.5);
+      TTS_ULP_EQUAL(sub(a0, pa), sub(pv_t(a0), pa), 0.5);
+      TTS_ULP_EQUAL(sub(pa, a0), sub(pa, pv_t(a0)), 0.5);
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t pb(a3, a4, a5);
-      pv_t pab = plf::sub(pa, pb);
-      TTS_ULP_EQUAL(pab, mpfr_sub(pa, pb), 0.5);
+      TTS_ULP_EQUAL(plf::sub(pa, pb), tts::mpfr_exec(msub, pa, pb), 0.5);
+      TTS_ULP_EQUAL(sub(a0, pa), sub(pv_t(a0), pa), 0.5);
+      TTS_ULP_EQUAL(sub(pa, a0), sub(pa, pv_t(a0)), 0.5);
     }
   }
 };

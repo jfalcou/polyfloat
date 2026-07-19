@@ -8,6 +8,7 @@
 #pragma once
 #include <eve/eve.hpp>
 #include <polyfloat/functions/parts.hpp>
+#include <polyfloat/functions/convert.hpp>
 
 namespace plf
 {
@@ -46,7 +47,7 @@ namespace plf
     as_polyfloat_t<T1, T2> operator+(T1 const& a, T2 const& b) noexcept
   {
     using type = as_polyfloat_t<T1, T2>;
-    type that(a);
+    type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
     return that += b;
   }
 
@@ -58,7 +59,7 @@ namespace plf
     as_polyfloat_t<T1, T2> operator-(T1 const& a, T2 const& b) noexcept
   {
     using type = as_polyfloat_t<T1, T2>;
-    type that(a);
+    type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
     return that -= b;
   }
 
@@ -69,8 +70,8 @@ namespace plf
     as_polyfloat_t<T1, T2> operator*(T1 const& a, T2 const& b) noexcept
   {
     using type = as_polyfloat_t<T1, T2>;
-    type that(a); //{plf::convert(a, eve::as<eve::element_type_t<type>>())};
-    return that *= b;
+   type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
+   return that *= b;
   }
 
   //! @brief Compares two polyfloat_like for equality
@@ -78,8 +79,7 @@ namespace plf
   template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto operator ==(T1 const& a, T2 b)
   {
     using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
-    using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
-    if constexpr(dimension_v<T1> > dimension_v<T2>) return b != a;
+    if constexpr(dimension_v<T1> > dimension_v<T2>) return b == a;
     else if constexpr(dimension_v<T1> == 1)
     {
       if constexpr(dimension_v<T2> == 1)      return r_t(a == b);
@@ -99,7 +99,7 @@ namespace plf
   {
     using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
     if constexpr(dimension_v<T1> > dimension_v<T2>) return b != a;
-    else if constexpr(dimension_v<T1> == 1)
+    else if constexpr(dimension_v<T1> == 1) //now dimension_v<T1> <=  dimension_v<T2>
     {
       if constexpr(dimension_v<T2> == 1)      return r_t(a != b);
       else if constexpr(dimension_v<T2> >= 2) return r_t(a != hi(b)) || eve::is_nez(md(b));

@@ -36,6 +36,8 @@ namespace tts
 
   template <typename T> constexpr auto bitprec(){
     using u_t = decltype(plf::hi(T()));
+    if constexpr(plf::dimension_v<T> == 1)
+      return (sizeof(u_t) == 8 ? 53 : 23);
     if constexpr(plf::dimension_v<T> == 2)
       return (sizeof(u_t) == 8 ? 106 : 46);
     else if constexpr(plf::dimension_v<T> == 3)
@@ -66,6 +68,19 @@ namespace tts
       return (sizeof(u_t) == 4 ? 2.465190328815662e-32 :  2.736911063134408e-48); ;
   }
 
+  template < typename F, typename T,  typename ...Ts> auto mpfr_exec(F f, T a,  Ts ...b)
+  {
+    return tts::to_polyfloat(f(tts::to_mpreal(a), tts::to_mpreal(b)...), eve::as<T>());
+  }
 
+  template < typename F, typename T,  typename ...Ts> auto lmpfr_exec(F f, T a,  Ts ...b)
+  {
+    return f(tts::to_mpreal(a), tts::to_mpreal(b)...);
+  }
+
+  template < typename F, typename T,  typename N> auto mpfr_exec2(F f, T a,  N n)
+  {
+    return tts::to_polyfloat(f(tts::to_mpreal(a), n), eve::as<T>());
+  }
 
 }

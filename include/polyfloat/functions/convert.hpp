@@ -18,19 +18,19 @@ namespace plf
     POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     requires(dimension_v<V> <= dimension_v<Tgt>)
     {
-      return KYOSU_CALL(v, tgt);
+      return POLYFLOAT_CALL(v, tgt);
     }
 
     template<concepts::real V, concepts::scalar_polyfloat Tgt>
     POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     {
-      return KYOSU_CALL(v, tgt);
+      return POLYFLOAT_CALL(v, tgt);
     }
 
     template<concepts::real V, concepts::scalar_real Tgt>
     POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     {
-      return KYOSU_CALL(v, tgt);
+      return POLYFLOAT_CALL(v, tgt);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(convert_t, convert_);
