@@ -7,7 +7,6 @@
 //======================================================================================================================
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
-#include <iomanip>
 
 TTS_CASE_WITH("Check ulpdist two params",
               plf::scalar_real_types,
