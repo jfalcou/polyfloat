@@ -17,6 +17,7 @@
 #include <polyfloat/functions/if_else.hpp>
 #include <polyfloat/functions/is_equal.hpp>
 #include <polyfloat/functions/is_eqz.hpp>
+#include <polyfloat/functions/is_flint.hpp>
 #include <polyfloat/functions/is_less.hpp>
 #include <polyfloat/functions/is_ltz.hpp>
 #include <polyfloat/functions/is_nan.hpp>

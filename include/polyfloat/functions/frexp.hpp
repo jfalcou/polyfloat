@@ -74,7 +74,7 @@ namespace plf
 //!    *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/math/frexp)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/frexp.cpp}
+//!  @godbolt{doc/frexp.cpp}
 //================================================================================================
   inline constexpr auto frexp = eve::functor<frexp_t>;
 //================================================================================================
