@@ -80,6 +80,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto prev_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
   {
+    return -next(-z);
     if constexpr(dimension_v<Z> == 1)
       return eve::prev(z);
     else if constexpr(dimension_v<Z> == 2)
