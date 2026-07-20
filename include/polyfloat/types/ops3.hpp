@@ -64,7 +64,7 @@ namespace plf
       auto th1 = hi(a) == hi(b);
       auto tm0 = md(a) >  md(b);
       auto tm1 = md(a) == md(b);
-      auto tl0 = lo(a) <  lo(b);
+      auto tl0 = lo(a) >  lo(b);
       return  th0 || (th1 && tm0) || (th1 && tm1 && tl0);
     }
   }
