@@ -36,10 +36,7 @@
 #include <polyfloat/functions/minus.hpp>
 #include <polyfloat/functions/modf.hpp>
 #include <polyfloat/functions/mul.hpp>
-<<<<<<< HEAD
 #include <polyfloat/functions/nearest.hpp>
-=======
->>>>>>> 139653a (next prev)
 #include <polyfloat/functions/next.hpp>
 #include <polyfloat/functions/parts.hpp>
 #include <polyfloat/functions/prev.hpp>
