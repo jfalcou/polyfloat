@@ -48,12 +48,12 @@ TTS_CASE_WITH("Check sqrt",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_ULP_EQUAL(sqrt(pa), tts::mpfr_exec(msqrt, pa), 0.6);
+      TTS_ULP_EQUAL(sqrt(pa), tts::mpfr_exec(msqrt, pa), 0.5);
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_ULP_EQUAL(sqrt(pa), tts::mpfr_exec(msqrt, pa), 0.6);
+      TTS_ULP_EQUAL(sqrt(pa), tts::mpfr_exec(msqrt, pa), 0.5);
     }
   }
 };
