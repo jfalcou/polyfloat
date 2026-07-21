@@ -38,6 +38,7 @@
 #include <polyfloat/functions/prev.hpp>
 #include <polyfloat/functions/rec.hpp>
 #include <polyfloat/functions/reldist.hpp>
+#include <polyfloat/functions/sqr.hpp>
 #include <polyfloat/functions/sub.hpp>
 #include <polyfloat/functions/trunc.hpp>
 #include <polyfloat/functions/ulpdist.hpp>
