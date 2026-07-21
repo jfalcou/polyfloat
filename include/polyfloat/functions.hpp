@@ -11,6 +11,7 @@
 #include <polyfloat/functions/add.hpp>
 #include <polyfloat/functions/ceil.hpp>
 #include <polyfloat/functions/convert.hpp>
+#include <polyfloat/functions/copysign.hpp>
 #include <polyfloat/functions/dec.hpp>
 #include <polyfloat/functions/dist.hpp>
 #include <polyfloat/functions/div.hpp>
@@ -41,6 +42,8 @@
 #include <polyfloat/functions/prev.hpp>
 #include <polyfloat/functions/rec.hpp>
 #include <polyfloat/functions/reldist.hpp>
+#include <polyfloat/functions/sign.hpp>
+#include <polyfloat/functions/signnz.hpp>
 #include <polyfloat/functions/sqr.hpp>
 #include <polyfloat/functions/sub.hpp>
 #include <polyfloat/functions/trunc.hpp>
