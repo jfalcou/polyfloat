@@ -11,13 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/ceil.hpp>
-#include <polyfloat/functions/is_positive.hpp>
+#include <polyfloat/functions/trunc.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct trunc_t : eve::elementwise_callable<trunc_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct nearest_t : eve::elementwise_callable<nearest_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
@@ -25,13 +24,13 @@ namespace plf
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(trunc_t, trunc_);
+    POLYFLOAT_CALLABLE_OBJECT(nearest_t, nearest_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var trunc
-  //!   @brief return the truncolute value.
+  //!   @var nearest
+  //!   @brief return the nearest integral value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto trunc(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto nearest(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,14 +53,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the trunc value of z.
+  //!     Returns the nearest integral value from z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/trunc.cpp}
+  //!  @godbolt{doc/nearest.cpp}
   //======================================================================================================================
 
-  inline constexpr auto trunc = eve::functor<trunc_t>;
+  inline constexpr auto nearest = eve::functor<nearest_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -70,14 +69,11 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto trunc_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto nearest_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
   {
     if constexpr(dimension_v<Z> == 1)
-      return eve::trunc(z);
-    else
-    {
-      auto t = plf::is_positive(z);
-      return minus[t](ceil(minus[t](z)));
-    }
+      return eve::nearest(z);
+    else if constexpr(dimension_v<Z> >= 2)
+      return trunc(z+eve::copysign(eve::half(eve::as(hi(z))), hi(z)));
   }
 }

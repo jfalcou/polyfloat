@@ -11,13 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/ceil.hpp>
-#include <polyfloat/functions/is_positive.hpp>
+#include <polyfloat/functions/trunc.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct trunc_t : eve::elementwise_callable<trunc_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct frac_t : eve::elementwise_callable<frac_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
@@ -25,13 +24,13 @@ namespace plf
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(trunc_t, trunc_);
+    POLYFLOAT_CALLABLE_OBJECT(frac_t, frac_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var trunc
-  //!   @brief return the truncolute value.
+  //!   @var frac
+  //!   @brief return the fractionnal part of the value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto trunc(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto frac(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,14 +53,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the trunc value of z.
+  //!     Returns the fractionnal part of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/trunc.cpp}
+  //!  @godbolt{doc/frac.cpp}
   //======================================================================================================================
 
-  inline constexpr auto trunc = eve::functor<trunc_t>;
+  inline constexpr auto frac = eve::functor<frac_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -70,14 +69,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto trunc_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto frac_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::trunc(z);
-    else
-    {
-      auto t = plf::is_positive(z);
-      return minus[t](ceil(minus[t](z)));
-    }
+    return z-trunc(z);
   }
 }
