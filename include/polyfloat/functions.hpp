@@ -45,6 +45,7 @@
 #include <polyfloat/functions/sign.hpp>
 #include <polyfloat/functions/signnz.hpp>
 #include <polyfloat/functions/sqr.hpp>
+#include <polyfloat/functions/sqrt.hpp>  
 #include <polyfloat/functions/sub.hpp>
 #include <polyfloat/functions/trunc.hpp>
 #include <polyfloat/functions/ulpdist.hpp>
