@@ -12,10 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/ceil.hpp>
-<<<<<<< HEAD
 #include <polyfloat/functions/is_positive.hpp>
-=======
->>>>>>> 139653a (next prev)
 
 namespace plf
 {
