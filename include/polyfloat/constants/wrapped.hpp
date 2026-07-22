@@ -62,11 +62,19 @@ namespace plf
   inline constexpr auto allbits = _::as_constant<eve::allbits>;
   inline constexpr auto bitincrement = _::as_constant<eve::bitincrement>;
   inline constexpr auto half = _::as_constant<eve::half>;
+<<<<<<< HEAD
 //  inline constexpr auto inf = _::as_constant<eve::inf>;
 //  inline constexpr auto logeps = _::as_constant<eve::logeps>;
 //  inline constexpr auto maxflint = _::as_constant<eve::maxflint>;
   inline constexpr auto mhalf = _::as_constant<eve::mhalf>;
   inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
+=======
+  inline constexpr auto inf = _::as_constant<eve::inf>;
+//  inline constexpr auto logeps = _::as_constant<eve::logeps>;
+//  inline constexpr auto maxflint = _::as_constant<eve::maxflint>;
+  inline constexpr auto mhalf = _::as_constant<eve::mhalf>;
+//  inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
+>>>>>>> e3b65c0 (constants begining)
   inline constexpr auto minexponent = _::as_constant<eve::minexponent>;
   inline constexpr auto minf = _::as_constant<eve::minf>;
   inline constexpr auto mone = _::as_constant<eve::mone>;
@@ -75,9 +83,15 @@ namespace plf
   inline constexpr auto one = _::as_constant<eve::one>;
 //  inline constexpr auto oneosqrteps = _::as_constant<eve::oneosqrteps>;
   inline constexpr auto signmask = _::as_constant<eve::signmask>;
+<<<<<<< HEAD
   inline constexpr auto smallestposval = _::as_constant<eve::smallestposval>;
 //  inline constexpr auto sqrteps = _::as_constant<eve::sqrteps>;
   inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;
+=======
+//  inline constexpr auto smallestposval = _::as_constant<eve::smallestposval>;
+//  inline constexpr auto sqrteps = _::as_constant<eve::sqrteps>;
+//  inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;
+>>>>>>> e3b65c0 (constants begining)
 //  inline constexpr auto sqrtvalmax = _::as_constant<eve::sqrtvalmax>;
 //  inline constexpr auto valmax = _::as_constant<eve::valmax>;
 //  inline constexpr auto valmin = _::as_constant<eve::valmin>;
