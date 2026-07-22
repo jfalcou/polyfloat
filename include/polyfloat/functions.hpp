@@ -17,6 +17,7 @@
 #include <polyfloat/functions/div.hpp>
 #include <polyfloat/functions/exponent.hpp>
 #include <polyfloat/functions/floor.hpp>
+#include <polyfloat/functions/fma.hpp>
 #include <polyfloat/functions/frac.hpp>
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/if_else.hpp>
@@ -37,6 +38,8 @@
 #include <polyfloat/functions/modf.hpp>
 #include <polyfloat/functions/mul.hpp>
 #include <polyfloat/functions/nearest.hpp>
+#include <polyfloat/functions/negate.hpp>
+#include <polyfloat/functions/negatenz.hpp>
 #include <polyfloat/functions/next.hpp>
 #include <polyfloat/functions/parts.hpp>
 #include <polyfloat/functions/prev.hpp>
