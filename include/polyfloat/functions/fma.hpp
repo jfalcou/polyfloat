@@ -80,7 +80,7 @@ namespace plf::_
     {
       return x*y+z; //TODO
     }
-    if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
+    else if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
