@@ -20,13 +20,13 @@ namespace plf
 
 
   //====================================================================================================================
-  //! @typedef twofloat_t
-  //! @brief Type alias for twofloat numbers
+  //! @typedef double_real_t
+  //! @brief Type alias for  double_real numbers
   //!
-  //! Twofloat numbers are implemented as Poly Float numbers of dimension 2.
+  //! Double_Real numbers are implemented as Poly Float numbers of dimension 2.
   //====================================================================================================================
   template<eve::floating_value T>
-  using twofloat_t = as_polyfloat_n_t<2,T>;
+  using double_real_t = as_polyfloat_n_t<2,T>;
 
   //====================================================================================================================
   //! @}

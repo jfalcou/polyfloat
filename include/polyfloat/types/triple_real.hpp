@@ -20,13 +20,13 @@ namespace plf
 
 
   //====================================================================================================================
-  //! @typedef threefloat_t
-  //! @brief Type alias for threefloat numbers
+  //! @typedef triple_real_t
+  //! @brief Type alias for  triple_real numbers
   //!
-  //! Threefloat numbers are implemented as Poly Float numbers of dimension 3.
+  //! Triple_Real numbers are implemented as Poly Float numbers of dimension 3.
   //====================================================================================================================
   template<eve::floating_value T>
-  using threefloat_t = as_polyfloat_n_t<3,T>;
+  using triple_real_t = as_polyfloat_n_t<3,T>;
 
   //====================================================================================================================
   //! @}
