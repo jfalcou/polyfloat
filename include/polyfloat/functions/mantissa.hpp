@@ -74,7 +74,7 @@ namespace plf
 //!       are related by \f$x =  m\times 2^e\f$, with  \f$|m| \in \{0, nan\} \cup [1, 2[\f$.
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/mantissa.cpp}
+//!  @godbolt{doc/mantissa.cpp}
 //================================================================================================
   inline constexpr auto mantissa = eve::functor<mantissa_t>;
 //================================================================================================

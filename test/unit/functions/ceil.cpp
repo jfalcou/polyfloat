@@ -7,32 +7,37 @@
 //======================================================================================================================
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
-#include <mpreal.h>
 
-
-TTS_CASE_WITH("Check is_negative",
+TTS_CASE_WITH("Check ceil",
               plf::scalar_real_types,
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
+              tts::randoms(-1000,1000),
+              tts::randoms(-1000,1000),
+              tts::randoms(-1000,1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2)
 {
   using  mpfr::mpreal;
-  using plf::is_negative;
-  auto mis_negative = [](auto b){return signbit(b)!= 0; };
+  using plf::ceil;
   {
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_EQUAL(is_negative(pa), tts::lmpfr_exec(mis_negative, pa));
-      TTS_EQUAL(is_negative(-pa), tts::lmpfr_exec(mis_negative, -pa));
+      pv_t cpa = plf::ceil(pa);
+      std::cout << pa  << std::endl;
+      std::cout << cpa << std::endl;
+      TTS_EXPECT(pa <= cpa);
+      TTS_EXPECT(plf::inc(pa) >= cpa);
+      TTS_EXPECT(plf::is_flint(cpa));
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_EQUAL(is_negative(pa), tts::lmpfr_exec(mis_negative, pa));
-      TTS_EQUAL(is_negative(-pa), tts::lmpfr_exec(mis_negative, -pa));
+      pv_t cpa = plf::ceil(pa);
+      std::cout << pa  << std::endl;
+      std::cout << cpa << std::endl;
+      TTS_EXPECT(pa <= cpa);
+      TTS_EXPECT(plf::inc(pa) >= cpa);
+      TTS_EXPECT(plf::is_flint(cpa));
     }
   }
 };

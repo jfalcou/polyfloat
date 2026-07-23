@@ -85,7 +85,7 @@ namespace plf
 //!   *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/math/ldexp)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/ldexp.cpp}
+//!  @godbolt{doc/ldexp.cpp}
 //================================================================================================
   inline constexpr auto ldexp = eve::functor<ldexp_t>;
 //================================================================================================

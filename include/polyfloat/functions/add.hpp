@@ -22,12 +22,6 @@ namespace plf
     {
     };
 
-//     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-//       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
-//     {
-//      return POLYFLOAT_CALL(z1, z2);
-//     }
-
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
     EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
