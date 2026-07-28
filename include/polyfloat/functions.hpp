@@ -8,7 +8,10 @@
 #pragma once
 
 #include <polyfloat/functions/abs.hpp>
+#include <polyfloat/functions/absmax.hpp>
+#include <polyfloat/functions/absmin.hpp>
 #include <polyfloat/functions/add.hpp>
+#include <polyfloat/functions/average.hpp>
 #include <polyfloat/functions/ceil.hpp>
 #include <polyfloat/functions/convert.hpp>
 #include <polyfloat/functions/copysign.hpp>
@@ -17,7 +20,7 @@
 #include <polyfloat/functions/div.hpp>
 #include <polyfloat/functions/exponent.hpp>
 #include <polyfloat/functions/floor.hpp>
-#include <polyfloat/functions/fma.hpp>
+//#include <polyfloat/functions/fma.hpp>
 #include <polyfloat/functions/frac.hpp>
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/if_else.hpp>
@@ -34,6 +37,7 @@
 #include <polyfloat/functions/ldexp.hpp>
 #include <polyfloat/functions/mantissa.hpp>
 #include <polyfloat/functions/max.hpp>
+#include <polyfloat/functions/min.hpp>
 #include <polyfloat/functions/minus.hpp>
 #include <polyfloat/functions/modf.hpp>
 #include <polyfloat/functions/mul.hpp>
