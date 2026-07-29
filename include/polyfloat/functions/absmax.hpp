@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(absmax_t, absmax_);
   };
   //======================================================================================================================
-  //! @absmaxtogroup functions
+  //! @addtogroup functions
   //! @{
   //!   @var absmax
   //!   @brief return the sum of the parameters.

@@ -13,6 +13,7 @@
 #include <polyfloat/functions/add.hpp>
 #include <polyfloat/functions/average.hpp>
 #include <polyfloat/functions/ceil.hpp>
+#include <polyfloat/functions/chi.hpp>
 #include <polyfloat/functions/convert.hpp>
 #include <polyfloat/functions/copysign.hpp>
 #include <polyfloat/functions/dec.hpp>

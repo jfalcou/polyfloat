@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(absmin_t, absmin_);
   };
   //======================================================================================================================
-  //! @absmintogroup functions
+  //! @addtogroup functions
   //! @{
   //!   @var absmin
   //!   @brief return the absolute value of the minimum of the parameters.
