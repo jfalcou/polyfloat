@@ -72,6 +72,7 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_less_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return z1 < z2;
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    return plf_t(z1) < plf_t(z2);
   }
 }
