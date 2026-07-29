@@ -82,7 +82,7 @@ namespace plf::_
       using u_t = eve::element_type_t<r_t>;
       auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
       if constexpr(sizeof...(Zs) == 1)
-        return if_else(is_less(z1, zs...), cvt(zs)..., cvt(z1));
+        return plf::if_else(plf::is_less(z1, zs...), cvt(zs)..., cvt(z1));
       else
       {
         r_t that(cvt(z1));
@@ -91,4 +91,4 @@ namespace plf::_
       }
     }
   }
-}  
+}

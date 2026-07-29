@@ -11,29 +11,31 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
-#include <polyfloat/functions/if_else.hpp>
-#include <polyfloat/functions/is_less.hpp>
-#include <polyfloat/functions/parts.hpp>
+#include <eve/module/core/regular/if_else.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct min_t : eve::strict_tuple_callable<min_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct clamp_t : eve::strict_tuple_callable<clamp_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
+    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
-     return POLYFLOAT_CALL(z1, zs...);
+    };
+
+    template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    EVE_FORCEINLINE typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
+    {
+      return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(min_t, min_);
+     POLYFLOAT_CALLABLE_OBJECT(clamp_t, clamp_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var min
-  //!   @brief return the minimum value.
+  //!   @var clamp
+  //!   @brief `callable` indicatrix of the interval \f$[lo, hi[\f$ or
+  //!  of the set for which the invocable returns true.
   //!
   //!   @groupheader{Header file}
   //!
@@ -46,24 +48,27 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto min(T1 z1, T2 z2) noexcept;
+  //!      constexpr auto clamp(value auto x, value auto lo,  value auto hi)  noexcept; // 1
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z, zs...`: Values to process.
+  //!     * `x`: value to clamp.
+  //!     * `lo`, `hi`: [the boundary values](@ref eve::value) of the interval.
   //!
-  //!   **Return value**
-  //!
-  //!      Returns the minimum value of the parameters.
+  //!    **Return value**
+  //!        1. Each [element](@ref glossary_elementwise)  of the result contains:
+  //!           *  `lo`, if `x` is less than `lo`.
+  //!           *  `hi`, if `hi` is less than `x`.
+  //!           *  otherwise `x`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/min.cpp}
+  //!  @godbolt{doc/clamp.cpp}
   //======================================================================================================================
 
-  inline constexpr auto min = eve::functor<min_t>;
+  inline constexpr auto clamp = eve::functor<clamp_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -71,19 +76,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename ... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto min_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
+  template<typename T0, typename T1,  typename T2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const & c, T0 a, T1 l, T2 h) noexcept
   {
-    using r_t = as_polyfloat_t<Z1, Zs...>;
-    using u_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-    if constexpr(sizeof...(Zs) == 1)
-      return plf::if_else(plf::is_less(z1, zs...), cvt(z1), cvt(zs)...);
-    else
-    {
-      r_t that(cvt(z1));
-      ((that = min(that, zs)), ...);
-      return that;
-    }
+    return plf::min(plf::max(a, l), h);   
   }
 }
