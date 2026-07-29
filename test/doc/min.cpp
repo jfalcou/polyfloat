@@ -32,7 +32,7 @@ int main()
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
   pf2_t wb(b);
   pf3_t wc(c);
-  std::cout << "wb          "<< wb << std::endl;  
+  std::cout << "wb          "<< wb << std::endl;
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "min(wb, wb) "<< min(wb, wb) << std::endl;
   std::cout << "min(wc, wc) "<< min(wc, wc) << std::endl;

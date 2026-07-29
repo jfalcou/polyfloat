@@ -73,6 +73,8 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto is_less_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
     using plf_t = as_polyfloat_t<Z1, Z2>;
-    return plf_t(z1) < plf_t(z2);
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    return cvt(z1) < cvt(z2);
   }
 }
