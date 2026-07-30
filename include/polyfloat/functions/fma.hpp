@@ -35,7 +35,7 @@ namespace plf
   //! @fmatogroup functions
   //! @{
   //!   @var fma
-  //!   @brief return the sum of the parameters.
+  //!   @brief return the fused multiply add of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
@@ -48,17 +48,17 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto fma(Z1 z1, Z2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `z2`: Values to process.
+  //!     * `z1`, `z2`, `z3`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the sum of the arguments.
+  //!     Returns the fused multiply add of the arguments.
   //!
   //!  @groupheader{Example}
   //!
@@ -76,12 +76,16 @@ namespace plf::_
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto fma_(POLYFLOAT_DELAY(), O const& , Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
+    if constexpr((dimension_v<Z1> > 2) && (dimension_v<Z2> > 2) &&(dimension_v<Z3> > 2))
+    {
+      return x*y+z; //TODO
+    }
     if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
       auto [zhi, zlo] = z;
-      auto [chi, c1] = two_prod(xhi, yhi);
+      auto [chi, c1] = eve::two_prod(xhi, yhi);
       auto t0 = xlo * ylo;
       auto t1 = eve::fma(xhi, ylo, t0);
       auto c2 = eve::fma(xlo, yhi, t1);

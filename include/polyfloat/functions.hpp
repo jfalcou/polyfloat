@@ -22,7 +22,9 @@
 #include <polyfloat/functions/div.hpp>
 #include <polyfloat/functions/exponent.hpp>
 #include <polyfloat/functions/floor.hpp>
-//#include <polyfloat/functions/fma.hpp>
+#include <polyfloat/functions/fma.hpp>
+#include <polyfloat/functions/fnma.hpp>
+#include <polyfloat/functions/fmod.hpp>
 #include <polyfloat/functions/frac.hpp>
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/if_else.hpp>
