@@ -7,6 +7,7 @@
 //======================================================================================================================
 #pragma once
 
+#include <polyfloat/constants.hpp>
 #include <polyfloat/functions/abs.hpp>
 #include <polyfloat/functions/absmax.hpp>
 #include <polyfloat/functions/absmin.hpp>
@@ -27,11 +28,13 @@
 #include <polyfloat/functions/fmod.hpp>
 #include <polyfloat/functions/frac.hpp>
 #include <polyfloat/functions/frexp.hpp>
+#include <polyfloat/functions/heaviside.hpp>
 #include <polyfloat/functions/if_else.hpp>
+#include <polyfloat/functions/inc.hpp>
 #include <polyfloat/functions/is_equal.hpp>
 #include <polyfloat/functions/is_eqz.hpp>
 #include <polyfloat/functions/is_flint.hpp>
-#include <polyfloat/functions/inc.hpp>
+#include <polyfloat/functions/is_gtz.hpp>
 #include <polyfloat/functions/is_less.hpp>
 #include <polyfloat/functions/is_ltz.hpp>
 #include <polyfloat/functions/is_nan.hpp>
