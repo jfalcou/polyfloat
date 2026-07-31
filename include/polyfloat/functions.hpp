@@ -31,21 +31,11 @@
 #include <polyfloat/functions/heaviside.hpp>
 #include <polyfloat/functions/if_else.hpp>
 #include <polyfloat/functions/inc.hpp>
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include <polyfloat/functions/is_denormal.hpp>
-=======
->>>>>>> 091c9c9 (is_gtz heavide)
-#include <polyfloat/functions/is_equal.hpp>
-#include <polyfloat/functions/is_eqz.hpp>
-<<<<<<< HEAD
-=======
 #include <polyfloat/functions/is_denormal.hpp>
 #include <polyfloat/functions/is_equal.hpp>
-#include <polyfloat/functions/is_eqz.hpp>
->>>>>>> cbc85b1 (more predicates 1)
 #include <polyfloat/functions/is_eqmz.hpp>
 #include <polyfloat/functions/is_eqpz.hpp>
+#include <polyfloat/functions/is_eqz.hpp>
 #include <polyfloat/functions/is_even.hpp>
 #include <polyfloat/functions/is_finite.hpp>
 #include <polyfloat/functions/is_even.hpp>
