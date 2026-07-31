@@ -37,10 +37,14 @@
 >>>>>>> 091c9c9 (is_gtz heavide)
 #include <polyfloat/functions/is_equal.hpp>
 #include <polyfloat/functions/is_eqz.hpp>
+<<<<<<< HEAD
 #include <polyfloat/functions/is_eqmz.hpp>
 #include <polyfloat/functions/is_eqpz.hpp>
 #include <polyfloat/functions/is_even.hpp>
 #include <polyfloat/functions/is_finite.hpp>
+=======
+#include <polyfloat/functions/is_even.hpp>
+>>>>>>> 6c1e85f (is_even is_odd)
 #include <polyfloat/functions/is_flint.hpp>
 #include <polyfloat/functions/is_greater.hpp>
 #include <polyfloat/functions/is_greater_equal.hpp>
