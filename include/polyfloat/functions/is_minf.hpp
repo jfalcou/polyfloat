@@ -15,7 +15,7 @@
 namespace plf
 {
 
-  template<typename Options> struct is_infinite_t : eve::elementwise_callable<is_infinite_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_minf_t : eve::elementwise_callable<is_minf_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
@@ -23,13 +23,13 @@ namespace plf
      return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_infinite_t, is_infinite_);
+    POLYFLOAT_CALLABLE_OBJECT(is_minf_t, is_minf_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
   //!   @var is_eqz
-  //!   @brief test the parameter for being infinite.
+  //!   @brief test the parameter equal \f$-\infty\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_infinite(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_minf(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns true if the value is \f$\pm\infty\f$.
+  //!     Returns the true if z value is \f$-\infty\f$.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_infinite.cpp}
+  //!  @godbolt{doc/is_minf.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_infinite = eve::functor<is_infinite_t>;
+  inline constexpr auto is_minf = eve::functor<is_minf_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -68,8 +68,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_infinite_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_minf_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
   {
-    return eve::is_infinite(hi(z));
+    return eve::is_minf(hi(z));
   }
 }

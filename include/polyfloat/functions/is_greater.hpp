@@ -11,25 +11,27 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_infinite_t : eve::elementwise_callable<is_infinite_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_greater_t : eve::strict_tuple_callable<is_greater_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
+      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
+    operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+     return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_infinite_t, is_infinite_);
+    POLYFLOAT_CALLABLE_OBJECT(is_greater_t, is_greater_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_eqz
-  //!   @brief test the parameter for being infinite.
+  //!   @var is_greater
+  //!   @brief return true if z1 > z2
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +44,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_infinite(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_greater(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,14 +54,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns true if the value is \f$\pm\infty\f$.
+  //!     Returns true if z1 > z2.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_infinite.cpp}
+  //!  @godbolt{doc/is_greater.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_infinite = eve::functor<is_infinite_t>;
+  inline constexpr auto is_greater = eve::functor<is_greater_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -67,9 +69,12 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_infinite_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename Z2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto is_greater_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return eve::is_infinite(hi(z));
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    return cvt(z1) >  cvt(z2);
   }
 }

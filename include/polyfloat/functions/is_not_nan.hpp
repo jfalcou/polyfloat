@@ -15,21 +15,22 @@
 namespace plf
 {
 
-  template<typename Options> struct is_infinite_t : eve::elementwise_callable<is_infinite_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_not_nan_t : eve::elementwise_callable<is_not_nan_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return eve::is_not_nan(hi(z));
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_infinite_t, is_infinite_);
+    POLYFLOAT_CALLABLE_OBJECT(is_not_nan_t, is_not_nan_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_eqz
-  //!   @brief test the parameter for being infinite.
+  //!   @var is_not_nan
+  //!   @brief `elementwise callable` returning a logical true if and only if the element
+  //!    is not a Nan
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_infinite(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_not_nan(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,24 +53,12 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns true if the value is \f$\pm\infty\f$.
+  //!     returns true if and only z is not a Nan.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_infinite.cpp}
+  //!  @godbolt{doc/is_not_nan.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_infinite = eve::functor<is_infinite_t>;
-  //======================================================================================================================
-  //! @}
-  //======================================================================================================================
-}
-
-namespace plf::_
-{
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_infinite_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
-  {
-    return eve::is_infinite(hi(z));
-  }
+  inline constexpr auto is_not_nan = eve::functor<is_not_nan_t>;
 }
