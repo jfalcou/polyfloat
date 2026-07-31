@@ -11,27 +11,26 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_unordered_t : eve::callable<is_unordered_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct is_not_equal_t : eve::callable<is_not_equal_t, Options, raw_option, pedantic_option, numeric_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
+      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
     operator()(Z1 z1, Z2 z2) const noexcept
     {
      return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_unordered_t, is_unordered_);
+    POLYFLOAT_CALLABLE_OBJECT(is_not_equal_t, is_not_equal_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_unordered
-  //!   @brief return the is_unorderedance value.
+  //!   @var is_not_equal
+  //!   @brief return the is_not_equal value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +43,26 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_equal(T1 z1, T2 z2)          noexcept; //1
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_equal[numeric](T1 z1, T2 z2) noexcept; //2
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2` : Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the is_unorderedolute value of z.
+  //!     1. Returns true is  `z1` is not_equal to `z2`.
+  //!     2. consider nan values as not_equal
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unordered.cpp}
+  //!  @godbolt{doc/is_not_equal.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_unordered = eve::functor<is_unordered_t>;
+  inline constexpr auto is_not_equal = eve::functor<is_not_equal_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -70,8 +71,13 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_unordered_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_not_equal_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return eve::is_unordered(hi(z1), hi(z2));
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    auto neq = cvt(z1) !=  cvt(z2);
+    if constexpr(O::contains(numeric)) return neq && (is_not_nan(z1) && is_not_nan(z2));
+    else                               return neq;
   }
 }

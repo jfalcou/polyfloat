@@ -7,5 +7,7 @@
 //======================================================================================================================
 #pragma once
 
+//#include <polyfloat/constants/wrapped.hpp>
 #include <polyfloat/constants/eps.hpp>
 #include <polyfloat/constants/inveps.hpp>
+#include <polyfloat/constants/inf.hpp>

@@ -11,27 +11,31 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
+#include <eve/module/core/regular/if_else.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_unordered_t : eve::callable<is_unordered_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct clamp_t : eve::strict_tuple_callable<clamp_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
-    operator()(Z1 z1, Z2 z2) const noexcept
+    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
-     return POLYFLOAT_CALL(z1, z2);
+    };
+
+    template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    EVE_FORCEINLINE typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
+    {
+      return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_unordered_t, is_unordered_);
+     POLYFLOAT_CALLABLE_OBJECT(clamp_t, clamp_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_unordered
-  //!   @brief return the is_unorderedance value.
+  //!   @var clamp
+  //!   @brief `callable` indicatrix of the interval \f$[lo, hi[\f$ or
+  //!  of the set for which the invocable returns true.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +48,27 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
+  //!      constexpr auto clamp(value auto x, value auto lo,  value auto hi)  noexcept; // 1
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `x`: value to clamp.
+  //!     * `lo`, `hi`: [the boundary values](@ref eve::value) of the interval.
   //!
-  //!   **Return value**
-  //!
-  //!     Returns the is_unorderedolute value of z.
+  //!    **Return value**
+  //!        1. Each [element](@ref glossary_elementwise)  of the result contains:
+  //!           *  `lo`, if `x` is less than `lo`.
+  //!           *  `hi`, if `hi` is less than `x`.
+  //!           *  otherwise `x`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unordered.cpp}
+  //!  @godbolt{doc/clamp.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_unordered = eve::functor<is_unordered_t>;
+  inline constexpr auto clamp = eve::functor<clamp_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,9 +76,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_unordered_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  template<typename T0, typename T1,  typename T2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const & c, T0 a, T1 l, T2 h) noexcept
   {
-    return eve::is_unordered(hi(z1), hi(z2));
+    return plf::min(plf::max(a, l), h);   
   }
 }

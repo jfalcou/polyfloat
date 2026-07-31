@@ -22,9 +22,9 @@ TTS_CASE_TPL( "Check constructors", plf::scalar_real_types)
   TTS_EXPR_IS( eve::wide<pv_t>(), wpv_t);
   TTS_EXPR_IS( (plf::as_polyfloat_n_t<2, wT>()), wpv_t);
 
-  auto a = plf::twofloat_t<T>(T(1));
+  auto a = plf::double_real_t<T>(T(1));
   std::cout << "a " << a << std::endl;
-  auto b = plf::twofloat_t<wT>(wT(1));
+  auto b = plf::double_real_t<wT>(wT(1));
   std::cout << "b " << b << std::endl;
 
   {

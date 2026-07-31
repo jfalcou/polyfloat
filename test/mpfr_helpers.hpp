@@ -47,7 +47,7 @@ namespace tts
   template <typename T> auto to_mpreal(T a)
   {
     using  mpfr::mpreal;
-    mpfr::mpreal::set_default_prec(bitprec<T>());
+    mpfr::mpreal::set_default_prec(bitprec<T>()*10);
     if constexpr(plf::dimension_v<T>  == 1)
       return mpreal(a);
     else if constexpr(plf::dimension_v<T>  == 2)

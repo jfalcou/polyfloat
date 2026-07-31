@@ -16,22 +16,21 @@
 namespace plf
 {
 
-  template<typename Options> struct is_unordered_t : eve::callable<is_unordered_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct negatenz_t : eve::strict_tuple_callable<negatenz_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
-    operator()(Z1 z1, Z2 z2) const noexcept
+      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
      return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_unordered_t, is_unordered_);
+    POLYFLOAT_CALLABLE_OBJECT(negatenz_t, negatenz_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var is_unordered
-  //!   @brief return the is_unorderedance value.
+  //!   @var negatenz
+  //!   @brief return the first parametermultiplied with the  signnz of the second.
   //!
   //!   @groupheader{Header file}
   //!
@@ -39,29 +38,29 @@ namespace plf
   //!   #include <kyosu/functions.hpp>
   //!   @endcode
   //!
-  //!   @groupheader{Callable Signatures}
+  //!   @groupheader{Callable Signnzatures}
   //!
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto negatenz(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     *  `z1`, `z2`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the is_unorderedolute value of z.
+  //!     Returns the z1 multiplied by the signnz of z2
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unordered.cpp}
+  //!  @godbolt{doc/negatenz.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_unordered = eve::functor<is_unordered_t>;
+  inline constexpr auto negatenz = eve::functor<negatenz_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -70,8 +69,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_unordered_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto negatenz_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return eve::is_unordered(hi(z1), hi(z2));
+    return z1*eve::signnz(hi(z2));
   }
 }

@@ -23,10 +23,15 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
-  operator <(T1 const& a, T2 const& b) noexcept
+    POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
+  operator <(T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    using plf_t = as_polyfloat_t<T1, T2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    plf_t a(cvt(aa));
+    plf_t b(cvt(bb));
     if constexpr(N == 2)
     {
       auto th0 = hi(a) <  hi(b);
@@ -48,9 +53,14 @@ namespace plf
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
-  operator > (T1 const& a, T2 const& b) noexcept
+  operator > (T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    using plf_t = as_polyfloat_t<T1, T2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    plf_t a(cvt(aa));
+    plf_t b(cvt(bb));
     if constexpr(N == 2)
     {
       auto th0 = hi(a) >  hi(b);
@@ -72,9 +82,14 @@ namespace plf
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
-  operator <= (T1 const& a, T2 const& b) noexcept
+  operator <= (T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    using plf_t = as_polyfloat_t<T1, T2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    plf_t a(cvt(aa));
+    plf_t b(cvt(bb));
     if constexpr(N == 2)
     {
       auto th0 = hi(a) <= hi(b);
@@ -96,9 +111,14 @@ namespace plf
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>
-  operator >= (T1 const& a, T2 const& b) noexcept
+  operator >= (T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto  N = dimension_v<as_polyfloat_t<T1, T2>>;
+    using plf_t = as_polyfloat_t<T1, T2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    plf_t a(cvt(aa));
+    plf_t b(cvt(bb));
     if constexpr(N == 2)
     {
       auto th0 = hi(a) >= hi(b);

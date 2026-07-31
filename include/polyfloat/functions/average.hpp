@@ -12,14 +12,12 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/abs.hpp>
-#include <polyfloat/functions/if_else.hpp>
-#include <polyfloat/functions/is_less.hpp>
 #include <polyfloat/functions/parts.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct max_t : eve::strict_tuple_callable<max_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct average_t : eve::strict_tuple_callable<average_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
@@ -27,13 +25,13 @@ namespace plf
      return POLYFLOAT_CALL(z1, zs...);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(max_t, max_);
+    POLYFLOAT_CALLABLE_OBJECT(average_t, average_);
   };
   //======================================================================================================================
   //! @addtogroup functions
   //! @{
-  //!   @var max
-  //!   @brief return the maximum value.
+  //!   @var average
+  //!   @brief return the average value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -46,7 +44,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto max(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto average(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,14 +54,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!      Returns the maximum value of the parameters.
+  //!      Returns the average of the parameters.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/max.cpp}
+  //!  @godbolt{doc/average.cpp}
   //======================================================================================================================
 
-  inline constexpr auto max = eve::functor<max_t>;
+  inline constexpr auto average = eve::functor<average_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -71,22 +69,26 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename ... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
+  template<typename T1, typename ... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto average_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts ...args) noexcept
   {
-    if constexpr(sizeof...(Zs) == 0)
-      return z1;
+    using r_t =  as_polyfloat_like_t<T1, Ts...>;
+    using e_t =  eve::element_type_t<r_t>;
+    if constexpr(sizeof...(Ts) == 0)
+      return a0;
     else
     {
-      using r_t = as_polyfloat_t<Z1, Zs...>;
-      using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      if constexpr(sizeof...(Zs) == 1)
-        return plf::if_else(plf::is_less(z1, zs...), cvt(zs)..., cvt(z1));
+      constexpr auto N = sizeof...(Ts)+1;
+      const/*expr*/ e_t invn = 1/(e_t(N));
+      if constexpr(O::contains(raw))
+      {
+        return eve::mul[o](add[o.drop(raw)](a0, args...), invn);
+      }
       else
       {
-        r_t that(cvt(z1));
-        ((that = max(that, zs)), ...);
+        r_t that(a0*invn);
+        auto  next = [invn](auto avg, auto x) { return x*invn+avg; }; //fma ?
+        ((that = next(that, r_t(args))), ...);
         return that;
       }
     }

@@ -8,5 +8,5 @@
 #pragma once
 
 #include <polyfloat/types/polyfloat.hpp>
-#include <polyfloat/types/twofloat.hpp>
-#include <polyfloat/types/threefloat.hpp>
+#include <polyfloat/types/double_real.hpp>
+#include <polyfloat/types/triple_real.hpp>

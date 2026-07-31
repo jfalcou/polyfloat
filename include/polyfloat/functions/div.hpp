@@ -11,11 +11,17 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/functions/trunc.hpp>
+#include <polyfloat/functions/nearest.hpp>
+#include <polyfloat/functions/ceil.hpp>
+#include <polyfloat/functions/floor.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct div_t : eve::strict_tuple_callable<div_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct div_t : eve::strict_tuple_callable<div_t, Options, raw_option, pedantic_option,
+                                                                       to_nearest_option, toward_zero_option,
+                                                                       downward_option, upward_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -42,7 +48,13 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto div(T1 z1, T2 z2) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto div(T1 z1, T2 z2) noexcept; //1
+  //!
+  //!      // Semantic exclusive options
+  //!      constexpr auto div[upward](/*any of the above overloads*/)                   noexcept; // 2
+  //!      constexpr auto div[downward](/*any of the above overloads*/)                 noexcept; // 2
+  //!      constexpr auto div[toward_zero](/*any of the above overloads*/)              noexcept; // 2
+  //!      constexpr auto div[to_nearest](/*any of the above overloads*/)               noexcept; // 2
   //!   }
   //!   @endcode
   //!
@@ -52,7 +64,12 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the ratio of the arguments.
+  //!    1. Returns the ratio of the arguments.
+  //!    2. Pproduces:
+  //!       * `eve::trunc(div(x, z))`, if `d` is `toward_zero`.
+  //!       * `eve::floor(div(x, z))`, if `d` is `downward`.
+  //!       * `eve::ceil(div(x,  z))`, if `d` is `upward`.
+  //!       * `eve::nearest(div(x, z))`, if `d` is `to_nearest`.
   //!
   //!  @groupheader{Example}
   //!
@@ -67,9 +84,23 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto div_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  template<typename T0, typename T1, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto div_(POLYFLOAT_DELAY(), O const& , T0 const& a, T1 const& b) noexcept
   {
-    return z1/z2;
+    using t_t = as_polyfloat_t<T0, T1>;
+    using u_t = eve::element_type_t<t_t>;
+    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
+    auto d = cvt(a)/cvt(b);
+    if constexpr(O::contains(to_nearest))
+      return nearest(d);
+    else if  constexpr(O::contains(toward_zero))
+      return trunc(d);
+    else if  constexpr(O::contains(downward))
+      return floor(d);
+    else if  constexpr(O::contains(upward))
+      return ceil(d);
+    else
+      return d;
+
   }
 }

@@ -74,7 +74,10 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_equal_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    auto eq = z1 ==  z2;
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    auto eq = cvt(z1) ==  cvt(z2);
     if constexpr(O::contains(numeric)) return eq || (is_nan(z1) && is_nan(z2));
     else                               return eq;
   }

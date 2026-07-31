@@ -31,7 +31,7 @@ namespace plf
   //! @addtogroup functions
   //! @{
   //!   @var is_less
-  //!   @brief return the is_lessance value.
+  //!   @brief return  true if z2 >= z2.
   //!
   //!   @groupheader{Header file}
   //!
@@ -54,7 +54,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the is_lessolute value of z.
+  //!     Returns true if z1 <  z2.
   //!
   //!  @groupheader{Example}
   //!
@@ -72,6 +72,9 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_less_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return z1 < z2;
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+    return cvt(z1) < cvt(z2);
   }
 }
