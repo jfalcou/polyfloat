@@ -84,7 +84,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const& , Z const& a) noexcept
   {
-    return eve::heaviside(hi(a)); 
+    return Z(eve::heaviside(hi(a)));
   }
 
   template<typename Z1, typename Z2, eve::callable_options O>
