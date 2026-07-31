@@ -36,9 +36,9 @@ namespace plf::_
 
     template<concepts::polyfloat T>
     POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
-      requires(requires(base_callable const& b) { b(plf::as_component_type_t<T>{}); })
+      requires(requires(base_callable const& b) { b(plf::as_component<T>{}); })
     {
-      return T{base_callable::operator()(as_component_type_t<T>{})};
+      return T{base_callable::operator()(as_component<T>{})};
     }
 
     POLYFLOAT_CALLABLE_OBJECT(constant_t, constant_);
