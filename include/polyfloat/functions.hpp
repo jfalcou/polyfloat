@@ -33,12 +33,14 @@
 #include <polyfloat/functions/inc.hpp>
 #include <polyfloat/functions/is_equal.hpp>
 #include <polyfloat/functions/is_eqz.hpp>
+#include <polyfloat/functions/is_even.hpp>
 #include <polyfloat/functions/is_flint.hpp>
 #include <polyfloat/functions/is_gtz.hpp>
 #include <polyfloat/functions/is_less.hpp>
 #include <polyfloat/functions/is_ltz.hpp>
 #include <polyfloat/functions/is_nan.hpp>
 #include <polyfloat/functions/is_negative.hpp>
+#include <polyfloat/functions/is_odd.hpp>
 #include <polyfloat/functions/is_positive.hpp>
 #include <polyfloat/functions/is_unordered.hpp>
 #include <polyfloat/functions/ldexp.hpp>
