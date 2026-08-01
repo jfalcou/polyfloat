@@ -27,13 +27,13 @@ Up to now, we limit the implementation to 3 machine-precision numbers.
 
 Starting from the real numbers (supported by type `T`: `float` or `double`) we define:
 
-  - two_real        (dimension 2) as a pair   of `T`, alias of polyfloat<T,2>
-  - three_real      (dimension 3) as a triple of `T`, alias of polyfloat<T,3>
+  - double_real      (dimension 2) as a pair   of `T`, alias of polyfloat<T,2>
+  - triple_real      (dimension 3) as a triple of `T`, alias of polyfloat<T,3>
 
 **SIMD** analog can be used simlessly
 
-  - two_real        (dimension 2)  wide<polyfloat<T,2>>
-  - three_real      (dimension 3)  wide<polyfloat<T,3>>
+  - double_real      (dimension 2)  wide<polyfloat<T,2>>
+  - triple_real      (dimension 3)  wide<polyfloat<T,3>>
 
 
 These datas with different dimensions but same  standard floating-point underlying type can be freely mixed
@@ -154,6 +154,11 @@ Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref kyosu::co
    |[tan](@ref polyfloat::tan)                             |[tanh](@ref polyfloat::tanh)                           |[tchebytchev](@ref polyfloat::tchebytchev)             |[tgamma](@ref polyfloat::tgamma)                       |
    |[tgamma_inv](@ref polyfloat::tgamma_inv)               |[to_cylindrical](@ref polyfloat::to_cylindrical)       |[to_polar](@ref polyfloat::to_polar)                   |[tricomi](@ref polyfloat::tricomi)                     |
    |[trunc](@ref polyfloat::trunc)                         |[zeta](@ref polyfloat::zeta)                           |                                                   |                                                   |
+Remark on predicates
+--------------------
+
+All predicates comparing to zero and almost all one parameter predicates are a lot faster than two parameters one
+for which testing the 'hi' part is not sufficient.
 
 
 Testing rationale
