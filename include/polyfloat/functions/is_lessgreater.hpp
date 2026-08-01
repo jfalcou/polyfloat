@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/is_not_equal.hpp>
+#include <polyfloat/functions/is_ordered.hpp>
 
 namespace plf
 {

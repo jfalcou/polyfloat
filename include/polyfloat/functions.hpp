@@ -45,7 +45,7 @@
 #include <polyfloat/functions/is_infinite.hpp>
 #include <polyfloat/functions/is_less.hpp>
 #include <polyfloat/functions/is_less_equal.hpp>
-#include <polyfloat/functions/is_less_greater.hpp>
+#include <polyfloat/functions/is_lessgreater.hpp>
 #include <polyfloat/functions/is_ltz.hpp>
 #include <polyfloat/functions/is_minf.hpp>
 #include <polyfloat/functions/is_nan.hpp>
