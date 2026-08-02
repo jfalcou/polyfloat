@@ -11,9 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/ldexp.hpp>
-#include <polyfloat/functions/frexp.hpp>
-#include <polyfloat/functions/mul.hpp>
+#include <polyfloat/functions/rsqrt.hpp>
 
 namespace plf
 {
@@ -73,34 +71,8 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o , Z const& z) noexcept
   {
-    if constexpr(!O::contains(eve::raw) && dimension_v<Z> > 1) //avoid overflow;
-    {
-      auto [zz, n] = frexp(z);
-      auto oddn = eve::is_odd(n);
-      zz = plf::mul[oddn](zz, 2);
-      n =  plf::dec[oddn](n)  ;
-      return ldexp(sqrt[eve::raw](zz),  n/2);
-    }
-    else if constexpr(dimension_v<Z> == 1)
-      return eve::sqrt(z);
-    else if constexpr(dimension_v<Z> == 2)
-    {
-      auto [a0, b0] = z;
-      auto x0 = eve::rsqrt(a0);
-      auto x1 = x0+x0*(Z(1)-sqr(z)*x0)/2;
-      return x1*z;
-    }
-    else if constexpr(dimension_v<Z> == 3)
-    {
-      auto [a0, b0, c0] = z;
-      auto x0 = eve::rsqrt(a0);
-      auto x1 = x0+x0*(Z(1)-z*eve::sqr(x0))/2;
-      auto x2 = x1+x1*(Z(1)-z*sqr(x1))/2;
-      auto x3 = x2+x2*(Z(1)-z*sqr(x2))/2;
-      return x3*z;
-
-    }
+    return plf::rsqrt[o](z)*z;
   }
 }

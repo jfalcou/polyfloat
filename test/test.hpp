@@ -154,11 +154,12 @@ namespace plf
 //     return plf::reldist[eve::numeric](l, r);
 //   }
 
-//   template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
-//   {
+  template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
+  {
 //     if (ieee_equal(l, r)) return 0.0;
-//     else return plf::dist(l, r);
-//   }
+//     else
+    return eve::maximum(hi(plf::dist(l, r)));
+  }
 }
 
 namespace tts

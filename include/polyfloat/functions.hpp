@@ -90,6 +90,7 @@
 #include <polyfloat/functions/prev.hpp>
 #include <polyfloat/functions/rec.hpp>
 #include <polyfloat/functions/reldist.hpp>
+#include <polyfloat/functions/rsqrt.hpp>
 #include <polyfloat/functions/sign.hpp>
 #include <polyfloat/functions/signnz.hpp>
 #include <polyfloat/functions/sqr.hpp>

@@ -60,12 +60,13 @@ namespace tts
 
   template <typename T> constexpr auto epsprec(){
     using u_t = decltype(plf::hi(T()));
-    if constexpr(plf::dimension_v<T> == 1)
-      return  (sizeof(u_t) == 4 ? 2.384185791015625e-07 :  2.220446049250313e-16);
-    else if constexpr(plf::dimension_v<T> == 2)
-      return (sizeof(u_t) == 4 ? 2.842170943040401e-14 :  3.388131789017201e-21);
-    else if constexpr(plf::dimension_v<T> == 3)
-      return (sizeof(u_t) == 4 ? 2.465190328815662e-32 :  2.736911063134408e-48); ;
+    return std::ldexp(u_t(1), -bitprec<u_t>());
+//     if constexpr(plf::dimension_v<T> == 1)
+//       return  (sizeof(u_t) == 4 ? 2.384185791015625e-07 :  2.220446049250313e-16);
+//     else if constexpr(plf::dimension_v<T> == 2)
+//       return (sizeof(u_t) == 4 ? 2.842170943040401e-14 :  3.388131789017201e-21);
+//     else if constexpr(plf::dimension_v<T> == 3)
+//       return (sizeof(u_t) == 4 ? 1.694065894508601e-21 :  2.736911063134408e-48); ;
   }
 
   template < typename F, typename T,  typename ...Ts> auto mpfr_exec(F f, T a,  Ts ...b)
