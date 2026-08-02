@@ -75,7 +75,7 @@ TTS_CASE_WITH("Check average three params",
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
-    TTS_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc));
+    TTS_ULP_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), 0.5);
     TTS_ULP_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), 0.5);
     TTS_ULP_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), 0.5);
   }

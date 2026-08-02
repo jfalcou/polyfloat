@@ -11,27 +11,31 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/is_equal.hpp>
 #include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_unit_t : eve::elementwise_callable<is_unit_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct lerp_t : eve::strict_tuple_callable<lerp_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
+    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
-     return POLYFLOAT_CALL(z);
+    };
+
+    template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    EVE_FORCEINLINE typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
+    {
+      return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_unit_t, is_unit_);
+
+    POLYFLOAT_CALLABLE_OBJECT(lerp_t, lerp_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @lerptogroup functions
   //! @{
-  //!   @var is_unit
-  //!   @brief test the parameter for equality to is\f$\pm1\f$.
+  //!   @var lerp
+  //!   @brief return the fused multiply add of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +48,25 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_unit(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto lerp(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`, `z3`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns true iff z is\f$\pm1\f$.
+  //!     The value of the interpolation (or extrapolation)  between `z1` and `z2` is returned.
+  //!     The call is semantically equivalent to `z1+z3*(z2-z1)`
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unit.cpp}
+  //!  @godbolt{doc/lerp.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_unit = eve::functor<is_unit_t>;
+  inline constexpr auto lerp = eve::functor<lerp_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,9 +74,14 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_unit_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto lerp_(POLYFLOAT_DELAY(), O const& o, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
-    return plf::is_equal(plf::abs(z), Z(1));
+    using r_t = as_polyfloat_t<Z1, Z2, Z3>;
+    auto cvt =  [](auto a){return plf::convert(a, eve::as<eve::element_type_t<r_t>>());};
+    auto a = cvt(x);
+    auto b = cvt(y);
+    auto t = cvt(z);
+    return  fma[o](t, b, fnma[o](t, a, a));
   }
 }

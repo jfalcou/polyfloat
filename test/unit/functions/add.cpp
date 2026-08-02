@@ -65,6 +65,7 @@ TTS_CASE_WITH("Check add three params",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
+    TTS_EQUAL( tts::to_mpreal(add(pa, pb, pc)), (tts::to_mpreal(pa)+tts::to_mpreal(pb)+tts::to_mpreal(pc)));
     TTS_ULP_EQUAL(add(pa, pb, pc), tts::mpfr_exec(madd, pa, pb, pc), 0.5);
     TTS_ULP_EQUAL(add(a0, pa, pc), add(pv_t(a0), pa, pc), 0.5);
     TTS_ULP_EQUAL(add(pa, a0, pc), add(pa, pv_t(a0), pc), 0.5);
@@ -74,7 +75,8 @@ TTS_CASE_WITH("Check add three params",
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
-    TTS_EQUAL(add(pa, pb, pc), tts::mpfr_exec(madd, pa, pb, pc));
+    TTS_EQUAL( tts::to_mpreal(add(pa, pb, pc)), (tts::to_mpreal(pa)+tts::to_mpreal(pb)+tts::to_mpreal(pc)));
+    TTS_ULP_EQUAL(add(pa, pb, pc), tts::mpfr_exec(madd, pa, pb, pc), 0.0);
     TTS_ULP_EQUAL(add(a0, pa, pc), add(pv_t(a0), pa, pc), 0.5);
     TTS_ULP_EQUAL(add(pa, a0, pc), add(pa, pv_t(a0), pc), 0.5);
   }

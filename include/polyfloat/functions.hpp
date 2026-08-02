@@ -75,6 +75,7 @@
 #include <polyfloat/functions/is_unit.hpp>
 #include <polyfloat/functions/is_unordered.hpp>
 #include <polyfloat/functions/ldexp.hpp>
+#include <polyfloat/functions/lerp.hpp>
 #include <polyfloat/functions/mantissa.hpp>
 #include <polyfloat/functions/max.hpp>
 #include <polyfloat/functions/min.hpp>

@@ -88,9 +88,9 @@ namespace plf
     else if constexpr(dimension_v<T1> == 2)
     {
       if constexpr(dimension_v<T2> == 2)      return r_t( (hi(a) == hi(b)) && (md(a) == md(b)));
-      else if constexpr(dimension_v<T2> == 3) return r_t( (hi(a) == b) || ( md(a) == md(b)) || eve::is_eqz(lo(b)));
+      else if constexpr(dimension_v<T2> == 3) return r_t( (hi(a) == b) && ( md(a) == md(b)) && eve::is_eqz(lo(b)));
     }
-    else if constexpr(dimension_v<T1> == 3)  return r_t( (hi(a) == hi(b)) || (md(a) == md(b)) || (lo(a) == lo(b)));
+    else if constexpr(dimension_v<T1> == 3)  return r_t( (hi(a) == hi(b)) && (md(a) == md(b)) && (lo(a) == lo(b)));
   }
 
   //! @brief Compares two polyfloat_like for inequality
