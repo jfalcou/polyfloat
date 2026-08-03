@@ -93,9 +93,10 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 2)
     {
       auto [a0, b0] = z;
-      Z x0 = eve::rsqrt(a0);
+      auto x0 = eve::rsqrt(a0);
       Z x1 = x0+div2(x0*(Z(1)-z*eve::sqr(x0)));
-      return x1;
+      Z x2 = x1+div2(x1*(Z(1)-z*plf::sqr(x1)));
+      return x2;
     }
     else if constexpr(dimension_v<Z> == 3)
     {

@@ -60,7 +60,7 @@ namespace tts
 
   template <typename T> constexpr auto epsprec(){
     using u_t = decltype(plf::hi(T()));
-    return std::ldexp(u_t(1), -bitprec<u_t>());
+    return std::ldexp(u_t(1), -bitprec<T>());
   }
 
   template < typename F, typename T,  typename ...Ts> auto mpfr_exec(F f, T a,  Ts ...b)

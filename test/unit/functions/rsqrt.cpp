@@ -49,11 +49,15 @@ TTS_CASE_WITH("Check rsqrt",
         using pv_t  = plf::polyfloat<T, 2>;
         pv_t pa(a0, a1);
         std::cout << "pa " << pa << std::endl;
+      std::cout << tts::typename_<T> << std::endl;
+      std::cout << tts::epsprec<decltype(pa)>() << std::endl;
         TTS_ABSOLUTE_EQUAL(rsqrt(pa), tts::mpfr_exec(mrsqrt, pa), tts::epsprec<decltype(pa)>());
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
+      std::cout << tts::typename_<T> << std::endl;
+      std::cout << tts::epsprec<decltype(pa)>() << std::endl;
       TTS_ABSOLUTE_EQUAL(rsqrt(pa), tts::mpfr_exec(mrsqrt, pa), tts::epsprec<decltype(pa)>());
     }
   }

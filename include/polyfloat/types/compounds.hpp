@@ -160,7 +160,7 @@ namespace plf
   {
     template <concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE auto rec(T a) noexcept
     {
-      if constexpr(dimension_v<T> == 1)
+      if constexpr(dimension_v<T> == 1 && std::is_floating_point_v<T>)
         return eve::rec[pedantic](a);
       else if constexpr(dimension_v<T> == 2)
       {
