@@ -18,17 +18,16 @@ TTS_CASE_WITH("Check ldexp",
 {
   using  mpfr::mpreal;
   using plf::ldexp;
-  auto mldexp = [](auto a,  auto n){return mpfr::ldexp(a, n); };
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     auto n = 2;
-    TTS_RELATIVE_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), tts::epsprec<pv_t>());
+    TTS_EQUAL(ldexp(pa, n), pa*4);
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     auto n = 2;
-    TTS_RELATIVE_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), tts::epsprec<pv_t>());
+    TTS_EQUAL(ldexp(pa, n), pa*4);
   }
 };

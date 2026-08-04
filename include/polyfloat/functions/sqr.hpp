@@ -82,7 +82,7 @@ namespace plf::_
       p2+= 2*zhi*zlo;
       p2+= eve::sqr(zlo);
       auto [l, h] = eve::two_add[eve::raw](p1, p2);
-      return eve::zip(l, h);
+      return Z(l, h);
     }
     else if constexpr(dimension_v<Z> == 3)
     {
@@ -99,7 +99,7 @@ namespace plf::_
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
       auto [t21, t22] = eve::two_add(2*t2, 2*t3);
       auto [md, lo]   = _::four_add1(t21, t22, t19, t20);
-      return eve::zip(hi, md, lo);
+      return Z(hi, md, lo);
     }
   }
 }

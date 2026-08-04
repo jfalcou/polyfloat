@@ -95,13 +95,13 @@ namespace plf
         if constexpr(dimension_v<Z> == 2)
         {
           auto l = eve::ldexp[o](lo(z), -n);
-          return eve::zip(h, l);
+          return Z(h, l);
         }
         else if constexpr(dimension_v<Z> == 3)
         {
           auto m = eve::ldexp[o](md(z), -n);
           auto l = eve::ldexp[o](lo(z), -n);
-          return eve::zip(h, m, l);
+          return Z(h, m, l);
         }
       }
     }
