@@ -6,6 +6,8 @@
 */
 //======================================================================================================================
 #pragma once
+#include <iomanip>
+
 
 namespace tts
 {
@@ -25,12 +27,13 @@ namespace tts
     }
     else     if constexpr(plf::dimension_v<T> == 2)
     {
-      return T(h, m);
+      return plf::as_polyfloat_n_t<2, u_t>(h, m);
     }
     else if constexpr(plf::dimension_v<T> == 3)
     {
       auto l = u_t(mpa - (mu_t(h)+mu_t(m)));
-      return T(h, m, l);
+//      std::cout << "to_polyfloat  " << h << " " << m << " " << l << std::endl;
+      return plf::as_polyfloat_n_t<3, u_t>(h, m, l);
     }
   }
 
@@ -65,17 +68,20 @@ namespace tts
 
   template < typename F, typename T,  typename ...Ts> auto mpfr_exec(F f, T a,  Ts ...b)
   {
+    mpfr::mpreal::set_default_prec(bitprec<T>()*10);
     return tts::to_polyfloat(f(tts::to_mpreal(a), tts::to_mpreal(b)...), eve::as<T>());
   }
 
   template < typename F, typename T,  typename ...Ts> auto lmpfr_exec(F f, T a,  Ts ...b)
   {
+    mpfr::mpreal::set_default_prec(bitprec<T>()*10);
     return f(tts::to_mpreal(a), tts::to_mpreal(b)...);
   }
 
   template < typename F, typename T,  typename N> auto mpfr_exec2(F f, T a,  N n)
   {
-    return tts::to_polyfloat(f(tts::to_mpreal(a), n), eve::as<T>());
+     mpfr::mpreal::set_default_prec(bitprec<T>()*10);
+     return tts::to_polyfloat(f(tts::to_mpreal(a), n), eve::as<T>());
   }
 
 }

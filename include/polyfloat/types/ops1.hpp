@@ -60,6 +60,9 @@ namespace plf
   {
     using type = as_polyfloat_t<T1, T2>;
     type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
+    type bb = plf::convert(b, eve::as<eve::element_type_t<type>>());
+//     std::cout << "b  " << b << std::endl;
+//     std::cout << "bb " << bb<< std::endl;
     return that -= b;
   }
 

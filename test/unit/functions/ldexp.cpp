@@ -23,12 +23,12 @@ TTS_CASE_WITH("Check ldexp",
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     auto n = 2;
-    TTS_ULP_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), 0.5);
+    TTS_RELATIVE_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     auto n = 2;
-    TTS_ULP_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), 0.5);
+    TTS_RELATIVE_EQUAL(ldexp(pa, n), tts::mpfr_exec2(mldexp, pa, n), tts::epsprec<pv_t>());
   }
 };

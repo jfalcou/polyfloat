@@ -28,16 +28,16 @@ TTS_CASE_WITH("Check average two params",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_EQUAL(average(pa, pb), tts::mpfr_exec(maverage, pa, pb));
-    TTS_ULP_EQUAL(average(a0, pa), average(pv_t(a0), pa), 0.5);
-    TTS_ULP_EQUAL(average(pa, a0), average(pa, pv_t(a0)), 0.5);
+    TTS_RELATIVE_EQUAL(average(a0, pa), average(pv_t(a0), pa), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(pa, a0), average(pa, pv_t(a0)), tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     TTS_EQUAL(average(pa, pb), tts::mpfr_exec(maverage, pa, pb));
-    TTS_ULP_EQUAL(average(a0, pa), average(pv_t(a0), pa), 0.5);
-    TTS_ULP_EQUAL(average(pa, a0), average(pa, pv_t(a0)), 0.5);
+    TTS_RELATIVE_EQUAL(average(a0, pa), average(pv_t(a0), pa), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(pa, a0), average(pa, pv_t(a0)), tts::epsprec<pv_t>());
   }
 };
 
@@ -66,17 +66,17 @@ TTS_CASE_WITH("Check average three params",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
-    TTS_ULP_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), 0.5);
-    TTS_ULP_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), 0.5);
-    TTS_ULP_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), 0.5);
+    TTS_RELATIVE_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
-    TTS_ULP_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), 0.5);
-    TTS_ULP_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), 0.5);
-    TTS_ULP_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), 0.5);
+    TTS_RELATIVE_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
   }
 };

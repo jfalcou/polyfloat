@@ -23,12 +23,12 @@ TTS_CASE_WITH("Check abs",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_ULP_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), 0.5);
+      TTS_RELATIVE_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), tts::epsprec<pv_t>());
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_ULP_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), 0.5);
+      TTS_RELATIVE_EQUAL(abs(pa), tts::mpfr_exec(mabs, pa), tts::epsprec<pv_t>());
     }
   }
 };

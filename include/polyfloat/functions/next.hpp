@@ -85,12 +85,12 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 2)
     {
       auto [h, l] = z;
-      return Z(h, eve::next(l));
+      return eve::zip(h, eve::next(l));
     }
     else if constexpr(dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
-      return Z(h, m, eve::next(l));
+      return eve::zip(h, m, eve::next(l));
     }
   }
 

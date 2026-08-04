@@ -23,12 +23,12 @@ TTS_CASE_WITH("Check exponent",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_ULP_EQUAL(exponent(pa), mexponent(pa), 0.5);
+      TTS_EQUAL(exponent(pa), mexponent(pa));
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_ULP_EQUAL(exponent(pa), mexponent(pa), 0.5);
+      TTS_EQUAL(exponent(pa), mexponent(pa));
     }
   }
 };

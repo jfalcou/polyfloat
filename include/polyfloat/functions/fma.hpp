@@ -98,7 +98,7 @@ namespace plf::_
       auto [vhi, vlo] = eve::two_add[eve::raw](shi, c);
       auto w = tlo + vlo;
       auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
-      return Z1(hi, lo);
+      return eve::zip(hi, lo);
     }
     else  if constexpr ((dimension_v<Z1> == 1) && (dimension_v<Z2> == 1))
     {
@@ -114,7 +114,7 @@ namespace plf::_
         auto [vhi, vlo] = eve::two_add[eve::raw](shi, c);
         auto w = tlo + vlo;
         auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
-        return Z1(hi, lo);
+        return eve::zip(hi, lo);
       }
     }
     else
