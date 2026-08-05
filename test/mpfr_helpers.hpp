@@ -6,8 +6,6 @@
 */
 //======================================================================================================================
 #pragma once
-#include <iomanip>
-
 
 namespace tts
 {
@@ -32,7 +30,6 @@ namespace tts
     else if constexpr(plf::dimension_v<T> == 3)
     {
       auto l = u_t(mpa - (mu_t(h)+mu_t(m)));
-//      std::cout << "to_polyfloat  " << h << " " << m << " " << l << std::endl;
       return plf::as_polyfloat_n_t<3, u_t>(h, m, l);
     }
   }

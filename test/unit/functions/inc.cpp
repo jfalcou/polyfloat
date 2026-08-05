@@ -21,12 +21,12 @@ TTS_CASE_WITH("Check inc",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_ULP_EQUAL(inc(pa), pa+1, 0.5);
+      TTS_EQUAL(inc(pa), pa+1);
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_ULP_EQUAL(inc(pa), pa+1, 0.5);
+      TTS_EQUAL(inc(pa), pa+1);
     }
   }
 };

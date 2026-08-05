@@ -23,12 +23,12 @@ TTS_CASE_WITH("Check sqrt",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_ULP_EQUAL(sqrt[eve::pedantic](pa), tts::mpfr_exec(msqrt, pa), 0.5);
+      TTS_RELATIVE_EQUAL(sqrt[eve::pedantic](pa), tts::mpfr_exec(msqrt, pa), tts::epsprec<pv_t>());
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_ULP_EQUAL(sqrt[eve::pedantic](pa), tts::mpfr_exec(msqrt, pa), 0.5);
+      TTS_RELATIVE_EQUAL(sqrt[eve::pedantic](pa), tts::mpfr_exec(msqrt, pa), tts::epsprec<pv_t>());
     }
   }
 };

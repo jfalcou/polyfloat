@@ -30,13 +30,13 @@ TTS_CASE_WITH("Check lerp",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t t(a6, a7);
-    TTS_ULP_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), 0.5);
+    TTS_RELATIVE_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t t(a6, a7, a8);
-    TTS_ULP_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), 0.5);
+    TTS_RELATIVE_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), tts::epsprec<pv_t>());
   }
 };

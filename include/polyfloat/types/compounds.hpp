@@ -9,8 +9,6 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/functions/convert.hpp>
-#include <iostream>
-#include <iomanip>
 
 namespace plf
 {

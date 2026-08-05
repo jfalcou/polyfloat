@@ -21,6 +21,7 @@
 #include <polyfloat/functions/dec.hpp>
 #include <polyfloat/functions/dist.hpp>
 #include <polyfloat/functions/div.hpp>
+#include <polyfloat/functions/epsilon.hpp>
 #include <polyfloat/functions/exponent.hpp>
 #include <polyfloat/functions/floor.hpp>
 #include <polyfloat/functions/fma.hpp>
@@ -97,4 +98,3 @@
 #include <polyfloat/functions/sqrt.hpp>
 #include <polyfloat/functions/sub.hpp>
 #include <polyfloat/functions/trunc.hpp>
-#include <polyfloat/functions/ulpdist.hpp>
