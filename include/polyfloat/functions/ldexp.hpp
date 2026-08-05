@@ -112,7 +112,10 @@ namespace plf::_
       auto h = eve::ldexp(zh, n);
       auto m = eve::ldexp(zm, n);
       auto l = eve::ldexp(zl, n);
-      return Z(h, m, l);
+      Z z(h);
+      md(z) = m; lo(z) = l;
+      return z;
+//      return Z(h, m, l);
     }
   }
 
