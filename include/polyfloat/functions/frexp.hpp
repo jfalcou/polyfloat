@@ -86,24 +86,6 @@ namespace plf
     template<typename Z, eve::callable_options O>
     POLYFLOAT_FORCEINLINE constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
-//       if constexpr(dimension_v<Z> == 1)
-//         return eve::frexp(z);
-//       else if constexpr(dimension_v<Z> == 2)
-//       {
-//         auto [h, l] = z;
-//         auto [frhi, exphi] = eve::frexp(h);
-//         auto [frlo, explo] = eve::frexp(l);
-//         return kumi::tuple{Z(frhi, eve::ldexp(frlo,  explo - exphi)),  exphi};
-//       }
-//       else
-//       {
-//         auto [h, m, l] = z;
-//         auto [frhi, exphi] = eve::frexp(h);
-//         auto [frmd, expmd] = eve::frexp(m);
-//         auto [frlo, explo] = eve::frexp(l);
-//         return kumi::tuple{Z(frhi, eve::ldexp(frmd,  expmd - exphi), eve::ldexp(frlo,  frlo-(expmd - exphi))),  exphi};
-//       }
-
       if constexpr(dimension_v<Z> == 1)
         return eve::frexp(z);
       else
@@ -119,10 +101,6 @@ namespace plf
           auto l = eve::ldexp[o](lo(z), -n);
           auto m = eve::ldexp[o](md(z), -n);
           return kumi::tuple{_::from_triple(h, m, l), n};
-//           Z z(h);
-//           md(z) = m; lo(z) = l;
-//           return kumi::tuple{z, n};
-// //          return kumi::tuple{Z(h, m, l), n};
         }
       }
     }

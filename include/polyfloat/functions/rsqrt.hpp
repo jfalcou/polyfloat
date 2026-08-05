@@ -15,7 +15,6 @@
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/mul.hpp>
 #include <polyfloat/functions/sqr.hpp>
-#include <iostream>
 
 namespace plf
 {
