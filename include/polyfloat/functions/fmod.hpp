@@ -32,7 +32,7 @@ namespace plf
   //! @addtogroup functions
   //! @{
   //!   @var fmod
-  //!   @brief return the ratio of the values.
+  //!   @brief return the remainder of the values.
   //!
   //!   @groupheader{Header file}
   //!
