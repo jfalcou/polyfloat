@@ -25,6 +25,7 @@ namespace plf::_
       lo  = eve::if_else(t, eve::zero, lo);
       hi1 = eve::if_else(eve::is_infinite(a), a, hi1);
     }
+    hi1 = eve::if_else(eve::is_eqz(hi1), a, hi1); //this to keep -0.0 sign of the hi part
     return eve::zip(hi1, md1, lo);
   }
 

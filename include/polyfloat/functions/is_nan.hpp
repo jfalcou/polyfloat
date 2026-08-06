@@ -29,8 +29,8 @@ namespace plf
   //! @addtogroup functions
   //! @{
   //!   @var is_nan
-  //!   @brief `elementwise callable` returning a logical true if and only if the element
-  //!    has its sign bit set
+  //!   @brief `elementwise callable` returning a logical true if the element
+  //!    is a Nan
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,8 +53,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     returns true if and only if the bit of sign (most significant bit) is set.
-  //!     Of course the result on a NaN input is generally out of control.
+  //!     returns true if and only the value is a Nan.
   //!
   //!  @groupheader{Example}
   //!

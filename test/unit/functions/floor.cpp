@@ -23,8 +23,6 @@ TTS_CASE_WITH("Check floor",
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t fpa = plf::floor(pa);
-      std::cout << pa  << std::endl;
-      std::cout << fpa << std::endl;
       TTS_EXPECT(pa >=  fpa);
       TTS_EXPECT(fpa >= plf::dec(pa));
       TTS_EXPECT(plf::is_flint(fpa));
@@ -33,8 +31,6 @@ TTS_CASE_WITH("Check floor",
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t fpa = plf::floor(pa);
-      std::cout << pa  << std::endl;
-      std::cout << fpa << std::endl;
       TTS_EXPECT(pa >=  fpa);
       TTS_EXPECT(fpa >= plf::dec(pa));
       TTS_EXPECT(plf::is_flint(fpa));

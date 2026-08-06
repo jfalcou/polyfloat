@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/functions/abs.hpp>
+#include <polyfloat/functions/sub.hpp>
 
 namespace plf
 {
@@ -71,6 +72,6 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto dist_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    return abs(z1-z2);
+    return plf::abs(z1-z2);
   }
 }

@@ -24,13 +24,13 @@ TTS_CASE_WITH("Check rec",
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t rpa = plf::rec(pa);
-      TTS_ULP_EQUAL(rpa, tts::mpfr_exec(mrec, pa), 0.5);
+      TTS_RELATIVE_EQUAL(rpa, tts::mpfr_exec(mrec, pa), tts::epsprec<pv_t>());
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t rpa = plf::rec(pa);
-      TTS_ULP_EQUAL(rpa, tts::mpfr_exec(mrec, pa), 0.5);
+      TTS_RELATIVE_EQUAL(rpa, tts::mpfr_exec(mrec, pa), tts::epsprec<pv_t>());
     }
   }
 };

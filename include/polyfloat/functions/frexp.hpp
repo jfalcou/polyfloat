@@ -94,13 +94,13 @@ namespace plf
         if constexpr(dimension_v<Z> == 2)
         {
           auto l = eve::ldexp[o](lo(z), -n);
-          return kumi::tuple{Z(h, l), n};
+          return kumi::tuple{_::from_pair(h, l), n};
         }
         else if constexpr(dimension_v<Z> == 3)
         {
           auto l = eve::ldexp[o](lo(z), -n);
           auto m = eve::ldexp[o](md(z), -n);
-          return kumi::tuple{Z(h, m, l), n};
+          return kumi::tuple{_::from_triple(h, m, l), n};
         }
       }
     }

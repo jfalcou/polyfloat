@@ -54,6 +54,8 @@ namespace plf
   //!
   //!     Returns the value of `z ==  0 && is_negative(z)`.
   //!
+  //!  @note as zero is represented by N \f$\pm0\f$ fields only the sign of the hi field is taken into account
+  //!
   //!  @groupheader{Example}
   //!
   //!  @godbolt{doc/is_eqmz.cpp}

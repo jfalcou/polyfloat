@@ -23,8 +23,6 @@ TTS_CASE_WITH("Check ceil",
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t cpa = plf::ceil(pa);
-      std::cout << pa  << std::endl;
-      std::cout << cpa << std::endl;
       TTS_EXPECT(pa <= cpa);
       TTS_EXPECT(plf::inc(pa) >= cpa);
       TTS_EXPECT(plf::is_flint(cpa));
@@ -33,8 +31,6 @@ TTS_CASE_WITH("Check ceil",
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t cpa = plf::ceil(pa);
-      std::cout << pa  << std::endl;
-      std::cout << cpa << std::endl;
       TTS_EXPECT(pa <= cpa);
       TTS_EXPECT(plf::inc(pa) >= cpa);
       TTS_EXPECT(plf::is_flint(cpa));

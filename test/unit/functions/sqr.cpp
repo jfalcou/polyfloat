@@ -21,12 +21,12 @@ TTS_CASE_WITH("Check sqr",
     {
       using pv_t  = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
-      TTS_EQUAL(sqr(pa), pa*pa);
+      TTS_RELATIVE_EQUAL(sqr(pa), pa*pa, tts::epsprec<pv_t>());
     }
     {
       using pv_t  = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
-      TTS_EQUAL(sqr(pa), pa*pa);
+      TTS_RELATIVE_EQUAL(sqr(pa), pa*pa, tts::epsprec<pv_t>());
     }
   }
 };

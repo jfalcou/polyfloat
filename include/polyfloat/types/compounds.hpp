@@ -14,26 +14,19 @@ namespace plf
 {
   namespace _
   {
-
     EVE_FORCEINLINE auto clean0s(auto hi,  auto md, auto lo) noexcept
     {
-      auto iszhi = eve::is_eqz(hi);
-      auto iszmd = eve::is_eqz(md);
-      eve::swap_if(iszhi&& iszmd, hi, lo);
-      eve::swap_if(iszhi&&!iszmd, md, hi);
-      eve::swap_if(iszhi&&!iszmd, md, lo);
-      return eve::zip(hi, md, lo);
+      return as_polyfloat_n_t<3, decltype(hi)>(hi, md, lo);
     }
 
-    EVE_FORCEINLINE auto four_quick_add(auto a,auto b, auto c, auto d) noexcept
+    EVE_FORCEINLINE auto four_add1(auto a,auto b, auto c, auto d) noexcept
     {
-      //unchecked requirement `|a| > |b| > |c| > |d|`
-      auto [t0, t1] = eve::two_add[eve::raw](a ,  b);
-      auto [t01, t2] = eve::two_add[eve::raw](t0,  c);
-      auto [hi, t3] = eve::two_add[eve::raw](t01,  d);
-      auto lo      =( t1 + t2) +t3;
-
-      return eve::zip(hi, lo);
+      auto [t0, t1] = eve::two_add(a , b);
+      auto [t01, t2] = eve::two_add(t0, c);
+      auto [aa,  t3] = eve::two_add(t01, d);
+      auto t02 = t1 + t2;
+      auto bb = t02 + t3;
+      return eve::zip(aa, bb);
     }
   }
 
@@ -144,9 +137,9 @@ namespace plf
       auto t18 = t16 + t17;
 
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
-      auto [t21, t22] = _::four_quick_add(t2, t3, t4, t5);
-      auto [md, lo]   = _::four_quick_add(t21, t22, t19, t20);
-      return self = T1(hi, md, lo);
+      auto [t21, t22] = _::four_add1(t2, t3, t4, t5);
+      auto [md, lo]   = _::four_add1(t21, t22, t19, t20);
+      return self = _::clean0s(hi, md, lo);
     }
   }
 }
@@ -160,14 +153,15 @@ namespace plf
   {
     template <concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE auto rec(T a) noexcept
     {
-      if constexpr(dimension_v<T> == 1)
+      if constexpr(dimension_v<T> == 1 && std::is_floating_point_v<T>)
         return eve::rec[pedantic](a);
       else if constexpr(dimension_v<T> == 2)
       {
         auto [a0, b0] = a;
         auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0+x0*(T(1)-a*x0);
-        return x1;
+        auto x2 = x1+x1*(T(1)-a*x1);
+        return x2;
       }
       else if constexpr(dimension_v<T> == 3)
       {
@@ -182,19 +176,12 @@ namespace plf
   }
 
   /// Divide  `self` by the  value `other` and returns the new value of `self`.
-  template <concepts::polyfloat T1, concepts::polyfloat T2>
+  template <concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator/=(T1 & self, T2 other) noexcept
   {
-    return self *= _::rec(other);
+   T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
+    return self *= _::rec(oth);
   }
-
-  /// Divide the polyfloat  `self` by   the floating value `other` and returns the new value of `self`.
-  template <concepts::polyfloat T1, eve::floating_value T2>
-  constexpr auto& operator/=(T1 & self, T2 other) noexcept
-  {
-    return self *= eve::rec(other);
-  }
-
 }
 
 #include <polyfloat/types/ops2.hpp>

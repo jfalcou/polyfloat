@@ -88,7 +88,7 @@ namespace plf::_
   }
 
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const&, Z1 a, Z2 s) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const&, Z1 const&  a, Z2 const&  s) noexcept
   {
     using t_t = as_polyfloat_t<Z1, Z2>;
     return if_else(a > s, t_t(1), eve::zero);

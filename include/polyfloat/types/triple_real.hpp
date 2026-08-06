@@ -10,6 +10,7 @@
 #include <eve/eve.hpp>
 #include <polyfloat/types/polyfloat.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <polyfloat/functions/parts.hpp>
 
 namespace plf
 {
@@ -27,6 +28,17 @@ namespace plf
   //====================================================================================================================
   template<eve::floating_value T>
   using triple_real_t = as_polyfloat_n_t<3,T>;
+
+  namespace _
+  {
+    template <eve::floating_value T> triple_real_t<T> from_triple(T h, T m,  T l)
+    {
+      triple_real_t<T> z(h);
+      md(z) = m;
+      lo(z) = l;
+      return z;
+    }
+  }
 
   //====================================================================================================================
   //! @}

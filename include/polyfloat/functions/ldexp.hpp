@@ -11,7 +11,6 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
@@ -21,15 +20,15 @@ namespace plf
     template<concepts::polyfloat_like Z1,  eve::integral_value N>
       POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
     {
-      using r_t = decltype(hi(Z1()));
-     return POLYFLOAT_CALL(z1, r_t(n));
+      using r_t = eve::element_type_t<decltype(hi(Z1()))>;
+      return POLYFLOAT_CALL(z1, plf::convert(n, eve::as<r_t>()));
     }
 
     template<concepts::polyfloat_like Z,  eve::floating_value N>
       POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
     {
-      using r_t = as_component_type_t<Z>;
-      return POLYFLOAT_CALL(z, r_t(n));
+      using r_t = eve::element_type_t<as_component_type_t<Z>>;
+      return POLYFLOAT_CALL(z, plf::convert(n, eve::as<r_t>()));
     }
 
     POLYFLOAT_CALLABLE_OBJECT(ldexp_t, ldexp_);
@@ -113,7 +112,10 @@ namespace plf::_
       auto h = eve::ldexp(zh, n);
       auto m = eve::ldexp(zm, n);
       auto l = eve::ldexp(zl, n);
-      return Z(h, m, l);
+      Z z(h);
+      md(z) = m; lo(z) = l;
+      return z;
+//      return Z(h, m, l);
     }
   }
 

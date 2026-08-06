@@ -11,7 +11,6 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/functions/abs.hpp>
 
 namespace plf
 {
@@ -76,6 +75,7 @@ namespace plf::_
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto fma_(POLYFLOAT_DELAY(), O const& , Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
+    using r_t = as_polyfloat_t<Z1, Z2, Z3>;
     if constexpr((dimension_v<Z1> > 2) && (dimension_v<Z2> > 2) &&(dimension_v<Z3> > 2))
     {
       return x*y+z; //TODO
@@ -98,7 +98,7 @@ namespace plf::_
       auto [vhi, vlo] = eve::two_add[eve::raw](shi, c);
       auto w = tlo + vlo;
       auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
-      return Z1(hi, lo);
+      return r_t(hi, lo);
     }
     else  if constexpr ((dimension_v<Z1> == 1) && (dimension_v<Z2> == 1))
     {
@@ -114,7 +114,7 @@ namespace plf::_
         auto [vhi, vlo] = eve::two_add[eve::raw](shi, c);
         auto w = tlo + vlo;
         auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
-        return Z1(hi, lo);
+        return r_t(hi, lo);
       }
     }
     else
