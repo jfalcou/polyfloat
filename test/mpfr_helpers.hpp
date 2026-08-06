@@ -6,6 +6,9 @@
 */
 //======================================================================================================================
 #pragma once
+#include <iostream>
+#include <iomanip>
+
 
 namespace tts
 {
@@ -81,4 +84,21 @@ namespace tts
      return tts::to_polyfloat(f(tts::to_mpreal(a), n), eve::as<T>());
   }
 
+  ////////////////////////////////////////////////////////////////////////////////
+  // printing on decimal form form
+  ////////////////////////////////////////////////////////////////////////////////
+
+  template <typename T> void print(T a)
+  {
+    auto prec = int(std::log10(bitprec<T>()))+1;
+    auto oldprec = std::precision;
+    std::cout << std::setprecision(prec) << to_mpreal(a) << std::setprecision(oldprec);
+  }
+
+  template <typename T> void println(T a)
+  {
+    auto prec = int(std::log10(bitprec<T>()))+1;
+    auto oldprec = std::precision;
+    std::cout << std::setprecision(prec) << to_mpreal(a) << std::setprecision(oldprec) << std::endl;
+  }
 }

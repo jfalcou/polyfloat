@@ -90,7 +90,8 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
-      return Z(h, m, eve::next(l));
+      auto r = Z(h, m, eve::next(l));
+      return if_else(plf::is_not_nan(z) && is_nan(r), inf(eve::as(r)), r);
     }
   }
 
@@ -107,7 +108,8 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
-      return Z(h, m, eve::next(l, n));
+      auto r = Z(h, m, eve::next(l, n));
+      return if_else(plf::is_not_nan(z) && is_nan(r), inf(eve::as(r)), r);
     }
   }
 }
