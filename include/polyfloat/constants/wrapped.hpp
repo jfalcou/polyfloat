@@ -72,7 +72,7 @@ namespace plf
   inline constexpr auto nan = _::as_constant<eve::nan>;
   inline constexpr auto one = _::as_constant<eve::one>;
 //  inline constexpr auto oneosqrteps = _::as_constant<eve::oneosqrteps>;
-  inline constexpr auto signmask = _::as_constant<eve::signmask>;
+//  inline constexpr auto signmask = _::as_constant<eve::signmask>;
   inline constexpr auto smallestposval = _::as_constant<eve::smallestposval>;
 //  inline constexpr auto sqrteps = _::as_constant<eve::sqrteps>;
   inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;

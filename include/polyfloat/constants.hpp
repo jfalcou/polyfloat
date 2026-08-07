@@ -13,4 +13,6 @@
 #include <polyfloat/constants/inveps.hpp>
 #include <polyfloat/constants/inf.hpp>
 #include <polyfloat/constants/maxflint.hpp>
+#include <polyfloat/constants/sqrt_2.hpp>
+#include <polyfloat/constants/sqrteps.hpp>
 #include <polyfloat/constants/valmax.hpp>
