@@ -62,20 +62,16 @@ namespace plf
   inline constexpr auto allbits = _::as_constant<eve::allbits>;
   inline constexpr auto bitincrement = _::as_constant<eve::bitincrement>;
   inline constexpr auto half = _::as_constant<eve::half>;
-//  inline constexpr auto logeps = _::as_constant<eve::logeps>;
   inline constexpr auto mhalf = _::as_constant<eve::mhalf>;
-//   inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
-//   inline constexpr auto minexponent = _::as_constant<eve::minexponent>;
+  inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
+  inline constexpr auto minexponent = _::as_constant<eve::minexponent>;
   inline constexpr auto minf = _::as_constant<eve::minf>;
   inline constexpr auto mone = _::as_constant<eve::mone>;
   inline constexpr auto mzero = _::as_constant<eve::mzero>;
   inline constexpr auto nan = _::as_constant<eve::nan>;
   inline constexpr auto one = _::as_constant<eve::one>;
-//  inline constexpr auto oneosqrteps = _::as_constant<eve::oneosqrteps>;
-//  inline constexpr auto signmask = _::as_constant<eve::signmask>;
   inline constexpr auto smallestposval = _::as_constant<eve::smallestposval>;
-//  inline constexpr auto sqrteps = _::as_constant<eve::sqrteps>;
-  inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;
+//  inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;
 //  inline constexpr auto sqrtvalmax = _::as_constant<eve::sqrtvalmax>;
   // from eve::math
 //   inline constexpr auto catalan = _::as_constant<eve::catalan>;
