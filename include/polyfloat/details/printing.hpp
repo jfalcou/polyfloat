@@ -14,12 +14,12 @@
 namespace plf::_
 {
   ////////////////////////////////////////////////////////////////////////////////
-  // printing on decimal form form
+  // printing on decimal form form using mpfr for debug purposes
   ////////////////////////////////////////////////////////////////////////////////
 
   template < typename T > T to_polyfloat(mpfr::mpreal mpa, eve::as<T> )
   {
-    using u_t = decltype(plf::hi(T()));
+    using u_t = eve::underlying_type_t<T>;
     using mu_t = decltype(mpa);
    if constexpr(plf::dimension_v<T> == 1)
     {
