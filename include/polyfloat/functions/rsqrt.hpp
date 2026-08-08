@@ -15,6 +15,10 @@
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/mul.hpp>
 #include <polyfloat/functions/sqr.hpp>
+#include <polyfloat/functions/dec.hpp>
+#include <polyfloat/functions/if_else.hpp>
+#include <polyfloat/functions/mantissa.hpp>
+#include <iostream>
 
 namespace plf
 {
@@ -79,15 +83,14 @@ namespace plf::_
     auto div2 = [](auto x){return ldexp(x, -1); };
     if constexpr(!O::contains(eve::raw) && dimension_v<Z> > 1) //avoid overflow;
     {
-      auto [zz, n] = frexp(z);
+      auto [zz, n] = frexp[pedantic](z);
       auto oddn = eve::is_odd(n);
-      zz = if_else(oddn, plf::ldexp(zz, 1), zz);
+      zz = plf::if_else(oddn, plf::ldexp(zz, 1), zz);
       n =  plf::dec[oddn](n)  ;
       auto r = ldexp(rsqrt[eve::raw](zz),  -n/2);
       return r;
     }
-    else
-    if constexpr(dimension_v<Z> == 1)
+    else if constexpr(dimension_v<Z> == 1)
       return eve::rsqrt(z);
     else if constexpr(dimension_v<Z> == 2)
     {

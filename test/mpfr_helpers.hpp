@@ -6,6 +6,9 @@
 */
 //======================================================================================================================
 #pragma once
+#include <iostream>
+#include <iomanip>
+
 
 namespace tts
 {
@@ -37,11 +40,11 @@ namespace tts
   template <typename T> constexpr auto bitprec(){
     using u_t = decltype(plf::hi(T()));
     if constexpr(plf::dimension_v<T> == 1)
-      return (sizeof(u_t) == 8 ? 53 : 23);
+      return (sizeof(u_t) == 8 ? 53 : 24);
     if constexpr(plf::dimension_v<T> == 2)
-      return (sizeof(u_t) == 8 ? 106 : 46);
+      return (sizeof(u_t) == 8 ? 106 : 48);
     else if constexpr(plf::dimension_v<T> == 3)
-      return (sizeof(u_t) == 8 ? 159 : 69);
+      return (sizeof(u_t) == 8 ? 159 : 72);
   }
 
   template <typename T> auto to_mpreal(T a)
@@ -80,5 +83,4 @@ namespace tts
      mpfr::mpreal::set_default_prec(bitprec<T>()*10);
      return tts::to_polyfloat(f(tts::to_mpreal(a), n), eve::as<T>());
   }
-
 }

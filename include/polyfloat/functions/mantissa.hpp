@@ -11,6 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/functions/exponent.hpp>
 
 namespace plf
 {
@@ -90,18 +91,18 @@ namespace plf
         return eve::mantissa(z);
       else
       {
-        auto n =  exponent(z);
+        auto n =  plf::exponent(z);
         auto h = eve::ldexp[o](hi(z), -n);
         if constexpr(dimension_v<Z> == 2)
         {
           auto l = eve::ldexp[o](lo(z), -n);
-          return Z(h, l);
+          return plf::_::from_pair(h, l);
         }
         else if constexpr(dimension_v<Z> == 3)
         {
           auto m = eve::ldexp[o](md(z), -n);
           auto l = eve::ldexp[o](lo(z), -n);
-          return Z(h, m, l);
+          return plf::_::from_triple(h, m, l);
         }
       }
     }

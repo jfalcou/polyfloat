@@ -13,7 +13,7 @@
 
 namespace plf
 {
-  template<typename Options> struct eps_t : eve::constant_callable<eps_t, Options>
+  template<typename Options> struct sqrt_2_t : eve::constant_callable<sqrt_2_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
@@ -22,23 +22,24 @@ namespace plf
 
       if constexpr(plf::dimension_v<T> == 1)
       {
-        return eve::eps(eve::as(u_t()));
+        if constexpr(sizeof(u_t) == 8)
+          return u_t(0x1.6a09e667f3bcdp+0);
+        else
+            return u_t(0x1.6a09e6p+0);
       }
-      if constexpr(plf::dimension_v<T> == 2)
+      else if constexpr(plf::dimension_v<T> == 2)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
+        if constexpr(sizeof(u_t) == 8)
+          return plf::_::from_pair<u_t>(0x1.6a09e667f3bcdp+0, -0x1.bdd3413b26456p-54);
+        else
+          return plf::_::from_pair<u_t>(0x1.6a09e6p+0, 0x1.9fcef4p-26);
       }
       else if constexpr(plf::dimension_v<T> == 3)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
-      }
-      else
-      {
-        return eve::eps(eve::as<u_t>());
+         if constexpr(sizeof(u_t) == 8)
+           return plf::_::from_triple<u_t>(0x1.6a09e667f3bcdp+0, -0x1.bdd3413b26456p-54, 0x1.57d3e3adec175p-108);
+         else
+           return plf::_::from_triple<u_t>(0x1.6a09e6p+0, 0x1.9fcef4p-26, -0x1.b7ba68p-51);
       }
     }
 
@@ -48,13 +49,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(eps_t, eps_);
+    EVE_CALLABLE_OBJECT(sqrt_2_t, sqrt_2_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @var sqrt_2
+  //!   @brief return the sqrt of 2.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,7 +68,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto sqrt_2(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -77,14 +78,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the sqrt of 2.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/sqrt_2.cpp}
   //======================================================================================================================
 
-  inline constexpr auto eps = eve::functor<eps_t>;
+  inline constexpr auto sqrt_2 = eve::functor<sqrt_2_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

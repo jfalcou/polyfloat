@@ -7,38 +7,32 @@
 //======================================================================================================================
 #pragma once
 
+#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 
 namespace plf
 {
-  template<typename Options> struct eps_t : eve::constant_callable<eps_t, Options>
+  template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
   {
     template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-
-      if constexpr(plf::dimension_v<T> == 1)
+      using i_t = eve::as_integer_t<u_t>;
+      auto vlm = eve::valmax(eve::as<u_t>());
+      if constexpr(dimension_v<T> == 1)
+        return vlm;
+      else if constexpr(dimension_v<T> == 2)
       {
-        return eve::eps(eve::as(u_t()));
+        auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
+        return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));
       }
-      if constexpr(plf::dimension_v<T> == 2)
+      else if constexpr(dimension_v<T> == 3)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
-      }
-      else if constexpr(plf::dimension_v<T> == 3)
-      {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
-      }
-      else
-      {
-        return eve::eps(eve::as<u_t>());
+        auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
+        return plf::_::from_triple(vlm, eve::ldexp(vlm, mnbts),  eve::ldexp(vlm, 2*mnbts));
       }
     }
 
@@ -48,13 +42,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(eps_t, eps_);
+    EVE_CALLABLE_OBJECT(valmax_t, valmax_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @var valmax
+  //!   @brief return the maximal representable flint value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,24 +61,24 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto valmax(T z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z` :   [Type wrapper](@ref eve::as) instance embedding the type of the constant.
   //!
-  //!   **Return value**
+  //!    **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the effective number of bits of the mantissa value.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/valmax.cpp}
   //======================================================================================================================
 
-  inline constexpr auto eps = eve::functor<eps_t>;
+  inline constexpr auto valmax = eve::functor<valmax_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

@@ -13,7 +13,7 @@
 
 namespace plf
 {
-  template<typename Options> struct eps_t : eve::constant_callable<eps_t, Options>
+  template<typename Options> struct oneosqrteps_t : eve::constant_callable<oneosqrteps_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
@@ -22,23 +22,23 @@ namespace plf
 
       if constexpr(plf::dimension_v<T> == 1)
       {
-        return eve::eps(eve::as(u_t()));
+        return eve::oneosqrteps(eve::as(u_t()));
       }
       if constexpr(plf::dimension_v<T> == 2)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
+        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p+10);
+        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p+23);
+        else if constexpr(std::same_as<u_t, double> ) return T(0x1p+52);
       }
       else if constexpr(plf::dimension_v<T> == 3)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
+        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p+15);
+        else if constexpr(std::same_as<u_t, float>  ) return plf::_::from_triple<u_t>(0x1.6a09e6p+34, 0x1.9fcef4p+8, -0x1.b7ba68p-17);
+        else if constexpr(std::same_as<u_t, double> ) return T(0x1p+78);
       }
       else
       {
-        return eve::eps(eve::as<u_t>());
+        return eve::oneosqrteps(eve::as<u_t>());
       }
     }
 
@@ -48,13 +48,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(eps_t, eps_);
+    EVE_CALLABLE_OBJECT(oneosqrteps_t, oneosqrteps_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @var oneosqrteps
+  //!   @brief return the inverse of sqrteps value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,7 +67,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto oneosqrteps(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -77,14 +77,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the inverse of sqrteps value.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/oneosqrteps.cpp}
   //======================================================================================================================
 
-  inline constexpr auto eps = eve::functor<eps_t>;
+  inline constexpr auto oneosqrteps = eve::functor<oneosqrteps_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

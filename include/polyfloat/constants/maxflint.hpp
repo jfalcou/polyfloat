@@ -7,39 +7,25 @@
 //======================================================================================================================
 #pragma once
 
+#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 
 namespace plf
 {
-  template<typename Options> struct eps_t : eve::constant_callable<eps_t, Options>
+  template<typename Options> struct maxflint_t : eve::constant_callable<maxflint_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-
-      if constexpr(plf::dimension_v<T> == 1)
-      {
-        return eve::eps(eve::as(u_t()));
-      }
-      if constexpr(plf::dimension_v<T> == 2)
-      {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
-      }
-      else if constexpr(plf::dimension_v<T> == 3)
-      {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
-      }
-      else
-      {
-        return eve::eps(eve::as<u_t>());
-      }
+      if constexpr(dimension_v<T> == 1)
+        return T(eve::maxflint(eve::as<u_t>()));
+      else if constexpr(dimension_v<T> == 2)
+        return T(ldexp(1.0, 106), ldexp(1.0, 53));
+      else if constexpr(dimension_v<T> == 3)
+        return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
     }
 
     template<concepts::polyfloat_like T>
@@ -48,13 +34,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(eps_t, eps_);
+    EVE_CALLABLE_OBJECT(maxflint_t, maxflint_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @var maxflint
+  //!   @brief return the maximal representable flint value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,7 +53,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto maxflint(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -77,14 +63,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the maximal representable flint value.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/maxflint.cpp}
   //======================================================================================================================
 
-  inline constexpr auto eps = eve::functor<eps_t>;
+  inline constexpr auto maxflint = eve::functor<maxflint_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

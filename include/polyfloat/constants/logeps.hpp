@@ -13,7 +13,7 @@
 
 namespace plf
 {
-  template<typename Options> struct eps_t : eve::constant_callable<eps_t, Options>
+  template<typename Options> struct logeps_t : eve::constant_callable<logeps_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
@@ -22,23 +22,22 @@ namespace plf
 
       if constexpr(plf::dimension_v<T> == 1)
       {
-        return eve::eps(eve::as(u_t()));
+        return eve::logeps(eve::as(u_t()));
       }
       if constexpr(plf::dimension_v<T> == 2)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
+        if constexpr(std::same_as<u_t, float>  )      return plf::_::from_pair<u_t>(-0x1.fe2804p+4, -0x1.d0f668p-21);
+        else if constexpr(std::same_as<u_t, double> ) return  plf::_::from_pair<u_t>(-0x1.205966f2b4f12p+6, -0x1.6dca0480f5c1ap-48);
       }
       else if constexpr(plf::dimension_v<T> == 3)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
-        else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
+        if constexpr(std::same_as<u_t, float>  )      return plf::_::from_triple<u_t>(-0x1.7e9e04p+5, 0x1.468e62p-21, 0x1.0d2ca6p-46);
+        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_triple<u_t>(-0x1.b0861a6c0f69cp+6, 0x1.db50f93e8f5d9p-48, 0x1.fc6b4d1af0c52p-102);
+
       }
       else
       {
-        return eve::eps(eve::as<u_t>());
+        return eve::logeps(eve::as<u_t>());
       }
     }
 
@@ -48,13 +47,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(eps_t, eps_);
+    EVE_CALLABLE_OBJECT(logeps_t, logeps_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @var logeps
+  //!   @brief return the logeps value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,7 +66,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto logeps(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -77,14 +76,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the logeps value of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/logeps.cpp}
   //======================================================================================================================
 
-  inline constexpr auto eps = eve::functor<eps_t>;
+  inline constexpr auto logeps = eve::functor<logeps_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
