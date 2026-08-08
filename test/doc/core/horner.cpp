@@ -42,6 +42,7 @@ int main()
   std::cout << "---- scalar" << '\n'
             << "<- xs                          = " << xs << '\n'
             << "-> horner(xs, 1.5, 2.0, 4.0)   = " << plf::horner(xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0) << '\n'
+            << "-> horner(xs, 1.5, 2.0, 4.0)   = " << plf::horner[eve::kahan](xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0) << '\n'
             << "-> horner(xs, kumi::tuple{1.5, 2.0, 4.0}) = " << plf::horner(xs,eve::coefficients( kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) << '\n'
   //= " << plf::horner(xs, kumi::tuple{1.5, 2.0, 4.0}) << '\n'
     ;

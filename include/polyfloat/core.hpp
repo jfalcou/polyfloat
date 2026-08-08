@@ -99,3 +99,4 @@
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
 #include <polyfloat/module/core/trunc.hpp>
+#include <polyfloat/module/core/two_add.hpp>

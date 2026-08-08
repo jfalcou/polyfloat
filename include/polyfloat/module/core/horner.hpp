@@ -17,7 +17,7 @@
 namespace plf
 {
 
-  template<typename Options> struct horner_t : eve::strict_tuple_callable<horner_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct horner_t : eve::strict_tuple_callable<horner_t, Options, eve::kahan_option,raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
