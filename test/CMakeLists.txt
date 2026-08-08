@@ -10,8 +10,8 @@ set(root "${CMAKE_SOURCE_DIR}/test")
 ##======================================================================================================================
 ## Documentation tests
 ##======================================================================================================================
-copa_glob_unit(QUIET PATTERN "doc/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch)
-copa_glob_unit(QUIET PATTERN "doc/constants/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch)
+copa_glob_unit(QUIET PATTERN "doc/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch  EXTERNALS mpfr gmp )
+copa_glob_unit(QUIET PATTERN "doc/constants/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch  EXTERNALS mpfr gmp )
 
 ##======================================================================================================================
 ## Unit tests
