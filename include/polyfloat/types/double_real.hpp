@@ -10,7 +10,7 @@
 #include <eve/eve.hpp>
 #include <polyfloat/types/polyfloat.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <polyfloat/functions/parts.hpp>
+#include <polyfloat/module/core/parts.hpp>
 
 namespace plf
 {
