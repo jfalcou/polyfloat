@@ -1,0 +1,395 @@
+<!-- HTML header for doxygen 1.9.5-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>polyfloat: plf Namespace Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="godbolt.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeTabs.init()
+  DoxygenAwesomeParagraphLink.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  SendToGodbolt.init("kyosu:eve","clang1600","-O3 -std=c++20 -DNDEBUG")
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="color.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<a href="https://github.com/jfalcou/kyosu" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<!-- BEGIN TITLEAREA-->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr  style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
+   </div>
+   <div id="projectbrief">Complex Without Complexes</div>
+  </td>
+ </tr>
+   <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('namespaceplf.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">plf Namespace Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Main POLYFLOAT namespace.  
+<a href="#details">More...</a></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main POLYFLOAT namespace. </p>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:as_5Fcomponent" id="r_as_5Fcomponent"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structplf_1_1as__component.html">as_component</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lightweight type-wrapper of real value type.  <a href="structplf_1_1as__component.html#details">More...</a><br /></td></tr>
+<tr class="memitem:as_5Fpolyfloat_5Flike" id="r_as_5Fpolyfloat_5Flike"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structplf_1_1as__polyfloat__like.html">as_polyfloat_like</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the cayley_dickson_like type associated to a Poly-Float-like family of types.  <a href="structplf_1_1as__polyfloat__like.html#details">More...</a><br /></td></tr>
+<tr class="memitem:polyfloat" id="r_polyfloat"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="structplf_1_1polyfloat.html">polyfloat</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">representing an extended precision floating point by a sequence of standards ones  <a href="structplf_1_1polyfloat.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gaa325dcaa3d30c3a89c5333b2800aac54" id="r_gaa325dcaa3d30c3a89c5333b2800aac54"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:gaa325dcaa3d30c3a89c5333b2800aac54 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gaa325dcaa3d30c3a89c5333b2800aac54.html#gaa325dcaa3d30c3a89c5333b2800aac54">as_component_type_t</a> = typename as_component_type&lt;T&gt;::type</td></tr>
+<tr class="memdesc:gaa325dcaa3d30c3a89c5333b2800aac54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the real type associated to a Poly-Float-like type.  <br /></td></tr>
+<tr class="memitem:gaa65fa3ada94ae1d661001889062623b4" id="r_gaa65fa3ada94ae1d661001889062623b4"><td class="memTemplParams" colspan="2">template&lt;unsigned int Dim, typename... Ts&gt; </td></tr>
+<tr class="memitem:gaa65fa3ada94ae1d661001889062623b4 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a> = typename as_polyfloat_n&lt;Dim, Ts...&gt;::type</td></tr>
+<tr class="memdesc:gaa65fa3ada94ae1d661001889062623b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a Poly-Float type of a given dimension.  <br /></td></tr>
+<tr class="memitem:gabb544245c689b7e0ea2f9f6e8feb8594" id="r_gabb544245c689b7e0ea2f9f6e8feb8594"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
+<tr class="memitem:gabb544245c689b7e0ea2f9f6e8feb8594 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594">as_polyfloat_t</a> = typename as_polyfloat&lt;Ts...&gt;::type</td></tr>
+<tr class="memdesc:gabb544245c689b7e0ea2f9f6e8feb8594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the best fitting Poly-Float type from a series of types.  <br /></td></tr>
+<tr class="memitem:gad41c3534de111df822528a4437f2b193" id="r_gad41c3534de111df822528a4437f2b193"><td class="memTemplParams" colspan="2">template&lt;eve::floating_value T&gt; </td></tr>
+<tr class="memitem:gad41c3534de111df822528a4437f2b193 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">double_real_t</a> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;2,T&gt;</td></tr>
+<tr class="memdesc:gad41c3534de111df822528a4437f2b193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for double_real numbers.  <br /></td></tr>
+<tr class="memitem:ga4c1c1780bdc9bedf696cc99a1893f883" id="r_ga4c1c1780bdc9bedf696cc99a1893f883"><td class="memTemplParams" colspan="2">template&lt;eve::floating_value T&gt; </td></tr>
+<tr class="memitem:ga4c1c1780bdc9bedf696cc99a1893f883 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__types_ga4c1c1780bdc9bedf696cc99a1893f883.html#ga4c1c1780bdc9bedf696cc99a1893f883">triple_real_t</a> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;3,T&gt;</td></tr>
+<tr class="memdesc:ga4c1c1780bdc9bedf696cc99a1893f883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for triple_real numbers.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0d9579fedf83ffc6e9e39706329882dd" id="r_a0d9579fedf83ffc6e9e39706329882dd"><td class="memTemplParams" colspan="2"><a id="a0d9579fedf83ffc6e9e39706329882dd" name="a0d9579fedf83ffc6e9e39706329882dd"></a>
+template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
+<tr class="memitem:a0d9579fedf83ffc6e9e39706329882dd template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator/=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
+<tr class="memdesc:a0d9579fedf83ffc6e9e39706329882dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide <span class="tt">self</span> by the value <span class="tt">other</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
+<tr id="func-members-0" class="groupHeader"><td colspan="2"><div class="groupHeader">Binary Operators &lt; &lt;= &gt; &gt;=</div></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga69b3078b6a64e0467e0595929ca947de" id="r_ga69b3078b6a64e0467e0595929ca947de"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga69b3078b6a64e0467e0595929ca947de.html#ga69b3078b6a64e0467e0595929ca947de">abs</a> = eve::functor&lt;abs_t&gt;</td></tr>
+<tr class="memdesc:ga69b3078b6a64e0467e0595929ca947de"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the absolute value.  <br /></td></tr>
+<tr class="memitem:gadd0f5df2e8971e69dd54e2b9921d04a6" id="r_gadd0f5df2e8971e69dd54e2b9921d04a6"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6">absmax</a> = eve::functor&lt;absmax_t&gt;</td></tr>
+<tr class="memdesc:gadd0f5df2e8971e69dd54e2b9921d04a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sum of the parameters.  <br /></td></tr>
+<tr class="memitem:ga6b9323d57f26ce1cd555444d9b64c807" id="r_ga6b9323d57f26ce1cd555444d9b64c807"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807">absmin</a> = eve::functor&lt;absmin_t&gt;</td></tr>
+<tr class="memdesc:ga6b9323d57f26ce1cd555444d9b64c807"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the absolute value of the minimum of the parameters.  <br /></td></tr>
+<tr class="memitem:ga4d1ed930ff0fa7d990dddb01882515e6" id="r_ga4d1ed930ff0fa7d990dddb01882515e6"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6">add</a> = eve::functor&lt;add_t&gt;</td></tr>
+<tr class="memdesc:ga4d1ed930ff0fa7d990dddb01882515e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sum of the parameters.  <br /></td></tr>
+<tr class="memitem:gad514388c4bd4fe58d50e53e426d62140" id="r_gad514388c4bd4fe58d50e53e426d62140"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140">average</a> = eve::functor&lt;average_t&gt;</td></tr>
+<tr class="memdesc:gad514388c4bd4fe58d50e53e426d62140"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the average value.  <br /></td></tr>
+<tr class="memitem:gacf4cc27cc53a0faf471c2610eab95e8c" id="r_gacf4cc27cc53a0faf471c2610eab95e8c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gacf4cc27cc53a0faf471c2610eab95e8c.html#gacf4cc27cc53a0faf471c2610eab95e8c">ceil</a> = eve::functor&lt;ceil_t&gt;</td></tr>
+<tr class="memdesc:gacf4cc27cc53a0faf471c2610eab95e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the ceilolute value.  <br /></td></tr>
+<tr class="memitem:ga352e6ca52f4beeae5effd0cdf7325247" id="r_ga352e6ca52f4beeae5effd0cdf7325247"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga352e6ca52f4beeae5effd0cdf7325247.html#ga352e6ca52f4beeae5effd0cdf7325247">chi</a> = eve::functor&lt;chi_t&gt;</td></tr>
+<tr class="memdesc:ga352e6ca52f4beeae5effd0cdf7325247"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">callable</span> indicatrix of the interval \([lo, hi[\) or of the set for which the invocable returns true.  <br /></td></tr>
+<tr class="memitem:gaf3b6e14fd2890b610b24438a70b5ba87" id="r_gaf3b6e14fd2890b610b24438a70b5ba87"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaf3b6e14fd2890b610b24438a70b5ba87.html#gaf3b6e14fd2890b610b24438a70b5ba87">clamp</a> = eve::functor&lt;clamp_t&gt;</td></tr>
+<tr class="memdesc:gaf3b6e14fd2890b610b24438a70b5ba87"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">callable</span> indicatrix of the interval \([lo, hi[\) or of the set for which the invocable returns true.  <br /></td></tr>
+<tr class="memitem:ga3596810b24bfc8fb774e184cf3c2787e" id="r_ga3596810b24bfc8fb774e184cf3c2787e"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga3596810b24bfc8fb774e184cf3c2787e.html#ga3596810b24bfc8fb774e184cf3c2787e">convert</a> = eve::functor&lt;convert_t&gt;</td></tr>
+<tr class="memdesc:ga3596810b24bfc8fb774e184cf3c2787e"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert to a target type  <br /></td></tr>
+<tr class="memitem:gae88e21eb3751b1d0fd7b71d288d9d1ee" id="r_gae88e21eb3751b1d0fd7b71d288d9d1ee"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gae88e21eb3751b1d0fd7b71d288d9d1ee.html#gae88e21eb3751b1d0fd7b71d288d9d1ee">copysign</a> = eve::functor&lt;copysign_t&gt;</td></tr>
+<tr class="memdesc:gae88e21eb3751b1d0fd7b71d288d9d1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the first parameter with the sign of the second.  <br /></td></tr>
+<tr class="memitem:ga21dc299efb61f8ae4924e3fb0b953f7c" id="r_ga21dc299efb61f8ae4924e3fb0b953f7c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga21dc299efb61f8ae4924e3fb0b953f7c.html#ga21dc299efb61f8ae4924e3fb0b953f7c">dec</a> = eve::functor&lt;dec_t&gt;</td></tr>
+<tr class="memdesc:ga21dc299efb61f8ae4924e3fb0b953f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the value minus one.  <br /></td></tr>
+<tr class="memitem:ga846021636ff96cc73a58d2f664e7ce1f" id="r_ga846021636ff96cc73a58d2f664e7ce1f"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ga846021636ff96cc73a58d2f664e7ce1f template"><td class="memItemLeft">constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">dimension_v</a> = 1</td></tr>
+<tr class="memdesc:ga846021636ff96cc73a58d2f664e7ce1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the rank containing a given type.  <br /></td></tr>
+<tr class="memitem:ga31aaafd7f21c599693e7a2fd6533e315" id="r_ga31aaafd7f21c599693e7a2fd6533e315"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga31aaafd7f21c599693e7a2fd6533e315.html#ga31aaafd7f21c599693e7a2fd6533e315">dist</a> = eve::functor&lt;dist_t&gt;</td></tr>
+<tr class="memdesc:ga31aaafd7f21c599693e7a2fd6533e315"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the distance value.  <br /></td></tr>
+<tr class="memitem:gad96f947d70b23427a0305b9998aad337" id="r_gad96f947d70b23427a0305b9998aad337"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gad96f947d70b23427a0305b9998aad337.html#gad96f947d70b23427a0305b9998aad337">div</a> = eve::functor&lt;div_t&gt;</td></tr>
+<tr class="memdesc:gad96f947d70b23427a0305b9998aad337"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the ratio of the values.  <br /></td></tr>
+<tr class="memitem:gac4277864eeceb38de7a3e18e4f329337" id="r_gac4277864eeceb38de7a3e18e4f329337"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gac4277864eeceb38de7a3e18e4f329337.html#gac4277864eeceb38de7a3e18e4f329337">effective_mantissa_bits</a> = eve::functor&lt;effective_mantissa_bits_t&gt;</td></tr>
+<tr class="memdesc:gac4277864eeceb38de7a3e18e4f329337"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the maximal representable flint value.  <br /></td></tr>
+<tr class="memitem:gacd69b768b1e3278712c5dd2b3cd7b58c" id="r_gacd69b768b1e3278712c5dd2b3cd7b58c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">eps</a> = eve::functor&lt;eps_t&gt;</td></tr>
+<tr class="memdesc:gacd69b768b1e3278712c5dd2b3cd7b58c"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the epsolute value.  <br /></td></tr>
+<tr class="memitem:gac68d4fa443f186a4893bda40bdadcd39" id="r_gac68d4fa443f186a4893bda40bdadcd39"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gac68d4fa443f186a4893bda40bdadcd39.html#gac68d4fa443f186a4893bda40bdadcd39">epsilon</a> = eve::functor&lt;epsilon_t&gt;</td></tr>
+<tr class="memdesc:gac68d4fa443f186a4893bda40bdadcd39"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the epsilon value.  <br /></td></tr>
+<tr class="memitem:ga60713c93ccdf574a916e2c96eede7018" id="r_ga60713c93ccdf574a916e2c96eede7018"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__internal_ga60713c93ccdf574a916e2c96eede7018.html#ga60713c93ccdf574a916e2c96eede7018">exponent</a> = eve::functor&lt;exponent_t&gt;</td></tr>
+<tr class="memdesc:ga60713c93ccdf574a916e2c96eede7018"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise_callable</span> object computing the integral IEEE exponent of the floating value.  <br /></td></tr>
+<tr class="memitem:gabaa3043614b3644380404814e6718a87" id="r_gabaa3043614b3644380404814e6718a87"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gabaa3043614b3644380404814e6718a87.html#gabaa3043614b3644380404814e6718a87">floor</a> = eve::functor&lt;floor_t&gt;</td></tr>
+<tr class="memdesc:gabaa3043614b3644380404814e6718a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the floorolute value.  <br /></td></tr>
+<tr class="memitem:ga1e5b90cb087d254f8741482c0e894594" id="r_ga1e5b90cb087d254f8741482c0e894594"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1e5b90cb087d254f8741482c0e894594.html#ga1e5b90cb087d254f8741482c0e894594">fmod</a> = eve::functor&lt;fmod_t&gt;</td></tr>
+<tr class="memdesc:ga1e5b90cb087d254f8741482c0e894594"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the remainder of the values.  <br /></td></tr>
+<tr class="memitem:ga6cbff9063806f25141fbe0f5863becae" id="r_ga6cbff9063806f25141fbe0f5863becae"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga6cbff9063806f25141fbe0f5863becae.html#ga6cbff9063806f25141fbe0f5863becae">frac</a> = eve::functor&lt;frac_t&gt;</td></tr>
+<tr class="memdesc:ga6cbff9063806f25141fbe0f5863becae"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fractionnal part of the value.  <br /></td></tr>
+<tr class="memitem:gaacc157e51d44695e50b1e1af7643abc0" id="r_gaacc157e51d44695e50b1e1af7643abc0"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaacc157e51d44695e50b1e1af7643abc0.html#gaacc157e51d44695e50b1e1af7643abc0">heaviside</a> = eve::functor&lt;heaviside_t&gt;</td></tr>
+<tr class="memdesc:gaacc157e51d44695e50b1e1af7643abc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the heavisideolute value.  <br /></td></tr>
+<tr class="memitem:gafb741bdffc03f40d05b112ff6c893e7c" id="r_gafb741bdffc03f40d05b112ff6c893e7c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gafb741bdffc03f40d05b112ff6c893e7c.html#gafb741bdffc03f40d05b112ff6c893e7c">if_else</a> = eve::functor&lt;if_else_t&gt;</td></tr>
+<tr class="memdesc:gafb741bdffc03f40d05b112ff6c893e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select a value between two arguments based on a logical mask.  <br /></td></tr>
+<tr class="memitem:gad3d7ea17362a2244fb6ec0ca2d5a78e5" id="r_gad3d7ea17362a2244fb6ec0ca2d5a78e5"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gad3d7ea17362a2244fb6ec0ca2d5a78e5.html#gad3d7ea17362a2244fb6ec0ca2d5a78e5">inc</a> = eve::functor&lt;inc_t&gt;</td></tr>
+<tr class="memdesc:gad3d7ea17362a2244fb6ec0ca2d5a78e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the value plus one.  <br /></td></tr>
+<tr class="memitem:ga17a6561e33fcb9f3bf0be566ca5751f7" id="r_ga17a6561e33fcb9f3bf0be566ca5751f7"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a> = eve::functor&lt;inf_t&gt;</td></tr>
+<tr class="memdesc:ga17a6561e33fcb9f3bf0be566ca5751f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the infinite value.  <br /></td></tr>
+<tr class="memitem:gae1bef0c184e2dead4007764d4e821835" id="r_gae1bef0c184e2dead4007764d4e821835"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gae1bef0c184e2dead4007764d4e821835.html#gae1bef0c184e2dead4007764d4e821835">inveps</a> = eve::functor&lt;inveps_t&gt;</td></tr>
+<tr class="memdesc:gae1bef0c184e2dead4007764d4e821835"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the inverse of the eps value.  <br /></td></tr>
+<tr class="memitem:ga3b8438957e33ee0ee5b3ab2508aa72ac" id="r_ga3b8438957e33ee0ee5b3ab2508aa72ac"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga3b8438957e33ee0ee5b3ab2508aa72ac.html#ga3b8438957e33ee0ee5b3ab2508aa72ac">is_denormal</a> = eve::functor&lt;is_denormal_t&gt;</td></tr>
+<tr class="memdesc:ga3b8438957e33ee0ee5b3ab2508aa72ac"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a denormal floating value  <br /></td></tr>
+<tr class="memitem:ga1a258750e54fc736597fa9439bea340f" id="r_ga1a258750e54fc736597fa9439bea340f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1a258750e54fc736597fa9439bea340f.html#ga1a258750e54fc736597fa9439bea340f">is_eqmz</a> = eve::functor&lt;is_eqmz_t&gt;</td></tr>
+<tr class="memdesc:ga1a258750e54fc736597fa9439bea340f"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for equality to negative zero.  <br /></td></tr>
+<tr class="memitem:ga1d3c7d7b9441ebc3115872893b1f35a7" id="r_ga1d3c7d7b9441ebc3115872893b1f35a7"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1d3c7d7b9441ebc3115872893b1f35a7.html#ga1d3c7d7b9441ebc3115872893b1f35a7">is_eqpz</a> = eve::functor&lt;is_eqpz_t&gt;</td></tr>
+<tr class="memdesc:ga1d3c7d7b9441ebc3115872893b1f35a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for equality to positive zero.  <br /></td></tr>
+<tr class="memitem:gaa3f884f1bd114c09949fb5d4e1af9876" id="r_gaa3f884f1bd114c09949fb5d4e1af9876"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaa3f884f1bd114c09949fb5d4e1af9876.html#gaa3f884f1bd114c09949fb5d4e1af9876">is_equal</a> = eve::functor&lt;is_equal_t&gt;</td></tr>
+<tr class="memdesc:gaa3f884f1bd114c09949fb5d4e1af9876"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the is_equal value.  <br /></td></tr>
+<tr class="memitem:ga4d8c8308d3b4bba663bb237a195b27a6" id="r_ga4d8c8308d3b4bba663bb237a195b27a6"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga4d8c8308d3b4bba663bb237a195b27a6.html#ga4d8c8308d3b4bba663bb237a195b27a6">is_eqz</a> = eve::functor&lt;is_eqz_t&gt;</td></tr>
+<tr class="memdesc:ga4d8c8308d3b4bba663bb237a195b27a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for equality to zero.  <br /></td></tr>
+<tr class="memitem:gabfa4b5248f0e3f16859f471e7445a0ec" id="r_gabfa4b5248f0e3f16859f471e7445a0ec"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gabfa4b5248f0e3f16859f471e7445a0ec.html#gabfa4b5248f0e3f16859f471e7445a0ec">is_even</a> = eve::functor&lt;is_even_t&gt;</td></tr>
+<tr class="memdesc:gabfa4b5248f0e3f16859f471e7445a0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an even integer  <br /></td></tr>
+<tr class="memitem:ga51a63988bfb6162220cd95bcf37af748" id="r_ga51a63988bfb6162220cd95bcf37af748"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga51a63988bfb6162220cd95bcf37af748.html#ga51a63988bfb6162220cd95bcf37af748">is_finite</a> = eve::functor&lt;is_finite_t&gt;</td></tr>
+<tr class="memdesc:ga51a63988bfb6162220cd95bcf37af748"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter finiteness.  <br /></td></tr>
+<tr class="memitem:ga72a296047ea9f24dc1438e3a1161e58b" id="r_ga72a296047ea9f24dc1438e3a1161e58b"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga72a296047ea9f24dc1438e3a1161e58b.html#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a> = eve::functor&lt;is_flint_t&gt;</td></tr>
+<tr class="memdesc:ga72a296047ea9f24dc1438e3a1161e58b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an integer  <br /></td></tr>
+<tr class="memitem:ga1a413faf72a8ca404c5445c18660b038" id="r_ga1a413faf72a8ca404c5445c18660b038"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1a413faf72a8ca404c5445c18660b038.html#ga1a413faf72a8ca404c5445c18660b038">is_greater</a> = eve::functor&lt;is_greater_t&gt;</td></tr>
+<tr class="memdesc:ga1a413faf72a8ca404c5445c18660b038"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if z1 &gt; z2  <br /></td></tr>
+<tr class="memitem:ga97645462f4430d66d0da2a93a1b2f37d" id="r_ga97645462f4430d66d0da2a93a1b2f37d"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga97645462f4430d66d0da2a93a1b2f37d.html#ga97645462f4430d66d0da2a93a1b2f37d">is_greater_equal</a> = eve::functor&lt;is_greater_equal_t&gt;</td></tr>
+<tr class="memdesc:ga97645462f4430d66d0da2a93a1b2f37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if z2 &gt;= z2.  <br /></td></tr>
+<tr class="memitem:gabd560b7b077896323ee38940ef5a3583" id="r_gabd560b7b077896323ee38940ef5a3583"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gabd560b7b077896323ee38940ef5a3583.html#gabd560b7b077896323ee38940ef5a3583">is_gtz</a> = eve::functor&lt;is_gtz_t&gt;</td></tr>
+<tr class="memdesc:gabd560b7b077896323ee38940ef5a3583"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for greater than zero.  <br /></td></tr>
+<tr class="memitem:gaeb3a722d8086ab0090707c53e2058c3d" id="r_gaeb3a722d8086ab0090707c53e2058c3d"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaeb3a722d8086ab0090707c53e2058c3d.html#gaeb3a722d8086ab0090707c53e2058c3d">is_less</a> = eve::functor&lt;is_less_t&gt;</td></tr>
+<tr class="memdesc:gaeb3a722d8086ab0090707c53e2058c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if z2 &gt;= z2.  <br /></td></tr>
+<tr class="memitem:ga288303686db135dde311d78d6ebcc103" id="r_ga288303686db135dde311d78d6ebcc103"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga288303686db135dde311d78d6ebcc103.html#ga288303686db135dde311d78d6ebcc103">is_less_equal</a> = eve::functor&lt;is_less_equal_t&gt;</td></tr>
+<tr class="memdesc:ga288303686db135dde311d78d6ebcc103"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if z2 &lt;= z2.  <br /></td></tr>
+<tr class="memitem:ga93c70fd4967b9569ea28724a993369be" id="r_ga93c70fd4967b9569ea28724a993369be"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga93c70fd4967b9569ea28724a993369be.html#ga93c70fd4967b9569ea28724a993369be">is_lessgreater</a> = eve::functor&lt;is_lessgreater_t&gt;</td></tr>
+<tr class="memdesc:ga93c70fd4967b9569ea28724a993369be"><td class="mdescLeft">&#160;</td><td class="mdescRight">return a logical true if and only if the elements pair are not equal or unordered.  <br /></td></tr>
+<tr class="memitem:ga62ddb7af573f49058eba0f222072310a" id="r_ga62ddb7af573f49058eba0f222072310a"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga62ddb7af573f49058eba0f222072310a.html#ga62ddb7af573f49058eba0f222072310a">is_ltz</a> = eve::functor&lt;is_ltz_t&gt;</td></tr>
+<tr class="memdesc:ga62ddb7af573f49058eba0f222072310a"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for less than zero.  <br /></td></tr>
+<tr class="memitem:ga1db11a0b9a18822ffe41043c38cc80c3" id="r_ga1db11a0b9a18822ffe41043c38cc80c3"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1db11a0b9a18822ffe41043c38cc80c3.html#ga1db11a0b9a18822ffe41043c38cc80c3">is_nan</a> = eve::functor&lt;is_nan_t&gt;</td></tr>
+<tr class="memdesc:ga1db11a0b9a18822ffe41043c38cc80c3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if the element is a Nan  <br /></td></tr>
+<tr class="memitem:ga5b1a93ce270f1b01560e0007b998ea73" id="r_ga5b1a93ce270f1b01560e0007b998ea73"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga5b1a93ce270f1b01560e0007b998ea73.html#ga5b1a93ce270f1b01560e0007b998ea73">is_negative</a> = eve::functor&lt;is_negative_t&gt;</td></tr>
+<tr class="memdesc:ga5b1a93ce270f1b01560e0007b998ea73"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element has its sign bit set  <br /></td></tr>
+<tr class="memitem:gab196817aaa41a88c58ed791c715b0350" id="r_gab196817aaa41a88c58ed791c715b0350"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gab196817aaa41a88c58ed791c715b0350.html#gab196817aaa41a88c58ed791c715b0350">is_nemz</a> = eve::functor&lt;is_nemz_t&gt;</td></tr>
+<tr class="memdesc:gab196817aaa41a88c58ed791c715b0350"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not equality to negative zero.  <br /></td></tr>
+<tr class="memitem:ga588f3519dcd992829d6060db0b2dd0b6" id="r_ga588f3519dcd992829d6060db0b2dd0b6"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga588f3519dcd992829d6060db0b2dd0b6.html#ga588f3519dcd992829d6060db0b2dd0b6">is_nepz</a> = eve::functor&lt;is_nepz_t&gt;</td></tr>
+<tr class="memdesc:ga588f3519dcd992829d6060db0b2dd0b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not equality to positive zero.  <br /></td></tr>
+<tr class="memitem:ga1e4d7cd895471d034bfab1d93130be54" id="r_ga1e4d7cd895471d034bfab1d93130be54"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1e4d7cd895471d034bfab1d93130be54.html#ga1e4d7cd895471d034bfab1d93130be54">is_nez</a> = eve::functor&lt;is_nez_t&gt;</td></tr>
+<tr class="memdesc:ga1e4d7cd895471d034bfab1d93130be54"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not equal to zero.  <br /></td></tr>
+<tr class="memitem:ga4299f6d8bf5e48900d92af1371735d2f" id="r_ga4299f6d8bf5e48900d92af1371735d2f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga4299f6d8bf5e48900d92af1371735d2f.html#ga4299f6d8bf5e48900d92af1371735d2f">is_ngez</a> = eve::functor&lt;is_ngez_t&gt;</td></tr>
+<tr class="memdesc:ga4299f6d8bf5e48900d92af1371735d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not greater or equal to zero.  <br /></td></tr>
+<tr class="memitem:ga1012d9d76ecb23bf85402fea5b7719ae" id="r_ga1012d9d76ecb23bf85402fea5b7719ae"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1012d9d76ecb23bf85402fea5b7719ae.html#ga1012d9d76ecb23bf85402fea5b7719ae">is_ngtz</a> = eve::functor&lt;is_ngtz_t&gt;</td></tr>
+<tr class="memdesc:ga1012d9d76ecb23bf85402fea5b7719ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not greater or equal to zero.  <br /></td></tr>
+<tr class="memitem:ga78f7c97500b38f86a7a63242368aae2c" id="r_ga78f7c97500b38f86a7a63242368aae2c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga78f7c97500b38f86a7a63242368aae2c.html#ga78f7c97500b38f86a7a63242368aae2c">is_nlez</a> = eve::functor&lt;is_nlez_t&gt;</td></tr>
+<tr class="memdesc:ga78f7c97500b38f86a7a63242368aae2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not less or equal to zero.  <br /></td></tr>
+<tr class="memitem:gae2a0761ccbc5a9fe472f2f5c14a8fcd9" id="r_gae2a0761ccbc5a9fe472f2f5c14a8fcd9"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gae2a0761ccbc5a9fe472f2f5c14a8fcd9.html#gae2a0761ccbc5a9fe472f2f5c14a8fcd9">is_nltz</a> = eve::functor&lt;is_nltz_t&gt;</td></tr>
+<tr class="memdesc:gae2a0761ccbc5a9fe472f2f5c14a8fcd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for not less than zero.  <br /></td></tr>
+<tr class="memitem:ga315ab6ec01496d96b325d266be09767f" id="r_ga315ab6ec01496d96b325d266be09767f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga315ab6ec01496d96b325d266be09767f.html#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a> = eve::functor&lt;is_not_denormal_t&gt;</td></tr>
+<tr class="memdesc:ga315ab6ec01496d96b325d266be09767f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is not a denormal value  <br /></td></tr>
+<tr class="memitem:gaed9f3b4229041da1ac2a2070db903277" id="r_gaed9f3b4229041da1ac2a2070db903277"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaed9f3b4229041da1ac2a2070db903277.html#gaed9f3b4229041da1ac2a2070db903277">is_not_equal</a> = eve::functor&lt;is_not_equal_t&gt;</td></tr>
+<tr class="memdesc:gaed9f3b4229041da1ac2a2070db903277"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the is_not_equal value.  <br /></td></tr>
+<tr class="memitem:ga63749142d53ad0d040659d8d4cffee74" id="r_ga63749142d53ad0d040659d8d4cffee74"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga63749142d53ad0d040659d8d4cffee74.html#ga63749142d53ad0d040659d8d4cffee74">is_not_finite</a> = eve::functor&lt;is_not_finite_t&gt;</td></tr>
+<tr class="memdesc:ga63749142d53ad0d040659d8d4cffee74"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter infiniteness.  <br /></td></tr>
+<tr class="memitem:ga42ae7e20907bd55debe6262ff5ea78f9" id="r_ga42ae7e20907bd55debe6262ff5ea78f9"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga42ae7e20907bd55debe6262ff5ea78f9.html#ga42ae7e20907bd55debe6262ff5ea78f9">is_not_flint</a> = eve::functor&lt;is_not_flint_t&gt;</td></tr>
+<tr class="memdesc:ga42ae7e20907bd55debe6262ff5ea78f9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an integer  <br /></td></tr>
+<tr class="memitem:ga2717687d1b7470024cd67a978c7b42b3" id="r_ga2717687d1b7470024cd67a978c7b42b3"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga2717687d1b7470024cd67a978c7b42b3.html#ga2717687d1b7470024cd67a978c7b42b3">is_not_greater</a> = eve::functor&lt;is_not_greater_t&gt;</td></tr>
+<tr class="memdesc:ga2717687d1b7470024cd67a978c7b42b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true iff !(z1 &gt; z2)  <br /></td></tr>
+<tr class="memitem:gabe0e10750aea5fdf460f4c56f46d84c9" id="r_gabe0e10750aea5fdf460f4c56f46d84c9"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gabe0e10750aea5fdf460f4c56f46d84c9.html#gabe0e10750aea5fdf460f4c56f46d84c9">is_not_greater_equal</a> = eve::functor&lt;is_not_greater_equal_t&gt;</td></tr>
+<tr class="memdesc:gabe0e10750aea5fdf460f4c56f46d84c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true iff !(z1 &gt;= z2)  <br /></td></tr>
+<tr class="memitem:gacad2e09ee75c713a87065f75a2a18c64" id="r_gacad2e09ee75c713a87065f75a2a18c64"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gacad2e09ee75c713a87065f75a2a18c64.html#gacad2e09ee75c713a87065f75a2a18c64">is_not_less</a> = eve::functor&lt;is_not_less_t&gt;</td></tr>
+<tr class="memdesc:gacad2e09ee75c713a87065f75a2a18c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true iff !(z1 &lt; z2)  <br /></td></tr>
+<tr class="memitem:gac10cc53f0009c90aa0a206f346e21cee" id="r_gac10cc53f0009c90aa0a206f346e21cee"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gac10cc53f0009c90aa0a206f346e21cee.html#gac10cc53f0009c90aa0a206f346e21cee">is_not_less_equal</a> = eve::functor&lt;is_not_less_equal_t&gt;</td></tr>
+<tr class="memdesc:gac10cc53f0009c90aa0a206f346e21cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true iff !(z1 &lt;= z2)  <br /></td></tr>
+<tr class="memitem:ga64a07f1dd60b6e1409442078cc039a42" id="r_ga64a07f1dd60b6e1409442078cc039a42"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga64a07f1dd60b6e1409442078cc039a42.html#ga64a07f1dd60b6e1409442078cc039a42">is_not_nan</a> = eve::functor&lt;is_not_nan_t&gt;</td></tr>
+<tr class="memdesc:ga64a07f1dd60b6e1409442078cc039a42"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element is not a Nan  <br /></td></tr>
+<tr class="memitem:ga455e06a0df2a0068637f251becfbb944" id="r_ga455e06a0df2a0068637f251becfbb944"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga455e06a0df2a0068637f251becfbb944.html#ga455e06a0df2a0068637f251becfbb944">is_odd</a> = eve::functor&lt;is_odd_t&gt;</td></tr>
+<tr class="memdesc:ga455e06a0df2a0068637f251becfbb944"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an odd integer  <br /></td></tr>
+<tr class="memitem:ga7c90ae517c18bab6325f49cce61f4edf" id="r_ga7c90ae517c18bab6325f49cce61f4edf"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga7c90ae517c18bab6325f49cce61f4edf.html#ga7c90ae517c18bab6325f49cce61f4edf">is_ordered</a> = eve::functor&lt;is_ordered_t&gt;</td></tr>
+<tr class="memdesc:ga7c90ae517c18bab6325f49cce61f4edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">return a logical true if and only if no parameter is NaN.  <br /></td></tr>
+<tr class="memitem:ga382498c379928168e37005f38a9b8eaf" id="r_ga382498c379928168e37005f38a9b8eaf"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga382498c379928168e37005f38a9b8eaf.html#ga382498c379928168e37005f38a9b8eaf">is_positive</a> = eve::functor&lt;is_positive_t&gt;</td></tr>
+<tr class="memdesc:ga382498c379928168e37005f38a9b8eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise callable</span> returning a logical true if and only if the element has its sign bit unset  <br /></td></tr>
+<tr class="memitem:gaf77de37071bc9885bab1dc8d8bb235b0" id="r_gaf77de37071bc9885bab1dc8d8bb235b0"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaf77de37071bc9885bab1dc8d8bb235b0.html#gaf77de37071bc9885bab1dc8d8bb235b0">is_pow2</a> = eve::functor&lt;is_pow2_t&gt;</td></tr>
+<tr class="memdesc:gaf77de37071bc9885bab1dc8d8bb235b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for equality to a power of 2.  <br /></td></tr>
+<tr class="memitem:gae00ac1ff95cdeca72e526d70cc419e51" id="r_gae00ac1ff95cdeca72e526d70cc419e51"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gae00ac1ff95cdeca72e526d70cc419e51.html#gae00ac1ff95cdeca72e526d70cc419e51">is_unit</a> = eve::functor&lt;is_unit_t&gt;</td></tr>
+<tr class="memdesc:gae00ac1ff95cdeca72e526d70cc419e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">test the parameter for equality to is \(\pm1\).  <br /></td></tr>
+<tr class="memitem:ga46fff13f9c73cf8cdbe1ed78f4083f65" id="r_ga46fff13f9c73cf8cdbe1ed78f4083f65"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga46fff13f9c73cf8cdbe1ed78f4083f65.html#ga46fff13f9c73cf8cdbe1ed78f4083f65">is_unordered</a> = eve::functor&lt;is_unordered_t&gt;</td></tr>
+<tr class="memdesc:ga46fff13f9c73cf8cdbe1ed78f4083f65"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the is_unorderedance value.  <br /></td></tr>
+<tr class="memitem:gaaafb5f51797ebd81c0fdc1011e0275a3" id="r_gaaafb5f51797ebd81c0fdc1011e0275a3"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaaafb5f51797ebd81c0fdc1011e0275a3.html#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a> = eve::functor&lt;ldexp_t&gt;</td></tr>
+<tr class="memdesc:gaaafb5f51797ebd81c0fdc1011e0275a3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">strict_elementwise callable</span> computing \(\textstyle x 2^n\).  <br /></td></tr>
+<tr class="memitem:gad27792bcc40b8ac1693bacbd95570d68" id="r_gad27792bcc40b8ac1693bacbd95570d68"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gad27792bcc40b8ac1693bacbd95570d68.html#gad27792bcc40b8ac1693bacbd95570d68">logeps</a> = eve::functor&lt;logeps_t&gt;</td></tr>
+<tr class="memdesc:gad27792bcc40b8ac1693bacbd95570d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the logeps value.  <br /></td></tr>
+<tr class="memitem:ga592c5eb0fdeb82b41dd07a2ddc48dd6e" id="r_ga592c5eb0fdeb82b41dd07a2ddc48dd6e"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga592c5eb0fdeb82b41dd07a2ddc48dd6e.html#ga592c5eb0fdeb82b41dd07a2ddc48dd6e">mantissa</a> = eve::functor&lt;mantissa_t&gt;</td></tr>
+<tr class="memdesc:ga592c5eb0fdeb82b41dd07a2ddc48dd6e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">elementwise_callable</span> object computing the IEEE mantissa of the floating value.  <br /></td></tr>
+<tr class="memitem:ga1d6b7e84a59f51f3fdeab89704ce3bb1" id="r_ga1d6b7e84a59f51f3fdeab89704ce3bb1"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1">max</a> = eve::functor&lt;max_t&gt;</td></tr>
+<tr class="memdesc:ga1d6b7e84a59f51f3fdeab89704ce3bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the maximum value.  <br /></td></tr>
+<tr class="memitem:gae321346f90402e1b5dc7875054e49a83" id="r_gae321346f90402e1b5dc7875054e49a83"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83">maxflint</a> = eve::functor&lt;maxflint_t&gt;</td></tr>
+<tr class="memdesc:gae321346f90402e1b5dc7875054e49a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the maximal representable flint value.  <br /></td></tr>
+<tr class="memitem:gaf2ecab0082e8fa1007d5ea49c9fa1a87" id="r_gaf2ecab0082e8fa1007d5ea49c9fa1a87"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html#gaf2ecab0082e8fa1007d5ea49c9fa1a87">min</a> = eve::functor&lt;min_t&gt;</td></tr>
+<tr class="memdesc:gaf2ecab0082e8fa1007d5ea49c9fa1a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the minimum value.  <br /></td></tr>
+<tr class="memitem:gae33d4d1bd5488f7aed156cd106f4ce74" id="r_gae33d4d1bd5488f7aed156cd106f4ce74"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gae33d4d1bd5488f7aed156cd106f4ce74.html#gae33d4d1bd5488f7aed156cd106f4ce74">minus</a> = eve::functor&lt;minus_t&gt;</td></tr>
+<tr class="memdesc:gae33d4d1bd5488f7aed156cd106f4ce74"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the opposite value.  <br /></td></tr>
+<tr class="memitem:gaf07ed2a608fc290c474c9baaa296fc76" id="r_gaf07ed2a608fc290c474c9baaa296fc76"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaf07ed2a608fc290c474c9baaa296fc76.html#gaf07ed2a608fc290c474c9baaa296fc76">modf</a> = eve::functor&lt;modf_t&gt;</td></tr>
+<tr class="memdesc:gaf07ed2a608fc290c474c9baaa296fc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the modftionnal part of the value.  <br /></td></tr>
+<tr class="memitem:ga1c1e5e03fa7f21ea1a74311813762197" id="r_ga1c1e5e03fa7f21ea1a74311813762197"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197">nearest</a> = eve::functor&lt;nearest_t&gt;</td></tr>
+<tr class="memdesc:ga1c1e5e03fa7f21ea1a74311813762197"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the nearest integral value.  <br /></td></tr>
+<tr class="memitem:ga0b77fce5aa260a3629bed972eee3ba39" id="r_ga0b77fce5aa260a3629bed972eee3ba39"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga0b77fce5aa260a3629bed972eee3ba39.html#ga0b77fce5aa260a3629bed972eee3ba39">negate</a> = eve::functor&lt;negate_t&gt;</td></tr>
+<tr class="memdesc:ga0b77fce5aa260a3629bed972eee3ba39"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the first parametermultiplied with the sign of the second.  <br /></td></tr>
+<tr class="memitem:gacb0784fa93d2122cec99faf7a9760daa" id="r_gacb0784fa93d2122cec99faf7a9760daa"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gacb0784fa93d2122cec99faf7a9760daa.html#gacb0784fa93d2122cec99faf7a9760daa">negatenz</a> = eve::functor&lt;negatenz_t&gt;</td></tr>
+<tr class="memdesc:gacb0784fa93d2122cec99faf7a9760daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the first parametermultiplied with the signnz of the second.  <br /></td></tr>
+<tr class="memitem:ga60c7f280243a468485f42421a2c06739" id="r_ga60c7f280243a468485f42421a2c06739"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739">next</a> = eve::functor&lt;next_t&gt;</td></tr>
+<tr class="memdesc:ga60c7f280243a468485f42421a2c06739"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the next representable value.  <br /></td></tr>
+<tr class="memitem:gaf37d435e94d94585ba4b0848c520316b" id="r_gaf37d435e94d94585ba4b0848c520316b"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_gaf37d435e94d94585ba4b0848c520316b.html#gaf37d435e94d94585ba4b0848c520316b">oneosqrteps</a> = eve::functor&lt;oneosqrteps_t&gt;</td></tr>
+<tr class="memdesc:gaf37d435e94d94585ba4b0848c520316b"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the inverse of sqrteps value.  <br /></td></tr>
+<tr class="memitem:ga3e945bcc637ae4a744f512275949fe82" id="r_ga3e945bcc637ae4a744f512275949fe82"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga3e945bcc637ae4a744f512275949fe82.html#ga3e945bcc637ae4a744f512275949fe82">prev</a> = eve::functor&lt;prev_t&gt;</td></tr>
+<tr class="memdesc:ga3e945bcc637ae4a744f512275949fe82"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the previous representable value.  <br /></td></tr>
+<tr class="memitem:ga46f13916d7af01b5f6c1f880d13e2ed4" id="r_ga46f13916d7af01b5f6c1f880d13e2ed4"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga46f13916d7af01b5f6c1f880d13e2ed4.html#ga46f13916d7af01b5f6c1f880d13e2ed4">reldist</a> = eve::functor&lt;reldist_t&gt;</td></tr>
+<tr class="memdesc:ga46f13916d7af01b5f6c1f880d13e2ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the reldistance value.  <br /></td></tr>
+<tr class="memitem:ga6b68af3438bb67d5a0ac3634a01fd610" id="r_ga6b68af3438bb67d5a0ac3634a01fd610"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga6b68af3438bb67d5a0ac3634a01fd610.html#ga6b68af3438bb67d5a0ac3634a01fd610">rsqrt</a> = eve::functor&lt;rsqrt_t&gt;</td></tr>
+<tr class="memdesc:ga6b68af3438bb67d5a0ac3634a01fd610"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the inverse square root value.  <br /></td></tr>
+<tr class="memitem:ga71f110b670810f9e0e3ee1b5745a37a8" id="r_ga71f110b670810f9e0e3ee1b5745a37a8"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga71f110b670810f9e0e3ee1b5745a37a8.html#ga71f110b670810f9e0e3ee1b5745a37a8">sign</a> = eve::functor&lt;sign_t&gt;</td></tr>
+<tr class="memdesc:ga71f110b670810f9e0e3ee1b5745a37a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sign value.  <br /></td></tr>
+<tr class="memitem:gaa1b1663acb0eb4bbc16fd9beb3dff197" id="r_gaa1b1663acb0eb4bbc16fd9beb3dff197"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gaa1b1663acb0eb4bbc16fd9beb3dff197.html#gaa1b1663acb0eb4bbc16fd9beb3dff197">signnz</a> = eve::functor&lt;signnz_t&gt;</td></tr>
+<tr class="memdesc:gaa1b1663acb0eb4bbc16fd9beb3dff197"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the never zero sign value.  <br /></td></tr>
+<tr class="memitem:gac72a278d06c43be14dce2cfbd8e67bdf" id="r_gac72a278d06c43be14dce2cfbd8e67bdf"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf">sqr</a> = eve::functor&lt;sqr_t&gt;</td></tr>
+<tr class="memdesc:gac72a278d06c43be14dce2cfbd8e67bdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the square value.  <br /></td></tr>
+<tr class="memitem:gab25eb1782219136d8368a2a090bcac77" id="r_gab25eb1782219136d8368a2a090bcac77"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77">sqrt</a> = eve::functor&lt;sqrt_t&gt;</td></tr>
+<tr class="memdesc:gab25eb1782219136d8368a2a090bcac77"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the square value.  <br /></td></tr>
+<tr class="memitem:ga4242d1daac24e1aa6e29ce62d230d171" id="r_ga4242d1daac24e1aa6e29ce62d230d171"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171">sqrt_2</a> = eve::functor&lt;sqrt_2_t&gt;</td></tr>
+<tr class="memdesc:ga4242d1daac24e1aa6e29ce62d230d171"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sqrt of 2.  <br /></td></tr>
+<tr class="memitem:ga193389bdf9378b4f1ab19e1ed49a52a0" id="r_ga193389bdf9378b4f1ab19e1ed49a52a0"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_ga193389bdf9378b4f1ab19e1ed49a52a0.html#ga193389bdf9378b4f1ab19e1ed49a52a0">sqrteps</a> = eve::functor&lt;sqrteps_t&gt;</td></tr>
+<tr class="memdesc:ga193389bdf9378b4f1ab19e1ed49a52a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sqrtepsolute value.  <br /></td></tr>
+<tr class="memitem:ga5b01112179d17efdb5be43518c0e0669" id="r_ga5b01112179d17efdb5be43518c0e0669"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_ga5b01112179d17efdb5be43518c0e0669.html#ga5b01112179d17efdb5be43518c0e0669">sqrtvalmax</a> = eve::functor&lt;sqrtvalmax_t&gt;</td></tr>
+<tr class="memdesc:ga5b01112179d17efdb5be43518c0e0669"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sqrt of the maximal representable value.  <br /></td></tr>
+<tr class="memitem:ga9aa5715fd56663843e5d34d9e3904338" id="r_ga9aa5715fd56663843e5d34d9e3904338"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga9aa5715fd56663843e5d34d9e3904338.html#ga9aa5715fd56663843e5d34d9e3904338">trunc</a> = eve::functor&lt;trunc_t&gt;</td></tr>
+<tr class="memdesc:ga9aa5715fd56663843e5d34d9e3904338"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the truncolute value.  <br /></td></tr>
+<tr class="memitem:ga74d8d2b14e149dc9b687e324a7392700" id="r_ga74d8d2b14e149dc9b687e324a7392700"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga74d8d2b14e149dc9b687e324a7392700.html#ga74d8d2b14e149dc9b687e324a7392700">ulp</a> = eve::functor&lt;ulp_t&gt;</td></tr>
+<tr class="memdesc:ga74d8d2b14e149dc9b687e324a7392700"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the ulpolute value.  <br /></td></tr>
+<tr class="memitem:ga5bd18a9ff38290ea3898b40b5a212395" id="r_ga5bd18a9ff38290ea3898b40b5a212395"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__functions_ga5bd18a9ff38290ea3898b40b5a212395.html#ga5bd18a9ff38290ea3898b40b5a212395">ulpdist</a> = eve::functor&lt;ulpdist_t&gt;</td></tr>
+<tr class="memdesc:ga5bd18a9ff38290ea3898b40b5a212395"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the ulpdistance value.  <br /></td></tr>
+<tr class="memitem:ga107149eec536df23c4386d025b854ecf" id="r_ga107149eec536df23c4386d025b854ecf"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__constants_ga107149eec536df23c4386d025b854ecf.html#ga107149eec536df23c4386d025b854ecf">valmax</a> = eve::functor&lt;valmax_t&gt;</td></tr>
+<tr class="memdesc:ga107149eec536df23c4386d025b854ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the maximal representable flint value.  <br /></td></tr>
+<tr id="var-members-0" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:afe2539e930df632442830952eafe983f" id="r_afe2539e930df632442830952eafe983f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_afe2539e930df632442830952eafe983f.html#afe2539e930df632442830952eafe983f">fma</a> = eve::functor&lt;fma_t&gt;</td></tr>
+<tr class="memdesc:afe2539e930df632442830952eafe983f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fused multiply add of the parameters.  <br /></td></tr>
+<tr id="var-members-1" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a5b4600c48a905e3808b32a9441a6d19d" id="r_a5b4600c48a905e3808b32a9441a6d19d"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_a5b4600c48a905e3808b32a9441a6d19d.html#a5b4600c48a905e3808b32a9441a6d19d">fnma</a> = eve::functor&lt;fnma_t&gt;</td></tr>
+<tr class="memdesc:a5b4600c48a905e3808b32a9441a6d19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fused negated-multiply add of the parameters.  <br /></td></tr>
+<tr id="var-members-2" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a8875d0b61cf3fbeeaa6ed18b29e5ca9f" id="r_a8875d0b61cf3fbeeaa6ed18b29e5ca9f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html#a8875d0b61cf3fbeeaa6ed18b29e5ca9f">lerp</a> = eve::functor&lt;lerp_t&gt;</td></tr>
+<tr class="memdesc:a8875d0b61cf3fbeeaa6ed18b29e5ca9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fused multiply add of the parameters.  <br /></td></tr>
+<tr id="var-members-3" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a856a221cd309873711b978ce55df4635" id="r_a856a221cd309873711b978ce55df4635"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_a856a221cd309873711b978ce55df4635.html#a856a221cd309873711b978ce55df4635">mul</a> = eve::functor&lt;mul_t&gt;</td></tr>
+<tr class="memdesc:a856a221cd309873711b978ce55df4635"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the product of the values.  <br /></td></tr>
+<tr id="var-members-4" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a38ee18ae42971becb7275f6596ada180" id="r_a38ee18ae42971becb7275f6596ada180"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_a38ee18ae42971becb7275f6596ada180.html#a38ee18ae42971becb7275f6596ada180">rec</a> = eve::functor&lt;rec_t&gt;</td></tr>
+<tr class="memdesc:a38ee18ae42971becb7275f6596ada180"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the ratio of the values.  <br /></td></tr>
+<tr id="var-members-5" class="groupHeader"><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a9d647eeb7803da2f5dc1d1c646e22799" id="r_a9d647eeb7803da2f5dc1d1c646e22799"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html#a9d647eeb7803da2f5dc1d1c646e22799">sub</a> = eve::functor&lt;sub_t&gt;</td></tr>
+<tr class="memdesc:a9d647eeb7803da2f5dc1d1c646e22799"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the difference of the values.  <br /></td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- HTML footer for doxygen 1.8.20-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespaceplf.html">plf</a></li>
+  </ul>
+</div>
+</div> <!-- DOXYSTRAP RELATED -->
+</div> <!-- DOXYSTRAP RELATED -->
+</div> <!-- DOXYSTRAP RELATED -->
+</div> <!-- DOXYSTRAP RELATED -->
+</div> <!-- DOXYSTRAP RELATED -->
+</body>
+</html>

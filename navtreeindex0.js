@@ -1,0 +1,23 @@
+var NAVTREEINDEX0 =
+{
+"conceptplf_1_1concepts_1_1polyfloat.html":[3,4,0,0,0],
+"conceptplf_1_1concepts_1_1real.html":[3,4,0,0,1],
+"concepts.html":[3,4],
+"group__constants.html":[3,1],
+"group__functions.html":[3,2],
+"group__traits.html":[3,3],
+"group__types.html":[3,0],
+"index.html":[],
+"index.html#autotoc_md0":[0],
+"index.html#autotoc_md1":[1],
+"index.html#autotoc_md2":[1,0],
+"index.html#autotoc_md3":[1,1],
+"index.html#autotoc_md4":[1,2],
+"index.html#autotoc_md5":[1,3],
+"index.html#autotoc_md6":[1,4],
+"licence.html":[4,0],
+"pages.html":[],
+"usergroup0.html":[2],
+"usergroup1.html":[3],
+"usergroup2.html":[4]
+};
