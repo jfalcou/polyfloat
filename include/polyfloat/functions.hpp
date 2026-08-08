@@ -30,6 +30,7 @@
 #include <polyfloat/functions/frac.hpp>
 #include <polyfloat/functions/frexp.hpp>
 #include <polyfloat/functions/heaviside.hpp>
+#include <polyfloat/functions/horner.hpp>
 #include <polyfloat/functions/if_else.hpp>
 #include <polyfloat/functions/inc.hpp>
 #include <polyfloat/functions/is_denormal.hpp>
