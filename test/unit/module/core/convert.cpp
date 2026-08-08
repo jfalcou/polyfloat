@@ -34,7 +34,6 @@ TTS_CASE_TPL( "Check convert", plf::scalar_real_types)
    using d3_t = plf::triple_real_t<double>;
    using w1_t = eve::wide<double>;
    using w2_t = eve::wide<d2_t>;
- //  using w3_t = eve::wide<d3_t>;
    double a1(1.0);
    d2_t a2(a1);
    std::cout << plf::convert(a1, eve::as<d2_t>()) << std::endl;
@@ -50,7 +49,5 @@ TTS_CASE_TPL( "Check convert", plf::scalar_real_types)
    std::cout << "r_t " << tts::typename_<r_t> << std::endl;
    std::cout << "d2_t " <<tts::typename_<d2_t> << std::endl;
    std::cout << "p_t " <<tts::typename_<p_t> << std::endl;
- //  std::cout << plf::convert(w2_t(a2), eve::as<u_t>()) << std::endl;
- //  std::cout << plf::convert(w2_t(a2), eve::as<d2_t>()) << std::endl;
 
 };

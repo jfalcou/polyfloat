@@ -13,11 +13,14 @@
 #include <type_traits>
 #include <eve/concept/range.hpp>
 #include <polyfloat/module/core/convert.hpp>
+#include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/two_prod.hpp>
+#include <eve/module/math.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct horner_t : eve::strict_tuple_callable<horner_t, Options, eve::kahan_option,raw_option, pedantic_option>
+  template<typename Options> struct horner_t : eve::strict_tuple_callable<horner_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -41,7 +44,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(horner_t, horner_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup functions
   //! @{
   //!   @var horner
   //!   @brief Implement the horner scheme to evaluate polynomials with coefficients
@@ -50,7 +53,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/functions.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -137,37 +140,42 @@ namespace plf::_
   horner_(POLYFLOAT_DELAY(), O const & o, X xx, C c, Cs... cs) noexcept
   {
     using r_t   =  as_polyfloat_like_t<X, C, Cs...>;
-//    using u_t = eve::as_element<r_t>; //r_t::ptype_t;
-//      auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
-    constexpr auto N =  sizeof...(Cs);
-    if constexpr( N == 0 )
-      return plf::convert(c, eve::as_element<r_t>{});
-//     else if constexpr(O::contains(kahan))
-//     {
-//       using a_t = std::array<r_t, N>;
-//       a_t err;
-//       auto i = 0;
-//       auto s = cvt(c);
-//       auto x = cvt(xx);
-//       auto step = [&s, &err, x, &i]( auto a){
-//         auto [pi, epi] = eve::two_prod(s, x);
-//         auto [si, esi] = eve::two_add(pi, a);
-//         s = si;
-//         err[i] = epi+esi;
-//         ++i;
-//         return s;
-//       };
-//       ((s = step(cvt(cs))), ...);
-//       using tup_t =  kumi::result::generate_t<N, decltype([](std::size_t){return r_t(); })>;
-//       auto t = std::bit_cast<tup_t, a_t>(err);
-//       return s+ eve::horner(x, coefficients(t));
-//     }
+    if constexpr(dimension_v<r_t> == 1)
+      return eve::horner[o](xx, c, cs...);
     else
     {
-      r_t x = plf::convert(xx, eve::as_element<r_t>{}); //r_t(xx);
-      r_t that(c);
-      ((that = fma(that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
-      return that;
+//    using u_t = eve::as_element<r_t>; //r_t::ptype_t;
+      auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
+      constexpr auto N =  sizeof...(Cs);
+      if constexpr( N == 0 )
+        return plf::convert(c, eve::as_element<r_t>{});
+      else if constexpr(O::contains(kahan))
+      {
+        using a_t = std::array<r_t, N>;
+        a_t err;
+        auto i = 0;
+        auto s = cvt(c);
+        auto x = cvt(xx);
+        auto step = [&s, &err, x, &i]( auto a){
+          auto [pi, epi] = plf::two_prod(s, x);
+          auto [si, esi] = plf::two_add(pi, a);
+          s = si;
+          err[i] = epi+esi;
+          ++i;
+          return s;
+        };
+        ((s = step(cvt(cs))), ...);
+        using tup_t =  kumi::result::generate_t<N, decltype([](std::size_t){return r_t(); })>;
+        auto t = std::bit_cast<tup_t, a_t>(err);
+        return s+ plf::horner(x, coefficients(t));
+      }
+      else
+      {
+        auto x = plf::convert(xx, eve::as_element<r_t>{}); //r_t(xx);
+        r_t that(c);
+        ((that = fma(that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
+        return that;
+      }
     }
   }
 
@@ -179,7 +187,7 @@ namespace plf::_
       return eve::zero(as(x));
     else
     {
-      using r_t = as_polyfloat_t<X, eve::coefficients<Tuple>>;
+      using r_t = as_polyfloat_like_t<X, eve::coefficients<Tuple>>;
       return kumi::apply( [&](auto... m) { return plf::horner[o](x, convert(m, eve::as_element<r_t>())...); }, tup);
     }
   }

@@ -10,6 +10,8 @@
 
 namespace plf
 {
+  using eve::as;
+
   //putting eve decorators in plf namespace
 
   using eve::almost_option;
@@ -20,6 +22,7 @@ namespace plf
   using eve::definitely_option;
   using eve::downward_option;
   using eve::eccentric_option;
+  using eve::kahan_option;
   using eve::kind_1_option;
   using eve::kind_2_option;
   using eve::left_option;
@@ -54,6 +57,7 @@ namespace plf
   using eve::definitely;
   using eve::downward;
   using eve::eccentric;
+  using eve::kahan;
   using eve::kind_1;
   using eve::kind_2;
   using eve::left;

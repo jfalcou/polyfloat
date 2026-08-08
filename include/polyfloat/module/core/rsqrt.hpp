@@ -18,7 +18,6 @@
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/mantissa.hpp>
-#include <iostream>
 
 namespace plf
 {
