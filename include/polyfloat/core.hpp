@@ -92,6 +92,7 @@
 #include <polyfloat/module/core/prev.hpp>
 #include <polyfloat/module/core/rec.hpp>
 #include <polyfloat/module/core/reldist.hpp>
+#include <polyfloat/module/core/reverse_horner.hpp>
 #include <polyfloat/module/core/rsqrt.hpp>
 #include <polyfloat/module/core/sign.hpp>
 #include <polyfloat/module/core/signnz.hpp>

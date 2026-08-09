@@ -37,7 +37,7 @@ int main()
   ;
 
   using d2_t = plf::triple_real_t<double>;
-  d2_t xs(1.0, 1.0e-30, 1.0e-54);
+  d2_t xs(2.0, 1.0e-30, 1.0e-54);
   std::cout << "---- scalar" << '\n'
             << "<- xs                          = " << xs << '\n'
             << "-> horner(xs, 1.5, 2.0, 4.0)   = " << plf::horner(xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0) << '\n'
