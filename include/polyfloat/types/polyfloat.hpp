@@ -78,7 +78,8 @@ namespace plf
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2>
     requires(3 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
-    : contents(plf::_::three_add_pedantic(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
+      : contents(plf::_::three_add_pedantic(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
+        // : contents(plf::_::normalize(v0, v1, v2))
     {
     }
 
