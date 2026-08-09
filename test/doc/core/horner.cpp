@@ -8,7 +8,7 @@ int main()
 {
   std::cout <<  std::setprecision(15);
 //   using plf::abs;
-  using w_t = eve::wide<plf::double_real_t<double>>;
+  using w_t = eve::wide<plf::double_real_t<double>, eve::fixed<4>>;
 
 
   w_t xd = {-0.3, 0.5, 0.0, 2.0};
