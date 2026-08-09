@@ -101,4 +101,7 @@
 #include <polyfloat/module/core/sub.hpp>
 #include <polyfloat/module/core/trunc.hpp>
 #include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/two_div_approx.hpp>
+#include <polyfloat/module/core/two_fma_approx.hpp>
 #include <polyfloat/module/core/two_prod.hpp>
+#include <polyfloat/module/core/two_sub.hpp>
