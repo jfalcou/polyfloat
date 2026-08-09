@@ -143,7 +143,7 @@ $(function(){initNavTree('group__constants_gad27792bcc40b8ac1693bacbd95570d68.ht
 
 <p>return the logeps value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/functions.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
 <div class="line">{</div>
@@ -157,51 +157,7 @@ $(function(){initNavTree('group__constants_gad27792bcc40b8ac1693bacbd95570d68.ht
 <p><b>Return value</b></p>
 <p>Returns the logeps value of z.</p>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/details/printing.hpp&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">  <span class="keyword">using  </span>mpfr::mpreal;</div>
-<div class="line">  <span class="keyword">using  </span>plf::_::to_mpreal;</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keyword">using </span>t1_t = double;</div>
-<div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
-<div class="line">    <span class="keyword">using </span>t3_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 3&gt;</a>;</div>
-<div class="line"> </div>
-<div class="line">    mpfr::mpreal::set_default_prec(200);</div>
-<div class="line">    mpreal leps1 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t1_t&gt;())));</div>
-<div class="line">    mpreal leps2 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t2_t&gt;())));</div>
-<div class="line">    mpreal leps3 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t3_t&gt;())));</div>
-<div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; eve::logeps(eve::as&lt;double&gt;())&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps1, eve::as(t1_t()))&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps2, eve::as(t2_t()))&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps3, eve::as(t3_t()))&lt;&lt; std::endl;</div>
-<div class="line">  }</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keyword">using </span>t1_t = float;</div>
-<div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 2&gt;</a>;</div>
-<div class="line">    <span class="keyword">using </span>t3_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 3&gt;</a>;</div>
-<div class="line"> </div>
-<div class="line">    mpfr::mpreal::set_default_prec(200);</div>
-<div class="line">    mpreal leps1 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t1_t&gt;())));</div>
-<div class="line">    mpreal leps2 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t2_t&gt;())));</div>
-<div class="line">    mpreal leps3 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(eve::as&lt;t3_t&gt;())));</div>
-<div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; eve::logeps(eve::as&lt;float&gt;())&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps1, eve::as(t1_t()))&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps2, eve::as(t2_t()))&lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps3, eve::as(t3_t()))&lt;&lt; std::endl;</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__constants_gacd69b768b1e3278712c5dd2b3cd7b58c_html_gacd69b768b1e3278712c5dd2b3cd7b58c"><div class="ttname"><a href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a></div><div class="ttdeci">constexpr auto eps</div><div class="ttdoc">return the epsolute value.</div><div class="ttdef"><b>Definition</b> eps.hpp:87</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
-</div><!-- fragment --> 
+<div class="fragment"></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

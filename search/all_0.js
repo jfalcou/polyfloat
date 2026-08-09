@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['abs_0',['abs',['../group__functions_ga69b3078b6a64e0467e0595929ca947de.html#ga69b3078b6a64e0467e0595929ca947de',1,'plf']]],
-  ['absmax_1',['absmax',['../group__functions_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6',1,'plf']]],
-  ['absmin_2',['absmin',['../group__functions_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807',1,'plf']]],
-  ['add_3',['add',['../group__functions_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6',1,'plf']]],
+  ['abs_0',['abs',['../group__core_ga69b3078b6a64e0467e0595929ca947de.html#ga69b3078b6a64e0467e0595929ca947de',1,'plf']]],
+  ['absmax_1',['absmax',['../group__core_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6',1,'plf']]],
+  ['absmin_2',['absmin',['../group__core_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807',1,'plf']]],
+  ['add_3',['add',['../group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6',1,'plf']]],
   ['as_5fcomponent_4',['as_component',['../structplf_1_1as__component.html',1,'plf']]],
   ['as_5fcomponent_5ftype_5ft_5',['as_component_type_t',['../group__traits_gaa325dcaa3d30c3a89c5333b2800aac54.html#gaa325dcaa3d30c3a89c5333b2800aac54',1,'plf']]],
   ['as_5fpolyfloat_5flike_6',['as_polyfloat_like',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
   ['as_5fpolyfloat_5flike_3c_20t_2c_20kumi_3a_3aapply_5ftraits_5ft_3c_20as_5fpolyfloat_5flike_2c_20ts_20_3e_20_3e_7',['as_polyfloat_like&lt; T, kumi::apply_traits_t&lt; as_polyfloat_like, Ts &gt; &gt;',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
   ['as_5fpolyfloat_5fn_5ft_8',['as_polyfloat_n_t',['../group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4',1,'plf']]],
   ['as_5fpolyfloat_5ft_9',['as_polyfloat_t',['../group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594',1,'plf']]],
-  ['average_10',['average',['../group__functions_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf']]]
+  ['average_10',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf']]]
 ];
