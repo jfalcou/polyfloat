@@ -7,7 +7,7 @@
 //======================================================================================================================
 #pragma once
 #include <eve/eve.hpp>
-#include <polyfloat/functions/parts.hpp>
+#include <polyfloat/module/core/parts.hpp>
 
 namespace plf
 {

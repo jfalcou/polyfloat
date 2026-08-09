@@ -8,15 +8,30 @@
 #pragma once
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
-#include <polyfloat/functions/convert.hpp>
+#include <polyfloat/module/core/convert.hpp>
+#include <iostream>
+#include <iomanip>
+
 
 namespace plf
 {
   namespace _
   {
-    EVE_FORCEINLINE auto clean0s(auto hi,  auto md, auto lo) noexcept
+    template < typename T>
+    EVE_FORCEINLINE auto clean0s(T hi,  T md, T lo) noexcept
     {
-      return as_polyfloat_n_t<3, decltype(hi)>(hi, md, lo);
+      auto iszhi = eve::is_eqz(hi);
+      auto iszmd = eve::is_eqz(md);
+      eve::swap_if(iszhi&& iszmd, hi, lo);
+      eve::swap_if(iszhi&&!iszmd, md, hi);
+      eve::swap_if(iszhi&&!iszmd, md, lo);
+      return from_triple<T>(hi, md, lo);
+    }
+
+    template < typename T>
+    EVE_FORCEINLINE auto clean1s(T hi, T md, T lo) noexcept
+    {
+      return plf::triple_real_t<T>(hi, md, lo);
     }
 
     EVE_FORCEINLINE auto four_add1(auto a,auto b, auto c, auto d) noexcept
@@ -62,7 +77,7 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      return self = _::clean0s(zhi,zmd,zlo );
+      return self = _::clean1s(zhi,zmd,zlo );
     }
   }
 
@@ -94,7 +109,12 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      return self  = _::clean0s(zhi,zmd,zlo );
+      if(eve::any(zhi == -zmd && eve::is_nez(zhi)))
+      {
+        std::cout << std::hexfloat << "self " << self << std::endl;
+        std::cout << std::hexfloat << "oth " << oth << std::endl;
+      }
+      return self  = _::clean1s(zhi,zmd,zlo );
     }
   }
 
@@ -139,7 +159,7 @@ namespace plf
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
       auto [t21, t22] = _::four_add1(t2, t3, t4, t5);
       auto [md, lo]   = _::four_add1(t21, t22, t19, t20);
-      return self = _::clean0s(hi, md, lo);
+      return self = _::clean1s(hi, md, lo);
     }
   }
 }

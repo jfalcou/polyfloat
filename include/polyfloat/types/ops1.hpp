@@ -7,8 +7,8 @@
 //======================================================================================================================
 #pragma once
 #include <eve/eve.hpp>
-#include <polyfloat/functions/parts.hpp>
-#include <polyfloat/functions/convert.hpp>
+#include <polyfloat/module/core/parts.hpp>
+#include <polyfloat/module/core/convert.hpp>
 
 namespace plf
 {

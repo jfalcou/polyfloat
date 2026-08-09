@@ -10,16 +10,14 @@ set(root "${CMAKE_SOURCE_DIR}/test")
 ##======================================================================================================================
 ## Documentation tests
 ##======================================================================================================================
-copa_glob_unit(QUIET PATTERN "doc/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch  EXTERNALS mpfr gmp )
-copa_glob_unit(QUIET PATTERN "doc/constants/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch  EXTERNALS mpfr gmp )
+copa_glob_unit(QUIET PATTERN "doc/core/*.cpp" INTERFACE polyfloat_docs PCH polyfloat_doc_pch  EXTERNALS mpfr gmp )
 
 ##======================================================================================================================
 ## Unit tests
 ##======================================================================================================================
 copa_glob_unit(QUIET PATTERN "unit/api/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
 ##copa_glob_unit(QUIET PATTERN "unit/infra/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
-copa_glob_unit(QUIET PATTERN "unit/functions/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
-copa_glob_unit(QUIET PATTERN "unit/constants/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
+copa_glob_unit(QUIET PATTERN "unit/module/core/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
 
 ##======================================================================================================================
 ## Performance tests
