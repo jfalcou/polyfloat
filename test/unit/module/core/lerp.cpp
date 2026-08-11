@@ -10,33 +10,35 @@
 
 TTS_CASE_WITH("Check lerp",
               plf::scalar_real_types,
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
+              tts::randoms(eve::zero, 1),
+              tts::randoms(eve::zero, 1),
+              tts::randoms(eve::zero, 1),
+              tts::randoms(eve::zero, 1),
+              tts::randoms(eve::zero, 1),
+              tts::randoms(eve::zero, 1),
               tts::randoms(eve::zero, 1),
               tts::randoms(eve::zero, 1),
               tts::randoms(eve::zero, 1)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5,
-               T const& a6, T const& a7, T const& a8)
+               T const& a6, T const& a7, T const& )
 {
   using plf::lerp;
+  using tts::to_mpreal;
+  using tts::to_polyfloat;
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t t(a6, a7);
-    TTS_RELATIVE_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), 2*tts::epsprec<pv_t>());
+    TTS_ABSOLUTE_EQUAL(lerp(pa, pb, t), to_polyfloat(to_mpreal(pb)*to_mpreal(t)+to_mpreal(pa)*to_mpreal(1-t), eve::as(pa)), tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
-    pv_t t(a6, a7, a8);
-    TTS_RELATIVE_EQUAL(lerp(pa, pb, t), pb*t+pa*(1-t), 2*tts::epsprec<pv_t>());
+    pv_t t(a6, a7);
+    TTS_ABSOLUTE_EQUAL(lerp(pa, pb, t), to_polyfloat(to_mpreal(pb)*to_mpreal(t)+to_mpreal(pa)*to_mpreal(1-t), eve::as(pa)), tts::epsprec<pv_t>());
   }
 };

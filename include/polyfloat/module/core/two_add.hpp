@@ -19,10 +19,6 @@ namespace plf
 
   template<typename Options> struct two_add_t : eve::strict_tuple_callable<two_add_t, Options, raw_option, pedantic_option>
   {
-//     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-//     {
-//     };
-
     template<concepts::polyfloat_like T>
     POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0,  T t1) const noexcept
     {
@@ -93,7 +89,9 @@ namespace plf
       T err;
       if constexpr(O::contains(raw)) // 2fp, this does not work if |a| < |b| (or if radix is not 2, not our case)
       {
-        err =  b - (r0 - a);
+        std::cout <<  abs(a) <<  "   " << abs(b) << std::endl;
+        auto z = r0-a;
+        err =  b - z;
       }
       else //6fp always ok
       {

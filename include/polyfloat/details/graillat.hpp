@@ -1,0 +1,73 @@
+/*
+ POLYFLOAT - Extended precision floating points
+ Copyright : POLYFLOAT Contributors & Maintainers
+ SPDX-License-Identifier: BSL-1.0
+*/
+//======================================================================================================================
+#pragma once
+
+#include <polyfloat/details/callable.hpp>
+#include <polyfloat/types/concepts.hpp>
+#include <polyfloat/types/traits.hpp>
+#include <type_traits>
+#include <polyfloat/module/core/is_not_equal.hpp>
+#include <polyfloat/module/core/is_eqz.hpp>
+#include <polyfloat/module/core/sign.hpp>
+#include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/sub.hpp>
+
+///////////////////////////////////////////////////////////////////////////////////////
+// https://hal.science/hal-04575249
+///////////////////////////////////////////////////////////////////////////////////////
+
+namespace plf::_
+{
+  template<typename T>
+  constexpr auto is_not_1or3_times_pow2(T x) noexcept // Graillat & Muller algorithm 5
+  {
+    using u_t = eve::underlying_type_t<T>;
+    constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t()))-2);
+    constexpr unsigned long P = Q+1;
+    auto l = P*x;
+    auto r = Q*x;
+    return plf::is_not_equal(l-r, x);
+  }
+
+  template<typename T>
+  constexpr auto cr_dw_fp_add_with_err(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 7
+  // https://hal.science/hal-04575249
+  {
+    using u_t = eve::underlying_type_t<T>;
+    constexpr T c9_8 = u_t(9)/8;
+    constexpr T c7_8 = u_t(7)/8;
+    auto [sh, sl] = two_add(xh, c);
+    auto [vh, vl] = two_add(xl, sl);
+    auto [wh, wl] = two_add(vh, sh); // quick add is incorrectly called here in the original article
+    auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
+    auto samsgn = sign(vl) == sign(vh);
+    auto z = if_else(in,
+                     wh,
+                     sh+if_else(samsgn, c9_8, c7_8)*vh
+                    );
+    auto delta = sub[in](wl, z-wh);
+    return eve::zip(z, delta, vl);
+  }
+
+  template<typename T>
+  constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 6
+  {
+    using u_t = eve::underlying_type_t<T>;
+    constexpr T c9_8 = u_t(9)/8;
+    constexpr T c7_8 = u_t(7)/8;
+    auto [sh, sl] = two_add(xh, c);
+    auto [vh, vl] = two_add(xl, sl);
+    auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
+    auto samsgn = eve::sign(vl) == sign(vh);
+    return add(sh, if_else(in,
+                           vh,
+                           if_else(samsgn, c9_8, c7_8)
+                          )
+              );
+  }
+
+}

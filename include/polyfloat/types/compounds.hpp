@@ -109,11 +109,6 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      if(eve::any(zhi == -zmd && eve::is_nez(zhi)))
-      {
-        std::cout << std::hexfloat << "self " << self << std::endl;
-        std::cout << std::hexfloat << "oth " << oth << std::endl;
-      }
       return self  = _::clean1s(zhi,zmd,zlo );
     }
   }

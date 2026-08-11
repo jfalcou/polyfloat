@@ -12,6 +12,10 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/is_not_equal.hpp>
+#include <polyfloat/details/graillat.hpp>
+//#include <polyfloat/module/core/two_prod.hpp>
+#include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/dekker_prod.hpp>
 
 
 namespace plf
@@ -75,34 +79,34 @@ namespace plf
 namespace plf::_
 {
 
-   template<typename T>
-   constexpr auto is_not_1or3_times_pow2(T x) noexcept
-   {
-     using u_t = eve::underlying_type_t<T>;
-     constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t()))-2);
-     constexpr unsigned long P = Q+1;
-     auto l = P*x;
-     auto r = Q*x;
-     return plf::is_not_equal(l-r, x);
-   }
+//    template<typename T>
+//    constexpr auto is_not_1or3_times_pow2(T x) noexcept
+//    {
+//      using u_t = eve::underlying_type_t<T>;
+//      constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t()))-2);
+//      constexpr unsigned long P = Q+1;
+//      auto l = P*x;
+//      auto r = Q*x;
+//      return plf::is_not_equal(l-r, x);
+//    }
 
-   template<typename T>
-   constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm
-                                                         // https://hal.science/hal-04575249
-   {
-     using u_t = eve::underlying_type_t<T>;
-     constexpr T c9_8 = u_t(9)/8;
-     constexpr T c7_8 = u_t(7)/8;
-     auto [sh, sl] = two_add(xh, c);
-     auto [vh, vl] = two_add(xl, sl);
-     auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
-     auto samsgn = eve::sign(vl) == sign(vh);
-     return add(sh, if_else(in,
-                    vh,
-                    if_else(samsgn, c9_8, c7_8)
-                   )
-               );
-   }
+//    template<typename T>
+//    constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm
+//                                                          // https://hal.science/hal-04575249
+//    {
+//      using u_t = eve::underlying_type_t<T>;
+//      constexpr T c9_8 = u_t(9)/8;
+//      constexpr T c7_8 = u_t(7)/8;
+//      auto [sh, sl] = two_add(xh, c);
+//      auto [vh, vl] = two_add(xl, sl);
+//      auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
+//      auto samsgn = eve::sign(vl) == sign(vh);
+//      return add(sh, if_else(in,
+//                     vh,
+//                     if_else(samsgn, c9_8, c7_8)
+//                    )
+//                );
+//    }
 
 
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
@@ -118,7 +122,7 @@ namespace plf::_
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
       auto [zhi, zlo] = z;
-      auto [chi, c1] = eve::two_prod(xhi, yhi);
+      auto [chi, c1] = dekker_prod(xhi, yhi);
       auto t0 = xlo * ylo;
       auto t1 = eve::fma(xhi, ylo, t0);
       auto c2 = eve::fma(xlo, yhi, t1);
@@ -140,7 +144,7 @@ namespace plf::_
       else if constexpr(dimension_v<Z3> == 2)
       {
         auto [zhi, zlo] = z;
-        auto [chi, c1] = eve::two_prod(x, y);
+        auto [chi, c1] = dekker_prod(x, y);
         auto [shi, slo] = eve::two_add(zhi, chi);
         auto [thi, tlo] = eve::two_add(zlo, c1);
         auto c = slo + thi;
@@ -155,7 +159,7 @@ namespace plf::_
       using r_t = as_polyfloat_t<Z1, Z2, Z3>;
       auto cvt =  [](auto a){return plf::convert(a, eve::as<eve::element_type_t<r_t>>());};
 
-      auto [xh, xl] = two_prod(cvt(x), cvt(y));
+      auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
       return cr_dw_fp_add(xl, xh, cvt(z));
     }
   }

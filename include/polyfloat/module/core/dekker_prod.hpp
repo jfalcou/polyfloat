@@ -11,14 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/if_else.hpp>
-#include <polyfloat/module/core/is_not_finite.hpp>
-#include <polyfloat/module/core/fma.hpp>
+#include <polyfloat/module/core/two_split.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct two_prod_t : eve::strict_tuple_callable<two_prod_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct dekker_prod_t : eve::strict_tuple_callable<dekker_prod_t, Options, raw_option, pedantic_option>
   {
 //     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
 //     {
@@ -30,14 +28,14 @@ namespace plf
       return POLYFLOAT_CALL(t0, t1);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(two_prod_t, two_prod_);
+    POLYFLOAT_CALLABLE_OBJECT(dekker_prod_t, dekker_prod_);
   };
 //================================================================================================
 //! @addtogroup core_accuracy
 //! @{
-//!   @var two_prod
+//!   @var dekker_prod
 //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
-//!   product and its resulting rounding error.
+//!   product and its resulting rounding error without using fma.
 //!
 //!   @groupheader{Header file}
 //!
@@ -51,9 +49,9 @@ namespace plf
 //!   namespace eve
 //!   {
 //!      // Regular overload
-//!      constexpr auto two_prod( auto x, auto y)            noexcept; // 1
+//!      constexpr auto dekker_prod( auto x, auto y)            noexcept; // 1
 //!      // Semantic options
-//!      constexpr auto two_prod[pedantic](auto x, auto y)   noexcept; // 2
+//!      constexpr auto dekker_prod[pedantic](auto x, auto y)   noexcept; // 2
 //!   }
 //!   @endcode
 //!
@@ -66,7 +64,7 @@ namespace plf
 //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
 //!       * `a` is `x+y`
 //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
-//!          where \f$\oplus\f$ adds its two parameters with infinite precision.
+//!          where \f$\oplus\f$ adds its dekker parameters with infinite precision.
 //!
 //!     1. Classical algorithm, always valid.
 //!     2. Handles overflow.
@@ -75,9 +73,9 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/two_prod.cpp}
+//!  @godbolt{doc/core/dekker_prod.cpp}
 //================================================================================================
-  inline constexpr auto two_prod = eve::functor<two_prod_t>;
+  inline constexpr auto dekker_prod = eve::functor<dekker_prod_t>;
 //================================================================================================
 //! @}
 //================================================================================================
@@ -85,17 +83,21 @@ namespace plf
   namespace _
   {
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_prod_(POLYFLOAT_DELAY(), O const&, T a, T b)
+    constexpr POLYFLOAT_FORCEINLINE
+    auto dekker_prod_(POLYFLOAT_DELAY(), O const&, T a, T b) noexcept
     {
-      if constexpr(dimension_v<T> == 1)
-        return eve::two_prod(a, b);
-      else
-      {
-        return dekker_prod(a, b);
-//         auto r0 = a * b;
-//         auto e0 = plf::if_else(plf::is_not_finite(r0), zero, eve::fma(a, b, -r0));
-//         return eve::zip(r0,e0);
-      }
+      auto[ah, al] = two_split(a);
+      auto[bh, bl] = two_split(b);
+      auto abh = a*b;
+      auto ahbh= ah*bh;
+      auto ahbl= ah*bl;
+      auto albh= al*bh;
+      auto albl= al*bl;
+      auto t1 = ahbh-abh;
+      auto t2 = t1 + ahbl;
+      auto t3 = t2 + albh;
+      auto abl= t3 +albl;
+      return eve::zip(abh, abl);
     }
   }
 }
