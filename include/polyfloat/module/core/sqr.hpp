@@ -11,8 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/minus.hpp>
-#include <polyfloat/module/core/is_negative.hpp>
+#include <polyfloat/module/core/dekker_prod.hpp>
 
 namespace plf
 {
@@ -78,7 +77,7 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 2)
     {
       auto [zhi, zlo] = z;
-      auto [p1, p2] = eve::two_prod(zhi, zhi);
+      auto [p1, p2] = dekker_prod(zhi, zhi);
       p2+= 2*zhi*zlo;
       p2+= eve::sqr(zlo);
       auto [l, h] = eve::two_add[eve::raw](p1, p2);
@@ -87,9 +86,9 @@ namespace plf::_
     else if constexpr(dimension_v<Z> == 3)
     {
       auto [ahi, amd, alo] = z;
-      auto [hi,t1] = eve::two_prod(ahi, ahi);
-      auto [t2,t3] = eve::two_prod(ahi, amd);
-      auto [t6,t7] = eve::two_prod(amd, amd);
+      auto [hi,t1] = dekker_prod(ahi, ahi);
+      auto [t2,t3] = dekker_prod(ahi, amd);
+      auto [t6,t7] = dekker_prod(amd, amd);
       auto t8  = ahi * alo;
       auto t10 = amd * alo;
       auto [t14, t15] = eve::two_add[eve::raw](t1, t6);

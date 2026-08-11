@@ -13,6 +13,8 @@
 #include <type_traits>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/dekker_prod.hpp>
 
 namespace plf
 {
@@ -84,7 +86,7 @@ namespace plf
     constexpr POLYFLOAT_FORCEINLINE auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T a, T b, T c)
     {
       T d = fma[pedantic](a, b, c);
-      auto [v1, v2] = two_prod(a, b);
+      auto [v1, v2] = dekker_prod(a, b);
       auto [w1, w2] = two_add(c, v1);
       auto t = w1-d;
       return eve::zip(d, t+(v2+w2));

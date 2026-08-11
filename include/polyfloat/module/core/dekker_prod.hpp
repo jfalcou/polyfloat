@@ -13,18 +13,17 @@
 #include <type_traits>
 #include <polyfloat/module/core/two_split.hpp>
 #include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/core/if_else.hpp>
 
 namespace plf
 {
 
   template<typename Options> struct dekker_prod_t : eve::strict_tuple_callable<dekker_prod_t, Options, raw_option, pedantic_option>
   {
-//     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-//     {
-//     };
-
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0,  T t1) const noexcept
+    template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
+    POLYFLOAT_FORCEINLINE typename kumi::tuple<plf::as_polyfloat_like_t<T0, T1>,
+                                               plf::as_polyfloat_like_t<T0, T1>>
+    constexpr operator()(T0 t0, T1 t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
@@ -58,7 +57,7 @@ namespace plf
 //!
 //!   **Parameters**
 //!
-//!     * `x`, `y`:  polyfloatt arguments](@ref eve::floating_value) of same dimension.
+//!     * `x`, `y`:  polyfloat arguments](@ref eve::floating_value) of same dimension.
 //!
 //!   **Return value**
 //!
@@ -83,10 +82,14 @@ namespace plf
 
   namespace _
   {
-    template<typename T, eve::callable_options O>
+    template<typename T0,  typename T1, eve::callable_options O>
     constexpr POLYFLOAT_FORCEINLINE
-    auto dekker_prod_(POLYFLOAT_DELAY(), O const&, T a, T b) noexcept
+    auto dekker_prod_(POLYFLOAT_DELAY(), O const&, T0 aa, T1 bb) noexcept
     {
+      using r_t = plf::as_polyfloat_like_t<T0, T1>;
+      auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
+      auto a = cvt(aa);
+      auto b = cvt(bb);
       auto[ah, al] = two_split(a);
       auto[bh, bl] = two_split(b);
       auto abh = a*b;
@@ -94,7 +97,7 @@ namespace plf
       abl += ah*bl;
       abl += al*bh;
       abl += al*bl;
-      if constexpr( eve::platform::supports_invalids ) abl = if_else(plf::is_not_finite(abh), eve::zero, abl);
+      if constexpr( eve::platform::supports_invalids ) abl = plf::if_else(plf::is_not_finite(abh), eve::zero, abl);
       return eve::zip(abh, abl);
     }
   }

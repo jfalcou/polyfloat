@@ -94,7 +94,8 @@ namespace plf
     template<typename T, eve::callable_options O>
     constexpr POLYFLOAT_FORCEINLINE auto two_split_(POLYFLOAT_DELAY(), O const&, T x)
     {
-      auto N = (plf::nbmantissabits(eve::as<T>())+1)/2;
+      using u_t = eve::underlying_type_t<T>; 
+      auto N = (plf::nbmantissabits(eve::as<u_t>())+1)/2;
       auto K = ldexp(T(1), N);
       auto g = K*x; 
       auto d =  x-g;

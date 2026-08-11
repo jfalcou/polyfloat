@@ -14,7 +14,7 @@
 #include <eve/concept/range.hpp>
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/two_add.hpp>
-#include <polyfloat/module/core/two_prod.hpp>
+#include <polyfloat/module/core/dekker_prod.hpp>
 #include <eve/module/math.hpp>
 
 namespace plf
@@ -157,7 +157,7 @@ namespace plf::_
         auto s = cvt(c);
         auto x = cvt(xx);
         auto step = [&s, &err, x, &i]( auto a){
-          auto [pi, epi] = plf::two_prod(s, x);
+          auto [pi, epi] = plf::dekker_prod(s, x);
           auto [si, esi] = plf::two_add(pi, a);
           s = si;
           err[i] = epi+esi;

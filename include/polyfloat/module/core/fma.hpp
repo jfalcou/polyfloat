@@ -15,7 +15,7 @@
 #include <polyfloat/details/graillat.hpp>
 //#include <polyfloat/module/core/two_prod.hpp>
 #include <polyfloat/module/core/two_add.hpp>
-#include <polyfloat/module/core/dekker_prod.hpp>
+//#include <polyfloat/module/core/dekker_prod.hpp>
 
 
 namespace plf
@@ -79,44 +79,10 @@ namespace plf
 namespace plf::_
 {
 
-//    template<typename T>
-//    constexpr auto is_not_1or3_times_pow2(T x) noexcept
-//    {
-//      using u_t = eve::underlying_type_t<T>;
-//      constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t()))-2);
-//      constexpr unsigned long P = Q+1;
-//      auto l = P*x;
-//      auto r = Q*x;
-//      return plf::is_not_equal(l-r, x);
-//    }
-
-//    template<typename T>
-//    constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm
-//                                                          // https://hal.science/hal-04575249
-//    {
-//      using u_t = eve::underlying_type_t<T>;
-//      constexpr T c9_8 = u_t(9)/8;
-//      constexpr T c7_8 = u_t(7)/8;
-//      auto [sh, sl] = two_add(xh, c);
-//      auto [vh, vl] = two_add(xl, sl);
-//      auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
-//      auto samsgn = eve::sign(vl) == sign(vh);
-//      return add(sh, if_else(in,
-//                     vh,
-//                     if_else(samsgn, c9_8, c7_8)
-//                    )
-//                );
-//    }
-
-
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto fma_(POLYFLOAT_DELAY(), O const& , Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2, Z3>;
-//     if constexpr((dimension_v<Z1> > 2) && (dimension_v<Z2> > 2) &&(dimension_v<Z3> > 2))
-//     {
-//       return x*y+z; //TODO
-//     }
     if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;

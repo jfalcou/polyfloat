@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <eve/concept/range.hpp>
 #include <polyfloat/module/core/convert.hpp>
-#include <polyfloat/module/core/two_add.hpp>
-#include <polyfloat/module/core/two_prod.hpp>
-#include <eve/module/math.hpp>
+//#include <eve/module/math.hpp>
 
 namespace plf
 {

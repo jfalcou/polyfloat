@@ -38,8 +38,8 @@ namespace plf::_
   // https://hal.science/hal-04575249
   {
     using u_t = eve::underlying_type_t<T>;
-    constexpr T c9_8 = u_t(9)/8;
-    constexpr T c7_8 = u_t(7)/8;
+    constexpr u_t c9_8 = u_t(9)/8;
+    constexpr u_t c7_8 = u_t(7)/8;
     auto [sh, sl] = two_add(xh, c);
     auto [vh, vl] = two_add(xl, sl);
     auto [wh, wl] = two_add(vh, sh); // quick add is incorrectly called here in the original article
@@ -57,8 +57,8 @@ namespace plf::_
   constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 6
   {
     using u_t = eve::underlying_type_t<T>;
-    constexpr T c9_8 = u_t(9)/8;
-    constexpr T c7_8 = u_t(7)/8;
+    constexpr u_t c9_8 = u_t(9)/8;
+    constexpr u_t c7_8 = u_t(7)/8;
     auto [sh, sl] = two_add(xh, c);
     auto [vh, vl] = two_add(xl, sl);
     auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
