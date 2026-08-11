@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/two_split.hpp>
+#include <polyfloat/module/core/is_not_finite.hpp>
 
 namespace plf
 {
@@ -89,14 +90,11 @@ namespace plf
       auto[ah, al] = two_split(a);
       auto[bh, bl] = two_split(b);
       auto abh = a*b;
-      auto ahbh= ah*bh;
-      auto ahbl= ah*bl;
-      auto albh= al*bh;
-      auto albl= al*bl;
-      auto t1 = ahbh-abh;
-      auto t2 = t1 + ahbl;
-      auto t3 = t2 + albh;
-      auto abl= t3 +albl;
+      auto abl = ah*bh-abh;
+      abl += ah*bl;
+      abl += al*bh;
+      abl += al*bl;
+      if constexpr( eve::platform::supports_invalids ) abl = if_else(plf::is_not_finite(abh), eve::zero, abl);
       return eve::zip(abh, abl);
     }
   }

@@ -12,6 +12,7 @@
 #include <polyfloat/module/core/absmax.hpp>
 #include <polyfloat/module/core/absmin.hpp>
 #include <polyfloat/module/core/add.hpp>
+#include <polyfloat/module/core/agm.hpp>
 #include <polyfloat/module/core/average.hpp>
 #include <polyfloat/module/core/ceil.hpp>
 #include <polyfloat/module/core/chi.hpp>
@@ -49,6 +50,7 @@
 #include <polyfloat/module/core/is_less.hpp>
 #include <polyfloat/module/core/is_less_equal.hpp>
 #include <polyfloat/module/core/is_lessgreater.hpp>
+#include <polyfloat/module/core/is_lez.hpp>
 #include <polyfloat/module/core/is_ltz.hpp>
 #include <polyfloat/module/core/is_minf.hpp>
 #include <polyfloat/module/core/is_nan.hpp>
