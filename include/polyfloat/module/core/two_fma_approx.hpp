@@ -85,7 +85,7 @@ namespace plf
     template<typename T, eve::callable_options O>
     constexpr POLYFLOAT_FORCEINLINE auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T a, T b, T c)
     {
-      T d = fma[pedantic](a, b, c);
+      T d = fma(a, b, c);
       auto [v1, v2] = dekker_prod(a, b);
       auto [w1, w2] = two_add(c, v1);
       auto t = w1-d;
