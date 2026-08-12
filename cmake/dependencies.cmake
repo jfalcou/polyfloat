@@ -32,7 +32,7 @@ include(${CPM_DOWNLOAD_LOCATION})
 ##======================================================================================================================
 CPMAddPackage ( NAME COPACABANA GITHUB_REPOSITORY jfalcou/copacabana  GIT_TAG main)
 CPMAddPackage ( NAME TTS   GITHUB_REPOSITORY jfalcou/tts
-                GIT_TAG
+                GIT_TAG f58d11f79aa9a8d13bb0a1ccfbc358b2f1c5b0df
                 OPTIONS "TTS_BUILD_TEST OFF"
                         "TTS_BUILD_DOCUMENTATION OFF"
                         "TTS_QUIET ON"
