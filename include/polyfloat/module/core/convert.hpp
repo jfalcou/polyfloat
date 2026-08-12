@@ -44,13 +44,13 @@ namespace plf
 //!   @groupheader{Header file}
 //!
 //!   @code
-//!   #include <kyosu/module/core.hpp>
+//!   #include <polyfloat/module/core.hpp>
 //!   @endcode
 //!
 //!   @groupheader{Callable Signatures}
 //!
 //!   @code
-//!   namespace kyosu
+//!   namespace polyfloat
 //!   {
 //!     template<eve::scalar_value U> constexpr auto convert(auto x, eve::as<U> ) noexcept;
 //!   }
@@ -68,7 +68,7 @@ namespace plf
 //!
 //!  @groupheader{Example}
 //!
-//!  @godbolt{doc/convert.cpp}
+//!  @godbolt{doc/core/convert.cpp}
 //======================================================================================================================
 inline constexpr auto convert = eve::functor<convert_t>;
 //======================================================================================================================

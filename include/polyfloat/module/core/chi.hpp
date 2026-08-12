@@ -48,13 +48,13 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
   //!      constexpr auto chi(value auto x, value auto lo,  value auto hi)             noexcept; // 1
   //!      constexpr auto chi(value auto x, auto belongs)                              noexcept; // 2
@@ -78,7 +78,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/chi.cpp}
+  //!  @godbolt{doc/core/chi.cpp}
   //======================================================================================================================
 
   inline constexpr auto chi = eve::functor<chi_t>;

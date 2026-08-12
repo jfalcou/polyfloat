@@ -30,7 +30,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_denormal
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a denormal floating value
+//!   @brief returns a logical true  if and only if the element value is a denormal floating value
 //!
 //!   @groupheader{Header file}
 //!
@@ -57,7 +57,7 @@ namespace plf
 //!     returns true if and only if x is a denormal number
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_denormal.cpp}
+//!  @godbolt{doc/core/is_denormal.cpp}
 //================================================================================================
   inline constexpr auto is_denormal = eve::functor<is_denormal_t>;
   //======================================================================================================================

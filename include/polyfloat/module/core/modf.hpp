@@ -30,20 +30,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var modf
-  //!   @brief return the modftionnal part of the value.
+  //!   @brief return the fractionnal and integer parts.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto modf(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto modf(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -53,11 +53,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the modftionnal part of z.
+  //!     Returns  the fractionnal and integer parts of the value.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/modf.cpp}
+  //!  @godbolt{doc/core/modf.cpp}
   //======================================================================================================================
 
   inline constexpr auto modf = eve::functor<modf_t>;

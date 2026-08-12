@@ -34,15 +34,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_nepz(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_nepz(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_nepz.cpp}
+  //!  @godbolt{doc/core/is_nepz.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_nepz = eve::functor<is_nepz_t>;

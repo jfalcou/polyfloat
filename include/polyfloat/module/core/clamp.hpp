@@ -34,19 +34,18 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var clamp
-  //!   @brief `callable` indicatrix of the interval \f$[lo, hi[\f$ or
-  //!  of the set for which the invocable returns true.
+  //!   @brief clamp the value between two bounds.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
   //!      constexpr auto clamp(value auto x, value auto lo,  value auto hi)  noexcept; // 1
   //!   }
@@ -65,7 +64,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/clamp.cpp}
+  //!  @godbolt{doc/core/clamp.cpp}
   //======================================================================================================================
 
   inline constexpr auto clamp = eve::functor<clamp_t>;

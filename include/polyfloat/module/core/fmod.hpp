@@ -37,7 +37,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -76,7 +76,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/fmod.cpp}
+  //!  @godbolt{doc/core/fmod.cpp}
   //======================================================================================================================
 
   inline constexpr auto fmod = eve::functor<fmod_t>;

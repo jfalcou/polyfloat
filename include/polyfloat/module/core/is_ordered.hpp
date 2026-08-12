@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_ordered
-  //!   @brief return a logical true  if and only if no parameter is NaN.
+  //!   @brief returns a logical true  if and only if no parameter is NaN.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_ordered(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_ordered(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_ordered.cpp}
+  //!  @godbolt{doc/core/is_ordered.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_ordered = eve::functor<is_ordered_t>;

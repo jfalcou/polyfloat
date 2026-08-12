@@ -73,7 +73,7 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/two_sub.cpp}
+//!  @godbolt{doc/core/core/two_sub.cpp}
 //================================================================================================
   inline constexpr auto two_sub = eve::functor<two_sub_t>;
 //================================================================================================

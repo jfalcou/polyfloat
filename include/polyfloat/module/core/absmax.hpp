@@ -44,20 +44,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var absmax
-  //!   @brief return the sum of the parameters.
+  //!   @brief return the absolute value of the maximum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto absmax(Z1 z1, Z2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto absmax(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -67,11 +67,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the sum of the arguments.
+  //!     Returns the absolute value of the maximum of the arguments.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/absmax.cpp}
+  //!  @godbolt{doc/core/absmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto absmax = eve::functor<absmax_t>;

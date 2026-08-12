@@ -47,15 +47,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto three_fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto three_fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/three_fma.cpp}
+  //!  @godbolt{doc/core/three_fma.cpp}
   //======================================================================================================================
 
   inline constexpr auto three_fma = eve::functor<three_fma_t>;

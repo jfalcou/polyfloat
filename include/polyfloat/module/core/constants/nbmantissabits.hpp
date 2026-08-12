@@ -36,7 +36,7 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var nbmantissabits
-  //!   @brief return the maximal representable flint value.
+  //!   @brief return the number of available  mantissa bits.
   //!
   //!   @groupheader{Header file}
   //!
@@ -59,11 +59,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the maximal representable flint value.
+  //!     Returns the number of available  mantissa bits.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/nbmantissabits.cpp}
+  //!  @godbolt{doc/core/constants/nbmantissabits.cpp}
   //======================================================================================================================
 
   inline constexpr auto nbmantissabits = eve::functor<nbmantissabits_t>;

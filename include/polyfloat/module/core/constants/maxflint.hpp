@@ -67,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/maxflint.cpp}
+  //!  @godbolt{doc/core/constants/maxflint.cpp}
   //======================================================================================================================
 
   inline constexpr auto maxflint = eve::functor<maxflint_t>;

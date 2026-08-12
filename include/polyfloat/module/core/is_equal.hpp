@@ -30,21 +30,21 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_equal
-  //!   @brief return the is_equal value.
+  //!   @brief test for equality.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal(T1 z1, T2 z2)          noexcept; //1
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal[numeric](T1 z1, T2 z2) noexcept; //2
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal(T1 z1, T2 z2)          noexcept; //1
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_equal[numeric](T1 z1, T2 z2) noexcept; //2
   //!   }
   //!   @endcode
   //!
@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_equal.cpp}
+  //!  @godbolt{doc/core/is_equal.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_equal = eve::functor<is_equal_t>;

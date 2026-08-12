@@ -31,7 +31,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_odd
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a floating value
+//!   @brief returns a logical true  if and only if the element value is a floating value
 //!   representing an odd integer
 //!
 //!   @groupheader{Header file}
@@ -59,7 +59,7 @@ namespace plf
 //!     1. returns true if and only if x represent an odd number
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_odd.cpp}
+//!  @godbolt{doc/core/is_odd.cpp}
 //================================================================================================
   inline constexpr auto is_odd = eve::functor<is_odd_t>;
   //======================================================================================================================

@@ -82,7 +82,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/sqrt_2.cpp}
+  //!  @godbolt{doc/core/constants/sqrt_2.cpp}
   //======================================================================================================================
 
   inline constexpr auto sqrt_2 = eve::functor<sqrt_2_t>;

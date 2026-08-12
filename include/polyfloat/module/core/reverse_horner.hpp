@@ -13,7 +13,6 @@
 #include <type_traits>
 #include <eve/concept/range.hpp>
 #include <polyfloat/module/core/convert.hpp>
-//#include <eve/module/math.hpp>
 
 namespace plf
 {
@@ -42,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(reverse_horner_t, reverse_horner_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @addtogroup core
   //! @{
   //!   @var reverse_horner
   //!   @brief Implement the reverse_horner scheme to evaluate polynomials with coefficients
@@ -51,7 +50,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/functions.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -59,24 +58,12 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!   @endcode
-  //!
-  //!   @groupheader{Callable Signatures}
-  //!
-  //!   @code
-  //!   namespace eve
-  //!   {
   //!      // Regular overloads
-  //!      constexpr auto reverse_horner(floating_value auto x, value auto ...ci)                      noexcept; // 1
-  //!      constexpr auto reverse_horner(floating_value auto x, eve::coefficients auto tci)            noexcept; // 2
-  //!
-  //!      // Lanes masking
-  //!      constexpr auto reverse_horner[conditional_expr auto c](*any of the above overloads*/)       noexcept; // 3
-  //!      constexpr auto reverse_horner[logical_value auto m](*any of the above overloads*/)          noexcept; // 3
+  //!      constexpr auto reverse_horner( auto x, value auto ...ci)                      noexcept; // 1
+  //!      constexpr auto reverse_horner( auto x, eve::coefficients auto tci)            noexcept; // 2
   //!
   //!      // Semantic options
-  //!      constexpr auto reverse_horner[pedantic](/*any of the above overloads*/)                     noexcept; // 4
-  //!      constexpr auto reverse_horner[kahan](/*any of the above overloads*/)                        noexcept; // 5
+  //!      constexpr auto reverse_horner[kahan](/*any of the above overloads*/)          noexcept; // 3
   //!   }
   //!   @endcode
   //!
@@ -88,8 +75,6 @@ namespace plf
   //!        are to be scalar
   //!    * `tci`: eve::coefficients is a specialization of [tuple](@ref eve::product_type) of floating values,
   //!             used to avoid possible ambiguities
-  //!    * `c`: [Conditional expression](@ref eve::conditional_expr) masking the operation.
-  //!    * `m`: [Logical value](@ref eve::logical_value) masking the operation.
   //!
   //!   **Return value**
   //!
@@ -99,9 +84,7 @@ namespace plf
   //!
   //!     1. The value of the polynom at  `x` is returned.
   //!     2. Same as the call with the elements of the tuple.
-  //!     3. [The operation is performed conditionnaly](@ref conditional).
-  //!     4. `fma[pedantic]` instead of `fma` is used in internal computations.
-  //!     5. a Kahan like compensated algorithm is used to enhance accuracy.
+  //!     3. a Kahan like compensated algorithm is used to enhance accuracy.
   //!
   //!    @note If the coefficients are simd values of cardinal N, this means you simultaneously
   //!      compute the values of N polynomials.
@@ -111,10 +94,9 @@ namespace plf
   //!  @groupheader{External references}
   //!   *  [Wikipedia](https://en.wikipedia.org/wiki/Reverse_Horner's_method)
   //!
-  //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/reverse_horner.cpp}
+  //!  @godbolt{doc/core/reverse_horner.cpp}
   //======================================================================================================================
 
   inline constexpr auto reverse_horner = eve::functor<reverse_horner_t>;

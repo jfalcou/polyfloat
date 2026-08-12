@@ -34,15 +34,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto minus(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto minus(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/minus.cpp}
+  //!  @godbolt{doc/core/minus.cpp}
   //======================================================================================================================
 
   inline constexpr auto minus = eve::functor<minus_t>;

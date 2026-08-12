@@ -75,7 +75,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/valmax.cpp}
+  //!  @godbolt{doc/core/constants/valmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto valmax = eve::functor<valmax_t>;

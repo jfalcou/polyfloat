@@ -49,15 +49,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto absmin(Z1 z1, Z2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto absmin(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/absmin.cpp}
+  //!  @godbolt{doc/core/absmin.cpp}
   //======================================================================================================================
 
   inline constexpr auto absmin = eve::functor<absmin_t>;

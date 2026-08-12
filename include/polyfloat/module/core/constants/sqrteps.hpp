@@ -81,7 +81,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/sqrteps.cpp}
+  //!  @godbolt{doc/core/constants/sqrteps.cpp}
   //======================================================================================================================
 
   inline constexpr auto sqrteps = eve::functor<sqrteps_t>;

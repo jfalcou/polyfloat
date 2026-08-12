@@ -29,21 +29,21 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_negative
-  //!   @brief `elementwise callable` returning a logical true if and only if the element
+  //!   @brief returns a logical true if and only if the element
   //!    has its sign bit set
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_negative(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_negative(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_negative.cpp}
+  //!  @godbolt{doc/core/is_negative.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_negative = eve::functor<is_negative_t>;

@@ -36,7 +36,7 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var effective_mantissa_bits
-  //!   @brief return the maximal representable flint value.
+  //!   @brief return the number of available  mantissa bits.
   //!
   //!   @groupheader{Header file}
   //!
@@ -59,11 +59,11 @@ namespace plf
   //!
   //!    **Return value**
   //!
-  //!     Returns the effective number of bits of the mantissa value.
+  //!     Returns the number of available  mantissa bits.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/effective_mantissa_bits.cpp}
+  //!  @godbolt{doc/core/constants/effective_mantissa_bits.cpp}
   //======================================================================================================================
 
   inline constexpr auto effective_mantissa_bits = eve::functor<effective_mantissa_bits_t>;

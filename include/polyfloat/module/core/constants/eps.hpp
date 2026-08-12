@@ -54,7 +54,7 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @brief return the machine precision for the type of z.
   //!
   //!   @groupheader{Header file}
   //!
@@ -77,11 +77,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the machine precision for the type of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/eps.cpp}
+  //!  @godbolt{doc/core/constants/eps.cpp}
   //======================================================================================================================
 
   inline constexpr auto eps = eve::functor<eps_t>;

@@ -143,12 +143,6 @@ namespace plf
   }
 
 
-//   template<plf::concepts::polyfloat T> double ulp_distance(T const& l, T const& r)
-//   {
-//     if (ieee_equal(l, r)) return 0.0;
-//     else return plf::hi(plf::ulpdist(l, r));
-//   }
-
   template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
   {
     return eve::maximum(hi(plf::reldist/*[eve::numeric]*/(l, r)));
@@ -156,8 +150,6 @@ namespace plf
 
   template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
   {
-//     if (ieee_equal(l, r)) return 0.0;
-//     else
     return eve::maximum(hi(plf::dist(l, r)));
   }
 }

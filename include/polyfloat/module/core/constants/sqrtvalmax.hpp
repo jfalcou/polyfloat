@@ -79,7 +79,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/sqrtvalmax.cpp}
+  //!  @godbolt{doc/core/constants/sqrtvalmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto sqrtvalmax = eve::functor<sqrtvalmax_t>;

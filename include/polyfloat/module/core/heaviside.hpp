@@ -36,18 +36,18 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var heaviside
-  //!   @brief return the heavisideolute value.
+  //!   @brief return the 1 or 0 according to strict positiveness of the input value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
   //!      // Regular overload
   //!      constexpr auto heaviside(value auto x)                                            noexcept; // 1
@@ -70,7 +70,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/heaviside.cpp}
+  //!  @godbolt{doc/core/heaviside.cpp}
   //======================================================================================================================
 
   inline constexpr auto heaviside = eve::functor<heaviside_t>;

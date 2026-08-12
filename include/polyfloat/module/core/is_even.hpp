@@ -32,7 +32,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_even
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a floating value
+//!   @brief returns a logical true  if and only if the element value is a floating value
 //!   representing an even integer
 //!
 //!   @groupheader{Header file}
@@ -60,7 +60,7 @@ namespace plf
 //!     1. returns true if and only if x represent an even number
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_even.cpp}
+//!  @godbolt{doc/core/is_even.cpp}
 //================================================================================================
   inline constexpr auto is_even = eve::functor<is_even_t>;
   //======================================================================================================================

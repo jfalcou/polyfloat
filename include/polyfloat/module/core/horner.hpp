@@ -44,7 +44,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(horner_t, horner_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @addtogroup core
   //! @{
   //!   @var horner
   //!   @brief Implement the horner scheme to evaluate polynomials with coefficients
@@ -53,7 +53,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/functions.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -61,24 +61,12 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!   @endcode
-  //!
-  //!   @groupheader{Callable Signatures}
-  //!
-  //!   @code
-  //!   namespace eve
-  //!   {
   //!      // Regular overloads
-  //!      constexpr auto horner(floating_value auto x, value auto ...ci)                      noexcept; // 1
-  //!      constexpr auto horner(floating_value auto x, eve::coefficients auto tci)            noexcept; // 2
-  //!
-  //!      // Lanes masking
-  //!      constexpr auto horner[conditional_expr auto c](*any of the above overloads*/)       noexcept; // 3
-  //!      constexpr auto horner[logical_value auto m](*any of the above overloads*/)          noexcept; // 3
+  //!      constexpr auto horner(auto x, value auto ...ci)                      noexcept; // 1
+  //!      constexpr auto horner(auto x, eve::coefficients auto tci)            noexcept; // 2
   //!
   //!      // Semantic options
-  //!      constexpr auto horner[pedantic](/*any of the above overloads*/)                     noexcept; // 4
-  //!      constexpr auto horner[kahan](/*any of the above overloads*/)                        noexcept; // 5
+  //!      constexpr auto horner[kahan](/*any of the above overloads*/)         noexcept; // 3
   //!   }
   //!   @endcode
   //!
@@ -90,8 +78,6 @@ namespace plf
   //!        are to be scalar
   //!    * `tci`: eve::coefficients is a specialization of [tuple](@ref eve::product_type) of floating values,
   //!             used to avoid possible ambiguities
-  //!    * `c`: [Conditional expression](@ref eve::conditional_expr) masking the operation.
-  //!    * `m`: [Logical value](@ref eve::logical_value) masking the operation.
   //!
   //!   **Return value**
   //!
@@ -101,9 +87,7 @@ namespace plf
   //!
   //!     1. The value of the polynom at  `x` is returned.
   //!     2. Same as the call with the elements of the tuple.
-  //!     3. [The operation is performed conditionnaly](@ref conditional).
-  //!     4. `fma[pedantic]` instead of `fma` is used in internal computations.
-  //!     5. a Kahan like compensated algorithm is used to enhance accuracy.
+  //!     3. a Kahan like compensated algorithm is used to enhance accuracy.
   //!
   //!    @note If the coefficients are simd values of cardinal N, this means you simultaneously
   //!      compute the values of N polynomials.
@@ -116,7 +100,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/horner.cpp}
+  //!  @godbolt{doc/core/horner.cpp}
   //======================================================================================================================
 
   inline constexpr auto horner = eve::functor<horner_t>;

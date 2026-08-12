@@ -80,7 +80,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/logeps.cpp}
+  //!  @godbolt{doc/core/constants/logeps.cpp}
   //======================================================================================================================
 
   inline constexpr auto logeps = eve::functor<logeps_t>;
