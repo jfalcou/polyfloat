@@ -75,7 +75,7 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/two_prod.cpp}
+//!  @godbolt{doc/core/core/two_prod.cpp}
 //================================================================================================
   inline constexpr auto two_prod = eve::functor<two_prod_t>;
 //================================================================================================

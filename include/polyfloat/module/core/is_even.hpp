@@ -60,7 +60,7 @@ namespace plf
 //!     1. returns true if and only if x represent an even number
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_even.cpp}
+//!  @godbolt{doc/core/is_even.cpp}
 //================================================================================================
   inline constexpr auto is_even = eve::functor<is_even_t>;
   //======================================================================================================================

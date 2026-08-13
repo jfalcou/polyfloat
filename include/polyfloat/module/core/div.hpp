@@ -40,15 +40,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto div(T1 z1, T2 z2) noexcept; //1
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto div(T1 z1, T2 z2) noexcept; //1
   //!
   //!      // Semantic exclusive options
   //!      constexpr auto div[upward](/*any of the above overloads*/)                   noexcept; // 2
@@ -73,7 +73,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/div.cpp}
+  //!  @godbolt{doc/core/div.cpp}
   //======================================================================================================================
 
   inline constexpr auto div = eve::functor<div_t>;

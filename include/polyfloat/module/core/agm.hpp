@@ -76,7 +76,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/agm.cpp}
+  //!  @godbolt{doc/core/core/agm.cpp}
   //======================================================================================================================
 
   inline constexpr auto agm = eve::functor<agm_t>;

@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_pow2(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_pow2(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_pow2.cpp}
+  //!  @godbolt{doc/core/is_pow2.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_pow2 = eve::functor<is_pow2_t>;

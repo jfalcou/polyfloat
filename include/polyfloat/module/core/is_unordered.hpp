@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unordered.cpp}
+  //!  @godbolt{doc/core/is_unordered.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_unordered = eve::functor<is_unordered_t>;

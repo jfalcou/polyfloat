@@ -35,16 +35,16 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto sqrt(T z) noexcept;
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto sqrt[raw](T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sqrt(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sqrt[raw](T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/sqrt.cpp}
+  //!  @godbolt{doc/core/sqrt.cpp}
   //======================================================================================================================
 
   inline constexpr auto sqrt = eve::functor<sqrt_t>;

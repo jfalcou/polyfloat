@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_unit(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_unit(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_unit.cpp}
+  //!  @godbolt{doc/core/is_unit.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_unit = eve::functor<is_unit_t>;

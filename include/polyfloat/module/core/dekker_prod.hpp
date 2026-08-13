@@ -73,7 +73,7 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/dekker_prod.cpp}
+//!  @godbolt{doc/core/core/dekker_prod.cpp}
 //================================================================================================
   inline constexpr auto dekker_prod = eve::functor<dekker_prod_t>;
 //================================================================================================

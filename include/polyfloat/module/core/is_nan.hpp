@@ -35,15 +35,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_nan(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_nan(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_nan.cpp}
+  //!  @godbolt{doc/core/is_nan.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_nan = eve::functor<is_nan_t>;

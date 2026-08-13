@@ -40,13 +40,13 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
   //!      constexpr auto clamp(value auto x, value auto lo,  value auto hi)  noexcept; // 1
   //!   }
@@ -65,7 +65,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/clamp.cpp}
+  //!  @godbolt{doc/core/clamp.cpp}
   //======================================================================================================================
 
   inline constexpr auto clamp = eve::functor<clamp_t>;

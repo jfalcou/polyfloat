@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/ulp.cpp}
+  //!  @godbolt{doc/core/ulp.cpp}
   //======================================================================================================================
 
   inline constexpr auto ulp = eve::functor<ulp_t>;

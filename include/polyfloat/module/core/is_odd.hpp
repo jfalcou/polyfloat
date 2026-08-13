@@ -59,7 +59,7 @@ namespace plf
 //!     1. returns true if and only if x represent an odd number
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_odd.cpp}
+//!  @godbolt{doc/core/is_odd.cpp}
 //================================================================================================
   inline constexpr auto is_odd = eve::functor<is_odd_t>;
   //======================================================================================================================

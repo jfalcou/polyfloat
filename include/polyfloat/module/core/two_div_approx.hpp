@@ -71,7 +71,7 @@ namespace plf
 //!   *  [Exact and Approximated error of the DIV](https://inria.hal.science/inria-00429617/document)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/core/two_div_approx.cpp}
+//!  @godbolt{doc/core/core/core/two_div_approx.cpp}
 //================================================================================================
   inline constexpr auto two_div_approx = eve::functor<two_div_approx_t>;
 //================================================================================================

@@ -73,7 +73,7 @@ namespace plf
 //!        largest consecutive integer in the element type of `x` (`maxflint(as(x))`).
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_flint.cpp}
+//!  @godbolt{doc/core/is_flint.cpp}
 //================================================================================================
   inline constexpr auto is_flint = eve::functor<is_flint_t>;
   //======================================================================================================================

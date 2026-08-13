@@ -67,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/hi.cpp}
+  //!  @godbolt{doc/core/hi.cpp}
   //====================================================================================================================
   inline constexpr auto hi = extractor<0>{};
 
@@ -105,7 +105,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/md.cpp}
+  //!  @godbolt{doc/core/md.cpp}
   //====================================================================================================================
   inline constexpr auto md = extractor<1>{};
 
@@ -143,7 +143,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/lo.cpp}
+  //!  @godbolt{doc/core/lo.cpp}
   //====================================================================================================================
 
 // TODO

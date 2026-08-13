@@ -82,7 +82,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/dot.cpp}
+  //!  @godbolt{doc/core/core/dot.cpp}
   //======================================================================================================================
 
   inline constexpr auto dot = eve::functor<dot_t>;
