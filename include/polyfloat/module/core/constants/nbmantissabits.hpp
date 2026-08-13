@@ -14,33 +14,29 @@
 
 namespace plf
 {
-  template<typename Options> struct maxflint_t : eve::constant_callable<maxflint_t, Options>
+  template<typename Options> struct nbmantissabits_t : eve::constant_callable<nbmantissabits_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      if constexpr(dimension_v<T> == 1)
-        return T(eve::maxflint(eve::as<u_t>()));
-      else if constexpr(dimension_v<T> == 2)
-        return T(ldexp(1.0, 106), ldexp(1.0, 53));
-      else if constexpr(dimension_v<T> == 3)
-        return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
-    }
+      return eve::nbmantissabits(eve::as<u_t>())*dimension_v<T>;
+     }
 
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    POLYFLOAT_FORCEINLINE constexpr eve::as_integer_t< eve::underlying_type_t<T>>
+    operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(maxflint_t, maxflint_);
+    EVE_CALLABLE_OBJECT(nbmantissabits_t, nbmantissabits_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var maxflint
-  //!   @brief return the maximal representable flint value.
+  //!   @var nbmantissabits
+  //!   @brief return the number of available  mantissa bits.
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,7 +49,7 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto maxflint(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto nbmantissabits(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -63,14 +59,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the maximal representable flint value.
+  //!     Returns the number of available  mantissa bits.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/maxflint.cpp}
+  //!  @godbolt{doc/core/constants/nbmantissabits.cpp}
   //======================================================================================================================
 
-  inline constexpr auto maxflint = eve::functor<maxflint_t>;
+  inline constexpr auto nbmantissabits = eve::functor<nbmantissabits_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
