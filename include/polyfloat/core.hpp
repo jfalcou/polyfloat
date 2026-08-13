@@ -12,6 +12,7 @@
 #include <polyfloat/module/core/absmax.hpp>
 #include <polyfloat/module/core/absmin.hpp>
 #include <polyfloat/module/core/add.hpp>
+#include <polyfloat/module/core/agm.hpp>
 #include <polyfloat/module/core/average.hpp>
 #include <polyfloat/module/core/ceil.hpp>
 #include <polyfloat/module/core/chi.hpp>
@@ -19,6 +20,7 @@
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/copysign.hpp>
 #include <polyfloat/module/core/dec.hpp>
+#include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/dist.hpp>
 #include <polyfloat/module/core/div.hpp>
 #include <polyfloat/module/core/epsilon.hpp>
@@ -48,6 +50,7 @@
 #include <polyfloat/module/core/is_less.hpp>
 #include <polyfloat/module/core/is_less_equal.hpp>
 #include <polyfloat/module/core/is_lessgreater.hpp>
+#include <polyfloat/module/core/is_lez.hpp>
 #include <polyfloat/module/core/is_ltz.hpp>
 #include <polyfloat/module/core/is_minf.hpp>
 #include <polyfloat/module/core/is_nan.hpp>
@@ -99,6 +102,8 @@
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
+#include <polyfloat/module/core/three_fma.hpp>
 #include <polyfloat/module/core/trunc.hpp>
 #include <polyfloat/module/core/two_add.hpp>
 #include <polyfloat/module/core/two_prod.hpp>
+#include <polyfloat/module/core/two_split.hpp>

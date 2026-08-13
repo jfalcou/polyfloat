@@ -173,7 +173,7 @@ namespace plf::_
       {
         auto x = plf::convert(xx, eve::as_element<r_t>{}); //r_t(xx);
         r_t that(c);
-        ((that = fma(that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
+        ((that = fma[pedantic](that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
         return that;
       }
     }
@@ -209,7 +209,7 @@ namespace plf::_
     {
       using std::advance;
       auto that = cv_t(*cur);
-      auto step = [&](auto th, auto arg) { return fma[o](x, th, arg); };
+      auto step = [&](auto th, auto arg) { return fma[pedantic][o](x, th, arg); };
       for( advance(cur, 1); cur != last; advance(cur, 1) ) that = step(that, cv_t(*cur));
       return that;
     }

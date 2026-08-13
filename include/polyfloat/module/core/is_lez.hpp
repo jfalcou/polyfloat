@@ -7,49 +7,42 @@
 //======================================================================================================================
 #pragma once
 
-#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <type_traits>
 
 namespace plf
 {
-  template<typename Options> struct nbmantissabits_t : eve::constant_callable<nbmantissabits_t, Options>
-  {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
-    {
-      using u_t = eve::underlying_type_t<T>;
-      return eve::nbmantissabits(eve::as<u_t>())*dimension_v<T>;
-     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_integer_t< eve::underlying_type_t<T>>
-    operator()(as<T> const& v) const
+  template<typename Options> struct is_lez_t : eve::callable<is_lez_t, Options, raw_option, pedantic_option>
+  {
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<as_component_type_t<Z>>
     {
-      return POLYFLOAT_CALL(v);
+     return POLYFLOAT_CALL(z);
     }
 
-    EVE_CALLABLE_OBJECT(nbmantissabits_t, nbmantissabits_);
+    POLYFLOAT_CALLABLE_OBJECT(is_lez_t, is_lez_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @addtogroup core
   //! @{
-  //!   @var nbmantissabits
-  //!   @brief return the number of available  mantissa bits.
+  //!   @var is_lez
+  //!   @brief test the parameter for less or equal to zero.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto nbmantissabits(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_lez(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -59,15 +52,24 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the number of available  mantissa bits.
+  //!     Returns the value of z <= 0.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/constants/nbmantissabits.cpp}
+  //!  @godbolt{doc/core/is_lez.cpp}
   //======================================================================================================================
 
-  inline constexpr auto nbmantissabits = eve::functor<nbmantissabits_t>;
+  inline constexpr auto is_lez = eve::functor<is_lez_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
+}
+
+namespace plf::_
+{
+  template<typename Z, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto is_lez_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  {
+    return eve::is_lez(hi(z));
+  }
 }

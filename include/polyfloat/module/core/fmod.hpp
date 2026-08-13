@@ -90,14 +90,19 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto fmod_(POLYFLOAT_DELAY(), O const& , Z1 const& aa, Z2 const& bb) noexcept
   {
-    using plf_t = as_polyfloat_t<Z1, Z2>;
-    using u_t = eve::element_type_t<plf_t>;
-    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
-    auto a = cvt(aa);
-    auto b = cvt(bb);
-    return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b),
-                   eve::allbits,
-                   plf::if_else(is_eqz(a)||is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
+     using plf_t = as_polyfloat_t<Z1, Z2>;
+     if constexpr(dimension_v<plf_t> == 1)
+      return eve::fmod(aa, bb);
+    else
+    {
+      using u_t = eve::element_type_t<plf_t>;
+      auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+      auto a = cvt(aa);
+      auto b = cvt(bb);
+      return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b),
+                     eve::allbits,
+                     plf::if_else(is_eqz(a)||is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
 
+    }
   }
 }
