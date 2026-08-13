@@ -26,12 +26,13 @@ var NAVTREE =
 [
   [ "polyfloat", "index.html", [
     [ "Polyfloat numbers", "index.html#autotoc_md0", null ],
-    [ "What does this implementation provide", "index.html#autotoc_md1", [
-      [ "Constructors", "index.html#autotoc_md2", null ],
-      [ "Operators", "index.html#autotoc_md3", null ],
-      [ "Functions", "index.html#autotoc_md4", null ],
-      [ "Remark on predicates", "index.html#autotoc_md5", null ],
-      [ "Testing rationale", "index.html#autotoc_md6", null ]
+    [ "Warnings", "index.html#autotoc_md1", null ],
+    [ "What does this implementation provide", "index.html#autotoc_md2", [
+      [ "Constructors", "index.html#autotoc_md3", null ],
+      [ "Operators", "index.html#autotoc_md4", null ],
+      [ "Functions", "index.html#autotoc_md5", null ],
+      [ "Remark on predicates", "index.html#autotoc_md6", null ],
+      [ "Testing rationale", "index.html#autotoc_md7", null ]
     ] ],
     [ "How-Tos", "usergroup0.html", null ],
     [ "Reference Documentation", "usergroup1.html", [

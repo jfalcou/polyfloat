@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::two_prod</title>
+<title>polyfloat: plf::three_fma</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(function() { codefold.init(); });
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html','',''); });
+$(function(){initNavTree('namespaceplf_abda6529346e0ae007b7709fabfe7cb59.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -121,8 +121,8 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
 </div>
 
 <div class="contents">
-<a id="gae8d597dabc4dc057e3110c0a89afe8f3" name="gae8d597dabc4dc057e3110c0a89afe8f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">&#9670;&#160;</a></span>two_prod</h2>
+<a id="abda6529346e0ae007b7709fabfe7cb59" name="abda6529346e0ae007b7709fabfe7cb59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abda6529346e0ae007b7709fabfe7cb59">&#9670;&#160;</a></span>three_fma</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::two_prod = eve::functor&lt;two_prod_t&gt;</td>
+          <td class="memname">auto plf::three_fma = eve::functor&lt;three_fma_t&gt;</td>
         </tr>
       </table>
   </td>
@@ -141,34 +141,23 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
 </table>
 </div><div class="memdoc">
 
-<p>Computes the elementwise pair consisting of the product and its resulting rounding error. </p>
+<p>return the fma of the parameters with errors. </p>
+<p>@three_fmatogroup core</p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>eve</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="comment">// Regular overload</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae8d597dabc4dc057e3110c0a89afe8f3">two_prod</a>( <span class="keyword">auto</span> x, <span class="keyword">auto</span> y)            <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
-<div class="line">   <span class="comment">// Semantic options</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae8d597dabc4dc057e3110c0a89afe8f3">two_prod</a>[pedantic](<span class="keyword">auto</span> x, <span class="keyword">auto</span> y)   <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#abda6529346e0ae007b7709fabfe7cb59">three_fma</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3_html_gae8d597dabc4dc057e3110c0a89afe8f3"><div class="ttname"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">plf::two_prod</a></div><div class="ttdeci">constexpr auto two_prod</div><div class="ttdoc">Computes the elementwise pair consisting of the product and its resulting rounding error.</div><div class="ttdef"><b>Definition</b> two_prod.hpp:79</div></div>
+<div class="ttc" id="anamespaceplf_abda6529346e0ae007b7709fabfe7cb59_html_abda6529346e0ae007b7709fabfe7cb59"><div class="ttname"><a href="#abda6529346e0ae007b7709fabfe7cb59">plf::three_fma</a></div><div class="ttdeci">constexpr auto three_fma</div><div class="ttdoc">return the fma of the parameters with errors.</div><div class="ttdef"><b>Definition</b> three_fma.hpp:74</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">x</span>, <span class="tt">y</span>: polyfloatt arguments](eve::floating_value) of same dimension.</li>
+<li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Computes elementwise a pair of values <span class="tt">[a,e]</span> such that:</p><ul>
-<li><span class="tt">a</span> is <span class="tt">x+y</span></li>
-<li><span class="tt">e</span> is a value such that <span class="tt">a</span> \(\oplus\)<span class="tt">e</span> is equal to <span class="tt">x</span> \(\oplus\)<span class="tt">y</span>, where \(\oplus\) adds its two parameters with infinite precision.</li>
-</ul>
-<p>Classical algorithm, always valid.</p><ol type="1">
-<li>Handles overflow.</li>
-</ol>
-<h2 class="groupheader">External references </h2>
-<ul>
-<li><a href="https://www.vinc17.net/research/papers/rr_ccrsums2.pdf">On the Computation of Correctly-Rounded Sums</a></li>
-</ul>
+<p>Returns the fma of the arguments and two errors .</p>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"></div><!-- fragment --> 
 </div>

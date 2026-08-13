@@ -5,7 +5,7 @@ var searchData=
   ['clamp_2',['clamp',['../group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html#gaf3b6e14fd2890b610b24438a70b5ba87',1,'plf']]],
   ['complexify_3',['complexify',['../structcomplexify.html',1,'']]],
   ['constants_4',['Constants',['../group__constants.html',1,'']]],
-  ['constructors_5',['Constructors',['../index.html#autotoc_md2',1,'']]],
+  ['constructors_5',['Constructors',['../index.html#autotoc_md3',1,'']]],
   ['convert_6',['convert',['../group__core_ga3596810b24bfc8fb774e184cf3c2787e.html#ga3596810b24bfc8fb774e184cf3c2787e',1,'plf']]],
   ['copysign_7',['copysign',['../group__core_gae88e21eb3751b1d0fd7b71d288d9d1ee.html#gae88e21eb3751b1d0fd7b71d288d9d1ee',1,'plf']]],
   ['core_8',['Core',['../group__core.html',1,'']]],

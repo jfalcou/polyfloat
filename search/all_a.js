@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['on_20predicates_0',['Remark on predicates',['../index.html#autotoc_md5',1,'']]],
+  ['on_20predicates_0',['Remark on predicates',['../index.html#autotoc_md6',1,'']]],
   ['oneosqrteps_1',['oneosqrteps',['../group__constants_gaf37d435e94d94585ba4b0848c520316b.html#gaf37d435e94d94585ba4b0848c520316b',1,'plf']]],
   ['operator_21_3d_2',['operator!=',['../structplf_1_1polyfloat.html#ac345e6a953c0ec69ee85d43be131c6c6',1,'plf::polyfloat::operator!=()'],['../structplf_1_1polyfloat.html#ac345e6a953c0ec69ee85d43be131c6c6',1,'plf::operator!=()']]],
   ['operator_2a_3',['operator*',['../structplf_1_1polyfloat.html#ac8720871310050866ed9dbef62bc4908',1,'plf::polyfloat::operator*()'],['../structplf_1_1polyfloat.html#ac8720871310050866ed9dbef62bc4908',1,'plf::operator*()']]],
@@ -16,5 +16,5 @@ var searchData=
   ['operator_3c_3c_13',['operator&lt;&lt;',['../structplf_1_1polyfloat.html#a1d50add5f2f5370f64b20919751ccdcf',1,'plf::polyfloat::operator&lt;&lt;()'],['../structplf_1_1polyfloat.html#a1d50add5f2f5370f64b20919751ccdcf',1,'plf::operator&lt;&lt;()']]],
   ['operator_3d_14',['operator=',['../structplf_1_1polyfloat.html#a4f0c0eccaaaa165c4d7e889912fe4214',1,'plf::polyfloat']]],
   ['operator_3d_3d_15',['operator==',['../structplf_1_1polyfloat.html#a561363de989d2101775d8b85655ea08e',1,'plf::polyfloat::operator==()'],['../structplf_1_1polyfloat.html#a561363de989d2101775d8b85655ea08e',1,'plf::operator==()']]],
-  ['operators_16',['Operators',['../index.html#autotoc_md3',1,'']]]
+  ['operators_16',['Operators',['../index.html#autotoc_md4',1,'']]]
 ];
