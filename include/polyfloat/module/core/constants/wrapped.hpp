@@ -62,6 +62,7 @@ namespace plf
   inline constexpr auto allbits = _::as_constant<eve::allbits>;
   inline constexpr auto bitincrement = _::as_constant<eve::bitincrement>;
   inline constexpr auto half = _::as_constant<eve::half>;
+  inline constexpr auto inf  = _::as_constant<eve::inf>;
   inline constexpr auto mhalf = _::as_constant<eve::mhalf>;
   inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
   inline constexpr auto minexponent = _::as_constant<eve::minexponent>;
