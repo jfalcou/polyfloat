@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -141,15 +141,16 @@ $(function(){initNavTree('group__core_ga382498c379928168e37005f38a9b8eaf.html','
 </table>
 </div><div class="memdoc">
 
-<p><span class="tt">elementwise callable</span> returning a logical true if and only if the element has its sign bit unset </p>
+<p>returns a logical true if and only if the element has its sign bit unset </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;kyosu::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga382498c379928168e37005f38a9b8eaf_html_ga382498c379928168e37005f38a9b8eaf"><div class="ttname"><a href="#ga382498c379928168e37005f38a9b8eaf">plf::is_positive</a></div><div class="ttdeci">constexpr auto is_positive</div><div class="ttdoc">elementwise callable returning a logical true if and only if the element has its sign bit unset</div><div class="ttdef"><b>Definition</b> is_positive.hpp:64</div></div>
+<div class="ttc" id="agroup__core_ga382498c379928168e37005f38a9b8eaf_html_ga382498c379928168e37005f38a9b8eaf"><div class="ttname"><a href="#ga382498c379928168e37005f38a9b8eaf">plf::is_positive</a></div><div class="ttdeci">constexpr auto is_positive</div><div class="ttdoc">returns a logical true if and only if the element has its sign bit unset</div><div class="ttdef"><b>Definition</b> is_positive.hpp:64</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span>: Value to process.</li>
@@ -157,7 +158,49 @@ $(function(){initNavTree('group__core_ga382498c379928168e37005f38a9b8eaf.html','
 <p><b>Return value</b></p>
 <p>returns true if and only if the bit of sign (most significant bit) is not set. Of course the result on a NaN input is generally out of control.</p>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">plf::is_positive</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-1.0, 1.0e-300, 0.0);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span>&lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span>&lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span>&lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span>&lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(f)  &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(a)  &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(b)  &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(c)  &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(-c) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(-c) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = eve::wide&lt;plf::polyfloat&lt;double, 3&gt;, eve::fixed&lt;2&gt;&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = eve::wide&lt;plf::polyfloat&lt;double, 2&gt;, eve::fixed&lt;2&gt;&gt;;</div>
+<div class="line">  pf2_t wb(b, 0.0 );</div>
+<div class="line">  pf3_t wc(c, -0.0 );</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span>&lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span>&lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;-wc         &quot;</span>&lt;&lt; -wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(wb) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(wc) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(-wc) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(-wc) &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> d = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat&lt;double, 3&gt;</a>(-0.0);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;d  &quot;</span>&lt;&lt; d &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(d)  &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(d) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;-d  &quot;</span>&lt;&lt; -d &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_positive(-d)  &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga382498c379928168e37005f38a9b8eaf">is_positive</a>(-d) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

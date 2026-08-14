@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -130,9 +130,21 @@ $(function(){initNavTree('group__core__accuracy.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ga1a41dc23e01e636ab69b39a3238a893f" id="r_ga1a41dc23e01e636ab69b39a3238a893f"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a893f.html#ga1a41dc23e01e636ab69b39a3238a893f">plf::dekker_prod</a> = eve::functor&lt;dekker_prod_t&gt;</td></tr>
-<tr class="memdesc:ga1a41dc23e01e636ab69b39a3238a893f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the elementwise pair consisting of the product and its resulting rounding error without using fma.  <br /></td></tr>
+<tr class="memdesc:ga1a41dc23e01e636ab69b39a3238a893f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the pair consisting of the product and its resulting rounding error without using fma.  <br /></td></tr>
+<tr class="memitem:gad714fdd7a5f3a2cfcab70658cb520cd1" id="r_gad714fdd7a5f3a2cfcab70658cb520cd1"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1">plf::three_add</a> = eve::functor&lt;three_add_t&gt;</td></tr>
+<tr class="memdesc:gad714fdd7a5f3a2cfcab70658cb520cd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the sum of the parameters with errors.  <br /></td></tr>
+<tr class="memitem:gabda6529346e0ae007b7709fabfe7cb59" id="r_gabda6529346e0ae007b7709fabfe7cb59"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html#gabda6529346e0ae007b7709fabfe7cb59">plf::three_fma</a> = eve::functor&lt;three_fma_t&gt;</td></tr>
+<tr class="memdesc:gabda6529346e0ae007b7709fabfe7cb59"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fma of the parameters with errors.  <br /></td></tr>
 <tr class="memitem:ga4f331a5f0e10706ede78c9ac753d6ef4" id="r_ga4f331a5f0e10706ede78c9ac753d6ef4"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_ga4f331a5f0e10706ede78c9ac753d6ef4.html#ga4f331a5f0e10706ede78c9ac753d6ef4">plf::two_add</a> = eve::functor&lt;two_add_t&gt;</td></tr>
 <tr class="memdesc:ga4f331a5f0e10706ede78c9ac753d6ef4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the elementwise pair consisting of the sum and its resulting rounding error.  <br /></td></tr>
+<tr class="memitem:gab1a360af3bf67971c24e0b8c94ff4c1c" id="r_gab1a360af3bf67971c24e0b8c94ff4c1c"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_gab1a360af3bf67971c24e0b8c94ff4c1c.html#gab1a360af3bf67971c24e0b8c94ff4c1c">plf::two_div_approx</a> = eve::functor&lt;two_div_approx_t&gt;</td></tr>
+<tr class="memdesc:gab1a360af3bf67971c24e0b8c94ff4c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the elementwise pair consisting of the division and its resulting approximate rounding error.  <br /></td></tr>
+<tr class="memitem:gae79e44f7a860ba7c33be885213090df1" id="r_gae79e44f7a860ba7c33be885213090df1"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html#gae79e44f7a860ba7c33be885213090df1">plf::two_fma_approx</a> = eve::functor&lt;two_fma_approx_t&gt;</td></tr>
+<tr class="memdesc:gae79e44f7a860ba7c33be885213090df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the elementwise pair consisting of the division and its resulting approximate rounding error.  <br /></td></tr>
+<tr class="memitem:gae8d597dabc4dc057e3110c0a89afe8f3" id="r_gae8d597dabc4dc057e3110c0a89afe8f3"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html#gae8d597dabc4dc057e3110c0a89afe8f3">plf::two_prod</a> = eve::functor&lt;two_prod_t&gt;</td></tr>
+<tr class="memdesc:gae8d597dabc4dc057e3110c0a89afe8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the elementwise pair consisting of the product and its resulting rounding error.  <br /></td></tr>
+<tr class="memitem:ga9086f4afc7e04d20a2a3bf8212dc677a" id="r_ga9086f4afc7e04d20a2a3bf8212dc677a"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a.html#ga9086f4afc7e04d20a2a3bf8212dc677a">plf::two_split</a> = eve::functor&lt;two_split_t&gt;</td></tr>
+<tr class="memdesc:ga9086f4afc7e04d20a2a3bf8212dc677a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the pair from Veltkamp's splitting algorithm.  <br /></td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

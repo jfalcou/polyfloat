@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numbers_0',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]]
+  ['implementation_20provide_0',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]]
 ];

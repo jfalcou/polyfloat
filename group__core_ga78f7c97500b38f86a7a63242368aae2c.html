@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -143,13 +143,14 @@ $(function(){initNavTree('group__core_ga78f7c97500b38f86a7a63242368aae2c.html','
 
 <p>test the parameter for not less or equal to zero. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;kyosu::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga78f7c97500b38f86a7a63242368aae2c">is_nlez</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga78f7c97500b38f86a7a63242368aae2c">is_nlez</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_ga78f7c97500b38f86a7a63242368aae2c_html_ga78f7c97500b38f86a7a63242368aae2c"><div class="ttname"><a href="#ga78f7c97500b38f86a7a63242368aae2c">plf::is_nlez</a></div><div class="ttdeci">constexpr auto is_nlez</div><div class="ttdoc">test the parameter for not less or equal to zero.</div><div class="ttdef"><b>Definition</b> is_nlez.hpp:62</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span>: Value to process.</li>

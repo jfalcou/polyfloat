@@ -6,5 +6,6 @@ var searchData=
   ['dist_3',['dist',['../group__core_ga31aaafd7f21c599693e7a2fd6533e315.html#ga31aaafd7f21c599693e7a2fd6533e315',1,'plf']]],
   ['div_4',['div',['../group__core_gad96f947d70b23427a0305b9998aad337.html#gad96f947d70b23427a0305b9998aad337',1,'plf']]],
   ['does_20this_20implementation_20provide_5',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]],
-  ['double_5freal_5ft_6',['double_real_t',['../group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193',1,'plf']]]
+  ['dot_6',['dot',['../namespaceplf_af5ce77de394a85c44e05c7f96215fc27.html#af5ce77de394a85c44e05c7f96215fc27',1,'plf']]],
+  ['double_5freal_5ft_7',['double_real_t',['../group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193',1,'plf']]]
 ];

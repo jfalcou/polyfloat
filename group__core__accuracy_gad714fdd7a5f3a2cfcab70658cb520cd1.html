@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::three_fma</title>
+<title>polyfloat: plf::three_add</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -95,7 +95,7 @@ $(function() { codefold.init(); });
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceplf_abda6529346e0ae007b7709fabfe7cb59.html','',''); });
+$(function(){initNavTree('group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -121,8 +121,8 @@ $(function(){initNavTree('namespaceplf_abda6529346e0ae007b7709fabfe7cb59.html','
 </div>
 
 <div class="contents">
-<a id="abda6529346e0ae007b7709fabfe7cb59" name="abda6529346e0ae007b7709fabfe7cb59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abda6529346e0ae007b7709fabfe7cb59">&#9670;&#160;</a></span>three_fma</h2>
+<a id="gad714fdd7a5f3a2cfcab70658cb520cd1" name="gad714fdd7a5f3a2cfcab70658cb520cd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad714fdd7a5f3a2cfcab70658cb520cd1">&#9670;&#160;</a></span>three_add</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ $(function(){initNavTree('namespaceplf_abda6529346e0ae007b7709fabfe7cb59.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::three_fma = eve::functor&lt;three_fma_t&gt;</td>
+          <td class="memname">auto plf::three_add = eve::functor&lt;three_add_t&gt;</td>
         </tr>
       </table>
   </td>
@@ -141,23 +141,22 @@ $(function(){initNavTree('namespaceplf_abda6529346e0ae007b7709fabfe7cb59.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the fma of the parameters with errors. </p>
-<p>@three_fmatogroup core</p>
+<p>return the sum of the parameters with errors. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#abda6529346e0ae007b7709fabfe7cb59">three_fma</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gad714fdd7a5f3a2cfcab70658cb520cd1">three_add</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceplf_abda6529346e0ae007b7709fabfe7cb59_html_abda6529346e0ae007b7709fabfe7cb59"><div class="ttname"><a href="#abda6529346e0ae007b7709fabfe7cb59">plf::three_fma</a></div><div class="ttdeci">constexpr auto three_fma</div><div class="ttdoc">return the fma of the parameters with errors.</div><div class="ttdef"><b>Definition</b> three_fma.hpp:74</div></div>
+<div class="ttc" id="agroup__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1_html_gad714fdd7a5f3a2cfcab70658cb520cd1"><div class="ttname"><a href="#gad714fdd7a5f3a2cfcab70658cb520cd1">plf::three_add</a></div><div class="ttdeci">constexpr auto three_add</div><div class="ttdoc">return the sum of the parameters with errors.</div><div class="ttdef"><b>Definition</b> three_add.hpp:75</div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns the fma of the arguments and two errors .</p>
+<p>Returns the sum of the arguments and two errors .</p>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"></div><!-- fragment --> 
 </div>

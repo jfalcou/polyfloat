@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -141,17 +141,18 @@ $(function(){initNavTree('group__core_ga352e6ca52f4beeae5effd0cdf7325247.html','
 </table>
 </div><div class="memdoc">
 
-<p><span class="tt">callable</span> indicatrix of the interval \([lo, hi[\) or of the set for which the invocable returns true. </p>
+<p>indicatrix of the interval \([lo, hi[\) or of the set for which the invocable returns true. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">chi</a>(value <span class="keyword">auto</span> x, value <span class="keyword">auto</span> lo,  value <span class="keyword">auto</span> hi)             <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">chi</a>(value <span class="keyword">auto</span> x, <span class="keyword">auto</span> belongs)                              <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga352e6ca52f4beeae5effd0cdf7325247_html_ga352e6ca52f4beeae5effd0cdf7325247"><div class="ttname"><a href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a></div><div class="ttdeci">constexpr auto chi</div><div class="ttdoc">callable indicatrix of the interval  or of the set for which the invocable returns true.</div><div class="ttdef"><b>Definition</b> chi.hpp:84</div></div>
+<div class="ttc" id="agroup__core_ga352e6ca52f4beeae5effd0cdf7325247_html_ga352e6ca52f4beeae5effd0cdf7325247"><div class="ttname"><a href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a></div><div class="ttdeci">constexpr auto chi</div><div class="ttdoc">indicatrix of the interval  or of the set for which the invocable returns true.</div><div class="ttdef"><b>Definition</b> chi.hpp:84</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: value to chi.</li>
@@ -168,7 +169,35 @@ $(function(){initNavTree('group__core_ga352e6ca52f4beeae5effd0cdf7325247.html','
 </li>
 </ol>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  std::cout &lt;&lt;  std::setprecision(15);</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a>;</div>
+<div class="line">  <span class="keyword">using </span>dd = <a class="code hl_typedef" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  eve::wide lo = {2.0, -4.0, -10.0, 0.0};</div>
+<div class="line">  eve::wide hi = {4.0, -1.0, 0.0, 5.0};</div>
+<div class="line">  dd x(2.0, 2.0e-25);</div>
+<div class="line">  <span class="keyword">auto</span> belongs1 =  [](<span class="keyword">auto</span> v) {<span class="keywordflow">return</span> v &gt; dd(2.0, 2.0e-20); };</div>
+<div class="line">  <span class="keyword">auto</span> belongs2 =  [](<span class="keyword">auto</span> v) {<span class="keywordflow">return</span> v &gt; dd(2.0, 2.0e-30); };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- x                       = &quot;</span> &lt;&lt; x &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- lo                      = &quot;</span> &lt;&lt; lo &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- hi                      = &quot;</span> &lt;&lt; hi &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; chi(x, belongs1)         = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a>(x, belongs1) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; chi(x, belongs2)         = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a>(x, belongs2) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; chi(x, lo, hi)          = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a>(x, lo, hi) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; chi[x &gt; -2](x, lo, hi)  = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga352e6ca52f4beeae5effd0cdf7325247">plf::chi</a>[x &gt; -2](x, lo, hi) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__types_gad41c3534de111df822528a4437f2b193_html_gad41c3534de111df822528a4437f2b193"><div class="ttname"><a href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:30</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

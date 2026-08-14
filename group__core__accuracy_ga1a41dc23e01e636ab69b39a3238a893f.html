@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -141,7 +141,7 @@ $(function(){initNavTree('group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a89
 </table>
 </div><div class="memdoc">
 
-<p>Computes the elementwise pair consisting of the product and its resulting rounding error without using fma. </p>
+<p>Computes the pair consisting of the product and its resulting rounding error without using fma. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
@@ -152,7 +152,7 @@ $(function(){initNavTree('group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a89
 <div class="line">   <span class="comment">// Semantic options</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga1a41dc23e01e636ab69b39a3238a893f">dekker_prod</a>[pedantic](<span class="keyword">auto</span> x, <span class="keyword">auto</span> y)   <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core__accuracy_ga1a41dc23e01e636ab69b39a3238a893f_html_ga1a41dc23e01e636ab69b39a3238a893f"><div class="ttname"><a href="#ga1a41dc23e01e636ab69b39a3238a893f">plf::dekker_prod</a></div><div class="ttdeci">constexpr auto dekker_prod</div><div class="ttdoc">Computes the elementwise pair consisting of the product and its resulting rounding error without usin...</div><div class="ttdef"><b>Definition</b> dekker_prod.hpp:78</div></div>
+<div class="ttc" id="agroup__core__accuracy_ga1a41dc23e01e636ab69b39a3238a893f_html_ga1a41dc23e01e636ab69b39a3238a893f"><div class="ttname"><a href="#ga1a41dc23e01e636ab69b39a3238a893f">plf::dekker_prod</a></div><div class="ttdeci">constexpr auto dekker_prod</div><div class="ttdoc">Computes the pair consisting of the product and its resulting rounding error without using fma.</div><div class="ttdef"><b>Definition</b> dekker_prod.hpp:78</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>, <span class="tt">y</span>: polyfloat arguments](eve::floating_value) of same dimension.</li>
@@ -162,7 +162,7 @@ $(function(){initNavTree('group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a89
 <li><span class="tt">a</span> is <span class="tt">x+y</span></li>
 <li><span class="tt">e</span> is a value such that <span class="tt">a</span> \(\oplus\)<span class="tt">e</span> is equal to <span class="tt">x</span> \(\oplus\)<span class="tt">y</span>, where \(\oplus\) adds its dekker parameters with infinite precision.</li>
 </ul>
-<p>Classical algorithm, always valid.</p><ol type="1">
+<p>Dekker algorithm.</p><ol type="1">
 <li>Handles overflow.</li>
 </ol>
 <h2 class="groupheader">External references </h2>

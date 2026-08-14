@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -141,7 +141,7 @@ $(function(){initNavTree('group__core_ga72a296047ea9f24dc1438e3a1161e58b.html','
 </table>
 </div><div class="memdoc">
 
-<p><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an integer </p>
+<p>returns a logical true if and only if the element value is a floating value representing an integer </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
@@ -158,7 +158,7 @@ $(function(){initNavTree('group__core_ga72a296047ea9f24dc1438e3a1161e58b.html','
 <div class="line">   <span class="comment">// Semantic options</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>[pedantic](floating_value <span class="keyword">auto</span> x)       <span class="keyword">noexcept</span>; <span class="comment">// 4</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga72a296047ea9f24dc1438e3a1161e58b_html_ga72a296047ea9f24dc1438e3a1161e58b"><div class="ttname"><a href="#ga72a296047ea9f24dc1438e3a1161e58b">plf::is_flint</a></div><div class="ttdeci">constexpr auto is_flint</div><div class="ttdoc">elementwise callable returning a logical true if and only if the element value is a floating value re...</div><div class="ttdef"><b>Definition</b> is_flint.hpp:78</div></div>
+<div class="ttc" id="agroup__core_ga72a296047ea9f24dc1438e3a1161e58b_html_ga72a296047ea9f24dc1438e3a1161e58b"><div class="ttname"><a href="#ga72a296047ea9f24dc1438e3a1161e58b">plf::is_flint</a></div><div class="ttdeci">constexpr auto is_flint</div><div class="ttdoc">returns a logical true if and only if the element value is a floating value representing an integer</div><div class="ttdef"><b>Definition</b> is_flint.hpp:78</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: argument.</li>
@@ -167,13 +167,53 @@ $(function(){initNavTree('group__core_ga72a296047ea9f24dc1438e3a1161e58b.html','
 </ul>
 <p><b>Return value</b></p>
 <ol type="1">
-<li>The call <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_flint(x)</a></span> is semantically equivalent to <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_flint</a> (eve::frac(x))</span>; This means that x represents an integral value.</li>
+<li>The call <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="returns a logical true if and only if the element value is a floating value representing an integer">is_flint(x)</a></span> is semantically equivalent to <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="returns a logical true if and only if the element value is a floating value representing an integer">is_flint</a> (eve::frac(x))</span>; This means that x represents an integral value.</li>
 <li>Always returns <span class="tt">true</span></li>
 <li>The operation is performed conditionnaly.</li>
-<li>The call <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_flint</a>[pedantic](x)</span> also check that the input is not greater or equal to the largest consecutive integer in the element type of <span class="tt">x</span> (<span class="tt"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83" title="return the maximal representable flint value.">maxflint(as(x))</a></span>).</li>
+<li>The call <span class="tt"><a class="el" href="#ga72a296047ea9f24dc1438e3a1161e58b" title="returns a logical true if and only if the element value is a floating value representing an integer">is_flint</a>[pedantic](x)</span> also check that the input is not greater or equal to the largest consecutive integer in the element type of <span class="tt">x</span> (<span class="tt"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83" title="return the maximal representable flint value.">maxflint(as(x))</a></span>).</li>
 </ol>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">plf::is_flint</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1000.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(13.0);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(13.0, 2.);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(100.0, 12.0, 1.0);</div>
+<div class="line">  <span class="keyword">auto</span> d = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(100.0, 12.0, 1.0e-10);</div>
+<div class="line">  <span class="keyword">auto</span> e = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(100.0, 12.3);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15) &lt;&lt; std::hexfloat;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span>&lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span>&lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span>&lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;d  &quot;</span>&lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;e  &quot;</span>&lt;&lt; d &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span>&lt;&lt; e &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(f) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(a) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(b) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(c) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(d) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(d) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(e) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(e) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = eve::wide&lt;plf::polyfloat&lt;double, 3&gt;, eve::fixed&lt;2&gt;&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = eve::wide&lt;plf::polyfloat&lt;double, 2&gt;, eve::fixed&lt;2&gt;&gt;;</div>
+<div class="line">  pf2_t wb(b, e );</div>
+<div class="line">  pf3_t wc(c, d );</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span>&lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span>&lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(wb) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_flint(wc) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga72a296047ea9f24dc1438e3a1161e58b">is_flint</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

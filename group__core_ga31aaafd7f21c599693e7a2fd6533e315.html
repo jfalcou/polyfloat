@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -143,21 +143,65 @@ $(function(){initNavTree('group__core_ga31aaafd7f21c599693e7a2fd6533e315.html','
 
 <p>return the distance value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;kyosu::concepts::poly<span class="keywordtype">float</span>_like T1, poly<span class="keywordtype">float</span>_like Z2&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(T1 z1, T2 z2) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T1, poly<span class="keywordtype">float</span>_like Z2&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(T1 z1, T2 z2) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_ga31aaafd7f21c599693e7a2fd6533e315_html_ga31aaafd7f21c599693e7a2fd6533e315"><div class="ttname"><a href="#ga31aaafd7f21c599693e7a2fd6533e315">plf::dist</a></div><div class="ttdeci">constexpr auto dist</div><div class="ttdoc">return the distance value.</div><div class="ttdef"><b>Definition</b> dist.hpp:64</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z1</span>, <span class="tt">z2</span>: Values to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns the distance betweenthe parameters</p>
+<p>Returns the distance between the two parameters</p>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  std::cout &lt;&lt;  std::setprecision(15);</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">plf::dist</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span>&lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span>&lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span>&lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span>&lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(f, f) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(f, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(a, a) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(a, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(b, b) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(b, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(c, c) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(c, c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(a, f) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(a, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(b, a) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(b, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(c, b) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(c, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(f, a) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(f, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(a, b) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(a, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(b, c) &quot;</span>&lt;&lt;  <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(b, c) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = eve::wide&lt;plf::polyfloat&lt;double, 3&gt;&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = eve::wide&lt;plf::polyfloat&lt;double, 2&gt;&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span>&lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span>&lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(wb, wb) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(wb, wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(wc, wc) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(wc, wc) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dist(wc, wb) &quot;</span>&lt;&lt; <a class="code hl_variable" href="#ga31aaafd7f21c599693e7a2fd6533e315">dist</a>(wc, wb) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

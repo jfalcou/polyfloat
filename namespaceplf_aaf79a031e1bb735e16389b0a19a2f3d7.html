@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -150,89 +150,21 @@ $(function(){initNavTree('namespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7.html','
 <div class="line">{</div>
 <div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(Z1 z1, Z2 z2) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7_html_aaf79a031e1bb735e16389b0a19a2f3d7"><div class="ttname"><a href="#aaf79a031e1bb735e16389b0a19a2f3d7">plf::agm</a></div><div class="ttdeci">constexpr auto agm</div><div class="ttdoc">return the arithmetic-geometric mean.</div><div class="ttdef"><b>Definition</b> agm.hpp:82</div></div>
+<div class="ttc" id="anamespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7_html_aaf79a031e1bb735e16389b0a19a2f3d7"><div class="ttname"><a href="#aaf79a031e1bb735e16389b0a19a2f3d7">plf::agm</a></div><div class="ttdeci">constexpr auto agm</div><div class="ttdoc">return the arithmetic-geometric mean.</div><div class="ttdef"><b>Definition</b> agm.hpp:80</div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:30</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z1</span>, <span class="tt">z2</span>: Values to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<ol type="1">
-<li>The value of the arithmetic-geometric mean is returned. No overflow can occur. The two parameters must share the same sign.</li>
-<li>The operation is performed conditionnaly.</li>
-</ol>
+<p>The value of the arithmetic-geometric mean is returned. No overflow can occur. The two parameters must share the same sign.</p>
 <h2 class="groupheader">External references </h2>
 <ul>
 <li><a href="https://mathworld.wolfram.com/Arithmetic-GeometricMean.html">Wolfram MathWorld</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Arithmetic-geometric_mean">Wikipedia</a></li>
 </ul>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/details/printing.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;mpreal.h&gt;</span></div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> bitprec(){</div>
-<div class="line">    <span class="keyword">using </span>u_t = <span class="keyword">decltype</span>(plf::hi(T()));</div>
-<div class="line">    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a> == 1)</div>
-<div class="line">      <span class="keywordflow">return</span> (<span class="keyword">sizeof</span>(u_t) == 8 ? 53 : 24);</div>
-<div class="line">    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a> == 2)</div>
-<div class="line">      <span class="keywordflow">return</span> (<span class="keyword">sizeof</span>(u_t) == 8 ? 106 : 48);</div>
-<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a> == 3)</div>
-<div class="line">      <span class="keywordflow">return</span> (<span class="keyword">sizeof</span>(u_t) == 8 ? 159 : 72);</div>
-<div class="line">  }</div>
-<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">auto</span> to_mpreal(T a)</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keyword">using  </span>mpfr::mpreal;</div>
-<div class="line">    mpfr::mpreal::set_default_prec(bitprec&lt;T&gt;()*10);</div>
-<div class="line">    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a>  == 1)</div>
-<div class="line">      <span class="keywordflow">return</span> mpreal(a);</div>
-<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a>  == 2)</div>
-<div class="line">      <span class="keywordflow">return</span> mpreal(plf::hi(a))+mpreal(plf::lo(a));</div>
-<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(<a class="code hl_variable" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v&lt;T&gt;</a>  == 3)</div>
-<div class="line">      <span class="keywordflow">return</span> mpreal(plf::hi(a))+mpreal(plf::md(a))+mpreal(plf::lo(a));</div>
-<div class="line"> }</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">  std::cout &lt;&lt;  std::setprecision(15);</div>
-<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">plf::agm</a>;</div>
-<div class="line">  <span class="keyword">using </span>plf::_::println;</div>
-<div class="line">  <span class="keyword">using </span>plf2 = <a class="code hl_typedef" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>plf3 = <a class="code hl_typedef" href="group__types_ga4c1c1780bdc9bedf696cc99a1893f883.html#ga4c1c1780bdc9bedf696cc99a1893f883">plf::triple_real_t&lt;double&gt;</a>;</div>
-<div class="line">  {</div>
-<div class="line">    plf2 o(1.0);</div>
-<div class="line">    plf2 sqt2 = <a class="code hl_variable" href="group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(eve::as(o));</div>
-<div class="line">    std::setprecision(50);</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;o    &quot;</span>&lt;&lt; o &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqt2 &quot;</span>&lt;&lt; sqt2 &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;agm(o, sqt2) &quot;</span> &lt;&lt; 1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; to_mpreal(1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2)) &lt;&lt; std::endl;</div>
-<div class="line">    println(<span class="stringliteral">&quot;lem &quot;</span>, 1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2));</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;0.8346268416740731862814297327990468089939930134903470024498273701036819927095264&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">  }</div>
-<div class="line">  {</div>
-<div class="line">    plf3 o(1.0);</div>
-<div class="line">    plf3 sqt2 = <a class="code hl_variable" href="group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(eve::as(o));</div>
-<div class="line">    std::setprecision(50);</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;o    &quot;</span>&lt;&lt; o &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqt2 &quot;</span>&lt;&lt; sqt2 &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;lemniscate constant &quot;</span> &lt;&lt; 1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; to_mpreal(1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2)) &lt;&lt; std::endl;</div>
-<div class="line">    println(<span class="stringliteral">&quot;lem &quot;</span>, 1.0f/<a class="code hl_variable" href="#aaf79a031e1bb735e16389b0a19a2f3d7">agm</a>(o, sqt2));</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;lem &quot;</span>&lt;&lt; <span class="stringliteral">&quot;0.8346268416740731862814297327990468089939930134903470024498273701036819927095264&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">  }</div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__constants_ga4242d1daac24e1aa6e29ce62d230d171_html_ga4242d1daac24e1aa6e29ce62d230d171"><div class="ttname"><a href="group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a></div><div class="ttdeci">constexpr auto sqrt_2</div><div class="ttdoc">return the sqrt of 2.</div><div class="ttdef"><b>Definition</b> sqrt_2.hpp:88</div></div>
-<div class="ttc" id="agroup__traits_ga846021636ff96cc73a58d2f664e7ce1f_html_ga846021636ff96cc73a58d2f664e7ce1f"><div class="ttname"><a href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v</a></div><div class="ttdeci">constexpr unsigned int dimension_v</div><div class="ttdoc">Obtains the rank containing a given type.</div><div class="ttdef"><b>Definition</b> traits.hpp:71</div></div>
-<div class="ttc" id="agroup__types_ga4c1c1780bdc9bedf696cc99a1893f883_html_ga4c1c1780bdc9bedf696cc99a1893f883"><div class="ttname"><a href="group__types_ga4c1c1780bdc9bedf696cc99a1893f883.html#ga4c1c1780bdc9bedf696cc99a1893f883">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:30</div></div>
-<div class="ttc" id="agroup__types_gad41c3534de111df822528a4437f2b193_html_gad41c3534de111df822528a4437f2b193"><div class="ttname"><a href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:30</div></div>
-</div><!-- fragment --> 
+<div class="fragment"></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['polyfloat_0',['Polyfloat',['../index.html',1,'']]],
-  ['polyfloat_20numbers_1',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]],
-  ['predicates_2',['Remark on predicates',['../index.html#autotoc_md6',1,'']]],
-  ['provide_3',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]]
+  ['math_20elementary_20functions_0',['Math elementary functions',['../index.html#autotoc_md9',1,'']]],
+  ['math_20special_20functions_1',['Math special functions',['../index.html#autotoc_md10',1,'']]]
 ];

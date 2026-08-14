@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -136,23 +136,23 @@ $(function(){initNavTree('index.html','',''); });
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
 Polyfloat numbers</h1>
-<p>As explained in the above articles, Polyfloats are floating-point expansions that represent high-precision numbers as sequences of two, three, or four machine-precision numbers, extending the effective precision to double, triple, or quadruple the native machine precision.</p>
-<p>Up to now, we limit the implementation to 3 machine-precision numbers.</p>
+<p>As explained in the above articles, Polyfloats are floating-point expansions that represent high-precision numbers as sequences of two, three, or four machine-precision numbers of same standard type with decreasing magnitude (so that they minimaly overlap) extending the effective precision to two, three, or four times the native mantissa precision of the standard type, but not modifying the available exponent range.</p>
+<p>Up to now, the implementation is limited to 3 machine-precision numbers.</p>
 <p>Starting from the real numbers (supported by type <span class="tt">T</span>: <span class="tt">float</span> or <span class="tt">double</span>) we define:</p>
 <ul>
 <li><span class="tt">double_real_t&lt;T&gt;</span> (dimension 2) as a pair of <span class="tt">T</span>, alias of <span class="tt">polyfloat&lt;T,2&gt;</span></li>
 <li><span class="tt">triple_real_t&lt;T&gt;</span> (dimension 3) as a triple of <span class="tt">T</span>, alias of <span class="tt">polyfloat&lt;T,3&gt;</span></li>
 </ul>
-<p><b>SIMD</b> analog can be used simlessly</p>
+<p><b>SIMD</b> analog can be used seemlessly</p>
 <ul>
 <li><span class="tt">double_real_t&lt;eve::wide&lt;T&gt;&gt;</span> (dimension 2), alias of <span class="tt">eve::wide&lt;polyfloat&lt;T,2&gt;&gt;</span></li>
 <li><span class="tt">triple_real_t&lt;eve::wide&lt;T&gt;&gt;</span> (dimension 3), alias of <span class="tt">eve::wide&lt;polyfloat&lt;T,3&gt;&gt;</span></li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Please observe the crucial reordering of <span class="tt">wide</span> in the above description : NEVER USE <span class="tt">polyfloat&lt;eve:wide&lt;T&gt;,N&gt;</span></dd></dl>
-<p>These datas with different dimensions but same standard floating-point underlying type can be freely mixed with the obvious semantic that if <span class="tt">N &lt; M</span> an element of <span class="tt">polyfloat&lt;N,T&gt;</span> will be considered as having its components from <span class="tt">N</span> to <span class="tt">M-1</span> null, as an element of <span class="tt">polyfloat&lt;M,T&gt;</span></p>
-<p>All these types do not extend the exponent range of their undelying type, but their number of mantissa bits.</p><ul>
-<li><span class="tt">double_real_t&lt;float&gt;</span> have 46 bits of mantissa</li>
-<li><span class="tt">triple_real_t&lt;float&gt;</span> have 59 bits of mantissa</li>
+<p>These datas with different dimensions but same standard floating-point underlying type can be freely mixed with the obvious semantic that if <span class="tt">N &lt; M</span> an element of <span class="tt">polyfloat&lt;T,N&gt;</span> will be considered as having its components from <span class="tt">N</span> to <span class="tt">M-1</span> null, as an element of <span class="tt">polyfloat&lt;T,M&gt;</span></p>
+<p>All these types do not extend the exponent range of their underlying type, but their number of effective mantissa bits.</p><ul>
+<li><span class="tt">double_real_t&lt;float&gt;</span> have 48 bits of mantissa</li>
+<li><span class="tt">triple_real_t&lt;float&gt;</span> have 62 bits of mantissa</li>
 <li><span class="tt">double_real_t&lt;double&gt;</span> have 106 bits of mantissa</li>
 <li><span class="tt">triple_real_t&lt;double&gt;</span> have 159 bits of mantissa</li>
 </ul>
@@ -168,11 +168,11 @@ Warnings</h1>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 What does this implementation provide</h1>
-<p>Being intended that a <span class="tt">polyfloat</span>_like is a <span class="tt">polyfloat</span> or a standard floating-point number, all operators and functions (with a few exceptions restricted to some dimensionnalities constraints) implemented can receive a mix of scalar or simd of <span class="tt">polyfloat</span>_like of various dimensionnality (but same underlying type) and are defined in the namespace <span class="tt"><a class="el" href="namespaceplf.html" title="Main POLYFLOAT namespace.">plf</a></span>.</p>
+<p>Being intended that a <span class="tt">polyfloat_like</span> is a <span class="tt">polyfloat</span> or a standard floating-point number, all operators and functions (with a few exceptions restricted to some dimensionnalities constraints) implemented can receive a mix of scalar or simd of <span class="tt">polyfloat_like</span> of various dimensionnality (but same underlying type) and are defined in the namespace <span class="tt"><a class="el" href="namespaceplf.html" title="Main POLYFLOAT namespace.">plf</a></span>.</p>
 <ul>
-<li>Proper <span class="tt">polyfloat</span> values are those for which dimensionality is greater or equal to 2 : they satisfy the <span class="tt">concepts::polyfloat</span> concept. They don't satisfy the <span class="tt">concepts::real</span> concept;</li>
-<li>scalar and simd floating types only satisfy the <span class="tt">concepts::polyfloat_like</span> concept, meaning they are interoperable with proper <span class="tt">polyfloat</span> values. They also satisfy the <span class="tt">concepts::real</span> concept.</li>
-<li>Almost all functions involving angles (within the parameters or the results) can receive an option (namely plf::radpi) such that every angle parameter or result will be expressed in \(\pi\) multiples rather than in mere radians. (This use can be beneficial as some currently used angles values are small integer multiples of \(\pi\). \(\pi\) is not exactly represented by <span class="tt">polyfloat</span>_like values; contrarily to small integers)</li>
+<li>Proper <span class="tt">polyfloat</span> values are those for which dimensionality (number of standard parts) is greater or equal to 2 : they satisfy the <span class="tt">concepts::polyfloat</span> concept. They don't satisfy the <span class="tt">concepts::real</span> concept;</li>
+<li>scalar and simd standard and <b>EVE</b> floating types only satisfy the <span class="tt">concepts::polyfloat_like</span> concept, meaning they are interoperable with proper <span class="tt">polyfloat</span> values. They also satisfy the <span class="tt">concepts::real</span> concept.</li>
+<li>Almost all functions involving angles (within the parameters or the results) can receive an option (namely plf::radpi) such that every angle parameter or result will be expressed in \(\pi\) multiples rather than in mere radians. (This use can be beneficial as some currently used angles values are small integer multiples of \(\pi\). \(\pi\) is not exactly represented by <span class="tt">polyfloat_like</span> values; contrarily to small integers)</li>
 </ul>
 <p>Of course the algebra operation +, -, * and / are provided.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
@@ -194,107 +194,106 @@ Functions</h2>
 <ul>
 <li><p class="startli">Callables usable with all <span class="tt">polyfloat</span> types</p>
 <p class="startli">Most <b>EVE</b> arithmetic and math functions are (or will be eventually) provided for <span class="tt">polyfloat</span> datas. Up to now only analogs of <b>EVE</b> core functions are implemented.</p>
-<p class="startli">The following table is mainly a todo list : <span class="tt">sna</span> meanning stil non available.</p>
+<p class="startli">The following tables stat which fonction are already available. Not available ones are followed by a <span class="tt">SNA</span>, meanning Still Non Available.</p>
 </li>
 </ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Core functions</h1>
+<p>These are the arithmetic functions that do not involve transcendantal computations, predicates, and the <span class="tt">sqrt</span> and <span class="tt">rsqrt</span> functions.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">abs   </td><td class="markdownTableBodyNone">acos <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">acosh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">acot <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga69b3078b6a64e0467e0595929ca947de.html#ga69b3078b6a64e0467e0595929ca947de" title="plf::abs">abs</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6" title="plf::absmax">absmax</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807" title="plf::absmin">absmin</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6" title="plf::add">add</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">acoth <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">acsc <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">acsch <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">add   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7.html#aaf79a031e1bb735e16389b0a19a2f3d7" title="plf::agm">agm</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140" title="plf::average">average</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gacf4cc27cc53a0faf471c2610eab95e8c.html#gacf4cc27cc53a0faf471c2610eab95e8c" title="plf::ceil">ceil</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga352e6ca52f4beeae5effd0cdf7325247.html#ga352e6ca52f4beeae5effd0cdf7325247" title="plf::chi">chi</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">agm   </td><td class="markdownTableBodyNone">airy <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">airy_ai <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">airy_bi <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html#gaf3b6e14fd2890b610b24438a70b5ba87" title="plf::clamp">clamp</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga3596810b24bfc8fb774e184cf3c2787e.html#ga3596810b24bfc8fb774e184cf3c2787e" title="plf::convert">convert</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gae88e21eb3751b1d0fd7b71d288d9d1ee.html#gae88e21eb3751b1d0fd7b71d288d9d1ee" title="plf::copysign">copysign</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga21dc299efb61f8ae4924e3fb0b953f7c.html#ga21dc299efb61f8ae4924e3fb0b953f7c" title="plf::dec">dec</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">am <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">arg <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">asec <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">asech <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga31aaafd7f21c599693e7a2fd6533e315.html#ga31aaafd7f21c599693e7a2fd6533e315" title="plf::dist">dist</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gad96f947d70b23427a0305b9998aad337.html#gad96f947d70b23427a0305b9998aad337" title="plf::div">div</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_af5ce77de394a85c44e05c7f96215fc27.html#af5ce77de394a85c44e05c7f96215fc27" title="plf::dot">dot</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">asin <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">asinh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">associator <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">atan <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gac68d4fa443f186a4893bda40bdadcd39.html#gac68d4fa443f186a4893bda40bdadcd39" title="plf::epsilon">epsilon</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__internal_ga60713c93ccdf574a916e2c96eede7018.html#ga60713c93ccdf574a916e2c96eede7018" title="plf::exponent">exponent</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gabaa3043614b3644380404814e6718a87.html#gabaa3043614b3644380404814e6718a87" title="plf::floor">floor</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_afe2539e930df632442830952eafe983f.html#afe2539e930df632442830952eafe983f" title="plf::fma">fma</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">atanh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">average   </td><td class="markdownTableBodyNone">bessel_h <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">bessel_i <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="namespaceplf_a5b4600c48a905e3808b32a9441a6d19d.html#a5b4600c48a905e3808b32a9441a6d19d" title="plf::fnma">fnma</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga1e5b90cb087d254f8741482c0e894594.html#ga1e5b90cb087d254f8741482c0e894594" title="plf::fmod">fmod</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga6cbff9063806f25141fbe0f5863becae.html#ga6cbff9063806f25141fbe0f5863becae" title="plf::frac">frac</a>  </td><td class="markdownTableBodyNone">frexp  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bessel_j <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">bessel_k <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">bessel_y <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">beta <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaacc157e51d44695e50b1e1af7643abc0.html#gaacc157e51d44695e50b1e1af7643abc0" title="plf::heaviside">heaviside</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__functions_ga4be7100c1c154e7fa933fa734608082c.html#ga4be7100c1c154e7fa933fa734608082c" title="plf::horner">horner</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gafb741bdffc03f40d05b112ff6c893e7c.html#gafb741bdffc03f40d05b112ff6c893e7c" title="plf::if_else">if_else</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gad3d7ea17362a2244fb6ec0ca2d5a78e5.html#gad3d7ea17362a2244fb6ec0ca2d5a78e5" title="plf::inc">inc</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ceil   </td><td class="markdownTableBodyNone">cbrt <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">chi   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga3b8438957e33ee0ee5b3ab2508aa72ac.html#ga3b8438957e33ee0ee5b3ab2508aa72ac" title="plf::is_denormal">is_denormal</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gaa3f884f1bd114c09949fb5d4e1af9876.html#gaa3f884f1bd114c09949fb5d4e1af9876" title="plf::is_equal">is_equal</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga4d8c8308d3b4bba663bb237a195b27a6.html#ga4d8c8308d3b4bba663bb237a195b27a6" title="plf::is_eqz">is_eqz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga1a258750e54fc736597fa9439bea340f.html#ga1a258750e54fc736597fa9439bea340f" title="plf::is_eqmz">is_eqmz</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">convert   </td><td class="markdownTableBodyNone">cos <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">cosh <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga1d3c7d7b9441ebc3115872893b1f35a7.html#ga1d3c7d7b9441ebc3115872893b1f35a7" title="plf::is_eqpz">is_eqpz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gabfa4b5248f0e3f16859f471e7445a0ec.html#gabfa4b5248f0e3f16859f471e7445a0ec" title="plf::is_even">is_even</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga51a63988bfb6162220cd95bcf37af748.html#ga51a63988bfb6162220cd95bcf37af748" title="plf::is_finite">is_finite</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga72a296047ea9f24dc1438e3a1161e58b.html#ga72a296047ea9f24dc1438e3a1161e58b" title="plf::is_flint">is_flint</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">cot <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">coth <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">csc <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">csch <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga1a413faf72a8ca404c5445c18660b038.html#ga1a413faf72a8ca404c5445c18660b038" title="plf::is_greater">is_greater</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga97645462f4430d66d0da2a93a1b2f37d.html#ga97645462f4430d66d0da2a93a1b2f37d" title="plf::is_greater_equal">is_greater_equal</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gabd560b7b077896323ee38940ef5a3583.html#gabd560b7b077896323ee38940ef5a3583" title="plf::is_gtz">is_gtz</a>  </td><td class="markdownTableBodyNone">is_infinite  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">dec   </td><td class="markdownTableBodyNone">deta <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">digamma <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaeb3a722d8086ab0090707c53e2058c3d.html#gaeb3a722d8086ab0090707c53e2058c3d" title="plf::is_less">is_less</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga288303686db135dde311d78d6ebcc103.html#ga288303686db135dde311d78d6ebcc103" title="plf::is_less_equal">is_less_equal</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga93c70fd4967b9569ea28724a993369be.html#ga93c70fd4967b9569ea28724a993369be" title="plf::is_lessgreater">is_lessgreater</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gad212f44157bf7a494a02cdc8e2cb01b4.html#gad212f44157bf7a494a02cdc8e2cb01b4" title="plf::is_lez">is_lez</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">dist   </td><td class="markdownTableBodyNone">div   </td><td class="markdownTableBodyNone">dot   </td><td class="markdownTableBodyNone">ellint_fe <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga62ddb7af573f49058eba0f222072310a.html#ga62ddb7af573f49058eba0f222072310a" title="plf::is_ltz">is_ltz</a>  </td><td class="markdownTableBodyNone">is_minf  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga1db11a0b9a18822ffe41043c38cc80c3.html#ga1db11a0b9a18822ffe41043c38cc80c3" title="plf::is_nan">is_nan</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga5b1a93ce270f1b01560e0007b998ea73.html#ga5b1a93ce270f1b01560e0007b998ea73" title="plf::is_negative">is_negative</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ellint_rc <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">ellint_rd <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">ellint_rf <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">ellint_rg <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gab196817aaa41a88c58ed791c715b0350.html#gab196817aaa41a88c58ed791c715b0350" title="plf::is_nemz">is_nemz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga588f3519dcd992829d6060db0b2dd0b6.html#ga588f3519dcd992829d6060db0b2dd0b6" title="plf::is_nepz">is_nepz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga1e4d7cd895471d034bfab1d93130be54.html#ga1e4d7cd895471d034bfab1d93130be54" title="plf::is_nez">is_nez</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga4299f6d8bf5e48900d92af1371735d2f.html#ga4299f6d8bf5e48900d92af1371735d2f" title="plf::is_ngez">is_ngez</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ellint_rj <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">erf <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">erfcx <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">erfi <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga1012d9d76ecb23bf85402fea5b7719ae.html#ga1012d9d76ecb23bf85402fea5b7719ae" title="plf::is_ngtz">is_ngtz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga78f7c97500b38f86a7a63242368aae2c.html#ga78f7c97500b38f86a7a63242368aae2c" title="plf::is_nlez">is_nlez</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gae2a0761ccbc5a9fe472f2f5c14a8fcd9.html#gae2a0761ccbc5a9fe472f2f5c14a8fcd9" title="plf::is_nltz">is_nltz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga315ab6ec01496d96b325d266be09767f.html#ga315ab6ec01496d96b325d266be09767f" title="plf::is_not_denormal">is_not_denormal</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">eta <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">exp <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">exp10 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">exp2 <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaed9f3b4229041da1ac2a2070db903277.html#gaed9f3b4229041da1ac2a2070db903277" title="plf::is_not_equal">is_not_equal</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga63749142d53ad0d040659d8d4cffee74.html#ga63749142d53ad0d040659d8d4cffee74" title="plf::is_not_finite">is_not_finite</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga42ae7e20907bd55debe6262ff5ea78f9.html#ga42ae7e20907bd55debe6262ff5ea78f9" title="plf::is_not_flint">is_not_flint</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga2717687d1b7470024cd67a978c7b42b3.html#ga2717687d1b7470024cd67a978c7b42b3" title="plf::is_not_greater">is_not_greater</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">expm1 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">expmx2 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gabe0e10750aea5fdf460f4c56f46d84c9.html#gabe0e10750aea5fdf460f4c56f46d84c9" title="plf::is_not_greater_equal">is_not_greater_equal</a>  </td><td class="markdownTableBodyNone">is_not_infinite  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gacad2e09ee75c713a87065f75a2a18c64.html#gacad2e09ee75c713a87065f75a2a18c64" title="plf::is_not_less">is_not_less</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gac10cc53f0009c90aa0a206f346e21cee.html#gac10cc53f0009c90aa0a206f346e21cee" title="plf::is_not_less_equal">is_not_less_equal</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">expx2 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">faddeeva <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">fam <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">floor   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga64a07f1dd60b6e1409442078cc039a42.html#ga64a07f1dd60b6e1409442078cc039a42" title="plf::is_not_nan">is_not_nan</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga455e06a0df2a0068637f251becfbb944.html#ga455e06a0df2a0068637f251becfbb944" title="plf::is_odd">is_odd</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga7c90ae517c18bab6325f49cce61f4edf.html#ga7c90ae517c18bab6325f49cce61f4edf" title="plf::is_ordered">is_ordered</a>  </td><td class="markdownTableBodyNone">is_pinf  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">fma   </td><td class="markdownTableBodyNone">fms <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">fnma   </td><td class="markdownTableBodyNone">fnms <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga382498c379928168e37005f38a9b8eaf.html#ga382498c379928168e37005f38a9b8eaf" title="plf::is_positive">is_positive</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gaf77de37071bc9885bab1dc8d8bb235b0.html#gaf77de37071bc9885bab1dc8d8bb235b0" title="plf::is_pow2">is_pow2</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gae00ac1ff95cdeca72e526d70cc419e51.html#gae00ac1ff95cdeca72e526d70cc419e51" title="plf::is_unit">is_unit</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga46fff13f9c73cf8cdbe1ed78f4083f65.html#ga46fff13f9c73cf8cdbe1ed78f4083f65" title="plf::is_unordered">is_unordered</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">frac <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">fsm <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">gd <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaaafb5f51797ebd81c0fdc1011e0275a3.html#gaaafb5f51797ebd81c0fdc1011e0275a3" title="plf::ldexp">ldexp</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html#a8875d0b61cf3fbeeaa6ed18b29e5ca9f" title="plf::lerp">lerp</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga592c5eb0fdeb82b41dd07a2ddc48dd6e.html#ga592c5eb0fdeb82b41dd07a2ddc48dd6e" title="plf::mantissa">mantissa</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1" title="plf::max">max</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">gegenbauer <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">horner   </td><td class="markdownTableBodyNone">hypergeometric <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">hypot <span class="tt">sna</span>  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html#gaf2ecab0082e8fa1007d5ea49c9fa1a87" title="plf::min">min</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gae33d4d1bd5488f7aed156cd106f4ce74.html#gae33d4d1bd5488f7aed156cd106f4ce74" title="plf::minus">minus</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gaf07ed2a608fc290c474c9baaa296fc76.html#gaf07ed2a608fc290c474c9baaa296fc76" title="plf::modf">modf</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_a856a221cd309873711b978ce55df4635.html#a856a221cd309873711b978ce55df4635" title="plf::mul">mul</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">if_else   </td><td class="markdownTableBodyNone">inc   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">is_denormal   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197" title="plf::nearest">nearest</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga0b77fce5aa260a3629bed972eee3ba39.html#ga0b77fce5aa260a3629bed972eee3ba39" title="plf::negate">negate</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gacb0784fa93d2122cec99faf7a9760daa.html#gacb0784fa93d2122cec99faf7a9760daa" title="plf::negatenz">negatenz</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739" title="plf::next">next</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">is_equal   </td><td class="markdownTableBodyNone">is_eqz   </td><td class="markdownTableBodyNone">is_finite   </td><td class="markdownTableBodyNone">is_flint   </td></tr>
+<td class="markdownTableBodyNone">parts  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga3e945bcc637ae4a744f512275949fe82.html#ga3e945bcc637ae4a744f512275949fe82" title="plf::prev">prev</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_a38ee18ae42971becb7275f6596ada180.html#a38ee18ae42971becb7275f6596ada180" title="plf::rec">rec</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga46f13916d7af01b5f6c1f880d13e2ed4.html#ga46f13916d7af01b5f6c1f880d13e2ed4" title="plf::reldist">reldist</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">is_infinite   </td><td class="markdownTableBodyNone">is_nan   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__functions_ga033b061dfa0b2062f1c30241b7bd500d.html#ga033b061dfa0b2062f1c30241b7bd500d" title="plf::reverse_horner">reverse_horner</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga6b68af3438bb67d5a0ac3634a01fd610.html#ga6b68af3438bb67d5a0ac3634a01fd610" title="plf::rsqrt">rsqrt</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga71f110b670810f9e0e3ee1b5745a37a8.html#ga71f110b670810f9e0e3ee1b5745a37a8" title="plf::sign">sign</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gaa1b1663acb0eb4bbc16fd9beb3dff197.html#gaa1b1663acb0eb4bbc16fd9beb3dff197" title="plf::signnz">signnz</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">is_nez   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">is_not_denormal   </td><td class="markdownTableBodyNone">is_not_equal   </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">is_not_finite   </td><td class="markdownTableBodyNone">is_not_flint   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">is_not_infinite   </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">is_not_nan   </td><td class="markdownTableBodyNone">is_not_real   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">is_real <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">is_unitary   </td><td class="markdownTableBodyNone">jacobi_elliptic <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">kolmmean <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">kronecker <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">kummer <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">lambda <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">lbeta <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">ldiv <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">legendre <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">lerp   </td><td class="markdownTableBodyNone">log <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">log10 <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">log1p <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">log2 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">log_abs <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">log_abs_gamma <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">log_gamma <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">lpnorm <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">lrising_factorial <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">manhattan <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">maxabs <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">maxmag <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">minabs <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">minmag <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">minus   </td><td class="markdownTableBodyNone">mul   </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">nearest   </td><td class="markdownTableBodyNone">negmaxabs <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">negminabs <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">nthroot <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">oneminus   </td><td class="markdownTableBodyNone">pow <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">pow1p <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">pow_abs <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">powm1 <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">proj <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">radinpi <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">rec   </td><td class="markdownTableBodyNone">reldist <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">reverse_horner   </td><td class="markdownTableBodyNone">rising_factorial <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">rsqrt   </td><td class="markdownTableBodyNone">sec <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">sech <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">sign   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">signz   </td><td class="markdownTableBodyNone">sin <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">sinc <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">sincos <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">sinh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">sinhc <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">sinhcosh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">sqr   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">sqrt   </td><td class="markdownTableBodyNone">sub   </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">tan <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">tanh <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">tchebytchev <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">tgamma <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">tgamma_inv <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">to_polar <span class="tt">sna</span>  </td><td class="markdownTableBodyNone">tricomi <span class="tt">sna</span>  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">trunc   </td><td class="markdownTableBodyNone">zeta <span class="tt">sna</span>  </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf" title="plf::sqr">sqr</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77" title="plf::sqrt">sqrt</a>  </td><td class="markdownTableBodyNone"><a class="el" href="namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html#a9d647eeb7803da2f5dc1d1c646e22799" title="plf::sub">sub</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core_ga9aa5715fd56663843e5d34d9e3904338.html#ga9aa5715fd56663843e5d34d9e3904338" title="plf::trunc">trunc</a>  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
-Remark on predicates</h2>
-<p>All predicates comparing to <span class="tt">zero</span> and almost all one parameter predicates are a lot faster than two parameters ones for which testing the 'hi' part is not sufficient.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<dl class="section note"><dt>Note</dt><dd>All predicates comparing to <span class="tt">zero</span> and almost all one parameter predicates are a lot faster than two parameters ones for which testing the 'hi' part is not sufficient.</dd></dl>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Core constants</h1>
+<p>These are proper <span class="tt">polyfloat</span> constant values related to precision internal IEEE representation or or simple arithmetic constants wrapped from <b>EVE</b> .</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Proper values  </th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="group__constants_gac4277864eeceb38de7a3e18e4f329337.html#gac4277864eeceb38de7a3e18e4f329337" title="plf::effective_mantissa_bits">effective_mantissa_bits</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_gacd69b768b1e3278712c5dd2b3cd7b58c.html#gacd69b768b1e3278712c5dd2b3cd7b58c" title="plf::eps">eps</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_gae1bef0c184e2dead4007764d4e821835.html#gae1bef0c184e2dead4007764d4e821835" title="plf::inveps">inveps</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_gad27792bcc40b8ac1693bacbd95570d68.html#gad27792bcc40b8ac1693bacbd95570d68" title="plf::logeps">logeps</a>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83" title="plf::maxflint">maxflint</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_gaf37d435e94d94585ba4b0848c520316b.html#gaf37d435e94d94585ba4b0848c520316b" title="plf::oneosqrteps">oneosqrteps</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171" title="plf::sqrt_2">sqrt_2</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_ga193389bdf9378b4f1ab19e1ed49a52a0.html#ga193389bdf9378b4f1ab19e1ed49a52a0" title="plf::sqrteps">sqrteps</a>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">[<a class="el" href="group__constants_ga5b01112179d17efdb5be43518c0e0669.html#ga5b01112179d17efdb5be43518c0e0669" title="plf::sqrtvalmax">sqrtvalmax</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_ga107149eec536df23c4386d025b854ecf.html#ga107149eec536df23c4386d025b854ecf" title="plf::valmax">valmax</a>  </td><td class="markdownTableBodyNone">valmin  </td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">wrapped from <b>EVE</b>  </th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">half  </td><td class="markdownTableBodyNone"><a class="el" href="group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7" title="plf::inf">inf</a>  </td><td class="markdownTableBodyNone">mhalf  </td><td class="markdownTableBodyNone">mindenormal  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">minexponent  </td><td class="markdownTableBodyNone">minf  </td><td class="markdownTableBodyNone">mone  </td><td class="markdownTableBodyNone">mzero  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">nan  </td><td class="markdownTableBodyNone">one  </td><td class="markdownTableBodyNone" colspan="2"></td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Error free and augmented accuracy functions</h1>
+<p>These functions are not of common use but are the inner bases with <span class="tt">fma</span> of the implementation of <span class="tt">polyfloat</span> numbers. They generally follow the descrption given in many articles of the ARENAIRE INRIA team. They return pair of triple of values the first being the operation result main approximation, the others correction that could be virtually added in an infinite precision environnement to get an exact (or for the <span class="tt">approx</span> ones) at least a still more accurate result.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1" title="plf::three_add">dekker_prod</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1" title="plf::three_add">three_add</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html#gabda6529346e0ae007b7709fabfe7cb59" title="plf::three_fma">three_fma</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_ga4f331a5f0e10706ede78c9ac753d6ef4.html#ga4f331a5f0e10706ede78c9ac753d6ef4" title="plf::two_add">two_add</a>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gab1a360af3bf67971c24e0b8c94ff4c1c.html#gab1a360af3bf67971c24e0b8c94ff4c1c" title="plf::two_div_approx">two_div_approx</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html#gae79e44f7a860ba7c33be885213090df1" title="plf::two_fma_approx">two_fma_approx</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html#gae8d597dabc4dc057e3110c0a89afe8f3" title="plf::two_prod">two_prod</a>  </td><td class="markdownTableBodyNone"><a class="el" href="group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a.html#ga9086f4afc7e04d20a2a3bf8212dc677a" title="plf::two_split">two_split</a>  </td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+Math elementary functions</h1>
+<p>STILL NOT DONE</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Math special functions</h1>
+<p>STILL NOT DONE</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Testing rationale</h2>
 <p>The behaviour of <span class="tt">polyfloat</span> is not the same as standard floating points numbers, for instance for any <span class="tt">polyfloat</span> the difference between any finite T and the next representable element is the minimum denormal value of the type T, meaning that the intervals are quite more populated.</p>
 <p>However, the following table shows the number of bits of mantissa available for each scalar <span class="tt">polyfloat</span> element as well as an expected machine precision (eps) related to this mantissa bit size</p>
@@ -302,9 +301,9 @@ Testing rationale</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">base type  </th><th class="markdownTableHeadNone">dimension  </th><th class="markdownTableHeadNone">bits number  </th><th class="markdownTableHeadNone">eps  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">float  </td><td class="markdownTableBodyNone">2  </td><td class="markdownTableBodyNone">46  </td><td class="markdownTableBodyNone">1.4211e-14  </td></tr>
+<td class="markdownTableBodyNone">float  </td><td class="markdownTableBodyNone">2  </td><td class="markdownTableBodyNone">48  </td><td class="markdownTableBodyNone">3.5527e-15  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">float  </td><td class="markdownTableBodyNone">3  </td><td class="markdownTableBodyNone">69  </td><td class="markdownTableBodyNone">1.6941e-21  </td></tr>
+<td class="markdownTableBodyNone">float  </td><td class="markdownTableBodyNone">3  </td><td class="markdownTableBodyNone">72  </td><td class="markdownTableBodyNone">2.1176e-22  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">double  </td><td class="markdownTableBodyNone">2  </td><td class="markdownTableBodyNone">106  </td><td class="markdownTableBodyNone">1.2326e-32  </td></tr>
 <tr class="markdownTableRowEven">

@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -141,7 +141,7 @@ $(function(){initNavTree('group__core_ga42ae7e20907bd55debe6262ff5ea78f9.html','
 </table>
 </div><div class="memdoc">
 
-<p><span class="tt">elementwise callable</span> returning a logical true if and only if the element value is a floating value representing an integer </p>
+<p>returns a logical true if and only if the element value is a floating value representing an integer </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
@@ -158,7 +158,7 @@ $(function(){initNavTree('group__core_ga42ae7e20907bd55debe6262ff5ea78f9.html','
 <div class="line">   <span class="comment">// Semantic options</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga42ae7e20907bd55debe6262ff5ea78f9">is_not_flint</a>[pedantic](floating_value <span class="keyword">auto</span> x)       <span class="keyword">noexcept</span>; <span class="comment">// 4</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga42ae7e20907bd55debe6262ff5ea78f9_html_ga42ae7e20907bd55debe6262ff5ea78f9"><div class="ttname"><a href="#ga42ae7e20907bd55debe6262ff5ea78f9">plf::is_not_flint</a></div><div class="ttdeci">constexpr auto is_not_flint</div><div class="ttdoc">elementwise callable returning a logical true if and only if the element value is a floating value re...</div><div class="ttdef"><b>Definition</b> is_not_flint.hpp:78</div></div>
+<div class="ttc" id="agroup__core_ga42ae7e20907bd55debe6262ff5ea78f9_html_ga42ae7e20907bd55debe6262ff5ea78f9"><div class="ttname"><a href="#ga42ae7e20907bd55debe6262ff5ea78f9">plf::is_not_flint</a></div><div class="ttdeci">constexpr auto is_not_flint</div><div class="ttdoc">returns a logical true if and only if the element value is a floating value representing an integer</div><div class="ttdef"><b>Definition</b> is_not_flint.hpp:78</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: argument.</li>
@@ -167,10 +167,10 @@ $(function(){initNavTree('group__core_ga42ae7e20907bd55debe6262ff5ea78f9.html','
 </ul>
 <p><b>Return value</b></p>
 <ol type="1">
-<li>The call <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_not_flint(x)</a></span> is semantically equivalent to <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_not_flint</a> (eve::frac(x))</span>; This means that x represents an integral value.</li>
+<li>The call <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="returns a logical true if and only if the element value is a floating value representing an integer">is_not_flint(x)</a></span> is semantically equivalent to <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="returns a logical true if and only if the element value is a floating value representing an integer">is_not_flint</a> (eve::frac(x))</span>; This means that x represents an integral value.</li>
 <li>Always returns <span class="tt">true</span></li>
 <li>The operation is performed conditionnaly.</li>
-<li>The call <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="elementwise callable returning a logical true if and only if the element value is a floating value re...">is_not_flint</a>[pedantic](x)</span> also check that the input is not greater or equal to the largest consecutive integer in the element type of <span class="tt">x</span> (<span class="tt"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83" title="return the maximal representable flint value.">maxflint(as(x))</a></span>).</li>
+<li>The call <span class="tt"><a class="el" href="#ga42ae7e20907bd55debe6262ff5ea78f9" title="returns a logical true if and only if the element value is a floating value representing an integer">is_not_flint</a>[pedantic](x)</span> also check that the input is not greater or equal to the largest consecutive integer in the element type of <span class="tt">x</span> (<span class="tt"><a class="el" href="group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83" title="return the maximal representable flint value.">maxflint(as(x))</a></span>).</li>
 </ol>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"></div><!-- fragment --> 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::two_prod</title>
+<title>polyfloat: plf::two_fma_approx</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -57,7 +57,7 @@ MathJax.Hub.Config({
   <td id="projectalign">
    <div id="projectname">polyfloat<span id="projectnumber">&#160;v0.1.0</span>
    </div>
-   <div id="projectbrief">Complex Without Complexes</div>
+   <div id="projectbrief">Extended precision floating numbers</div>
   </td>
  </tr>
    <tr><td colspan="2" style="padding: 20px 0px 0px 0px;">        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -95,7 +95,7 @@ $(function() { codefold.init(); });
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('group__core_gae8d597dabc4dc057e3110c0a89afe8f3.html','',''); });
+$(function(){initNavTree('group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -121,8 +121,8 @@ $(function(){initNavTree('group__core_gae8d597dabc4dc057e3110c0a89afe8f3.html','
 </div>
 
 <div class="contents">
-<a id="gae8d597dabc4dc057e3110c0a89afe8f3" name="gae8d597dabc4dc057e3110c0a89afe8f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">&#9670;&#160;</a></span>two_prod</h2>
+<a id="gae79e44f7a860ba7c33be885213090df1" name="gae79e44f7a860ba7c33be885213090df1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae79e44f7a860ba7c33be885213090df1">&#9670;&#160;</a></span>two_fma_approx</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ $(function(){initNavTree('group__core_gae8d597dabc4dc057e3110c0a89afe8f3.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::two_prod = eve::functor&lt;two_prod_t&gt;</td>
+          <td class="memname">auto plf::two_fma_approx = eve::functor&lt;two_fma_approx_t&gt;</td>
         </tr>
       </table>
   </td>
@@ -141,33 +141,34 @@ $(function(){initNavTree('group__core_gae8d597dabc4dc057e3110c0a89afe8f3.html','
 </table>
 </div><div class="memdoc">
 
-<p>Computes the elementwise pair consisting of the product and its resulting rounding error. </p>
+<p>Computes the elementwise pair consisting of the division and its resulting approximate rounding error. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span>eve</div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overload</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae8d597dabc4dc057e3110c0a89afe8f3">two_prod</a>( <span class="keyword">auto</span> x, <span class="keyword">auto</span> y)            <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae79e44f7a860ba7c33be885213090df1">two_fma_approx</a>( <span class="keyword">auto</span> x, <span class="keyword">auto</span> y, <span class="keyword">auto</span> z)            <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line"> </div>
 <div class="line">   <span class="comment">// Semantic options</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae8d597dabc4dc057e3110c0a89afe8f3">two_prod</a>[pedantic](<span class="keyword">auto</span> x, <span class="keyword">auto</span> y)   <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae79e44f7a860ba7c33be885213090df1">two_fma_approx</a>[pedantic](<span class="keyword">auto</span> x, <span class="keyword">auto</span> y, <span class="keyword">auto</span> z)  <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_gae8d597dabc4dc057e3110c0a89afe8f3_html_gae8d597dabc4dc057e3110c0a89afe8f3"><div class="ttname"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">plf::two_prod</a></div><div class="ttdeci">constexpr auto two_prod</div><div class="ttdoc">Computes the elementwise pair consisting of the product and its resulting rounding error.</div><div class="ttdef"><b>Definition</b> two_prod.hpp:80</div></div>
+<div class="ttc" id="agroup__core__accuracy_gae79e44f7a860ba7c33be885213090df1_html_gae79e44f7a860ba7c33be885213090df1"><div class="ttname"><a href="#gae79e44f7a860ba7c33be885213090df1">plf::two_fma_approx</a></div><div class="ttdeci">constexpr auto two_fma_approx</div><div class="ttdoc">Computes the elementwise pair consisting of the division and its resulting approximate rounding error...</div><div class="ttdef"><b>Definition</b> two_fma_approx.hpp:83</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>, <span class="tt">y</span>: polyfloatt arguments](eve::floating_value) of same dimension.</li>
 </ul>
 <p><b>Return value</b></p>
 <p>Computes elementwise a pair of values <span class="tt">[a,e]</span> such that:</p><ul>
-<li><span class="tt">a</span> is <span class="tt">x+y</span></li>
-<li><span class="tt">e</span> is a value such that <span class="tt">a</span> \(\oplus\)<span class="tt">e</span> is equal to <span class="tt">x</span> \(\oplus\)<span class="tt">y</span>, where \(\oplus\) adds its two parameters with infinite precision.</li>
+<li><span class="tt">a</span> is <span class="tt"><a class="el" href="namespaceplf_afe2539e930df632442830952eafe983f.html#afe2539e930df632442830952eafe983f" title="return the fused multiply add of the parameters.">fma(x, y, z)</a></span></li>
+<li><span class="tt">e</span> is a value such that <span class="tt">a</span> \(\oplus\)<span class="tt">e</span> is equal to <span class="tt">x</span> \(\odiv\)<span class="tt">y</span>, where \(\oplus\) fma_approxs its two parameters with infinite precision.</li>
 </ul>
-<p>Classical algorithm, always valid.</p><ol type="1">
+<p>algorithm using fma.</p><ol type="1">
 <li>Handles overflow.</li>
 </ol>
 <h2 class="groupheader">External references </h2>
 <ul>
-<li><a href="https://www.vinc17.net/research/papers/rr_ccrsums2.pdf">On the Computation of Correctly-Rounded Sums</a></li>
+<li><a href="https://inria.hal.science/inria-00429617/document">Exact and Approximated error of the FMA</a></li>
 </ul>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"></div><!-- fragment --> 
