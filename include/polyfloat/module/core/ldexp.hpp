@@ -38,7 +38,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var ldexp
-//!   @brief `strict_elementwise callable` computing \f$\textstyle x 2^n\f$.
+//!   @brief computes \f$\textstyle x 2^n\f$.
 //!
 //!   @groupheader{Header file}
 //!

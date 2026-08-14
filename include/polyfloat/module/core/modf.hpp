@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var modf
-  //!   @brief return the modftionnal part of the value.
+  //!   @brief returns fractionnal and trncated parts of the value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,7 +53,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the modftionnal part of z.
+  //!     Returns the  fractionnal and trncated parts of z.
   //!
   //!  @groupheader{Example}
   //!

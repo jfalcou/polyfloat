@@ -54,7 +54,7 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var eps
-  //!   @brief return the epsolute value.
+  //!   @brief return the ep value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -77,7 +77,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the epsolute value of z.
+  //!     Returns the eps value of z.
   //!
   //!  @groupheader{Example}
   //!

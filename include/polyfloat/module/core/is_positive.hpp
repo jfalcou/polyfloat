@@ -29,7 +29,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_positive
-  //!   @brief `elementwise callable` returning a logical true if and only if the element
+  //!   @brief returns a logical true if and only if the element
   //!    has its sign bit unset
   //!
   //!   @groupheader{Header file}

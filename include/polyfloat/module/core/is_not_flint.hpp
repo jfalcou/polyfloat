@@ -30,7 +30,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_not_flint
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a floating value
+//!   @brief returns a logical true  if and only if the element value is a floating value
 //!   representing an integer
 //!
 //!   @groupheader{Header file}

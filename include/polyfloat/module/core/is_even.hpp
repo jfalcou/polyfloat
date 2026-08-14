@@ -32,7 +32,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_even
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a floating value
+//!   @brief returns a logical true  if and only if the element value is a floating value
 //!   representing an even integer
 //!
 //!   @groupheader{Header file}

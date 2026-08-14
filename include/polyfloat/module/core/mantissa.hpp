@@ -30,7 +30,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var mantissa
-//!   @brief  `elementwise_callable` object computing the IEEE mantissa of the floating value.
+//!   @brief  computes the IEEE mantissa of the floating value.
 //!
 //!   @groupheader{Header file}
 //!

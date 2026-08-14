@@ -31,7 +31,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_less
-  //!   @brief return  true if z2 >= z2.
+  //!   @brief return  true if z1 < z2.
   //!
   //!   @groupheader{Header file}
   //!

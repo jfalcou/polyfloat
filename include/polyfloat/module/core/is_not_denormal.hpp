@@ -30,7 +30,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_not_denormal
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value
+//!   @brief returns a logical true  if and only if the element value
 //!    is not a denormal value
 //!
 //!   @groupheader{Header file}

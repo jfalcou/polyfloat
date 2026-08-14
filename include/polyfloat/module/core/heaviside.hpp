@@ -36,7 +36,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var heaviside
-  //!   @brief  return the 1 or 0 according to strict positiveness of the input value.
+  //!   @brief  return  1 or 0 according to strict positiveness of the input value.
   //!
   //!   @groupheader{Header file}
   //!

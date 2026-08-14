@@ -29,7 +29,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_not_nan
-  //!   @brief `elementwise callable` returning a logical true if and only if the element
+  //!   @brief returns a logical true if and only if the element
   //!    is not a Nan
   //!
   //!   @groupheader{Header file}

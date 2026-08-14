@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_equal
-  //!   @brief return the is_equal value.
+  //!   @brief test the parameters for equality.
   //!
   //!   @groupheader{Header file}
   //!
