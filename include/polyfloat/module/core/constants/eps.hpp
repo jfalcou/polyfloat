@@ -27,13 +27,13 @@ namespace plf
       if constexpr(plf::dimension_v<T> == 2)
       {
         if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-20);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-46);
+        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-48);
         else if constexpr(std::same_as<u_t, double> ) return T(0x1p-104);
       }
       else if constexpr(plf::dimension_v<T> == 3)
       {
         if constexpr(std::same_as<u_t, eve::float16_t>) return T(0x1p-30);
-        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-69);
+        else if constexpr(std::same_as<u_t, float>  ) return T(0x1p-72);
         else if constexpr(std::same_as<u_t, double> ) return T(0x1p-156);
       }
       else

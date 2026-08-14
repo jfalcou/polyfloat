@@ -22,17 +22,19 @@ Polyfloat numbers
 
 As explained in the above articles,
 Polyfloats are floating-point expansions that represent high-precision numbers as sequences of
-two, three, or four machine-precision numbers, extending the effective precision to double,
-triple, or quadruple the native machine precision.
+two, three, or four machine-precision numbers of same standard type with decreasing magnitude (so that
+they minimaly overlap) extending the effective precision to two,
+three, or four times the native mantissa precision of the standard type, but not modifying the
+ available exponent range.
 
-Up to now, we limit the implementation to 3 machine-precision numbers.
+Up to now, the implementation is limited to 3 machine-precision numbers.
 
 Starting from the real numbers (supported by type `T`: `float` or `double`) we define:
 
   - `double_real_t<T>`      (dimension 2) as a pair   of `T`, alias of `polyfloat<T,2>`
   - `triple_real_t<T>`      (dimension 3) as a triple of `T`, alias of `polyfloat<T,3>`
 
-**SIMD** analog can be used simlessly
+**SIMD** analog can be used seemlessly
 
   - `double_real_t<eve::wide<T>>`      (dimension 2), alias of  `eve::wide<polyfloat<T,2>>`
   - `triple_real_t<eve::wide<T>>`      (dimension 3), alias of  `eve::wide<polyfloat<T,3>>`
@@ -41,12 +43,12 @@ Starting from the real numbers (supported by type `T`: `float` or `double`) we d
 
 
 These datas with different dimensions but same  standard floating-point underlying type can be freely mixed
-with the obvious semantic that if `N < M` an element of `polyfloat<N,T>` will be considered as having its components
-from `N` to `M-1` null, as an element of `polyfloat<M,T>`
+with the obvious semantic that if `N < M` an element of `polyfloat<T,N>` will be considered as having its components
+from `N` to `M-1` null, as an element of `polyfloat<T,M>`
 
-All these types do not extend the exponent range of their undelying type, but their number of mantissa bits.
-  * `double_real_t<float>` have 46 bits of mantissa
-  * `triple_real_t<float>` have 59 bits of mantissa
+All these types do not extend the exponent range of their underlying type, but their number of effective mantissa bits.
+  * `double_real_t<float>` have 48 bits of mantissa
+  * `triple_real_t<float>` have 62 bits of mantissa
   * `double_real_t<double>` have 106 bits of mantissa
   * `triple_real_t<double>` have 159 bits of mantissa
 
@@ -70,18 +72,18 @@ Warnings
 What does this implementation provide
 ======================================
 
-Being intended that a `polyfloat`_like is a `polyfloat` or a standard floating-point number,
+Being intended that a `polyfloat_like` is a `polyfloat` or a standard floating-point number,
 all operators and functions (with a few exceptions restricted to some dimensionnalities constraints)
-implemented can receive a mix of scalar or  simd of `polyfloat`_like of various dimensionnality
+implemented can receive a mix of scalar or  simd of `polyfloat_like` of various dimensionnality
 (but same underlying type) and are defined in the namespace `plf`.
 
-  - Proper `polyfloat` values are those for which dimensionality is greater or equal to 2 : they satisfy the
+  - Proper `polyfloat` values are those for which dimensionality (number of standard parts) is greater or equal to 2 : they satisfy the
     `concepts::polyfloat` concept. They don't satisfy the  `concepts::real` concept;
-  - scalar and simd floating types only satisfy  the `concepts::polyfloat_like` concept, meaning they are interoperable with
+  - scalar and simd standard and **EVE** floating types only satisfy  the `concepts::polyfloat_like` concept, meaning they are interoperable with
     proper `polyfloat` values. They also satisfy the `concepts::real` concept.
   - Almost all functions involving angles (within the parameters or the results) can receive an option (namely plf::radpi) such that
     every angle parameter or result will be expressed in \f$\pi\f$ multiples rather than in mere radians. (This use can be beneficial as some
-    currently used angles values are small integer multiples of \f$\pi\f$. \f$\pi\f$ is not exactly represented by `polyfloat`_like values;
+    currently used angles values are small integer multiples of \f$\pi\f$. \f$\pi\f$ is not exactly represented by `polyfloat_like` values;
     contrarily to small integers)
 
 Of course the algebra operation +, -, * and / are provided.
@@ -123,64 +125,87 @@ Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref kyosu::co
     Most **EVE** arithmetic and math functions are (or will be eventually) provided for `polyfloat` datas.
     Up to now only analogs of **EVE** core functions are implemented.
 
-    The following table is mainly a todo list : `sna` meanning stil non available.
+    The following tables  stat which fonction are already available. Not available ones are
+    followed by a `SNA`, meanning Still Non Available.
 
-   |                                                           |                                                           |                                                           |                                                           |
-   |-----------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
-   |[abs    ](@ref polyfloat::abs)                             |[acos `sna`](@ref polyfloat::acos)                           |[acosh `sna`](@ref polyfloat::acosh)                         |[acot `sna`](@ref polyfloat::acot)                           |
-   |[acoth `sna`](@ref polyfloat::acoth)                         |[acsc `sna`](@ref polyfloat::acsc)                           |[acsch `sna`](@ref polyfloat::acsch)                         |[add    ](@ref polyfloat::add)                             |
-   |[agm    ](@ref polyfloat::agm)                             |[airy `sna`](@ref polyfloat::airy)                           |[airy_ai `sna`](@ref polyfloat::airy_ai)                     |[airy_bi `sna`](@ref polyfloat::airy_bi)                     |
-   |[am `sna`](@ref polyfloat::am)                               |[arg `sna`](@ref polyfloat::arg)                             |[asec `sna`](@ref polyfloat::asec)                           |[asech `sna`](@ref polyfloat::asech)                         |
-   |[asin `sna`](@ref polyfloat::asin)                           |[asinh `sna`](@ref polyfloat::asinh)                         |[associator `sna`](@ref polyfloat::associator)               |[atan `sna`](@ref polyfloat::atan)                           |
-   |[atanh `sna`](@ref polyfloat::atanh)                         |[average    ](@ref polyfloat::average)                     |[bessel_h `sna`](@ref polyfloat::bessel_h)                   |[bessel_i `sna`](@ref polyfloat::bessel_i)                   |
-   |[bessel_j `sna`](@ref polyfloat::bessel_j)                   |[bessel_k `sna`](@ref polyfloat::bessel_k)                   |[bessel_y `sna`](@ref polyfloat::bessel_y)                   |[beta `sna`](@ref polyfloat::beta)                           |
-   |[ceil    ](@ref polyfloat::ceil)                           |[cbrt `sna`](@ref polyfloat::cbrt)                           |[chi    ](@ref polyfloat::chi)                             |                                                               |
-   |                                                           |[convert    ](@ref polyfloat::convert)                     |[cos `sna`](@ref polyfloat::cos)                             |[cosh `sna`](@ref polyfloat::cosh)                           |
-   |[cot `sna`](@ref polyfloat::cot)                             |[coth `sna`](@ref polyfloat::coth)                           |[csc `sna`](@ref polyfloat::csc)                             |[csch `sna`](@ref polyfloat::csch)                           |
-   |                                                           |[dec    ](@ref polyfloat::dec)                             |[deta `sna`](@ref polyfloat::deta)                           |[digamma `sna`](@ref polyfloat::digamma)                     |
-   |[dist    ](@ref polyfloat::dist)                           |[div    ](@ref polyfloat::div)                             |[dot      ](@ref polyfloat::dot)                             |[ellint_fe `sna`](@ref polyfloat::ellint_fe)                 |
-   |[ellint_rc `sna`](@ref polyfloat::ellint_rc)                 |[ellint_rd `sna`](@ref polyfloat::ellint_rd)                 |[ellint_rf `sna`](@ref polyfloat::ellint_rf)                 |[ellint_rg `sna`](@ref polyfloat::ellint_rg)                 |
-   |[ellint_rj `sna`](@ref polyfloat::ellint_rj)                 |[erf `sna`](@ref polyfloat::erf)                             |[erfcx `sna`](@ref polyfloat::erfcx)                         |[erfi `sna`](@ref polyfloat::erfi)                           |
-   |[eta `sna`](@ref polyfloat::eta)                             |[exp `sna`](@ref polyfloat::exp)                             |[exp10 `sna`](@ref polyfloat::exp10)                         |[exp2 `sna`](@ref polyfloat::exp2)                           |
-   |                                                           |[expm1 `sna`](@ref polyfloat::expm1)                         |[expmx2 `sna`](@ref polyfloat::expmx2)                       |                                                           |
-   |[expx2 `sna`](@ref polyfloat::expx2)                         |[faddeeva `sna`](@ref polyfloat::faddeeva)                   |[fam `sna`](@ref polyfloat::fam)                             |[floor    ](@ref polyfloat::floor)                         |
-   |[fma    ](@ref polyfloat::fma)                             |[fms `sna`](@ref polyfloat::fms)                             |[fnma    ](@ref polyfloat::fnma)                           |[fnms `sna`](@ref polyfloat::fnms)                           |
-   |[frac `sna`](@ref polyfloat::frac)                           |                                                           |[fsm `sna`](@ref polyfloat::fsm)                             |[gd `sna`](@ref polyfloat::gd)                               |
-   |[gegenbauer `sna`](@ref polyfloat::gegenbauer)               |[horner    ](@ref polyfloat::horner)                       |[hypergeometric `sna`](@ref polyfloat::hypergeometric)       |[hypot `sna`](@ref polyfloat::hypot)                         |
-   |[if_else   ](@ref polyfloat::if_else)                      |[inc    ](@ref polyfloat::inc)                             |                                                           |[is_denormal    ](@ref polyfloat::is_denormal)             |
-   |[is_equal    ](@ref polyfloat::is_equal)                   |[is_eqz    ](@ref polyfloat::is_eqz)                       |[is_finite    ](@ref polyfloat::is_finite)                 |[is_flint    ](@ref polyfloat::is_flint)                   |
-   |                                                           |                                                           |[is_infinite    ](@ref polyfloat::is_infinite)             |[is_nan    ](@ref polyfloat::is_nan)                       |
-   |[is_nez    ](@ref polyfloat::is_nez)                       |                                                           |[is_not_denormal    ](@ref polyfloat::is_not_denormal)     |[is_not_equal    ](@ref polyfloat::is_not_equal)           |
-   |[is_not_finite    ](@ref polyfloat::is_not_finite)         |[is_not_flint    ](@ref polyfloat::is_not_flint)           |                                                           |[is_not_infinite    ](@ref polyfloat::is_not_infinite)     |
-   |[is_not_nan    ](@ref polyfloat::is_not_nan)               |[is_not_real     ](@ref polyfloat::is_not_real)            |                                                           |[is_real `sna`](@ref polyfloat::is_real)                     |
-   |[is_unitary    ](@ref polyfloat::is_unitary)               |[jacobi_elliptic `sna`](@ref polyfloat::jacobi_elliptic)     |[kolmmean `sna`](@ref polyfloat::kolmmean)                   |[kronecker `sna`](@ref polyfloat::kronecker)                 |
-   |[kummer `sna`](@ref polyfloat::kummer)                       |[lambda `sna`](@ref polyfloat::lambda)                       |[lbeta `sna`](@ref polyfloat::lbeta)                         |[ldiv `sna`](@ref polyfloat::ldiv)                           |
-   |[legendre `sna`](@ref polyfloat::legendre)                   |[lerp    ](@ref polyfloat::lerp)                           |[log `sna`](@ref polyfloat::log)                             |[log10 `sna`](@ref polyfloat::log10)                         |
-   |[log1p `sna`](@ref polyfloat::log1p)                         |[log2 `sna`](@ref polyfloat::log2)                           |[log_abs `sna`](@ref polyfloat::log_abs)                     |[log_abs_gamma `sna`](@ref polyfloat::log_abs_gamma)         |
-   |[log_gamma `sna`](@ref polyfloat::log_gamma)                 |[lpnorm `sna`](@ref polyfloat::lpnorm)                       |[lrising_factorial `sna`](@ref polyfloat::lrising_factorial) |                                                           |
-   |[manhattan `sna`](@ref polyfloat::manhattan)                 |[maxabs `sna`](@ref polyfloat::maxabs)                       |[maxmag `sna`](@ref polyfloat::maxmag)                       |                                                           |
-   |[minabs `sna`](@ref polyfloat::minabs)                       |[minmag `sna`](@ref polyfloat::minmag)                       |[minus    ](@ref polyfloat::minus)                         |[mul    ](@ref polyfloat::mul)                             |
-   |                                                           |                                                           |[nearest    ](@ref polyfloat::nearest)                     |[negmaxabs `sna`](@ref polyfloat::negmaxabs)                 |
-   |[negminabs `sna`](@ref polyfloat::negminabs)                 |[nthroot `sna`](@ref polyfloat::nthroot)                     |[oneminus   ](@ref polyfloat::oneminus)                    |[pow `sna`](@ref polyfloat::pow)                             |
-   |[pow1p `sna`](@ref polyfloat::pow1p)                         |[pow_abs `sna`](@ref polyfloat::pow_abs)                     |[powm1 `sna`](@ref polyfloat::powm1)                         |[proj `sna`](@ref polyfloat::proj)                           |
-   |                                                           |[radinpi `sna`](@ref polyfloat::radinpi)                     |[rec    ](@ref polyfloat::rec)                             |[reldist `sna`](@ref polyfloat::reldist)                     |
-   |[reverse_horner    ](@ref polyfloat::reverse_horner)       |[rising_factorial `sna`](@ref polyfloat::rising_factorial)   |[rsqrt  ](@ref polyfloat::rsqrt)                           |[sec `sna`](@ref polyfloat::sec)                             |
-   |[sech `sna`](@ref polyfloat::sech)                           |[sign    ](@ref polyfloat::sign)                           |                                                           |                                                           |
-   |[signz    ](@ref polyfloat::signz)                         |[sin `sna`](@ref polyfloat::sin)                             |[sinc `sna`](@ref polyfloat::sinc)                           |[sincos `sna`](@ref polyfloat::sincos)                       |
-   |[sinh `sna`](@ref polyfloat::sinh)                           |[sinhc `sna`](@ref polyfloat::sinhc)                         |[sinhcosh `sna`](@ref polyfloat::sinhcosh)                   |                                                           |
-   |[sqr    ](@ref polyfloat::sqr)                             |                                                           |[sqrt    ](@ref polyfloat::sqrt)                           |[sub    ](@ref polyfloat::sub)                             |
-   |[tan `sna`](@ref polyfloat::tan)                             |[tanh `sna`](@ref polyfloat::tanh)                           |[tchebytchev `sna`](@ref polyfloat::tchebytchev)             |[tgamma `sna`](@ref polyfloat::tgamma)                       |
-   |[tgamma_inv `sna`](@ref polyfloat::tgamma_inv)               |                                                           |[to_polar `sna`](@ref polyfloat::to_polar)                   |[tricomi `sna`](@ref polyfloat::tricomi)                     |
-   |[trunc    ](@ref polyfloat::trunc)                         |[zeta `sna`](@ref polyfloat::zeta)                           |                                                   |                                                   |
+Core functions
+==============
+
+  These are the arithmetic functions that do not involve transcendantal computations, predicates,
+  and the `sqrt` and `rsqrt` functions.
+
+   |                                      |                                           |                                           |                                         |
+   |--------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[abs](@ref plf::abs)            |[absmax](@ref plf::absmax)           |[absmin](@ref plf::absmin)           |[add](@ref plf::add)               |
+   |[agm](@ref plf::agm)|[average](@ref plf::average)|[ceil](@ref plf::ceil)|[chi](@ref plf::chi)|
+   |[clamp](@ref plf::clamp)|[convert](@ref plf::convert)|[copysign](@ref plf::copysign)|[dec](@ref plf::dec)|
+   ||[dist](@ref plf::dist)|[div](@ref plf::div)|[dot](@ref plf::dot)|
+   |[epsilon](@ref plf::epsilon)|[exponent](@ref plf::exponent)|[floor](@ref plf::floor)|[fma](@ref plf::fma)|
+   |[fnma](@ref plf::fnma)|[fmod](@ref plf::fmod)|[frac](@ref plf::frac)|[frexp](@ref plf::frexp)|
+   |[heaviside](@ref plf::heaviside)|[horner](@ref plf::horner)|[if_else](@ref plf::if_else)|[inc](@ref plf::inc)|
+   |[is_denormal](@ref plf::is_denormal)|[is_equal](@ref plf::is_equal)|[is_eqz](@ref plf::is_eqz)|[is_eqmz](@ref plf::is_eqmz)|
+   |[is_eqpz](@ref plf::is_eqpz)|[is_even](@ref plf::is_even)|[is_finite](@ref plf::is_finite)|[is_flint](@ref plf::is_flint)|
+   |[is_greater](@ref plf::is_greater)|[is_greater_equal](@ref plf::is_greater_equal)|[is_gtz](@ref plf::is_gtz)|[is_infinite](@ref plf::is_infinite)|
+   |[is_less](@ref plf::is_less)|[is_less_equal](@ref plf::is_less_equal)|[is_lessgreater](@ref plf::is_lessgreater)|[is_lez](@ref plf::is_lez)|
+   |[is_ltz](@ref plf::is_ltz)|[is_minf](@ref plf::is_minf)|[is_nan](@ref plf::is_nan)|[is_negative](@ref plf::is_negative)|
+   |[is_nemz](@ref plf::is_nemz)|[is_nepz](@ref plf::is_nepz)|[is_nez](@ref plf::is_nez)|[is_ngez](@ref plf::is_ngez)|
+   |[is_ngtz](@ref plf::is_ngtz)|[is_nlez](@ref plf::is_nlez)|[is_nltz](@ref plf::is_nltz)|[is_not_denormal](@ref plf::is_not_denormal)|
+   |[is_not_equal](@ref plf::is_not_equal)|[is_not_finite](@ref plf::is_not_finite)|[is_not_flint](@ref plf::is_not_flint)|[is_not_greater](@ref plf::is_not_greater)|
+   |[is_not_greater_equal](@ref plf::is_not_greater_equal)|[is_not_infinite](@ref plf::is_not_infinite)|[is_not_less](@ref plf::is_not_less)|[is_not_less_equal](@ref plf::is_not_less_equal)|
+   |[is_not_nan](@ref plf::is_not_nan)|[is_odd](@ref plf::is_odd)|[is_ordered](@ref plf::is_ordered)|[is_pinf](@ref plf::is_pinf)|
+   |[is_positive](@ref plf::is_positive)|[is_pow2](@ref plf::is_pow2)|[is_unit](@ref plf::is_unit)|[is_unordered](@ref plf::is_unordered)|
+   |[ldexp](@ref plf::ldexp)|[lerp](@ref plf::lerp)|[mantissa](@ref plf::mantissa)|[max](@ref plf::max)|
+   |[min](@ref plf::min)|[minus](@ref plf::minus)|[modf](@ref plf::modf)|[mul](@ref plf::mul)|
+   |[nearest](@ref plf::nearest)|[negate](@ref plf::negate)|[negatenz](@ref plf::negatenz)|[next](@ref plf::next)|
+   |[parts](@ref plf::parts)|[prev](@ref plf::prev)|[rec](@ref plf::rec)|[reldist](@ref plf::reldist)|
+   |[reverse_horner](@ref plf::reverse_horner)|[rsqrt](@ref plf::rsqrt)|[sign](@ref plf::sign)|[signnz](@ref plf::signnz)|
+   |[sqr](@ref plf::sqr)|[sqrt](@ref plf::sqrt)|[sub](@ref plf::sub)|[trunc](@ref plf::trunc)|
+
+  @note All predicates comparing to `zero` and almost all one parameter predicates are a lot faster than two parameters ones
+  for which testing the 'hi' part is not sufficient.
+
+Core constants
+==============
 
 
+These are proper `polyfloat` constant values related to precision internal IEEE representation  or or simple arithmetic constants wrapped from **EVE** .
 
-Remark on predicates
---------------------
+   |   Proper values                         |                                           |                                           |                                         |
+   |-----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[effective_mantissa_bits](@ref plf::effective_mantissa_bits) |[eps](@ref plf::eps)   |[inveps](@ref plf::inveps) |[logeps](@ref plf::logeps) |
+   |[maxflint](@ref plf::maxflint)           |[oneosqrteps](@ref plf::oneosqrteps)       |[sqrt_2](@ref plf::sqrt_2)                 |[sqrteps](@ref plf::sqrteps) |
+   |[[sqrtvalmax](@ref plf::sqrtvalmax) |[valmax](@ref plf::valmax) |[valmin](@ref plf::valmin) | |
 
-All predicates comparing to `zero` and almost all one parameter predicates are a lot faster than two parameters ones
-for which testing the 'hi' part is not sufficient.
 
+   |   wrapped from **EVE**                  |                                           |                                           |                                         |
+   |-----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[half](@ref plf::half)                   |[inf](@ref plf::inf)                       |[mhalf](@ref plf::mhalf)                   |[mindenormal](@ref plf::mindenormal)     |
+   |[minexponent](@ref plf::minexponent)     |[minf](@ref plf::minf)                     |[mone](@ref plf::mone)                     |[mzero](@ref plf::mzero)                |
+   |[nan](@ref plf::nan)                     |[one](@ref plf::one)                       |                                           ||
+
+
+Error free and accuracy augmented functions
+==========================================
+
+These functions are not of common use but are the inner bases with `fma` of the implementation of `polyfloat` numbers.
+They generally follow the descrption given in many articles of the ARENAIRE INRIA team. They return pair of triple of
+values the first being the operation result main approximation, the others correction that could be virtually added
+in an infinite precision environnement to get an exact (or for the `approx` ones) at least a still more accurate result.
+
+   |                                         |                                           |                                           |                                         |
+   |-----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[dekker_prod](@ref plf::three_add) |[three_add](@ref plf::three_add)     |[three_fma](@ref plf::three_fma)     |[two_add](@ref plf::two_add)       |
+   |[two_div_approx](@ref plf::two_div_approx)|[two_fma_approx](@ref plf::two_fma_approx)|[two_prod](@ref plf::two_prod)  |[two_split](@ref plf::two_split)   |
+
+Math elementary functions
+=========================
+
+STILL NOT DONE
+
+Math special functions
+=========================
+
+STILL NOT DONE
 
 Testing rationale
 -----------------
@@ -194,8 +219,8 @@ However, the following table shows the number of bits of mantissa available for 
 
    |  base  type |   dimension |   bits number  |   eps            |
    |-------------|-------------|----------------|------------------|
-   | float       |   2         |   46           |   1.4211e-14     |
-   | float       |   3         |   69           |   1.6941e-21     |
+   | float       |   2         |   48           |   3.5527e-15     |
+   | float       |   3         |   72           |   2.1176e-22     |
    | double      |   2         |   106          |   1.2326e-32     |
    | double      |   3         |   159          |   1.3685e-48     |
 
