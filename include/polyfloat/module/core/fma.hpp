@@ -59,6 +59,8 @@ namespace plf
   //!
   //!     Returns the fused multiply add of the arguments.
   //!
+  //! @note contrarily to `eve::fma`,  `plf::fma` garanties the correct fused multiply add rounding behaviour,  even if it has to be emulated.
+  //!
   //!  @groupheader{Example}
   //!
   //!  @godbolt{doc/core/fma.cpp}

@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var floor
-  //!   @brief return the floorolute value.
+  //!   @brief return the floor value.
   //!
   //!   @groupheader{Header file}
   //!
