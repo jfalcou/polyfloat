@@ -42,7 +42,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var chi
-  //!   @brief `callable` indicatrix of the interval \f$[lo, hi[\f$ or
+  //!   @brief  indicatrix of the interval \f$[lo, hi[\f$ or
   //!  of the set for which the invocable returns true.
   //!
   //!   @groupheader{Header file}

@@ -12,7 +12,6 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/constants/eps.hpp>
-//#include <polyfloat/module/core/constants/nan.hpp>
 #include <polyfloat/module/core/abs.hpp>
 #include <polyfloat/module/core/average.hpp>
 #include <polyfloat/module/core/exponent.hpp>
@@ -66,9 +65,8 @@ namespace plf
   //!
   //!    **Return value**
   //!
-  //!    1. The value of the arithmetic-geometric mean is returned. No overflow can occur.
+  //!      The value of the arithmetic-geometric mean is returned. No overflow can occur.
   //!      The two parameters must share the same sign.
-  //!    2. [The operation is performed conditionnaly](@ref conditional).
   //!
   //!  @groupheader{External references}
   //!   *  [Wolfram MathWorld](https://mathworld.wolfram.com/Arithmetic-GeometricMean.html)

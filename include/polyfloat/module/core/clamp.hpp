@@ -34,8 +34,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var clamp
-  //!   @brief `callable` indicatrix of the interval \f$[lo, hi[\f$ or
-  //!  of the set for which the invocable returns true.
+  //!   @brief clamp the value between two bounds.
   //!
   //!   @groupheader{Header file}
   //!

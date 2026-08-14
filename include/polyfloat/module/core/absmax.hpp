@@ -44,7 +44,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var absmax
-  //!   @brief return the sum of the parameters.
+  //!   @brief return the absolute value of the maximum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
@@ -67,7 +67,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the sum of the arguments.
+  //!      Returns the absolute value of the maximum of the arguments.
   //!
   //!  @groupheader{Example}
   //!

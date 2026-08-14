@@ -32,7 +32,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var ceil
-  //!   @brief return the ceilolute value.
+  //!   @brief return the ceil value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -54,7 +54,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the distance betweenthe parameters
+  //!     Returns the distance between the two parameters
   //!
   //!  @groupheader{Example}
   //!

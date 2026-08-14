@@ -31,7 +31,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var average
-  //!   @brief return the average value.
+  //!   @brief return the mean value.
   //!
   //!   @groupheader{Header file}
   //!

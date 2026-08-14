@@ -31,7 +31,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var dec
-  //!   @brief return the  value minus one.
+  //!   @brief return the value minus one.
   //!
   //!   @groupheader{Header file}
   //!
