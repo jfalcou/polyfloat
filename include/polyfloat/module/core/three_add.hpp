@@ -39,7 +39,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(three_add_t, three_add_);
   };
   //======================================================================================================================
-  //! @three_addtogroup core
+  //! @addtogroup core_accuracy
   //! @{
   //!   @var three_add
   //!   @brief return the sum of the parameters with errors.

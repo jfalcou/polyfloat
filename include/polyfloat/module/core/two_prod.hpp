@@ -33,7 +33,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_prod_t, two_prod_);
   };
 //================================================================================================
-//! @addtogroup core
+//! @addtogroup core_accuracy
 //! @{
 //!   @var two_prod
 //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the

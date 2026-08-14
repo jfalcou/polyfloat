@@ -35,7 +35,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_fma_approx_t, two_fma_approx_);
   };
 //================================================================================================
-//! @fma_approxtogroup core_accuracy
+//! @addtogroup core_accuracy
 //! @{
 //!   @var two_fma_approx
 //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the

@@ -31,7 +31,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var trunc
-  //!   @brief return the truncolute value.
+  //!   @brief return the truncated toward zero value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -54,7 +54,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the trunc value of z.
+  //!     Returns the truncated value of z.
   //!
   //!  @groupheader{Example}
   //!

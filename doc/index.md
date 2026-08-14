@@ -184,8 +184,8 @@ These are proper `polyfloat` constant values related to precision internal IEEE 
    |[nan](@ref plf::nan)                     |[one](@ref plf::one)                       |                                           ||
 
 
-Error free and accuracy augmented functions
-==========================================
+Error free and  augmented accuracy functions
+============================================
 
 These functions are not of common use but are the inner bases with `fma` of the implementation of `polyfloat` numbers.
 They generally follow the descrption given in many articles of the ARENAIRE INRIA team. They return pair of triple of

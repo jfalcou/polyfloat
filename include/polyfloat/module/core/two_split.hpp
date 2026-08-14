@@ -32,11 +32,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_split_t, two_split_);
   };
 //================================================================================================
-//! @splittogroup core_accuracy
+//! @addtogroup core_accuracy
 //! @{
 //!   @var two_split
-//!   @brief Computes the Veltkamp's splitting algorithm
-//!   sum and its resulting rounding error.
+//!   @brief Computes the pair from Veltkamp's splitting algorithm
 //!
 //!   @groupheader{Header file}
 //!

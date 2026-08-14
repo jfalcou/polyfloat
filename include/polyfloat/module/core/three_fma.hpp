@@ -39,7 +39,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(three_fma_t, three_fma_);
   };
   //======================================================================================================================
-  //! @three_fmatogroup core
+  //! @addtogroup core_accuracy
   //! @{
   //!   @var three_fma
   //!   @brief return the fma of the parameters with errors.

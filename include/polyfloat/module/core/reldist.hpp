@@ -34,7 +34,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var reldist
-  //!   @brief return the reldistance value.
+  //!   @brief return the relative distance value.
   //!
   //!   @groupheader{Header file}
   //!

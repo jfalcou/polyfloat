@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var sqrt
-  //!   @brief return the square value.
+  //!   @brief return the square root value.
   //!
   //!   @groupheader{Header file}
   //!

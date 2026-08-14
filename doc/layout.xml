@@ -8,8 +8,9 @@
 
     <tab type="usergroup" visible="yes" title="Reference Documentation">
       <tab type="user" url="@ref types" title="Types"/>
-      <tab type="user" url="@ref constants" title="Constants"/>
-      <tab type="user" url="@ref functions" title="Functions"/>
+      <tab type="user" url="@ref constants" title="Core Constants"/>
+      <tab type="user" url="@ref core" title="Core Functions"/>
+      <tab type="user" url="@ref core_accuracy" title="Core Accuracy Functions"/>
       <tab type="user" url="@ref traits" title="Traits"/>
       <tab type="concepts" visible="yes" title=""/>
     </tab>
