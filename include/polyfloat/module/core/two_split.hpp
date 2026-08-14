@@ -32,11 +32,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_split_t, two_split_);
   };
 //================================================================================================
-//! @splittogroup core_accuracy
+//! @addtogroup core_accuracy
 //! @{
 //!   @var two_split
-//!   @brief Computes the Veltkamp's splitting algorithm
-//!   sum and its resulting rounding error.
+//!   @brief Computes the pair from Veltkamp's splitting algorithm
 //!
 //!   @groupheader{Header file}
 //!
@@ -72,7 +71,7 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/two_split.cpp}
+//!  @godbolt{doc/core/core/two_split.cpp}
 //================================================================================================
   inline constexpr auto two_split = eve::functor<two_split_t>;
 //================================================================================================

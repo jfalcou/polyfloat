@@ -39,15 +39,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -59,9 +59,11 @@ namespace plf
   //!
   //!     Returns the fused multiply add of the arguments.
   //!
+  //! @note contrarily to `eve::fma`,  `plf::fma` garanties the correct fused multiply add rounding behaviour,  even if it has to be emulated.
+  //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/fma.cpp}
+  //!  @godbolt{doc/core/fma.cpp}
   //======================================================================================================================
 
   inline constexpr auto fma = eve::functor<fma_t>;

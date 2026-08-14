@@ -39,7 +39,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(three_fma_t, three_fma_);
   };
   //======================================================================================================================
-  //! @three_fmatogroup core
+  //! @addtogroup core_accuracy
   //! @{
   //!   @var three_fma
   //!   @brief return the fma of the parameters with errors.
@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/three_fma.cpp}
+  //!  @godbolt{doc/core/core/three_fma.cpp}
   //======================================================================================================================
   inline constexpr auto three_fma = eve::functor<three_fma_t>;
   //======================================================================================================================

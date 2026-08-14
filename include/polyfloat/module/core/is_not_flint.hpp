@@ -30,7 +30,7 @@ namespace plf
 //! @addtogroup core
 //! @{
 //!   @var is_not_flint
-//!   @brief `elementwise callable` returning a logical true  if and only if the element value is a floating value
+//!   @brief returns a logical true  if and only if the element value is a floating value
 //!   representing an integer
 //!
 //!   @groupheader{Header file}
@@ -73,7 +73,7 @@ namespace plf
 //!        largest consecutive integer in the element type of `x` (`maxflint(as(x))`).
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/is_not_flint.cpp}
+//!  @godbolt{doc/core/is_not_flint.cpp}
 //================================================================================================
   inline constexpr auto is_not_flint = eve::functor<is_not_flint_t>;
   //======================================================================================================================

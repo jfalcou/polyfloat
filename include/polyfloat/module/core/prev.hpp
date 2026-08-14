@@ -66,7 +66,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/prev.cpp}
+  //!  @godbolt{doc/core/prev.cpp}
   //======================================================================================================================
 
   inline constexpr auto prev = eve::functor<prev_t>;

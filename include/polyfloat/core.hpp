@@ -23,6 +23,7 @@
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/dist.hpp>
 #include <polyfloat/module/core/div.hpp>
+#include <polyfloat/module/core/dot.hpp>
 #include <polyfloat/module/core/epsilon.hpp>
 #include <polyfloat/module/core/exponent.hpp>
 #include <polyfloat/module/core/floor.hpp>
@@ -102,8 +103,11 @@
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
+#include <polyfloat/module/core/three_add.hpp>
 #include <polyfloat/module/core/three_fma.hpp>
 #include <polyfloat/module/core/trunc.hpp>
 #include <polyfloat/module/core/two_add.hpp>
+#include <polyfloat/module/core/two_div_approx.hpp>
+#include <polyfloat/module/core/two_fma_approx.hpp>
 #include <polyfloat/module/core/two_prod.hpp>
 #include <polyfloat/module/core/two_split.hpp>

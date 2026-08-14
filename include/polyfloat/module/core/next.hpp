@@ -66,7 +66,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/next.cpp}
+  //!  @godbolt{doc/core/next.cpp}
   //======================================================================================================================
 
   inline constexpr auto next = eve::functor<next_t>;

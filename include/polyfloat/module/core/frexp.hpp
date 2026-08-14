@@ -70,11 +70,13 @@ namespace plf
 //!        \f$x = \pm0, \pm\infty\f$ or is a Nan, where \f$m=x\f$ and \f$e=0\f$ and of the
 //!        denormal cases.
 //!
+//!   @note the exponent part is always taken from the `hi` part of the input.
+//!
 //!  @groupheader{External references}
 //!    *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/math/frexp)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/frexp.cpp}
+//!  @godbolt{doc/core/frexp.cpp}
 //================================================================================================
   inline constexpr auto frexp = eve::functor<frexp_t>;
 //================================================================================================

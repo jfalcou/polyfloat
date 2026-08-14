@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var trunc
-  //!   @brief return the truncolute value.
+  //!   @brief return the truncated toward zero value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto trunc(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto trunc(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,11 +54,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the trunc value of z.
+  //!     Returns the truncated value of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/trunc.cpp}
+  //!  @godbolt{doc/core/trunc.cpp}
   //======================================================================================================================
 
   inline constexpr auto trunc = eve::functor<trunc_t>;

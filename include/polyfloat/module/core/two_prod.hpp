@@ -33,7 +33,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_prod_t, two_prod_);
   };
 //================================================================================================
-//! @addtogroup core
+//! @addtogroup core_accuracy
 //! @{
 //!   @var two_prod
 //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
@@ -75,7 +75,7 @@ namespace plf
 //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/two_prod.cpp}
+//!  @godbolt{doc/core/core/two_prod.cpp}
 //================================================================================================
   inline constexpr auto two_prod = eve::functor<two_prod_t>;
 //================================================================================================

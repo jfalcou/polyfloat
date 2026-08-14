@@ -35,15 +35,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_greater(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_greater(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_not_greater.cpp}
+  //!  @godbolt{doc/core/is_not_greater.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_greater = eve::functor<is_not_greater_t>;

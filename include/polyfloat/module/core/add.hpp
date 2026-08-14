@@ -48,15 +48,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto add(Z1 z1, Z2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto add(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -70,7 +70,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/add.cpp}
+  //!  @godbolt{doc/core/add.cpp}
   //======================================================================================================================
 
   inline constexpr auto add = eve::functor<add_t>;

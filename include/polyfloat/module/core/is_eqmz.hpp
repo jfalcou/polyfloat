@@ -34,15 +34,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto is_eqmz(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_eqmz(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/is_eqmz.cpp}
+  //!  @godbolt{doc/core/is_eqmz.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_eqmz = eve::functor<is_eqmz_t>;

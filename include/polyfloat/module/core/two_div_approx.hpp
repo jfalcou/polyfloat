@@ -17,26 +17,22 @@
 namespace plf
 {
 
-  template<typename Options> struct two_add_t : eve::strict_tuple_callable<two_add_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct two_div_approx_t : eve::strict_tuple_callable<two_div_approx_t, Options, raw_option, pedantic_option>
   {
-//     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-//     {
-//     };
-
     template<concepts::polyfloat_like T>
     POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0,  T t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(two_add_t, two_add_);
+    POLYFLOAT_CALLABLE_OBJECT(two_div_approx_t, two_div_approx_);
   };
 //================================================================================================
 //! @addtogroup core_accuracy
 //! @{
-//!   @var two_add
+//!   @var two_div_approx
 //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
-//!   sum and its resulting rounding error.
+//!   division and its resulting approximate rounding error.
 //!
 //!   @groupheader{Header file}
 //!
@@ -50,11 +46,10 @@ namespace plf
 //!   namespace eve
 //!   {
 //!      // Regular overload
-//!      constexpr auto two_add( auto x, auto y)            noexcept; // 1
-//!      constexpr auto two_add[raw](auto x,  auto y)       noexcept; // 2
+//!      constexpr auto two_div_approx( auto x, auto y, auto z)            noexcept; // 1
 //!
 //!      // Semantic options
-//!      constexpr auto two_add[pedantic](floating_value auto x, floating_value auto y)  noexcept; // 3
+//!      constexpr auto two_div_approx[pedantic](auto x, auto y, auto z)  noexcept; // 2
 //!   }
 //!   @endcode
 //!
@@ -65,21 +60,20 @@ namespace plf
 //!   **Return value**
 //!
 //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
-//!       * `a` is `x+y`
-//!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
-//!          where \f$\oplus\f$ adds its two parameters with infinite precision.
+//!       * `a` is `div(x, y, z)`
+//!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
+//!          where \f$\oplus\f$ div_approxs its two parameters with infinite precision.
 //!
-//!     1. Classical algorithm, always valid.
-//!     2. 'Fast' algorithm, valid only if |x| < |y|.
-//!     3. Handles overflow.
+//!     1. algorithm using div.
+//!     2. Handles overflow.
 //!
 //!  @groupheader{External references}
-//!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
+//!   *  [Exact and Approximated error of the DIV](https://inria.hal.science/inria-00429617/document)
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/core/core/two_add.cpp}
+//!  @godbolt{doc/core/core/core/two_div_approx.cpp}
 //================================================================================================
-  inline constexpr auto two_add = eve::functor<two_add_t>;
+  inline constexpr auto two_div_approx = eve::functor<two_div_approx_t>;
 //================================================================================================
 //! @}
 //================================================================================================
@@ -87,22 +81,11 @@ namespace plf
   namespace _
   {
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_add_(POLYFLOAT_DELAY(), O const&, T a, T b)
+    constexpr POLYFLOAT_FORCEINLINE auto two_div_approx_(POLYFLOAT_DELAY(), O const&, T x, T y)
     {
-      auto r0 = a + b;
-      T err;
-      if constexpr(O::contains(raw)) // 2fp, this does not work if |a| < |b| (or if radix is not 2, not our case)
-      {
-        err =  b - (r0 - a);
-      }
-      else //6fp always ok
-      {
-        auto z  = r0 - a;
-        err = a - (r0 - z) + (b - z);
-      }
-      if constexpr( eve::platform::supports_infinites && O::contains(pedantic))
-        err = if_else(is_not_finite(err) || is_not_finite(r0), eve::zero, err);
-      return eve::zip(r0, err);
+      auto r0 = x/y;
+      auto e0 = if_else(is_not_finite(r0), zero, plf::fma[pedantic](-r0, y, x)/y );
+      return eve::zip(r0,e0);
     }
   }
 }

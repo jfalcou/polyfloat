@@ -32,20 +32,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var ceil
-  //!   @brief return the ceilolute value.
+  //!   @brief return the ceil value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/module/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto ceil(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto ceil(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/ceil.cpp}
+  //!  @godbolt{doc/core/ceil.cpp}
   //======================================================================================================================
 
   inline constexpr auto ceil = eve::functor<ceil_t>;

@@ -116,7 +116,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/horner.cpp}
+  //!  @godbolt{doc/core/horner.cpp}
   //======================================================================================================================
 
   inline constexpr auto horner = eve::functor<horner_t>;

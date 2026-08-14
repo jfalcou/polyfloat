@@ -66,7 +66,7 @@ namespace plf
 //!       \f$x =  m\times 2^e\f$, with  \f$|m| \in \{0\} \cup [1, 2[\f$.
 //!
 //!  @groupheader{Example}
-//!  @godbolt{doc/exponent.cpp}
+//!  @godbolt{doc/core/exponent.cpp}
 //================================================================================================
   inline constexpr auto exponent = eve::functor<exponent_t>;
 //================================================================================================

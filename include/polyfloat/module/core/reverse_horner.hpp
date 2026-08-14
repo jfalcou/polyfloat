@@ -116,7 +116,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/reverse_horner.cpp}
+  //!  @godbolt{doc/core/reverse_horner.cpp}
   //======================================================================================================================
 
   inline constexpr auto reverse_horner = eve::functor<reverse_horner_t>;
