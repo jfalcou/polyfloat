@@ -19,6 +19,7 @@
 #include <polyfloat/module/core/clamp.hpp>
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/copysign.hpp>
+#include <polyfloat/module/core/cumfun.hpp>
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/dist.hpp>
