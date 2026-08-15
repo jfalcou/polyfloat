@@ -69,7 +69,7 @@ namespace plf
   //======================================================================================================================
 
   template <typename Options>
-  constexpr auto neutral(max_t<Options>) noexcept { return eve::valmin; }
+  constexpr auto neutral(max_t<Options>) noexcept { return plf::valmin; }
 }
 
 namespace plf::_
