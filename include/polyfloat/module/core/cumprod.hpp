@@ -98,6 +98,6 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto
   cumprod_(POLYFLOAT_DELAY(), O const & o, Ts... ts) noexcept
   {
-    return plf::cumprod[o](kumi::make_tuple(ts...));
+    return plf::cumfun[o](plf::mul, kumi::make_tuple(ts...));
   }
 }

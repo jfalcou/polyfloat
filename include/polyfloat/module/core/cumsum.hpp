@@ -100,6 +100,6 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto
   cumsum_(POLYFLOAT_DELAY(), O const & o, Ts... ts) noexcept
   {
-    return plf::cumsum[o](kumi::make_tuple(ts...));
+    return plf::cumfun[o](plf::add, kumi::make_tuple(ts...));
   }
 }

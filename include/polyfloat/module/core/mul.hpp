@@ -66,7 +66,7 @@ namespace plf
   //======================================================================================================================
 
   template <typename Options>
-  constexpr auto neutral(mul_t<Options>) noexcept { return eve::one; }
+  constexpr auto neutral(mul_t<Options>) noexcept { return plf::one; }
 
   // Required for optimisation detections
   using callable_mul_ = eve::tag_t<mul>;
