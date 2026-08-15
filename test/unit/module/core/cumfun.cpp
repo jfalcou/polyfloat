@@ -21,11 +21,17 @@
 TTS_CASE_WITH("Check cumfun two params",
               plf::scalar_real_types,
               tts::randoms(-1000, 1000),
+              tts::randoms(-1e-30, 1e-30),
+              tts::randoms(-1e-35, 1e-35), 
               tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000)
+              tts::randoms(-1e-30, 1e-30),
+              tts::randoms(-1e-35, 1e-35)
+//                tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5)
@@ -55,14 +61,23 @@ TTS_CASE_WITH("Check cumfun two params",
 TTS_CASE_WITH("Check cumfun three params",
               plf::scalar_real_types,
               tts::randoms(-1000, 1000),
+              tts::randoms(-1e-30, 1e-30),
+              tts::randoms(-1e-35, 1e-35), 
               tts::randoms(-1000, 1000),
+              tts::randoms(-1e-30, 1e-30),
+              tts::randoms(-1e-35, 1e-35), 
               tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000)
+              tts::randoms(-1e-30, 1e-30),
+              tts::randoms(-1e-35, 1e-35)
+              //              tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000),
+//               tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5,
