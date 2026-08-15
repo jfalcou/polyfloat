@@ -70,4 +70,10 @@ namespace plf::_
               );
   }
 
+//   template<typename Z>
+//   POLYFLOAT_FORCEINLINE constexpr auto inner_three_add(Z const& x, Z const& y, Z const& z) noexcept
+//   {
+//     auto [xh, xl] = eve::two_add(x, y);
+//     return cr_dw_fp_add_with_err(xh, xl, z);
+//   }
 }
