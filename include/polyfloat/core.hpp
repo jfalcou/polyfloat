@@ -20,6 +20,8 @@
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/copysign.hpp>
 #include <polyfloat/module/core/cumfun.hpp>
+#include <polyfloat/module/core/cumprod.hpp>
+#include <polyfloat/module/core/cumsum.hpp>
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/dist.hpp>
