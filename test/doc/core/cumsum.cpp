@@ -56,7 +56,7 @@ int main()
   std::cout << pipo::typename_<tt_t1> << std::endl;
 
   std::cout <<  std::setprecision(15);
-  using plf::cumsum;
+   using plf::cumsum;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);
   auto b = plf::polyfloat(1.0, 1.0e-300);
@@ -89,7 +89,5 @@ int main()
   std::cout << "cumsum(wc, wb) "<< cumsum(wc, wb) << std::endl;
   std::cout << "cumsum(wc, wb, b) "<< cumsum(wb, wb, wb, b, c, 1) << std::endl;
 
-
-
-  return 0;
+    return 0;
 }

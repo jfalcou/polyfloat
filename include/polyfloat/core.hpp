@@ -106,6 +106,7 @@
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
+#include <polyfloat/module/core/sum_of_squares.hpp>
 #include <polyfloat/module/core/three_add.hpp>
 #include <polyfloat/module/core/three_fma.hpp>
 #include <polyfloat/module/core/trunc.hpp>
