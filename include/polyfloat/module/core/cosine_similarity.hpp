@@ -11,12 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-
+#include <polyfloat/module/core/dot.hpp>
+#include <polyfloat/module/core/sum_of_squares.hpp>
 
 namespace plf
 {
-
-  template<typename Options> struct cosine_similarity_t : eve::strict_tuple_callable<cosine_similarity_t, Options, kahan_option, raw_option, pedantic_option>
+ template<typename Options> struct cosine_similarity_t : eve::strict_tuple_callable<cosine_similarity_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -37,13 +37,13 @@ namespace plf
       return POLYFLOAT_CALL(t1, t2);
     }
 
-    template<eve::non_empty_product_type Tup>
-    requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
-    requires(kumi::size_v<Tup> >= 1)
-    {
-      return POLYFLOAT_CALL(t);
-    }
+//     template<eve::non_empty_product_type Tup>
+//     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
+//     EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+//     requires(kumi::size_v<Tup> >= 1)
+//     {
+//       return POLYFLOAT_CALL(t);
+//     }
 
     POLYFLOAT_CALLABLE_OBJECT(cosine_similarity_t, cosine_similarity_);
   };
@@ -108,30 +108,24 @@ namespace plf::_
     return cosine_similarity(f, s);
   }
 
-  template<eve::non_empty_product_type PT1,
-           eve::non_empty_product_type PT2, callable_options O>
-    POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
-    requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
+  template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
+  requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
+  {
+    using Tup1 = kumi::as_tuple_t<PT1>;
+    using Tup2 = kumi::as_tuple_t<PT2>;
+    constexpr auto siz = Tup1::size();
+    if constexpr(siz == 1)
     {
-      using Tup1 = kumi::as_tuple_t<PT1>;
-      using Tup2 = kumi::as_tuple_t<PT2>;
-      constexpr auto siz = Tup1::size();
-      if constexpr(siz == 1)
-      {
-        return eve::sign(get<0>(f)*get<0>(s));
-      }
-      else
-      {
-        using r1_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup1>;
-        using r2_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup2>;
-        using r_t =  plf::as_polyfloat_like_t<r1_t, r2_t>;
-
-        auto sa2 = eve::sum_of_squares[o](f);
-        auto sb2 = eve::sum_of_squares[o](s);
-        auto sab = eve::dot[o](f, s);
-        auto r = sab*eve::rsqrt(sa2*sb2);
-        return plf::if_else(plf::is_eqz(sab), zero, plf::if_else(is_eqz(sa2)||is_eqz(sb2), sa2*sb2, r));
-      }
+      return plf::sign(get<0>(f)*get<0>(s));
+    }
+    else
+    {
+      auto sa2 = plf::sum_of_squares[o](f);
+      auto sb2 = plf::sum_of_squares[o](s);
+      auto sab = plf::dot[o](f, s);
+      auto r = sab*plf::rsqrt(sa2*sb2);
+      return plf::if_else(plf::is_eqz(sab), zero, plf::if_else(is_eqz(sa2)||is_eqz(sb2), sa2*sb2, r));
     }
   }
 }

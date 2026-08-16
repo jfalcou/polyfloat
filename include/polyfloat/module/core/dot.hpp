@@ -106,26 +106,30 @@ namespace plf::_
       auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
       auto coeffs = eve::zip(cvt(args)...);
       auto[f,s]   = kumi::split(coeffs, kumi::index<sizeof...(Ts)/2>);
-// I hope this can work soon
-//       if constexpr(O::contains(kahan))
-//       {
-//         auto[f0,fs]      = kumi::split(f, kumi::index<1>);
-//         auto[s0,ss]      = kumi::split(s, kumi::index<1>);
-//         auto [su,error]  = dekker_prod(get<0>(f0), get<0>(s0));
-//         kumi::for_each( [&](auto a, auto b)
-//                         {
-//                           auto[s1, e1] = plf::two_fma_approx(a, b, su);
-//                           error += e1;
-//                           su    = s1;
-//                         }, fs, ss
-//                       );
-
-//         return su + error;
-//       }
-//       else
-      {
-        return add[o]( kumi::map([](auto a, auto b) { return a*b; }, f, s));
-      }
+      return add[o]( kumi::map([](auto a, auto b) { return a*b; }, f, s));
     }
   }
+
+  template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto dot_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
+  requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
+  {
+    using Tup1 = kumi::as_tuple_t<PT1>;
+    using Tup2 = kumi::as_tuple_t<PT2>;
+    constexpr auto siz = Tup1::size();
+    if constexpr(siz == 1)
+    {
+      return get<0>(f)*get<0>(s);
+    }
+    else
+    {
+      using r1_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup1>;
+      using r2_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup2>;
+      using r_t =  plf::as_polyfloat_like_t<r1_t, r2_t>;
+      using u_t = eve::element_type_t<r_t>;
+      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
+      return add[o]( kumi::map([cvt](auto a, auto b) { return cvt(a*b); }, f, s));
+    }
+  }
+
 }
