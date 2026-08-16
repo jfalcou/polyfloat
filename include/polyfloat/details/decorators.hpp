@@ -42,9 +42,9 @@ namespace plf
   using eve::threshold_option;
   using eve::to_nearest_option;
   using eve::toward_zero_option;
+  using eve::unbiased_option;
   using eve::upper_option;
   using eve::upward_option;
-  using eve::widen_option;
 
   using eve::rad_option;
   using eve::radpi_option;
@@ -77,9 +77,9 @@ namespace plf
   using eve::threshold;
   using eve::to_nearest;
   using eve::toward_zero;
+  using eve::unbiased;
   using eve::upper;
   using eve::upward;
-  using eve::widen;
 
   using eve::rad;
   using eve::radpi;

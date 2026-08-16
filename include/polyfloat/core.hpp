@@ -20,6 +20,7 @@
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/copysign.hpp>
 #include <polyfloat/module/core/cosine_similarity.hpp>
+#include <polyfloat/module/core/covariance.hpp>
 #include <polyfloat/module/core/cumfun.hpp>
 #include <polyfloat/module/core/cumprod.hpp>
 #include <polyfloat/module/core/cumsum.hpp>

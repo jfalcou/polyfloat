@@ -13,16 +13,28 @@
 #include <type_traits>
 #include <polyfloat/module/core/abs.hpp>
 #include <polyfloat/module/core/parts.hpp>
+#include <polyfloat/module/core/fma.hpp>
 
 namespace plf
 {
 
   template<typename Options> struct average_t : eve::strict_tuple_callable<average_t, Options, raw_option, pedantic_option>
   {
+    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    {
+    };
+
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
     {
      return POLYFLOAT_CALL(z1, zs...);
+    }
+
+    template<eve::non_empty_product_type Tup>
+    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup tup) const noexcept
+    requires(eve::same_lanes_or_scalar_tuple<Tup> && kumi::size_v<Tup> >= 1)
+    {
+     return POLYFLOAT_CALL(tup);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(average_t, average_);
@@ -86,9 +98,11 @@ namespace plf::_
       }
       else
       {
+        using u_t = eve::element_type_t<r_t>;
+        auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
         r_t that(a0*invn);
-        auto  next = [invn](auto avg, auto x) { return x*invn+avg; }; //fma ?
-        ((that = next(that, r_t(args))), ...);
+        auto  next = [invn](auto avg, auto x) { return plf::fma(x, invn, avg); }; //fma ?
+        ((that = next(that, cvt(args))), ...);
         return that;
       }
     }
