@@ -101,7 +101,7 @@ namespace plf::_
         using u_t = eve::element_type_t<r_t>;
         auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
         r_t that(a0*invn);
-        auto  next = [invn](auto avg, auto x) { return plf::fma(x, invn, avg); }; //fma ?
+        auto  next = [invn](auto avg, auto x) { return x*invn+avg; }; //plf::fma(x, invn, avg); }; //fma ?
         ((that = next(that, cvt(args))), ...);
         return that;
       }

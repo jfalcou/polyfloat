@@ -113,8 +113,8 @@ namespace plf::_
     using Tup2 = kumi::as_tuple_t<PT2>;
     constexpr auto siz = Tup1::size();
     constexpr auto fac = O::contains(unbiased) ? siz-1 : siz;
-    using r1_t = kumi::apply_traits_t<eve::common_value, Tup1>;
-    using r2_t = kumi::apply_traits_t<eve::common_value, Tup2>;
+    using r1_t = kumi::apply_traits_t<as_polyfloat_like, Tup1>;
+    using r2_t = kumi::apply_traits_t<as_polyfloat_like, Tup2>;
     using r_t =  eve::common_value_t<r1_t, r2_t>;
 
     if constexpr(siz == 1)
