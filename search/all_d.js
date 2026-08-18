@@ -8,5 +8,6 @@ var searchData=
   ['sqrt_5f2_5',['sqrt_2',['../group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html#ga4242d1daac24e1aa6e29ce62d230d171',1,'plf']]],
   ['sqrteps_6',['sqrteps',['../group__constants_ga193389bdf9378b4f1ab19e1ed49a52a0.html#ga193389bdf9378b4f1ab19e1ed49a52a0',1,'plf']]],
   ['sqrtvalmax_7',['sqrtvalmax',['../group__constants_ga5b01112179d17efdb5be43518c0e0669.html#ga5b01112179d17efdb5be43518c0e0669',1,'plf']]],
-  ['sub_8',['sub',['../namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html#a9d647eeb7803da2f5dc1d1c646e22799',1,'plf']]]
+  ['sub_8',['sub',['../namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html#a9d647eeb7803da2f5dc1d1c646e22799',1,'plf']]],
+  ['sum_5fof_5fsquares_9',['sum_of_squares',['../namespaceplf_a2dd0aca7295af7318c56063bd90f0730.html#a2dd0aca7295af7318c56063bd90f0730',1,'plf']]]
 ];

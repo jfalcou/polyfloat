@@ -13,5 +13,8 @@ var searchData=
   ['core_20constants_10',['Core constants',['../index.html#autotoc_md7',1,'']]],
   ['core_20functions_11',['Core functions',['../index.html#autotoc_md6',1,'']]],
   ['core_5faccuracy_12',['Core_accuracy',['../group__core__accuracy.html',1,'']]],
-  ['core_5finternal_13',['Core_internal',['../group__core__internal.html',1,'']]]
+  ['core_5finternal_13',['Core_internal',['../group__core__internal.html',1,'']]],
+  ['cosine_5fsimilarity_14',['cosine_similarity',['../namespaceplf_ae9bf65899aaf52f81e706494a42c99d3.html#ae9bf65899aaf52f81e706494a42c99d3',1,'plf']]],
+  ['covariance_15',['covariance',['../namespaceplf_a849d694549afbbd8308f3509f7e2c780.html#a849d694549afbbd8308f3509f7e2c780',1,'plf']]],
+  ['cumprod_16',['cumprod',['../group__core_gaead0ce36438cf8108b2bf0997ff6e4f8.html#gaead0ce36438cf8108b2bf0997ff6e4f8',1,'plf']]]
 ];
