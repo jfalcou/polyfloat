@@ -9,7 +9,7 @@
 #include <polyfloat/polyfloat.hpp>
 
 
-TTS_CASE_WITH("Check dot three params",
+TTS_CASE_WITH("Check covariance three params",
               plf::scalar_real_types,
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
@@ -30,17 +30,24 @@ TTS_CASE_WITH("Check dot three params",
                T const& a9, T const& a10,T const& a11)
 {
   using  mpfr::mpreal;
-  auto mdot =  [](auto a,  auto b, auto c, auto d){ return a*c+b*d; };
-  using plf::dot;
+  auto mcovariance =  [](auto a,  auto b, auto c, auto d){
+    auto m1 = (a+b)/2;
+    auto m2 = (c+d)/2;
+    a = a-m1;
+    b = b-m1;
+    c = c-m2;
+    d = d-m2;
+    return (a*c+b*d)/2;
+  };
+  using plf::covariance;
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
     pv_t pd(a9, a10);
-    TTS_RELATIVE_EQUAL(dot(pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
-    TTS_RELATIVE_EQUAL(dot(kumi::make_tuple(pa, pb), kumi::make_tuple(pc, pd)), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
-    TTS_RELATIVE_EQUAL(dot[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(covariance(pa, pb, pc, pd), tts::mpfr_exec(mcovariance, pa, pb, pc, pd), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(covariance(kumi::make_tuple(pa, pb), kumi::make_tuple(pc, pd)), tts::mpfr_exec(mcovariance, pa, pb, pc, pd), tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -48,7 +55,6 @@ TTS_CASE_WITH("Check dot three params",
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
     pv_t pd(a9, a10, a11);
-    TTS_RELATIVE_EQUAL(dot(pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
-    TTS_RELATIVE_EQUAL(dot[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(covariance(pa, pb, pc, pd), tts::mpfr_exec(mcovariance, pa, pb, pc, pd), tts::epsprec<T>());
   }
 };

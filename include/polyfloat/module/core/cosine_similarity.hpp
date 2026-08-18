@@ -11,12 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/two_fma_approx.hpp>
+#include <polyfloat/module/core/dot.hpp>
+#include <polyfloat/module/core/sum_of_squares.hpp>
 
 namespace plf
 {
-
-  template<typename Options> struct dot_t : eve::strict_tuple_callable<dot_t, Options, kahan_option, raw_option, pedantic_option>
+ template<typename Options> struct cosine_similarity_t : eve::strict_tuple_callable<cosine_similarity_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -37,21 +37,21 @@ namespace plf
       return POLYFLOAT_CALL(t1, t2);
     }
 
-    template<eve::non_empty_product_type Tup>
-    requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
-    requires(kumi::size_v<Tup> >= 1)
-    {
-      return POLYFLOAT_CALL(t);
-    }
+//     template<eve::non_empty_product_type Tup>
+//     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
+//     EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+//     requires(kumi::size_v<Tup> >= 1)
+//     {
+//       return POLYFLOAT_CALL(t);
+//     }
 
-    POLYFLOAT_CALLABLE_OBJECT(dot_t, dot_);
+    POLYFLOAT_CALLABLE_OBJECT(cosine_similarity_t, cosine_similarity_);
   };
   //======================================================================================================================
-  //! @dottogroup core
+  //! @cosine_similaritytogroup core
   //! @{
-  //!   @var dot
-  //!   @brief return the dot product  of the vector of the first half of parameters by
+  //!   @var cosine_similarity
+  //!   @brief return the cosine_similarity product  of the vector of the first half of parameters by
   //!    the vector of the second half.
   //!
   //!   @groupheader{Header file}
@@ -66,26 +66,28 @@ namespace plf
   //!   namespace polyfloat
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto dot(auto value... xs, auto value... ys)        noexcept; // 1
-  //!      constexpr auto dot(kumi::tuple xs, kumi::tuple ys)            noexcept; // 2
+  //!      constexpr auto cosine_similarity(auto ... xs, auto value... ys)        noexcept; // 1
+  //!      constexpr auto cosine_similarity(kumi::tuple xs, kumi::tuple ys)       noexcept; // 2
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `z2`: Values to process.
+  //!     * `xs`, `ys`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!    1. dot product. \f$\sum_s x_s*y_s\f$.
+  //!    1. cosine_similarity product. \f$\frac{\sum_s (x_s*y_s)}{\sqrt{\sum_s (x_s^2)*\sum_s (y_s^2)}}\f$.
+  //!       It is the cosine of the angle between the two vectors. One or minus one means thaat the vectors are proportionnal,
+  //!       zero that they are orthogonal.
   //!    2. use the content of the tuples
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/dot.cpp}
+  //!  @godbolt{doc/core/core/cosine_similarity.cpp}
   //======================================================================================================================
 
-  inline constexpr auto dot = eve::functor<dot_t>;
+  inline constexpr auto cosine_similarity = eve::functor<cosine_similarity_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -95,23 +97,19 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto dot_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
   requires(sizeof...(Ts) > 1  && sizeof...(Ts)%2 == 0)
   {
-    if constexpr(sizeof...(Ts) == 2) return plf::mul[o](args...);
-    else
-    {
-      using r_t =  as_polyfloat_like_t<Ts...>;
-      using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      auto coeffs = eve::zip(cvt(args)...);
-      auto[f,s]   = kumi::split(coeffs, kumi::index<sizeof...(Ts)/2>);
-      return add[o]( kumi::map([](auto a, auto b) { return a*b; }, f, s));
-    }
+    using r_t =  as_polyfloat_like_t<Ts...>;
+    using u_t = eve::element_type_t<r_t>;
+    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
+    auto coeffs = eve::zip(cvt(args)...);
+    auto[f,s]   = kumi::split(coeffs, kumi::index<sizeof...(Ts)/2>);
+    return cosine_similarity(f, s);
   }
 
   template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto dot_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
   requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
   {
     using Tup1 = kumi::as_tuple_t<PT1>;
@@ -119,17 +117,15 @@ namespace plf::_
     constexpr auto siz = Tup1::size();
     if constexpr(siz == 1)
     {
-      return get<0>(f)*get<0>(s);
+      return plf::sign(get<0>(f)*get<0>(s));
     }
     else
     {
-      using r1_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup1>;
-      using r2_t = kumi::apply_traits_t<plf::as_polyfloat_like, Tup2>;
-      using r_t =  plf::as_polyfloat_like_t<r1_t, r2_t>;
-      using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      return add[o]( kumi::map([cvt](auto a, auto b) { return cvt(a*b); }, f, s));
+      auto sa2 = plf::sum_of_squares[o](f);
+      auto sb2 = plf::sum_of_squares[o](s);
+      auto sab = plf::dot[o](f, s);
+      auto r = sab*plf::rsqrt(sa2*sb2);
+      return plf::if_else(plf::is_eqz(sab), zero, plf::if_else(is_eqz(sa2)||is_eqz(sb2), sa2*sb2, r));
     }
   }
-
 }

@@ -77,6 +77,13 @@ namespace plf
   //======================================================================================================================
   //! @}
   //======================================================================================================================
+
+  template <typename Options>
+  constexpr auto neutral(add_t<Options>) noexcept { return plf::zero; }
+
+  // Required for optimisation detections
+  using callable_add_ = eve::tag_t<add>;
+
 }
 
 namespace plf::_

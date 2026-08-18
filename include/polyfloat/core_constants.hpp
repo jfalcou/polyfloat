@@ -19,3 +19,4 @@
 #include <polyfloat/module/core/constants/sqrteps.hpp>
 #include <polyfloat/module/core/constants/sqrtvalmax.hpp>
 #include <polyfloat/module/core/constants/valmax.hpp>
+#include <polyfloat/module/core/constants/valmin.hpp>

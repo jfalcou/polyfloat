@@ -19,8 +19,15 @@
 #include <polyfloat/module/core/clamp.hpp>
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/copysign.hpp>
+#include <polyfloat/module/core/cosine_similarity.hpp>
+#include <polyfloat/module/core/covariance.hpp>
+#include <polyfloat/module/core/cumfun.hpp>
+#include <polyfloat/module/core/cumprod.hpp>
+#include <polyfloat/module/core/cumsum.hpp>
+//#include <polyfloat/module/core/cumtrapz.hpp>
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
+#include <polyfloat/module/core/diff.hpp>
 #include <polyfloat/module/core/dist.hpp>
 #include <polyfloat/module/core/div.hpp>
 #include <polyfloat/module/core/dot.hpp>
@@ -103,6 +110,7 @@
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
+#include <polyfloat/module/core/sum_of_squares.hpp>
 #include <polyfloat/module/core/three_add.hpp>
 #include <polyfloat/module/core/three_fma.hpp>
 #include <polyfloat/module/core/trunc.hpp>
