@@ -24,7 +24,7 @@
 #include <polyfloat/module/core/cumfun.hpp>
 #include <polyfloat/module/core/cumprod.hpp>
 #include <polyfloat/module/core/cumsum.hpp>
-//#include <polyfloat/module/core/cumtrapz.hpp>
+#include <polyfloat/module/core/cumtrapz.hpp>
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/diff.hpp>
