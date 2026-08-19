@@ -43,6 +43,7 @@
 #include <polyfloat/module/core/horner.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/inc.hpp>
+#include <polyfloat/module/core/is_bit_equal.hpp>
 #include <polyfloat/module/core/is_denormal.hpp>
 #include <polyfloat/module/core/is_equal.hpp>
 #include <polyfloat/module/core/is_eqz.hpp>
