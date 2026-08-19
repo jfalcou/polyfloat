@@ -92,7 +92,9 @@
 #include <polyfloat/module/core/lerp.hpp>
 #include <polyfloat/module/core/mantissa.hpp>
 #include <polyfloat/module/core/max.hpp>
+#include <polyfloat/module/core/maxabs.hpp>
 #include <polyfloat/module/core/min.hpp>
+#include <polyfloat/module/core/minabs.hpp>
 #include <polyfloat/module/core/minus.hpp>
 #include <polyfloat/module/core/modf.hpp>
 #include <polyfloat/module/core/mul.hpp>

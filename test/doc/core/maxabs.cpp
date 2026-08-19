@@ -8,9 +8,9 @@ int main()
 {
   std::cout <<  std::setprecision(15);
   using plf::maxabs;
-  auto f = 1.0;
+  auto f = -21.0;
   auto a = plf::polyfloat(1.3);
-  auto b = plf::polyfloat(1.0, 1.0e-300);
+  auto b = -plf::polyfloat(1.0, 1.0e-300);
   auto c = plf::polyfloat(1.0, 1.0e-10, 1.0e-300);
   std::setprecision(15);
   std::cout << "f  "<< f << std::endl;
