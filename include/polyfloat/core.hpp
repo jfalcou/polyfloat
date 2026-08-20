@@ -24,7 +24,7 @@
 #include <polyfloat/module/core/cumfun.hpp>
 #include <polyfloat/module/core/cumprod.hpp>
 #include <polyfloat/module/core/cumsum.hpp>
-//#include <polyfloat/module/core/cumtrapz.hpp>
+//#include <polyfloat/module/core/cumtrapz.hpp> TODO
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/diff.hpp>
@@ -43,6 +43,7 @@
 #include <polyfloat/module/core/horner.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/inc.hpp>
+#include <polyfloat/module/core/is_bit_equal.hpp>
 #include <polyfloat/module/core/is_denormal.hpp>
 #include <polyfloat/module/core/is_equal.hpp>
 #include <polyfloat/module/core/is_eqz.hpp>
@@ -91,14 +92,24 @@
 #include <polyfloat/module/core/lerp.hpp>
 #include <polyfloat/module/core/mantissa.hpp>
 #include <polyfloat/module/core/max.hpp>
+#include <polyfloat/module/core/maxabs.hpp>
+#include <polyfloat/module/core/maxmag.hpp>
 #include <polyfloat/module/core/min.hpp>
+#include <polyfloat/module/core/minabs.hpp>
+#include <polyfloat/module/core/minmag.hpp>
+#include <polyfloat/module/core/minmax.hpp>
 #include <polyfloat/module/core/minus.hpp>
 #include <polyfloat/module/core/modf.hpp>
 #include <polyfloat/module/core/mul.hpp>
 #include <polyfloat/module/core/nearest.hpp>
 #include <polyfloat/module/core/negate.hpp>
+#include <polyfloat/module/core/negabsmax.hpp>
+#include <polyfloat/module/core/negabsmin.hpp>
 #include <polyfloat/module/core/negatenz.hpp>
+#include <polyfloat/module/core/negmaxabs.hpp>
+#include <polyfloat/module/core/negminabs.hpp>
 #include <polyfloat/module/core/next.hpp>
+#include <polyfloat/module/core/nextafter.hpp>
 #include <polyfloat/module/core/parts.hpp>
 #include <polyfloat/module/core/prev.hpp>
 #include <polyfloat/module/core/rec.hpp>
