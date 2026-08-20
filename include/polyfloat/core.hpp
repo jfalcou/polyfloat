@@ -115,11 +115,11 @@
 #include <polyfloat/module/core/negminabs.hpp>
 #include <polyfloat/module/core/next.hpp>
 #include <polyfloat/module/core/nextafter.hpp>
-//#include <polyfloat/module/core/nextint.hpp>
+#include <polyfloat/module/core/nextint.hpp>
 #include <polyfloat/module/core/oneminus.hpp>
 #include <polyfloat/module/core/parts.hpp>
 #include <polyfloat/module/core/prev.hpp>
-//#include <polyfloat/module/core/prevint.hpp>
+#include <polyfloat/module/core/prevint.hpp>
 #include <polyfloat/module/core/rec.hpp>
 #include <polyfloat/module/core/reldist.hpp>
 //#include <polyfloat/module/core/rat.hpp>
