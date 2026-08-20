@@ -25,24 +25,4 @@ TTS_CASE_TPL( "Check convert", plf::scalar_real_types)
    wpv_t3 wpva3(pva3);
    TTS_EQUAL(pva3, plf::convert(pva2, eve::as<pv_t3>()));
    TTS_EQUAL(wpva3, plf::convert(wpva2, eve::as<pv_t3>()));
-
-
-   std::cout <<  std::setprecision(15);
-   using plf::convert;
-   using d1_t = double;
-   using d2_t = plf::double_real_t<double>;
-   using d3_t = plf::triple_real_t<double>;
-   using w1_t = eve::wide<double>;
-   using w2_t = eve::wide<d2_t>;
-   double a1(1.0);
-   d2_t a2(a1);
-   std::cout << plf::convert(a1, eve::as<d2_t>()) << std::endl;
-   std::cout << plf::convert(a2, eve::as<d3_t>()) << std::endl;
-
-   std::cout << plf::convert(w1_t(a1), eve::as<d2_t>()) << std::endl;
-   std::cout << plf::convert(w2_t(a2), eve::as<d3_t>()) << std::endl;
-
-   using r_t = plf::as_polyfloat_like_t<w2_t, d1_t>;
-   using p_t = r_t::value_type;
-   using u_t = plf::as_component_type_t<r_t>;
 };

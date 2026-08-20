@@ -103,6 +103,8 @@
 #include <polyfloat/module/core/mul.hpp>
 #include <polyfloat/module/core/nearest.hpp>
 #include <polyfloat/module/core/negate.hpp>
+#include <polyfloat/module/core/negabsmax.hpp>
+#include <polyfloat/module/core/negabsmin.hpp>
 #include <polyfloat/module/core/negatenz.hpp>
 #include <polyfloat/module/core/next.hpp>
 #include <polyfloat/module/core/parts.hpp>
