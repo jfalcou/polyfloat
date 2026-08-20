@@ -106,6 +106,8 @@
 #include <polyfloat/module/core/negabsmax.hpp>
 #include <polyfloat/module/core/negabsmin.hpp>
 #include <polyfloat/module/core/negatenz.hpp>
+#include <polyfloat/module/core/negmaxabs.hpp>
+#include <polyfloat/module/core/negminabs.hpp>
 #include <polyfloat/module/core/next.hpp>
 #include <polyfloat/module/core/parts.hpp>
 #include <polyfloat/module/core/prev.hpp>
