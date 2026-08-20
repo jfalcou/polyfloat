@@ -4,58 +4,9 @@
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
 
-namespace pipo
-{
-  template<typename T> struct typename_impl
-  {
-    static auto value() noexcept
-    {
-#if defined(_MSC_VER )
-      std::string_view data(__FUNCSIG__);
-      auto i = data.find('<') + 1,
-        j = data.find(">::value");
-      auto name = data.substr(i, j - i);
-#else
-      std::string_view data(__PRETTY_FUNCTION__);
-      auto i = data.find('=') + 2,
-        j = data.find_last_of(']');
-      auto name = data.substr(i, j - i);
-#endif
-      return std::string(name.data(), name.size());
-    }
-  };
-
-  template<typename T> inline auto const typename_ = typename_impl<T>::value();
-  template<typename T> constexpr auto name(T const&){ return typename_<T>; }
-}
-
-template<typename T>
-using return_type = T;
-
-template<typename... Ts>
-using result = kumi::result::fill_t<sizeof...(Ts), return_type< plf::as_polyfloat_like_t<Ts...>>>;
-
-template<eve::product_type Tup>
-using tuple_result = kumi::result::fill_t< Tup::size(), return_type<kumi::apply_traits_t<plf::as_polyfloat_like, Tup>>>;
-
-
 int main()
 {
-  using u_t1 = double;
-  using u_t2 = plf::double_real_t<double>;
-  using Tup1 = kumi::tuple<u_t1, u_t1, u_t1>;
-  using Tup2 = kumi::tuple<u_t2, u_t2, u_t2>;
-  using t_t1 = tuple_result<Tup1>;
-  using t_t2 = tuple_result<Tup2>;
-  std::cout << pipo::typename_<t_t2> << std::endl;
-  std::cout << pipo::typename_<t_t1> << std::endl;
-
-  using tt_t1 = result<u_t1, u_t1, u_t1>;
-  using tt_t2 = result<u_t2, u_t2, u_t2>;
-  std::cout << pipo::typename_<tt_t2> << std::endl;
-  std::cout << pipo::typename_<tt_t1> << std::endl;
-
-  std::cout <<  std::setprecision(15);
+ std::cout <<  std::setprecision(15);
   using plf::cumprod;
   using plf::add;
    auto f = 1.0;

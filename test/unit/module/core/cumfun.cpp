@@ -26,12 +26,6 @@ TTS_CASE_WITH("Check cumfun two params",
               tts::randoms(-1000, 1000),
               tts::randoms(-1e-30, 1e-30),
               tts::randoms(-1e-35, 1e-35)
-//                tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5)
@@ -69,15 +63,6 @@ TTS_CASE_WITH("Check cumfun three params",
               tts::randoms(-1000, 1000),
               tts::randoms(-1e-30, 1e-30),
               tts::randoms(-1e-35, 1e-35)
-              //              tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000),
-//               tts::randoms(-1000, 1000)
              )
   <typename T>(T const& a0, T const& a1, T const& a2,
                T const& a3, T const& a4, T const& a5,
@@ -107,5 +92,12 @@ TTS_CASE_WITH("Check cumfun three params",
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(max, pa, pb, pc)), kumi::get<0>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(max, pa, pb, pc)), kumi::get<1>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<2>(cumfun(max, pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
+    using wpv_t  = plf::triple_real_t<eve::wide<T, eve::fixed<2>>>;
+    wpv_t wpa(pa, pa);
+    wpv_t wpb(pc, pb);
+    wpv_t wpc(pb, pc);
+    std::cout << wpa << std::endl;
+    std::cout << wpb << std::endl;
+    std::cout << wpc << std::endl;
   }
 };

@@ -83,4 +83,12 @@ TTS_CASE_WITH("Check cumsum three params",
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb, pc)), kumi::get<1>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<2>(cumsum(pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
   }
+  {
+    using pv_t  = plf::triple_real_t<eve::wide<T, eve::fixed<2>>>;
+    pv_t wpa(a0, a1, a2);
+    pv_t wpb(a3, a4, a5);
+    pv_t wpc(a6, a7, a8);
+    auto r = cumsum(wpa, wpb, wpc);
+    std::cout << r << std::endl;
+  }
 };

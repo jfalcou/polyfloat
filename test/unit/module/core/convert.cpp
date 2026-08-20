@@ -45,9 +45,4 @@ TTS_CASE_TPL( "Check convert", plf::scalar_real_types)
    using r_t = plf::as_polyfloat_like_t<w2_t, d1_t>;
    using p_t = r_t::value_type;
    using u_t = plf::as_component_type_t<r_t>;
-   std::cout << "u_t " << tts::typename_<u_t> << std::endl;
-   std::cout << "r_t " << tts::typename_<r_t> << std::endl;
-   std::cout << "d2_t " <<tts::typename_<d2_t> << std::endl;
-   std::cout << "p_t " <<tts::typename_<p_t> << std::endl;
-
 };
