@@ -6,5 +6,6 @@ var searchData=
   ['polyfloat_20numbers_3',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]],
   ['polyfloat_3c_20eve_3a_3aas_5ffloating_5fpoint_5ft_3c_20eve_3a_3aunderlying_5ftype_5ft_3c_20t_20_3e_20_3e_2c_20dim_20_3e_4',['polyfloat&lt; eve::as_floating_point_t&lt; eve::underlying_type_t&lt; T &gt; &gt;, Dim &gt;',['../structplf_1_1polyfloat.html',1,'plf']]],
   ['prev_5',['prev',['../group__core_ga3e945bcc637ae4a744f512275949fe82.html#ga3e945bcc637ae4a744f512275949fe82',1,'plf']]],
-  ['provide_6',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]]
+  ['prevint_6',['prevint',['../group__core_ga4bf8537407a460e745d9df6f37fac5f7.html#ga4bf8537407a460e745d9df6f37fac5f7',1,'plf']]],
+  ['provide_7',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]]
 ];

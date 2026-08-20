@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::fma</title>
+<title>polyfloat: plf::oneminus</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(function() { codefold.init(); });
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','',''); });
+$(function(){initNavTree('group__core_gaffe46da86ea6a171bb1de5203b24334a.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -121,8 +121,8 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
 </div>
 
 <div class="contents">
-<a id="afe2539e930df632442830952eafe983f" name="afe2539e930df632442830952eafe983f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe2539e930df632442830952eafe983f">&#9670;&#160;</a></span>fma</h2>
+<a id="gaffe46da86ea6a171bb1de5203b24334a" name="gaffe46da86ea6a171bb1de5203b24334a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaffe46da86ea6a171bb1de5203b24334a">&#9670;&#160;</a></span>oneminus</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::fma = eve::functor&lt;fma_t&gt;</td>
+          <td class="memname">auto plf::oneminus = eve::functor&lt;oneminus_t&gt;</td>
         </tr>
       </table>
   </td>
@@ -141,24 +141,22 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the fused multiply add of the parameters. </p>
-<p>@fmatogroup core</p>
+<p>return the value plus one. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#afe2539e930df632442830952eafe983f">fma</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaffe46da86ea6a171bb1de5203b24334a">oneminus</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceplf_afe2539e930df632442830952eafe983f_html_afe2539e930df632442830952eafe983f"><div class="ttname"><a href="#afe2539e930df632442830952eafe983f">plf::fma</a></div><div class="ttdeci">constexpr auto fma</div><div class="ttdoc">return the fused multiply add of the parameters.</div><div class="ttdef"><b>Definition</b> fma.hpp:70</div></div>
+<div class="ttc" id="agroup__core_gaffe46da86ea6a171bb1de5203b24334a_html_gaffe46da86ea6a171bb1de5203b24334a"><div class="ttname"><a href="#gaffe46da86ea6a171bb1de5203b24334a">plf::oneminus</a></div><div class="ttdeci">constexpr auto oneminus</div><div class="ttdoc">return the value plus one.</div><div class="ttdef"><b>Definition</b> oneminus.hpp:64</div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
+<li><span class="tt">z</span>: Value to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns the fused multiply add of the arguments.</p>
-<dl class="section note"><dt>Note</dt><dd>contrarily to <span class="tt">eve::fma</span>, <span class="tt"><a class="el" href="#afe2539e930df632442830952eafe983f" title="return the fused multiply add of the parameters.">plf::fma</a></span> garanties the correct fused multiply add rounding behaviour, even if it has to be emulated.</dd></dl>
+<p>Returns the value of z+1.</p>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"></div><!-- fragment --> 
 </div>

@@ -10,5 +10,6 @@ var searchData=
   ['negminabs_7',['negminabs',['../group__core_gace9b23e8f34fdc09478d8901078f1bb6.html#gace9b23e8f34fdc09478d8901078f1bb6',1,'plf']]],
   ['next_8',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf']]],
   ['nextafter_9',['nextafter',['../group__core_ga09f396a43b0cf65385e8a586a2b410e9.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf']]],
-  ['numbers_10',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]]
+  ['nextint_10',['nextint',['../group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf']]],
+  ['numbers_11',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]]
 ];
