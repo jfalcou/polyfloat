@@ -11,6 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/module/core/three_fma.hpp>
 
 namespace plf
 {
@@ -82,9 +83,12 @@ namespace plf::_
       return eve::fma[pedantic](x, y, z);
     else if constexpr((dimension_v<Z1> > 2) || (dimension_v<Z2> > 2)  || (dimension_v<Z3> > 2))
     {
-      return x*y+z; //TODO
+      auto cvt =  [](auto a){return plf::convert(a, eve::as<eve::element_type_t<r_t>>());};
+      
+      auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
+      return cr_dw_fp_add(xl, xh, cvt(z));
     }
-    if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
+    else if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
