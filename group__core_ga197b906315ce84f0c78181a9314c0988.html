@@ -175,61 +175,12 @@ $(function(){initNavTree('group__core_ga197b906315ce84f0c78181a9314c0988.html','
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">namespace </span>pipo</div>
-<div class="line">{</div>
-<div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span>typename_impl</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keyword">static</span> <span class="keyword">auto</span> value() noexcept</div>
-<div class="line">    {</div>
-<div class="line"><span class="preprocessor">#if defined(_MSC_VER )</span></div>
-<div class="line">      std::string_view data(__FUNCSIG__);</div>
-<div class="line">      <span class="keyword">auto</span> i = data.find(<span class="charliteral">&#39;&lt;&#39;</span>) + 1,</div>
-<div class="line">        j = data.find(<span class="stringliteral">&quot;&gt;::value&quot;</span>);</div>
-<div class="line">      <span class="keyword">auto</span> name = data.substr(i, j - i);</div>
-<div class="line"><span class="preprocessor">#else</span></div>
-<div class="line">      std::string_view data(__PRETTY_FUNCTION__);</div>
-<div class="line">      <span class="keyword">auto</span> i = data.find(<span class="charliteral">&#39;=&#39;</span>) + 2,</div>
-<div class="line">        j = data.find_last_of(<span class="charliteral">&#39;]&#39;</span>);</div>
-<div class="line">      <span class="keyword">auto</span> name = data.substr(i, j - i);</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">      <span class="keywordflow">return</span> std::string(name.data(), name.size());</div>
-<div class="line">    }</div>
-<div class="line">  };</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="keyword">auto</span> <span class="keyword">const</span> typename_ = typename_impl&lt;T&gt;::value();</div>
-<div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> name(T <span class="keyword">const</span>&amp;){ <span class="keywordflow">return</span> typename_&lt;T&gt;; }</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">template</span>&lt;std::size_t N, <span class="keyword">typename</span>... Ts&gt;</div>
-<div class="line"><span class="keyword">struct </span>result;</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">template</span> &lt; <span class="keywordtype">size_t</span> N,  <span class="keywordtype">size_t</span> SZ&gt; <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> sz = SZ &gt; N ? SZ-N : 0;</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">template</span>&lt;std::size_t N, plf::concepts::polyfloat_like... Ts&gt;</div>
-<div class="line"><span class="keyword">struct </span>result&lt;N,Ts...&gt; : kumi::result::fill&lt;sz&lt;N, sizeof...(Ts)&gt;, plf::as_polyfloat_like_t&lt;Ts...&gt;&gt; {};</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">template</span>&lt;std::<span class="keywordtype">size_t</span> N, eve::same_lanes_or_scalar_tuple Tup&gt;</div>
-<div class="line"><span class="keyword">struct </span>result&lt;N, Tup&gt; : kumi::result::fill&lt;sz&lt;N, kumi::size_v&lt;Tup&gt;&gt;, kumi::apply_traits_t&lt;plf::as_polyfloat_like, Tup&gt;&gt; {};</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="keyword">using </span>T = double;</div>
-<div class="line">  <span class="keyword">using </span>Tup =  kumi::tuple&lt;T, T, T&gt;;</div>
-<div class="line">  <span class="keyword">using </span>r1_t = <span class="keyword">typename</span> result&lt;1u, Tup&gt;::type;</div>
-<div class="line">  <span class="keyword">using </span>r2_t = <span class="keyword">typename</span> result&lt;2u, Tup&gt;::type;</div>
-<div class="line">  <span class="keyword">using </span>r3_t = <span class="keyword">typename</span> result&lt;3u, Tup&gt;::type;</div>
-<div class="line">  std::cout &lt;&lt; pipo::typename_&lt;r1_t&gt; &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; pipo::typename_&lt;r2_t&gt; &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; pipo::typename_&lt;r3_t&gt; &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">using </span>u_t2 = <a class="code hl_typedef" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t&lt;double&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line">   <span class="keyword">using </span>u_t2 = <a class="code hl_typedef" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">//   std::cout &lt;&lt;  std::setprecision(15);</span></div>
-<div class="line">   <span class="keyword">using </span><a class="code hl_variable" href="#ga197b906315ce84f0c78181a9314c0988">plf::diff</a>;</div>
+<div class="line">  std::cout &lt;&lt;  std::setprecision(15);</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga197b906315ce84f0c78181a9314c0988">plf::diff</a>;</div>
 <div class="line">  <span class="keyword">auto</span> a = 1.0;</div>
 <div class="line">  <span class="keyword">auto</span> b = u_t2(1.0, 1.0e-300);</div>
 <div class="line"> </div>
@@ -238,7 +189,6 @@ $(function(){initNavTree('group__core_ga197b906315ce84f0c78181a9314c0988.html','
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;diff(a, a+1, a+3)                   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga197b906315ce84f0c78181a9314c0988">diff</a>(a, a+1, a+3)  &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;diff(kumi::make_tuple(b, b+1, b+3)) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga197b906315ce84f0c78181a9314c0988">diff</a>(kumi::make_tuple(b, b+1, b+3)) &lt;&lt; std::endl;</div>
-<div class="line"><span class="comment">//   std::cout &lt;&lt; &quot;diff(f, f) &quot; &lt;&lt; diff(                 f, f)  &lt;&lt; std::endl;</span></div>
 <div class="line">  {</div>
 <div class="line">    kumi::tuple tt{ u_t2(1.5000e-5), 2.2500, 3.3750, 5.0625, 7.0, 11.0, 17.0, 25.0};</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot; &lt; - tt                        = &quot;</span> &lt;&lt; tt &lt;&lt; std::endl;</div>
