@@ -75,11 +75,11 @@ int main()
   std::cout << "trapz(kumi::tuple{a, a, a}) " << trapz(kumi::tuple{a, a, a}) << std::endl;
   std::cout << "trapz(kumi::tuple{c, c, c}) " << trapz(kumi::tuple{c, c, c}) << std::endl;
   std::cout << "trapz(b, b, b, b)                " <<  plf::trapz(b, b, b, b)  << std::endl;
-  std::cout << "trapz(kumi::tuple{1.0, 5.0}, kumi::tuple{f, f)" << trapz(kumi::tuple{1.0, 5.0}, kumi::tuple{f, f})<< std::endl;
-  std::cout << "trapz(f/2, kumi::tuple{f, f}) " << plf:: trapz(f/2, kumi::tuple{f, f}) << std::endl;
-  std::cout << "trapz(0.5, kumi::tuple{b, b, b)) " << trapz(0.5, kumi::tuple{b, b, b}) << std::endl;
-  std::cout << "trapz(0.5, kumi::tuple{b, b, b)) " << trapz(u_t2(0.4), kumi::tuple{b, b, b}) << std::endl;
-  std::cout << "trapz(kumi::make_tuple{1.0, 5.0, 12.0}, kumi::tuple{f, f, f}" << trapz(kumi::tuple{1.0, 5.0, 12.0}, kumi::tuple{f, f, f})<< std::endl;
+//  std::cout << "trapz(kumi::tuple{1.0, 5.0}, kumi::tuple{f, f)" << trapz(kumi::tuple{1.0, 5.0}, kumi::tuple{f, f})<< std::endl;
+//   std::cout << "trapz(f/2, kumi::tuple{f, f}) " << plf:: trapz(f/2, kumi::tuple{f, f}) << std::endl;
+//   std::cout << "trapz(0.5, kumi::tuple{b, b, b)) " << trapz(0.5, kumi::tuple{b, b, b}) << std::endl;
+   std::cout << "trapz(0.5, kumi::tuple{b, b, b)) " << trapz(u_t2(0.4), kumi::tuple{b, b, b}) << std::endl;
+//   std::cout << "trapz(kumi::make_tuple{1.0, 5.0, 12.0}, kumi::tuple{f, f, f}" << trapz(kumi::tuple{1.0, 5.0, 12.0}, kumi::tuple{f, f, f})<< std::endl;
   std::cout << "trapz(a, a) "<<  trapz(a, a)       << std::endl;
   std::cout << "trapz(c, c) "<<  trapz(c, c, c) << std::endl;
   std::cout << "trapz(a, f) " << trapz(a, f) << std::endl;
@@ -90,17 +90,17 @@ int main()
   std::cout << "trapz(b, c) "<<  trapz(b, c) << std::endl;
 
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
+ using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
   pf2_t wb(b);
   pf3_t wc(c);
   std::cout << "wb          "<< wb << std::endl;
   std::cout << "wc          "<< wc << std::endl;
   std::cout << "trapz(kumi::tuple{wb, wb, wb}) "<<  plf::trapz(kumi::tuple{wb, wb, wb}) << std::endl;
-  std::cout << "trapz(kumi::tuple{wc, wb, b, b, c, 1}) "<< trapz(kumi::tuple{wc, wb, b, b, c, 1}) << std::endl;
-  std::cout << "plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) " << plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) << std::endl;
-  std::cout << "plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) " << plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) << std::endl;
-  kumi::tuple t{ pf2_t(0.0),  pf2_t(1.0),  pf2_t(2.0), pf2_t(3.0), pf2_t(4.0), pf2_t(5.0)};
-  std::cout << "plf::trapz(plf::sqr, t) " << plf::trapz(plf::sqr, t) << std::endl;
+   std::cout << "trapz(kumi::tuple{wc, wb, b, b, c, 1}) "<< trapz(kumi::tuple{wc, wb, b, b, c, 1}) << std::endl;
+//   std::cout << "plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) " << plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) << std::endl;
+//   std::cout << "plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) " << plf::trapz(plf::sqr, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0) << std::endl;
+//    kumi::tuple t{ pf2_t(0.0),  pf2_t(1.0),  pf2_t(2.0), pf2_t(3.0), pf2_t(4.0), pf2_t(5.0)};
+//    std::cout << "plf::trapz(plf::sqr, t) " << plf::trapz(plf::sqr, t) << std::endl;
   return 0;
 }
