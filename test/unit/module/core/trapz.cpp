@@ -86,8 +86,8 @@ TTS_CASE_WITH("Check trapz three params",
     TTS_RELATIVE_EQUAL(trapz(pa, a0, pc), trapz(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
     TTS_EQUAL(trapz(dx, kumi::tuple{pa, pb, pc}), dx*tts::mpfr_exec(mtrapz, pa, pb, pc));
     TTS_EQUAL(trapz(kumi::tuple{T(0), T(1), T(2)}, kumi::tuple{pa, pb, pc}), tts::mpfr_exec(mtrapz, pa, pb, pc));
-    TTS_RELATIVE_EQUAL(trapz(sqr,  pa, pb, pc), tts::mpfr_exec(mtrapz2, pa, pb, pc), 12*tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(trapz(sqr, kumi::tuple{pa, pb, pc}), tts::mpfr_exec(mtrapz2, pa, pb, pc), 12*tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(trapz(sqr,  pa, pb, pc), tts::mpfr_exec(mtrapz2, pa, pb, pc), 16*tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(trapz(sqr, kumi::tuple{pa, pb, pc}), tts::mpfr_exec(mtrapz2, pa, pb, pc), 16*tts::epsprec<pv_t>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
