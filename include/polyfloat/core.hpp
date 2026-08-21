@@ -123,13 +123,14 @@
 #include <polyfloat/module/core/rec.hpp>
 #include <polyfloat/module/core/reldist.hpp>
 //#include <polyfloat/module/core/rat.hpp>
-//#include <polyfloat/module/core/rem.hpp>
-//#include <polyfloat/module/core/remainder.hpp>
+#include <polyfloat/module/core/rem.hpp>
+#include <polyfloat/module/core/remainder.hpp>
 #include <polyfloat/module/core/reverse_horner.hpp>
+#include <polyfloat/module/core/round.hpp>
 //#include <polyfloat/module/core/roundscale.hpp>
 #include <polyfloat/module/core/rsqrt.hpp>
 #include <polyfloat/module/core/sign.hpp>
-//#include <polyfloat/module/core/signalternate.hpp>
+#include <polyfloat/module/core/sign_alternate.hpp>
 #include <polyfloat/module/core/signnz.hpp>
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
