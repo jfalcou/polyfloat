@@ -15,33 +15,9 @@
 #include <polyfloat/module/core/cumsum.hpp>
 #include <polyfloat/module/core/diff.hpp>
 
-namespace toto
-{
-  template<typename T> struct typename_impl
-  {
-    static auto value() noexcept
-    {
-#if defined(_MSC_VER )
-      std::string_view data(__FUNCSIG__);
-      auto i = data.find('<') + 1,
-        j = data.find(">::value");
-      auto name = data.substr(i, j - i);
-#else
-      std::string_view data(__PRETTY_FUNCTION__);
-      auto i = data.find('=') + 2,
-        j = data.find_last_of(']');
-      auto name = data.substr(i, j - i);
-#endif
-      return std::string(name.data(), name.size());
-    }
-  };
-
-  template<typename T> inline auto const typename_ = typename_impl<T>::value();
-  template<typename T> constexpr auto name(T const&){ return typename_<T>; }
-}
-
 namespace plf
 {
+
 
   template<typename Options> struct trapz_t : eve::callable<trapz_t, Options
                                                             , raw_option, pedantic_option>
@@ -49,10 +25,16 @@ namespace plf
     template<eve::product_type Tup, typename X>
     using XTup = typename kumi::result::push_back< Tup, X >::type;
 
+    template <eve::non_empty_product_type X, eve::non_empty_product_type Y>
+    using tuple2_type = kumi::apply_traits_t<plf::as_polyfloat_like, kumi::result::cat_t<X, Y>>;
+
+    template <plf::concepts::polyfloat_like ...Ts>
+    using poly_type = plf::as_polyfloat_like<Ts...>;
+
    // one sequence of polyfloat
     template<concepts::polyfloat_like ...Ts>
     POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<Ts...>
-    operator()(Ts ... ts) const noexcept
+    operator()(Ts ... ts) const  noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
