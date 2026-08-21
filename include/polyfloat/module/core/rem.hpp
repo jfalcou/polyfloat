@@ -89,7 +89,7 @@ namespace plf::_
     {
       return if_else(plf::is_eqz(b) || plf::is_unordered(a, b),
                      plf::if_else(plf::is_eqz(a) || plf::is_infinite(b), a, nan(as(a))),
-                     plf::fnma(b, eve::div[to_nearest](a, b), a)); // as remainder
+                     plf::fnma(b, plf::div[to_nearest](a, b), a)); // as remainder
     }
     else if constexpr(O::contains(upward) || O::contains(downward))
     {
@@ -99,7 +99,7 @@ namespace plf::_
     {
       return plf::if_else(plf::is_unordered(a, b) || plf::is_infinite(a) || plf::is_eqz(b),
                      plf::nan(as(a)),
-                     if_else(is_eqz(a), a, plf::fnma(b, div[toward_zero](a, b), a)));
+                     plf::if_else(is_eqz(a), a, plf::fnma(b, plf::div[toward_zero](a, b), a)));
     }
   }
 }

@@ -19,9 +19,7 @@
 namespace plf
 {
 
-  template<typename Options> struct remainder_t : eve::strict_tuple_callable<remainder_t, Options, raw_option, pedantic_option,
-                                                                       to_nearest_option, toward_zero_option,
-                                                                       downward_option, upward_option>
+  template<typename Options> struct remainder_t : eve::callable<remainder_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -77,6 +75,6 @@ namespace plf::_
   template<typename T0, typename T1, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto remainder_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
   {
-    return rem[to_nearest](a, b);
+    return plf::rem[to_nearest](a, b);
   }
 }

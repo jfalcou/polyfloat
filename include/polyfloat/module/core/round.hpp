@@ -19,7 +19,7 @@
 namespace plf
 {
 
-  template<typename Options> struct round_t : eve::strict_tuple_callable<round_t, Options, raw_option, pedantic_option,
+  template<typename Options> struct round_t : eve::callable<round_t, Options, raw_option, pedantic_option,
                                                                        to_nearest_option, toward_zero_option,
                                                                        downward_option, upward_option>
   {
