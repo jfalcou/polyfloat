@@ -18,11 +18,9 @@ int main()
   std::cout << " <- x                       = " << x << '\n';
   std::cout << " <- lo                      = " << lo << '\n';
   std::cout << " <- hi                      = " << hi << '\n';
-   std::cout << " <- lo                      = " << wlo << '\n';
+  std::cout << " <- lo                      = " << wlo << '\n';
   std::cout << " <- hi                      = " << whi << '\n';
- std::cout << " -> clamp(x, wlo, whi)      = " << plf::clamp(x, wlo, whi) << '\n';
- std::cout << " -> clamp(x, lo, hi)        = " << plf::clamp(x, lo, hi) << '\n';
- std::cout << " -> plf::min(plf::max(a, lo), hi)     = " << plf::min(plf::max(x, lo), hi) << '\n';
-
+  std::cout << " -> clamp(x, wlo, whi)      = " << plf::clamp(x, wlo, whi) << '\n';
+  std::cout << " -> clamp(x, lo, hi)        = " << plf::clamp(x, lo, hi) << '\n';
   return 0;
 }
