@@ -16,7 +16,7 @@
 namespace plf
 {
 
-  template<typename Options> struct clamp_t : eve::strict_tuple_callable<clamp_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct clamp_t : eve::callable<clamp_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {

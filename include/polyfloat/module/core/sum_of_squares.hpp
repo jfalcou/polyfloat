@@ -17,7 +17,7 @@
 namespace plf
 {
 
-  template<typename Options> struct sum_of_squares_t : eve::strict_tuple_callable<sum_of_squares_t, Options
+  template<typename Options> struct sum_of_squares_t : eve::callable<sum_of_squares_t, Options
                                                                                   , kahan_option, raw_option
                                                                                   , pedantic_option>
   {
@@ -25,17 +25,18 @@ namespace plf
     {
     };
 
-    template<concepts::polyfloat_like... Ts>
-    requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    template<concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
+    EVE_FORCEINLINE plf::as_polyfloat_like_t<T0, Ts...> constexpr operator()(T0 t0, Ts... ts) const noexcept
+    requires(eve::same_lanes_or_scalar<T0, Ts...> )
     {
-      return POLYFLOAT_CALL(ts...);
+      return POLYFLOAT_CALL(t0, ts...);
     }
 
     template<eve::non_empty_product_type Tup>
-    requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
     EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
-    requires(kumi::size_v<Tup> >= 1)
+    requires(eve::same_lanes_or_scalar_tuple<Tup> &&
+             !concepts::polyfloat_like<Tup> &&
+             kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(t);
     }
@@ -89,13 +90,14 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like ... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto sum_of_squares_(POLYFLOAT_DELAY(), O const& o, T0 const & a0, Ts const&... args) noexcept
+  POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<T0, Ts...>
+  sum_of_squares_(POLYFLOAT_DELAY(), O const& o, T0 const & a0, Ts const&... args) noexcept
   {
     using r_t =plf::as_polyfloat_like_t<T0, Ts...>;
     if constexpr(dimension_v<r_t> == 1)
       return eve::sum_of_squares(args...);
     else if constexpr(sizeof...(Ts) == 0)
-      return eve::sqr[o](a0);
+      return plf::sqr[o](a0);
     else if constexpr(O::contains(kahan))
     {
       auto pair_sqr_add = [](auto pair0, auto r1){
@@ -120,6 +122,9 @@ namespace plf::_
 
   template <eve::product_type PT, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto sum_of_squares_(POLYFLOAT_DELAY(), O const & o, PT tup) noexcept
+    requires(eve::same_lanes_or_scalar_tuple<PT> &&
+             !concepts::polyfloat_like<PT> &&
+             kumi::size_v<PT> >= 1)
   {
     return kumi::apply([o](auto...m){return sum_of_squares[o](m...);}, tup);
   }

@@ -24,7 +24,7 @@
 #include <polyfloat/module/core/cumfun.hpp>
 #include <polyfloat/module/core/cumprod.hpp>
 #include <polyfloat/module/core/cumsum.hpp>
-//#include <polyfloat/module/core/cumtrapz.hpp> t
+//#include <polyfloat/module/core/cumtrapz.hpp>
 #include <polyfloat/module/core/dec.hpp>
 #include <polyfloat/module/core/dekker_prod.hpp>
 #include <polyfloat/module/core/diff.hpp>
@@ -42,7 +42,6 @@
 #include <polyfloat/module/core/fsm.hpp>
 #include <polyfloat/module/core/fmod.hpp>
 #include <polyfloat/module/core/frac.hpp>
-//#include <polyfloat/module/core/fracscale.hpp>
 #include <polyfloat/module/core/frexp.hpp>
 #include <polyfloat/module/core/heaviside.hpp>
 #include <polyfloat/module/core/horner.hpp>
@@ -127,7 +126,6 @@
 #include <polyfloat/module/core/remainder.hpp>
 #include <polyfloat/module/core/reverse_horner.hpp>
 #include <polyfloat/module/core/round.hpp>
-//#include <polyfloat/module/core/roundscale.hpp>
 #include <polyfloat/module/core/rsqrt.hpp>
 #include <polyfloat/module/core/sign.hpp>
 #include <polyfloat/module/core/sign_alternate.hpp>
@@ -135,7 +133,7 @@
 #include <polyfloat/module/core/sqr.hpp>
 #include <polyfloat/module/core/sqrt.hpp>
 #include <polyfloat/module/core/sub.hpp>
-//#include <polyfloat/module/core/sum_of_prod.hpp>
+#include <polyfloat/module/core/sum_of_prod.hpp>
 #include <polyfloat/module/core/sum_of_squares.hpp>
 #include <polyfloat/module/core/three_add.hpp>
 #include <polyfloat/module/core/three_fma.hpp>
@@ -147,3 +145,5 @@
 #include <polyfloat/module/core/two_prod.hpp>
 #include <polyfloat/module/core/two_split.hpp>
 #include <polyfloat/module/core/variance.hpp>
+
+//#include <polyfloat/module/core/testeur.hpp>

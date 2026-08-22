@@ -27,6 +27,7 @@ int main()
   std::cout << "min(f, a) " << min(f, a) << std::endl;
   std::cout << "min(a, b) " << min(a, b) << std::endl;
   std::cout << "min(b, c) "<<  min(b, c) << std::endl;
+  std::cout << "min(b, c) "<<  min(c, f) << std::endl;
 
   using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
@@ -37,6 +38,7 @@ int main()
   std::cout << "min(wb, wb) "<< min(wb, wb) << std::endl;
   std::cout << "min(wc, wc) "<< min(wc, wc) << std::endl;
   std::cout << "min(wc, wb) "<< min(wc, wb) << std::endl;
+  std::cout << "min(wc, f)  "<< min(wc, f)  << std::endl;
 
   return 0;
 }

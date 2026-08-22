@@ -30,6 +30,9 @@ TTS_CASE_WITH("Check sum_of_squares two params",
     TTS_RELATIVE_EQUAL(sum_of_squares(pa, pb), tts::mpfr_exec(msum_of_squares, pa, pb), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(sum_of_squares(a0, pa), sum_of_squares(pv_t(a0), pa), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(sum_of_squares(pa, a0), sum_of_squares(pa, pv_t(a0)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(sum_of_squares(wpab), plf::sqr(wpab), tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -38,6 +41,9 @@ TTS_CASE_WITH("Check sum_of_squares two params",
     TTS_RELATIVE_EQUAL(sum_of_squares(pa, pb), tts::mpfr_exec(msum_of_squares, pa, pb), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(sum_of_squares(a0, pa), sum_of_squares(pv_t(a0), pa), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(sum_of_squares(pa, a0), sum_of_squares(pa, pv_t(a0)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(sum_of_squares(wpab, wpab), 2*plf::sqr(wpab), tts::epsprec<T>());
   }
 };
 
