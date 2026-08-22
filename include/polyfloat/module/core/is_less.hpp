@@ -77,9 +77,5 @@ namespace plf::_
       return eve::is_less(z1, z2);
     else
       return z1 < z2;
- //    using plf_t = as_polyfloat_t<Z1, Z2>;
-//     using u_t = eve::element_type_t<plf_t>;
-//     auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
-//     return cvt(z1) < cvt(z2);
   }
 }

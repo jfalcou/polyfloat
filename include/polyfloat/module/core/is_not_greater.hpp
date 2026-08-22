@@ -71,9 +71,12 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_not_greater_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
   {
-    using plf_t = as_polyfloat_t<Z1, Z2>;
-    using u_t = eve::element_type_t<plf_t>;
-    auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
-    return !(cvt(z1) >  cvt(z2));
+    using r_t = as_polyfloat_t<Z1, Z2>;
+    if constexpr(dimension_v<r_t> == 1)
+      return eve::is_not_greater(z1, z2);
+    else
+    {
+      return plf::is_less_equal(z1, z2) || plf::is_unordered(z1, z2);
+    }
   }
 }
