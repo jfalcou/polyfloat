@@ -146,4 +146,3 @@
 #include <polyfloat/module/core/two_split.hpp>
 #include <polyfloat/module/core/variance.hpp>
 
-//#include <polyfloat/module/core/testeur.hpp>
