@@ -45,6 +45,7 @@
 #include <polyfloat/module/core/frexp.hpp>
 #include <polyfloat/module/core/heaviside.hpp>
 #include <polyfloat/module/core/horner.hpp>
+#include <polyfloat/module/core/hypot.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/inc.hpp>
 #include <polyfloat/module/core/is_bit_equal.hpp>

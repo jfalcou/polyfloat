@@ -21,7 +21,7 @@ namespace plf
       POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
     {
       using r_t = eve::element_type_t<decltype(hi(Z1()))>;
-      return POLYFLOAT_CALL(z1, plf::convert(n, eve::as<r_t>()));
+      return POLYFLOAT_CALL(z1, eve::convert(n, eve::as<r_t>()));
     }
 
     template<concepts::polyfloat_like Z,  eve::floating_value N>
@@ -115,7 +115,7 @@ namespace plf::_
       Z z(h);
       md(z) = m; lo(z) = l;
       return z;
-//      return Z(h, m, l);
+      //     return Z(h, m, l);
     }
   }
 
