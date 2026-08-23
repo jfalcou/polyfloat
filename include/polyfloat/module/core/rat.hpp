@@ -84,7 +84,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto rat_(POLYFLOAT_DELAY(), O const& , Z const& x) noexcept
   {
-//    std::cout << 10*hi(plf::eps(eve::as(x))*plf::abs(x)) << std::endl;
     return rat(x,10*hi(plf::eps(eve::as(x))*plf::abs(x)));
   }
 
