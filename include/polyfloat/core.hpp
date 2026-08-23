@@ -121,7 +121,7 @@
 #include <polyfloat/module/core/prevint.hpp>
 #include <polyfloat/module/core/rec.hpp>
 #include <polyfloat/module/core/reldist.hpp>
-//#include <polyfloat/module/core/rat.hpp>
+#include <polyfloat/module/core/rat.hpp>
 #include <polyfloat/module/core/rem.hpp>
 #include <polyfloat/module/core/remainder.hpp>
 #include <polyfloat/module/core/reverse_horner.hpp>
@@ -145,4 +145,3 @@
 #include <polyfloat/module/core/two_prod.hpp>
 #include <polyfloat/module/core/two_split.hpp>
 #include <polyfloat/module/core/variance.hpp>
-
