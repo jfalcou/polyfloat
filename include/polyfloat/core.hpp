@@ -137,7 +137,7 @@
 #include <polyfloat/module/core/sum_of_squares.hpp>
 #include <polyfloat/module/core/three_add.hpp>
 #include <polyfloat/module/core/three_fma.hpp>
-#include <polyfloat/module/core/trapz.hpp>
+//#include <polyfloat/module/core/trapz.hpp>
 #include <polyfloat/module/core/trunc.hpp>
 #include <polyfloat/module/core/two_add.hpp>
 #include <polyfloat/module/core/two_div_approx.hpp>
