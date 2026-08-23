@@ -117,6 +117,7 @@
 #include <polyfloat/module/core/nextint.hpp>
 #include <polyfloat/module/core/oneminus.hpp>
 #include <polyfloat/module/core/parts.hpp>
+#include <polyfloat/module/core/pown.hpp>
 #include <polyfloat/module/core/prev.hpp>
 #include <polyfloat/module/core/prevint.hpp>
 #include <polyfloat/module/core/rec.hpp>
