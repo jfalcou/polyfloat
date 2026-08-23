@@ -29,6 +29,7 @@ TTS_CASE_WITH("Check maxmag two params",
     TTS_EQUAL(maxmag(pa, pb), plf::if_else(plf::abs(pa) < plf::abs(pb), pb, pa));
     TTS_EQUAL(maxmag(a0, pa), maxmag(pv_t(a0), pa));
     TTS_EQUAL(maxmag(pa, a0), maxmag(pa, pv_t(a0)));
+    TTS_EQUAL(maxmag(pa, pa, pb), maxmag(pa, pb));
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -37,5 +38,6 @@ TTS_CASE_WITH("Check maxmag two params",
     TTS_EQUAL(maxmag(pa, pb), plf::if_else(plf::abs(pa) < plf::abs(pb), pb, pa));
     TTS_EQUAL(maxmag(a0, pa), maxmag(pv_t(a0), pa));
     TTS_EQUAL(maxmag(pa, a0), maxmag(pa, pv_t(a0)));
+    TTS_EQUAL(maxmag(pa, pa, pb), maxmag(pa, pb));
   }
 };
