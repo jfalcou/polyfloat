@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::clamp</title>
+<title>polyfloat: plf::roundscale</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(function() { codefold.init(); });
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html','',''); });
+$(function(){initNavTree('group__core_ga7e269986153d615f074a5497e163999a.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -121,8 +121,8 @@ $(function(){initNavTree('group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html','
 </div>
 
 <div class="contents">
-<a id="gaf3b6e14fd2890b610b24438a70b5ba87" name="gaf3b6e14fd2890b610b24438a70b5ba87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf3b6e14fd2890b610b24438a70b5ba87">&#9670;&#160;</a></span>clamp</h2>
+<a id="ga7e269986153d615f074a5497e163999a" name="ga7e269986153d615f074a5497e163999a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7e269986153d615f074a5497e163999a">&#9670;&#160;</a></span>roundscale</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +131,7 @@ $(function(){initNavTree('group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::clamp = eve::functor&lt;clamp_t&gt;</td>
+          <td class="memname">auto plf::roundscale = eve::functor&lt;roundscale_t&gt;</td>
         </tr>
       </table>
   </td>
@@ -141,58 +141,35 @@ $(function(){initNavTree('group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html','
 </table>
 </div><div class="memdoc">
 
-<p>clamp the value between two bounds. </p>
+<p>return the roundscaletionnal part of the value. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaf3b6e14fd2890b610b24438a70b5ba87">clamp</a>(value <span class="keyword">auto</span> x, value <span class="keyword">auto</span> lo,  value <span class="keyword">auto</span> hi)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">   <span class="comment">// Regular overload</span></div>
+<div class="line">   constexpr auto <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>(floating_value auto x, index_t&lt;scale&gt;)       noexcept; <span class="comment">// 1</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>(floating_value <span class="keyword">auto</span> x, integral_value scale) <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line"> </div>
+<div class="line">   <span class="comment">// Semantic option</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>[downward](<span class="comment">/*any of the above overloads*/</span>)    <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>[upward](<span class="comment">/*any of the above overloads*/</span>)      <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>[to_nearest](<span class="comment">/*any of the above overloads*/</span>)  <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>[toward_zero](<span class="comment">/*any of the above overloads*/</span>) <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_gaf3b6e14fd2890b610b24438a70b5ba87_html_gaf3b6e14fd2890b610b24438a70b5ba87"><div class="ttname"><a href="#gaf3b6e14fd2890b610b24438a70b5ba87">plf::clamp</a></div><div class="ttdeci">constexpr auto clamp</div><div class="ttdoc">clamp the value between two bounds.</div><div class="ttdef"><b>Definition</b> clamp.hpp:70</div></div>
+<div class="ttc" id="agroup__core_ga7e269986153d615f074a5497e163999a_html_ga7e269986153d615f074a5497e163999a"><div class="ttname"><a href="#ga7e269986153d615f074a5497e163999a">plf::roundscale</a></div><div class="ttdeci">constexpr auto roundscale</div><div class="ttdoc">return the roundscaletionnal part of the value.</div><div class="ttdef"><b>Definition</b> roundscale.hpp:83</div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">x</span>: value to clamp.</li>
-<li><span class="tt">lo</span>, <span class="tt">hi</span>: the boundary values of the interval.</li>
+<li><span class="tt">x</span>: real floating value.</li>
+<li><span class="tt">scale</span> : int or std::integral_constant of int type limited to the range [0, 15].</li>
 </ul>
-<p><b>Return value</b></p><ol type="1">
-<li>Each element of the result contains:<ul>
-<li><span class="tt">lo</span>, if <span class="tt">x</span> is less than <span class="tt">lo</span>.</li>
-<li><span class="tt">hi</span>, if <span class="tt">hi</span> is less than <span class="tt">x</span>.</li>
-<li>otherwise <span class="tt">x</span>.</li>
-</ul>
-</li>
+<p><b>Return value</b></p>
+<ol type="1">
+<li>Returns the elementwise reduced part of the scaled input. The number of roundtion bits retained is specified by scale. By default the internal rounding after scaling is done to nearest integer. The call <span class="tt"><a class="el" href="#ga7e269986153d615f074a5497e163999a" title="return the roundscaletionnal part of the value.">roundscale(x, scale)</a></span> is equivalent to <span class="tt">eve::ldexp(eve::nearest(eve::ldexp(x,scale), -scale))</span></li>
+<li>with <span class="tt">o</span> denoting one of these options the call is equivalent to <span class="tt">eve::ldexp(eve::round[o](eve::ldexp(x,scale), -scale))</span></li>
 </ol>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">  std::cout &lt;&lt;  std::setprecision(15);</div>
-<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gaf3b6e14fd2890b610b24438a70b5ba87">plf::clamp</a>;</div>
-<div class="line">  <span class="keyword">using </span>dd = <a class="code hl_typedef" href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>wdd = eve::wide&lt;dd, eve::fixed&lt;4&gt;&gt;;</div>
-<div class="line">  eve::wide lo = {2.0, 4.0, -10.0, 0.0};</div>
-<div class="line">  eve::wide hi = {4.0, 8.0, 0.0, 5.0};</div>
-<div class="line">  dd x(2.0, 2.0e-25);</div>
-<div class="line">  wdd wlo(lo);</div>
-<div class="line">  wdd whi(hi);</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- x                       = &quot;</span> &lt;&lt; x &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- lo                      = &quot;</span> &lt;&lt; lo &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- hi                      = &quot;</span> &lt;&lt; hi &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- lo                      = &quot;</span> &lt;&lt; wlo &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; &lt;- hi                      = &quot;</span> &lt;&lt; whi &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; clamp(x, wlo, whi)      = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaf3b6e14fd2890b610b24438a70b5ba87">plf::clamp</a>(x, wlo, whi) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; -&gt; clamp(x, lo, hi)        = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaf3b6e14fd2890b610b24438a70b5ba87">plf::clamp</a>(x, lo, hi) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__types_gad41c3534de111df822528a4437f2b193_html_gad41c3534de111df822528a4437f2b193"><div class="ttname"><a href="group__types_gad41c3534de111df822528a4437f2b193.html#gad41c3534de111df822528a4437f2b193">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:30</div></div>
-</div><!-- fragment --> 
+<div class="fragment"></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
