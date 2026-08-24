@@ -19,7 +19,7 @@
 namespace plf
 {
 
-  template<typename Options> struct max_t : eve::strict_tuple_callable<max_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct max_t : eve::callable<max_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
       POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
@@ -74,24 +74,27 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename ... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
+  template<typename Z1, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1) noexcept
   {
+    return z1;
+  }
+
+  template<typename Z0, typename Z1, typename ... Zs, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z0 z0, Z1 z1, Zs ...zs) noexcept
+  {
+    using r_t = as_polyfloat_t<Z0, Z1, Zs...>;
+    using u_t = eve::element_type_t<r_t>;
+    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
     if constexpr(sizeof...(Zs) == 0)
-      return z1;
+    {
+      return plf::if_else(plf::is_less(cvt(z0), cvt(z1)), cvt(z1), cvt(z0));
+    }
     else
     {
-      using r_t = as_polyfloat_t<Z1, Zs...>;
-      using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      if constexpr(sizeof...(Zs) == 1)
-        return plf::if_else(plf::is_less(z1, zs...), cvt(zs)..., cvt(z1));
-      else
-      {
-        r_t that(cvt(z1));
-        ((that = max(that, zs)), ...);
-        return that;
-      }
+      r_t that = max(cvt(z0), cvt(z1));
+      ((that = max(that, zs)), ...);
+      return that;
     }
   }
 }

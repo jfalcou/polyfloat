@@ -34,7 +34,7 @@ TTS_CASE_WITH("Check abs",
     TTS_EQUAL(chi(pa, pb, pc), plf::if_else((pa <  pb) || (pa >= pc), pv_t(0), pv_t(1)));
     auto belong = [pb, pc](auto x){return (x >= pb) && (x < pc); };
     TTS_EQUAL(chi(pa,belong),  plf::if_else((pa >= pb) && (pa < pc), pv_t(1), pv_t(0)));
-    TTS_EQUAL(chi(pa, pb, 2),  plf::if_else((pa <  pb) || (pa >= 2) , pv_t(0), pv_t(1)));
+    TTS_EQUAL(chi(pa, pb, 2),  plf::if_else((pa <  pb) || (pa >= T(2)) , pv_t(0), pv_t(1)));
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -45,7 +45,7 @@ TTS_CASE_WITH("Check abs",
     TTS_EQUAL(chi(pa, pb, pc), plf::if_else((pa <  pb) || (pa >= pc), pv_t(0), pv_t(1)));
     auto belong = [pb, pc](auto x){return (x >= pb) && (x < pc); };
     TTS_EQUAL(chi(pa,belong),  plf::if_else((pa >=   pb) && (pa < pc), pv_t(1), pv_t(0)));
-    TTS_EQUAL(chi(pa, pb, 2),  plf::if_else((pa <  pb) || (pa >= 2) , pv_t(0), pv_t(1)));
+    TTS_EQUAL(chi(pa, pb, 2),  plf::if_else((pa <  pb) || (pa >= T(2)) , pv_t(0), pv_t(1)));
   }
 
 };

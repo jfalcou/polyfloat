@@ -11,27 +11,29 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/abs.hpp>
+#include <polyfloat/module/core/trunc.hpp>
+#include <polyfloat/module/core/nearest.hpp>
+#include <polyfloat/module/core/ceil.hpp>
+#include <polyfloat/module/core/floor.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct is_less_t : eve::callable<is_less_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct remainder_t : eve::callable<remainder_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
-    operator()(Z1 z1, Z2 z2) const noexcept
+      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
      return POLYFLOAT_CALL(z1, z2);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(is_less_t, is_less_);
+    POLYFLOAT_CALLABLE_OBJECT(remainder_t, remainder_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var is_less
-  //!   @brief return  true if z1 < z2.
+  //!   @var remainder
+  //!   @brief return the remainder after division of the values.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +46,25 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_less(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like T2> constexpr auto remainder(T1 x, T2 y) noexcept; //1
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns true if z1 <  z2.
+  //!      Return the remainder after division of `x` by `y` and is equivalent to  `x-div[to_nearest](x, y)*y`.
+  //!
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_less.cpp}
+  //!  @godbolt{doc/core/remainder.cpp}
   //======================================================================================================================
 
-  inline constexpr auto is_less = eve::functor<is_less_t>;
+  inline constexpr auto remainder = eve::functor<remainder_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,13 +72,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_less_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  template<typename T0, typename T1, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto remainder_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
   {
-    using r_t = as_polyfloat_t<Z1, Z2>;
-    if constexpr(dimension_v<r_t> == 1)
-      return eve::is_less(z1, z2);
-    else
-      return z1 < z2;
+    return plf::rem[to_nearest](a, b);
   }
 }

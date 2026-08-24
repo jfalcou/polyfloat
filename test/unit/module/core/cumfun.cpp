@@ -42,6 +42,11 @@ TTS_CASE_WITH("Check cumfun two params",
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(max, pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(max, pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(plf::add, wpab, wpab, wpab)), wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(plf::add, wpab, wpab, wpab)), 2*wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumfun(plf::add, wpab, wpab, wpab)), 3*wpab, tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -92,12 +97,5 @@ TTS_CASE_WITH("Check cumfun three params",
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(max, pa, pb, pc)), kumi::get<0>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(max, pa, pb, pc)), kumi::get<1>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<2>(cumfun(max, pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
-    using wpv_t  = plf::triple_real_t<eve::wide<T, eve::fixed<2>>>;
-    wpv_t wpa(pa, pa);
-    wpv_t wpb(pc, pb);
-    wpv_t wpc(pb, pc);
-    std::cout << wpa << std::endl;
-    std::cout << wpb << std::endl;
-    std::cout << wpc << std::endl;
   }
 };

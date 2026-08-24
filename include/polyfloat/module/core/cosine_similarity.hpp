@@ -16,7 +16,8 @@
 
 namespace plf
 {
- template<typename Options> struct cosine_similarity_t : eve::strict_tuple_callable<cosine_similarity_t, Options, kahan_option, raw_option, pedantic_option>
+ template<typename Options> struct cosine_similarity_t : eve::strict_tuple_callable<cosine_similarity_t, Options,
+                                                                                    kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -30,20 +31,24 @@ namespace plf
     }
 
     template<eve::non_empty_product_type Tup1, eve::non_empty_product_type Tup2>
-    requires(eve::same_lanes_or_scalar_tuple<Tup1> && eve::same_lanes_or_scalar_tuple<Tup2>)
     EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, kumi::result::cat_t<Tup1, Tup2>>
     operator()(Tup1 const& t1, Tup2 const& t2) const noexcept
+    requires(eve::same_lanes_or_scalar_tuple<Tup1> &&
+             eve::same_lanes_or_scalar_tuple<Tup2> &&
+             (Tup1::size() == Tup2::size()) &&
+             !concepts::polyfloat_like<Tup1> &&
+             !concepts::polyfloat_like<Tup2>)
     {
       return POLYFLOAT_CALL(t1, t2);
     }
 
-//     template<eve::non_empty_product_type Tup>
-//     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-//     EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
-//     requires(kumi::size_v<Tup> >= 1)
-//     {
-//       return POLYFLOAT_CALL(t);
-//     }
+    template<eve::non_empty_product_type Tup>
+    requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
+    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+    requires(kumi::size_v<Tup> >= 1)
+    {
+      return POLYFLOAT_CALL(t);
+    }
 
     POLYFLOAT_CALLABLE_OBJECT(cosine_similarity_t, cosine_similarity_);
   };
@@ -110,7 +115,9 @@ namespace plf::_
 
   template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
-  requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
+  requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size() &&
+            !concepts::polyfloat_like<PT1> &&
+            !concepts::polyfloat_like<PT2>)
   {
     using Tup1 = kumi::as_tuple_t<PT1>;
     using Tup2 = kumi::as_tuple_t<PT2>;

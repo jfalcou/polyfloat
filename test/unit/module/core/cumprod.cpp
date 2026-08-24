@@ -32,6 +32,11 @@ TTS_CASE_WITH("Check cumprod two params",
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumprod(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumprod(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(kumi::get<0>(cumprod(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<1>(cumprod(wpab, wpab, wpab)), wpab*wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumprod(wpab, wpab, wpab)), wpab*wpab*wpab, tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -39,6 +44,11 @@ TTS_CASE_WITH("Check cumprod two params",
     pv_t pb(a3, a4, a5);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumprod(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumprod(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(kumi::get<0>(cumprod(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<1>(cumprod(wpab, wpab, wpab)), wpab*wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumprod(wpab, wpab, wpab)), wpab*wpab*wpab, tts::epsprec<T>());
   }
 };
 

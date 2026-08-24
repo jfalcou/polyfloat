@@ -71,11 +71,16 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_not_equal_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_not_equal_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Z2 const& z2) noexcept
   {
-
-    auto neq = z1 != z2;
-    if constexpr(O::contains(numeric)) return neq && (is_not_nan(z1) && is_not_nan(z2));
-    else                               return neq;
+    using r_t = as_polyfloat_t<Z1, Z2>;
+    if constexpr(dimension_v<r_t> == 1)
+        return eve::is_not_equal[o](z1, z2);
+    else
+    {
+      auto neq = z1 != z2;
+      if constexpr(O::contains(numeric)) return neq || (is_nan(z1) && is_nan(z2));
+      else                               return neq;
+    }
   }
 }

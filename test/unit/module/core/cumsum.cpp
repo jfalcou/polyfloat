@@ -32,6 +32,11 @@ TTS_CASE_WITH("Check cumsum two params",
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(wpab, wpab, wpab)), 2*wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumsum(wpab, wpab, wpab)), 3*wpab, tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -39,6 +44,11 @@ TTS_CASE_WITH("Check cumsum two params",
     pv_t pb(a3, a4, a5);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(wpab, wpab, wpab)), 2*wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumsum(wpab, wpab, wpab)), 3*wpab, tts::epsprec<T>());
   }
 };
 
@@ -64,7 +74,7 @@ TTS_CASE_WITH("Check cumsum three params",
   auto mcs  = [msum](auto a0,  auto a1,  auto a2){return kumi::make_tuple(tts::mpfr_exec(msum, a0),
                                                                           tts::mpfr_exec(msum, a0, a1),
                                                                           tts::mpfr_exec(msum, a0, a1, a2)
-                                                           ); };
+                                                                         ); };
   {
     using pv_t  = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
@@ -82,13 +92,5 @@ TTS_CASE_WITH("Check cumsum three params",
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(pa, pb, pc)), kumi::get<0>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb, pc)), kumi::get<1>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<2>(cumsum(pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
-  }
-  {
-    using pv_t  = plf::triple_real_t<eve::wide<T, eve::fixed<2>>>;
-    pv_t wpa(a0, a1, a2);
-    pv_t wpb(a3, a4, a5);
-    pv_t wpc(a6, a7, a8);
-    auto r = cumsum(wpa, wpb, wpc);
-    std::cout << r << std::endl;
   }
 };

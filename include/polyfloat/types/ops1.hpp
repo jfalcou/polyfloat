@@ -116,4 +116,69 @@ namespace plf
   //====================================================================================================================
   //! @}
   //====================================================================================================================
+
+
+  //====================================================================================================================
+  //! @name Binary Operators <  >  <=  >=
+  //! @{
+  //====================================================================================================================
+
+  template<eve::value T1, eve::value T2>
+  requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
+     auto operator<(T1 const& a, T2 const& b) noexcept
+  {
+    using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
+    using type = as_polyfloat_t<T1, T2>;
+    auto aa{plf::convert(a, eve::as<eve::element_type_t<type>>())};
+    auto bb{plf::convert(b, eve::as<eve::element_type_t<type>>())};
+    if constexpr(dimension_v<type> == 1)
+      return r_t(aa < bb);
+    else if constexpr(dimension_v<type> == 2)
+    {
+      return r_t(hi(aa) < hi(bb)) || ((hi(aa) == hi(bb)) && (lo(aa) < lo(bb)));
+    }
+    else if constexpr(dimension_v<type> == 3)
+    {
+      return r_t((hi(aa) < hi(bb)) ||
+                 ((hi(aa) == hi(bb)) && (md(aa) < md(bb))) ||
+                 ((hi(aa) == hi(bb)) && (md(aa) ==  md(bb)) && (lo(aa) < lo(bb)))
+                );
+    }
+  }
+
+  template<eve::value T1, eve::value T2>
+  requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
+    eve::as_logical_t<as_polyfloat_t<T1, T2>> operator>(T1 const& a, T2 const& b) noexcept
+  {
+    using type = as_polyfloat_t<T1, T2>;
+    auto aa{plf::convert(a, eve::as<eve::element_type_t<type>>())};
+    auto bb{plf::convert(b, eve::as<eve::element_type_t<type>>())};
+    if constexpr(dimension_v<type> == 1)
+      return aa > bb;
+    else if constexpr(dimension_v<type> == 2)
+    {
+      return (hi(aa) >  hi(bb)) || ((hi(aa) == hi(bb)) && (lo(aa) >  lo(bb)));
+    }
+    else if constexpr(dimension_v<type> == 3)
+    {
+      return ((hi(aa) >  hi(bb)) ||
+              ((hi(aa) == hi(bb)) && (md(aa) >  md(bb))) ||
+              ((hi(aa) == hi(bb)) && (md(aa) ==  md(bb)) && (lo(aa) >  lo(bb)))
+             );
+    }
+  }
+
+  template<eve::value T1, eve::value T2>
+  requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
+    eve::as_logical_t<as_polyfloat_t<T1, T2>> operator<=(T1 const& a, T2 const& b) noexcept
+  {
+    return (a < b) || (a == b);
+  }
+
+ template<eve::value T1, eve::value T2>
+  requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
+    eve::as_logical_t<as_polyfloat_t<T1, T2>> operator>=(T1 const& a, T2 const& b) noexcept
+  {
+   return (a > b) || (a == b);
+  }
 }

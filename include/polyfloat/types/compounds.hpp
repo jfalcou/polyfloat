@@ -9,8 +9,6 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
-#include <iostream>
-#include <iomanip>
 
 
 namespace plf
@@ -200,4 +198,4 @@ namespace plf
 }
 
 #include <polyfloat/types/ops2.hpp>
-#include <polyfloat/types/ops3.hpp>
+//#include <polyfloat/types/ops3.hpp>

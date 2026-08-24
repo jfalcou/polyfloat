@@ -41,6 +41,10 @@ TTS_CASE_WITH("Check dot three params",
     TTS_RELATIVE_EQUAL(dot(pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(dot(kumi::make_tuple(pa, pb), kumi::make_tuple(pc, pd)), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(dot[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    wpv_t wpcd(pc, pd);
+    TTS_RELATIVE_EQUAL(dot(wpab, wpcd), wpab*wpcd, tts::epsprec<T>());
   }
   {
     using pv_t  = plf::polyfloat<T, 3>;
@@ -50,5 +54,9 @@ TTS_CASE_WITH("Check dot three params",
     pv_t pd(a9, a10, a11);
     TTS_RELATIVE_EQUAL(dot(pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(dot[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mdot, pa, pb, pc, pd), tts::epsprec<T>());
+    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    wpv_t wpab(pa, pb);
+    wpv_t wpcd(pc, pd);
+    TTS_RELATIVE_EQUAL(dot(wpab, wpcd), wpab*wpcd, tts::epsprec<T>());
   }
 };
