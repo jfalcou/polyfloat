@@ -17,7 +17,7 @@ copa_glob_unit(QUIET PATTERN "doc/core/*.cpp" INTERFACE polyfloat_docs PCH polyf
 ##======================================================================================================================
 copa_glob_unit(QUIET PATTERN "unit/api/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
 ##copa_glob_unit(QUIET PATTERN "unit/infra/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
-copa_glob_unit(QUIET PATTERN "unit/module/core/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
+copa_glob_unit(QUIET PATTERN "unit/core/*.cpp" INTERFACE polyfloat_test PCH polyfloat_pch  EXTERNALS mpfr gmp )
 
 ##======================================================================================================================
 ## Performance tests
