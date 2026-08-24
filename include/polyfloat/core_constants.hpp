@@ -10,7 +10,6 @@
 #include <polyfloat/module/core/constants/wrapped.hpp>
 #include <polyfloat/module/core/constants/effective_mantissa_bits.hpp>
 #include <polyfloat/module/core/constants/eps.hpp>
-//#include <polyfloat/module/core/constants/inf.hpp>
 #include <polyfloat/module/core/constants/inveps.hpp>
 #include <polyfloat/module/core/constants/logeps.hpp>
 #include <polyfloat/module/core/constants/maxflint.hpp>

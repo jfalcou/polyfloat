@@ -6,10 +6,3 @@
 */
 //======================================================================================================================
 #pragma once
-
-/// Main POLYFLOAT namespace
-namespace plf {}
-
-#include <polyfloat/types.hpp>
-#include <polyfloat/core.hpp>
-#include <polyfloat/math.hpp>
