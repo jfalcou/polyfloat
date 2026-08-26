@@ -14,6 +14,7 @@
 #include <polyfloat/module/core/minus.hpp>
 #include <polyfloat/module/core/is_negative.hpp>
 #include <iostream>
+#include <iomanip>
 
 namespace plf
 {
@@ -144,21 +145,55 @@ namespace plf::_
 //   }
 
   template<typename T, eve::callable_options O>
-  constexpr auto exp_(POLYFLOAT_DELAY(), O const& , T const& x) noexcept
+  constexpr auto exp_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
   {
-    auto e = plf::euler(eve::as<eve::element_type_t<T>>());
-    auto n = plf::hi(nearest(x));
-    auto xf = x-n;
-    auto num = plf::horner(xf, 1.0, 156.0, 12012.0, 600600.0, 21621600.0 ,
-                           588107520.0, 12350257920.0, 201132771840.0, 2514159648000.0,
-                           23465490048000.0, 154872234316800.0,
-                           647647525324800.0, + 1295295050649600.0);
-    auto den = plf::horner(xf, -156.0, 12012.0, -600600.0, 21621600.0 ,
-                           -588107520.0, 12350257920.0, -201132771840.0, 2514159648000.0,
-                           -23465490048000.0, 154872234316800.0,
-                           -647647525324800.0, + 1295295050649600.0);
-    return pown(e, n)*(num/den);
+    if constexpr(dimension_v<T> == 1)
+      return eve::exp(xx);
+    else
+    {
+      using u_t = eve::underlying_type_t<T>;
+      auto negative = plf::is_ltz(xx);
+      auto nan      = plf::is_nan(xx);
+      auto out_of_range = plf::is_greater(plf::abs(xx), plf::maxlog(eve::as<u_t>()));
+      xx = plf::if_else(out_of_range, inf, xx);
+      auto x = plf::if_else(out_of_range || nan, zero, xx);
+
+      constexpr int  shift = dimension_v<T> == 2 ? -6 : -16;
+      constexpr u_t  p     = 1ul << (-shift);
+      auto e = plf::euler(eve::as<eve::element_type_t<T>>());
+      auto n = plf::hi(nearest(x));
+      auto xf = x-n;
+      xf = plf::ldexp(xf, shift);
+//       std::cout << std::hexfloat << "xf " << xf << std::endl;
+//       std::cout << "n  " << n << std::endl;
+//       std::cout << "pown(e, n)  " << n   << std::endl;
+
+
+
+      auto nn = (xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf + 110) + 5940) + 205920) + 5045040) + 90810720) + 1210809600) + 11762150400) + 79394515200) + 335221286400) + 670442572800);
+      auto dd = (xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf*(xf - 110) + 5940) - 205920) + 5045040) - 90810720) + 1210809600) - 11762150400) + 79394515200) - 335221286400) + 670442572800);
+      auto nod = if_else(nn == dd, eve::one, nn/dd);
+//       std::cout << "n           " << nn   << std::endl;
+//       std::cout << "d           " << dd   << std::endl;
+//       std::cout << "kn -dd      " << nn-dd   << std::endl;
+//       std::cout << "p           " << p   << std::endl;
+//       std::cout << "nod         " << nod << std::endl;
+//       std::cout << "pown(nod, p)" << pown(nod, p)<< std::endl;
+//       std::cout << "pown(nod, p)*pown(e, n) " << pown(e, n)*pown(nod, p) <<  std::endl;
+//       auto num = plf::horner(xf, 1.0, 156.0, 12012.0, 600600.0, 21621600.0 ,
+//                              588107520.0, 12350257920.0, 201132771840.0, 2514159648000.0,
+//                              23465490048000.0, 154872234316800.0,
+//                              647647525324800.0, + 1295295050649600.0);
+//       auto den = plf::horner(xf, -156.0, 12012.0, -600600.0, 21621600.0 ,
+//                              -588107520.0, 12350257920.0, -201132771840.0, 2514159648000.0,
+//                              -23465490048000.0, 154872234316800.0,
+//                              -647647525324800.0, + 1295295050649600.0);
+//       return pown(e, n)* pown((num/den), p);
+      auto r = pown(e, n)* pown(nod, p);
+      r = if_else(out_of_range, if_else(negative, eve::zero, plf::inf(eve::as<T>())), r);
+      r = if_else(nan, xx, r);
+
+      return r;
+    }
   }
-
-
 }

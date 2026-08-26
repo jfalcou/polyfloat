@@ -173,8 +173,10 @@ namespace plf
         auto [a0, b0] = a;
         auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0+x0*(T(1)-a*x0);
-        auto x2 = x1+x1*(T(1)-a*x1);
-        return x2;
+        return x1;
+//         auto x2 = x1+x1*(T(1)-a*x1);
+//         auto x3 = x2+x2*(T(1)-a*x1);
+//         return x3;
       }
       else if constexpr(dimension_v<T> == 3)
       {
