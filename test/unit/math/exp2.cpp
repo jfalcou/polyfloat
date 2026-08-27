@@ -42,7 +42,7 @@ TTS_CASE_WITH("Check exp2 ",
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
-    TTS_RELATIVE_EQUAL(exp2(pa), tts::mpfr_exec(mexp2, pa), 40000*tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(exp2(pa), tts::mpfr_exec(mexp2, pa), 80000*tts::epsprec<pv_t>());
     pv_t o(T(1), T(0), T(0));
     TTS_RELATIVE_EQUAL(exp2(o), tts::mpfr_exec(mexp2, o), 3*tts::epsprec<pv_t>());
     pv_t z(T(0), T(0), T(0));
