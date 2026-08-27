@@ -9,4 +9,4 @@
 
 #include <polyfloat/module/math/constants/euler.hpp>
 #include <polyfloat/module/math/constants/maxlog.hpp>
-
+#include <polyfloat/module/math/constants/log_2.hpp>

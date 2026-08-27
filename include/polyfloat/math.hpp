@@ -9,3 +9,4 @@
 #include <polyfloat/core.hpp>
 #include <polyfloat/math_constants.hpp>
 #include <polyfloat/module/math/exp.hpp>
+#include <polyfloat/module/math/exp2.hpp>
