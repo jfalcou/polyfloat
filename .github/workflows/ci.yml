@@ -3,19 +3,31 @@
 ##  Copyright : POLYFLOAT Contributors & Maintainers
 ##  SPDX-License-Identifier: BSL-1.0
 ##======================================================================================================================
-name: POLYFLOAT Integration Tests
+name: Unit Tests
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 concurrency:
-  group: polyfloat-integration-${{ github.ref }}
+  group: polyfloat-unit-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  integration:
-    uses: jfalcou/copacabana/.github/workflows/integration.yml@47475b1b93abdab72025105c3c0a683adfd6b866 # v3
-    with:
-      project: polyfloat
-      cxx-compiler: g++-15
+  sanitizer-tests:
+    name: Sanitizers
+    uses: ./.github/workflows/sanitizers.yml
+
+  coverage-report:
+    name: Coverage
+    uses: ./.github/workflows/coverage.yml
+
+  linux-tests:
+    name: Linux
+    needs: sanitizer-tests
+    uses: ./.github/workflows/linux.yml
+
+  macos-tests:
+    name: MacOS
+    needs: sanitizer-tests
+    uses: ./.github/workflows/macos.yml
