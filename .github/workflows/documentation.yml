@@ -13,7 +13,7 @@ jobs:
   documentation:
     permissions:
       contents: write
-    uses: jfalcou/copacabana/.github/workflows/documentation.yml@47475b1b93abdab72025105c3c0a683adfd6b866 # v3
+    uses: jfalcou/copacabana/.github/workflows/documentation.yml@3337f916bb581d0829909976773f7a2ee827a25c # v4
     with:
       project: polyfloat
       coverage: true
