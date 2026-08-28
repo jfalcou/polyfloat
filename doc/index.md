@@ -3,12 +3,15 @@ Polyfloat
 
 **WORK IN PROGRESS : MANY THINGS STILL NOT AVAILABLE**
 
+
 **POLYFLOAT** is an implementation of extended precision floating points numbers
 using a sequence of (currently) 2 or 3 standard floating points
 numbers of type (`float` or `double`)
 
-Most standard library fonctions  in **scalar** and **SIMD** form mimicking **EVE** calls
-are implemented or will be.
+Up to now are available for polyfloat numbers:
+
+  * most core functions present in **EVE** (circa 200);
+  * logaritmic and exponential math functions.
 
 The main references we use to perform these representations are:
 
@@ -125,8 +128,7 @@ Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref kyosu::co
     Most **EVE** arithmetic and math functions are (or will be eventually) provided for `polyfloat` datas.
     Up to now only analogs of **EVE** core functions are implemented.
 
-    The following tables  stat which fonction are already available. Not available ones are
-    followed by a `SNA`, meanning Still Non Available.
+    The following tables  present the functions that are already available.
 
 Core functions
 ==============
@@ -136,32 +138,41 @@ Core functions
 
    |                                      |                                           |                                           |                                         |
    |--------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
-   |[abs](@ref plf::abs)            |[absmax](@ref plf::absmax)           |[absmin](@ref plf::absmin)           |[add](@ref plf::add)               |
-   |[agm](@ref plf::agm)|[average](@ref plf::average)|[ceil](@ref plf::ceil)|[chi](@ref plf::chi)|
-   |[clamp](@ref plf::clamp)|[convert](@ref plf::convert)|[copysign](@ref plf::copysign)|[dec](@ref plf::dec)|
-   ||[dist](@ref plf::dist)|[div](@ref plf::div)|[dot](@ref plf::dot)|
-   |[epsilon](@ref plf::epsilon)|[exponent](@ref plf::exponent)|[floor](@ref plf::floor)|[fma](@ref plf::fma)|
-   |[fnma](@ref plf::fnma)|[fmod](@ref plf::fmod)|[frac](@ref plf::frac)|[frexp](@ref plf::frexp)|
-   |[heaviside](@ref plf::heaviside)|[horner](@ref plf::horner)|[if_else](@ref plf::if_else)|[inc](@ref plf::inc)|
-   |[is_denormal](@ref plf::is_denormal)|[is_equal](@ref plf::is_equal)|[is_eqz](@ref plf::is_eqz)|[is_eqmz](@ref plf::is_eqmz)|
-   |[is_eqpz](@ref plf::is_eqpz)|[is_even](@ref plf::is_even)|[is_finite](@ref plf::is_finite)|[is_flint](@ref plf::is_flint)|
-   |[is_greater](@ref plf::is_greater)|[is_greater_equal](@ref plf::is_greater_equal)|[is_gtz](@ref plf::is_gtz)|[is_infinite](@ref plf::is_infinite)|
-   |[is_less](@ref plf::is_less)|[is_less_equal](@ref plf::is_less_equal)|[is_lessgreater](@ref plf::is_lessgreater)|[is_lez](@ref plf::is_lez)|
-   |[is_ltz](@ref plf::is_ltz)|[is_minf](@ref plf::is_minf)|[is_nan](@ref plf::is_nan)|[is_negative](@ref plf::is_negative)|
-   |[is_nemz](@ref plf::is_nemz)|[is_nepz](@ref plf::is_nepz)|[is_nez](@ref plf::is_nez)|[is_ngez](@ref plf::is_ngez)|
-   |[is_ngtz](@ref plf::is_ngtz)|[is_nlez](@ref plf::is_nlez)|[is_nltz](@ref plf::is_nltz)|[is_not_denormal](@ref plf::is_not_denormal)|
-   |[is_not_equal](@ref plf::is_not_equal)|[is_not_finite](@ref plf::is_not_finite)|[is_not_flint](@ref plf::is_not_flint)|[is_not_greater](@ref plf::is_not_greater)|
+   |[abs](@ref plf::abs)                  |[absmax](@ref plf::absmax)                 |[absmin](@ref plf::absmin)                 |[add](@ref plf::add)                     |
+   |[agm](@ref plf::agm)                  |[average](@ref plf::average)               |[ceil](@ref plf::ceil)                     |[chi](@ref plf::chi)                     |
+   |[clamp](@ref plf::clamp)              |[convert](@ref plf::convert)               |[copysign](@ref plf::copysign)             |[cosine_similarity](@ref plf::cosine_similarity)|
+   |[covariance](@ref plf::covariance)    |[cumfun](@ref plf::cumfun)                 |[cumprod](@ref plf::cumprod)               |[cumsum](@ref plf::cumsum)               |
+   |[dec](@ref plf::dec)                  |[diff](@ref plf::diff)                     |[dist](@ref plf::dist)                     |[div](@ref plf::div)                     |
+   |[dot](@ref plf::dot)                  |[epsilon](@ref plf::epsilon)               |[exponent](@ref plf::exponent)             |[fam](@ref plf::fam)                     |
+   |[floor](@ref plf::floor)              |[fma](@ref plf::fma)                       |[fmod](@ref plf::fmod)                     |[fms](@ref plf::fms)                     |
+   |[fnma](@ref plf::fnma)                |[fnms](@ref plf::fnms)                     |[frac](@ref plf::frac)                     |[frexp](@ref plf::frexp)                 |
+   |[fsm](@ref plf::fsm)                  |[heaviside](@ref plf::heaviside)           |[horner](@ref plf::horner)                 |[hypot](@ref plf::hypot)                 |
+   |[if_else](@ref plf::if_else)          |[inc](@ref plf::inc)                       |[is_bit_equal](@ref plf::is_bit_equal)     |                                         |
+   |[is_denormal](@ref plf::is_denormal)  |[is_eqmz](@ref plf::is_eqmz)               |[is_eqpz](@ref plf::is_eqpz)               |[is_equal](@ref plf::is_equal)           |
+   |[is_eqz](@ref plf::is_eqz)            |[is_even](@ref plf::is_even)               |[is_finite](@ref plf::is_finite)           |[is_flint](@ref plf::is_flint)           |
+   |[is_greater](@ref plf::is_greater)    |[is_greater_equal](@ref plf::is_greater_equal)|[is_gtz](@ref plf::is_gtz)              |[is_infinite](@ref plf::is_infinite)     |
+   |[is_less](@ref plf::is_less)          |[is_less_equal](@ref plf::is_less_equal)   |[is_lessgreater](@ref plf::is_lessgreater) |[is_lez](@ref plf::is_lez)               |
+   |[is_ltz](@ref plf::is_ltz)            |[is_minf](@ref plf::is_minf)               |[is_nan](@ref plf::is_nan)                 |[is_negative](@ref plf::is_negative)     |
+   |[is_nemz](@ref plf::is_nemz)          |[is_nepz](@ref plf::is_nepz)               |[is_nez](@ref plf::is_nez)                 |[is_ngez](@ref plf::is_ngez)             |
+   |[is_ngtz](@ref plf::is_ngtz)          |[is_nlez](@ref plf::is_nlez)               |[is_nltz](@ref plf::is_nltz)               |[is_not_denormal](@ref plf::is_not_denormal)|
+   |[is_not_equal](@ref plf::is_not_equal)|[is_not_finite](@ref plf::is_not_finite)   |[is_not_flint](@ref plf::is_not_flint)     |[is_not_greater](@ref plf::is_not_greater)|
    |[is_not_greater_equal](@ref plf::is_not_greater_equal)|[is_not_infinite](@ref plf::is_not_infinite)|[is_not_less](@ref plf::is_not_less)|[is_not_less_equal](@ref plf::is_not_less_equal)|
-   |[is_not_nan](@ref plf::is_not_nan)|[is_odd](@ref plf::is_odd)|[is_ordered](@ref plf::is_ordered)|[is_pinf](@ref plf::is_pinf)|
-   |[is_positive](@ref plf::is_positive)|[is_pow2](@ref plf::is_pow2)|[is_unit](@ref plf::is_unit)|[is_unordered](@ref plf::is_unordered)|
-   |[ldexp](@ref plf::ldexp)|[lerp](@ref plf::lerp)|[mantissa](@ref plf::mantissa)|[max](@ref plf::max)|
-   |[min](@ref plf::min)|[minus](@ref plf::minus)|[modf](@ref plf::modf)|[mul](@ref plf::mul)|
-   |[nearest](@ref plf::nearest)|[negate](@ref plf::negate)|[negatenz](@ref plf::negatenz)|[next](@ref plf::next)|
-   |[parts](@ref plf::parts)|[prev](@ref plf::prev)|[rec](@ref plf::rec)|[reldist](@ref plf::reldist)|
-   |[reverse_horner](@ref plf::reverse_horner)|[rsqrt](@ref plf::rsqrt)|[sign](@ref plf::sign)|[signnz](@ref plf::signnz)|
-   |[sqr](@ref plf::sqr)|[sqrt](@ref plf::sqrt)|[sub](@ref plf::sub)|[trunc](@ref plf::trunc)|
+   |[is_not_nan](@ref plf::is_not_nan)    |[is_odd](@ref plf::is_odd)                 |[is_ordered](@ref plf::is_ordered)         |[is_pinf](@ref plf::is_pinf)             |
+   |[is_positive](@ref plf::is_positive)  |[is_pow2](@ref plf::is_pow2)               |[is_unit](@ref plf::is_unit)               |[is_unordered](@ref plf::is_unordered)   |
+   |[ldexp](@ref plf::ldexp)              |[lerp](@ref plf::lerp)                     |[mantissa](@ref plf::mantissa)             |[max](@ref plf::max)                     |
+   |[maxabs](@ref plf::maxabs)            |[maxmag](@ref plf::maxmag)                 |[min](@ref plf::min)                       |[minabs](@ref plf::minabs)               |
+   |[minmag](@ref plf::minmag)            |[minmax](@ref plf::minmax)                 |[minus](@ref plf::minus)                   |[modf](@ref plf::modf)                   |
+   |[mul](@ref plf::mul)                  |[nearest](@ref plf::nearest)               |[negabsmax](@ref plf::negabsmax)           |[negabsmin](@ref plf::negabsmin)         |
+   |[negate](@ref plf::negate)            |[negatenz](@ref plf::negatenz)             |[next](@ref plf::next)                     |[nextafter](@ref plf::nextafter)         |
+   |[parts](@ref plf::parts)              |[pown](@ref plf::pown)                     |[prev](@ref plf::prev)                     |[prevint](@ref plf::prevint)             |
+   |[rat](@ref plf::rat)                  |[rec](@ref plf::rec)                       |[reldist](@ref plf::reldist)               |[rem](@ref plf::rem)                     |
+   |[remainder](@ref plf::remainder)      |[reverse_horner](@ref plf::reverse_horner) |                                           |[rsqrt](@ref plf::rsqrt)                 |
+   |[sign](@ref plf::sign)                |[sign_alternate](@ref plf::sign_alternate) |[signnz](@ref plf::signnz)                 |                                         |
+   |[sqr](@ref plf::sqr)                  |[sqrt](@ref plf::sqrt)                     |[sub](@ref plf::sub)                       |[sum_of_prod](@ref plf::sum_of_prod)     |
+   |[sum_of_squares](@ref plf::sum_of_squares)|[trunc](@ref plf::trunc)               |[variance](@ref plf::variance)             |                                         |
 
-  @note All predicates comparing to `zero` and almost all one parameter predicates are a lot faster than two parameters ones
+
+  @note All predicates comparing to `zero` and all one parameter predicates (except `is_even` and `is_odd` and `isflint`) are a lot faster than two parameters ones
   for which testing the 'hi' part is not sufficient.
 
 Core constants
@@ -174,7 +185,7 @@ These are proper `polyfloat` constant values related to precision internal IEEE 
    |-----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
    |[effective_mantissa_bits](@ref plf::effective_mantissa_bits) |[eps](@ref plf::eps)   |[inveps](@ref plf::inveps) |[logeps](@ref plf::logeps) |
    |[maxflint](@ref plf::maxflint)           |[oneosqrteps](@ref plf::oneosqrteps)       |[sqrt_2](@ref plf::sqrt_2)                 |[sqrteps](@ref plf::sqrteps) |
-   |[[sqrtvalmax](@ref plf::sqrtvalmax) |[valmax](@ref plf::valmax) |[valmin](@ref plf::valmin) | |
+   |[sqrtvalmax](@ref plf::sqrtvalmax)       |[valmax](@ref plf::valmax) |[valmin](@ref plf::valmin) | |
 
 
    |   wrapped from **EVE**                  |                                           |                                           |                                         |
@@ -200,7 +211,22 @@ in an infinite precision environnement to get an exact (or for the `approx` ones
 Math elementary functions
 =========================
 
-STILL NOT DONE
+  These are the math functions implemented up to now.
+
+   |                                      |                                           |                                           |                                         |
+   |--------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[cbrt](@ref plf:cbrt)                 |[exp](@ref plf::exp)                       |[exp2](@ref plf::exp2)                     |[log](@ref plf::log)                     |
+   |[log2](@ref plf::log2)                |[nthroot](@ref plf::nthroot)               |                                           |                                         |
+
+Math constants
+==============
+
+These are proper `polyfloat` mathematical constant .
+
+   |   Proper values                        |                                           |                                           |                                         |
+   |----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+   |[euler](@ref plf:euler)                 |invlog_2](@ref plf::invlog_2)              |[exp2](@ref plf::log_2exp2)                |                                         |
+
 
 Math special functions
 =========================
