@@ -91,7 +91,10 @@ namespace plf::_
       T r = eve::pow(eve::abs(plf::hi(xx)), eve::rec[pedantic](nn));
       r = (dec(nn)*r+xx*pown(r, -dec(nn)))/nn;
       if constexpr(dimension_v<T> == 3)
+      {
         r = (dec(nn)*r+xx*pown(r, -dec(nn)))/nn;
+        r = (dec(nn)*r+xx*pown(r, -dec(nn)))/nn;
+      }
       auto res = if_else(is_eqz(xx), xx, r);
       if constexpr(!O::contains(raw))
         res =  if_else(plf::is_not_finite(xx), xx, res);
