@@ -16,11 +16,17 @@ concurrency:
 jobs:
   sanitizer-tests:
     name: Sanitizers
-    uses: ./.github/workflows/sanitizers.yml
+    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@3337f916bb581d0829909976773f7a2ee827a25c # v4
+    with:
+      build-targets: doc.exe unit.exe
+      test-targets: doc|unit
 
   coverage-report:
     name: Coverage
-    uses: ./.github/workflows/coverage.yml
+    uses: jfalcou/copacabana/.github/workflows/coverage.yml@3337f916bb581d0829909976773f7a2ee827a25c # v4
+    with:
+      project: polyfloat
+      build-targets: polyfloat-test
 
   linux-tests:
     name: Linux
