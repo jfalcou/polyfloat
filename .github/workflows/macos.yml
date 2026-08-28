@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Fetch current branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       ##==========================================================================================
       ## MPFR C++ is a single header fetched next to the sources, and the presets read the two
