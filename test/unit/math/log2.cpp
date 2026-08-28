@@ -14,7 +14,7 @@ TTS_CASE_WITH("Check log2 ",
               tts::randoms(0.0, 1.e-20),
               tts::randoms(0.0, 1.e-30)
              )
-  <typename T>(T const& a0, T const& a1, T const& )
+  <typename T>(T const& a0, T const& a1, T const& a2)
 {
   using  mpfr::mpreal;
   using plf::log2;
