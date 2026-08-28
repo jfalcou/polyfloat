@@ -10,6 +10,7 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <polyfloat/module/core/sum_of_prod.hpp>
 #include <type_traits>
 #include <iostream>
 #include <iomanip>
@@ -80,21 +81,21 @@ namespace plf::_
 {
 
   template<typename T, typename N, eve::callable_options O>
-  constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& , T xx, N nn) noexcept
+  constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, T xx, N nn) noexcept
   {
     if constexpr(dimension_v<T> == 1)
-      return eve::nthroot(xx, nn);
+      return eve::nthroot[o](xx, nn);
     else
     {
       auto ltz = plf::is_ltz(xx);
-      T r = eve::nthroot(plf::hi(xx), nn);
-      r = plf::minus[ltz](r);
-      auto w = pown(r, nn);
-      auto u = dec(nn)*w + inc(nn)*xx;
-      auto v = inc(nn)*w + dec(nn)*xx;     
-      auto res = if_else(is_eqz(xx), xx, r*(u/v));
-      res =  if_else(plf::is_not_finite(xx), xx, res);
-      return if_else(ltz && plf::is_even(nn), eve::nan, res); 
+      T r = eve::pow(eve::abs(plf::hi(xx)), eve::rec[pedantic](nn));
+      r = (dec(nn)*r+xx*pown(r, -dec(nn)))/nn;
+      if constexpr(dimension_v<T> == 3)
+        r = (dec(nn)*r+xx*pown(r, -dec(nn)))/nn;
+      auto res = if_else(is_eqz(xx), xx, r);
+      if constexpr(!O::contains(raw))
+        res =  if_else(plf::is_not_finite(xx), xx, res);
+      return if_else(ltz && plf::is_even(nn), eve::nan, res);
     }
   }
 }

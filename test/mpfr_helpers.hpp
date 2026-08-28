@@ -18,22 +18,25 @@ namespace tts
 
   template < typename T > T to_polyfloat(mpfr::mpreal mpa, eve::as<T> )
   {
-    using u_t = decltype(plf::hi(T()));
     using mu_t = decltype(mpa);
-    auto h = u_t(mpa);
-    auto m = u_t(mpa-mu_t(h));
     if constexpr(plf::dimension_v<T> == 1)
     {
-      return h;
+      return T(mpa);
     }
-    else     if constexpr(plf::dimension_v<T> == 2)
+    else
     {
-      return plf::as_polyfloat_n_t<2, u_t>(h, m);
-    }
-    else if constexpr(plf::dimension_v<T> == 3)
-    {
-      auto l = u_t(mpa - (mu_t(h)+mu_t(m)));
-      return plf::as_polyfloat_n_t<3, u_t>(h, m, l);
+      using u_t = decltype(plf::hi(T()));
+      auto h = u_t(mpa);
+      auto m = u_t(mpa-mu_t(h));
+      if constexpr(plf::dimension_v<T> == 2)
+      {
+        return plf::as_polyfloat_n_t<2, u_t>(h, m);
+      }
+      else if constexpr(plf::dimension_v<T> == 3)
+      {
+        auto l = u_t(mpa - (mu_t(h)+mu_t(m)));
+        return plf::as_polyfloat_n_t<3, u_t>(h, m, l);
+      }
     }
   }
 
