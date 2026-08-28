@@ -10,26 +10,20 @@
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
 
-
 namespace plf
 {
   namespace _
   {
-    template < typename T>
-    EVE_FORCEINLINE auto clean0s(T hi,  T md, T lo) noexcept
+   template < typename T>
+    EVE_FORCEINLINE auto clean0s(T hi, T lo) noexcept
     {
-      auto iszhi = eve::is_eqz(hi);
-      auto iszmd = eve::is_eqz(md);
-      eve::swap_if(iszhi&& iszmd, hi, lo);
-      eve::swap_if(iszhi&&!iszmd, md, hi);
-      eve::swap_if(iszhi&&!iszmd, md, lo);
-      return from_triple<T>(hi, md, lo);
+      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
     }
 
     template < typename T>
     EVE_FORCEINLINE auto clean1s(T hi, T md, T lo) noexcept
     {
-      return plf::triple_real_t<T>(hi, md, lo);
+      return eve::if_else(eve::is_not_finite(hi), plf::triple_real_t<T>(hi), plf::triple_real_t<T>(hi, md, lo));
     }
 
     EVE_FORCEINLINE auto four_add1(auto a,auto b, auto c, auto d) noexcept
@@ -62,7 +56,8 @@ namespace plf
       auto [hi, lo] = eve::two_add(xhi, yhi);
       auto [thi, tlo] = eve::two_add(xlo, ylo);
       auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + thi);
-      return self = eve::two_add[eve::raw](hi1, tlo + lo1);
+      auto [hi2, lo2] = eve::two_add[eve::raw](hi1, tlo + lo1);
+       return self =  _::clean0s(hi2, lo2);// eve::two_add[eve::raw](hi1, tlo + lo1);
     }
     else if constexpr(dimension_v<T1> == 3u)
     {
@@ -94,7 +89,8 @@ namespace plf
       auto c = lo + thi;
       auto [hi1, lo1] = eve::two_add[eve::raw](hi, c);
       c = tlo + lo1;
-      return self = eve::two_add[eve::raw](hi1, c);
+      auto [hi2, lo2] = eve::two_add[eve::raw](hi1, c);
+      return self =  _::clean0s(hi2, lo2);
     }
     else if constexpr(dimension_v<T1> == 3u)
     {
@@ -125,8 +121,9 @@ namespace plf
       auto t1 = xhi * ylo;
       auto t2 = xlo * yhi;
       auto t = lo + (t1 + t2);
-      return self = eve::two_add[eve::raw](hi, t);
-    }
+      auto [hi2, lo2] = eve::two_add[eve::raw](hi, t);
+      return self =  _::clean0s(hi2, lo2);
+     }
     else if constexpr(dimension_v<T1> == 3u)
     {
       auto [ahi, amd, alo] = self;
@@ -200,4 +197,3 @@ namespace plf
 }
 
 #include <polyfloat/types/ops2.hpp>
-//#include <polyfloat/types/ops3.hpp>

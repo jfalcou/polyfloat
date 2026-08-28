@@ -10,7 +10,6 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <iostream>
 
 namespace plf
 {
@@ -55,15 +54,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto euler(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto euler(T z) noexcept;
   //!   }
   //!   @endcode
   //!

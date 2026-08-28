@@ -12,8 +12,8 @@
 #include <polyfloat/types/traits.hpp>
 #include <polyfloat/module/core/sum_of_prod.hpp>
 #include <type_traits>
-#include <iostream>
-#include <iomanip>
+
+
 
 namespace plf
 {

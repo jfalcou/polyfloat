@@ -12,8 +12,8 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/constants/log_2.hpp>
-#include <iostream>
-#include <iomanip>
+
+
 
 namespace plf
 {

@@ -29,7 +29,7 @@ TTS_CASE_WITH("Check exp ",
      auto ez = plf::exp(z);
      TTS_EQUAL(plf::hi(ez), T(1));
      TTS_EQUAL(plf::lo(ez), T(0));
-     TTS_EQUAL(plf::exp(z), o); //, 3*tts::epsprec<pv_t>());
+     TTS_EQUAL(plf::exp(z), o);
      pv_t inf(plf::inf(eve::as<pv_t>()));
      TTS_EQUAL(exp(inf), inf);
      pv_t nan(plf::nan(eve::as<pv_t>()));

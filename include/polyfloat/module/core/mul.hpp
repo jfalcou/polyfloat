@@ -11,7 +11,8 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/abs.hpp>
+#include <polyfloat/module/core/if_else.hpp>
+#include <polyfloat/module/core/is_not_finite.hpp>
 
 namespace plf
 {
