@@ -1,0 +1,56 @@
+##======================================================================================================================
+##  Polyfloat - Extended precision floating points
+##  Copyright : POLYFLOAT Contributors & Maintainers
+##  SPDX-License-Identifier: BSL-1.0
+##======================================================================================================================
+name: POLYFLOAT MacOS Tests
+on:
+  workflow_call:
+
+jobs:
+  macos:
+    name: ${{ matrix.compiler.name }}
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - { name: "clang"       , preset: "clang-macos"        }
+          - { name: "clang libc++", preset: "clang-macos-libc++" }
+
+    steps:
+      - name: Fetch current branch
+        uses: actions/checkout@v6
+
+      ##==========================================================================================
+      ## MPFR C++ is a single header fetched next to the sources, and the presets read the two
+      ## brew prefixes from the environment since they are only known at run time.
+      ##==========================================================================================
+      - name: Install MPFR C++
+        run: curl -sSLO https://raw.githubusercontent.com/advanpix/mpreal/master/mpreal.h
+
+      - name: Locate GMP and MPFR
+        run: |
+          echo "GMP_PREFIX=$(brew --prefix gmp)"   >> "$GITHUB_ENV"
+          echo "MPFR_PREFIX=$(brew --prefix mpfr)" >> "$GITHUB_ENV"
+
+      - name: Configure CMake and Build
+        uses: ./.github/actions/config
+        with:
+          config: Debug
+          preset: ${{ matrix.compiler.preset }}
+          targets: doc.exe unit.exe
+
+      - name: Run Doc Tests
+        uses: ./.github/actions/test
+        with:
+          config: Debug
+          preset: ${{ matrix.compiler.preset }}
+          targets: ^doc.*
+
+      - name: Run Unit Tests
+        uses: ./.github/actions/test
+        with:
+          config: Debug
+          preset: ${{ matrix.compiler.preset }}
+          targets: ^unit.*
