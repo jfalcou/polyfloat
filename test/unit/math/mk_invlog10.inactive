@@ -21,23 +21,23 @@ template<typename T> void print(T a)
   if constexpr(dim == 1)
   {
     if constexpr(std::same_as<T, float>)
-      std::cout << " float(" << std::hexfloat << a << ");" << std::endl;
+      std::cout << "float(" << std::hexfloat << a << ");" << std::endl;
     else
-      std::cout << " double(" << std::hexfloat << a << ");" << std::endl;
+      std::cout << "double(" << std::hexfloat << a << ");" << std::endl;
   }
   else if constexpr(dim == 2)
   {
     if constexpr(std::same_as<u_t, float>)
-      std::cout << " plf::_::from_pair<float>(" << std::hexfloat << plf::hi(a) << ",  " << plf::lo(a)  << ");" << std::endl;
+      std::cout << "plf::_::from_pair<float>(" << std::hexfloat << plf::hi(a) << ",  " << plf::lo(a)  << ");" << std::endl;
     else
-      std::cout << " plf::_::from_pair<double>(" << std::hexfloat << plf::hi(a) << ",  " << plf::lo(a) << ");" << std::endl;
+      std::cout << "plf::_::from_pair<double>(" << std::hexfloat << plf::hi(a) << ",  " << plf::lo(a) << ");" << std::endl;
   }
   else if constexpr(dim == 3)
   {
     if constexpr(std::same_as<u_t, float>)
-      std::cout << " plf::_::from_triple<float>(" << std::hexfloat << plf::hi(a) << ",  " << plf::md(a)<< ",  " << plf::lo(a)  << ");" << std::endl;
+      std::cout << "plf::_::from_triple<float>(" << std::hexfloat << plf::hi(a) << ",  " << plf::md(a)<< ",  " << plf::lo(a)  << ");" << std::endl;
     else
-      std::cout << " plf::_::from_triple<double>(" << std::hexfloat << plf::hi(a) << ",  " << plf::md(a)<< ",  " << plf::lo(a) << ");" << std::endl;
+      std::cout << "plf::_::from_triple<double>(" << std::hexfloat << plf::hi(a) << ",  " << plf::md(a)<< ",  " << plf::lo(a) << ");" << std::endl;
   }
 }
 
@@ -51,9 +51,10 @@ TTS_CASE_WITH("mk_const ",
   using plf::double_real_t;
   using plf::triple_real_t;
   {
-    print(eve::log(T(2)));
-    print(tts::mpfr_exec(mlog, double_real_t<T>(2)));
-    print(tts::mpfr_exec(mlog, triple_real_t<T>(2)));
+    print(eve::log(T(10)));
+    print(tts::mpfr_exec(mlog, double_real_t<T>(10)));
+    print(tts::mpfr_exec(mlog, triple_real_t<T>(10)));
+
   }
   return 0;
 };

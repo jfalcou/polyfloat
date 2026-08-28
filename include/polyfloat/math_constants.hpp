@@ -8,6 +8,7 @@
 #pragma once
 
 #include <polyfloat/module/math/constants/euler.hpp>
+#include <polyfloat/module/math/constants/invlog_10.hpp>
 #include <polyfloat/module/math/constants/invlog_2.hpp>
 #include <polyfloat/module/math/constants/maxlog.hpp>
 #include <polyfloat/module/math/constants/log_2.hpp>

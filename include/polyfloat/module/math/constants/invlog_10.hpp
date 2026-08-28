@@ -7,34 +7,35 @@
 //======================================================================================================================
 #pragma once
 
-#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <iostream>
-#include <iomanip>
+
 namespace plf
 {
-  template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
+
+  template<typename Options> struct invlog_10_t : eve::constant_callable<invlog_10_t, Options>
   {
     template<typename T>
     static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
-      using u_t = eve::underlying_type_t<T>;
-      using i_t = eve::as_integer_t<u_t>;
-      auto vlm = eve::valmax(eve::as<u_t>());
-      std::cout <<" dimension_v<T> "<< dimension_v<T> << std::endl;
-      if constexpr(dimension_v<T> == 1)
-        return vlm;
-      else if constexpr(dimension_v<T> == 2)
+      using u_t = plf::as_component_type_t<T>;
+      if constexpr(plf::dimension_v<T> == 1)
       {
-        auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
-        return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));
+        if constexpr(std::same_as<u_t, float>  ) return float(0x1.26bb1cp+1);
+        else if constexpr(std::same_as<u_t, double> ) return double(0x1.26bb1bbb55516p+1);
       }
-      else if constexpr(dimension_v<T> == 3)
+      else if constexpr(plf::dimension_v<T> == 2)
       {
-        auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
-        return plf::_::from_triple(vlm, eve::ldexp(vlm, mnbts),  eve::ldexp(vlm, 2*mnbts));
+        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_pair<float>(0x1.bcb7b2p-2,  -0x1.5b235ep-27);
+        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_pair<double>(0x1.bcb7b1526e50ep-2,  0x1.95355baaafad3p-57);
+      }
+      else if constexpr(plf::dimension_v<T> == 3)
+      {
+        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_triple<float>(0x1.bcb7b2p-2,  -0x1.5b235ep-27,  -0x1.cd5954p-54);
+        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_triple<double>(0x1.bcb7b1526e50ep-2,  0x1.95355baaafad3p-57,  0x1.ee191f71a3012p-112);
+
       }
     }
 
@@ -44,43 +45,40 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(valmax_t, valmax_);
+    POLYFLOAT_CALLABLE_OBJECT(invlog_10_t, invlog_10_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var valmax
-  //!   @brief return the maximal representable flint value.
+  //!   @var invlog_10
+  //!   @brief return the log(2) value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <kyosu/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace kyosu
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto valmax(T z) noexcept;
+  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto invlog_10(T z) noexcept;
   //!   }
   //!   @endcode
   //!
-  //!   **Parameters**
   //!
-  //!     * `z` :   [Type wrapper](@ref eve::as) instance embedding the type of the constant.
+  //!   **Return value**
   //!
-  //!    **Return value**
-  //!
-  //!     Returns the effective number of bits of the mantissa value.
+  //!     Returns log(2).
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/valmax.cpp}
+  //!  @godbolt{doc/invlog_10.cpp}
   //======================================================================================================================
 
-  inline constexpr auto valmax = eve::functor<valmax_t>;
+  inline constexpr auto invlog_10 = eve::functor<invlog_10_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

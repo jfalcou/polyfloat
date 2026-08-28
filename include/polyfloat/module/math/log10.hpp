@@ -15,7 +15,7 @@
 namespace plf
 {
 
-  template<typename Options> struct log2_t : eve::elementwise_callable<log2_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct log10_t : eve::elementwise_callable<log10_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
@@ -23,13 +23,13 @@ namespace plf
      return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(log2_t, log2_);
+    POLYFLOAT_CALLABLE_OBJECT(log10_t, log10_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var log2
-  //!   @brief return the natural log2arithm value.
+  //!   @var log10
+  //!   @brief return the natural log10arithm value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto log2(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto log10(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the base 2 logarithm of z.
+  //!     Returns the base 10 logarithm of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/log2.cpp}
+  //!  @godbolt{doc/core/log10.cpp}
   //======================================================================================================================
 
-  inline constexpr auto log2 = eve::functor<log2_t>;
+  inline constexpr auto log10 = eve::functor<log10_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,13 +69,16 @@ namespace plf::_
 {
 
   template<typename T, eve::callable_options O>
-  constexpr auto log2_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
+  constexpr auto log10_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
   {
     if constexpr(dimension_v<T> == 1)
-      return eve::log2(xx);
+      return eve::log10(xx);
     else
     {
-      return plf::log(xx)*plf::invlog_2(eve::as(xx));
+      auto z = plf::log(xx);
+      auto l10 = plf::invlog_10(eve::as(xx));
+      auto vh = hi(z)*hi(l10);
+      return plf::if_else(eve::is_infinite(vh), vh, plf::log(xx)*plf::invlog_10(eve::as(xx)));
     }
   }
 }
