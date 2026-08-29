@@ -9,7 +9,6 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
-#include <iostream>
 namespace plf
 {
   namespace _
@@ -21,8 +20,6 @@ namespace plf
 
     template<typename T> EVE_FORCEINLINE auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
     {
-      //       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
-      //       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::double_real_t<T>(h, l);
       else
@@ -35,8 +32,6 @@ namespace plf
 
     template<typename T> EVE_FORCEINLINE auto clean1s(auto f, auto hs, auto ho, T h, T m, T l) noexcept
     {
-      //       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
-      //       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::triple_real_t<T>(h, m, l);
       else

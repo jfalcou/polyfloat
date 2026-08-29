@@ -11,8 +11,6 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <iostream>
-#include <iomanip>
 namespace plf
 {
   template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
@@ -21,9 +19,9 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmax(eve::as<u_t>());
-      std::cout << " dimension_v<T> " << dimension_v<T> << std::endl;
-      if constexpr (dimension_v<T> == 1) return vlm;
-      else if constexpr (dimension_v<T> == 2)
+      if constexpr(dimension_v<T> == 1)
+        return vlm;
+      else if constexpr(dimension_v<T> == 2)
       {
         auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
         return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));

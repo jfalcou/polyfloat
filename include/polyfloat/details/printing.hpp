@@ -10,6 +10,8 @@
 #include <eve/traits/overload.hpp>
 #include <mpreal.h>
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 namespace plf::_
 {
