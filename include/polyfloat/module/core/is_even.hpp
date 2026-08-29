@@ -74,14 +74,12 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_even_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    auto t = is_flint(z);
-    if constexpr (dimension_v<Z> == 1)
+    if constexpr(dimension_v<Z> == 1)
     {
       return eve::is_even(z);
     }
     else
     {
-
       auto t = is_flint(z);
       return t && is_flint(ldexp(z, -1));
     }
