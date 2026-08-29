@@ -45,7 +45,8 @@ namespace plf::_
                           sh+eve::if_else(samsgn, c9_8, c7_8)*vh
                     );
     auto delta = eve::sub[in](wl, z-wh);
-    return eve::zip(z, delta, vl);
+    return eve::zip(z, delta, vl); 
+//    return eve::if_else(eve::is_nan(z), eve::zip(z, u_t(0),u_t(0)), eve::zip(z, delta, vl));
   }
 
   template<typename Z>

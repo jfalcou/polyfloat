@@ -7,35 +7,30 @@
 //======================================================================================================================
 #pragma once
 
-#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <type_traits>
+#include <polyfloat/module/math/nthroot.hpp>
 
 namespace plf
 {
-  template<typename Options> struct inf_t : eve::constant_callable<inf_t, Options>
+
+  template<typename Options> struct cbrt_t : eve::elementwise_callable<cbrt_t, Options, raw_option, pedantic_option>
   {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-      using u_t = eve::underlying_type_t<T>;
-      return T(eve::inf(eve::as<u_t>()));
+     return POLYFLOAT_CALL(z);
     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
-    {
-      return POLYFLOAT_CALL(v);
-    }
-
-    EVE_CALLABLE_OBJECT(inf_t, inf_);
+    POLYFLOAT_CALLABLE_OBJECT(cbrt_t, cbrt_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @addtogroup core
   //! @{
-  //!   @var inf
-  //!   @brief return the infinite value.
+  //!   @var cbrt
+  //!   @brief return the cubic root.
   //!
   //!   @groupheader{Header file}
   //!
@@ -48,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inf(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto cbrt(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,15 +53,30 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the infolute value of z.
+  //!     Returns the cubic root of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/inf.cpp}
+  //!  @godbolt{doc/core/cbrt.cpp}
   //======================================================================================================================
 
-  inline constexpr auto inf = eve::functor<inf_t>;
+  inline constexpr auto cbrt = eve::functor<cbrt_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
+}
+
+namespace plf::_
+{
+
+  template<typename T, eve::callable_options O>
+  constexpr auto cbrt_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
+  {
+    if constexpr(dimension_v<T> == 1)
+      return eve::cbrt(xx);
+    else
+    {
+      return plf::nthroot(xx, 3);
+    }
+  }
 }

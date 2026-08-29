@@ -39,5 +39,13 @@ int main()
   std::cout << "add(wc, wb) "<< add(wc, wb) << std::endl;
   std::cout << "add(wc, wb, b) "<< add(wb, wb, wb, b, c, 1) << std::endl;
 
+  auto inf = plf::inf(plf::as(a));
+  auto bb = plf::add[eve::pedantic](inf, -1);
+  std::cout << "bb " << bb << std::endl;
+  auto cc = plf::add[eve::pedantic](inf, +1);
+  std::cout << "cc " << cc << std::endl;
+  std::cout << "inf+1 "<< inf+1 << std::endl;
+  std::cout << "inf-1 "<< inf-1 << std::endl;
+
   return 0;
 }

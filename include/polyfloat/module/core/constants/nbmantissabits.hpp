@@ -41,15 +41,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto nbmantissabits(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto nbmantissabits(T z) noexcept;
   //!   }
   //!   @endcode
   //!

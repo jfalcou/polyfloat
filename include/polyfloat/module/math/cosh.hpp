@@ -11,27 +11,26 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/if_else.hpp>
-#include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/math/exp.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct cosh_t : eve::elementwise_callable<cosh_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+     return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
+    POLYFLOAT_CALLABLE_OBJECT(cosh_t, cosh_);
   };
   //======================================================================================================================
-  //! @multogroup core
+  //! @addtogroup core
   //! @{
-  //!   @var mul
-  //!   @brief return the product of the values.
+  //!   @var cosh
+  //!   @brief return the hyperbolic cosine value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +43,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto mul(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto cosh(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,31 +53,44 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the product of the arguments.
+  //!     Returns the hyperbolicosine of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/mul.cpp}
+  //!  @godbolt{doc/core/cosh.cpp}
   //======================================================================================================================
 
-  inline constexpr auto mul = eve::functor<mul_t>;
+  inline constexpr auto cosh = eve::functor<cosh_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template <typename Options>
-  constexpr auto neutral(mul_t<Options>) noexcept { return plf::one; }
-
-  // Required for optimisation detections
-  using callable_mul_ = eve::tag_t<mul>;
-
 }
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+
+  template<typename T, eve::callable_options O>
+  constexpr auto cosh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    return z1*z2;
+    if constexpr(dimension_v<T> == 1)
+      return eve::cosh(a0);
+    else
+    {
+      using u_t = eve::underlying_type_t<T>;
+      auto inf = is_not_finite(a0);
+      T ovflimitmln2 = maxlog(as(a0))-log_2(as(a0));
+      auto aa0 = plf::abs(a0);
+      auto x = plf::if_else(inf, zero, aa0);
+      auto t    = plf::exp[o](x);
+      auto invt = if_else(x > 22, eve::zero, plf::rec[pedantic](t));
+      auto c    = plf::average(t, invt);
+      auto test = (x < ovflimitmln2) || inf;
+      if( eve::all(test) ) return if_else(inf, aa0, c);
+      auto w = plf::exp[o](x * half(eve::as<T>()));
+      t      = eve::half(eve::as<u_t>()) * w;
+      t *= w;
+      c = if_else(test, c, t);
+      return if_else(inf, aa0, c);
+    }
   }
 }

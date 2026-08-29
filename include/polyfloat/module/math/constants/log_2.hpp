@@ -7,20 +7,36 @@
 //======================================================================================================================
 #pragma once
 
-#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 
+
 namespace plf
 {
-  template<typename Options> struct inf_t : eve::constant_callable<inf_t, Options>
+
+  template<typename Options> struct log_2_t : eve::constant_callable<log_2_t, Options>
   {
     template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
-      using u_t = eve::underlying_type_t<T>;
-      return T(eve::inf(eve::as<u_t>()));
+      using u_t = plf::as_component_type_t<T>;
+      if constexpr(plf::dimension_v<T> == 1)
+      {
+        if constexpr(std::same_as<u_t, float>  ) return float(0x1.62e43p-1);
+        else if constexpr(std::same_as<u_t, double> ) return double(0x1.62e42fefa39efp-1);
+      }
+      else if constexpr(plf::dimension_v<T> == 2)
+      {
+        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_pair<float>(0x1.62e43p-1,  -0x1.05c61p-29);
+        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_pair<double>(0x1.62e42fefa39efp-1,  0x1.abc9e3b39803fp-56);
+
+      }
+      else if constexpr(plf::dimension_v<T> == 3)
+      {
+        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_triple<float>(0x1.62e43p-1,  -0x1.05c61p-29,  -0x1.950d88p-54);
+        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_triple<double>(0x1.62e42fefa39efp-1,  0x1.abc9e3b39803fp-56,  0x1.7b57a079a1934p-111);
+      }
     }
 
     template<concepts::polyfloat_like T>
@@ -29,13 +45,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(inf_t, inf_);
+    POLYFLOAT_CALLABLE_OBJECT(log_2_t, log_2_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var inf
-  //!   @brief return the infinite value.
+  //!   @var log_2
+  //!   @brief return the log(2) value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -48,24 +64,21 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inf(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto log_2(T z) noexcept;
   //!   }
   //!   @endcode
   //!
-  //!   **Parameters**
-  //!
-  //!     * `z`: Value to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the infolute value of z.
+  //!     Returns log(2).
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/inf.cpp}
+  //!  @godbolt{doc/log_2.cpp}
   //======================================================================================================================
 
-  inline constexpr auto inf = eve::functor<inf_t>;
+  inline constexpr auto log_2 = eve::functor<log_2_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

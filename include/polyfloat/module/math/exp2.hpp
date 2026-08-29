@@ -11,27 +11,28 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/if_else.hpp>
-#include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/math/constants/log_2.hpp>
+
+
 
 namespace plf
 {
 
-  template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct exp2_t : eve::elementwise_callable<exp2_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+     return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
+    POLYFLOAT_CALLABLE_OBJECT(exp2_t, exp2_);
   };
   //======================================================================================================================
-  //! @multogroup core
+  //! @addtogroup core
   //! @{
-  //!   @var mul
-  //!   @brief return the product of the values.
+  //!   @var exp2
+  //!   @brief return \f$2^x\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +45,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto mul(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexp2r auto exp2(T x) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,31 +55,42 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the product of the arguments.
+  //!     Returns \f$2^x\f$.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/mul.cpp}
+  //!  @godbolt{doc/core/exp2.cpp}
   //======================================================================================================================
 
-  inline constexpr auto mul = eve::functor<mul_t>;
+  inline constexpr auto exp2 = eve::functor<exp2_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template <typename Options>
-  constexpr auto neutral(mul_t<Options>) noexcept { return plf::one; }
-
-  // Required for optimisation detections
-  using callable_mul_ = eve::tag_t<mul>;
-
 }
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+
+  template<typename T, eve::callable_options O>
+  constexpr auto exp2_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
   {
-    return z1*z2;
+    if constexpr(dimension_v<T> == 1)
+      return eve::exp2(xx);
+    else
+    {
+      using u_t = eve::underlying_type_t<T>;
+      auto negative = plf::is_ltz(xx);
+      auto nan      = plf::is_nan(xx);
+      auto out_of_range = plf::is_greater(plf::abs(xx), plf::maxlog(eve::as<u_t>()));
+      xx = plf::if_else(out_of_range, inf, xx);
+      auto x = plf::if_else(out_of_range || nan, zero, xx);
+      
+      auto n = plf::hi(nearest(xx));
+      auto xf = (x-n)*plf::log_2(eve::as(xx));
+      auto r = plf::ldexp(plf::exp(xf), n);
+      r = if_else(out_of_range, plf::if_else(negative, eve::zero, plf::inf(eve::as<T>())), r);
+      r = if_else(nan, xx, r);
+      return r; 
+    }
   }
 }

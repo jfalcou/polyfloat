@@ -11,7 +11,8 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-
+#include <iostream>
+#include <iomanip>
 namespace plf
 {
   template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
@@ -22,6 +23,7 @@ namespace plf
       using u_t = eve::underlying_type_t<T>;
       using i_t = eve::as_integer_t<u_t>;
       auto vlm = eve::valmax(eve::as<u_t>());
+      std::cout <<" dimension_v<T> "<< dimension_v<T> << std::endl;
       if constexpr(dimension_v<T> == 1)
         return vlm;
       else if constexpr(dimension_v<T> == 2)
@@ -53,15 +55,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/core.hpp>
+  //!   #include <polyfloat/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace kyosu
+  //!   namespace polyfloat
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto valmax(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto valmax(T z) noexcept;
   //!   }
   //!   @endcode
   //!
