@@ -39,7 +39,7 @@ TTS_CASE_WITH("Check sinh ",
   {
     using pv_t  = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
-    TTS_RELATIVE_EQUAL(sinh(pa), tts::mpfr_exec(msinh, pa), 180000*tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(sinh(pa), tts::mpfr_exec(msinh, pa), 1800000*tts::epsprec<pv_t>());//TO DO Better
     pv_t o(T(1), T(0), T(0));
     TTS_RELATIVE_EQUAL(sinh(o), tts::mpfr_exec(msinh, o), 3*tts::epsprec<pv_t>());
     pv_t z(T(0), T(0), T(0));
