@@ -11,5 +11,5 @@ var searchData=
   ['free_20and_20augmented_20accuracy_20functions_8',['Error free and augmented accuracy functions',['../index.html#autotoc_md8',1,'']]],
   ['fsm_9',['fsm',['../namespaceplf_ab6ffa7b2b7b589bc9bbf790c8555e7f3.html#ab6ffa7b2b7b589bc9bbf790c8555e7f3',1,'plf']]],
   ['functions_10',['Functions',['../group__functions.html',1,'Functions'],['../index.html#autotoc_md5',1,'Functions']]],
-  ['functions_11',['functions',['../index.html#autotoc_md6',1,'Core functions'],['../index.html#autotoc_md8',1,'Error free and augmented accuracy functions'],['../index.html#autotoc_md9',1,'Math elementary functions'],['../index.html#autotoc_md10',1,'Math special functions']]]
+  ['functions_11',['functions',['../index.html#autotoc_md6',1,'Core functions'],['../index.html#autotoc_md8',1,'Error free and augmented accuracy functions'],['../index.html#autotoc_md9',1,'Math elementary functions'],['../index.html#autotoc_md11',1,'Math special functions']]]
 ];

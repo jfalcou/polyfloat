@@ -36,8 +36,9 @@ var NAVTREE =
     [ "Core constants", "index.html#autotoc_md7", null ],
     [ "Error free and augmented accuracy functions", "index.html#autotoc_md8", null ],
     [ "Math elementary functions", "index.html#autotoc_md9", null ],
-    [ "Math special functions", "index.html#autotoc_md10", [
-      [ "Testing rationale", "index.html#autotoc_md11", null ]
+    [ "Math constants", "index.html#autotoc_md10", null ],
+    [ "Math special functions", "index.html#autotoc_md11", [
+      [ "Testing rationale", "index.html#autotoc_md12", null ]
     ] ],
     [ "How-Tos", "usergroup0.html", null ],
     [ "Reference Documentation", "usergroup1.html", [

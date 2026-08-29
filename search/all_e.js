@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['testing_20rationale_0',['Testing rationale',['../index.html#autotoc_md11',1,'']]],
+  ['testing_20rationale_0',['Testing rationale',['../index.html#autotoc_md12',1,'']]],
   ['this_20implementation_20provide_1',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]],
   ['three_5fadd_2',['three_add',['../group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1',1,'plf']]],
   ['three_5ffma_3',['three_fma',['../group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html#gabda6529346e0ae007b7709fabfe7cb59',1,'plf']]],

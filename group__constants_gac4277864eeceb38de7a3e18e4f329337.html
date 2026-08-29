@@ -143,13 +143,14 @@ $(function(){initNavTree('group__constants_gac4277864eeceb38de7a3e18e4f329337.ht
 
 <p>return the maximal representable flint value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;kyosu/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span>kyosu</div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;kyosu::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gac4277864eeceb38de7a3e18e4f329337">effective_mantissa_bits</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gac4277864eeceb38de7a3e18e4f329337">effective_mantissa_bits</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__constants_gac4277864eeceb38de7a3e18e4f329337_html_gac4277864eeceb38de7a3e18e4f329337"><div class="ttname"><a href="#gac4277864eeceb38de7a3e18e4f329337">plf::effective_mantissa_bits</a></div><div class="ttdeci">constexpr auto effective_mantissa_bits</div><div class="ttdoc">return the maximal representable flint value.</div><div class="ttdef"><b>Definition</b> effective_mantissa_bits.hpp:69</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span> : Type wrapper instance embedding the type of the constant.</li>
