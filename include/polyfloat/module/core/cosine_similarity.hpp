@@ -117,7 +117,6 @@ namespace plf::_
            !concepts::polyfloat_like<PT2>)
   {
     using Tup1 = kumi::as_tuple_t<PT1>;
-    using Tup2 = kumi::as_tuple_t<PT2>;
     constexpr auto siz = Tup1::size();
     if constexpr (siz == 1)
     {
