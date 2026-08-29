@@ -11,7 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/abs.hpp>
+#include <polyfloat/module/core/is_not_finite.hpp>
 
 namespace plf
 {
@@ -96,7 +96,19 @@ namespace plf::_
     template<typename T1, typename T2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const& , T1 const& t1, T2 const& t2) noexcept
   {
-    return t1+t2;
+    auto t12 = t1+t2;
+ //    if constexpr(O::contains(pedantic))
+//     {
+//       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
+//       if (eve::any(inf))
+//       {
+//         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
+//       }
+//       else
+//         return t12;
+//     }
+//     else
+      return t12;
   }
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like T1, concepts::polyfloat_like... Ts>

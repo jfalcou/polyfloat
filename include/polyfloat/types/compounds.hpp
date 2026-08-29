@@ -9,7 +9,7 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
-
+#include <iostream>
 namespace plf
 {
   namespace _
@@ -18,6 +18,48 @@ namespace plf
     EVE_FORCEINLINE auto clean0s(T hi, T lo) noexcept
     {
       return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
+    }
+
+    template < typename T>
+    EVE_FORCEINLINE auto clean0s(auto f, auto hs,  auto ho, T h, T l) noexcept
+    {
+//       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
+//       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
+      auto output_is_finite = eve::is_finite(h);
+      if (eve::all(output_is_finite))
+        return plf::double_real_t<T>(h, l);
+      else
+      {
+        auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
+        if (eve::all(output_is_finite))
+          return  plf::double_real_t<T>(h, l);
+        else
+          return eve::if_else(output_is_finite,
+                              plf::double_real_t<T>(h, l),
+                              plf::double_real_t<T>(f(hs, ho))
+                             );
+      }
+    }
+
+    template < typename T>
+    EVE_FORCEINLINE auto clean1s(auto f, auto hs,  auto ho, T h, T m, T l) noexcept
+    {
+//       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
+//       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
+      auto output_is_finite = eve::is_finite(h);
+      if (eve::all(output_is_finite))
+        return plf::triple_real_t<T>(h, m, l);
+      else
+      {
+        auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
+        if (eve::all(output_is_finite))
+          return  plf::triple_real_t<T>(h, m, l);
+        else
+          return eve::if_else(output_is_finite,
+                              plf::triple_real_t<T>(h, m, l),
+                              plf::triple_real_t<T>(f(hs, ho))
+                             );
+      }
     }
 
     template < typename T>
@@ -48,6 +90,8 @@ namespace plf
   constexpr auto& operator+=(T1 & self, T2  other) noexcept
   requires( dimension_v<T1> >= dimension_v<T2>  )
   {
+    auto isnf = eve::is_not_finite(hi(self)) || eve::is_not_finite(hi(other));
+
     T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
     if constexpr(dimension_v<T1> == 2u)
     {
@@ -57,7 +101,7 @@ namespace plf
       auto [thi, tlo] = eve::two_add(xlo, ylo);
       auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + thi);
       auto [hi2, lo2] = eve::two_add[eve::raw](hi1, tlo + lo1);
-       return self =  _::clean0s(hi2, lo2);// eve::two_add[eve::raw](hi1, tlo + lo1);
+      return   self =  _::clean0s(eve::add, xhi, yhi, hi2, lo2);
     }
     else if constexpr(dimension_v<T1> == 3u)
     {
@@ -70,7 +114,7 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      return self = _::clean1s(zhi,zmd,zlo );
+      return self = _::clean1s(eve::add, ahi, bhi, zhi, zmd, zlo );
     }
   }
 
@@ -90,7 +134,7 @@ namespace plf
       auto [hi1, lo1] = eve::two_add[eve::raw](hi, c);
       c = tlo + lo1;
       auto [hi2, lo2] = eve::two_add[eve::raw](hi1, c);
-      return self =  _::clean0s(hi2, lo2);
+      return   self =  _::clean0s(eve::sub, xhi, yhi, hi2, lo2);
     }
     else if constexpr(dimension_v<T1> == 3u)
     {
@@ -103,7 +147,7 @@ namespace plf
       auto t5 = t3 + t4;
       auto t8 = t5 + t6;
       auto [zmd, zlo] = eve::two_add(t7, t8);
-      return self  = _::clean1s(zhi,zmd,zlo );
+      return self = _::clean1s(eve::sub, ahi, bhi, zhi, zmd, zlo );
     }
   }
 
@@ -122,8 +166,8 @@ namespace plf
       auto t2 = xlo * yhi;
       auto t = lo + (t1 + t2);
       auto [hi2, lo2] = eve::two_add[eve::raw](hi, t);
-      return self =  _::clean0s(hi2, lo2);
-     }
+      return   self =  _::clean0s(eve::mul, xhi, yhi, hi2, lo2);
+    }
     else if constexpr(dimension_v<T1> == 3u)
     {
       auto [ahi, amd, alo] = self;
@@ -149,7 +193,7 @@ namespace plf
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
       auto [t21, t22] = _::four_add1(t2, t3, t4, t5);
       auto [md, lo]   = _::four_add1(t21, t22, t19, t20);
-      return self = _::clean1s(hi, md, lo);
+      return self = _::clean1s(eve::mul, ahi, bhi, hi, md, lo);
     }
   }
 }
