@@ -54,25 +54,6 @@ TTS_CASE_WITH("mk_const ",
     print(eve::log(T(2)));
     print(tts::mpfr_exec(mlog, double_real_t<T>(2)));
     print(tts::mpfr_exec(mlog, triple_real_t<T>(2)));
-//     std::cout << std::hexfloat;
-//     {
-//      using pv1_t  = T;
-//      pv1_t pa(2);
-// //     std::cout << "pa " << pa << std::endl;
-//      std::cout << eve::log(pa) << std::endl;
-//     }
-//     {
-//      using pv2_t  = plf::polyfloat<T, 2>;
-//      pv2_t pa(2);
-// //     std::cout << "pa " << pa << std::endl;
-//      std::cout << tts::mpfr_exec(mlog, pa) << std::endl;
-//     }
-//     {
-//      using pv3_t  = plf::polyfloat<T, 3>;
-//      pv3_t pa(2);
-// //     std::cout << "pa " << pa << std::endl;
-//      std::cout << tts::mpfr_exec(mlog, pa) << std::endl;
-//     }
   }
   return 0;
 };
