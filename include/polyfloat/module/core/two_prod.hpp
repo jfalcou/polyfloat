@@ -69,6 +69,8 @@ namespace plf
   //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
   //!          where \f$\oplus\f$ adds its two parameters with infinite precision.
   //!
+  //!     The algorithm depends on the overload:
+  //!
   //!     1. Classical algorithm, always valid.
   //!     2. Handles overflow.
   //!

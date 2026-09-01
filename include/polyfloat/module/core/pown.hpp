@@ -57,7 +57,7 @@ namespace plf
   //!   **Parameters**
   //!
   //!     * `z`: Value to process.
-  //!     * `n': flint exponent (if it is not flint it is truncated before use).
+  //!     * `n`: flint exponent (if it is not flint it is truncated before use).
   //!
   //!   **Return value**
   //!

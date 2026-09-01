@@ -72,6 +72,8 @@ namespace plf
   //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
   //!          where \f$\oplus\f$ fma_approxs its two parameters with infinite precision.
   //!
+  //!     The algorithm depends on the overload:
+  //!
   //!     1. algorithm using fma.
   //!     2. Handles overflow.
   //!

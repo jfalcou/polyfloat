@@ -56,6 +56,9 @@ namespace plf
   //!
   //!   @groupheader{Callable Signatures}
   //!
+  //!   @code
+  //!   namespace plf
+  //!   {
   //!      // Regular overloads
   //!      constexpr auto cumsum(auto ... xs)                noexcept; // 1
   //!      constexpr auto cumsum(non_empty_product_type tup) noexcept; // 2
@@ -65,7 +68,7 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `xs...`: [polyfloat like](@ref plf::polyfloat_like) arguments.
+  //!     * `xs...`: [polyfloat like](@ref plf::concepts::polyfloat_like) arguments.
   //!     * `tup`: kumi tuple of values.
   //!
   //!    **Return value**
@@ -76,7 +79,7 @@ namespace plf
   //!
   //!  @note currently cumsum can only be applied with `f` being one of these POLYFLOAT sumctors :
   //!   `add`, `mul`, `min`, `max` that define abelian monoids and each possess
-  //!   `a well defined neutral element.
+  //!   a well defined neutral element.
   //!
   //!  @groupheader{Example}
   //!  @godbolt{doc/core/cumsum.cpp}

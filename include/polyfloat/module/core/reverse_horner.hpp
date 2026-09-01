@@ -76,8 +76,8 @@ namespace plf
   //!      constexpr auto reverse_horner(floating_value auto x, eve::coefficients auto tci)            noexcept; // 2
   //!
   //!      // Lanes masking
-  //!      constexpr auto reverse_horner[conditional_expr auto c](*any of the above overloads*/)       noexcept; // 3
-  //!      constexpr auto reverse_horner[logical_value auto m](*any of the above overloads*/)          noexcept; // 3
+  //!      constexpr auto reverse_horner[conditional_expr auto c](/*any of the above overloads*/)       noexcept; // 3
+  //!      constexpr auto reverse_horner[logical_value auto m](/*any of the above overloads*/)          noexcept; // 3
   //!
   //!      // Semantic options
   //!      constexpr auto reverse_horner[pedantic](/*any of the above overloads*/)                     noexcept; // 4
@@ -91,9 +91,9 @@ namespace plf
   //!    * `ci...`: [floating values](@ref eve::floating_value) polynom coefficients in decreasing power order,
   //!        Note that the values of the `ci` are not necessarily floating but the non floating ones
   //!        are to be scalar
-  //!    * `tci`: eve::coefficients is a specialization of [tuple](@ref eve::product_type) of floating values,
+  //!    * `tci`: eve::coefficients is a specialization of `product_type` of floating values,
   //!             used to avoid possible ambiguities
-  //!    * `c`: [Conditional expression](@ref eve::conditional_expr) masking the operation.
+  //!    * `c`: `conditional_expr` masking the operation.
   //!    * `m`: [Logical value](@ref eve::logical_value) masking the operation.
   //!
   //!   **Return value**
