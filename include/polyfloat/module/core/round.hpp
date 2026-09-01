@@ -40,8 +40,8 @@ namespace plf
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var rounding with option
-  //!   @brief return the ratio of the values.
+  //!   @var round
+  //!   @brief rounds a value, to nearest unless an option says otherwise.
   //!
   //!   @groupheader{Header file}
   //!

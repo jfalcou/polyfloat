@@ -37,7 +37,7 @@ namespace plf
   //====================================================================================================================
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var hi
   //!   @brief Extracts the hi part of a value.
   //!
   //!   @groupheader{Header file}
@@ -72,7 +72,7 @@ namespace plf
   inline constexpr auto hi = extractor<0>{};
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var md
   //!   @brief Extracts the md part of a value.
   //!
   //!   @groupheader{Header file}
@@ -110,7 +110,7 @@ namespace plf
   inline constexpr auto md = extractor<1>{};
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var lo
   //!   @brief Extracts the lo part of a value.
   //!
   //!   @groupheader{Header file}

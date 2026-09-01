@@ -29,7 +29,7 @@ namespace plf
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var is_eqz
+  //!   @var is_minf
   //!   @brief test the parameter equal \f$-\infty\f$.
   //!
   //!   @groupheader{Header file}

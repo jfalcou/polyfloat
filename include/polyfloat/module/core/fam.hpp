@@ -30,7 +30,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fam_t, fam_);
   };
   //======================================================================================================================
-  //! @famtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fam
   //!   @brief return the fused add multiply  of the parameters.

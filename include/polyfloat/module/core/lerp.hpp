@@ -31,7 +31,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lerp_t, lerp_);
   };
   //======================================================================================================================
-  //! @lerptogroup core
+  //! @addtogroup core
   //! @{
   //!   @var lerp
   //!   @brief return the fused multiply add of the parameters.

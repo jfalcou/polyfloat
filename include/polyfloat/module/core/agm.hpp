@@ -39,7 +39,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(agm_t, agm_);
   };
   //======================================================================================================================
-  //! @agmtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var agm
   //!   @brief return the arithmetic-geometric mean.
@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/agm.cpp}
+  //!  @godbolt{doc/core/agm.cpp}
   //======================================================================================================================
 
   inline constexpr auto agm = eve::functor<agm_t>;

@@ -29,7 +29,7 @@ namespace plf
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var is_eqz
+  //!   @var is_infinite
   //!   @brief test the parameter for being infinite.
   //!
   //!   @groupheader{Header file}

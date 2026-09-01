@@ -25,7 +25,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rec_t, rec_);
   };
   //======================================================================================================================
-  //! @rectogroup core
+  //! @addtogroup core
   //! @{
   //!   @var rec
   //!   @brief return the ratio of the values.

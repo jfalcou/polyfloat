@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(hypot_t, hypot_);
   };
   //======================================================================================================================
-  //! @hypottogroup core
+  //! @addtogroup core
   //! @{
   //!   @var hypot
   //!   @brief return the sum of the parameters.

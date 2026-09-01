@@ -31,7 +31,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fnma_t, fnma_);
   };
   //======================================================================================================================
-  //! @fnmatogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fnma
   //!   @brief return the fused negated-multiply add of the parameters.

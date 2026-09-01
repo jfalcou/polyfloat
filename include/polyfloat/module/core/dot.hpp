@@ -50,7 +50,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(dot_t, dot_);
   };
   //======================================================================================================================
-  //! @dottogroup core
+  //! @addtogroup core
   //! @{
   //!   @var dot
   //!   @brief return the dot product  of the vector of the first half of parameters by
@@ -84,7 +84,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/dot.cpp}
+  //!  @godbolt{doc/core/dot.cpp}
   //======================================================================================================================
 
   inline constexpr auto dot = eve::functor<dot_t>;

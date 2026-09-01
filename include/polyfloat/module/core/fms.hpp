@@ -30,7 +30,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fms_t, fms_);
   };
   //======================================================================================================================
-  //! @fmstogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fms
   //!   @brief return the fused multiply substract of the parameters.
