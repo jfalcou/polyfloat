@@ -14,26 +14,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  precommit:
+    name: Meta Checks
+    uses: jfalcou/copacabana/.github/workflows/precommit.yml@bdd4698a6b7653510904e7e408298c574591af69 # v5
+
   sanitizer-tests:
     name: Sanitizers
-    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@3337f916bb581d0829909976773f7a2ee827a25c # v4
+    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@bdd4698a6b7653510904e7e408298c574591af69 # v5
     with:
       build-targets: doc.exe unit.exe
       test-targets: doc|unit
 
   coverage-report:
     name: Coverage
-    uses: jfalcou/copacabana/.github/workflows/coverage.yml@3337f916bb581d0829909976773f7a2ee827a25c # v4
+    uses: jfalcou/copacabana/.github/workflows/coverage.yml@bdd4698a6b7653510904e7e408298c574591af69 # v5
     with:
       project: polyfloat
       build-targets: polyfloat-test
 
   linux-tests:
     name: Linux
-    needs: sanitizer-tests
+    needs: [precommit, sanitizer-tests]
     uses: ./.github/workflows/linux.yml
 
   macos-tests:
     name: MacOS
-    needs: sanitizer-tests
+    needs: [precommit, sanitizer-tests]
     uses: ./.github/workflows/macos.yml
