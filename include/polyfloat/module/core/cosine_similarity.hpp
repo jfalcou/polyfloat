@@ -87,7 +87,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/cosine_similarity.cpp}
+  //!  @godbolt_todo{doc/core/core/cosine_similarity.cpp}
   //======================================================================================================================
 
   inline constexpr auto cosine_similarity = eve::functor<cosine_similarity_t>;

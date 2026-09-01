@@ -72,7 +72,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/maxlog.cpp}
+  //!  @godbolt_todo{doc/maxlog.cpp}
   //======================================================================================================================
 
   inline constexpr auto maxlog = eve::functor<maxlog_t>;

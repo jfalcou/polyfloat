@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fam.cpp}
+  //!  @godbolt_todo{doc/core/fam.cpp}
   //======================================================================================================================
 
   inline constexpr auto fam = eve::functor<fam_t>;

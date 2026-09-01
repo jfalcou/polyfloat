@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/minmag.cpp}
+  //!  @godbolt_todo{doc/core/minmag.cpp}
   //======================================================================================================================
 
   inline constexpr auto minmag = eve::functor<minmag_t>;

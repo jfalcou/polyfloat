@@ -60,7 +60,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/inf.cpp}
+  //!  @godbolt_todo{doc/inf.cpp}
   //======================================================================================================================
 
   inline constexpr auto inf = eve::functor<inf_t>;

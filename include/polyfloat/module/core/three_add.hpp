@@ -66,7 +66,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/three_add.cpp}
+  //!  @godbolt_todo{doc/core/core/three_add.cpp}
   //======================================================================================================================
 
   inline constexpr auto three_add = eve::functor<three_add_t>;

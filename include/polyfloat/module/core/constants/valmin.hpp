@@ -72,7 +72,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/valmin.cpp}
+  //!  @godbolt_todo{doc/valmin.cpp}
   //======================================================================================================================
 
   inline constexpr auto valmin = eve::functor<valmin_t>;

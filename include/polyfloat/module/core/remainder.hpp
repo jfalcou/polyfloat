@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/remainder.cpp}
+  //!  @godbolt_todo{doc/core/remainder.cpp}
   //======================================================================================================================
 
   inline constexpr auto remainder = eve::functor<remainder_t>;

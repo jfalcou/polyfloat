@@ -72,7 +72,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negabsmin.cpp}
+  //!  @godbolt_todo{doc/core/negabsmin.cpp}
   //======================================================================================================================
 
   inline constexpr auto negabsmin = eve::functor<negabsmin_t>;

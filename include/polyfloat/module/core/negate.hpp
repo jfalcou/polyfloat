@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negate.cpp}
+  //!  @godbolt_todo{doc/core/negate.cpp}
   //======================================================================================================================
 
   inline constexpr auto negate = eve::functor<negate_t>;

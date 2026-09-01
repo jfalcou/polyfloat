@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/maxmag.cpp}
+  //!  @godbolt_todo{doc/core/maxmag.cpp}
   //======================================================================================================================
 
   inline constexpr auto maxmag = eve::functor<maxmag_t>;

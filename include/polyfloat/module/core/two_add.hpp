@@ -80,7 +80,7 @@ namespace plf
   //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/core/two_add.cpp}
+  //!  @godbolt_todo{doc/core/core/two_add.cpp}
   //================================================================================================
   inline constexpr auto two_add = eve::functor<two_add_t>;
   //================================================================================================

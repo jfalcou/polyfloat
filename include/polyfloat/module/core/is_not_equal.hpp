@@ -60,7 +60,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_not_equal.cpp}
+  //!  @godbolt_todo{doc/core/is_not_equal.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_equal = eve::functor<is_not_equal_t>;

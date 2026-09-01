@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_ngtz.cpp}
+  //!  @godbolt_todo{doc/core/is_ngtz.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_ngtz = eve::functor<is_ngtz_t>;

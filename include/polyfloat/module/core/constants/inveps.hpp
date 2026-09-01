@@ -76,7 +76,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/inveps.cpp}
+  //!  @godbolt_todo{doc/inveps.cpp}
   //======================================================================================================================
 
   inline constexpr auto inveps = eve::functor<inveps_t>;

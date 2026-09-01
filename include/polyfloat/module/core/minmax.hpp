@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/minmax.cpp}
+  //!  @godbolt_todo{doc/core/minmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto minmax = eve::functor<minmax_t>;

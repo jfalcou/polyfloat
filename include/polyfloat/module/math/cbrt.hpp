@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/cbrt.cpp}
+  //!  @godbolt_todo{doc/core/cbrt.cpp}
   //======================================================================================================================
 
   inline constexpr auto cbrt = eve::functor<cbrt_t>;

@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/constants/nbmantissabits.cpp}
+  //!  @godbolt_todo{doc/core/constants/nbmantissabits.cpp}
   //======================================================================================================================
 
   inline constexpr auto nbmantissabits = eve::functor<nbmantissabits_t>;

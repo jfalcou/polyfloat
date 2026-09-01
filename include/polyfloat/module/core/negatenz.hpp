@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negatenz.cpp}
+  //!  @godbolt_todo{doc/core/negatenz.cpp}
   //======================================================================================================================
 
   inline constexpr auto negatenz = eve::functor<negatenz_t>;

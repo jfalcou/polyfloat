@@ -75,7 +75,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sign_alternate.cpp}
+  //!  @godbolt_todo{doc/core/sign_alternate.cpp}
   //======================================================================================================================
 
   inline constexpr auto sign_alternate = eve::functor<sign_alternate_t>;

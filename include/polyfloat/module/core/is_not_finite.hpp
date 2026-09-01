@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_not_finite.cpp}
+  //!  @godbolt_todo{doc/core/is_not_finite.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_finite = eve::functor<is_not_finite_t>;

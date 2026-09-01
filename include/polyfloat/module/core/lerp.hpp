@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/lerp.cpp}
+  //!  @godbolt_todo{doc/core/lerp.cpp}
   //======================================================================================================================
 
   inline constexpr auto lerp = eve::functor<lerp_t>;

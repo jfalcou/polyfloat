@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_pinf.cpp}
+  //!  @godbolt_todo{doc/core/is_pinf.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_pinf = eve::functor<is_pinf_t>;

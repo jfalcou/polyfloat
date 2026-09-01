@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_minf.cpp}
+  //!  @godbolt_todo{doc/core/is_minf.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_minf = eve::functor<is_minf_t>;

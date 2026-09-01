@@ -82,7 +82,7 @@ namespace plf
   //!  @see `welford_covariance` for incremental or parallel covariance and averages computations.
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/covariance.cpp}
+  //!  @godbolt_todo{doc/core/covariance.cpp}
   //======================================================================================================================
 
   inline constexpr auto covariance = eve::functor<covariance_t>;

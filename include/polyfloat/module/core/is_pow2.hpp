@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_pow2.cpp}
+  //!  @godbolt_todo{doc/core/is_pow2.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_pow2 = eve::functor<is_pow2_t>;

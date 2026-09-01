@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sum_of_prod.cpp}
+  //!  @godbolt_todo{doc/core/sum_of_prod.cpp}
   //======================================================================================================================
 
   inline constexpr auto sum_of_prod = eve::functor<sum_of_prod_t>;

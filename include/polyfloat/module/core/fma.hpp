@@ -63,7 +63,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fma.cpp}
+  //!  @godbolt_todo{doc/core/fma.cpp}
   //======================================================================================================================
 
   inline constexpr auto fma = eve::functor<fma_t>;

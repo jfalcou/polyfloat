@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fsm.cpp}
+  //!  @godbolt_todo{doc/core/fsm.cpp}
   //======================================================================================================================
 
   inline constexpr auto fsm = eve::functor<fsm_t>;

@@ -63,7 +63,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/effective_mantissa_bits.cpp}
+  //!  @godbolt_todo{doc/effective_mantissa_bits.cpp}
   //======================================================================================================================
 
   inline constexpr auto effective_mantissa_bits = eve::functor<effective_mantissa_bits_t>;

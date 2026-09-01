@@ -67,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/three_fma.cpp}
+  //!  @godbolt_todo{doc/core/core/three_fma.cpp}
   //======================================================================================================================
   inline constexpr auto three_fma = eve::functor<three_fma_t>;
   //======================================================================================================================

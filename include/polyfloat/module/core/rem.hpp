@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/rem.cpp}
+  //!  @godbolt_todo{doc/core/rem.cpp}
   //======================================================================================================================
 
   inline constexpr auto rem = eve::functor<rem_t>;

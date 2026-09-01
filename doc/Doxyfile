@@ -36,3 +36,7 @@ HTML_EXTRA_STYLESHEET += $(DOXYGEN_OUPUT)/color.css
 
 ## EVE's tagfile is downloaded while configuring; reading it is what makes the eve:: references resolve.
 TAGFILES               = $(DOXYGEN_OUPUT)/../eve.tag=https://jfalcou.github.io/eve
+
+## Names an example that has still to be written. Keeps the intent visible on the page and in the source, where
+## dropping the directive would lose it, without asking doxygen for a file that is not there.
+ALIASES               += "godbolt_todo{1}=@remark An example for this function is still to be written, as `\1`."

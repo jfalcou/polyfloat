@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fms.cpp}
+  //!  @godbolt_todo{doc/core/fms.cpp}
   //======================================================================================================================
 
   inline constexpr auto fms = eve::functor<fms_t>;

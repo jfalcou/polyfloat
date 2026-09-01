@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_greater.cpp}
+  //!  @godbolt_todo{doc/core/is_greater.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_greater = eve::functor<is_greater_t>;
