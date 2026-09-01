@@ -28,7 +28,7 @@ namespace plf
       return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-     POLYFLOAT_CALLABLE_OBJECT(clamp_t, clamp_);
+    POLYFLOAT_CALLABLE_OBJECT(clamp_t, clamp_);
   };
   //======================================================================================================================
   //! @addtogroup core
@@ -75,8 +75,8 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T0, typename T1,  typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const & c, T0 a, T1 l, T2 h) noexcept
+  template<typename T0, typename T1, typename T2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const& c, T0 a, T1 l, T2 h) noexcept
   {
     return plf::min(plf::max(a, l), h);
   }

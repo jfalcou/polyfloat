@@ -18,9 +18,9 @@ namespace plf
   template<typename Options> struct is_gtz_t : eve::callable<is_gtz_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept ->  eve::as_logical_t<as_component_type_t<Z>>
+    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept -> eve::as_logical_t<as_component_type_t<Z>>
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(is_gtz_t, is_gtz_);
@@ -68,7 +68,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_gtz_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_gtz_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return eve::is_gtz(hi(z));
   }

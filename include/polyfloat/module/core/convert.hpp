@@ -11,8 +11,7 @@
 
 namespace plf
 {
-  template<typename Options>
-  struct convert_t : eve::callable<convert_t, Options>
+  template<typename Options> struct convert_t : eve::callable<convert_t, Options>
   {
     template<concepts::polyfloat V, concepts::scalar_polyfloat Tgt>
     POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
@@ -35,45 +34,45 @@ namespace plf
 
     POLYFLOAT_CALLABLE_OBJECT(convert_t, convert_);
   };
-//======================================================================================================================
-//! @addtogroup core
-//! @{
-//!   @var convert
-//!   @brief convert to a target type
-//!
-//!   @groupheader{Header file}
-//!
-//!   @code
-//!   #include <polyfloat/core.hpp>
-//!   @endcode
-//!
-//!   @groupheader{Callable Signatures}
-//!
-//!   @code
-//!   namespace polyfloat
-//!   {
-//!     template<eve::scalar_value U> constexpr auto convert(auto x, eve::as<U> ) noexcept;
-//!   }
-//!   @endcode
-//!
-//!   **Parameter**
-//!     * `x`: polyfloat like value to process.
-//!
-//!   **Template Parameter**
-//!     * `U`: target type to convert to.
-//!
-//!   **Return value**
-//!
-//!   The value resulting of the conversion of each of its elements to type U.
-//!
-//!  @groupheader{Example}
-//!
-//!  @godbolt{doc/core/convert.cpp}
-//======================================================================================================================
-inline constexpr auto convert = eve::functor<convert_t>;
-//======================================================================================================================
-//! @}
-//======================================================================================================================
+  //======================================================================================================================
+  //! @addtogroup core
+  //! @{
+  //!   @var convert
+  //!   @brief convert to a target type
+  //!
+  //!   @groupheader{Header file}
+  //!
+  //!   @code
+  //!   #include <polyfloat/core.hpp>
+  //!   @endcode
+  //!
+  //!   @groupheader{Callable Signatures}
+  //!
+  //!   @code
+  //!   namespace polyfloat
+  //!   {
+  //!     template<eve::scalar_value U> constexpr auto convert(auto x, eve::as<U> ) noexcept;
+  //!   }
+  //!   @endcode
+  //!
+  //!   **Parameter**
+  //!     * `x`: polyfloat like value to process.
+  //!
+  //!   **Template Parameter**
+  //!     * `U`: target type to convert to.
+  //!
+  //!   **Return value**
+  //!
+  //!   The value resulting of the conversion of each of its elements to type U.
+  //!
+  //!  @groupheader{Example}
+  //!
+  //!  @godbolt{doc/core/convert.cpp}
+  //======================================================================================================================
+  inline constexpr auto convert = eve::functor<convert_t>;
+  //======================================================================================================================
+  //! @}
+  //======================================================================================================================
 }
 
 namespace plf::_
@@ -81,11 +80,11 @@ namespace plf::_
   template<typename T, typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto convert_(POLYFLOAT_DELAY(), O const&, T const& v, as<Z>) noexcept
   {
-    if      constexpr(std::same_as<T,Z>) return v;
-    else if constexpr(concepts::polyfloat<Z>)
+    if constexpr (std::same_as<T, Z>) return v;
+    else if constexpr (concepts::polyfloat<Z>)
     {
       using type = eve::as_wide_as_t<Z, T>;
-      if constexpr(dimension_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
+      if constexpr (dimension_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
       else
       {
         using u_t = as_component_type_t<Z>;

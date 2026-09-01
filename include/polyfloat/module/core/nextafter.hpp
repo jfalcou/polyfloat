@@ -17,10 +17,10 @@
 namespace plf
 {
 
-  template<typename Options> struct nextafter_t : eve::elementwise_callable<nextafter_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct nextafter_t : eve::elementwise_callable<nextafter_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z x, Z y) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z x, Z y) const noexcept
     {
       return POLYFLOAT_CALL(x, y);
     }
@@ -70,9 +70,9 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto nextafter_(POLYFLOAT_DELAY(), O const& o, Z const& a, Z const & b) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto nextafter_(POLYFLOAT_DELAY(), O const& o, Z const& a, Z const& b) noexcept
   {
-    if constexpr(O::contains(pedantic))
+    if constexpr (O::contains(pedantic))
     {
       return plf::if_else(a < b, plf::next[o](a), plf::if_else(a > b, plf::prev[o](a), a));
     }

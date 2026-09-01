@@ -18,10 +18,9 @@ namespace plf
 
   template<typename Options> struct sqrt_t : eve::callable<sqrt_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(sqrt_t, sqrt_);
@@ -71,8 +70,8 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
-    return plf::rsqrt[o](z)*z;
+    return plf::rsqrt[o](z) * z;
   }
 }

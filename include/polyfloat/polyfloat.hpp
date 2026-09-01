@@ -8,7 +8,9 @@
 #pragma once
 
 /// Main POLYFLOAT namespace
-namespace plf {}
+namespace plf
+{
+}
 
 #include <polyfloat/types.hpp>
 #include <polyfloat/core.hpp>

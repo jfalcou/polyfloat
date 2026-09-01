@@ -28,7 +28,6 @@ namespace plf
       return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-
     POLYFLOAT_CALLABLE_OBJECT(fma_t, fma_);
   };
   //======================================================================================================================
@@ -76,19 +75,18 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto fma_(POLYFLOAT_DELAY(), O const& , Z1 const& x, Z2 const& y, Z3 const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto fma_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2, Z3>;
-    if constexpr(dimension_v<r_t>  == 1)
-      return eve::fma[pedantic](x, y, z);
-    else if constexpr((dimension_v<Z1> > 2) || (dimension_v<Z2> > 2)  || (dimension_v<Z3> > 2))
+    if constexpr (dimension_v<r_t> == 1) return eve::fma[pedantic](x, y, z);
+    else if constexpr ((dimension_v<Z1> > 2) || (dimension_v<Z2> > 2) || (dimension_v<Z3> > 2))
     {
-      auto cvt =  [](auto a){return plf::convert(a, eve::as<eve::element_type_t<r_t>>());};
-      
+      auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<r_t>>()); };
+
       auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
       return cr_dw_fp_add(xl, xh, cvt(z));
     }
-    else if constexpr((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) &&(dimension_v<Z3> == 2))
+    else if constexpr ((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) && (dimension_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
@@ -108,7 +106,7 @@ namespace plf::_
       auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
       return r_t(hi, lo);
     }
-    else  if constexpr ((dimension_v<Z1> == 1) && (dimension_v<Z2> == 1))
+    else if constexpr ((dimension_v<Z1> == 1) && (dimension_v<Z2> == 1))
     {
       auto [zhi, zlo] = z;
       auto [chi, c1] = eve::two_prod(x, y);
@@ -123,7 +121,7 @@ namespace plf::_
     else
     {
       using r_t = as_polyfloat_t<Z1, Z2, Z3>;
-      auto cvt =  [](auto a){return plf::convert(a, eve::as<eve::element_type_t<r_t>>());};
+      auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<r_t>>()); };
       return fma(cvt(x), cvt(y), cvt(z));
     }
   }

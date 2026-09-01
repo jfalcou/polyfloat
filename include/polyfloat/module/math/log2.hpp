@@ -17,10 +17,9 @@ namespace plf
 
   template<typename Options> struct log2_t : eve::elementwise_callable<log2_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(log2_t, log2_);
@@ -68,14 +67,12 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, eve::callable_options O>
-  constexpr auto log2_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
+  template<typename T, eve::callable_options O> constexpr auto log2_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
-    if constexpr(dimension_v<T> == 1)
-      return eve::log2(xx);
+    if constexpr (dimension_v<T> == 1) return eve::log2(xx);
     else
     {
-      return plf::log(xx)*plf::invlog_2(eve::as(xx));
+      return plf::log(xx) * plf::invlog_2(eve::as(xx));
     }
   }
 }

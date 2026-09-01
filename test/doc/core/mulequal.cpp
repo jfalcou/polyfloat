@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout <<  std::setprecision(15);
+  std::cout << std::setprecision(15);
 
   auto f = 1.0;
   auto a = plf::polyfloat(1.0);
@@ -21,42 +21,42 @@ int main()
   std::cout << b << std::endl;
   b *= b1;
   std::cout << b << std::endl;
-  c*= a;
+  c *= a;
   std::cout << c << std::endl;
   c *= b;
   std::cout << c << std::endl;
   c *= c1;
   std::cout << c << std::endl;
-  b*= f;
+  b *= f;
   std::cout << b << std::endl;
-  c*= f;
+  c *= f;
   std::cout << c << std::endl;
 
   {
     double sqt2 = eve::sqrt_2(eve::as<double>());
-    double tsqt2 = 3*sqt2;
+    double tsqt2 = 3 * sqt2;
     plf::polyfloat<float, 2> psqt2(sqt2);
     plf::polyfloat<float, 2> ptsqt2(tsqt2);
-    auto dd = sqt2*tsqt2;
+    auto dd = sqt2 * tsqt2;
     auto pdd = psqt2;
     pdd *= ptsqt2;
     std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
-    std::cout << std::setprecision(7)  << "pdd " << pdd << std::endl;
+    std::cout << std::setprecision(7) << "pdd " << pdd << std::endl;
     auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd));
-    std::cout << rpdd-dd << std::endl;
+    std::cout << rpdd - dd << std::endl;
   }
   {
     double sqt2 = eve::sqrt_2(eve::as<double>());
-    double tsqt2 = 3*sqt2;
+    double tsqt2 = 3 * sqt2;
     plf::polyfloat<float, 3> psqt2(sqt2);
     plf::polyfloat<float, 3> ptsqt2(tsqt2);
-    auto dd = sqt2*tsqt2;
+    auto dd = sqt2 * tsqt2;
     auto pdd = psqt2;
     pdd *= ptsqt2;
     std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
-    std::cout << std::setprecision(7)  << "pdd " << pdd << std::endl;
+    std::cout << std::setprecision(7) << "pdd " << pdd << std::endl;
     auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd)) + double(get<2>(pdd));
-    std::cout << rpdd-dd << std::endl;
+    std::cout << rpdd - dd << std::endl;
   }
   return 0;
 }

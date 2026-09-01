@@ -23,8 +23,8 @@ namespace plf
   {
     using type = as_polyfloat_t<T1, T2>;
     type aa{plf::convert(a, eve::as<eve::element_type_t<type>>())};
-    type bb{plf::convert(b, eve::as<eve::element_type_t<type>>())};//b can be int
-    return aa*_::rec(bb);
+    type bb{plf::convert(b, eve::as<eve::element_type_t<type>>())}; //b can be int
+    return aa * _::rec(bb);
   }
 
   //====================================================================================================================

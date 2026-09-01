@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct variance_t : eve::strict_tuple_callable<variance_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct variance_t : eve::strict_tuple_callable<variance_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -84,15 +85,15 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto variance_(POLYFLOAT_DELAY(), O const& o,
-                                            T0 const& a0, Ts const&... args) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto variance_(POLYFLOAT_DELAY(),
+                                                 O const& o,
+                                                 T0 const& a0,
+                                                 Ts const&... args) noexcept
   {
-    auto avg = plf::average[o](a0,  args...);
-    auto var = plf::average[o](plf::sqr(a0-avg), plf::sqr(args-avg)...);
-    if constexpr(O::contains(raw))
-      return var;
-    else
-      return var - plf::sqr(plf::average[o](a0-avg, (args-avg)...));
+    auto avg = plf::average[o](a0, args...);
+    auto var = plf::average[o](plf::sqr(a0 - avg), plf::sqr(args - avg)...);
+    if constexpr (O::contains(raw)) return var;
+    else return var - plf::sqr(plf::average[o](a0 - avg, (args - avg)...));
   }
 
 }

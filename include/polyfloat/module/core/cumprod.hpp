@@ -13,30 +13,28 @@
 #include <type_traits>
 #include <polyfloat/module/core/cumfun.hpp>
 
-
 namespace plf
 {
 
-  template<typename Options> struct cumprod_t : eve::strict_tuple_callable<cumprod_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct cumprod_t : eve::strict_tuple_callable<cumprod_t, Options, raw_option, pedantic_option>
   {
-    template<typename T>
-    using return_type = T;
+    template<typename T> using return_type = T;
 
     template<typename... Ts>
     using result = kumi::result::fill_t<sizeof...(Ts), return_type<plf::as_polyfloat_like_t<Ts...>>>;
 
     template<eve::product_type Tup>
-    using tuple_result = kumi::result::fill_t< Tup::size(), return_type<kumi::apply_traits_t<as_polyfloat_like, Tup>>>;
+    using tuple_result = kumi::result::fill_t<Tup::size(), return_type<kumi::apply_traits_t<as_polyfloat_like, Tup>>>;
 
-    template<concepts::polyfloat_like ... Zs>
-    POLYFLOAT_FORCEINLINE result<Zs...> constexpr operator()(Zs const& ...zs) const noexcept
+    template<concepts::polyfloat_like... Zs>
+    POLYFLOAT_FORCEINLINE result<Zs...> constexpr operator()(Zs const&... zs) const noexcept
     {
       return POLYFLOAT_CALL(zs...);
     }
 
     template<eve::non_empty_product_type PT>
-    POLYFLOAT_FORCEINLINE constexpr tuple_result<PT>
-    operator()(PT t) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr tuple_result<PT> operator()(PT t) const noexcept
     {
       return POLYFLOAT_CALL(t);
     }
@@ -88,15 +86,14 @@ namespace plf
 
 namespace plf::_
 {
-  template <eve::product_type PT, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto cumprod_(POLYFLOAT_DELAY(), O const & o, PT tup) noexcept
+  template<eve::product_type PT, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto cumprod_(POLYFLOAT_DELAY(), O const& o, PT tup) noexcept
   {
     return plf::cumfun[o](plf::mul, tup);
   }
 
-  template<typename ...Ts, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  cumprod_(POLYFLOAT_DELAY(), O const & o, Ts... ts) noexcept
+  template<typename... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto cumprod_(POLYFLOAT_DELAY(), O const& o, Ts... ts) noexcept
   {
     return plf::cumfun[o](plf::mul, kumi::make_tuple(ts...));
   }

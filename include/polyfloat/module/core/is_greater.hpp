@@ -16,13 +16,14 @@
 namespace plf
 {
 
-  template<typename Options> struct is_greater_t : eve::strict_tuple_callable<is_greater_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct is_greater_t : eve::strict_tuple_callable<is_greater_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
-    operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>> operator()(Z1 z1,
+                                                                                              Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(is_greater_t, is_greater_);
@@ -70,12 +71,10 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_greater_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto is_greater_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2>;
-    if constexpr(dimension_v<r_t> == 1)
-      return eve::is_greater(z1, z2);
-    else
-      return z1 >  z2;
+    if constexpr (dimension_v<r_t> == 1) return eve::is_greater(z1, z2);
+    else return z1 > z2;
   }
 }

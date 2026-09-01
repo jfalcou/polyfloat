@@ -19,14 +19,20 @@
 namespace plf
 {
 
-  template<typename Options> struct div_t : eve::strict_tuple_callable<div_t, Options, raw_option, pedantic_option,
-                                                                       to_nearest_option, toward_zero_option,
-                                                                       downward_option, upward_option>
+  template<typename Options>
+  struct div_t : eve::strict_tuple_callable<div_t,
+                                            Options,
+                                            raw_option,
+                                            pedantic_option,
+                                            to_nearest_option,
+                                            toward_zero_option,
+                                            downward_option,
+                                            upward_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(div_t, div_);
@@ -85,22 +91,16 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto div_(POLYFLOAT_DELAY(), O const& , T0 const& a, T1 const& b) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto div_(POLYFLOAT_DELAY(), O const&, T0 const& a, T1 const& b) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1>;
     using u_t = eve::element_type_t<t_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-    auto d = cvt(a)/cvt(b);
-    if constexpr(O::contains(to_nearest))
-      return nearest(d);
-    else if  constexpr(O::contains(toward_zero))
-      return trunc(d);
-    else if  constexpr(O::contains(downward))
-      return floor(d);
-    else if  constexpr(O::contains(upward))
-      return ceil(d);
-    else
-      return d;
-
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    auto d = cvt(a) / cvt(b);
+    if constexpr (O::contains(to_nearest)) return nearest(d);
+    else if constexpr (O::contains(toward_zero)) return trunc(d);
+    else if constexpr (O::contains(downward)) return floor(d);
+    else if constexpr (O::contains(upward)) return ceil(d);
+    else return d;
   }
 }

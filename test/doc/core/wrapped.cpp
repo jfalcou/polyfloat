@@ -7,7 +7,7 @@
 
 int main()
 {
-  std::cout <<  std::setprecision(16);
+  std::cout << std::setprecision(16);
   using t1_t = double;
   using t2_t = plf::double_real_t<double>;
   using t3_t = plf::triple_real_t<double>;
@@ -22,9 +22,9 @@ int main()
   std::cout << plf::minf(at2_t()) << std::endl;
   std::cout << plf::minf(at3_t()) << std::endl;
   std::cout << plf::inf(at3_t()) << std::endl;
-//   std::cout << plf::allbits(at3_t()) << std::endl;
-//   std::cout << plf::allbits(at2_t()) << std::endl;
-//   std::cout << plf::allbits(at3_t()) << std::endl;
+  //   std::cout << plf::allbits(at3_t()) << std::endl;
+  //   std::cout << plf::allbits(at2_t()) << std::endl;
+  //   std::cout << plf::allbits(at3_t()) << std::endl;
   std::cout << plf::nan(at3_t()) << std::endl;
   std::cout << plf::nan(at2_t()) << std::endl;
   std::cout << plf::nan(at3_t()) << std::endl;
@@ -37,5 +37,4 @@ int main()
   std::cout << plf::mone(at3_t()) << std::endl;
   std::cout << plf::mone(at2_t()) << std::endl;
   std::cout << plf::mone(at3_t()) << std::endl;
-
 }

@@ -19,10 +19,9 @@ namespace plf
 
   template<typename Options> struct sign_t : eve::elementwise_callable<sign_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(sign_t, sign_);
@@ -70,7 +69,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sign_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto sign_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return Z(eve::sign(hi(z)));
   }

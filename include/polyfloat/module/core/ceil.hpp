@@ -20,8 +20,7 @@ namespace plf
 
   template<typename Options> struct ceil_t : eve::elementwise_callable<ceil_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -71,21 +70,20 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto ceil_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto ceil_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::ceil(z);
-    else if constexpr(dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 1) return eve::ceil(z);
+    else if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       auto hifl = eve::is_flint(h);
       auto lofrac = l < eve::one(eve::as(l));
       auto loneg = eve::is_negative(l);
-      auto r2 = if_else(lofrac, inc[loneg](Z(h)),Z(h, eve::ceil(l)));
+      auto r2 = if_else(lofrac, inc[loneg](Z(h)), Z(h, eve::ceil(l)));
       auto r1 = if_else(hifl, r2, Z(eve::ceil(h)));
       return r1;
     }
-    else if constexpr(dimension_v<Z> == 3)
+    else if constexpr (dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto hifl = eve::is_flint(h);
@@ -95,7 +93,7 @@ namespace plf::_
       auto lofrac = m < eve::one(eve::as(l));
       auto mdneg = eve::is_negative(m);
       auto loneg = eve::is_negative(l);
-      auto r3 = if_else(lofrac, inc[loneg](Z(h, m)),Z(h, m));
+      auto r3 = if_else(lofrac, inc[loneg](Z(h, m)), Z(h, m));
       auto r2 = if_else(mdfrac, inc[mdneg](Z(h)), Z(h, eve::ceil(m), eve::zero(eve::as(l))));
       auto r1 = if_else(hifl, if_else(mdfl, r3, r2), Z(ceil(h)));
       return r1;

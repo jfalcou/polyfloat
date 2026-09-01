@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct absmax_t : eve::strict_tuple_callable<absmax_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct absmax_t : eve::strict_tuple_callable<absmax_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -84,10 +85,9 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto absmax_(POLYFLOAT_DELAY(), O const& o,
-                                            T0 const& t0, Ts const&... ts) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto absmax_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, Ts const&... ts) noexcept
   {
-    return plf::abs[o.drop(pedantic,numeric)](plf::max(t0, ts...));
+    return plf::abs[o.drop(pedantic, numeric)](plf::max(t0, ts...));
   }
 
 }

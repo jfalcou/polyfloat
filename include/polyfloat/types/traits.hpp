@@ -48,8 +48,6 @@ namespace plf::_
                                    eve::element_type_t<Base>>;
 }
 
-
-
 namespace plf
 {
   //====================================================================================================================
@@ -67,11 +65,9 @@ namespace plf
   //====================================================================================================================
 
 #if !defined(POLYFLOAT_DOXYGEN_INVOKED)
- template<typename T>
- inline constexpr unsigned int dimension_v = 1;
+  template<typename T> inline constexpr unsigned int dimension_v = 1;
 #else
- template<typename T>
- inline constexpr unsigned int dimension_v = *implementation - defined*;
+  template<typename T> inline constexpr unsigned int dimension_v = *implementation - defined*;
 #endif
 
   template<concepts::polyfloat T>
@@ -135,8 +131,7 @@ namespace plf
   //! @tparam Dim Dimension of the Poly-Float to use.
   //! @tparam Ts  Types used to compute the Poly-Float underlying type.
   //====================================================================================================================
-  template<unsigned int Dim, typename... Ts>
-  using as_polyfloat_n_t = typename as_polyfloat_n<Dim, Ts...>::type;
+  template<unsigned int Dim, typename... Ts> using as_polyfloat_n_t = typename as_polyfloat_n<Dim, Ts...>::type;
 
   template<typename... Ts>
   requires(requires(Ts... ts) { typename as_polyfloat_n<std::max({dimension_v<Ts>...}), Ts...>::type; })
@@ -214,14 +209,12 @@ namespace plf
   };
 
   template<typename T, typename Ts>
-  struct as_polyfloat_like<T, coefficients<Ts>>
-    : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
+  struct as_polyfloat_like<T, coefficients<Ts>> : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
   {
   };
 
   template<typename T, typename Ts>
-  struct as_polyfloat_like<T, nodes<Ts>>
-    : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
+  struct as_polyfloat_like<T, nodes<Ts>> : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
   {
   };
 
@@ -229,6 +222,5 @@ namespace plf
   {
   };
   template<typename... Ts> using as_polyfloat_like_t = typename as_polyfloat_like<Ts...>::type;
-
 
 }

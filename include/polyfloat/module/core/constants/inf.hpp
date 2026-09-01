@@ -16,15 +16,13 @@ namespace plf
 {
   template<typename Options> struct inf_t : eve::constant_callable<inf_t, Options>
   {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       return T(eve::inf(eve::as<u_t>()));
     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }

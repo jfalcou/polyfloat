@@ -15,26 +15,25 @@
 namespace plf
 {
 
-  template<typename Options> struct cumfun_t : eve::strict_tuple_callable<cumfun_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct cumfun_t : eve::strict_tuple_callable<cumfun_t, Options, raw_option, pedantic_option>
   {
-    template<typename T>
-    using return_type = T;
+    template<typename T> using return_type = T;
 
     template<typename... Ts>
     using result = kumi::result::fill_t<sizeof...(Ts), return_type<plf::as_polyfloat_like_t<Ts...>>>;
 
     template<eve::product_type Tup>
-    using tuple_result = kumi::result::fill_t< Tup::size(), return_type<kumi::apply_traits_t<as_polyfloat_like, Tup>>>;
+    using tuple_result = kumi::result::fill_t<Tup::size(), return_type<kumi::apply_traits_t<as_polyfloat_like, Tup>>>;
 
-    template<typename F, concepts::polyfloat_like ... Zs>
-    POLYFLOAT_FORCEINLINE result<Zs...> constexpr operator()(F f, Zs const& ...zs) const noexcept
+    template<typename F, concepts::polyfloat_like... Zs>
+    POLYFLOAT_FORCEINLINE result<Zs...> constexpr operator()(F f, Zs const&... zs) const noexcept
     {
       return POLYFLOAT_CALL(f, zs...);
     }
 
     template<typename F, eve::non_empty_product_type PT>
-    POLYFLOAT_FORCEINLINE constexpr tuple_result<PT>
-    operator()(  F f, PT t) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr tuple_result<PT> operator()(F f, PT t) const noexcept
     {
       return POLYFLOAT_CALL(f, t);
     }
@@ -91,23 +90,21 @@ namespace plf
 
 namespace plf::_
 {
-  template <typename F, eve::product_type PT, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto cumfun_(POLYFLOAT_DELAY(), O const & o, F f, PT tup) noexcept
+  template<typename F, eve::product_type PT, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, PT tup) noexcept
   {
-    if constexpr(PT::size() == 0)
-      return kumi::make_tuple();
+    if constexpr (PT::size() == 0) return kumi::make_tuple();
     else
     {
-      using e_t =  kumi::apply_traits_t<plf::as_polyfloat, PT>;
+      using e_t = kumi::apply_traits_t<plf::as_polyfloat, PT>;
       auto n = neutral(f)(eve::as<e_t>());
-      auto cvt = [](auto a){return plf::convert(a, eve::as_element<e_t>{});};
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<e_t>{}); };
       return kumi::inclusive_scan_left(f[o], kumi::map(cvt, tup), n);
     }
   }
 
-  template<typename F, typename ...Ts, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  cumfun_(POLYFLOAT_DELAY(), O const & o, F f, Ts... ts) noexcept
+  template<typename F, typename... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, Ts... ts) noexcept
   {
     return plf::cumfun[o](f, kumi::make_tuple(ts...));
   }

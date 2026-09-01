@@ -15,7 +15,8 @@
 namespace plf
 {
 
-  template<typename Options> struct is_not_nan_t : eve::elementwise_callable<is_not_nan_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct is_not_nan_t : eve::elementwise_callable<is_not_nan_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept

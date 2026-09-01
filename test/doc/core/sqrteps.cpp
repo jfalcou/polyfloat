@@ -7,7 +7,7 @@
 
 int main()
 {
-  using  mpfr::mpreal;
+  using mpfr::mpreal;
   {
     using t1_t = double;
     using t2_t = plf::polyfloat<double, 2>;
@@ -15,12 +15,12 @@ int main()
 
     std::cout << std::hexfloat << std::endl;
     std::cout << std::hexfloat << std::endl;
-    std::cout << plf::sqrteps(eve::as(t1_t()))<< std::endl;
-    std::cout << plf::sqrteps(eve::as(t2_t()))<< std::endl;
-    std::cout << plf::sqrteps(eve::as(t3_t()))<< std::endl;
-    std::cout << plf::sqrt(plf::eps(eve::as(t1_t())))<< std::endl;
-    std::cout << plf::sqrt(plf::eps(eve::as(t2_t())))<< std::endl;
-    std::cout << plf::sqrt(plf::eps(eve::as(t3_t())))<< std::endl;
+    std::cout << plf::sqrteps(eve::as(t1_t())) << std::endl;
+    std::cout << plf::sqrteps(eve::as(t2_t())) << std::endl;
+    std::cout << plf::sqrteps(eve::as(t3_t())) << std::endl;
+    std::cout << plf::sqrt(plf::eps(eve::as(t1_t()))) << std::endl;
+    std::cout << plf::sqrt(plf::eps(eve::as(t2_t()))) << std::endl;
+    std::cout << plf::sqrt(plf::eps(eve::as(t3_t()))) << std::endl;
   }
 
   {
@@ -29,11 +29,11 @@ int main()
     using t3_t = plf::polyfloat<float, 3>;
 
     std::cout << std::hexfloat << std::endl;
-    std::cout << plf::sqrteps(eve::as(t1_t()))<< std::endl;
-    std::cout << plf::sqrteps(eve::as(t2_t()))<< std::endl;
-    std::cout << plf::sqrteps(eve::as(t3_t()))<< std::endl;
-    std::cout << plf::sqrt(plf::eps(eve::as(t1_t())))<< std::endl;
-    std::cout << plf::sqrt(plf::eps(eve::as(t2_t())))<< std::endl;
+    std::cout << plf::sqrteps(eve::as(t1_t())) << std::endl;
+    std::cout << plf::sqrteps(eve::as(t2_t())) << std::endl;
+    std::cout << plf::sqrteps(eve::as(t3_t())) << std::endl;
+    std::cout << plf::sqrt(plf::eps(eve::as(t1_t()))) << std::endl;
+    std::cout << plf::sqrt(plf::eps(eve::as(t2_t()))) << std::endl;
     std::cout << plf::sqrt(plf::eps(eve::as(t3_t()))) << std::endl;
   }
 }

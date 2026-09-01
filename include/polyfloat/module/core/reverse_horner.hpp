@@ -20,7 +20,9 @@
 namespace plf
 {
 
-  template<typename Options> struct reverse_horner_t : eve::strict_tuple_callable<reverse_horner_t, Options, kahan_option, raw_option, pedantic_option>
+  template<typename Options>
+  struct reverse_horner_t
+    : eve::strict_tuple_callable<reverse_horner_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -35,7 +37,8 @@ namespace plf
 
     template<concepts::polyfloat_like X, eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-      EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, eve::coefficients<Tup>> operator()(X const & x, Tup const& t) const noexcept
+    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, eve::coefficients<Tup>> operator()(X const& x,
+                                                                                        Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(x, t);
@@ -129,60 +132,57 @@ namespace plf::_
 {
 
   template<typename X, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  reverse_horner_(POLYFLOAT_DELAY(), O const &, X ) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
     return eve::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  reverse_horner_(POLYFLOAT_DELAY(), O const & o, X xx, C c0, Cs... cs) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
   {
-    using r_t   =  as_polyfloat_like_t<X, C, Cs...>;
-    if constexpr(dimension_v<r_t> == 1)
-      return eve::reverse_horner[o](xx, c0, cs...);
+    using r_t = as_polyfloat_like_t<X, C, Cs...>;
+    if constexpr (dimension_v<r_t> == 1) return eve::reverse_horner[o](xx, c0, cs...);
     else
     {
-      auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
-      constexpr auto N =  sizeof...(Cs);
-      if constexpr( N == 0 )
-        return plf::convert(c0, eve::as_element<r_t>{});
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+      constexpr auto N = sizeof...(Cs);
+      if constexpr (N == 0) return plf::convert(c0, eve::as_element<r_t>{});
       else
       {
         auto x = r_t(xx);
-        using t_t = kumi::result::fill_t<sizeof...(cs)+1, r_t>;
-        t_t c {r_t{c0}, r_t{cs}...};
+        using t_t = kumi::result::fill_t<sizeof...(cs) + 1, r_t>;
+        t_t c{r_t{c0}, r_t{cs}...};
         return reverse_horner[o](x, coefficients<t_t>(c));
       }
     }
   }
 
   template<typename X, eve::product_type Tuple, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  reverse_horner_(POLYFLOAT_DELAY(), O const & o, X x, eve::coefficients<Tuple> const& tup) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(),
+                                                       O const& o,
+                                                       X x,
+                                                       eve::coefficients<Tuple> const& tup) noexcept
   {
     return horner[o](x, eve::coefficients(kumi::reverse(tup)));
   }
 
   template<typename X, eve::_::range R, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  reverse_horner_(POLYFLOAT_DELAY(), O const & o, X xx, R const& r) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
   {
     using r_t = as_polyfloat_like<X, typename R::value_type>;
     using u_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-    auto x    = cvt(xx);
-    auto cur  = std::rbegin(r);
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    auto x = cvt(xx);
+    auto cur = std::rbegin(r);
     auto first = std::rend(r);
-    if( first == cur ) return zero(as<r_t>());
-    else if( std::distance(cur, first) == 1 ) return cvt(*cur);
+    if (first == cur) return zero(as<r_t>());
+    else if (std::distance(cur, first) == 1) return cvt(*cur);
     else
     {
       auto dfma = fma[o];
       auto that = cvt(zero(as<r_t>()));
       auto step = [&](auto th, auto arg) { return dfma(x, th, arg); };
-      for(; cur != first; ++cur ) that = step(that, cvt(*cur));
+      for (; cur != first; ++cur) that = step(that, cvt(*cur));
       return that;
     }
   }

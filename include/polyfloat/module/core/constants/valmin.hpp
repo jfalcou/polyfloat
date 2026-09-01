@@ -16,28 +16,25 @@ namespace plf
 {
   template<typename Options> struct valmin_t : eve::constant_callable<valmin_t, Options>
   {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
+    template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       using i_t = eve::as_integer_t<u_t>;
       auto vlm = eve::valmin(eve::as<u_t>());
-      if constexpr(dimension_v<T> == 1)
-        return vlm;
-      else if constexpr(dimension_v<T> == 2)
-      {
-        auto nbts =-plf::effective_mantissa_bits(eve::as<u_t>());
-        return plf::_::from_pair(vlm, eve::ldexp(vlm, nbts));
-      }
-      else if constexpr(dimension_v<T> == 3)
+      if constexpr (dimension_v<T> == 1) return vlm;
+      else if constexpr (dimension_v<T> == 2)
       {
         auto nbts = -plf::effective_mantissa_bits(eve::as<u_t>());
-        return plf::_::from_triple(vlm, eve::ldexp(vlm, nbts),  eve::ldexp(vlm, 2*nbts));
+        return plf::_::from_pair(vlm, eve::ldexp(vlm, nbts));
+      }
+      else if constexpr (dimension_v<T> == 3)
+      {
+        auto nbts = -plf::effective_mantissa_bits(eve::as<u_t>());
+        return plf::_::from_triple(vlm, eve::ldexp(vlm, nbts), eve::ldexp(vlm, 2 * nbts));
       }
     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }

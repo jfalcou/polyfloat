@@ -17,17 +17,17 @@
 namespace plf
 {
 
-  template<typename Options> struct heaviside_t : eve::strict_elementwise_callable<heaviside_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct heaviside_t : eve::strict_elementwise_callable<heaviside_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_FORCEINLINE constexpr as_polyfloat_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(heaviside_t, heaviside_);
@@ -82,13 +82,13 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const& , Z const& a) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
     return Z(eve::heaviside(hi(a)));
   }
 
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const&, Z1 const&  a, Z2 const&  s) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto heaviside_(POLYFLOAT_DELAY(), O const&, Z1 const& a, Z2 const& s) noexcept
   {
     using t_t = as_polyfloat_t<Z1, Z2>;
     return if_else(a > s, t_t(1), eve::zero);

@@ -11,36 +11,35 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 
-
 namespace plf
 {
 
   template<typename Options> struct invlog_2_t : eve::constant_callable<invlog_2_t, Options>
   {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
+    template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
-      if constexpr(plf::dimension_v<T> == 1)
+      if constexpr (plf::dimension_v<T> == 1)
       {
-        if constexpr(std::same_as<u_t, float>  ) return float(0x1.62e43p-1);
-        else if constexpr(std::same_as<u_t, double> ) return double(0x1.62e42fefa39efp-1);
+        if constexpr (std::same_as<u_t, float>) return float(0x1.62e43p-1);
+        else if constexpr (std::same_as<u_t, double>) return double(0x1.62e42fefa39efp-1);
       }
-      else if constexpr(plf::dimension_v<T> == 2)
+      else if constexpr (plf::dimension_v<T> == 2)
       {
-        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_pair<float>(0x1.715476p+0,  0x1.4ae0cp-26);
-        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_pair<double>(0x1.71547652b82fep+0,  0x1.777d0ffda0d24p-56);
-
+        if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<float>(0x1.715476p+0, 0x1.4ae0cp-26);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_pair<double>(0x1.71547652b82fep+0, 0x1.777d0ffda0d24p-56);
       }
-      else if constexpr(plf::dimension_v<T> == 3)
+      else if constexpr (plf::dimension_v<T> == 3)
       {
-        if constexpr(std::same_as<u_t, float>  ) return plf::_::from_triple<float>(0x1.715476p+0,  0x1.4ae0cp-26,  -0x1.e8883p-52);
-        else if constexpr(std::same_as<u_t, double> ) return plf::_::from_triple<double>(0x1.71547652b82fep+0,  0x1.777d0ffda0d24p-56,  -0x1.60bb8a5442ab9p-110);
+        if constexpr (std::same_as<u_t, float>)
+          return plf::_::from_triple<float>(0x1.715476p+0, 0x1.4ae0cp-26, -0x1.e8883p-52);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_triple<double>(0x1.71547652b82fep+0, 0x1.777d0ffda0d24p-56, -0x1.60bb8a5442ab9p-110);
       }
     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }

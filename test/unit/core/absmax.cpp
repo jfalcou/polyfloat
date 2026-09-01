@@ -15,36 +15,34 @@ TTS_CASE_WITH("Check absmax two params",
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2,
-               T const& a3, T const& a4, T const& a5)
+              tts::randoms(eve::valmin, eve::valmax))
+<typename T>(T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5)
 {
-  using  mpfr::mpreal;
-  using plf::absmax;
+  using mpfr::mpreal;
   using plf::abs;
-  auto mabsmax = [](auto a,  auto b){ return mpfr::abs(mpfr::max(a, b)); };
+  using plf::absmax;
+  auto mabsmax = [](auto a, auto b) { return mpfr::abs(mpfr::max(a, b)); };
   {
-    using pv_t  = plf::polyfloat<T, 2>;
+    using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_EQUAL(absmax(pa, pb), tts::mpfr_exec(mabsmax, pa, pb));
     TTS_EQUAL(absmax(pa, pb), plf::if_else(pa < pb, abs(pb), abs(pa)));
     TTS_EQUAL(absmax(a0, pa), absmax(pv_t(a0), pa));
     TTS_EQUAL(absmax(pa, a0), absmax(pa, pv_t(a0)));
-    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(absmax(wpab, wpab), plf::abs(wpab), tts::epsprec<T>());
   }
   {
-    using pv_t  = plf::polyfloat<T, 3>;
+    using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     TTS_EQUAL(absmax(pa, pb), tts::mpfr_exec(mabsmax, pa, pb));
     TTS_EQUAL(absmax(pa, pb), plf::if_else(pa < pb, abs(pb), abs(pa)));
     TTS_EQUAL(absmax(a0, pa), absmax(pv_t(a0), pa));
     TTS_EQUAL(absmax(pa, a0), absmax(pa, pv_t(a0)));
-    using wpv_t  = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(absmax(wpab, wpab), plf::abs(wpab), tts::epsprec<T>());
   }

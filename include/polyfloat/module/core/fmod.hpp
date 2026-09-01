@@ -20,10 +20,10 @@ namespace plf
 
   template<typename Options> struct fmod_t : eve::strict_tuple_callable<fmod_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(fmod_t, fmod_);
@@ -88,21 +88,18 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto fmod_(POLYFLOAT_DELAY(), O const& , Z1 const& aa, Z2 const& bb) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto fmod_(POLYFLOAT_DELAY(), O const&, Z1 const& aa, Z2 const& bb) noexcept
   {
-     using plf_t = as_polyfloat_t<Z1, Z2>;
-     if constexpr(dimension_v<plf_t> == 1)
-      return eve::fmod(aa, bb);
+    using plf_t = as_polyfloat_t<Z1, Z2>;
+    if constexpr (dimension_v<plf_t> == 1) return eve::fmod(aa, bb);
     else
     {
       using u_t = eve::element_type_t<plf_t>;
-      auto cvt = [](auto a){ return plf::convert(a, as<u_t>());};
+      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
       auto a = cvt(aa);
       auto b = cvt(bb);
-      return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b),
-                     eve::allbits,
-                     plf::if_else(is_eqz(a)||is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
-
+      return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b), eve::allbits,
+                     plf::if_else(is_eqz(a) || is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
     }
   }
 }

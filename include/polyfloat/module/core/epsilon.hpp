@@ -17,12 +17,13 @@
 namespace plf
 {
 
-  template<typename Options> struct epsilon_t : eve::elementwise_callable<epsilon_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct epsilon_t : eve::elementwise_callable<epsilon_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr as_component_type_t<Z> operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(epsilon_t, epsilon_);
@@ -70,25 +71,20 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto epsilon_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto epsilon_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::epsilon(z);
-    else if constexpr(dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 1) return eve::epsilon(z);
+    else if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return if_else(eve::is_nez(l), eve::epsilon(l), eve::epsilon(eve::sulp(h)));
     }
-    else if constexpr(dimension_v<Z> == 3)
+    else if constexpr (dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
-      return plf::if_else(eve::is_nez(l),
-                          eve::epsilon(l),
-                          plf::if_else(eve::is_nez(m),
-                                       eve::epsilon(eve::sulp(m)),
-                                       eve::epsilon(eve::sulp(eve::sulp(h)))
-                                      )
-                         );
+      return plf::if_else(
+        eve::is_nez(l), eve::epsilon(l),
+        plf::if_else(eve::is_nez(m), eve::epsilon(eve::sulp(m)), eve::epsilon(eve::sulp(eve::sulp(h)))));
     }
   }
 }

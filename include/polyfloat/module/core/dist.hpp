@@ -19,10 +19,10 @@ namespace plf
 
   template<typename Options> struct dist_t : eve::strict_tuple_callable<dist_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(dist_t, dist_);
@@ -70,8 +70,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto dist_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto dist_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
-    return plf::abs(z1-z2);
+    return plf::abs(z1 - z2);
   }
 }

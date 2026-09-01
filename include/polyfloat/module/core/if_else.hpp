@@ -19,8 +19,8 @@ namespace plf
     template<typename M, typename T, typename F>
     requires(concepts::polyfloat<T> || concepts::polyfloat<F>)
     POLYFLOAT_FORCEINLINE constexpr expected_result_t<eve::if_else, M, T, F> operator()(M const& m,
-                                                                                    T const& t,
-                                                                                    F const& f) const noexcept
+                                                                                        T const& t,
+                                                                                        F const& f) const noexcept
     {
       return POLYFLOAT_CALL(m, t, f);
     }
@@ -78,7 +78,8 @@ namespace plf
 namespace plf::_
 {
   template<typename M, typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto if_else_(POLYFLOAT_DELAY(), O const& o, M const& m, Z1 const& t, Z2 const& f) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto if_else_(
+    POLYFLOAT_DELAY(), O const& o, M const& m, Z1 const& t, Z2 const& f) noexcept
   {
     if constexpr (concepts::polyfloat<Z1> && concepts::polyfloat<Z2>)
     {

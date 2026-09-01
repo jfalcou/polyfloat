@@ -11,15 +11,14 @@ namespace plf::_
   // if the `pedantic` option is satisfied and any  satisfies the predicate test, value is returned else r.
   //
   // This is used in manhattan,  sum_of_squares, hypot and lpnorm.
-  template <typename O, typename T, typename ...Ts> auto force_if_any(O, T r, auto test, auto value, Ts...ts)
+  template<typename O, typename T, typename... Ts> auto force_if_any(O, T r, auto test, auto value, Ts... ts)
   {
-    if constexpr(O::contains(pedantic))
+    if constexpr (O::contains(pedantic))
     {
-      auto found =  (test(ts) || ...);
+      auto found = (test(ts) || ...);
       return plf::if_else(found, value, r);
     }
-    else
-      return r;
+    else return r;
   }
 
 }

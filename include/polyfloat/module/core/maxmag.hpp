@@ -19,12 +19,13 @@
 namespace plf
 {
 
-  template<typename Options> struct maxmag_t : eve::strict_tuple_callable<maxmag_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct maxmag_t : eve::strict_tuple_callable<maxmag_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
-     return POLYFLOAT_CALL(z1, zs...);
+      return POLYFLOAT_CALL(z1, zs...);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(maxmag_t, maxmag_);
@@ -68,23 +69,24 @@ namespace plf
   //! @}
   //======================================================================================================================
 
-  template <typename Options>
-  constexpr auto neutral(maxmag_t<Options>) noexcept { return plf::valmin; }
+  template<typename Options> constexpr auto neutral(maxmag_t<Options>) noexcept
+  {
+    return plf::valmin;
+  }
 }
 
 namespace plf::_
 {
-  template<typename Z1, typename ... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto maxmag_(POLYFLOAT_DELAY(), O const& , Z1 z1, Zs ...zs) noexcept
+  template<typename Z1, typename... Zs, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto maxmag_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
-    if constexpr(sizeof...(Zs) == 0)
-      return z1;
+    if constexpr (sizeof...(Zs) == 0) return z1;
     else
     {
       using r_t = as_polyfloat_t<Z1, Zs...>;
       using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      if constexpr(sizeof...(Zs) == 1)
+      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+      if constexpr (sizeof...(Zs) == 1)
       {
         auto zz1 = cvt(z1);
         auto zzs = cvt(zs...);

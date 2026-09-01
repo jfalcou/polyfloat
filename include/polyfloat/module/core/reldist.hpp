@@ -16,16 +16,16 @@
 #include <polyfloat/module/core/is_eqz.hpp>
 #include <polyfloat/module/core/max.hpp>
 
-
 namespace plf
 {
 
-  template<typename Options> struct reldist_t : eve::strict_elementwise_callable<reldist_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct reldist_t : eve::strict_elementwise_callable<reldist_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(reldist_t, reldist_);
@@ -77,7 +77,6 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto reldist_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Z2 const& z2) noexcept
   {
     auto d = dist[o](z1, z2);
-    return if_else(is_infinite(d) || is_eqz(d), d,
-                   d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(hi(z1))))));
+    return if_else(is_infinite(d) || is_eqz(d), d, d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(hi(z1))))));
   }
 }

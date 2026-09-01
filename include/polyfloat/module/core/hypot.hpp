@@ -79,8 +79,10 @@ namespace plf
   //! @}
   //======================================================================================================================
 
-  template <typename Options>
-  constexpr auto neutral(hypot_t<Options>) noexcept { return plf::zero; }
+  template<typename Options> constexpr auto neutral(hypot_t<Options>) noexcept
+  {
+    return plf::zero;
+  }
 
   // Required for optimisation detections
   using callable_hypot_ = eve::tag_t<hypot>;
@@ -95,28 +97,30 @@ namespace plf::_
     return plf::abs(t0);
   }
 
-  template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like T1, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto hypot_(POLYFLOAT_DELAY(), O const& o,
-                                            T0 const& r0, T1 const& r1, Ts const&... rs) noexcept
+  template<eve::callable_options O,
+           concepts::polyfloat_like T0,
+           concepts::polyfloat_like T1,
+           concepts::polyfloat_like... Ts>
+  POLYFLOAT_FORCEINLINE constexpr auto hypot_(
+    POLYFLOAT_DELAY(), O const& o, T0 const& r0, T1 const& r1, Ts const&... rs) noexcept
   {
-    if constexpr(O::contains(raw))
+    if constexpr (O::contains(raw))
     {
       return plf::sqrt(plf::sum_of_squares(r0, r1, rs...));
     }
     else
     {
       using r_t = as_polyfloat_t<T0, T1, Ts...>;
-      if constexpr (dimension_v<r_t> == 1)
-        return eve::hypot[o](r0, r1, rs...);
+      if constexpr (dimension_v<r_t> == 1) return eve::hypot[o](r0, r1, rs...);
       else
       {
-        auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
-        auto expo = [&](auto x){return if_else(plf::is_nan(x), eve::zero, plf::exponent(cvt(x))); };
-        auto e  = -eve::maxmag(expo(r0), expo(r1), expo(rs)...);
-        if constexpr(O::contains(pedantic))
+        auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+        auto expo = [&](auto x) { return if_else(plf::is_nan(x), eve::zero, plf::exponent(cvt(x))); };
+        auto e = -eve::maxmag(expo(r0), expo(r1), expo(rs)...);
+        if constexpr (O::contains(pedantic))
         {
           auto nan_found = plf::false_(eve::as<r_t>());
-          auto f = [&](auto a){
+          auto f = [&](auto a) {
             nan_found = plf::is_nan(a);
             return if_else(nan_found, zero, plf::sqr(ldexp[o](cvt(a), e)));
           };
@@ -126,7 +130,7 @@ namespace plf::_
         }
         else
         {
-          auto f = [&](auto a){ return cvt(plf::sqr(ldexp[o](cvt(a), e))); };
+          auto f = [&](auto a) { return cvt(plf::sqr(ldexp[o](cvt(a), e))); };
           r_t that = plf::add[o](f(r0), f(r1), f(rs)...);
           return plf::ldexp[pedantic](plf::sqrt(that), -e);
         }

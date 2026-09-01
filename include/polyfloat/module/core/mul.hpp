@@ -19,10 +19,10 @@ namespace plf
 
   template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
@@ -66,8 +66,10 @@ namespace plf
   //! @}
   //======================================================================================================================
 
-  template <typename Options>
-  constexpr auto neutral(mul_t<Options>) noexcept { return plf::one; }
+  template<typename Options> constexpr auto neutral(mul_t<Options>) noexcept
+  {
+    return plf::one;
+  }
 
   // Required for optimisation detections
   using callable_mul_ = eve::tag_t<mul>;
@@ -77,8 +79,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const& , Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
-    return z1*z2;
+    return z1 * z2;
   }
 }

@@ -8,19 +8,15 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-TTS_CASE_WITH("Check ceil",
-              plf::scalar_real_types,
-              tts::randoms(-1000,1000),
-              tts::randoms(-1000,1000),
-              tts::randoms(-1000,1000)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2)
+TTS_CASE_WITH(
+  "Check ceil", plf::scalar_real_types, tts::randoms(-1000, 1000), tts::randoms(-1000, 1000), tts::randoms(-1000, 1000))
+<typename T>(T const& a0, T const& a1, T const& a2)
 {
-  using  mpfr::mpreal;
+  using mpfr::mpreal;
   using plf::ceil;
   {
     {
-      using pv_t  = plf::polyfloat<T, 2>;
+      using pv_t = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t cpa = plf::ceil(pa);
       TTS_EXPECT(pa <= cpa);
@@ -28,7 +24,7 @@ TTS_CASE_WITH("Check ceil",
       TTS_EXPECT(plf::is_flint(cpa));
     }
     {
-      using pv_t  = plf::polyfloat<T, 3>;
+      using pv_t = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t cpa = plf::ceil(pa);
       TTS_EXPECT(pa <= cpa);

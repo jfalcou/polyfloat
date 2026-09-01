@@ -12,20 +12,19 @@ TTS_CASE_WITH("Check nextint",
               plf::scalar_real_types,
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2)
+              tts::randoms(-1000, 1000))
+<typename T>(T const& a0, T const& a1, T const& a2)
 {
-  using plf::prevint;
   using plf::floor;
+  using plf::prevint;
   {
     {
-      using pv_t  = plf::polyfloat<T, 2>;
+      using pv_t = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       TTS_EQUAL(prevint(pa), floor(pa));
     }
     {
-      using pv_t  = plf::polyfloat<T, 3>;
+      using pv_t = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       TTS_EQUAL(prevint(pa), floor(pa));
     }

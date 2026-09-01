@@ -28,7 +28,6 @@ namespace plf
       return POLYFLOAT_CALL(z0, z1, z2);
     }
 
-
     POLYFLOAT_CALLABLE_OBJECT(fnma_t, fnma_);
   };
   //======================================================================================================================
@@ -74,7 +73,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto fnma_(POLYFLOAT_DELAY(), O const& , Z1 const& x, Z2 const& y, Z3 const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto fnma_(
+    POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     return fma(minus(x), y, z);
   }
