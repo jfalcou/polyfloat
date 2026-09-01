@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2026-08-29 21:39:21</td>
+      <td>2026-09-01 22:49:15</td>
     </tr>
   </table>
 </div>
@@ -74,7 +74,7 @@
       <th>Block coverage</th>
     </tr>
     <tr><td><a href="#l13">auto plf::_::inner_fma&lt;plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt; &gt;(plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;) (line 13)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-    <tr><td><a href="#l21">auto plf::_::inner_fma&lt;plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt; &gt;(plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;)::{lambda(auto:1)#1}::operator()&lt;plf::polyfloat&lt;double, 3u&gt; &gt;(plf::polyfloat&lt;double, 3u&gt;) const (line 21)</a></td><td>called 12 times, returned 12 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l20">auto plf::_::inner_fma&lt;plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt;, plf::polyfloat&lt;double, 3u&gt; &gt;(plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;, plf::polyfloat&lt;double, 3u&gt; const&amp;)::{lambda(auto:1)#1}::operator()&lt;plf::polyfloat&lt;double, 3u&gt; &gt;(plf::polyfloat&lt;double, 3u&gt;) const (line 20)</a></td><td>called 12 times, returned 12 times</td><td>100.0%</td></tr>
   </table>
 </details>
 
@@ -199,353 +199,346 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">r_t</span><span class="o">&gt;</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></td>
+      <td class="src "><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">r_t</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">fma</span><span class="p">[</span><span class="n">pedantic</span><span class="p">](</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l17" href="#l17">17</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">fma</span><span class="p">[</span><span class="n">pedantic</span><span class="p">](</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z3</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l18" href="#l18">18</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w">  </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z3</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w">  </span><span class="mi">2</span><span class="p">))</span></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l19" href="#l19">19</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+      <td class="src "><span class="w">      </span><span class="k">using</span><span class="w"> </span><span class="n">r_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_polyfloat_t</span><span class="o">&lt;</span><span class="n">Z1</span><span class="p">,</span><span class="w"> </span><span class="n">Z2</span><span class="p">,</span><span class="w"> </span><span class="n">Z3</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l20" href="#l20">20</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">using</span><span class="w"> </span><span class="n">r_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_polyfloat_t</span><span class="o">&lt;</span><span class="n">Z1</span><span class="p">,</span><span class="w"> </span><span class="n">Z2</span><span class="p">,</span><span class="w"> </span><span class="n">Z3</span><span class="o">&gt;</span><span class="p">;</span></td>
+      <td class="linecount coveredLine">12</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">cvt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">convert</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">as</span><span class="o">&lt;</span><span class="n">eve</span><span class="o">::</span><span class="n">element_type_t</span><span class="o">&lt;</span><span class="n">r_t</span><span class="o">&gt;&gt;</span><span class="p">());</span><span class="w"> </span><span class="p">};</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l21" href="#l21">21</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">12</td>
-      <td class="src coveredLine"><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">cvt</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="p">){</span><span class="k">return</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">convert</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">as</span><span class="o">&lt;</span><span class="n">eve</span><span class="o">::</span><span class="n">element_type_t</span><span class="o">&lt;</span><span class="n">r_t</span><span class="o">&gt;&gt;</span><span class="p">());};</span></td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">e0</span><span class="p">,</span><span class="w"> </span><span class="n">e1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">three_fma</span><span class="p">(</span><span class="n">cvt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">cvt</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">cvt</span><span class="p">(</span><span class="n">z</span><span class="p">));</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l22" href="#l22">22</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount coveredLine">12</td>
-      <td class="src coveredLine"><span class="w">      </span><span class="k">auto</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">e0</span><span class="p">,</span><span class="w"> </span><span class="n">e1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">three_fma</span><span class="p">(</span><span class="n">cvt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">cvt</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">cvt</span><span class="p">(</span><span class="n">z</span><span class="p">));</span></td>
-    </tr>
-    <tr class="source-line">
-      <td class="lineno"><a id="l23" href="#l23">23</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">4</td>
       <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l24" href="#l24">24</a></td>
+      <td class="lineno"><a id="l23" href="#l23">23</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
       <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l24" href="#l24">24</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z3</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l25" href="#l25">25</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z3</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l26" href="#l26">26</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+      <td class="src "><span class="w">      </span><span class="c1">//      auto fmap = eve::fma[pedantic];</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l27" href="#l27">27</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//      auto fmap = eve::fma[pedantic];</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">xlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l28" href="#l28">28</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">xlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">yhi</span><span class="p">,</span><span class="w"> </span><span class="n">ylo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l29" href="#l29">29</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">yhi</span><span class="p">,</span><span class="w"> </span><span class="n">ylo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">zlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l30" href="#l30">30</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">zlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_prod</span><span class="p">(</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">yhi</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l31" href="#l31">31</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_prod</span><span class="p">(</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">yhi</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ylo</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l32" href="#l32">32</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ylo</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">fma</span><span class="p">(</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">ylo</span><span class="p">,</span><span class="w"> </span><span class="n">t0</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l33" href="#l33">33</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">fma</span><span class="p">(</span><span class="n">xhi</span><span class="p">,</span><span class="w"> </span><span class="n">ylo</span><span class="p">,</span><span class="w"> </span><span class="n">t0</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">fma</span><span class="p">(</span><span class="n">xlo</span><span class="p">,</span><span class="w"> </span><span class="n">yhi</span><span class="p">,</span><span class="w"> </span><span class="n">t1</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l34" href="#l34">34</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">fma</span><span class="p">(</span><span class="n">xlo</span><span class="p">,</span><span class="w"> </span><span class="n">yhi</span><span class="p">,</span><span class="w"> </span><span class="n">t1</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l35" href="#l35">35</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">dhi</span><span class="p">,</span><span class="w"> </span><span class="n">dlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c3</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l36" href="#l36">36</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">dhi</span><span class="p">,</span><span class="w"> </span><span class="n">dlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c3</span><span class="p">);</span></td>
+      <td class="src "></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l37" href="#l37">37</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">slo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">dhi</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l38" href="#l38">38</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">slo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">dhi</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">thi</span><span class="p">,</span><span class="w"> </span><span class="n">tlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zlo</span><span class="p">,</span><span class="w"> </span><span class="n">dlo</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l39" href="#l39">39</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">thi</span><span class="p">,</span><span class="w"> </span><span class="n">tlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zlo</span><span class="p">,</span><span class="w"> </span><span class="n">dlo</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">thi</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l40" href="#l40">40</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">thi</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">vlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l41" href="#l41">41</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">vlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vlo</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l42" href="#l42">42</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vlo</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l43" href="#l43">43</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">r_t</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l44" href="#l44">44</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">r_t</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">);</span></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l45" href="#l45">45</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l46" href="#l46">46</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">((</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">Z2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l47" href="#l47">47</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">zlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l48" href="#l48">48</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">zlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_prod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l49" href="#l49">49</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">chi</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_prod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">slo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">chi</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l50" href="#l50">50</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">slo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zhi</span><span class="p">,</span><span class="w"> </span><span class="n">chi</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">thi</span><span class="p">,</span><span class="w"> </span><span class="n">tlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zlo</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l51" href="#l51">51</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">thi</span><span class="p">,</span><span class="w"> </span><span class="n">tlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">(</span><span class="n">zlo</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">thi</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l52" href="#l52">52</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">thi</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">vlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l53" href="#l53">53</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">vlo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">shi</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vlo</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l54" href="#l54">54</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vlo</span><span class="p">;</span></td>
+      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l55" href="#l55">55</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">two_add</span><span class="p">[</span><span class="n">eve</span><span class="o">::</span><span class="n">raw</span><span class="p">](</span><span class="n">vhi</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">r_t</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">);</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l56" href="#l56">56</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">r_t</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">);</span></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l57" href="#l57">57</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//     else</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l58" href="#l58">58</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//     else</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//     {</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l59" href="#l59">59</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//     {</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//       using r_t = as_polyfloat_t&lt;Z1, Z2, Z3&gt;;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l60" href="#l60">60</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//       using r_t = as_polyfloat_t&lt;Z1, Z2, Z3&gt;;</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//       auto cvt =  [](auto a){return plf::convert(a, eve::as&lt;eve::element_type_t&lt;r_t&gt;&gt;());};</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l61" href="#l61">61</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//       auto cvt =  [](auto a){return plf::convert(a, eve::as&lt;eve::element_type_t&lt;r_t&gt;&gt;());};</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//       return fma(cvt(x), cvt(y), cvt(z));</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l62" href="#l62">62</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//       return fma(cvt(x), cvt(y), cvt(z));</span></td>
+      <td class="src "><span class="w">    </span><span class="c1">//     }</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l63" href="#l63">63</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="c1">//     }</span></td>
+      <td class="src "><span class="w">  </span><span class="p">}</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l64" href="#l64">64</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="p">}</span></td>
-    </tr>
-    <tr class="source-line">
-      <td class="lineno"><a id="l65" href="#l65">65</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
       <td class="src "><span class="p">}</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l66" href="#l66">66</a></td>
+      <td class="lineno"><a id="l65" href="#l65">65</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>

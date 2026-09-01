@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['three_5fadd_0',['three_add',['../group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1',1,'plf']]],
-  ['three_5ffma_1',['three_fma',['../group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html#gabda6529346e0ae007b7709fabfe7cb59',1,'plf']]],
-  ['trunc_2',['trunc',['../group__core_ga9aa5715fd56663843e5d34d9e3904338.html#ga9aa5715fd56663843e5d34d9e3904338',1,'plf']]],
-  ['two_5fadd_3',['two_add',['../group__core__accuracy_ga4f331a5f0e10706ede78c9ac753d6ef4.html#ga4f331a5f0e10706ede78c9ac753d6ef4',1,'plf']]],
-  ['two_5fdiv_5fapprox_4',['two_div_approx',['../group__core__accuracy_gab1a360af3bf67971c24e0b8c94ff4c1c.html#gab1a360af3bf67971c24e0b8c94ff4c1c',1,'plf']]],
-  ['two_5ffma_5fapprox_5',['two_fma_approx',['../group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html#gae79e44f7a860ba7c33be885213090df1',1,'plf']]],
-  ['two_5fprod_6',['two_prod',['../group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html#gae8d597dabc4dc057e3110c0a89afe8f3',1,'plf']]],
-  ['two_5fsplit_7',['two_split',['../group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a.html#ga9086f4afc7e04d20a2a3bf8212dc677a',1,'plf']]]
+  ['of_5fclass_0',['of_class',['https://jfalcou.github.io/eve/group__eve__core__internal_ga056f305b9a8385ae40ee917d661666f9.html#ga056f305b9a8385ae40ee917d661666f9',1,'eve::of_class'],['https://jfalcou.github.io/eve/group__eve__core__internal_ga056f305b9a8385ae40ee917d661666f9.html#ga056f305b9a8385ae40ee917d661666f9',1,'eve::of_class']]],
+  ['omega_1',['omega',['https://jfalcou.github.io/eve/group__eve__special_gab2da346734b5d477afbbc1c91018a940.html#gab2da346734b5d477afbbc1c91018a940',1,'eve::omega'],['https://jfalcou.github.io/eve/group__eve__special_gab2da346734b5d477afbbc1c91018a940.html#gab2da346734b5d477afbbc1c91018a940',1,'eve::omega']]],
+  ['one_2',['one',['https://jfalcou.github.io/eve/group__eve__core__constants_gac66f3d66fece21b4454e79500cc56f84.html#gac66f3d66fece21b4454e79500cc56f84',1,'eve::one'],['https://jfalcou.github.io/eve/group__eve__core__constants_gac66f3d66fece21b4454e79500cc56f84.html#gac66f3d66fece21b4454e79500cc56f84',1,'eve::one']]],
+  ['oneminus_3',['oneminus',['https://jfalcou.github.io/eve/group__eve__core__arithmetic_ga06d1ba16e6d014da9fb540261012ad76.html#ga06d1ba16e6d014da9fb540261012ad76',1,'eve::oneminus'],['https://jfalcou.github.io/eve/group__eve__core__arithmetic_ga06d1ba16e6d014da9fb540261012ad76.html#ga06d1ba16e6d014da9fb540261012ad76',1,'eve::oneminus'],['../group__core_gaffe46da86ea6a171bb1de5203b24334a.html#gaffe46da86ea6a171bb1de5203b24334a',1,'plf::oneminus']]],
+  ['oneosqrteps_4',['oneosqrteps',['https://jfalcou.github.io/eve/group__eve__core__constants_gaa4dee4a2fdd3007c7da25099e85ea347.html#gaa4dee4a2fdd3007c7da25099e85ea347',1,'eve::oneosqrteps'],['https://jfalcou.github.io/eve/group__eve__core__constants_gaa4dee4a2fdd3007c7da25099e85ea347.html#gaa4dee4a2fdd3007c7da25099e85ea347',1,'eve::oneosqrteps'],['../group__constants_gaf37d435e94d94585ba4b0848c520316b.html#gaf37d435e94d94585ba4b0848c520316b',1,'plf::oneosqrteps']]],
+  ['oneotwoeps_5',['oneotwoeps',['https://jfalcou.github.io/eve/group__eve__core__constants_ga32a23889e11125f0d2248d10ba03d936.html#ga32a23889e11125f0d2248d10ba03d936',1,'eve::oneotwoeps'],['https://jfalcou.github.io/eve/group__eve__core__constants_ga32a23889e11125f0d2248d10ba03d936.html#ga32a23889e11125f0d2248d10ba03d936',1,'eve::oneotwoeps']]],
+  ['overflow_6',['overflow',['https://jfalcou.github.io/eve/group__eve__algo__traits.html#ga988f8c96b378db06d7779187f19499cc',1,'eve::algo']]]
 ];

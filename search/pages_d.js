@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['testing_20rationale_0',['Testing rationale',['../index.html#autotoc_md12',1,'']]],
-  ['this_20implementation_20provide_1',['What does this implementation provide',['../index.html#autotoc_md2',1,'']]]
+  ['quadratic_20equations_0',['Solving quadratic equations',['https://jfalcou.github.io/eve/intro-05.html',1,'']]],
+  ['quick_20start_1',['Installation &amp;amp; Quick Start',['https://jfalcou.github.io/eve/setup.html',1,'']]]
 ];

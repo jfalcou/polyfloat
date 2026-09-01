@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['math_20constants_0',['Math constants',['../index.html#autotoc_md10',1,'']]],
-  ['math_20elementary_20functions_1',['Math elementary functions',['../index.html#autotoc_md9',1,'']]],
-  ['math_20special_20functions_2',['Math special functions',['../index.html#autotoc_md11',1,'']]]
+  ['implementation_20provide_0',['What does this implementation provide',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md2',1,'']]],
+  ['installation_20quick_20start_1',['Installation &amp;amp; Quick Start',['https://jfalcou.github.io/eve/setup.html',1,'']]],
+  ['interaction_20with_20native_20code_2',['Interaction with native code.',['https://jfalcou.github.io/eve/inter-with-native.html',1,'']]]
 ];

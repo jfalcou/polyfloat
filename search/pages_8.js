@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['numbers_0',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]]
+  ['licence_0',['Licence',['../licence.html',1,'']]],
+  ['log_1',['Change Log',['https://jfalcou.github.io/eve/changelog.html',1,'']]]
 ];

@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['operators_0',['Operators',['../index.html#autotoc_md4',1,'']]]
+  ['math_20constants_0',['Math constants',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md10',1,'']]],
+  ['math_20elementary_20functions_1',['Math elementary functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md9',1,'']]],
+  ['math_20special_20functions_2',['Math special functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md11',1,'']]],
+  ['multiple_20architecture_20targets_3',['Handling Multiple Architecture Targets',['https://jfalcou.github.io/eve/multiarch.html',1,'']]]
 ];

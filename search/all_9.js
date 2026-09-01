@@ -1,16 +1,6 @@
 var searchData=
 [
-  ['nbmantissabits_0',['nbmantissabits',['../group__constants_ga353f26b1179c82267a8066987951a553.html#ga353f26b1179c82267a8066987951a553',1,'plf']]],
-  ['nearest_1',['nearest',['../group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197',1,'plf']]],
-  ['negabsmax_2',['negabsmax',['../group__core_ga54e69f527759113beefec446c9c8f7de.html#ga54e69f527759113beefec446c9c8f7de',1,'plf']]],
-  ['negabsmin_3',['negabsmin',['../group__core_ga519b13d3f054b319b6ef5e59eb029a47.html#ga519b13d3f054b319b6ef5e59eb029a47',1,'plf']]],
-  ['negate_4',['negate',['../group__core_ga0b77fce5aa260a3629bed972eee3ba39.html#ga0b77fce5aa260a3629bed972eee3ba39',1,'plf']]],
-  ['negatenz_5',['negatenz',['../group__core_gacb0784fa93d2122cec99faf7a9760daa.html#gacb0784fa93d2122cec99faf7a9760daa',1,'plf']]],
-  ['negmaxabs_6',['negmaxabs',['../group__core_ga0ddb4ae3b0954209eca0c7257d166dbc.html#ga0ddb4ae3b0954209eca0c7257d166dbc',1,'plf']]],
-  ['negminabs_7',['negminabs',['../group__core_gace9b23e8f34fdc09478d8901078f1bb6.html#gace9b23e8f34fdc09478d8901078f1bb6',1,'plf']]],
-  ['next_8',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf']]],
-  ['nextafter_9',['nextafter',['../group__core_ga09f396a43b0cf65385e8a586a2b410e9.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf']]],
-  ['nextint_10',['nextint',['../group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf']]],
-  ['nthroot_11',['nthroot',['../group__core_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf']]],
-  ['numbers_12',['Polyfloat numbers',['../index.html#autotoc_md0',1,'']]]
+  ['jacobi_0',['jacobi',['https://jfalcou.github.io/eve/group__eve__polynomial_ga0e8517a2ade493151ddd04defc631971.html#ga0e8517a2ade493151ddd04defc631971',1,'eve::jacobi'],['https://jfalcou.github.io/eve/group__eve__polynomial_ga0e8517a2ade493151ddd04defc631971.html#ga0e8517a2ade493151ddd04defc631971',1,'eve::jacobi']]],
+  ['jacobi_5felliptic_1',['jacobi_elliptic',['https://jfalcou.github.io/eve/group__eve__elliptic_gaeec8a87b0fc27df584c3ace240a2fda8.html#gaeec8a87b0fc27df584c3ace240a2fda8',1,'eve::jacobi_elliptic'],['https://jfalcou.github.io/eve/group__eve__elliptic_gaeec8a87b0fc27df584c3ace240a2fda8.html#gaeec8a87b0fc27df584c3ace240a2fda8',1,'eve::jacobi_elliptic']]],
+  ['jacobi_5fzeta_2',['jacobi_zeta',['https://jfalcou.github.io/eve/group__eve__elliptic_gaa123505d28500b3ea5216a5b88a5da05.html#gaa123505d28500b3ea5216a5b88a5da05',1,'eve::jacobi_zeta'],['https://jfalcou.github.io/eve/group__eve__elliptic_gaa123505d28500b3ea5216a5b88a5da05.html#gaa123505d28500b3ea5216a5b88a5da05',1,'eve::jacobi_zeta']]]
 ];

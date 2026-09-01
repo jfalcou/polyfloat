@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['constants_0',['constants',['../index.html#autotoc_md7',1,'Core constants'],['../index.html#autotoc_md10',1,'Math constants']]],
-  ['constructors_1',['Constructors',['../index.html#autotoc_md3',1,'']]],
-  ['core_20constants_2',['Core constants',['../index.html#autotoc_md7',1,'']]],
-  ['core_20functions_3',['Core functions',['../index.html#autotoc_md6',1,'']]]
+  ['basic_20operations_0',['Basic Operations',['https://jfalcou.github.io/eve/intro-01.html',1,'']]],
+  ['building_20for_20testing_1',['Building for Testing',['https://jfalcou.github.io/eve/dev_cmake.html',1,'']]]
 ];

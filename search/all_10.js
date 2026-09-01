@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['valmax_0',['valmax',['../group__constants_ga107149eec536df23c4386d025b854ecf.html#ga107149eec536df23c4386d025b854ecf',1,'plf']]],
-  ['valmin_1',['valmin',['../group__constants_gafce94c0fcb7990527f77886c832f2d7b.html#gafce94c0fcb7990527f77886c832f2d7b',1,'plf']]],
-  ['variance_2',['variance',['../group__core_ga0b8af824ea99e25f0aafc7e5756d97d3.html#ga0b8af824ea99e25f0aafc7e5756d97d3',1,'plf']]]
+  ['quadrant_0',['quadrant',['https://jfalcou.github.io/eve/group__eve__math__trig_gabddb668a3d3a31c888377fc66cb67640.html#gabddb668a3d3a31c888377fc66cb67640',1,'eve::quadrant'],['https://jfalcou.github.io/eve/group__eve__math__trig_gabddb668a3d3a31c888377fc66cb67640.html#gabddb668a3d3a31c888377fc66cb67640',1,'eve::quadrant']]],
+  ['quadratic_20equations_1',['Solving quadratic equations',['https://jfalcou.github.io/eve/intro-05.html',1,'']]],
+  ['quarter_2',['quarter',['https://jfalcou.github.io/eve/group__eve__math__constants_gaac85860bbe1492610ac1caeeb974d662.html#gaac85860bbe1492610ac1caeeb974d662',1,'eve::quarter'],['https://jfalcou.github.io/eve/group__eve__math__constants_gaac85860bbe1492610ac1caeeb974d662.html#gaac85860bbe1492610ac1caeeb974d662',1,'eve::quarter']]],
+  ['quick_20start_3',['Installation &amp;amp; Quick Start',['https://jfalcou.github.io/eve/setup.html',1,'']]]
 ];

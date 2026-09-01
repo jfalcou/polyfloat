@@ -1,11 +1,22 @@
 var searchData=
 [
-  ['ldexp_0',['ldexp',['../group__core_gaaafb5f51797ebd81c0fdc1011e0275a3.html#gaaafb5f51797ebd81c0fdc1011e0275a3',1,'plf']]],
-  ['lerp_1',['lerp',['../namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html#a8875d0b61cf3fbeeaa6ed18b29e5ca9f',1,'plf']]],
-  ['licence_2',['Licence',['../licence.html',1,'']]],
-  ['log_3',['log',['../group__core_ga39d37d0f777a93ba32640c56565e2710.html#ga39d37d0f777a93ba32640c56565e2710',1,'plf']]],
-  ['log10_4',['log10',['../group__core_gaae901ccc06c7a5efa0242e5fcd654bd4.html#gaae901ccc06c7a5efa0242e5fcd654bd4',1,'plf']]],
-  ['log2_5',['log2',['../group__core_ga74fe53ba9509c1894684a4fe92865d07.html#ga74fe53ba9509c1894684a4fe92865d07',1,'plf']]],
-  ['log_5f2_6',['log_2',['../group__constants_gab076b85673ceedd01180cae08b3b984e.html#gab076b85673ceedd01180cae08b3b984e',1,'plf']]],
-  ['logeps_7',['logeps',['../group__constants_gad27792bcc40b8ac1693bacbd95570d68.html#gad27792bcc40b8ac1693bacbd95570d68',1,'plf']]]
+  ['half_0',['half',['https://jfalcou.github.io/eve/group__eve__core__constants_ga615c9124768fecc05e04d58ae24f8870.html#ga615c9124768fecc05e04d58ae24f8870',1,'eve::half'],['https://jfalcou.github.io/eve/group__eve__core__constants_ga615c9124768fecc05e04d58ae24f8870.html#ga615c9124768fecc05e04d58ae24f8870',1,'eve::half']]],
+  ['half_5flogical_1',['half_logical',['https://jfalcou.github.io/eve/structeve_1_1top__bits.html#a448b36c0f435bda8170fabbe183de7be',1,'eve::top_bits']]],
+  ['handling_20multiple_20architecture_20targets_2',['Handling Multiple Architecture Targets',['https://jfalcou.github.io/eve/multiarch.html',1,'']]],
+  ['harmmean_3',['harmmean',['https://jfalcou.github.io/eve/group__eve__math__exp_ga2873065e807a313ffd23d3a06e2be637.html#ga2873065e807a313ffd23d3a06e2be637',1,'eve::harmmean'],['https://jfalcou.github.io/eve/group__eve__math__exp_ga2873065e807a313ffd23d3a06e2be637.html#ga2873065e807a313ffd23d3a06e2be637',1,'eve::harmmean']]],
+  ['has_5fequal_5fin_4',['has_equal_in',['https://jfalcou.github.io/eve/group__eve__core__simd_ga517f6b01fca5124ed352087830a713d4.html#ga517f6b01fca5124ed352087830a713d4',1,'eve::has_equal_in'],['https://jfalcou.github.io/eve/group__eve__core__simd_ga517f6b01fca5124ed352087830a713d4.html#ga517f6b01fca5124ed352087830a713d4',1,'eve::has_equal_in']]],
+  ['has_5fplain_5ftranslation_5',['has_plain_translation',['https://jfalcou.github.io/eve/concepteve_1_1has__plain__translation.html',1,'eve']]],
+  ['has_5fstore_5fequivalent_6',['has_store_equivalent',['https://jfalcou.github.io/eve/concepteve_1_1has__store__equivalent.html',1,'eve']]],
+  ['has_5fzeros_7',['has_zeros',['https://jfalcou.github.io/eve/structeve_1_1pattern__t.html#adaf1e7da40b7b86a9e00d120044039df',1,'eve::pattern_t']]],
+  ['heaviside_8',['heaviside',['https://jfalcou.github.io/eve/group__eve__core__arithmetic_ga961f3ecc560ee5d2bcabfe4dd63519d6.html#ga961f3ecc560ee5d2bcabfe4dd63519d6',1,'eve::heaviside'],['https://jfalcou.github.io/eve/group__eve__core__arithmetic_ga961f3ecc560ee5d2bcabfe4dd63519d6.html#ga961f3ecc560ee5d2bcabfe4dd63519d6',1,'eve::heaviside'],['../group__core_gaacc157e51d44695e50b1e1af7643abc0.html#gaacc157e51d44695e50b1e1af7643abc0',1,'plf::heaviside']]],
+  ['helpers_9',['Architecture related Types and Helpers',['https://jfalcou.github.io/eve/group__eve__arch.html',1,'']]],
+  ['helpers_10',['Accuracy helpers',['https://jfalcou.github.io/eve/group__eve__core__accuracy.html',1,'']]],
+  ['hermite_11',['hermite',['https://jfalcou.github.io/eve/group__eve__polynomial_ga6cb61eb743e4ac43c44bd0b330f8a8c9.html#ga6cb61eb743e4ac43c44bd0b330f8a8c9',1,'eve::hermite'],['https://jfalcou.github.io/eve/group__eve__polynomial_ga6cb61eb743e4ac43c44bd0b330f8a8c9.html#ga6cb61eb743e4ac43c44bd0b330f8a8c9',1,'eve::hermite']]],
+  ['heuman_5flambda_12',['heuman_lambda',['https://jfalcou.github.io/eve/group__eve__elliptic_ga24d1bc66420e69358ebd2eb5ff39bff2.html#ga24d1bc66420e69358ebd2eb5ff39bff2',1,'eve::heuman_lambda'],['https://jfalcou.github.io/eve/group__eve__elliptic_ga24d1bc66420e69358ebd2eb5ff39bff2.html#ga24d1bc66420e69358ebd2eb5ff39bff2',1,'eve::heuman_lambda']]],
+  ['hi_13',['hi',['https://jfalcou.github.io/eve/group__eve__core__bitops_gac36375f33a27d2122d4ca0f3a006f7b2.html#gac36375f33a27d2122d4ca0f3a006f7b2',1,'eve::hi'],['https://jfalcou.github.io/eve/group__eve__core__bitops_gac36375f33a27d2122d4ca0f3a006f7b2.html#gac36375f33a27d2122d4ca0f3a006f7b2',1,'eve::hi']]],
+  ['horner_14',['horner',['https://jfalcou.github.io/eve/group__eve__math_ga0a17ee24ca2ace0f07eb87e494bce229.html#ga0a17ee24ca2ace0f07eb87e494bce229',1,'eve::horner'],['https://jfalcou.github.io/eve/group__eve__math_ga0a17ee24ca2ace0f07eb87e494bce229.html#ga0a17ee24ca2ace0f07eb87e494bce229',1,'eve::horner'],['../group__functions_ga4be7100c1c154e7fa933fa734608082c.html#ga4be7100c1c154e7fa933fa734608082c',1,'plf::horner()']]],
+  ['hurwitz_15',['hurwitz',['https://jfalcou.github.io/eve/group__eve__special_gadf7af0b7e2002701bbdbb8419d6757eb.html#gadf7af0b7e2002701bbdbb8419d6757eb',1,'eve::hurwitz'],['https://jfalcou.github.io/eve/group__eve__special_gadf7af0b7e2002701bbdbb8419d6757eb.html#gadf7af0b7e2002701bbdbb8419d6757eb',1,'eve::hurwitz']]],
+  ['hyperbolic_16',['Hyperbolic',['https://jfalcou.github.io/eve/group__eve__math__hyper.html',1,'']]],
+  ['hyperbolic_17',['Inverse hyperbolic',['https://jfalcou.github.io/eve/group__eve__math__invhyper.html',1,'']]],
+  ['hypot_18',['hypot',['https://jfalcou.github.io/eve/group__eve__math__exp_gaae6d8d8a0ad9d41260c0bbf8f642a370.html#gaae6d8d8a0ad9d41260c0bbf8f642a370',1,'eve::hypot'],['https://jfalcou.github.io/eve/group__eve__math__exp_gaae6d8d8a0ad9d41260c0bbf8f642a370.html#gaae6d8d8a0ad9d41260c0bbf8f642a370',1,'eve::hypot'],['../namespaceplf_ab1d383e91204c25060d9e6f3f68fac0b.html#ab1d383e91204c25060d9e6f3f68fac0b',1,'plf::hypot']]]
 ];
