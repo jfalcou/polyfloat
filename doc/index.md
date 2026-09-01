@@ -121,7 +121,7 @@ options `raw` and `pedantic`.
 Often, these two options do nothing more than the regular (no options) call and their effects are explained in the individual
 documentations only if it is not the case.
 
-Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref kyosu::concepts::polyfloat_like) types.
+Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref plf::concepts::polyfloat_like) types.
 
   * Callables usable with all `polyfloat` types
 
@@ -164,7 +164,7 @@ Core functions
    |[minmag](@ref plf::minmag)            |[minmax](@ref plf::minmax)                 |[minus](@ref plf::minus)                   |[modf](@ref plf::modf)                   |
    |[mul](@ref plf::mul)                  |[nearest](@ref plf::nearest)               |[negabsmax](@ref plf::negabsmax)           |[negabsmin](@ref plf::negabsmin)         |
    |[negate](@ref plf::negate)            |[negatenz](@ref plf::negatenz)             |[next](@ref plf::next)                     |[nextafter](@ref plf::nextafter)         |
-   |[parts](@ref plf::parts)              |[pown](@ref plf::pown)                     |[prev](@ref plf::prev)                     |[prevint](@ref plf::prevint)             |
+   |`parts`              |[pown](@ref plf::pown)                     |[prev](@ref plf::prev)                     |[prevint](@ref plf::prevint)             |
    |[rat](@ref plf::rat)                  |[rec](@ref plf::rec)                       |[reldist](@ref plf::reldist)               |[rem](@ref plf::rem)                     |
    |[remainder](@ref plf::remainder)      |[reverse_horner](@ref plf::reverse_horner) |                                           |[rsqrt](@ref plf::rsqrt)                 |
    |[sign](@ref plf::sign)                |[sign_alternate](@ref plf::sign_alternate) |[signnz](@ref plf::signnz)                 |                                         |
@@ -215,7 +215,7 @@ Math elementary functions
 
    |                                      |                                           |                                           |                                         |
    |--------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
-   |[cbrt](@ref plf:cbrt)                 |[exp](@ref plf::exp)                       |[exp2](@ref plf::exp2)                     |[log](@ref plf::log)                     |
+   |[cbrt](@ref plf::cbrt)                 |[exp](@ref plf::exp)                       |[exp2](@ref plf::exp2)                     |[log](@ref plf::log)                     |
    |[log2](@ref plf::log2)                |[nthroot](@ref plf::nthroot)               |                                           |                                         |
 
 Math constants
@@ -225,7 +225,7 @@ These are proper `polyfloat` mathematical constant .
 
    |   Proper values                        |                                           |                                           |                                         |
    |----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
-   |[euler](@ref plf:euler)                 |invlog_2](@ref plf::invlog_2)              |[exp2](@ref plf::log_2exp2)                |                                         |
+   |`euler`                 |`invlog_2`              |`exp2`                |                                         |
 
 
 Math special functions
