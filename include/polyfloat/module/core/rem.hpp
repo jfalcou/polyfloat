@@ -19,14 +19,20 @@
 namespace plf
 {
 
-  template<typename Options> struct rem_t : eve::strict_tuple_callable<rem_t, Options, raw_option, pedantic_option,
-                                                                       to_nearest_option, toward_zero_option,
-                                                                       downward_option, upward_option>
+  template<typename Options>
+  struct rem_t : eve::strict_tuple_callable<rem_t,
+                                            Options,
+                                            raw_option,
+                                            pedantic_option,
+                                            to_nearest_option,
+                                            toward_zero_option,
+                                            downward_option,
+                                            upward_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(rem_t, rem_);
@@ -85,21 +91,20 @@ namespace plf::_
   template<typename T0, typename T1, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto rem_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
   {
-    if constexpr(O::contains(to_nearest))
+    if constexpr (O::contains(to_nearest))
     {
       return if_else(plf::is_eqz(b) || plf::is_unordered(a, b),
                      plf::if_else(plf::is_eqz(a) || plf::is_infinite(b), a, nan(as(a))),
                      plf::fnma(b, plf::div[to_nearest](a, b), a)); // as remainder
     }
-    else if constexpr(O::contains(upward) || O::contains(downward))
+    else if constexpr (O::contains(upward) || O::contains(downward))
     {
-      return  plf::fnma(b, eve::div[o](a, b), a);
+      return plf::fnma(b, eve::div[o](a, b), a);
     }
     else
     {
-      return plf::if_else(plf::is_unordered(a, b) || plf::is_infinite(a) || plf::is_eqz(b),
-                     plf::nan(as(a)),
-                     plf::if_else(is_eqz(a), a, plf::fnma(b, plf::div[toward_zero](a, b), a)));
+      return plf::if_else(plf::is_unordered(a, b) || plf::is_infinite(a) || plf::is_eqz(b), plf::nan(as(a)),
+                          plf::if_else(is_eqz(a), a, plf::fnma(b, plf::div[toward_zero](a, b), a)));
     }
   }
 }

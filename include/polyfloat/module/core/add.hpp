@@ -78,8 +78,10 @@ namespace plf
   //! @}
   //======================================================================================================================
 
-  template <typename Options>
-  constexpr auto neutral(add_t<Options>) noexcept { return plf::zero; }
+  template<typename Options> constexpr auto neutral(add_t<Options>) noexcept
+  {
+    return plf::zero;
+  }
 
   // Required for optimisation detections
   using callable_add_ = eve::tag_t<add>;
@@ -93,37 +95,39 @@ namespace plf::_
   {
     return t0;
   }
-    template<typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const& , T1 const& t1, T2 const& t2) noexcept
+  template<typename T1, typename T2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
   {
-    auto t12 = t1+t2;
- //    if constexpr(O::contains(pedantic))
-//     {
-//       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-//       if (eve::any(inf))
-//       {
-//         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-//       }
-//       else
-//         return t12;
-//     }
-//     else
-      return t12;
+    auto t12 = t1 + t2;
+    //    if constexpr(O::contains(pedantic))
+    //     {
+    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
+    //       if (eve::any(inf))
+    //       {
+    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
+    //       }
+    //       else
+    //         return t12;
+    //     }
+    //     else
+    return t12;
   }
 
-  template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like T1, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const& o,
-                                            T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
+  template<eve::callable_options O,
+           concepts::polyfloat_like T0,
+           concepts::polyfloat_like T1,
+           concepts::polyfloat_like... Ts>
+  POLYFLOAT_FORCEINLINE constexpr auto add_(
+    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1, Ts...>;
-    if constexpr (concepts::real<t_t>)
-      return eve::add[o](t0, t1, ts...);
+    if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);
     else
     {
       using u_t = eve::element_type_t<t_t>;
-      auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-      auto p0   = add[o](cvt(t0),cvt(t1));
-      ((p0 = add[o](p0,cvt(ts))),...);
+      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+      auto p0 = add[o](cvt(t0), cvt(t1));
+      ((p0 = add[o](p0, cvt(ts))), ...);
       return p0;
     }
   }

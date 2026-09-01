@@ -22,51 +22,42 @@
 
 namespace plf::_
 {
-  template<typename T>
-  constexpr auto is_not_1or3_times_pow2(T x) noexcept // Graillat & Muller algorithm 5
+  template<typename T> constexpr auto is_not_1or3_times_pow2(T x) noexcept // Graillat & Muller algorithm 5
   {
     using u_t = eve::underlying_type_t<T>;
-    constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t()))-2);
-    constexpr unsigned long P = Q+1;
-    auto l = P*x;
-    auto r = Q*x;
-    return plf::is_not_equal(l-r, x);
+    constexpr unsigned long Q = 1ul << (eve::nbmantissabits(eve::as(u_t())) - 2);
+    constexpr unsigned long P = Q + 1;
+    auto l = P * x;
+    auto r = Q * x;
+    return plf::is_not_equal(l - r, x);
   }
 
-  template<typename T>
-  constexpr auto cr_dw_fp_add_with_err(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 7
+  template<typename T> constexpr auto cr_dw_fp_add_with_err(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 7
   // https://hal.science/hal-04575249
   {
     using u_t = eve::underlying_type_t<T>;
-    constexpr u_t c9_8 = u_t(9)/8;
-    constexpr u_t c7_8 = u_t(7)/8;
+    constexpr u_t c9_8 = u_t(9) / 8;
+    constexpr u_t c7_8 = u_t(7) / 8;
     auto [sh, sl] = two_add(xh, c);
     auto [vh, vl] = two_add(xl, sl);
-    auto [wh, wl] = two_add(vh, sh); // quick seems to be incorrectly called here in the original article as vh and sh can be in wrong order
-    auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
+    auto [wh, wl] = two_add(
+      vh, sh); // quick seems to be incorrectly called here in the original article as vh and sh can be in wrong order
+    auto in = is_not_1or3_times_pow2(vh) || is_eqz(vl);
     auto samsgn = sign(vl) == sign(vh);
-    auto z = if_else(in,
-                     wh,
-                     sh+if_else(samsgn, c9_8, c7_8)*vh
-                    );
-    auto delta = sub[in](wl, z-wh);
+    auto z = if_else(in, wh, sh + if_else(samsgn, c9_8, c7_8) * vh);
+    auto delta = sub[in](wl, z - wh);
     return eve::zip(z, delta, vl);
   }
 
-  template<typename T>
-  constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 6
+  template<typename T> constexpr auto cr_dw_fp_add(T xh, T xl, T c) noexcept // Graillat & Muller algorithm 6
   {
     using u_t = eve::underlying_type_t<T>;
-    constexpr u_t c9_8 = u_t(9)/8;
-    constexpr u_t c7_8 = u_t(7)/8;
+    constexpr u_t c9_8 = u_t(9) / 8;
+    constexpr u_t c7_8 = u_t(7) / 8;
     auto [sh, sl] = two_add(xh, c);
     auto [vh, vl] = two_add(xl, sl);
-    auto in =  is_not_1or3_times_pow2(vh) || is_eqz(vl);
+    auto in = is_not_1or3_times_pow2(vh) || is_eqz(vl);
     auto samsgn = eve::sign(vl) == sign(vh);
-    return add(sh, if_else(in,
-                           vh,
-                           if_else(samsgn, c9_8, c7_8)
-                          )
-              );
+    return add(sh, if_else(in, vh, if_else(samsgn, c9_8, c7_8)));
   }
 }

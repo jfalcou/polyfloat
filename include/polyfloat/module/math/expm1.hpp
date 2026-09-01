@@ -17,10 +17,9 @@ namespace plf
 
   template<typename Options> struct expm1_t : eve::elementwise_callable<expm1_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(expm1_t, expm1_);
@@ -68,11 +67,9 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, eve::callable_options O>
-  constexpr auto expm1_(POLYFLOAT_DELAY(), O const& , T xx) noexcept
+  template<typename T, eve::callable_options O> constexpr auto expm1_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
-    if constexpr(dimension_v<T> == 1)
-      return eve::expm1(xx);
+    if constexpr (dimension_v<T> == 1) return eve::expm1(xx);
     else
     {
       return plf::dec(plf::exp(xx));

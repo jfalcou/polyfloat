@@ -16,7 +16,8 @@
 
 namespace plf
 {
- template<typename Options> struct covariance_t : eve::strict_tuple_callable<covariance_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct covariance_t : eve::strict_tuple_callable<covariance_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -31,8 +32,8 @@ namespace plf
 
     template<eve::non_empty_product_type Tup1, eve::non_empty_product_type Tup2>
     requires(eve::same_lanes_or_scalar_tuple<Tup1> && eve::same_lanes_or_scalar_tuple<Tup2>)
-    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, kumi::result::cat_t<Tup1, Tup2>>
-    operator()(Tup1 const& t1, Tup2 const& t2) const noexcept
+    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, kumi::result::cat_t<Tup1, Tup2>> operator()(
+      Tup1 const& t1, Tup2 const& t2) const noexcept
     {
       return POLYFLOAT_CALL(t1, t2);
     }
@@ -95,41 +96,40 @@ namespace plf::_
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
   POLYFLOAT_FORCEINLINE constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
-  requires(sizeof...(Ts) > 1  && sizeof...(Ts)%2 == 0)
+  requires(sizeof...(Ts) > 1 && sizeof...(Ts) % 2 == 0)
   {
-    using r_t =  as_polyfloat_like_t<Ts...>;
+    using r_t = as_polyfloat_like_t<Ts...>;
     using u_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
     auto coeffs = eve::zip(cvt(args)...);
-    auto[f,s]   = kumi::split(coeffs, kumi::index<sizeof...(Ts)/2>);
+    auto [f, s] = kumi::split(coeffs, kumi::index<sizeof...(Ts) / 2>);
     return covariance[o](f, s);
   }
 
   template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto covariance_(POLYFLOAT_DELAY(), O const & o, PT1 f, PT2 s) noexcept
-  requires (kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
+  POLYFLOAT_FORCEINLINE constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, PT1 f, PT2 s) noexcept
+  requires(kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
   {
     using Tup1 = kumi::as_tuple_t<PT1>;
     using Tup2 = kumi::as_tuple_t<PT2>;
     constexpr auto siz = Tup1::size();
-    constexpr auto fac = O::contains(unbiased) ? siz-1 : siz;
+    constexpr auto fac = O::contains(unbiased) ? siz - 1 : siz;
     using r1_t = kumi::apply_traits_t<as_polyfloat_like, Tup1>;
     using r2_t = kumi::apply_traits_t<as_polyfloat_like, Tup2>;
-    using r_t =  eve::common_value_t<r1_t, r2_t>;
+    using r_t = eve::common_value_t<r1_t, r2_t>;
 
-    if constexpr(siz == 1)
-      return eve::zero(eve::as<r_t>());
+    if constexpr (siz == 1) return eve::zero(eve::as<r_t>());
     else
     {
       auto avgf = plf::average[o](f);
       auto avgs = plf::average[o](s);
-      if constexpr(O::contains(raw))
-        auto cov = kumi::sum( kumi::map([avgf, avgs](auto a, auto b) { return (a-avgf)*(b-avgs); }, f, s))/fac;
+      if constexpr (O::contains(raw))
+        auto cov = kumi::sum(kumi::map([avgf, avgs](auto a, auto b) { return (a - avgf) * (b - avgs); }, f, s)) / fac;
       else
       {
-        auto fc =  kumi::map([avgf](auto a) { return (a-avgf); }, f);
-        auto sc =  kumi::map([avgs](auto a) { return (a-avgs); }, s);
-        return eve::dot[o](fc, sc)/fac;
+        auto fc = kumi::map([avgf](auto a) { return (a - avgf); }, f);
+        auto sc = kumi::map([avgs](auto a) { return (a - avgs); }, s);
+        return eve::dot[o](fc, sc) / fac;
       }
     }
   }

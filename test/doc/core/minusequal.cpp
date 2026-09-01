@@ -5,7 +5,7 @@
 
 int main()
 {
-  std::cout <<  std::setprecision(15);
+  std::cout << std::setprecision(15);
 
   auto f = 1.0;
   auto a = plf::polyfloat(1.0);
@@ -20,15 +20,15 @@ int main()
   std::cout << b << std::endl;
   b -= b1;
   std::cout << b << std::endl;
-  c-= a;
+  c -= a;
   std::cout << c << std::endl;
   c -= b;
   std::cout << c << std::endl;
   c -= c1;
   std::cout << c << std::endl;
-  b-= f;
+  b -= f;
   std::cout << b << std::endl;
-  c-= f;
+  c -= f;
   std::cout << c << std::endl;
   return 0;
 }

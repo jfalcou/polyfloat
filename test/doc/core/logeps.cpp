@@ -7,8 +7,8 @@
 
 int main()
 {
-  using  mpfr::mpreal;
-  using  plf::_::to_mpreal;
+  using mpfr::mpreal;
+  using plf::_::to_mpreal;
   {
     using t1_t = double;
     using t2_t = plf::polyfloat<double, 2>;
@@ -19,10 +19,10 @@ int main()
     mpreal leps2 = mpfr::log(to_mpreal(plf::eps(eve::as<t2_t>())));
     mpreal leps3 = mpfr::log(to_mpreal(plf::eps(eve::as<t3_t>())));
     std::cout << std::hexfloat << std::endl;
-    std::cout << eve::logeps(eve::as<double>())<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps1, eve::as(t1_t()))<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps2, eve::as(t2_t()))<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps3, eve::as(t3_t()))<< std::endl;
+    std::cout << eve::logeps(eve::as<double>()) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps1, eve::as(t1_t())) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps2, eve::as(t2_t())) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps3, eve::as(t3_t())) << std::endl;
   }
   {
     using t1_t = float;
@@ -34,9 +34,9 @@ int main()
     mpreal leps2 = mpfr::log(to_mpreal(plf::eps(eve::as<t2_t>())));
     mpreal leps3 = mpfr::log(to_mpreal(plf::eps(eve::as<t3_t>())));
     std::cout << std::hexfloat << std::endl;
-    std::cout << eve::logeps(eve::as<float>())<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps1, eve::as(t1_t()))<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps2, eve::as(t2_t()))<< std::endl;
-    std::cout << plf::_::to_polyfloat(leps3, eve::as(t3_t()))<< std::endl;
+    std::cout << eve::logeps(eve::as<float>()) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps1, eve::as(t1_t())) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps2, eve::as(t2_t())) << std::endl;
+    std::cout << plf::_::to_polyfloat(leps3, eve::as(t3_t())) << std::endl;
   }
 }

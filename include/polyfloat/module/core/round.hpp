@@ -19,14 +19,20 @@
 namespace plf
 {
 
-  template<typename Options> struct round_t : eve::callable<round_t, Options, raw_option, pedantic_option,
-                                                                       to_nearest_option, toward_zero_option,
-                                                                       downward_option, upward_option>
+  template<typename Options>
+  struct round_t : eve::callable<round_t,
+                                 Options,
+                                 raw_option,
+                                 pedantic_option,
+                                 to_nearest_option,
+                                 toward_zero_option,
+                                 downward_option,
+                                 upward_option>
   {
     template<concepts::polyfloat_like Z>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z> operator()(Z z) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z> operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(round_t, round_);
@@ -85,15 +91,11 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto round_(POLYFLOAT_DELAY(), O const& , T a) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto round_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
-     if  constexpr(O::contains(toward_zero))
-      return trunc(a);
-    else if  constexpr(O::contains(downward))
-      return floor(a);
-    else if  constexpr(O::contains(upward))
-      return ceil(a);
-    else
-      return nearest(a);
+    if constexpr (O::contains(toward_zero)) return trunc(a);
+    else if constexpr (O::contains(downward)) return floor(a);
+    else if constexpr (O::contains(upward)) return ceil(a);
+    else return nearest(a);
   }
 }

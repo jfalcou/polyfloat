@@ -40,28 +40,24 @@ namespace plf
     constexpr polyfloat() noexcept : contents{} {}
 
     /// Construct a Poly-Float from a real value of the base type
-    constexpr polyfloat(Type v) noexcept : contents{}
-    {
-      kumi::get<0>(contents) = v;
-    }
+    constexpr polyfloat(Type v) noexcept : contents{} { kumi::get<0>(contents) = v; }
 
     /// Construct a Poly-Float from a real value of another type
     template<eve::floating_scalar_value T> constexpr polyfloat(T v) noexcept : contents{}
     {
-      using elt_t =  eve::element_type_t<T>;
-      using elt_type =  eve::element_type_t<Type>;
-      if constexpr(sizeof(elt_t) <= sizeof(elt_type))
-        kumi::get<0>(contents) =  v;
+      using elt_t = eve::element_type_t<T>;
+      using elt_type = eve::element_type_t<Type>;
+      if constexpr (sizeof(elt_t) <= sizeof(elt_type)) kumi::get<0>(contents) = v;
       else
       {
         auto h = eve::convert(v, eve::as<elt_type>());
         kumi::get<0>(contents) = h;
         auto hc = eve::convert(h, eve::as<elt_t>());
-        auto m =  eve::convert(v-hc, eve::as<elt_type>());
+        auto m = eve::convert(v - hc, eve::as<elt_type>());
         kumi::get<1>(contents) = m;
-        if constexpr(N == 3)
+        if constexpr (N == 3)
         {
-          auto l = eve::convert(v -(hc + eve::convert(m, eve::as<elt_t>())), eve::as<elt_type>());
+          auto l = eve::convert(v - (hc + eve::convert(m, eve::as<elt_t>())), eve::as<elt_type>());
           kumi::get<2>(contents) = l;
         }
       }
@@ -71,7 +67,8 @@ namespace plf
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1>
     requires(2 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1) noexcept
-    : contents(kumi::cat(eve::two_add[pedantic](static_cast<Type>(v0), static_cast<Type>(v1)),  kumi::fill<(N - 2)>(Type{0})))
+      : contents(
+          kumi::cat(eve::two_add[pedantic](static_cast<Type>(v0), static_cast<Type>(v1)), kumi::fill<(N - 2)>(Type{0})))
     {
     }
 
@@ -79,9 +76,9 @@ namespace plf
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2>
     requires(3 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
-      :contents(plf::_::inner_three_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
-       //   : contents(plf::_::three_add_pedantic(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
-        // : contents(plf::_::normalize(v0, v1, v2))
+      : contents(plf::_::inner_three_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
+    //   : contents(plf::_::three_add_pedantic(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
+    // : contents(plf::_::normalize(v0, v1, v2))
     {
     }
 
@@ -93,7 +90,7 @@ namespace plf
     requires(M > 1 && M <= N)
     constexpr polyfloat(polyfloat<Type, M> const& a) noexcept
     requires(N > 1)
-      : contents(kumi::cat(a.contents, kumi::fill<N-M>(Type{0})))
+      : contents(kumi::cat(a.contents, kumi::fill<N - M>(Type{0})))
     {
     }
 
@@ -110,7 +107,8 @@ namespace plf
     //==================================================================================================================
 
     //! Pre-incrementation operator
-    POLYFLOAT_FORCEINLINE auto& operator++() noexcept{
+    POLYFLOAT_FORCEINLINE auto& operator++() noexcept
+    {
       kumi::get<0>(contents)++;
       return *this;
     };
@@ -165,11 +163,9 @@ namespace plf
   //   polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
 
   /// Deduction guide for constructing from one value
-  template<typename T0, std::convertible_to<T0>... Ts>
-  polyfloat(T0) -> polyfloat<T0, 2u>;
+  template<typename T0, std::convertible_to<T0>... Ts> polyfloat(T0) -> polyfloat<T0, 2u>;
   /// Deduction guide for constructing from sequence of values
-  template<typename T0, std::convertible_to<T0>... Ts>
-  polyfloat(T0, Ts...) -> polyfloat<T0, 1 + sizeof...(Ts)>;
+  template<typename T0, std::convertible_to<T0>... Ts> polyfloat(T0, Ts...) -> polyfloat<T0, 1 + sizeof...(Ts)>;
   //====================================================================================================================
   //! @}
   //====================================================================================================================

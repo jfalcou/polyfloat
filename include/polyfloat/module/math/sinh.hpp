@@ -18,10 +18,9 @@ namespace plf
 
   template<typename Options> struct sinh_t : eve::elementwise_callable<sinh_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(sinh_t, sinh_);
@@ -69,31 +68,29 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, eve::callable_options O>
-  constexpr auto sinh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto sinh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr(dimension_v<T> == 1)
-      return eve::sinh(a0);
+    if constexpr (dimension_v<T> == 1) return eve::sinh(a0);
     else
     {
       using u_t = eve::underlying_type_t<T>;
       auto inf = is_not_finite(a0);
-      auto x    = plf::abs(a0);
-      auto h    = plf::if_else(is_gtz(a0), one(eve::as<u_t>()), mone);
-      auto t    = plf::exp(x)-1; //plf::expm1(x);
+      auto x = plf::abs(a0);
+      auto h = plf::if_else(is_gtz(a0), one(eve::as<u_t>()), mone);
+      auto t = plf::exp(x) - 1; //plf::expm1(x);
       auto inct = plf::inc(t);
-      auto u    = t / inct;
-      auto z    = fnma(t, u, t);
-      auto s    = h*plf::average(z, t);
+      auto u = t / inct;
+      auto z = fnma(t, u, t);
+      auto s = h * plf::average(z, t);
 
-      s         = if_else(is_eqz(a0), a0, s);
+      s = if_else(is_eqz(a0), a0, s);
       auto test = x < maxlog(as<T>()) || inf;
-      if( eve::all(test) ) return if_else(inf, a0, s);
+      if (eve::all(test)) return if_else(inf, a0, s);
       auto w = exp[o](x * half(eve::as<u_t>()));
-      t      = half(eve::as<u_t>()) * w;
+      t = half(eve::as<u_t>()) * w;
       t *= w;
 
-      s =  if_else(test, s, t * h);
+      s = if_else(test, s, t * h);
       return if_else(inf, a0, s);
     }
   }

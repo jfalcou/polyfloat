@@ -17,14 +17,13 @@ namespace plf
 
   template<typename Options> struct next_t : eve::elementwise_callable<next_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
     template<concepts::polyfloat_like Z, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z,  N n) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
     requires(eve::same_lanes_or_scalar<Z, N>)
     {
       EVE_ASSERT(eve::all(n >= 0), "[plf::next] : second parameter must be positive");
@@ -78,16 +77,15 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const& , Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::next(z);
-    else if constexpr(dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 1) return eve::next(z);
+    else if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return Z(h, eve::next(l));
     }
-    else if constexpr(dimension_v<Z> == 3)
+    else if constexpr (dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto r = Z(h, m, eve::next(l));
@@ -96,16 +94,15 @@ namespace plf::_
   }
 
   template<typename Z, typename N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const& , Z const& z,  N n) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z, N n) noexcept
   {
-    if constexpr(dimension_v<Z> == 1)
-      return eve::next(z, n);
-    else if constexpr(dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 1) return eve::next(z, n);
+    else if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return Z(h, eve::next(l, n));
     }
-    else if constexpr(dimension_v<Z> == 3)
+    else if constexpr (dimension_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto r = Z(h, m, eve::next(l, n));

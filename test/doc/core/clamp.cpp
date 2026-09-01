@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout <<  std::setprecision(15);
+  std::cout << std::setprecision(15);
   using plf::clamp;
   using dd = plf::double_real_t<double>;
   using wdd = eve::wide<dd, eve::fixed<4>>;

@@ -16,29 +16,27 @@ namespace plf
 
   template<typename Options> struct inveps_t : eve::constant_callable<inveps_t, Options>
   {
-   template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
-      if constexpr(std::integral<T>        )
-        return T(1);
-      else if constexpr(plf::dimension_v<u_t> == 1)
+      if constexpr (std::integral<T>) return T(1);
+      else if constexpr (plf::dimension_v<u_t> == 1)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return u_t(0x1p10);
-        else if constexpr(std::same_as<u_t, float>  ) return u_t(0x1p23);
-        else if constexpr(std::same_as<u_t, double> ) return u_t(0x1p52);
+        if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p10);
+        else if constexpr (std::same_as<u_t, float>) return u_t(0x1p23);
+        else if constexpr (std::same_as<u_t, double>) return u_t(0x1p52);
       }
-      else if constexpr(plf::dimension_v<u_t> == 2)
+      else if constexpr (plf::dimension_v<u_t> == 2)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return u_t(0x1p20);
-        else if constexpr(std::same_as<u_t, float>  ) return u_t(0x1p46);
-        else if constexpr(std::same_as<u_t, double> ) return u_t(0x1p104);
+        if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p20);
+        else if constexpr (std::same_as<u_t, float>) return u_t(0x1p46);
+        else if constexpr (std::same_as<u_t, double>) return u_t(0x1p104);
       }
-      else if constexpr(plf::dimension_v<u_t> == 3)
+      else if constexpr (plf::dimension_v<u_t> == 3)
       {
-        if constexpr(std::same_as<u_t, eve::float16_t>) return u_t(0x1p30);
-        else if constexpr(std::same_as<u_t, float>  ) return u_t(0x1p69);
-        else if constexpr(std::same_as<u_t, double> ) return u_t(0x1p156);
+        if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p30);
+        else if constexpr (std::same_as<u_t, float>) return u_t(0x1p69);
+        else if constexpr (std::same_as<u_t, double>) return u_t(0x1p156);
       }
     }
 

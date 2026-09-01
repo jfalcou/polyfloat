@@ -15,17 +15,15 @@ TTS_CASE_WITH("Check dist two params",
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2,
-               T const& a3, T const& a4, T const& a5)
+              tts::randoms(-1000, 1000))
+<typename T>(T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5)
 {
-  using  mpfr::mpreal;
+  using mpfr::mpreal;
   using plf::dist;
-  auto mdist = [](auto a,  auto b){return mpfr::abs(a-b); };
+  auto mdist = [](auto a, auto b) { return mpfr::abs(a - b); };
 
   {
-    using pv_t  = plf::polyfloat<T, 2>;
+    using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(dist(pa, pb), tts::mpfr_exec(mdist, pa, pb), tts::epsprec<pv_t>());
@@ -33,7 +31,7 @@ TTS_CASE_WITH("Check dist two params",
     TTS_RELATIVE_EQUAL(dist(pa, a0), dist(pa, pv_t(a0)), tts::epsprec<pv_t>());
   }
   {
-    using pv_t  = plf::polyfloat<T, 3>;
+    using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a5);
     pv_t pb(a3, a4, a2);
     TTS_RELATIVE_EQUAL(dist(pa, pb), tts::mpfr_exec(mdist, pa, pb), tts::epsprec<pv_t>());

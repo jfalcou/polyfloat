@@ -19,14 +19,19 @@
 namespace plf
 {
 
-  template<typename Options> struct sign_alternate_t : eve::callable<sign_alternate_t, Options, raw_option, pedantic_option,
-                                                                       to_nearest_option, toward_zero_option,
-                                                                       downward_option, upward_option>
+  template<typename Options>
+  struct sign_alternate_t : eve::callable<sign_alternate_t,
+                                          Options,
+                                          raw_option,
+                                          pedantic_option,
+                                          to_nearest_option,
+                                          toward_zero_option,
+                                          downward_option,
+                                          upward_option>
   {
-    template<concepts::polyfloat_like Z>
-      POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
     {
-     return POLYFLOAT_CALL(z);
+      return POLYFLOAT_CALL(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(sign_alternate_t, sign_alternate_);
@@ -84,9 +89,8 @@ namespace plf::_
   template<typename T, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto sign_alternate_(POLYFLOAT_DELAY(), O const& o, T n) noexcept
   {
-    if constexpr(O::contains_any(upward, downward, to_nearest, toward_zero))
+    if constexpr (O::contains_any(upward, downward, to_nearest, toward_zero))
       return plf::if_else(is_odd(plf::round[o](n)), eve::mone, plf::one(as(n)));
-    else
-      return plf::if_else(is_odd(plf::trunc(n)), eve::mone, plf::one(as(n)));
+    else return plf::if_else(is_odd(plf::trunc(n)), eve::mone, plf::one(as(n)));
   }
 }

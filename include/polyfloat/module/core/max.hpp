@@ -21,10 +21,10 @@ namespace plf
 
   template<typename Options> struct max_t : eve::callable<max_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like ...Zs>
-      POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs ...zs) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
-     return POLYFLOAT_CALL(z1, zs...);
+      return POLYFLOAT_CALL(z1, zs...);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(max_t, max_);
@@ -68,25 +68,27 @@ namespace plf
   //! @}
   //======================================================================================================================
 
-  template <typename Options>
-  constexpr auto neutral(max_t<Options>) noexcept { return plf::valmin; }
+  template<typename Options> constexpr auto neutral(max_t<Options>) noexcept
+  {
+    return plf::valmin;
+  }
 }
 
 namespace plf::_
 {
   template<typename Z1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z1 z1) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const&, Z1 z1) noexcept
   {
     return z1;
   }
 
-  template<typename Z0, typename Z1, typename ... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const& , Z0 z0, Z1 z1, Zs ...zs) noexcept
+  template<typename Z0, typename Z1, typename... Zs, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto max_(POLYFLOAT_DELAY(), O const&, Z0 z0, Z1 z1, Zs... zs) noexcept
   {
     using r_t = as_polyfloat_t<Z0, Z1, Zs...>;
     using u_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-    if constexpr(sizeof...(Zs) == 0)
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    if constexpr (sizeof...(Zs) == 0)
     {
       return plf::if_else(plf::is_less(cvt(z0), cvt(z1)), cvt(z1), cvt(z0));
     }

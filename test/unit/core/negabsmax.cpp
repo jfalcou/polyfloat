@@ -15,17 +15,15 @@ TTS_CASE_WITH("Check negabsmax two params",
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2,
-               T const& a3, T const& a4, T const& a5)
+              tts::randoms(eve::valmin, eve::valmax))
+<typename T>(T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5)
 {
-  using  mpfr::mpreal;
-  using plf::negabsmax;
+  using mpfr::mpreal;
   using plf::abs;
-  auto mnegabsmax = [](auto a,  auto b){ return -mpfr::abs(mpfr::max(a, b)); };
+  using plf::negabsmax;
+  auto mnegabsmax = [](auto a, auto b) { return -mpfr::abs(mpfr::max(a, b)); };
   {
-    using pv_t  = plf::polyfloat<T, 2>;
+    using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_EQUAL(negabsmax(pa, pb), tts::mpfr_exec(mnegabsmax, pa, pb));
@@ -34,7 +32,7 @@ TTS_CASE_WITH("Check negabsmax two params",
     TTS_EQUAL(negabsmax(pa, a0), negabsmax(pa, pv_t(a0)));
   }
   {
-    using pv_t  = plf::polyfloat<T, 3>;
+    using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     TTS_EQUAL(negabsmax(pa, pb), tts::mpfr_exec(mnegabsmax, pa, pb));

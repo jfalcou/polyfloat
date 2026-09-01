@@ -16,9 +16,9 @@
 namespace plf
 {
 
-  template<typename Options> struct roundscale_t : eve::callable<roundscale_t, Options,
-                                                                upward_option, downward_option,
-                                                                to_nearest_option, toward_zero_option>
+  template<typename Options>
+  struct roundscale_t
+    : eve::callable<roundscale_t, Options, upward_option, downward_option, to_nearest_option, toward_zero_option>
   {
     template<concepts::polyfloat_like T0, eve::integral_value T1>
     POLYFLOAT_FORCEINLINE constexpr T0 operator()(T0 t0, T1 n) const noexcept
@@ -27,7 +27,7 @@ namespace plf
     }
 
     template<concepts::polyfloat_like T0, auto N>
-    POLYFLOAT_FORCEINLINE constexpr T0 operator()(T0 t0, eve::index_t<N> const & n) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr T0 operator()(T0 t0, eve::index_t<N> const& n) const noexcept
     {
       return POLYFLOAT_CALL(t0, n);
     }
@@ -90,20 +90,16 @@ namespace plf::_
 {
   template<auto S, typename T, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr T roundscale_(POLYFLOAT_DELAY(),
-                                               O const& o,
-                                               T const& a0,
-                                               eve::index_t<S> const &) noexcept
+                                                O const& o,
+                                                T const& a0,
+                                                eve::index_t<S> const&) noexcept
   {
     return roundscale[o](a0, S);
   }
 
   template<typename T, typename S, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr T roundscale_(POLYFLOAT_DELAY(),
-                                               O const & o,
-                                               T const & a0,
-                                               S const & scale) noexcept
+  POLYFLOAT_FORCEINLINE constexpr T roundscale_(POLYFLOAT_DELAY(), O const& o, T const& a0, S const& scale) noexcept
   {
-    auto nbmb = 
-    return  plf::ldexp[eve::pedantic](plf::round[o](plf::ldexp[eve::pedantic](a0, scale)), -scale);
+    auto nbmb = return plf::ldexp[eve::pedantic](plf::round[o](plf::ldexp[eve::pedantic](a0, scale)), -scale);
   }
 }

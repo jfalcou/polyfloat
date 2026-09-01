@@ -20,7 +20,8 @@
 namespace plf
 {
 
-  template<typename Options> struct horner_t : eve::strict_tuple_callable<horner_t, Options, kahan_option, raw_option, pedantic_option>
+  template<typename Options>
+  struct horner_t : eve::strict_tuple_callable<horner_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -35,7 +36,8 @@ namespace plf
 
     template<concepts::polyfloat_like X, eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-      EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, eve::coefficients<Tup>> operator()(X const & x, Tup const& t) const noexcept
+    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, eve::coefficients<Tup>> operator()(X const& x,
+                                                                                        Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(x, t);
@@ -129,45 +131,41 @@ namespace plf::_
 {
 
   template<typename X, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  horner_(POLYFLOAT_DELAY(), O const &, X ) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
     return eve::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  horner_(POLYFLOAT_DELAY(), O const & o, X xx, C c, Cs... cs) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c, Cs... cs) noexcept
   {
-    using r_t   =  as_polyfloat_like_t<X, C, Cs...>;
-    if constexpr(dimension_v<r_t> == 1)
-      return eve::horner[o](xx, c, cs...);
+    using r_t = as_polyfloat_like_t<X, C, Cs...>;
+    if constexpr (dimension_v<r_t> == 1) return eve::horner[o](xx, c, cs...);
     else
     {
-//    using u_t = eve::as_element<r_t>; //r_t::ptype_t;
-      auto cvt = [](auto a){return plf::convert(a, eve::as_element<r_t>{});};
-      constexpr auto N =  sizeof...(Cs);
-      if constexpr( N == 0 )
-        return plf::convert(c, eve::as_element<r_t>{});
-      else if constexpr(O::contains(kahan))
+      //    using u_t = eve::as_element<r_t>; //r_t::ptype_t;
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+      constexpr auto N = sizeof...(Cs);
+      if constexpr (N == 0) return plf::convert(c, eve::as_element<r_t>{});
+      else if constexpr (O::contains(kahan))
       {
         using a_t = std::array<r_t, N>;
         a_t err;
         auto i = 0;
         auto s = cvt(c);
         auto x = cvt(xx);
-        auto step = [&s, &err, x, &i]( auto a){
+        auto step = [&s, &err, x, &i](auto a) {
           auto [pi, epi] = plf::two_prod(s, x);
           auto [si, esi] = plf::two_add(pi, a);
           s = si;
-          err[i] = epi+esi;
+          err[i] = epi + esi;
           ++i;
           return s;
         };
         ((s = step(cvt(cs))), ...);
-        using tup_t =  kumi::result::generate_t<N, decltype([](std::size_t){return r_t(); })>;
+        using tup_t = kumi::result::generate_t<N, decltype([](std::size_t) { return r_t(); })>;
         auto t = std::bit_cast<tup_t, a_t>(err);
-        return s+ plf::horner(x, coefficients(t));
+        return s + plf::horner(x, coefficients(t));
       }
       else
       {
@@ -180,37 +178,36 @@ namespace plf::_
   }
 
   template<typename X, eve::product_type Tuple, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  horner_(POLYFLOAT_DELAY(), O const & o, X x, eve::coefficients<Tuple> const& tup) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(),
+                                               O const& o,
+                                               X x,
+                                               eve::coefficients<Tuple> const& tup) noexcept
   {
-    if constexpr(Tuple::size() == 0)
-      return eve::zero(as(x));
+    if constexpr (Tuple::size() == 0) return eve::zero(as(x));
     else
     {
       using r_t = as_polyfloat_like_t<X, eve::coefficients<Tuple>>;
-      return kumi::apply( [&](auto... m) { return plf::horner[o](x, convert(m, eve::as_element<r_t>())...); }, tup);
+      return kumi::apply([&](auto... m) { return plf::horner[o](x, convert(m, eve::as_element<r_t>())...); }, tup);
     }
   }
 
-
   template<typename X, eve::_::range R, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto
-  horner_(POLYFLOAT_DELAY(), O const & o, X xx, R const& r) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
   {
     using r_t = as_polyfloat_like<X, typename R::value_type>;
     using u_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a){return plf::convert(a,  as<u_t>());};
-    auto x    = cvt(xx);
-    auto cur  = std::begin(r);
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    auto x = cvt(xx);
+    auto cur = std::begin(r);
     auto last = std::end(r);
-    if( last == cur ) return zero(as<r_t>());
-    else if( std::distance(cur, last) == 1 ) return cvt(*cur);
+    if (last == cur) return zero(as<r_t>());
+    else if (std::distance(cur, last) == 1) return cvt(*cur);
     else
     {
       using std::advance;
       auto that = cv_t(*cur);
       auto step = [&](auto th, auto arg) { return fma[pedantic][o](x, th, arg); };
-      for( advance(cur, 1); cur != last; advance(cur, 1) ) that = step(that, cv_t(*cur));
+      for (advance(cur, 1); cur != last; advance(cur, 1)) that = step(that, cv_t(*cur));
       return that;
     }
   }

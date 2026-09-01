@@ -17,13 +17,14 @@
 namespace plf
 {
 
-  template<typename Options> struct is_lessgreater_t : eve::strict_tuple_callable<is_lessgreater_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct is_lessgreater_t : eve::strict_tuple_callable<is_lessgreater_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1,  concepts::polyfloat_like Z2>
-      POLYFLOAT_FORCEINLINE constexpr  eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>>
-    operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>> operator()(Z1 z1,
+                                                                                              Z2 z2) const noexcept
     {
-     return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z1, z2);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(is_lessgreater_t, is_lessgreater_);
@@ -73,6 +74,6 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_lessgreater_(POLYFLOAT_DELAY(), O const& o, Z1 const& a, Z2 const& b) noexcept
   {
-    return  is_not_equal[o](a, b) && is_ordered(a, b);
+    return is_not_equal[o](a, b) && is_ordered(a, b);
   }
 }

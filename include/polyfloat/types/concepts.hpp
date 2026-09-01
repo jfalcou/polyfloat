@@ -15,9 +15,9 @@
 
 namespace plf::_
 {
-  template<typename T>                    inline constexpr unsigned int rank = 0;
-  template<eve::floating_value T>         inline constexpr unsigned int rank<T> = 1;
-  template<eve::integral_scalar_value T>  inline constexpr unsigned int rank<T> = 1;
+  template<typename T> inline constexpr unsigned int rank = 0;
+  template<eve::floating_value T> inline constexpr unsigned int rank<T> = 1;
+  template<eve::integral_scalar_value T> inline constexpr unsigned int rank<T> = 1;
 }
 
 namespace plf::concepts
@@ -35,7 +35,7 @@ namespace plf::concepts
 
   /// General polyfloat concept
   template<typename T>
-  concept polyfloat = polyfloat_like<T> &&  _::rank<std::remove_cvref_t<T>> > 1;
+  concept polyfloat = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> > 1;
 
   template<typename T>
   concept scalar_polyfloat = polyfloat<T> && eve::scalar_value<T>;

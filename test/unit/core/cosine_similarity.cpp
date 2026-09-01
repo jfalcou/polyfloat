@@ -54,32 +54,43 @@ TTS_CASE_WITH("Check cosine_similarity three params",
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
-              tts::randoms(-1000, 1000)
-               )
-  <typename T>(T const& a0, T const& a1, T const& a2,
-               T const& a3, T const& a4, T const& a5,
-               T const& a6, T const& a7, T const& a8,
-               T const& a9, T const& a10,T const& a11)
+              tts::randoms(-1000, 1000))
+<typename T>(T const& a0,
+             T const& a1,
+             T const& a2,
+             T const& a3,
+             T const& a4,
+             T const& a5,
+             T const& a6,
+             T const& a7,
+             T const& a8,
+             T const& a9,
+             T const& a10,
+             T const& a11)
 {
-  using  mpfr::mpreal;
-  auto mcosine_similarity =  [](auto a,  auto b, auto c, auto d){ return (a*c+b*d)/mpfr::sqrt((a*a+b*b)*(c*c+d*d)); };
+  using mpfr::mpreal;
+  auto mcosine_similarity = [](auto a, auto b, auto c, auto d) {
+    return (a * c + b * d) / mpfr::sqrt((a * a + b * b) * (c * c + d * d));
+  };
   using plf::cosine_similarity;
   {
-    using pv_t  = plf::polyfloat<T, 2>;
+    using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
     pv_t pd(a9, a10);
-    TTS_RELATIVE_EQUAL(cosine_similarity(pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
-//    TTS_RELATIVE_EQUAL(cosine_similarity[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(cosine_similarity(pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd),
+                       tts::epsprec<T>());
+    //    TTS_RELATIVE_EQUAL(cosine_similarity[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
   }
   {
-    using pv_t  = plf::polyfloat<T, 3>;
+    using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
     pv_t pd(a9, a10, a11);
-    TTS_RELATIVE_EQUAL(cosine_similarity(pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
-//    TTS_RELATIVE_EQUAL(cosine_similarity[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(cosine_similarity(pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd),
+                       tts::epsprec<T>());
+    //    TTS_RELATIVE_EQUAL(cosine_similarity[eve::kahan](pa, pb, pc, pd), tts::mpfr_exec(mcosine_similarity, pa, pb, pc, pd), tts::epsprec<T>());
   }
 };

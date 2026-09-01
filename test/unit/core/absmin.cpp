@@ -15,17 +15,15 @@ TTS_CASE_WITH("Check min two params",
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax)
-             )
-  <typename T>(T const& a0, T const& a1, T const& a2,
-               T const& a3, T const& a4, T const& a5)
+              tts::randoms(eve::valmin, eve::valmax))
+<typename T>(T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5)
 {
-  using  mpfr::mpreal;
-  using plf::absmin;
+  using mpfr::mpreal;
   using plf::abs;
-  auto mabsmin = [](auto a,  auto b){ return mpfr::abs(mpfr::min(a, b)); };
+  using plf::absmin;
+  auto mabsmin = [](auto a, auto b) { return mpfr::abs(mpfr::min(a, b)); };
   {
-    using pv_t  = plf::polyfloat<T, 2>;
+    using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     TTS_EQUAL(absmin(pa, pb), tts::mpfr_exec(mabsmin, pa, pb));
@@ -34,7 +32,7 @@ TTS_CASE_WITH("Check min two params",
     TTS_EQUAL(absmin(pa, a0), absmin(pa, pv_t(a0)));
   }
   {
-    using pv_t  = plf::polyfloat<T, 3>;
+    using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     TTS_EQUAL(absmin(pa, pb), tts::mpfr_exec(mabsmin, pa, pb));
