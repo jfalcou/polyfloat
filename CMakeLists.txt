@@ -55,9 +55,9 @@ if(POLYFLOAT_BUILD_DOCUMENTATION)
                      GODBOLT_LIBRARIES polyfloat eve
                      GODBOLT_COMPILER clang1600
                      GODBOLT_OPTIONS "-O3 -std=c++20 -DNDEBUG"
-                     COLOR_HUE 41
-                     COLOR_SATURATION 47
-                     COLOR_LIGHTNESS 54
+                     COLOR_HUE 329
+                     COLOR_SATURATION 62
+                     COLOR_LIGHTNESS 44
                      TAGFILES eve=https://jfalcou.github.io/eve)
 endif()
 
