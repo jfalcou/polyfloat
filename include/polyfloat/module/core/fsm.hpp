@@ -30,7 +30,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fsm_t, fsm_);
   };
   //======================================================================================================================
-  //! @fsmtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fsm
   //!   @brief return the fused asubtract multiply  of the parameters.
@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fsm.cpp}
+  //!  @godbolt_todo{doc/core/fsm.cpp}
   //======================================================================================================================
 
   inline constexpr auto fsm = eve::functor<fsm_t>;

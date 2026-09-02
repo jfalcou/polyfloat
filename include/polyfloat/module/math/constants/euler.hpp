@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/euler.cpp}
+  //!  @godbolt_todo{doc/euler.cpp}
   //======================================================================================================================
 
   inline constexpr auto euler = eve::functor<euler_t>;

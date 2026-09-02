@@ -72,6 +72,8 @@ namespace plf
   //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
   //!          where \f$\oplus\f$ fma_approxs its two parameters with infinite precision.
   //!
+  //!     The algorithm depends on the overload:
+  //!
   //!     1. algorithm using fma.
   //!     2. Handles overflow.
   //!
@@ -79,7 +81,7 @@ namespace plf
   //!   *  [Exact and Approximated error of the FMA](https://inria.hal.science/inria-00429617/document)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/core/core/two_fma_approx.cpp}
+  //!  @godbolt_todo{doc/core/core/core/two_fma_approx.cpp}
   //================================================================================================
   inline constexpr auto two_fma_approx = eve::functor<two_fma_approx_t>;
   //================================================================================================

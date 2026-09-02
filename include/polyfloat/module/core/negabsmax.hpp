@@ -72,7 +72,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negabsmax.cpp}
+  //!  @godbolt_todo{doc/core/negabsmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto negabsmax = eve::functor<negabsmax_t>;

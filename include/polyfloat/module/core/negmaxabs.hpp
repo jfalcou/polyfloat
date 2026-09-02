@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negmaxabs.cpp}
+  //!  @godbolt_todo{doc/core/negmaxabs.cpp}
   //======================================================================================================================
 
   inline constexpr auto negmaxabs = eve::functor<negmaxabs_t>;

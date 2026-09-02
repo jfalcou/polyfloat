@@ -60,7 +60,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/ulpdist.cpp}
+  //!  @godbolt_todo{doc/core/ulpdist.cpp}
   //======================================================================================================================
 
   inline constexpr auto ulpdist = eve::functor<ulpdist_t>;

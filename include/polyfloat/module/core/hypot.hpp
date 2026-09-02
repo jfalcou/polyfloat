@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(hypot_t, hypot_);
   };
   //======================================================================================================================
-  //! @hypottogroup core
+  //! @addtogroup core
   //! @{
   //!   @var hypot
   //!   @brief return the sum of the parameters.
@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/hypot.cpp}
+  //!  @godbolt_todo{doc/core/hypot.cpp}
   //======================================================================================================================
 
   inline constexpr auto hypot = eve::functor<hypot_t>;

@@ -58,7 +58,7 @@ namespace plf
   //!     returns true if and only if x is a denormal number
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/is_denormal.cpp}
+  //!  @godbolt_todo{doc/core/is_denormal.cpp}
   //================================================================================================
   inline constexpr auto is_denormal = eve::functor<is_denormal_t>;
   //======================================================================================================================

@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/average.cpp}
+  //!  @godbolt_todo{doc/core/average.cpp}
   //======================================================================================================================
 
   inline constexpr auto average = eve::functor<average_t>;

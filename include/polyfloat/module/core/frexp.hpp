@@ -62,7 +62,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     1. returns a kumi::tuple `{m,e}`  of values ` of the same type as `x`, which are related by
+  //!     1. returns a kumi::tuple `{m,e}` of values of the same type as `x`, which are related by
   //!       \f$x =  m\times 2^e\f$, with  \f$|m| \in [0.5, 1.5[\f$.
   //!       However, the cases \f$x = \pm\infty\f$ or is a Nan or a denormal are undefined.
   //!     2. [The operation is performed conditionnaly](@ref conditional).

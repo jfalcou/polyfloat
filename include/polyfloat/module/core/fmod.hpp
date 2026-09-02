@@ -57,9 +57,9 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `x`, `y`: [real](@ref plf::floating_value) argumentx.
-  //!     * `c`: [Conditional expression](@ref plf::conditional_expr) masking the operation.
-  //!     * `m`: [Logical value](@ref plf::logical_value) masking the operation.
+  //!     * `x`, `y`: `floating_value` argumentx.
+  //!     * `c`: `conditional_expr` masking the operation.
+  //!     * `m`: `logical_value` masking the operation.
   //!
   //!   **Return value**
   //!

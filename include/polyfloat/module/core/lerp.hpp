@@ -31,7 +31,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lerp_t, lerp_);
   };
   //======================================================================================================================
-  //! @lerptogroup core
+  //! @addtogroup core
   //! @{
   //!   @var lerp
   //!   @brief return the fused multiply add of the parameters.
@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/lerp.cpp}
+  //!  @godbolt_todo{doc/core/lerp.cpp}
   //======================================================================================================================
 
   inline constexpr auto lerp = eve::functor<lerp_t>;

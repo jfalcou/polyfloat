@@ -30,7 +30,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fam_t, fam_);
   };
   //======================================================================================================================
-  //! @famtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fam
   //!   @brief return the fused add multiply  of the parameters.
@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fam.cpp}
+  //!  @godbolt_todo{doc/core/fam.cpp}
   //======================================================================================================================
 
   inline constexpr auto fam = eve::functor<fam_t>;

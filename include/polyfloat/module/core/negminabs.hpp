@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/negminabs.cpp}
+  //!  @godbolt_todo{doc/core/negminabs.cpp}
   //======================================================================================================================
 
   inline constexpr auto negminabs = eve::functor<negminabs_t>;

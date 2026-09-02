@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_nlez.cpp}
+  //!  @godbolt_todo{doc/core/is_nlez.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_nlez = eve::functor<is_nlez_t>;

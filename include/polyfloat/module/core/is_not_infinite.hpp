@@ -29,7 +29,7 @@ namespace plf
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var is_eqz
+  //!   @var is_not_infinite
   //!   @brief test the parameter for being not infinite.
   //!
   //!   @groupheader{Header file}
@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_not_infinite.cpp}
+  //!  @godbolt_todo{doc/core/is_not_infinite.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_infinite = eve::functor<is_not_infinite_t>;

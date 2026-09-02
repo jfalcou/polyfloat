@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/signnz.cpp}
+  //!  @godbolt_todo{doc/core/signnz.cpp}
   //======================================================================================================================
 
   inline constexpr auto signnz = eve::functor<signnz_t>;

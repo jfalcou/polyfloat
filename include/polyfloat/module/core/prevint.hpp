@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/prevint.cpp}
+  //!  @godbolt_todo{doc/core/prevint.cpp}
   //======================================================================================================================
 
   inline constexpr auto prevint = eve::functor<prevint_t>;

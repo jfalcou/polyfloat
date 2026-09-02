@@ -52,6 +52,60 @@ namespace plf::_
 //======================================================================================================================
 namespace plf
 {
+  //====================================================================================================================
+  //! @addtogroup core
+  //! @{
+  //!   @var allbits
+  //!   @brief every bit set, which is the pattern of a quiet NaN for a floating point type, for the requested polyfloat type.
+  //!
+  //!   @var bitincrement
+  //!   @brief the smallest increment representable in the type's bit pattern, for the requested polyfloat type.
+  //!
+  //!   @var half
+  //!   @brief one half, for the requested polyfloat type.
+  //!
+  //!   @var inf
+  //!   @brief positive infinity, for the requested polyfloat type.
+  //!
+  //!   @var mhalf
+  //!   @brief minus one half, for the requested polyfloat type.
+  //!
+  //!   @var mindenormal
+  //!   @brief the smallest denormal value, for the requested polyfloat type.
+  //!
+  //!   @var minexponent
+  //!   @brief the smallest exponent of the type, for the requested polyfloat type.
+  //!
+  //!   @var minf
+  //!   @brief negative infinity, for the requested polyfloat type.
+  //!
+  //!   @var mone
+  //!   @brief minus one, for the requested polyfloat type.
+  //!
+  //!   @var mzero
+  //!   @brief negative zero, for the requested polyfloat type.
+  //!
+  //!   @var nan
+  //!   @brief a quiet NaN, for the requested polyfloat type.
+  //!
+  //!   @var one
+  //!   @brief one, for the requested polyfloat type.
+  //!
+  //!   @var smallestposval
+  //!   @brief the smallest positive normal value, for the requested polyfloat type.
+  //!
+  //!   @var false_
+  //!   @brief the false logical value, for the requested polyfloat type.
+  //!
+  //!   @var true_
+  //!   @brief the true logical value, for the requested polyfloat type.
+  //!
+  //!   @var zero
+  //!   @brief zero, for the requested polyfloat type.
+  //!
+  //! @}
+  //====================================================================================================================
+
   // Direct reuse
   using eve::false_;
   using eve::true_;

@@ -66,7 +66,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/nthroot.cpp}
+  //!  @godbolt_todo{doc/core/nthroot.cpp}
   //======================================================================================================================
 
   inline constexpr auto nthroot = eve::functor<nthroot_t>;

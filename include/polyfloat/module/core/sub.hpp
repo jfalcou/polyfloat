@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sub_t, sub_);
   };
   //======================================================================================================================
-  //! @subtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var sub
   //!   @brief return the difference of the values.

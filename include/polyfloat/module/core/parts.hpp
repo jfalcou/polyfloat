@@ -37,7 +37,7 @@ namespace plf
   //====================================================================================================================
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var hi
   //!   @brief Extracts the hi part of a value.
   //!
   //!   @groupheader{Header file}
@@ -67,12 +67,12 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/hi.cpp}
+  //!  @godbolt_todo{doc/core/hi.cpp}
   //====================================================================================================================
   inline constexpr auto hi = extractor<0>{};
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var md
   //!   @brief Extracts the md part of a value.
   //!
   //!   @groupheader{Header file}
@@ -105,12 +105,12 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/md.cpp}
+  //!  @godbolt_todo{doc/core/md.cpp}
   //====================================================================================================================
   inline constexpr auto md = extractor<1>{};
 
   //====================================================================================================================
-  //!   @var real
+  //!   @var lo
   //!   @brief Extracts the lo part of a value.
   //!
   //!   @groupheader{Header file}
@@ -143,7 +143,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/lo.cpp}
+  //!  @godbolt_todo{doc/core/lo.cpp}
   //====================================================================================================================
 
   // TODO

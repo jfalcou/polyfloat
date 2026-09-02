@@ -31,7 +31,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fnms_t, fnms_);
   };
   //======================================================================================================================
-  //! @fnmstogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fnms
   //!   @brief return the fused negated-multiply substract of the parameters.
@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fnms.cpp}
+  //!  @godbolt_todo{doc/core/fnms.cpp}
   //======================================================================================================================
 
   inline constexpr auto fnms = eve::functor<fnms_t>;

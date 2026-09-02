@@ -56,6 +56,9 @@ namespace plf
   //!
   //!   @groupheader{Callable Signatures}
   //!
+  //!   @code
+  //!   namespace plf
+  //!   {
   //!      // Regular overloads
   //!      constexpr auto cumfun(auto f, eve::value auto ... xs)     noexcept; // 1
   //!      constexpr auto cumfun(auto f, non_empty_product_type tup) noexcept; // 2
@@ -77,7 +80,7 @@ namespace plf
   //!
   //!  @note currently cumfun can only be applied with `f` being one of these POLYFLOAT functors :
   //!   `add`, `mul`, `min`, `max` that define abelian monoids and each possess
-  //!   `a well defined neutral element.
+  //!   a well defined neutral element.
   //!
   //!  @groupheader{Example}
   //!  @godbolt{doc/core/cumfun.cpp}

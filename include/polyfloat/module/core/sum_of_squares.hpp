@@ -40,7 +40,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sum_of_squares_t, sum_of_squares_);
   };
   //======================================================================================================================
-  //! @sum_of_squarestogroup core
+  //! @addtogroup core
   //! @{
   //!   @var sum_of_squares
   //!   @brief return the sum of squares of the vector components.
@@ -73,7 +73,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/sum_of_squares.cpp}
+  //!  @godbolt{doc/core/sum_of_squares.cpp}
   //======================================================================================================================
 
   inline constexpr auto sum_of_squares = eve::functor<sum_of_squares_t>;

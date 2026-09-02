@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/nextafter.cpp}
+  //!  @godbolt_todo{doc/core/nextafter.cpp}
   //======================================================================================================================
 
   inline constexpr auto nextafter = eve::functor<nextafter_t>;

@@ -39,9 +39,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sum_of_prod_t, sum_of_prod_);
   };
   //======================================================================================================================
-  //! @sum_of_prodtogroup core
+  //! @addtogroup core
   //! @{
-  //!   @var sum_of_prod returns a*b+c*d.
+  //!   @var sum_of_prod
+  //!   @brief returns `a*b+c*d`.
   //!
   //!   @groupheader{Header file}
   //!
@@ -68,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sum_of_prod.cpp}
+  //!  @godbolt_todo{doc/core/sum_of_prod.cpp}
   //======================================================================================================================
 
   inline constexpr auto sum_of_prod = eve::functor<sum_of_prod_t>;

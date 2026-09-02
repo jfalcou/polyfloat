@@ -65,6 +65,8 @@ namespace plf
   //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
   //!          where \f$\oplus\f$ div_approxs its two parameters with infinite precision.
   //!
+  //!     The algorithm depends on the overload:
+  //!
   //!     1. algorithm using div.
   //!     2. Handles overflow.
   //!
@@ -72,7 +74,7 @@ namespace plf
   //!   *  [Exact and Approximated error of the DIV](https://inria.hal.science/inria-00429617/document)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/core/core/two_div_approx.cpp}
+  //!  @godbolt_todo{doc/core/core/core/two_div_approx.cpp}
   //================================================================================================
   inline constexpr auto two_div_approx = eve::functor<two_div_approx_t>;
   //================================================================================================

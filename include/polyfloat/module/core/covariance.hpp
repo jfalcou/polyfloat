@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(covariance_t, covariance_);
   };
   //======================================================================================================================
-  //! @covariancetogroup core
+  //! @addtogroup core
   //! @{
   //!   @var covariance
   //!   @brief `elementwise_callable` object computing the elementwise  covariance product
@@ -79,10 +79,10 @@ namespace plf
   //!    2. Uses the tuples elements
   //!    3. see 1.
   //!
-  //!  @see [`welford_covariance`](@ref welford_variance) for incremental or parallel covariance and averages computations.
+  //!  @see `welford_covariance` for incremental or parallel covariance and averages computations.
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/covariance.cpp}
+  //!  @godbolt_todo{doc/core/covariance.cpp}
   //======================================================================================================================
 
   inline constexpr auto covariance = eve::functor<covariance_t>;

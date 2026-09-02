@@ -29,7 +29,7 @@ namespace plf
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var is_eqz
+  //!   @var is_pinf
   //!   @brief test the parameter equal \f$\infty\f$.
   //!
   //!   @groupheader{Header file}
@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_pinf.cpp}
+  //!  @godbolt_todo{doc/core/is_pinf.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_pinf = eve::functor<is_pinf_t>;

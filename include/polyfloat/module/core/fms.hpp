@@ -30,7 +30,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fms_t, fms_);
   };
   //======================================================================================================================
-  //! @fmstogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fms
   //!   @brief return the fused multiply substract of the parameters.
@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fms.cpp}
+  //!  @godbolt_todo{doc/core/fms.cpp}
   //======================================================================================================================
 
   inline constexpr auto fms = eve::functor<fms_t>;

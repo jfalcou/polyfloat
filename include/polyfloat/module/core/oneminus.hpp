@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/oneminus.cpp}
+  //!  @godbolt_todo{doc/core/oneminus.cpp}
   //======================================================================================================================
 
   inline constexpr auto oneminus = eve::functor<oneminus_t>;

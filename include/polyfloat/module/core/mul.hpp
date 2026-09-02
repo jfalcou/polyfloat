@@ -28,7 +28,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
   };
   //======================================================================================================================
-  //! @multogroup core
+  //! @addtogroup core
   //! @{
   //!   @var mul
   //!   @brief return the product of the values.

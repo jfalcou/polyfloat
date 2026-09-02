@@ -51,7 +51,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cosine_similarity_t, cosine_similarity_);
   };
   //======================================================================================================================
-  //! @cosine_similaritytogroup core
+  //! @addtogroup core
   //! @{
   //!   @var cosine_similarity
   //!   @brief return the cosine_similarity product  of the vector of the first half of parameters by
@@ -87,7 +87,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/core/cosine_similarity.cpp}
+  //!  @godbolt_todo{doc/core/core/cosine_similarity.cpp}
   //======================================================================================================================
 
   inline constexpr auto cosine_similarity = eve::functor<cosine_similarity_t>;

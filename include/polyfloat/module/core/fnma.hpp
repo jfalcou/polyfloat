@@ -31,7 +31,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fnma_t, fnma_);
   };
   //======================================================================================================================
-  //! @fnmatogroup core
+  //! @addtogroup core
   //! @{
   //!   @var fnma
   //!   @brief return the fused negated-multiply add of the parameters.
@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/fnma.cpp}
+  //!  @godbolt_todo{doc/core/fnma.cpp}
   //======================================================================================================================
 
   inline constexpr auto fnma = eve::functor<fnma_t>;

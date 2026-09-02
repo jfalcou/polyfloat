@@ -69,6 +69,8 @@ namespace plf
   //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
   //!          where \f$\oplus\f$ adds its two parameters with infinite precision.
   //!
+  //!     The algorithm depends on the overload:
+  //!
   //!     1. Classical algorithm, always valid.
   //!     2. Handles overflow.
   //!
@@ -76,7 +78,7 @@ namespace plf
   //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/core/two_prod.cpp}
+  //!  @godbolt_todo{doc/core/core/two_prod.cpp}
   //================================================================================================
   inline constexpr auto two_prod = eve::functor<two_prod_t>;
   //================================================================================================

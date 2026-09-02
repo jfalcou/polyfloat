@@ -80,7 +80,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/oneosqrteps.cpp}
+  //!  @godbolt{doc/core/oneosqrteps.cpp}
   //======================================================================================================================
 
   inline constexpr auto oneosqrteps = eve::functor<oneosqrteps_t>;

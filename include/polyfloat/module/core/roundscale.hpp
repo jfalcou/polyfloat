@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/roundscale.cpp}
+  //!  @godbolt_todo{doc/core/roundscale.cpp}
   //======================================================================================================================
 
   inline constexpr auto roundscale = eve::functor<roundscale_t>;

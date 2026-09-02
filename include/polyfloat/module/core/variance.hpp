@@ -72,7 +72,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/variance.cpp}
+  //!  @godbolt_todo{doc/core/variance.cpp}
   //======================================================================================================================
 
   inline constexpr auto variance = eve::functor<variance_t>;

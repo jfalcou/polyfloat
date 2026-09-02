@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/is_nepz.cpp}
+  //!  @godbolt_todo{doc/core/is_nepz.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_nepz = eve::functor<is_nepz_t>;
