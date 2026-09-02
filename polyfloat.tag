@@ -302,12 +302,32 @@
     </member>
   </compound>
   <compound kind="concept">
+    <name>plf::concepts::doublereal_like</name>
+    <filename>conceptplf_1_1concepts_1_1doublereal__like.html</filename>
+  </compound>
+  <compound kind="concept">
     <name>plf::concepts::polyfloat</name>
     <filename>conceptplf_1_1concepts_1_1polyfloat.html</filename>
   </compound>
   <compound kind="concept">
+    <name>plf::concepts::polyfloat_like</name>
+    <filename>conceptplf_1_1concepts_1_1polyfloat__like.html</filename>
+  </compound>
+  <compound kind="concept">
     <name>plf::concepts::real</name>
     <filename>conceptplf_1_1concepts_1_1real.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>plf::concepts::scalar_polyfloat</name>
+    <filename>conceptplf_1_1concepts_1_1scalar__polyfloat.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>plf::concepts::scalar_real</name>
+    <filename>conceptplf_1_1concepts_1_1scalar__real.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>plf::concepts::triplereal_like</name>
+    <filename>conceptplf_1_1concepts_1_1triplereal__like.html</filename>
   </compound>
   <compound kind="namespace">
     <name>plf</name>
@@ -351,25 +371,11 @@
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>***constexpr auto</type>
-      <name>horner</name>
-      <anchorfile>group__functions_ga4be7100c1c154e7fa933fa734608082c.html</anchorfile>
-      <anchor>ga4be7100c1c154e7fa933fa734608082c</anchor>
-      <arglist>() noexcept</arglist>
-    </member>
-    <member kind="function">
       <type>constexpr auto &amp;</type>
       <name>operator/=</name>
       <anchorfile>namespaceplf.html</anchorfile>
       <anchor>a0d9579fedf83ffc6e9e39706329882dd</anchor>
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
-    </member>
-    <member kind="function">
-      <type>***constexpr auto</type>
-      <name>reverse_horner</name>
-      <anchorfile>group__functions_ga033b061dfa0b2062f1c30241b7bd500d.html</anchorfile>
-      <anchor>ga033b061dfa0b2062f1c30241b7bd500d</anchor>
-      <arglist>() noexcept</arglist>
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
@@ -401,9 +407,30 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>agm</name>
+      <anchorfile>group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
+      <anchor>gaaf79a031e1bb735e16389b0a19a2f3d7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>allbits</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>average</name>
       <anchorfile>group__core_gad514388c4bd4fe58d50e53e426d62140.html</anchorfile>
       <anchor>gad514388c4bd4fe58d50e53e426d62140</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>bitincrement</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga8fa056d215485ffdb11c9e151f307df0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -457,9 +484,37 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>cosine_similarity</name>
+      <anchorfile>group__core_gae9bf65899aaf52f81e706494a42c99d3.html</anchorfile>
+      <anchor>gae9bf65899aaf52f81e706494a42c99d3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>covariance</name>
+      <anchorfile>group__core_ga849d694549afbbd8308f3509f7e2c780.html</anchorfile>
+      <anchor>ga849d694549afbbd8308f3509f7e2c780</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>cumfun</name>
+      <anchorfile>group__core_gad9ed275f6b6e77db5325c3893e933ef6.html</anchorfile>
+      <anchor>gad9ed275f6b6e77db5325c3893e933ef6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>cumprod</name>
       <anchorfile>group__core_gaead0ce36438cf8108b2bf0997ff6e4f8.html</anchorfile>
       <anchor>gaead0ce36438cf8108b2bf0997ff6e4f8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>cumsum</name>
+      <anchorfile>group__core_ga431cf7d6555dc450704863dd522499b6.html</anchorfile>
+      <anchor>ga431cf7d6555dc450704863dd522499b6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -502,6 +557,13 @@
       <name>div</name>
       <anchorfile>group__core_gad96f947d70b23427a0305b9998aad337.html</anchorfile>
       <anchor>gad96f947d70b23427a0305b9998aad337</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>dot</name>
+      <anchorfile>group__core_gaf5ce77de394a85c44e05c7f96215fc27.html</anchorfile>
+      <anchor>gaf5ce77de394a85c44e05c7f96215fc27</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -562,9 +624,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>fam</name>
+      <anchorfile>group__core_ga901d4b061ed59463f25ab684e7707f35.html</anchorfile>
+      <anchor>ga901d4b061ed59463f25ab684e7707f35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>floor</name>
       <anchorfile>group__core_gabaa3043614b3644380404814e6718a87.html</anchorfile>
       <anchor>gabaa3043614b3644380404814e6718a87</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>fma</name>
+      <anchorfile>group__core_gafe2539e930df632442830952eafe983f.html</anchorfile>
+      <anchor>gafe2539e930df632442830952eafe983f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -576,6 +652,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>fms</name>
+      <anchorfile>group__core_ga528f7b968ee1663dd96dcbf976e96491.html</anchorfile>
+      <anchor>ga528f7b968ee1663dd96dcbf976e96491</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>fnma</name>
+      <anchorfile>group__core_ga5b4600c48a905e3808b32a9441a6d19d.html</anchorfile>
+      <anchor>ga5b4600c48a905e3808b32a9441a6d19d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>fnms</name>
+      <anchorfile>group__core_ga820c60b72b131ea41f424290e4777842.html</anchorfile>
+      <anchor>ga820c60b72b131ea41f424290e4777842</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>frac</name>
       <anchorfile>group__core_ga6cbff9063806f25141fbe0f5863becae.html</anchorfile>
       <anchor>ga6cbff9063806f25141fbe0f5863becae</anchor>
@@ -583,9 +680,51 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>frexp</name>
+      <anchorfile>group__core_ga89334551f0d0c2f81bf852d2a0b9f502.html</anchorfile>
+      <anchor>ga89334551f0d0c2f81bf852d2a0b9f502</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>fsm</name>
+      <anchorfile>group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
+      <anchor>gab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>half</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>heaviside</name>
       <anchorfile>group__core_gaacc157e51d44695e50b1e1af7643abc0.html</anchorfile>
       <anchor>gaacc157e51d44695e50b1e1af7643abc0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>hi</name>
+      <anchorfile>group__core_ga85fa850c93bf943fe9e434de3552293d.html</anchorfile>
+      <anchor>ga85fa850c93bf943fe9e434de3552293d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>horner</name>
+      <anchorfile>group__functions_gae998e94f32f326d4c67342e2ceb35982.html</anchorfile>
+      <anchor>gae998e94f32f326d4c67342e2ceb35982</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>hypot</name>
+      <anchorfile>group__core_gab1d383e91204c25060d9e6f3f68fac0b.html</anchorfile>
+      <anchor>gab1d383e91204c25060d9e6f3f68fac0b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -716,6 +855,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>is_infinite</name>
+      <anchorfile>group__core_gae4511a6a87e546c2fa45b2483a26cbd2.html</anchorfile>
+      <anchor>gae4511a6a87e546c2fa45b2483a26cbd2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>is_less</name>
       <anchorfile>group__core_gaeb3a722d8086ab0090707c53e2058c3d.html</anchorfile>
       <anchor>gaeb3a722d8086ab0090707c53e2058c3d</anchor>
@@ -747,6 +893,13 @@
       <name>is_ltz</name>
       <anchorfile>group__core_ga62ddb7af573f49058eba0f222072310a.html</anchorfile>
       <anchor>ga62ddb7af573f49058eba0f222072310a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>is_minf</name>
+      <anchorfile>group__core_gab77d212b376f19f9172c3741d6b2df35.html</anchorfile>
+      <anchor>gab77d212b376f19f9172c3741d6b2df35</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -856,6 +1009,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>is_not_infinite</name>
+      <anchorfile>group__core_gad3cf2c8f13b83ffed9f1b2924a8a8529.html</anchorfile>
+      <anchor>gad3cf2c8f13b83ffed9f1b2924a8a8529</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>is_not_less</name>
       <anchorfile>group__core_gacad2e09ee75c713a87065f75a2a18c64.html</anchorfile>
       <anchor>gacad2e09ee75c713a87065f75a2a18c64</anchor>
@@ -891,6 +1051,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>is_pinf</name>
+      <anchorfile>group__core_gaff62e2a7284c69e0b8c388e70ad2e066.html</anchorfile>
+      <anchor>gaff62e2a7284c69e0b8c388e70ad2e066</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>is_positive</name>
       <anchorfile>group__core_ga382498c379928168e37005f38a9b8eaf.html</anchorfile>
       <anchor>ga382498c379928168e37005f38a9b8eaf</anchor>
@@ -922,6 +1089,20 @@
       <name>ldexp</name>
       <anchorfile>group__core_gaaafb5f51797ebd81c0fdc1011e0275a3.html</anchorfile>
       <anchor>gaaafb5f51797ebd81c0fdc1011e0275a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>lerp</name>
+      <anchorfile>group__core_ga8875d0b61cf3fbeeaa6ed18b29e5ca9f.html</anchorfile>
+      <anchor>ga8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>lo</name>
+      <anchorfile>group__core_ga986719f5a39d352e01286ab52b9a54ff.html</anchorfile>
+      <anchor>ga986719f5a39d352e01286ab52b9a54ff</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1003,6 +1184,20 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>md</name>
+      <anchorfile>group__core_ga0745f202e4af71621d3f5e84e37c6abe.html</anchorfile>
+      <anchor>ga0745f202e4af71621d3f5e84e37c6abe</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>mhalf</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gacf3b52a44982c70d2b2b7a11531beee3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>min</name>
       <anchorfile>group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html</anchorfile>
       <anchor>gaf2ecab0082e8fa1007d5ea49c9fa1a87</anchor>
@@ -1013,6 +1208,27 @@
       <name>minabs</name>
       <anchorfile>group__core_gaa190c10bef44628e4701ff2fcd6728a0.html</anchorfile>
       <anchor>gaa190c10bef44628e4701ff2fcd6728a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>mindenormal</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga0a3e5881bfb4a0de7977621996c339a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>minexponent</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga4647ba96a04ee2f05047b93c70509bd9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>minf</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1041,6 +1257,34 @@
       <name>modf</name>
       <anchorfile>group__core_gaf07ed2a608fc290c474c9baaa296fc76.html</anchorfile>
       <anchor>gaf07ed2a608fc290c474c9baaa296fc76</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>mone</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gafd51d660d060685287a61ceb9a0619c5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>mul</name>
+      <anchorfile>group__core_ga856a221cd309873711b978ce55df4635.html</anchorfile>
+      <anchor>ga856a221cd309873711b978ce55df4635</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>mzero</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>nan</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gab815a9e20ea8d0c215108a23413f0347</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1129,6 +1373,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>one</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gaf4a21d2a045aedd47efa31fcc8be1fcf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>oneminus</name>
       <anchorfile>group__core_gaffe46da86ea6a171bb1de5203b24334a.html</anchorfile>
       <anchor>gaffe46da86ea6a171bb1de5203b24334a</anchor>
@@ -1139,6 +1390,13 @@
       <name>oneosqrteps</name>
       <anchorfile>group__constants_gaf37d435e94d94585ba4b0848c520316b.html</anchorfile>
       <anchor>gaf37d435e94d94585ba4b0848c520316b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pown</name>
+      <anchorfile>group__core_ga3309e6018e6235033a2877c0d9eece8c.html</anchorfile>
+      <anchor>ga3309e6018e6235033a2877c0d9eece8c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1164,6 +1422,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>rec</name>
+      <anchorfile>group__core_ga38ee18ae42971becb7275f6596ada180.html</anchorfile>
+      <anchor>ga38ee18ae42971becb7275f6596ada180</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>reldist</name>
       <anchorfile>group__core_ga46f13916d7af01b5f6c1f880d13e2ed4.html</anchorfile>
       <anchor>ga46f13916d7af01b5f6c1f880d13e2ed4</anchor>
@@ -1181,6 +1446,20 @@
       <name>remainder</name>
       <anchorfile>group__core_ga501d3d6d436d40d647f290fce53b5bf9.html</anchorfile>
       <anchor>ga501d3d6d436d40d647f290fce53b5bf9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>reverse_horner</name>
+      <anchorfile>group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.html</anchorfile>
+      <anchor>gaec0903d03ecaa41fc2f06bd4d9598fbe</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>round</name>
+      <anchorfile>group__core_ga94fa0cf071f9760d3b0ba4d9c3b86170.html</anchorfile>
+      <anchor>ga94fa0cf071f9760d3b0ba4d9c3b86170</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1227,6 +1506,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>smallestposval</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>sqr</name>
       <anchorfile>group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html</anchorfile>
       <anchor>gac72a278d06c43be14dce2cfbd8e67bdf</anchor>
@@ -1258,6 +1544,27 @@
       <name>sqrtvalmax</name>
       <anchorfile>group__constants_ga5b01112179d17efdb5be43518c0e0669.html</anchorfile>
       <anchor>ga5b01112179d17efdb5be43518c0e0669</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sub</name>
+      <anchorfile>group__core_ga9d647eeb7803da2f5dc1d1c646e22799.html</anchorfile>
+      <anchor>ga9d647eeb7803da2f5dc1d1c646e22799</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sum_of_prod</name>
+      <anchorfile>group__core_ga00467d77659f76768d9798485cbbd3cf.html</anchorfile>
+      <anchor>ga00467d77659f76768d9798485cbbd3cf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sum_of_squares</name>
+      <anchorfile>group__core_ga2dd0aca7295af7318c56063bd90f0730.html</anchorfile>
+      <anchor>ga2dd0aca7295af7318c56063bd90f0730</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1349,230 +1656,6 @@
       <name>variance</name>
       <anchorfile>group__core_ga0b8af824ea99e25f0aafc7e5756d97d3.html</anchorfile>
       <anchor>ga0b8af824ea99e25f0aafc7e5756d97d3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>agm</name>
-      <anchorfile>namespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
-      <anchor>aaf79a031e1bb735e16389b0a19a2f3d7</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>cosine_similarity</name>
-      <anchorfile>namespaceplf_ae9bf65899aaf52f81e706494a42c99d3.html</anchorfile>
-      <anchor>ae9bf65899aaf52f81e706494a42c99d3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>covariance</name>
-      <anchorfile>namespaceplf_a849d694549afbbd8308f3509f7e2c780.html</anchorfile>
-      <anchor>a849d694549afbbd8308f3509f7e2c780</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>dot</name>
-      <anchorfile>namespaceplf_af5ce77de394a85c44e05c7f96215fc27.html</anchorfile>
-      <anchor>af5ce77de394a85c44e05c7f96215fc27</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fam</name>
-      <anchorfile>namespaceplf_a901d4b061ed59463f25ab684e7707f35.html</anchorfile>
-      <anchor>a901d4b061ed59463f25ab684e7707f35</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fma</name>
-      <anchorfile>namespaceplf_afe2539e930df632442830952eafe983f.html</anchorfile>
-      <anchor>afe2539e930df632442830952eafe983f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fms</name>
-      <anchorfile>namespaceplf_a528f7b968ee1663dd96dcbf976e96491.html</anchorfile>
-      <anchor>a528f7b968ee1663dd96dcbf976e96491</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fnma</name>
-      <anchorfile>namespaceplf_a5b4600c48a905e3808b32a9441a6d19d.html</anchorfile>
-      <anchor>a5b4600c48a905e3808b32a9441a6d19d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fnms</name>
-      <anchorfile>namespaceplf_a820c60b72b131ea41f424290e4777842.html</anchorfile>
-      <anchor>a820c60b72b131ea41f424290e4777842</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fsm</name>
-      <anchorfile>namespaceplf_ab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
-      <anchor>ab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>hypot</name>
-      <anchorfile>namespaceplf_ab1d383e91204c25060d9e6f3f68fac0b.html</anchorfile>
-      <anchor>ab1d383e91204c25060d9e6f3f68fac0b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>lerp</name>
-      <anchorfile>namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html</anchorfile>
-      <anchor>a8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>mul</name>
-      <anchorfile>namespaceplf_a856a221cd309873711b978ce55df4635.html</anchorfile>
-      <anchor>a856a221cd309873711b978ce55df4635</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>rec</name>
-      <anchorfile>namespaceplf_a38ee18ae42971becb7275f6596ada180.html</anchorfile>
-      <anchor>a38ee18ae42971becb7275f6596ada180</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>sub</name>
-      <anchorfile>namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html</anchorfile>
-      <anchor>a9d647eeb7803da2f5dc1d1c646e22799</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>sum_of_squares</name>
-      <anchorfile>namespaceplf_a2dd0aca7295af7318c56063bd90f0730.html</anchorfile>
-      <anchor>a2dd0aca7295af7318c56063bd90f0730</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>agm</name>
-      <anchorfile>namespaceplf_aaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
-      <anchor>aaf79a031e1bb735e16389b0a19a2f3d7</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>cosine_similarity</name>
-      <anchorfile>namespaceplf_ae9bf65899aaf52f81e706494a42c99d3.html</anchorfile>
-      <anchor>ae9bf65899aaf52f81e706494a42c99d3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>covariance</name>
-      <anchorfile>namespaceplf_a849d694549afbbd8308f3509f7e2c780.html</anchorfile>
-      <anchor>a849d694549afbbd8308f3509f7e2c780</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>dot</name>
-      <anchorfile>namespaceplf_af5ce77de394a85c44e05c7f96215fc27.html</anchorfile>
-      <anchor>af5ce77de394a85c44e05c7f96215fc27</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fam</name>
-      <anchorfile>namespaceplf_a901d4b061ed59463f25ab684e7707f35.html</anchorfile>
-      <anchor>a901d4b061ed59463f25ab684e7707f35</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fma</name>
-      <anchorfile>namespaceplf_afe2539e930df632442830952eafe983f.html</anchorfile>
-      <anchor>afe2539e930df632442830952eafe983f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fms</name>
-      <anchorfile>namespaceplf_a528f7b968ee1663dd96dcbf976e96491.html</anchorfile>
-      <anchor>a528f7b968ee1663dd96dcbf976e96491</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fnma</name>
-      <anchorfile>namespaceplf_a5b4600c48a905e3808b32a9441a6d19d.html</anchorfile>
-      <anchor>a5b4600c48a905e3808b32a9441a6d19d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fnms</name>
-      <anchorfile>namespaceplf_a820c60b72b131ea41f424290e4777842.html</anchorfile>
-      <anchor>a820c60b72b131ea41f424290e4777842</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>fsm</name>
-      <anchorfile>namespaceplf_ab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
-      <anchor>ab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>hypot</name>
-      <anchorfile>namespaceplf_ab1d383e91204c25060d9e6f3f68fac0b.html</anchorfile>
-      <anchor>ab1d383e91204c25060d9e6f3f68fac0b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>lerp</name>
-      <anchorfile>namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html</anchorfile>
-      <anchor>a8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>mul</name>
-      <anchorfile>namespaceplf_a856a221cd309873711b978ce55df4635.html</anchorfile>
-      <anchor>a856a221cd309873711b978ce55df4635</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>rec</name>
-      <anchorfile>namespaceplf_a38ee18ae42971becb7275f6596ada180.html</anchorfile>
-      <anchor>a38ee18ae42971becb7275f6596ada180</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>sub</name>
-      <anchorfile>namespaceplf_a9d647eeb7803da2f5dc1d1c646e22799.html</anchorfile>
-      <anchor>a9d647eeb7803da2f5dc1d1c646e22799</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>sum_of_squares</name>
-      <anchorfile>namespaceplf_a2dd0aca7295af7318c56063bd90f0730.html</anchorfile>
-      <anchor>a2dd0aca7295af7318c56063bd90f0730</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1673,6 +1756,12 @@
       <anchor>acb02165730e7ed765fdde7603c186597</anchor>
       <arglist>(T0, Ts...) -&gt; polyfloat&lt; T0, 1+sizeof...(Ts)&gt;</arglist>
     </member>
+  </compound>
+  <compound kind="group">
+    <name>concepts</name>
+    <title>Concepts</title>
+    <filename>group__concepts.html</filename>
+    <namespace>plf</namespace>
   </compound>
   <compound kind="group">
     <name>constants</name>
@@ -1839,9 +1928,30 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::agm</name>
+      <anchorfile>group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
+      <anchor>gaaf79a031e1bb735e16389b0a19a2f3d7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::allbits</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::average</name>
       <anchorfile>group__core_gad514388c4bd4fe58d50e53e426d62140.html</anchorfile>
       <anchor>gad514388c4bd4fe58d50e53e426d62140</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::bitincrement</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga8fa056d215485ffdb11c9e151f307df0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1895,9 +2005,37 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::cosine_similarity</name>
+      <anchorfile>group__core_gae9bf65899aaf52f81e706494a42c99d3.html</anchorfile>
+      <anchor>gae9bf65899aaf52f81e706494a42c99d3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::covariance</name>
+      <anchorfile>group__core_ga849d694549afbbd8308f3509f7e2c780.html</anchorfile>
+      <anchor>ga849d694549afbbd8308f3509f7e2c780</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cumfun</name>
+      <anchorfile>group__core_gad9ed275f6b6e77db5325c3893e933ef6.html</anchorfile>
+      <anchor>gad9ed275f6b6e77db5325c3893e933ef6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::cumprod</name>
       <anchorfile>group__core_gaead0ce36438cf8108b2bf0997ff6e4f8.html</anchorfile>
       <anchor>gaead0ce36438cf8108b2bf0997ff6e4f8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cumsum</name>
+      <anchorfile>group__core_ga431cf7d6555dc450704863dd522499b6.html</anchorfile>
+      <anchor>ga431cf7d6555dc450704863dd522499b6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1930,6 +2068,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::dot</name>
+      <anchorfile>group__core_gaf5ce77de394a85c44e05c7f96215fc27.html</anchorfile>
+      <anchor>gaf5ce77de394a85c44e05c7f96215fc27</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::epsilon</name>
       <anchorfile>group__core_gac68d4fa443f186a4893bda40bdadcd39.html</anchorfile>
       <anchor>gac68d4fa443f186a4893bda40bdadcd39</anchor>
@@ -1958,9 +2103,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::fam</name>
+      <anchorfile>group__core_ga901d4b061ed59463f25ab684e7707f35.html</anchorfile>
+      <anchor>ga901d4b061ed59463f25ab684e7707f35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::floor</name>
       <anchorfile>group__core_gabaa3043614b3644380404814e6718a87.html</anchorfile>
       <anchor>gabaa3043614b3644380404814e6718a87</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::fma</name>
+      <anchorfile>group__core_gafe2539e930df632442830952eafe983f.html</anchorfile>
+      <anchor>gafe2539e930df632442830952eafe983f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1972,6 +2131,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::fms</name>
+      <anchorfile>group__core_ga528f7b968ee1663dd96dcbf976e96491.html</anchorfile>
+      <anchor>ga528f7b968ee1663dd96dcbf976e96491</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::fnma</name>
+      <anchorfile>group__core_ga5b4600c48a905e3808b32a9441a6d19d.html</anchorfile>
+      <anchor>ga5b4600c48a905e3808b32a9441a6d19d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::fnms</name>
+      <anchorfile>group__core_ga820c60b72b131ea41f424290e4777842.html</anchorfile>
+      <anchor>ga820c60b72b131ea41f424290e4777842</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::frac</name>
       <anchorfile>group__core_ga6cbff9063806f25141fbe0f5863becae.html</anchorfile>
       <anchor>ga6cbff9063806f25141fbe0f5863becae</anchor>
@@ -1979,9 +2159,44 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::frexp</name>
+      <anchorfile>group__core_ga89334551f0d0c2f81bf852d2a0b9f502.html</anchorfile>
+      <anchor>ga89334551f0d0c2f81bf852d2a0b9f502</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::fsm</name>
+      <anchorfile>group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
+      <anchor>gab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::half</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::heaviside</name>
       <anchorfile>group__core_gaacc157e51d44695e50b1e1af7643abc0.html</anchorfile>
       <anchor>gaacc157e51d44695e50b1e1af7643abc0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::hi</name>
+      <anchorfile>group__core_ga85fa850c93bf943fe9e434de3552293d.html</anchorfile>
+      <anchor>ga85fa850c93bf943fe9e434de3552293d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::hypot</name>
+      <anchorfile>group__core_gab1d383e91204c25060d9e6f3f68fac0b.html</anchorfile>
+      <anchor>gab1d383e91204c25060d9e6f3f68fac0b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2084,6 +2299,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::is_infinite</name>
+      <anchorfile>group__core_gae4511a6a87e546c2fa45b2483a26cbd2.html</anchorfile>
+      <anchor>gae4511a6a87e546c2fa45b2483a26cbd2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::is_less</name>
       <anchorfile>group__core_gaeb3a722d8086ab0090707c53e2058c3d.html</anchorfile>
       <anchor>gaeb3a722d8086ab0090707c53e2058c3d</anchor>
@@ -2115,6 +2337,13 @@
       <name>plf::is_ltz</name>
       <anchorfile>group__core_ga62ddb7af573f49058eba0f222072310a.html</anchorfile>
       <anchor>ga62ddb7af573f49058eba0f222072310a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::is_minf</name>
+      <anchorfile>group__core_gab77d212b376f19f9172c3741d6b2df35.html</anchorfile>
+      <anchor>gab77d212b376f19f9172c3741d6b2df35</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2224,6 +2453,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::is_not_infinite</name>
+      <anchorfile>group__core_gad3cf2c8f13b83ffed9f1b2924a8a8529.html</anchorfile>
+      <anchor>gad3cf2c8f13b83ffed9f1b2924a8a8529</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::is_not_less</name>
       <anchorfile>group__core_gacad2e09ee75c713a87065f75a2a18c64.html</anchorfile>
       <anchor>gacad2e09ee75c713a87065f75a2a18c64</anchor>
@@ -2259,6 +2495,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::is_pinf</name>
+      <anchorfile>group__core_gaff62e2a7284c69e0b8c388e70ad2e066.html</anchorfile>
+      <anchor>gaff62e2a7284c69e0b8c388e70ad2e066</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::is_positive</name>
       <anchorfile>group__core_ga382498c379928168e37005f38a9b8eaf.html</anchorfile>
       <anchor>ga382498c379928168e37005f38a9b8eaf</anchor>
@@ -2290,6 +2533,20 @@
       <name>plf::ldexp</name>
       <anchorfile>group__core_gaaafb5f51797ebd81c0fdc1011e0275a3.html</anchorfile>
       <anchor>gaaafb5f51797ebd81c0fdc1011e0275a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::lerp</name>
+      <anchorfile>group__core_ga8875d0b61cf3fbeeaa6ed18b29e5ca9f.html</anchorfile>
+      <anchor>ga8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::lo</name>
+      <anchorfile>group__core_ga986719f5a39d352e01286ab52b9a54ff.html</anchorfile>
+      <anchor>ga986719f5a39d352e01286ab52b9a54ff</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2343,6 +2600,20 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::md</name>
+      <anchorfile>group__core_ga0745f202e4af71621d3f5e84e37c6abe.html</anchorfile>
+      <anchor>ga0745f202e4af71621d3f5e84e37c6abe</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mhalf</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gacf3b52a44982c70d2b2b7a11531beee3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::min</name>
       <anchorfile>group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html</anchorfile>
       <anchor>gaf2ecab0082e8fa1007d5ea49c9fa1a87</anchor>
@@ -2353,6 +2624,27 @@
       <name>plf::minabs</name>
       <anchorfile>group__core_gaa190c10bef44628e4701ff2fcd6728a0.html</anchorfile>
       <anchor>gaa190c10bef44628e4701ff2fcd6728a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mindenormal</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga0a3e5881bfb4a0de7977621996c339a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::minexponent</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga4647ba96a04ee2f05047b93c70509bd9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::minf</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2381,6 +2673,34 @@
       <name>plf::modf</name>
       <anchorfile>group__core_gaf07ed2a608fc290c474c9baaa296fc76.html</anchorfile>
       <anchor>gaf07ed2a608fc290c474c9baaa296fc76</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mone</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gafd51d660d060685287a61ceb9a0619c5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mul</name>
+      <anchorfile>group__core_ga856a221cd309873711b978ce55df4635.html</anchorfile>
+      <anchor>ga856a221cd309873711b978ce55df4635</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mzero</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::nan</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gab815a9e20ea8d0c215108a23413f0347</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2462,9 +2782,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::one</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>gaf4a21d2a045aedd47efa31fcc8be1fcf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::oneminus</name>
       <anchorfile>group__core_gaffe46da86ea6a171bb1de5203b24334a.html</anchorfile>
       <anchor>gaffe46da86ea6a171bb1de5203b24334a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pown</name>
+      <anchorfile>group__core_ga3309e6018e6235033a2877c0d9eece8c.html</anchorfile>
+      <anchor>ga3309e6018e6235033a2877c0d9eece8c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2490,6 +2824,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::rec</name>
+      <anchorfile>group__core_ga38ee18ae42971becb7275f6596ada180.html</anchorfile>
+      <anchor>ga38ee18ae42971becb7275f6596ada180</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::reldist</name>
       <anchorfile>group__core_ga46f13916d7af01b5f6c1f880d13e2ed4.html</anchorfile>
       <anchor>ga46f13916d7af01b5f6c1f880d13e2ed4</anchor>
@@ -2507,6 +2848,13 @@
       <name>plf::remainder</name>
       <anchorfile>group__core_ga501d3d6d436d40d647f290fce53b5bf9.html</anchorfile>
       <anchor>ga501d3d6d436d40d647f290fce53b5bf9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::round</name>
+      <anchorfile>group__core_ga94fa0cf071f9760d3b0ba4d9c3b86170.html</anchorfile>
+      <anchor>ga94fa0cf071f9760d3b0ba4d9c3b86170</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2553,6 +2901,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::smallestposval</name>
+      <anchorfile>group__core.html</anchorfile>
+      <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::sqr</name>
       <anchorfile>group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html</anchorfile>
       <anchor>gac72a278d06c43be14dce2cfbd8e67bdf</anchor>
@@ -2563,6 +2918,27 @@
       <name>plf::sqrt</name>
       <anchorfile>group__core_gab25eb1782219136d8368a2a090bcac77.html</anchorfile>
       <anchor>gab25eb1782219136d8368a2a090bcac77</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sub</name>
+      <anchorfile>group__core_ga9d647eeb7803da2f5dc1d1c646e22799.html</anchorfile>
+      <anchor>ga9d647eeb7803da2f5dc1d1c646e22799</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sum_of_prod</name>
+      <anchorfile>group__core_ga00467d77659f76768d9798485cbbd3cf.html</anchorfile>
+      <anchor>ga00467d77659f76768d9798485cbbd3cf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sum_of_squares</name>
+      <anchorfile>group__core_ga2dd0aca7295af7318c56063bd90f0730.html</anchorfile>
+      <anchor>ga2dd0aca7295af7318c56063bd90f0730</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2671,19 +3047,19 @@
     <name>functions</name>
     <title>Functions</title>
     <filename>group__functions.html</filename>
-    <member kind="function">
-      <type>***constexpr auto</type>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::horner</name>
-      <anchorfile>group__functions_ga4be7100c1c154e7fa933fa734608082c.html</anchorfile>
-      <anchor>ga4be7100c1c154e7fa933fa734608082c</anchor>
-      <arglist>() noexcept</arglist>
+      <anchorfile>group__functions_gae998e94f32f326d4c67342e2ceb35982.html</anchorfile>
+      <anchor>gae998e94f32f326d4c67342e2ceb35982</anchor>
+      <arglist></arglist>
     </member>
-    <member kind="function">
-      <type>***constexpr auto</type>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::reverse_horner</name>
-      <anchorfile>group__functions_ga033b061dfa0b2062f1c30241b7bd500d.html</anchorfile>
-      <anchor>ga033b061dfa0b2062f1c30241b7bd500d</anchor>
-      <arglist>() noexcept</arglist>
+      <anchorfile>group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.html</anchorfile>
+      <anchor>gaec0903d03ecaa41fc2f06bd4d9598fbe</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="group">

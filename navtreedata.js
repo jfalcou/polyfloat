@@ -42,7 +42,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"conceptplf_1_1concepts_1_1polyfloat.html"
+"conceptplf_1_1concepts_1_1doublereal__like.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::horner</title>
+<title>polyfloat: plf::round</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('group__functions_ga4be7100c1c154e7fa933fa734608082c.html','',''); });
+$(function(){initNavTree('group__core_ga94fa0cf071f9760d3b0ba4d9c3b86170.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -119,8 +119,8 @@ $(function(){initNavTree('group__functions_ga4be7100c1c154e7fa933fa734608082c.ht
 </div>
 
 <div class="contents">
-<a id="ga4be7100c1c154e7fa933fa734608082c" name="ga4be7100c1c154e7fa933fa734608082c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4be7100c1c154e7fa933fa734608082c">&#9670;&#160;</a></span>horner()</h2>
+<a id="ga94fa0cf071f9760d3b0ba4d9c3b86170" name="ga94fa0cf071f9760d3b0ba4d9c3b86170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">&#9670;&#160;</a></span>round</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,39 +129,50 @@ $(function(){initNavTree('group__functions_ga4be7100c1c154e7fa933fa734608082c.ht
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">*constexpr auto plf::horner </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname">auto plf::round = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;round_t&gt;</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel constexpr">constexpr</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order. </p>
+<p>rounds a value, to nearest unless an option says otherwise. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/functions.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
 <div class="line">{</div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespaceRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="comment">// Regular overloads</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="#ga4be7100c1c154e7fa933fa734608082c">horner</a>(floating_value <span class="keyword">auto</span> x, value <span class="keyword">auto</span> ...ci)                      <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="#ga4be7100c1c154e7fa933fa734608082c">horner</a>(floating_value <span class="keyword">auto</span> x, eve::coefficients <span class="keyword">auto</span> tci)            <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">round</a>(T z) <span class="keyword">noexcept</span>; <span class="comment">//1</span></div>
 <div class="line"> </div>
-<div class="line">   <span class="comment">// Lanes masking</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="#ga4be7100c1c154e7fa933fa734608082c">horner</a>&lt;a href=<span class="stringliteral">&quot;*any of the above overloads*/&quot;</span> &gt;conditional_expr <span class="keyword">auto</span> c&lt;/a&gt;       <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="#ga4be7100c1c154e7fa933fa734608082c">horner</a>[logical_value <span class="keyword">auto</span> m](*any of the above overloads</div>
-<div class="ttc" id="agroup__functions_ga4be7100c1c154e7fa933fa734608082c_html_ga4be7100c1c154e7fa933fa734608082c"><div class="ttname"><a href="#ga4be7100c1c154e7fa933fa734608082c">plf::horner</a></div><div class="ttdeci">***constexpr auto horner() noexcept</div><div class="ttdoc">Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order.</div></div>
-<div class="ttc" id="anamespaceeve_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div></div>
-</div><!-- fragment -->
+<div class="line">   <span class="comment">// Semantic exclusive options</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">round</a>[upward](<span class="comment">/*any of the above overloads*/</span>)                   <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">round</a>[downward](<span class="comment">/*any of the above overloads*/</span>)                 <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">round</a>[toward_zero](<span class="comment">/*any of the above overloads*/</span>)              <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">round</a>[to_nearest](<span class="comment">/*any of the above overloads*/</span>)               <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__core_ga94fa0cf071f9760d3b0ba4d9c3b86170_html_ga94fa0cf071f9760d3b0ba4d9c3b86170"><div class="ttname"><a href="#ga94fa0cf071f9760d3b0ba4d9c3b86170">plf::round</a></div><div class="ttdeci">constexpr auto round</div><div class="ttdoc">rounds a value, to nearest unless an option says otherwise.</div><div class="ttdef"><b>Definition</b> round.hpp:85</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+</div><!-- fragment --><p><b>Parameters</b></p>
+<ul>
+<li><span class="tt">z</span>: Values to process.</li>
+</ul>
+<p><b>Return value</b></p>
+<ol type="1">
+<li>Returns the <span class="tt"><a class="el" href="group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197" title="return the nearest integral value.">plf::nearest(z)</a></span>.</li>
+<li>P roduces:<ul>
+<li><span class="tt"><a class="el" href="group__core_ga9aa5715fd56663843e5d34d9e3904338.html#ga9aa5715fd56663843e5d34d9e3904338" title="return the truncated toward zero value.">plf::trunc(z)</a></span>, if <span class="tt">d</span> is <span class="tt">toward_zero</span>.</li>
+<li><span class="tt"><a class="el" href="group__core_gabaa3043614b3644380404814e6718a87.html#gabaa3043614b3644380404814e6718a87" title="return the floor value.">plf::floor(z)</a></span>, if <span class="tt">d</span> is <span class="tt">downward</span>.</li>
+<li><span class="tt"><a class="el" href="group__core_gacf4cc27cc53a0faf471c2610eab95e8c.html#gacf4cc27cc53a0faf471c2610eab95e8c" title="return the ceil value.">plf::ceil(z)</a></span>, if <span class="tt">d</span> is <span class="tt">upward</span>.</li>
+<li><span class="tt"><a class="el" href="group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197" title="return the nearest integral value.">plf::nearest(z)</a></span>, if <span class="tt">d</span> is <span class="tt">to_nearest</span>.</li>
+</ul>
+</li>
+</ol>
+<h2 class="groupheader">Example </h2>
+<dl class="section remark"><dt>Remarks</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/round.cpp</span>. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

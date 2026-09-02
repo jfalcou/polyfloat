@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::fnms</title>
+<title>polyfloat: plf::concepts::polyfloat_like Concept Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceplf_a820c60b72b131ea41f424290e4777842.html','',''); });
+$(function(){initNavTree('conceptplf_1_1concepts_1_1polyfloat__like.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -118,56 +118,29 @@ $(function(){initNavTree('namespaceplf_a820c60b72b131ea41f424290e4777842.html','
 </div>
 </div>
 
+<div class="header">
+  <div class="headertitle"><div class="title">plf::concepts::polyfloat_like Concept Reference</div></div>
+</div><!--header-->
 <div class="contents">
-<a id="a820c60b72b131ea41f424290e4777842" name="a820c60b72b131ea41f424290e4777842"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a820c60b72b131ea41f424290e4777842">&#9670;&#160;</a></span>fnms</h2>
 
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto plf::fnms = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;fnms_t&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Any value a POLYFLOAT function accepts: a real, or an actual polyfloat.  
+<a href="#details">More...</a></p>
 
-<p>return the fused negated-multiply substract of the parameters. </p>
-<p>@fnmstogroup core</p>
-<h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#a820c60b72b131ea41f424290e4777842">fnms</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
-<div class="line">}</div>
-<div class="ttc" id="anamespaceplf_a820c60b72b131ea41f424290e4777842_html_a820c60b72b131ea41f424290e4777842"><div class="ttname"><a href="#a820c60b72b131ea41f424290e4777842">plf::fnms</a></div><div class="ttdeci">constexpr auto fnms</div><div class="ttdoc">return the fused negated-multiply substract of the parameters.</div><div class="ttdef"><b>Definition</b> fnms.hpp:67</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
-</ul>
-<p><b>Return value</b></p>
-<p>Returns the fused negated-multiply substract of the arguments (-z1*z2-z3).</p>
-<h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
-</div>
-</div>
-</div><!-- contents -->
+<p><code>#include &lt;polyfloat/types/concepts.hpp&gt;</code></p>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Any value a POLYFLOAT function accepts: a real, or an actual polyfloat. </p>
+</div><h2 id="header-conceptdef" class="groupheader">Concept definition</h2>
+<div class="fragment"><div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line">  <span class="keyword">concept </span><a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat__like.html">polyfloat_like</a> = polyfloat_implementation_defined != 0</div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat__like_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat__like.html">plf::concepts::polyfloat_like</a></div><div class="ttdoc">Any value a POLYFLOAT function accepts: a real, or an actual polyfloat.</div><div class="ttdef"><b>Definition</b> concepts.hpp:32</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="namespaceplf.html">plf</a></li>
+    <li class="navelem"><a href="namespaceplf.html">plf</a></li><li class="navelem"><b>concepts</b></li><li class="navelem"><a href="conceptplf_1_1concepts_1_1polyfloat__like.html">polyfloat_like</a></li>
   </ul>
 </div>
 </div> <!-- DOXYSTRAP RELATED -->

@@ -123,16 +123,17 @@ $(function(){initNavTree('conceptplf_1_1concepts_1_1polyfloat.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>General polyfloat concept.  
+<p>An actual polyfloat, of rank strictly greater than one, excluding plain reals.  
 <a href="#details">More...</a></p>
 
 <p><code>#include &lt;polyfloat/types/concepts.hpp&gt;</code></p>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>General polyfloat concept. </p>
+<div class="textblock"><p>An actual polyfloat, of rank strictly greater than one, excluding plain reals. </p>
 </div><h2 id="header-conceptdef" class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line">  <span class="keyword">concept </span><a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat.html">polyfloat</a> = polyfloat_like&lt;T&gt; &amp;&amp; polyfloat_implementation_defined &gt; 1</div>
-<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">General polyfloat concept.</div><div class="ttdef"><b>Definition</b> concepts.hpp:38</div></div>
+<div class="line">  <span class="keyword">concept </span><a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat.html">polyfloat</a> = <a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat__like.html">polyfloat_like&lt;T&gt;</a> &amp;&amp; polyfloat_implementation_defined &gt; 1</div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat__like_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat__like.html">plf::concepts::polyfloat_like</a></div><div class="ttdoc">Any value a POLYFLOAT function accepts: a real, or an actual polyfloat.</div><div class="ttdef"><b>Definition</b> concepts.hpp:32</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">An actual polyfloat, of rank strictly greater than one, excluding plain reals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

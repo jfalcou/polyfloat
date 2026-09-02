@@ -150,7 +150,7 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
 <div class="line">   <span class="comment">// Semantic options</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae8d597dabc4dc057e3110c0a89afe8f3">two_prod</a>[pedantic](<span class="keyword">auto</span> x, <span class="keyword">auto</span> y)   <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3_html_gae8d597dabc4dc057e3110c0a89afe8f3"><div class="ttname"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">plf::two_prod</a></div><div class="ttdeci">constexpr auto two_prod</div><div class="ttdoc">Computes the elementwise pair consisting of the product and its resulting rounding error.</div><div class="ttdef"><b>Definition</b> two_prod.hpp:81</div></div>
+<div class="ttc" id="agroup__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3_html_gae8d597dabc4dc057e3110c0a89afe8f3"><div class="ttname"><a href="#gae8d597dabc4dc057e3110c0a89afe8f3">plf::two_prod</a></div><div class="ttdeci">constexpr auto two_prod</div><div class="ttdoc">Computes the elementwise pair consisting of the product and its resulting rounding error.</div><div class="ttdef"><b>Definition</b> two_prod.hpp:83</div></div>
 <div class="ttc" id="anamespaceeve_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -161,7 +161,9 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
 <li><span class="tt">a</span> is <span class="tt">x+y</span></li>
 <li><span class="tt">e</span> is a value such that <span class="tt">a</span> \(\oplus\)<span class="tt">e</span> is equal to <span class="tt">x</span> \(\oplus\)<span class="tt">y</span>, where \(\oplus\) adds its two parameters with infinite precision.</li>
 </ul>
-<p>Classical algorithm, always valid.</p><ol type="1">
+<p>The algorithm depends on the overload:</p>
+<ol type="1">
+<li>Classical algorithm, always valid.</li>
 <li>Handles overflow.</li>
 </ol>
 <h2 class="groupheader">External references </h2>
@@ -169,7 +171,8 @@ $(function(){initNavTree('group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8
 <li><a href="https://www.vinc17.net/research/papers/rr_ccrsums2.pdf">On the Computation of Correctly-Rounded Sums</a></li>
 </ul>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<dl class="section remark"><dt>Remarks</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/core/two_prod.cpp</span>. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

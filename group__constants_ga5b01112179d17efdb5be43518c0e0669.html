@@ -156,7 +156,69 @@ $(function(){initNavTree('group__constants_ga5b01112179d17efdb5be43518c0e0669.ht
 <p><b>Return value</b></p>
 <p>Returns the sqrt of the maximal representable value.</p>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/details/printing.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//  using  mpfr::mpreal;</span></div>
+<div class="line">  <span class="comment">//   using  plf::_::to_mpreal;</span></div>
+<div class="line">  <span class="comment">//   {</span></div>
+<div class="line">  <span class="comment">//     using t1_t = double;</span></div>
+<div class="line">  <span class="comment">//     using t2_t = plf::polyfloat&lt;double, 2&gt;;</span></div>
+<div class="line">  <span class="comment">//     using t3_t = plf::polyfloat&lt;double, 3&gt;;</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">//     mpfr::mpreal::set_default_prec(200);</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax1 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t1_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax2 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t2_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax3 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t3_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; eve::sqrtvalmax(eve::as&lt;double&gt;())&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax1, eve::as(t1_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax2, eve::as(t2_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax3, eve::as(t3_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//   }</span></div>
+<div class="line">  <span class="comment">//   {</span></div>
+<div class="line">  <span class="comment">//     using t1_t = float;</span></div>
+<div class="line">  <span class="comment">//     using t2_t = plf::polyfloat&lt;float, 2&gt;;</span></div>
+<div class="line">  <span class="comment">//     using t3_t = plf::polyfloat&lt;float, 3&gt;;</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">//     mpfr::mpreal::set_default_prec(200);</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax1 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t1_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax2 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t2_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     mpreal lvalmax3 = mpfr::sqrt(to_mpreal(plf::valmax(eve::as&lt;t3_t&gt;())));</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; eve::sqrtvalmax(eve::as&lt;float&gt;())&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax1, eve::as(t1_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax2, eve::as(t2_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//     std::cout &lt;&lt; plf::_::to_polyfloat(lvalmax3, eve::as(t3_t()))&lt;&lt; std::endl;</span></div>
+<div class="line">  <span class="comment">//   }</span></div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; std::hexfloat;</div>
+<div class="line">    <span class="keyword">auto</span> mxfl1 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;double&gt;</a>());</div>
+<div class="line">    <span class="keyword">auto</span> mxfl2 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>&gt;());</div>
+<div class="line">    <span class="keyword">auto</span> mxfl3 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 3&gt;</a>&gt;());</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl1 &quot;</span> &lt;&lt; mxfl1 &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl2 &quot;</span> &lt;&lt; mxfl2 &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl3 &quot;</span> &lt;&lt; mxfl3 &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">  {</div>
+<div class="line">    std::cout &lt;&lt; std::hexfloat;</div>
+<div class="line">    <span class="keyword">auto</span> mxfl1 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;float&gt;</a>());</div>
+<div class="line">    <span class="keyword">auto</span> mxfl2 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 2&gt;</a>&gt;());</div>
+<div class="line">    <span class="keyword">auto</span> mxfl3 = <a class="code hl_variable" href="#ga5b01112179d17efdb5be43518c0e0669">plf::sqrtvalmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 3&gt;</a>&gt;());</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl1 &quot;</span> &lt;&lt; mxfl1 &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl2 &quot;</span> &lt;&lt; mxfl2 &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl3 &quot;</span> &lt;&lt; mxfl3 &lt;&lt; std::endl;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

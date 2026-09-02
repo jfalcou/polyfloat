@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::lerp</title>
+<title>polyfloat: plf::md</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html','',''); });
+$(function(){initNavTree('group__core_ga0745f202e4af71621d3f5e84e37c6abe.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -119,8 +119,8 @@ $(function(){initNavTree('namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html','
 </div>
 
 <div class="contents">
-<a id="a8875d0b61cf3fbeeaa6ed18b29e5ca9f" name="a8875d0b61cf3fbeeaa6ed18b29e5ca9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8875d0b61cf3fbeeaa6ed18b29e5ca9f">&#9670;&#160;</a></span>lerp</h2>
+<a id="ga0745f202e4af71621d3f5e84e37c6abe" name="ga0745f202e4af71621d3f5e84e37c6abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0745f202e4af71621d3f5e84e37c6abe">&#9670;&#160;</a></span>md</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +129,7 @@ $(function(){initNavTree('namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::lerp = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;lerp_t&gt;</td>
+          <td class="memname">auto plf::md = extractor&lt;1&gt;{}</td>
         </tr>
       </table>
   </td>
@@ -139,25 +139,32 @@ $(function(){initNavTree('namespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the fused multiply add of the parameters. </p>
-<p>@lerptogroup core</p>
+<p>Extracts the md part of a value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;plf/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#a8875d0b61cf3fbeeaa6ed18b29e5ca9f">lerp</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat.html">concepts::polyfloat</a> <span class="keyword">auto</span>&amp;&amp; v)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1real.html">concepts::real</a> <span class="keyword">auto</span>&amp;&amp; v)       <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceplf_a8875d0b61cf3fbeeaa6ed18b29e5ca9f_html_a8875d0b61cf3fbeeaa6ed18b29e5ca9f"><div class="ttname"><a href="#a8875d0b61cf3fbeeaa6ed18b29e5ca9f">plf::lerp</a></div><div class="ttdeci">constexpr auto lerp</div><div class="ttdoc">return the fused multiply add of the parameters.</div><div class="ttdef"><b>Definition</b> lerp.hpp:68</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">An actual polyfloat, of rank strictly greater than one, excluding plain reals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:44</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1real_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1real.html">plf::concepts::real</a></div><div class="ttdoc">A polyfloat_like of rank one, that is, a plain real.</div><div class="ttdef"><b>Definition</b> concepts.hpp:52</div></div>
+<div class="ttc" id="agroup__core_ga0745f202e4af71621d3f5e84e37c6abe_html_ga0745f202e4af71621d3f5e84e37c6abe"><div class="ttname"><a href="#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a></div><div class="ttdeci">constexpr auto md</div><div class="ttdoc">Extracts the md part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:110</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:13</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
+<li><span class="tt">v</span>: Value to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>The value of the interpolation (or extrapolation) between <span class="tt">z1</span> and <span class="tt">z2</span> is returned. The call is semantically equivalent to <span class="tt">z1+z3*(z2-z1)</span></p>
+<ol type="1">
+<li>Returns a properly const-qualified reference to the md part of <span class="tt">v</span>.</li>
+<li>Returns a properly const-qualified reference to <span class="tt">v</span>.</li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>the md part of a floating point value is always 0, for polyfloat the md part always refers to the second component.</dd></dl>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<dl class="section remark"><dt>Remarks</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/md.cpp</span>. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

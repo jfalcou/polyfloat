@@ -1,7 +1,12 @@
 var NAVTREEINDEX0 =
 {
-"conceptplf_1_1concepts_1_1polyfloat.html":[1,5,0,0,0],
-"conceptplf_1_1concepts_1_1real.html":[1,5,0,0,1],
+"conceptplf_1_1concepts_1_1doublereal__like.html":[1,5,0,0,0],
+"conceptplf_1_1concepts_1_1polyfloat.html":[1,5,0,0,1],
+"conceptplf_1_1concepts_1_1polyfloat__like.html":[1,5,0,0,2],
+"conceptplf_1_1concepts_1_1real.html":[1,5,0,0,3],
+"conceptplf_1_1concepts_1_1scalar__polyfloat.html":[1,5,0,0,4],
+"conceptplf_1_1concepts_1_1scalar__real.html":[1,5,0,0,5],
+"conceptplf_1_1concepts_1_1triplereal__like.html":[1,5,0,0,6],
 "concepts.html":[1,5],
 "group__constants.html":[1,1],
 "group__core.html":[1,2],

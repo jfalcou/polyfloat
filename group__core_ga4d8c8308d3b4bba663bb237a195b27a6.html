@@ -140,10 +140,6 @@ $(function(){initNavTree('group__core_ga4d8c8308d3b4bba663bb237a195b27a6.html','
 </div><div class="memdoc">
 
 <p>test the parameter for equality to zero. </p>
-<p>test the parameter equal \(\infty\).</p>
-<p>test the parameter for being not infinite.</p>
-<p>test the parameter equal \(-\infty\).</p>
-<p>test the parameter for being infinite.</p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
@@ -196,98 +192,7 @@ $(function(){initNavTree('group__core_ga4d8c8308d3b4bba663bb237a195b27a6.html','
 <div class="ttc" id="astructeve_1_1fixed_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
-</div><!-- fragment --><h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> is_infinite(T z) <span class="keyword">noexcept</span>;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">z</span>: Value to process.</li>
-</ul>
-<p><b>Return value</b></p>
-<p>Returns true if the value is \(\pm\infty\).</p>
-<h2 class="groupheader">Example </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">  <span class="keyword">using </span>plf::is_infinite;</div>
-<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
-<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
-<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
-<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300, 0.0);</div>
-<div class="line">  std::cout &lt;&lt; std::setprecision(15) &lt;&lt; std::hexfloat;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(f) &quot;</span> &lt;&lt; is_infinite(f) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(a) &quot;</span> &lt;&lt; is_infinite(a) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(b) &quot;</span> &lt;&lt; is_infinite(b) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(c) &quot;</span> &lt;&lt; is_infinite(c) &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed&lt;2&gt;</a>&gt;;</div>
-<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed&lt;2&gt;</a>&gt;;</div>
-<div class="line">  pf2_t wb(b, <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__core__constants_ga8a568ccc9a870bc971851209c836bc63.html#ga8a568ccc9a870bc971851209c836bc63">eve::inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(f)));</div>
-<div class="line">  pf3_t wc(c, <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__core__constants_ga8a568ccc9a870bc971851209c836bc63.html#ga8a568ccc9a870bc971851209c836bc63">eve::inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(f)));</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(wb) &quot;</span> &lt;&lt; is_infinite(wb) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_infinite(wc) &quot;</span> &lt;&lt; is_infinite(wc) &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__eve__core__constants_ga8a568ccc9a870bc971851209c836bc63_html_ga8a568ccc9a870bc971851209c836bc63"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__constants_ga8a568ccc9a870bc971851209c836bc63.html#ga8a568ccc9a870bc971851209c836bc63">eve::inf</a></div><div class="ttdeci">constexpr auto inf</div></div>
-<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
-</div><!-- fragment --><h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> is_minf(T z) <span class="keyword">noexcept</span>;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">z</span>: Value to process.</li>
-</ul>
-<p><b>Return value</b></p>
-<p>Returns the true if z value is \(-\infty\).</p>
-<h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --><h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> is_not_infinite(T z) <span class="keyword">noexcept</span>;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">z</span>: Value to process.</li>
-</ul>
-<p><b>Return value</b></p>
-<p>Returns true if the value is not \(\pm\infty\).</p>
-<h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --><h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> is_pinf(T z) <span class="keyword">noexcept</span>;</div>
-<div class="line">}</div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">z</span>: Value to process.</li>
-</ul>
-<p><b>Return value</b></p>
-<p>Returns the true if z value is \(\infty\).</p>
-<h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

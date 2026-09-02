@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>polyfloat: plf::fma</title>
+<title>polyfloat: plf::hi</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','',''); });
+$(function(){initNavTree('group__core_ga85fa850c93bf943fe9e434de3552293d.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -119,8 +119,8 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
 </div>
 
 <div class="contents">
-<a id="afe2539e930df632442830952eafe983f" name="afe2539e930df632442830952eafe983f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe2539e930df632442830952eafe983f">&#9670;&#160;</a></span>fma</h2>
+<a id="ga85fa850c93bf943fe9e434de3552293d" name="ga85fa850c93bf943fe9e434de3552293d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga85fa850c93bf943fe9e434de3552293d">&#9670;&#160;</a></span>hi</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +129,7 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto plf::fma = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;fma_t&gt;</td>
+          <td class="memname">auto plf::hi = extractor&lt;0&gt;{}</td>
         </tr>
       </table>
   </td>
@@ -139,26 +139,31 @@ $(function(){initNavTree('namespaceplf_afe2539e930df632442830952eafe983f.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the fused multiply add of the parameters. </p>
-<p>@fmatogroup core</p>
+<p>Extracts the hi part of a value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;plf/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like Z1, poly<span class="keywordtype">float</span>_like Z2, poly<span class="keywordtype">float</span>_like Z3&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#afe2539e930df632442830952eafe983f">fma</a>(Z1 z1, Z2 z2, Z3 z3) <span class="keyword">noexcept</span>;</div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga85fa850c93bf943fe9e434de3552293d">hi</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat.html">concepts::polyfloat</a> <span class="keyword">auto</span>&amp;&amp; v)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga85fa850c93bf943fe9e434de3552293d">hi</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1real.html">concepts::real</a> <span class="keyword">auto</span>&amp;&amp; v)       <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceplf_afe2539e930df632442830952eafe983f_html_afe2539e930df632442830952eafe983f"><div class="ttname"><a href="#afe2539e930df632442830952eafe983f">plf::fma</a></div><div class="ttdeci">constexpr auto fma</div><div class="ttdoc">return the fused multiply add of the parameters.</div><div class="ttdef"><b>Definition</b> fma.hpp:69</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">An actual polyfloat, of rank strictly greater than one, excluding plain reals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:44</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1real_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1real.html">plf::concepts::real</a></div><div class="ttdoc">A polyfloat_like of rank one, that is, a plain real.</div><div class="ttdef"><b>Definition</b> concepts.hpp:52</div></div>
+<div class="ttc" id="agroup__core_ga85fa850c93bf943fe9e434de3552293d_html_ga85fa850c93bf943fe9e434de3552293d"><div class="ttname"><a href="#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a></div><div class="ttdeci">constexpr auto hi</div><div class="ttdoc">Extracts the hi part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:72</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:13</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">z1</span>, <span class="tt">z2</span>, <span class="tt">z3</span>: Values to process.</li>
+<li><span class="tt">v</span>: Value to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns the fused multiply add of the arguments.</p>
-<dl class="section note"><dt>Note</dt><dd>contrarily to <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/group__eve__core__fma__family_gae79b56378eacf4c4f3b3d7e128facb07.html#gae79b56378eacf4c4f3b3d7e128facb07">eve::fma</a></span>, <span class="tt"><a class="el" href="#afe2539e930df632442830952eafe983f" title="return the fused multiply add of the parameters.">plf::fma</a></span> garanties the correct fused multiply add rounding behaviour, even if it has to be emulated.</dd></dl>
+<ol type="1">
+<li>Returns a properly const-qualified reference to the hi part of <span class="tt">v</span>.</li>
+<li>Returns a properly const-qualified reference to <span class="tt">v</span>.</li>
+</ol>
 <h2 class="groupheader">Example </h2>
-<div class="fragment"></div><!-- fragment --> 
+<dl class="section remark"><dt>Remarks</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/hi.cpp</span>. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
