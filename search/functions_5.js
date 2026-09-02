@@ -1,6 +1,3 @@
 var searchData=
 [
-  ['fill_0',['fill',['https://jfalcou.github.io/eve/structeve_1_1algo_1_1soa__vector.html#ab508d79bcf317cfc3a543d0c3dcb26aa',1,'eve::algo::soa_vector::fill(value_type v)'],['https://jfalcou.github.io/eve/structeve_1_1algo_1_1soa__vector.html#ab508d79bcf317cfc3a543d0c3dcb26aa',1,'eve::algo::soa_vector::fill(value_type v)']]],
-  ['fix_5fpattern_1',['fix_pattern',['https://jfalcou.github.io/eve/structeve_1_1pattern__t.html#abfc27bc9e535aab6f92c30fc1f7ec756',1,'eve::pattern_t']]],
-  ['front_2',['front',['https://jfalcou.github.io/eve/structeve_1_1wide.html#aa279df4c99dbc46206e9f70b44b1f769',1,'eve::wide::front() const noexcept'],['https://jfalcou.github.io/eve/structeve_1_1wide.html#aa279df4c99dbc46206e9f70b44b1f769',1,'eve::wide::front() const noexcept'],['https://jfalcou.github.io/eve/structeve_1_1logical_3_01wide_3_01Type_00_01Cardinal_01_4_01_4.html#a7de72be98e577d883e5d4e13487bcb20',1,'eve::logical&lt; wide&lt; Type, Cardinal &gt; &gt;::front() const noexcept'],['https://jfalcou.github.io/eve/structeve_1_1logical_3_01wide_3_01Type_00_01Cardinal_01_4_01_4.html#a7de72be98e577d883e5d4e13487bcb20',1,'eve::logical&lt; wide&lt; Type, Cardinal &gt; &gt;::front() const noexcept']]]
 ];

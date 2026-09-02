@@ -1,9 +1,3 @@
 var searchData=
 [
-  ['keep_5fbetween_0',['keep_between',['https://jfalcou.github.io/eve/structeve_1_1keep__between.html',1,'eve']]],
-  ['keep_5ffirst_1',['keep_first',['https://jfalcou.github.io/eve/structeve_1_1keep__first.html',1,'eve::keep_first'],['https://jfalcou.github.io/eve/structeve_1_1keep__first.html#a3980975e38c2675ec2f812a4ff3eb7c4',1,'eve::keep_first::keep_first()']]],
-  ['keep_5fif_2',['keep_if',['https://jfalcou.github.io/eve/group__eve__algos_ga1dfaa1ff5ad47985d1b0a624ba4404b9.html#ga1dfaa1ff5ad47985d1b0a624ba4404b9',1,'eve::algo']]],
-  ['keep_5flast_3',['keep_last',['https://jfalcou.github.io/eve/structeve_1_1keep__last.html',1,'eve']]],
-  ['khinchin_4',['khinchin',['https://jfalcou.github.io/eve/group__eve__math__constants_ga0741808f95c071aa804ddb0bd4488558.html#ga0741808f95c071aa804ddb0bd4488558',1,'eve::khinchin'],['https://jfalcou.github.io/eve/group__eve__math__constants_ga0741808f95c071aa804ddb0bd4488558.html#ga0741808f95c071aa804ddb0bd4488558',1,'eve::khinchin']]],
-  ['kolmmean_5',['kolmmean',['https://jfalcou.github.io/eve/group__eve__math__exp_gafa20e073c378a3eb096b3b3f3ee37741.html#gafa20e073c378a3eb096b3b3f3ee37741',1,'eve::kolmmean'],['https://jfalcou.github.io/eve/group__eve__math__exp_gafa20e073c378a3eb096b3b3f3ee37741.html#gafa20e073c378a3eb096b3b3f3ee37741',1,'eve::kolmmean']]]
 ];
