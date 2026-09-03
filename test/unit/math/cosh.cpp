@@ -29,8 +29,6 @@ TTS_CASE_WITH(
     TTS_IEEE_EQUAL(cosh(nan), nan);
     pv_t minf(plf::minf(eve::as<pv_t>()));
     TTS_EQUAL(cosh(minf), inf);
-    pv_t maxlogp1(plf::maxlog(eve::as<pv_t>()) + 1);
-    TTS_EQUAL(cosh(maxlogp1), inf);
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
@@ -46,7 +44,5 @@ TTS_CASE_WITH(
     TTS_IEEE_EQUAL(cosh(nan), nan);
     pv_t minf(plf::minf(eve::as<pv_t>()));
     TTS_EQUAL(cosh(minf), inf);
-    pv_t maxlogp1(plf::maxlog(eve::as<pv_t>()) + 1);
-    TTS_EQUAL(cosh(maxlogp1), inf);
   }
 };

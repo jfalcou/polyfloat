@@ -13,6 +13,7 @@ option( POLYFLOAT_BUILD_TEST          "Build tests for POLYFLOAT"   ON  )
 option( POLYFLOAT_BUILD_DOCUMENTATION "Build Doxygen for POLYFLOAT" OFF )
 option( POLYFLOAT_ENABLE_SANITIZERS   "Build tests with AddressSanitizer + UndefinedBehaviorSanitizer" OFF )
 option( POLYFLOAT_ENABLE_COVERAGE     "Build tests with code coverage instrumentation"                 OFF )
+option( POLYFLOAT_USE_PCH             "Build tests with precompiled headers"                            ON  )
 
 ##======================================================================================================================
 ## Project setup via copacabana

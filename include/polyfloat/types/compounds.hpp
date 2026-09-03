@@ -9,7 +9,6 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
-#include <iostream>
 namespace plf
 {
   namespace _
@@ -21,28 +20,24 @@ namespace plf
 
     template<typename T> EVE_FORCEINLINE auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
     {
-      //       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
-      //       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::double_real_t<T>(h, l);
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(output_is_finite)) return plf::double_real_t<T>(h, l);
+        if (eve::all(input_is_finite)) return plf::double_real_t<T>(h, l);
         else return eve::if_else(output_is_finite, plf::double_real_t<T>(h, l), plf::double_real_t<T>(f(hs, ho)));
       }
     }
 
     template<typename T> EVE_FORCEINLINE auto clean1s(auto f, auto hs, auto ho, T h, T m, T l) noexcept
     {
-      //       std::cout << "inputs   hs " << hs << " ho " << ho << std::endl;
-      //       std::cout << "outputs  h  " << h  << " l  " << l << std::endl;
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::triple_real_t<T>(h, m, l);
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(output_is_finite)) return plf::triple_real_t<T>(h, m, l);
+        if (eve::all(input_is_finite)) return plf::triple_real_t<T>(h, m, l);
         else return eve::if_else(output_is_finite, plf::triple_real_t<T>(h, m, l), plf::triple_real_t<T>(f(hs, ho)));
       }
     }
@@ -74,8 +69,6 @@ namespace plf
   constexpr auto& operator+=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
   {
-    auto isnf = eve::is_not_finite(hi(self)) || eve::is_not_finite(hi(other));
-
     T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
     if constexpr (dimension_v<T1> == 2u)
     {

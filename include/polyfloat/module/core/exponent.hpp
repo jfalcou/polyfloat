@@ -76,7 +76,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_FORCEINLINE constexpr auto exponent_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+    POLYFLOAT_FORCEINLINE constexpr auto exponent_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
     {
       return eve::exponent(hi(z));
     }

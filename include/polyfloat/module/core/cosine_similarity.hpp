@@ -100,7 +100,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const&, Ts const&... args) noexcept
   requires(sizeof...(Ts) > 1 && sizeof...(Ts) % 2 == 0)
   {
     using r_t = as_polyfloat_like_t<Ts...>;
@@ -117,7 +117,6 @@ namespace plf::_
            !concepts::polyfloat_like<PT2>)
   {
     using Tup1 = kumi::as_tuple_t<PT1>;
-    using Tup2 = kumi::as_tuple_t<PT2>;
     constexpr auto siz = Tup1::size();
     if constexpr (siz == 1)
     {

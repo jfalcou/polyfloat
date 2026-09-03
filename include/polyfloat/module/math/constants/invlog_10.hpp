@@ -10,7 +10,6 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <iostream>
 
 namespace plf
 {

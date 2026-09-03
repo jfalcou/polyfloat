@@ -21,7 +21,6 @@ namespace plf
     static POLYFLOAT_FORCEINLINE constexpr eve::as_integer_t<T> value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      using i_t = eve::as_integer_t<u_t>;
       return (eve::nbmantissabits(eve::as<u_t>()) + 1) * dimension_v<T>;
     }
 

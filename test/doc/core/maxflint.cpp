@@ -14,13 +14,4 @@ int main()
   std::cout << "mxfl1 " << mxfl1 << std::endl;
   std::cout << "mxfl2 " << mxfl2 << std::endl;
   std::cout << "mxfl3 " << mxfl3 << std::endl;
-  //   plf::_::println("double flint max               ", mxfl1);
-  //   plf::_::println("polyfloat<double, 2> flint max ", mxfl2);
-  //   plf::_::println("polyfloat<double, 3> flint max ", mxfl3);
-  //   plf::_::println("double flint max+1               ", mxfl1+1);
-  //   plf::_::println("polyfloat<double, 2> flint max+1 ", mxfl2+1);
-  //   plf::_::println("polyfloat<double, 3> flint max+1 ", mxfl3+1);
-  //   plf::_::println("double flint max-1               ", mxfl1-1);
-  //   plf::_::println("polyfloat<double, 2> flint max-1 ", mxfl2-1);
-  //   plf::_::println("polyfloat<double, 3> flint max-1 ", mxfl3-1);
 }

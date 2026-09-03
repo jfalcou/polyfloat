@@ -71,16 +71,14 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
+
   POLYFLOAT_FORCEINLINE constexpr auto is_not_greater_equal_(POLYFLOAT_DELAY(),
-                                                             O const& o,
+                                                             O const&,
                                                              Z1 const& z1,
                                                              Z2 const& z2) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2>;
     if constexpr (dimension_v<r_t> == 1) return eve::is_not_greater_equal(z1, z2);
-    else
-    {
-      return plf::is_less(z1, z2) || plf::is_unordered(z1, z2);
-    }
+    else return plf::is_less(z1, z2) || plf::is_unordered(z1, z2);
   }
 }

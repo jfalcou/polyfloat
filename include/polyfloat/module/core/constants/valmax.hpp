@@ -11,8 +11,6 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <iostream>
-#include <iomanip>
 namespace plf
 {
   template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
@@ -20,9 +18,7 @@ namespace plf
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      using i_t = eve::as_integer_t<u_t>;
       auto vlm = eve::valmax(eve::as<u_t>());
-      std::cout << " dimension_v<T> " << dimension_v<T> << std::endl;
       if constexpr (dimension_v<T> == 1) return vlm;
       else if constexpr (dimension_v<T> == 2)
       {
