@@ -73,7 +73,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto remainder_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto remainder_(POLYFLOAT_DELAY(), O const& , T0 const& a, T1 const& b) noexcept
   {
     return plf::rem[to_nearest](a, b);
   }

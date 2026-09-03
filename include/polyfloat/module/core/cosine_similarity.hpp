@@ -100,8 +100,8 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
-  requires(sizeof...(Ts) > 1 && sizeof...(Ts) % 2 == 0)
+  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& , Ts const&... args) noexcept
+  requires(sizeof...(Ts) > 1  && sizeof...(Ts)%2 == 0)
   {
     using r_t = as_polyfloat_like_t<Ts...>;
     using u_t = eve::element_type_t<r_t>;

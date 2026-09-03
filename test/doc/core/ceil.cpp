@@ -31,5 +31,26 @@ int main()
   std::cout << "ceil(wb) " << ceil(wb) << std::endl;
   std::cout << "ceil(wc) " << ceil(wc) << std::endl;
 
+  using  dd_t = plf::double_real_t<double>;
+  auto mx = eve::maxflint(eve::as<double>());
+  dd_t x1(mx);
+  std::cout << std::hexfloat << x1 << std::endl;
+  std::cout << (x1-1)/2 << std::endl;
+  std::cout << plf::ceil(x1) -x1 << std::endl;
+  std::cout << plf::ceil((x1-1)/2) - (x1-1)/2<< std::endl;
+  dd_t x2(mx, eve::ldexp(mx, 53));
+  std::cout << std::hexfloat << x2 << std::endl;
+  std::cout << plf::is_flint(x2) << std::endl;
+  std::cout << (x2-1)/2 << std::endl;
+  std::cout << plf::ceil(x2) -x2 << std::endl;
+  std::cout << plf::ceil((x2-1)/2) - (x2-1)/2<< std::endl;
+
+  dd_t x3(plf::next(x2));
+  std::cout << plf::is_flint(x3) << std::endl;
+  std::cout << std::hexfloat <<  std::setprecision(16) << x3 << std::endl;
+  std::cout << (x3-1)/2 << std::endl;
+  std::cout << plf::ceil(x3) -x3 << std::endl;
+  std::cout << plf::ceil((x3-1)/2) - (x3-1)/2<< std::endl;
+
   return 0;
 }
