@@ -9,30 +9,26 @@ include(${PROJECT_SOURCE_DIR}/cmake/dependencies.cmake)
 include(${PROJECT_SOURCE_DIR}/cmake/compiler.cmake)
 
 ##======================================================================================================================
-option( POLYFLOAT_BUILD_TEST          "Build tests for POLYFLOAT"   ON  )
-option( POLYFLOAT_BUILD_DOCUMENTATION "Build Doxygen for POLYFLOAT" OFF )
-option( POLYFLOAT_ENABLE_SANITIZERS   "Build tests with AddressSanitizer + UndefinedBehaviorSanitizer" OFF )
-option( POLYFLOAT_ENABLE_COVERAGE     "Build tests with code coverage instrumentation"                 OFF )
-option( POLYFLOAT_USE_PCH             "Build tests with precompiled headers"                            ON  )
 
 ##======================================================================================================================
 ## Project setup via copacabana
 ##======================================================================================================================
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake ${COPACABANA_SOURCE_DIR}/copacabana/cmake)
 include(${COPACABANA_SOURCE_DIR}/copacabana/cmake/copacabana.cmake)
+
+copa_add_option(POLYFLOAT_BUILD_TEST "Build tests for POLYFLOAT" ON LABEL "Unit tests")
+copa_add_option(POLYFLOAT_BUILD_DOCUMENTATION "Build Doxygen for POLYFLOAT" OFF LABEL "Doxygen")
+copa_add_option(POLYFLOAT_ENABLE_SANITIZERS "Build tests with AddressSanitizer + UndefinedBehaviorSanitizer" OFF LABEL "Sanitizers")
+copa_add_option(POLYFLOAT_ENABLE_COVERAGE "Build tests with code coverage instrumentation" OFF LABEL "Coverage")
+copa_add_option(POLYFLOAT_USE_PCH "Build tests with precompiled headers" ON)
 copa_project_version(MAJOR 0 MINOR 1 PATCH 0 REPOSITORY https://github.com/jfalcou/polyfloat)
 
 ##======================================================================================================================
 ## Summary Display
 ##======================================================================================================================
+copa_show_options()
+
 if(NOT POLYFLOAT_QUIET)
-  if(CMAKE_BUILD_TYPE)
-    message(STATUS "[${PROJECT_NAME}] - Building in ${CMAKE_BUILD_TYPE} mode")
-  endif()
-  message(STATUS "[${PROJECT_NAME}] - Unit tests : ${POLYFLOAT_BUILD_TEST} (via POLYFLOAT_BUILD_TEST)")
-  message(STATUS "[${PROJECT_NAME}] - Doxygen    : ${POLYFLOAT_BUILD_DOCUMENTATION} (via POLYFLOAT_BUILD_DOCUMENTATION)")
-  message(STATUS "[${PROJECT_NAME}] - Sanitizers : ${POLYFLOAT_ENABLE_SANITIZERS} (via POLYFLOAT_ENABLE_SANITIZERS)")
-  message(STATUS "[${PROJECT_NAME}] - Coverage   : ${POLYFLOAT_ENABLE_COVERAGE} (via POLYFLOAT_ENABLE_COVERAGE)")
   set(QUIET_OPTION "")
 else()
   set(QUIET_OPTION "QUIET")

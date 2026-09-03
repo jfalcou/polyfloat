@@ -1,0 +1,14 @@
+##======================================================================================================================
+##  POLYFLOAT - Flexible multiprecision types
+##  Copyright : POLYFLOAT Project Contributors
+##  SPDX-License-Identifier: BSL-1.0
+##======================================================================================================================
+## Read by copacabana's matrix.yml: the macOS jobs, Debug only. The setup script fetches MPFR C++ and locates GMP and
+## MPFR through brew, which the presets read from the environment.
+runs-on: macos-14
+configs: [Debug]
+build-targets: doc.exe unit.exe
+test-targets: ^(doc|unit).*
+rows:
+  - { name: "clang"       , preset: "clang-macos"        , setup: "./.github/scripts/macos-mpfr.sh" }
+  - { name: "clang libc++", preset: "clang-macos-libc++" , setup: "./.github/scripts/macos-mpfr.sh" }

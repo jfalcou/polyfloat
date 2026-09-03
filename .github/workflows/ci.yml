@@ -16,18 +16,18 @@ concurrency:
 jobs:
   precommit:
     name: Meta Checks
-    uses: jfalcou/copacabana/.github/workflows/precommit.yml@468da45ac73a026a4bca4510840ebe635aa66c2c # v6
+    uses: jfalcou/copacabana/.github/workflows/precommit.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
 
   sanitizer-tests:
     name: Sanitizers
-    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@468da45ac73a026a4bca4510840ebe635aa66c2c # v6
+    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
     with:
       build-targets: doc.exe unit.exe
       test-targets: doc|unit
 
   coverage-report:
     name: Coverage
-    uses: jfalcou/copacabana/.github/workflows/coverage.yml@468da45ac73a026a4bca4510840ebe635aa66c2c # v6
+    uses: jfalcou/copacabana/.github/workflows/coverage.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
     with:
       project: polyfloat
       build-targets: polyfloat-test
@@ -35,9 +35,21 @@ jobs:
   linux-tests:
     name: Linux
     needs: [precommit, sanitizer-tests]
-    uses: ./.github/workflows/linux.yml
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    with:
+      file: .github/matrices/linux.yml
+
+  ## Reported and not required: see the matrix file for why it builds without the precompiled header.
+  no-pch-tests:
+    name: Linux
+    needs: [precommit, sanitizer-tests]
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    with:
+      file: .github/matrices/linux-no-pch.yml
 
   macos-tests:
     name: MacOS
     needs: [precommit, sanitizer-tests]
-    uses: ./.github/workflows/macos.yml
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    with:
+      file: .github/matrices/macos.yml
