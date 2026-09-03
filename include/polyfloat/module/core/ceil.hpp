@@ -97,8 +97,6 @@ namespace plf::_
                                 Z(ch, cm, cl)
                                )
                        );
-
-
       return if_else(iflh && iflm && ifll, z, z1);
     }
   }
