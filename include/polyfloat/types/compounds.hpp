@@ -15,7 +15,8 @@ namespace plf
   {
     template<typename T> EVE_FORCEINLINE auto clean0s(T hi, T lo) noexcept
     {
-      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
+      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi),
+                          plf::double_real_t<T>(hi, lo));
     }
 
     template<typename T> EVE_FORCEINLINE auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
