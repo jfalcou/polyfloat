@@ -75,8 +75,8 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T0, typename T1,  typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const &, T0 a, T1 l, T2 h) noexcept
+  template<typename T0, typename T1, typename T2, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const&, T0 a, T1 l, T2 h) noexcept
   {
     return plf::min(plf::max(a, l), h);
   }

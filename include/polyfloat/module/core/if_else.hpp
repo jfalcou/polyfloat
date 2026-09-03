@@ -78,7 +78,8 @@ namespace plf
 namespace plf::_
 {
   template<typename M, typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto if_else_(POLYFLOAT_DELAY(), O const&, M const& m, Z1 const& t, Z2 const& f) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto if_else_(
+    POLYFLOAT_DELAY(), O const&, M const& m, Z1 const& t, Z2 const& f) noexcept
   {
     if constexpr (concepts::polyfloat<Z1> && concepts::polyfloat<Z2>)
     {

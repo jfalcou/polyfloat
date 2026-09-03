@@ -15,8 +15,7 @@ namespace plf
   {
     template<typename T> EVE_FORCEINLINE auto clean0s(T hi, T lo) noexcept
     {
-      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi),
-                          plf::double_real_t<T>(hi, lo));
+      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
     }
 
     template<typename T> EVE_FORCEINLINE auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
@@ -26,13 +25,8 @@ namespace plf
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite))
-          return  plf::double_real_t<T>(h, l);
-        else
-          return eve::if_else(output_is_finite,
-                              plf::double_real_t<T>(h, l),
-                              plf::double_real_t<T>(f(hs, ho))
-                             );
+        if (eve::all(input_is_finite)) return plf::double_real_t<T>(h, l);
+        else return eve::if_else(output_is_finite, plf::double_real_t<T>(h, l), plf::double_real_t<T>(f(hs, ho)));
       }
     }
 
@@ -43,13 +37,8 @@ namespace plf
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite))
-          return  plf::triple_real_t<T>(h, m, l);
-        else
-          return eve::if_else(output_is_finite,
-                              plf::triple_real_t<T>(h, m, l),
-                              plf::triple_real_t<T>(f(hs, ho))
-                             );
+        if (eve::all(input_is_finite)) return plf::triple_real_t<T>(h, m, l);
+        else return eve::if_else(output_is_finite, plf::triple_real_t<T>(h, m, l), plf::triple_real_t<T>(f(hs, ho)));
       }
     }
 

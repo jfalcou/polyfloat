@@ -92,11 +92,7 @@ namespace plf::_
       auto ch = ceil(h);
       auto cm = ceil(m);
       auto cl = ceil(l);
-      auto z1 = if_else(!iflh, Z(ch),
-                        if_else(!iflm,  Z(ch, cm),
-                                Z(ch, cm, cl)
-                               )
-                       );
+      auto z1 = if_else(!iflh, Z(ch), if_else(!iflm, Z(ch, cm), Z(ch, cm, cl)));
       return if_else(iflh && iflm && ifll, z, z1);
     }
   }

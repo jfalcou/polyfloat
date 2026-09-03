@@ -16,19 +16,19 @@ TTS_CASE_WITH(
   using plf::cosh;
   auto mcosh = [](auto a) { return (mpfr::exp(a) + mpfr::exp(-a)) / 2; };
   {
-     using pv_t  = plf::polyfloat<T, 2>;
-     pv_t pa(a0, a1);
-     TTS_RELATIVE_EQUAL(cosh(pa), tts::mpfr_exec(mcosh, pa), 128*tts::epsprec<pv_t>());
-     pv_t o(T(1), T(0));
-     TTS_RELATIVE_EQUAL(cosh(o), tts::mpfr_exec(mcosh, o), 64*tts::epsprec<pv_t>());
-     pv_t z(T(0), T(0));
-     TTS_EQUAL(plf::cosh(z), o);
-     pv_t inf(plf::inf(eve::as<pv_t>()));
-     TTS_EQUAL(cosh(inf), inf);
-     pv_t nan(plf::nan(eve::as<pv_t>()));
-     TTS_IEEE_EQUAL(cosh(nan), nan);
-     pv_t minf(plf::minf(eve::as<pv_t>()));
-     TTS_EQUAL(cosh(minf), inf);
+    using pv_t = plf::polyfloat<T, 2>;
+    pv_t pa(a0, a1);
+    TTS_RELATIVE_EQUAL(cosh(pa), tts::mpfr_exec(mcosh, pa), 128 * tts::epsprec<pv_t>());
+    pv_t o(T(1), T(0));
+    TTS_RELATIVE_EQUAL(cosh(o), tts::mpfr_exec(mcosh, o), 64 * tts::epsprec<pv_t>());
+    pv_t z(T(0), T(0));
+    TTS_EQUAL(plf::cosh(z), o);
+    pv_t inf(plf::inf(eve::as<pv_t>()));
+    TTS_EQUAL(cosh(inf), inf);
+    pv_t nan(plf::nan(eve::as<pv_t>()));
+    TTS_IEEE_EQUAL(cosh(nan), nan);
+    pv_t minf(plf::minf(eve::as<pv_t>()));
+    TTS_EQUAL(cosh(minf), inf);
   }
   {
     using pv_t = plf::polyfloat<T, 3>;

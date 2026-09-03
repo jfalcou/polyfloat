@@ -19,9 +19,8 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmax(eve::as<u_t>());
-      if constexpr(dimension_v<T> == 1)
-        return vlm;
-      else if constexpr(dimension_v<T> == 2)
+      if constexpr (dimension_v<T> == 1) return vlm;
+      else if constexpr (dimension_v<T> == 2)
       {
         auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
         return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));
