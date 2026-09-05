@@ -16,18 +16,18 @@ concurrency:
 jobs:
   precommit:
     name: Meta Checks
-    uses: jfalcou/copacabana/.github/workflows/precommit.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/precommit.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
 
   sanitizer-tests:
     name: Sanitizers
-    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/sanitizers.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
     with:
       build-targets: doc.exe unit.exe
       test-targets: doc|unit
 
   coverage-report:
     name: Coverage
-    uses: jfalcou/copacabana/.github/workflows/coverage.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/coverage.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
     with:
       project: polyfloat
       build-targets: polyfloat-test
@@ -35,7 +35,7 @@ jobs:
   linux-tests:
     name: Linux
     needs: [precommit, sanitizer-tests]
-    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
     with:
       file: .github/matrices/linux.yml
 
@@ -43,13 +43,13 @@ jobs:
   no-pch-tests:
     name: Linux
     needs: [precommit, sanitizer-tests]
-    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
     with:
       file: .github/matrices/linux-no-pch.yml
 
   macos-tests:
     name: MacOS
     needs: [precommit, sanitizer-tests]
-    uses: jfalcou/copacabana/.github/workflows/matrix.yml@05d0796125e284daa16d9a4f6424c58f98a2bb5a # v7
+    uses: jfalcou/copacabana/.github/workflows/matrix.yml@44053e713b1b57329ccbcbb8878c839024bf19ee # v8
     with:
       file: .github/matrices/macos.yml
