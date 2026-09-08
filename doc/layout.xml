@@ -4,9 +4,7 @@
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
     <!-- <tab type="user" url="@ref kyosu101" title="Getting Started"/> -->
-    <tab type="usergroup" visible="yes" title="How-Tos"/>
-
-    <tab type="usergroup" visible="yes" title="Reference Documentation">
+    <tab type="usergroup" visible="yes" title="Reference Documentation" url="@ref types">
       <tab type="user" url="@ref types" title="Types"/>
       <tab type="user" url="@ref constants" title="Core Constants"/>
       <tab type="user" url="@ref core" title="Core Functions"/>
@@ -14,7 +12,7 @@
       <tab type="user" url="@ref traits" title="Traits"/>
       <tab type="concepts" visible="yes" title=""/>
     </tab>
-    <tab type="usergroup" visible="yes" title="Informations">
+    <tab type="usergroup" visible="yes" title="Informations" url="@ref licence">
        <!-- <tab type="user" url="@ref setup" title="Setup"/> -->
        <!-- <tab type="user" url="@ref rationale" title="Rationale"/> -->
        <!-- <tab type="user" url="@ref changelog" title="Changelog"/> -->
