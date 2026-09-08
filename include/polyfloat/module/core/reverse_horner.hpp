@@ -144,7 +144,6 @@ namespace plf::_
     if constexpr (dimension_v<r_t> == 1) return eve::reverse_horner[o](xx, c0, cs...);
     else
     {
-      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
       constexpr auto N = sizeof...(Cs);
       if constexpr (N == 0) return plf::convert(c0, eve::as_element<r_t>{});
       else
