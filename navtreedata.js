@@ -25,8 +25,7 @@
 var NAVTREE =
 [
   [ "polyfloat", "index.html", [
-    [ "How-Tos", "usergroup0.html", null ],
-    [ "Reference Documentation", "usergroup1.html", [
+    [ "Reference Documentation", "group__types.html", [
       [ "Types", "group__types.html", null ],
       [ "Core Constants", "group__constants.html", null ],
       [ "Core Functions", "group__core.html", null ],
@@ -34,7 +33,7 @@ var NAVTREE =
       [ "Traits", "group__traits.html", null ],
       [ "Concept List", "concepts.html", "concepts" ]
     ] ],
-    [ "Informations", "usergroup2.html", [
+    [ "Informations", "licence.html", [
       [ "Licence", "licence.html", null ]
     ] ]
   ] ]

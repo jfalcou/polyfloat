@@ -24,13 +24,12 @@
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"How-Tos",url:"usergroup0.html"},
-{text:"Reference Documentation",url:"usergroup1.html",children:[
+{text:"Reference Documentation",url:"group__types.html",children:[
 {text:"Types",url:"group__types.html"},
 {text:"Core Constants",url:"group__constants.html"},
 {text:"Core Functions",url:"group__core.html"},
 {text:"Core Accuracy Functions",url:"group__core__accuracy.html"},
 {text:"Traits",url:"group__traits.html"},
 {text:"Concept List",url:"concepts.html"}]},
-{text:"Informations",url:"usergroup2.html",children:[
+{text:"Informations",url:"licence.html",children:[
 {text:"Licence",url:"licence.html"}]}]}
