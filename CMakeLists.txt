@@ -21,6 +21,7 @@ copa_add_option(POLYFLOAT_BUILD_DOCUMENTATION "Build Doxygen for POLYFLOAT" OFF 
 copa_add_option(POLYFLOAT_ENABLE_SANITIZERS "Build tests with AddressSanitizer + UndefinedBehaviorSanitizer" OFF LABEL "Sanitizers")
 copa_add_option(POLYFLOAT_ENABLE_COVERAGE "Build tests with code coverage instrumentation" OFF LABEL "Coverage")
 copa_add_option(POLYFLOAT_USE_PCH "Build tests with precompiled headers" ON)
+copa_add_option(POLYFLOAT_COMPILE_COST "Measure what every test unit costs to compile" OFF)
 copa_project_version(MAJOR 0 MINOR 1 PATCH 0 REPOSITORY https://github.com/jfalcou/polyfloat)
 
 ##======================================================================================================================
@@ -79,5 +80,10 @@ if(POLYFLOAT_BUILD_TEST)
   # After the test targets exist, so the coverage targets can depend on them
   if(POLYFLOAT_ENABLE_COVERAGE)
     copa_setup_coverage(polyfloat_docs)
+  endif()
+
+  # clang only: -fproc-stat-report is its flag. After the test targets, as the measurement rebuilds them.
+  if(POLYFLOAT_COMPILE_COST)
+    copa_setup_compile_cost(polyfloat_test)
   endif()
 endif()

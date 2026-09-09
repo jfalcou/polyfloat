@@ -41,12 +41,14 @@
     { "name": "clang"      , "inherits": ["unix-base"], "cacheVariables": { "CMAKE_CXX_COMPILER": "clang++-20", "CMAKE_CXX_FLAGS": "-O0 -DEVE_NO_FORCEINLINE"        } },
     { "name": "clang-avx2" , "inherits": ["unix-base"], "cacheVariables": { "CMAKE_CXX_COMPILER": "clang++-20", "CMAKE_CXX_FLAGS": "-O0 -DEVE_NO_FORCEINLINE -mavx2" } },
     { "name": "no-pch"     , "hidden": true, "cacheVariables": { "POLYFLOAT_USE_PCH": "OFF" } },
+    { "name": "compile-cost", "hidden": true, "cacheVariables": { "POLYFLOAT_COMPILE_COST": "ON" } },
     { "name": "gcc-no-pch" , "inherits": ["gcc"  , "no-pch"] },
 
     { "name": "gcc-sanitize"   , "inherits": ["gcc"  , "sanitize"] },
     { "name": "gcc-coverage"   , "inherits": ["gcc"  , "coverage"] },
     { "name": "clang-sanitize" , "inherits": ["clang", "sanitize"] },
     { "name": "clang-coverage" , "inherits": ["clang", "coverage"] },
+    { "name": "clang-compile-cost" , "inherits": ["clang", "no-pch", "compile-cost"] },
 
     {
       "name": "clang-macos",
@@ -78,6 +80,7 @@
     { "name": "gcc-coverage"       , "inherits": "base-build", "configurePreset": "gcc-coverage"       },
     { "name": "clang-sanitize"     , "inherits": "base-build", "configurePreset": "clang-sanitize"     },
     { "name": "clang-coverage"     , "inherits": "base-build", "configurePreset": "clang-coverage"     },
+    { "name": "clang-compile-cost" , "inherits": "base-build", "configurePreset": "clang-compile-cost" },
     { "name": "clang-macos"        , "inherits": "base-build", "configurePreset": "clang-macos"        },
     { "name": "clang-macos-libc++" , "inherits": "base-build", "configurePreset": "clang-macos-libc++" }
   ],
