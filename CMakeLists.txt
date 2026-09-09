@@ -40,9 +40,15 @@ endif()
 ##======================================================================================================================
 copa_setup_install( LIBRARY polyfloat
                     FEATURES cxx_std_20
+                    CONFIG  ${PROJECT_SOURCE_DIR}/cmake/polyfloat-config.cmake.in
                     DOC     ${PROJECT_SOURCE_DIR}/LICENSE.md
                     INCLUDE ${PROJECT_SOURCE_DIR}/include/polyfloat
                   )
+
+## The public headers include <eve/eve.hpp>, so the interface target has to hand EVE to whoever
+## links it. Without this, a consumer using FetchContent or CPM compiles against polyfloat's headers
+## alone and stops on the first include.
+target_link_libraries(polyfloat_lib INTERFACE eve::eve)
 
 ##======================================================================================================================
 ## Setup doxygen
