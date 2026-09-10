@@ -6,7 +6,6 @@
 cmake_minimum_required(VERSION 3.22)
 project(polyfloat LANGUAGES CXX)
 include(${PROJECT_SOURCE_DIR}/cmake/dependencies.cmake)
-include(${PROJECT_SOURCE_DIR}/cmake/compiler.cmake)
 
 ##======================================================================================================================
 
@@ -66,16 +65,17 @@ if(POLYFLOAT_BUILD_DOCUMENTATION)
 endif()
 
 ##======================================================================================================================
-## Setup PCH
-##======================================================================================================================
-copa_setup_pch( TARGET polyfloat        INTERFACES  polyfloat_test  HEADERS include/polyfloat/polyfloat.hpp)
-copa_setup_pch( TARGET polyfloat_doc    INTERFACES  polyfloat_docs  HEADERS include/polyfloat/polyfloat.hpp)
-copa_setup_pch( TARGET polyfloat_bench  INTERFACES  polyfloat_bench HEADERS include/polyfloat/polyfloat.hpp)
-
-##======================================================================================================================
 ## Tests setup
 ##======================================================================================================================
 if(POLYFLOAT_BUILD_TEST)
+  CPMGetPackage(TTS)
+  include(${PROJECT_SOURCE_DIR}/cmake/compiler.cmake)
+
+  ## After compiler.cmake, which declares the interfaces the precompiled headers are attached to.
+  copa_setup_pch( TARGET polyfloat        INTERFACES  polyfloat_test  HEADERS include/polyfloat/polyfloat.hpp)
+  copa_setup_pch( TARGET polyfloat_doc    INTERFACES  polyfloat_docs  HEADERS include/polyfloat/polyfloat.hpp)
+  copa_setup_pch( TARGET polyfloat_bench  INTERFACES  polyfloat_bench HEADERS include/polyfloat/polyfloat.hpp)
+
   if(POLYFLOAT_ENABLE_SANITIZERS)
     copa_setup_sanitizers(polyfloat_docs ENABLE_ASAN ENABLE_UBSAN)
   endif()
