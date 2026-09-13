@@ -49,7 +49,6 @@ TTS_CASE_WITH("Check sqrt",
       TTS_RELATIVE_EQUAL(sqrt(pa), tts::mpfr_exec(msqrt, pa), tts::epsprec<pv_t>());
       TTS_EQUAL(sqrt(pv_t(0)), pv_t(0));
       TTS_EQUAL(sqrt(plf::inf(eve::as(pa))), plf::inf(eve::as(pa)));
-      TTS_EQUAL(sqrt(pv_t(plf::eps(eve::as(pa))
       TTS_IEEE_EQUAL(sqrt(plf::nan(eve::as(pa))), plf::nan(eve::as(pa)));
     }
     {
