@@ -11,27 +11,25 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/minus.hpp>
-#include <polyfloat/module/core/is_negative.hpp>
-#include <polyfloat/module/math/exp.hpp>
+#include <polyfloat/module/math/log.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct log_t : eve::elementwise_callable<log_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct acoth_t : eve::elementwise_callable<acoth_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(log_t, log_);
+    POLYFLOAT_CALLABLE_OBJECT(acoth_t, acoth_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var log
-  //!   @brief return the natural logarithm value.
+  //!   @var acoth
+  //!   @brief return the inverse hyperbolic cotangent value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto log(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto acoth(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the expolute,natural logarithm of z.
+  //!     Returns the inverse hyperbolic cotangent of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/log.cpp}
+  //!  @godbolt_todo{doc/core/acoth.cpp}
   //======================================================================================================================
 
-  inline constexpr auto log = eve::functor<log_t>;
+  inline constexpr auto acoth = eve::functor<acoth_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -70,23 +68,14 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, eve::callable_options O> constexpr auto log_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
+  template<typename T, eve::callable_options O> constexpr auto acoth_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::log(xx);
+    if constexpr (dimension_v<T> == 1) return eve::acoth[o](a0);
     else
     {
-      T r(eve::log[eve::pedantic](plf::hi(xx)));
-      auto ex = plf::exp[eve::pedantic](-r);
-      ex = if_else(eve::is_nan(ex), eve::zero, ex);
-      r -= plf::oneminus(xx * ex);
-      if constexpr (dimension_v<T> == 3)
-      {
-        r -= plf::oneminus(xx * plf::exp[pedantic](-r));
-        r -= plf::oneminus(xx * plf::exp[pedantic](-r));
-      }
-      r = if_else(is_ltz(xx) || is_nan(xx), eve::nan, r);
-      r = if_else(is_infinite(xx), plf::inf(as(xx)), r);
-      r = if_else(is_eqz(xx), plf::minf(as(xx)), r);
+      auto r = plf::half(eve::as(a0)) * plf::log(plf::inc(a0) / plf::dec(a0));
+      r = if_else(plf::is_unit(a0), plf::sign(a0) * plf::inf(eve::as(a0)), r);
+      r = if_else(plf::is_infinite(a0), sign(a0) * plf::zero(as(a0)), r);
       return r;
     }
   }
