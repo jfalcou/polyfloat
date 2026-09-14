@@ -12,6 +12,6 @@ var searchData=
   ['next_15',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf::next']]],
   ['nextafter_17',['nextafter',['../group__core_ga09f396a43b0cf65385e8a586a2b410e9.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf::nextafter']]],
   ['nextint_18',['nextint',['../group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf::nextint']]],
-  ['nthroot_27',['nthroot',['../group__core_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
-  ['numbers_28',['Polyfloat numbers',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md0',1,'']]],
+  ['nthroot_28',['nthroot',['../group__core_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
+  ['numbers_29',['Polyfloat numbers',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md0',1,'']]],
 ];

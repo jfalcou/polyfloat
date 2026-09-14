@@ -11,6 +11,6 @@ var searchData=
   ['free_20and_20augmented_20accuracy_20functions_46',['Error free and augmented accuracy functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'']]],
   ['frexp_48',['frexp',['../group__core_ga89334551f0d0c2f81bf852d2a0b9f502.html#ga89334551f0d0c2f81bf852d2a0b9f502',1,'plf::frexp']]],
   ['fsm_50',['fsm',['../group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html#gab6ffa7b2b7b589bc9bbf790c8555e7f3',1,'plf::fsm']]],
-  ['functions_53',['Functions',['../group__functions.html',1,'Functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md5',1,'Functions']]],
-  ['functions_54',['functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md6',1,'Core functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'Error free and augmented accuracy functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md9',1,'Math elementary functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md11',1,'Math special functions']]],
+  ['functions_54',['Functions',['../group__functions.html',1,'Functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md5',1,'Functions']]],
+  ['functions_55',['functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md6',1,'Core functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'Error free and augmented accuracy functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md9',1,'Math elementary functions'],['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md11',1,'Math special functions']]],
 ];

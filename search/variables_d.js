@@ -12,5 +12,5 @@ var searchData=
   ['next_13',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf::next']]],
   ['nextafter_14',['nextafter',['../group__core_ga09f396a43b0cf65385e8a586a2b410e9.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf::nextafter']]],
   ['nextint_15',['nextint',['../group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf::nextint']]],
-  ['nthroot_22',['nthroot',['../group__core_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
+  ['nthroot_23',['nthroot',['../group__core_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
 ];

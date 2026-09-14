@@ -6,7 +6,7 @@ var searchData=
   ['polyfloat_20numbers_27',['Polyfloat numbers',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md0',1,'']]],
   ['polyfloat_5flike_28',['polyfloat_like',['../conceptplf_1_1concepts_1_1polyfloat__like.html',1,'plf::concepts']]],
   ['pown_37',['pown',['../group__core_ga3309e6018e6235033a2877c0d9eece8c.html#ga3309e6018e6235033a2877c0d9eece8c',1,'plf']]],
-  ['prev_39',['prev',['../group__core_ga3e945bcc637ae4a744f512275949fe82.html#ga3e945bcc637ae4a744f512275949fe82',1,'plf::prev']]],
-  ['prevint_40',['prevint',['../group__core_ga4bf8537407a460e745d9df6f37fac5f7.html#ga4bf8537407a460e745d9df6f37fac5f7',1,'plf::prevint']]],
-  ['provide_45',['What does this implementation provide',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md2',1,'']]],
+  ['prev_40',['prev',['../group__core_ga3e945bcc637ae4a744f512275949fe82.html#ga3e945bcc637ae4a744f512275949fe82',1,'plf::prev']]],
+  ['prevint_41',['prevint',['../group__core_ga4bf8537407a460e745d9df6f37fac5f7.html#ga4bf8537407a460e745d9df6f37fac5f7',1,'plf::prevint']]],
+  ['provide_47',['What does this implementation provide',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md2',1,'']]],
 ];

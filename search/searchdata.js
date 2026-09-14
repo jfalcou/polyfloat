@@ -5,10 +5,10 @@ var indexSectionsWithContent =
   2: "elps",
   3: "abcdefghiklmnoprstuvw",
   4: "abcdefghijklmnopqrstuvwzγπω",
-  5: "abcdehilmprstuvwz",
+  5: "abcdeghilmprstuvwz",
   6: "ou",
   7: "os",
-  8: "abcdefhilmnoprstv",
+  8: "abcdefhilmnoprstuv",
   9: "abcdefhilmnopqrstw",
   10: "acdfghilmnoprstuvw"
 };
