@@ -69,8 +69,8 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto signnz_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto signnz_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
-    return Z(eve::signnz(hi(z)));
+    return Z(eve::signnz[o](hi(z)));
   }
 }

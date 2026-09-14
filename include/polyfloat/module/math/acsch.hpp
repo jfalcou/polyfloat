@@ -11,27 +11,25 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/rsqrt.hpp>
-#include <polyfloat/module/core/is_eqz.hpp>
-#include <polyfloat/module/core/is_pinf.hpp>
+#include <polyfloat/module/math/asinh.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct sqrt_t : eve::callable<sqrt_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct acsch_t : eve::elementwise_callable<acsch_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(sqrt_t, sqrt_);
+    POLYFLOAT_CALLABLE_OBJECT(acsch_t, acsch_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var sqrt
-  //!   @brief return the square root value.
+  //!   @var acsch
+  //!   @brief return the inverse hyperbolic cosecant value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,8 +42,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sqrt(T z) noexcept;
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sqrt[raw](T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto acsch(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -55,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the square root of z. With raw option the computation can overflow.
+  //!     Returns the inverse hyperbolic cosecant of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sqrt.cpp}
+  //!  @godbolt_todo{doc/core/acsch.cpp}
   //======================================================================================================================
 
-  inline constexpr auto sqrt = eve::functor<sqrt_t>;
+  inline constexpr auto acsch = eve::functor<acsch_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -71,9 +68,14 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+  template<typename T, eve::callable_options O> constexpr auto acsch_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    return if_else(plf::is_eqz(z) || plf::is_pinf(z), z, plf::rsqrt[o](z) * z);
+    if constexpr (dimension_v<T> == 1) return eve::acsch[o](a0);
+    else
+    {
+      auto r = if_else(plf::is_eqz(a0), plf::signnz[eve::pedantic](a0) * inf(eve::as(a0)), plf::asinh(plf::rec(a0)));
+      r = if_else(plf::is_infinite(a0), plf::signnz[eve::pedantic](a0) * zero(eve::as(a0)), r);
+      return r;
+    }
   }
 }
