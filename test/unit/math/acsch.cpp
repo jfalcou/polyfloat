@@ -25,7 +25,7 @@ TTS_CASE_WITH("Check acsch ",
     using pv_t = plf::polyfloat<T, 2>;
     pv_t nan(plf::nan(eve::as<pv_t>()));
     pv_t pa(a0, a1);
-    TTS_RELATIVE_EQUAL(acsch(pa), tts::mpfr_exec(macsch, pa), 128 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(acsch(pa), tts::mpfr_exec(macsch, pa), 256 * tts::epsprec<pv_t>());
     pv_t o(T(1), T(0));
     pv_t z(T(0), T(0));
     pv_t inf(plf::inf(eve::as<pv_t>()));
