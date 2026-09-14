@@ -400,9 +400,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>acosh</name>
+      <anchorfile>group__core_gaed114cf184f7a06cadd10432981d3516.html</anchorfile>
+      <anchor>gaed114cf184f7a06cadd10432981d3516</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>acoth</name>
       <anchorfile>group__core_ga255478078703a5e3983f9a1f391c5807.html</anchorfile>
       <anchor>ga255478078703a5e3983f9a1f391c5807</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>acsch</name>
+      <anchorfile>group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html</anchorfile>
+      <anchor>ga9063b9310082cd6b6ee1e38e5eb735ae</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -424,6 +438,20 @@
       <name>allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>asech</name>
+      <anchorfile>group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html</anchorfile>
+      <anchor>ga99313b04dd90c0e4b99898bd9adff2d7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>asinh</name>
+      <anchorfile>group__core_gac6517fdf90349f548ef51ecab16a7da2.html</anchorfile>
+      <anchor>gac6517fdf90349f548ef51ecab16a7da2</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1935,9 +1963,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::acosh</name>
+      <anchorfile>group__core_gaed114cf184f7a06cadd10432981d3516.html</anchorfile>
+      <anchor>gaed114cf184f7a06cadd10432981d3516</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::acoth</name>
       <anchorfile>group__core_ga255478078703a5e3983f9a1f391c5807.html</anchorfile>
       <anchor>ga255478078703a5e3983f9a1f391c5807</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::acsch</name>
+      <anchorfile>group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html</anchorfile>
+      <anchor>ga9063b9310082cd6b6ee1e38e5eb735ae</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1959,6 +2001,20 @@
       <name>plf::allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::asech</name>
+      <anchorfile>group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html</anchorfile>
+      <anchor>ga99313b04dd90c0e4b99898bd9adff2d7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::asinh</name>
+      <anchorfile>group__core_gac6517fdf90349f548ef51ecab16a7da2.html</anchorfile>
+      <anchor>gac6517fdf90349f548ef51ecab16a7da2</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

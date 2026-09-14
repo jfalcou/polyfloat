@@ -668,9 +668,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_eqpz.hpp",
-            "function_covered": 15,
+            "function_covered": 21,
             "function_percent": 100.0,
-            "function_total": 15,
+            "function_total": 21,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -692,9 +692,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_eqz.hpp",
-            "function_covered": 24,
+            "function_covered": 30,
             "function_percent": 100.0,
-            "function_total": 24,
+            "function_total": 30,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -920,6 +920,18 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_ordered.hpp",
+            "function_covered": 30,
+            "function_percent": 100.0,
+            "function_total": 30,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/core/is_pinf.hpp",
             "function_covered": 30,
             "function_percent": 100.0,
             "function_total": 30,
@@ -1412,9 +1424,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/signnz.hpp",
-            "function_covered": 12,
+            "function_covered": 24,
             "function_percent": 100.0,
-            "function_total": 12,
+            "function_total": 24,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -1543,6 +1555,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/math/acosh.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 6,
+            "line_percent": 100.0,
+            "line_total": 6
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/math/acoth.hpp",
             "function_covered": 12,
             "function_percent": 100.0,
@@ -1550,6 +1574,42 @@
             "line_covered": 8,
             "line_percent": 100.0,
             "line_total": 8
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/acsch.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 7,
+            "line_percent": 100.0,
+            "line_total": 7
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/asech.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/asinh.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 6,
+            "line_percent": 100.0,
+            "line_total": 6
         },
         {
             "branch_covered": 0,
@@ -1840,12 +1900,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 5642,
+    "function_covered": 5744,
     "function_percent": 99.9,
-    "function_total": 5646,
+    "function_total": 5748,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1507,
+    "line_covered": 1536,
     "line_percent": 99.7,
-    "line_total": 1512,
+    "line_total": 1541,
     "root": "../../.."
 }

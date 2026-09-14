@@ -4,7 +4,9 @@ var searchData=
   ['absmax_5',['absmax',['../group__core_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6',1,'plf::absmax']]],
   ['absmin_6',['absmin',['../group__core_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807',1,'plf::absmin']]],
   ['accuracy_20functions_7',['Error free and augmented accuracy functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'']]],
+  ['acosh_10',['acosh',['../group__core_gaed114cf184f7a06cadd10432981d3516.html#gaed114cf184f7a06cadd10432981d3516',1,'plf::acosh']]],
   ['acoth_12',['acoth',['../group__core_ga255478078703a5e3983f9a1f391c5807.html#ga255478078703a5e3983f9a1f391c5807',1,'plf::acoth']]],
+  ['acsch_14',['acsch',['../group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html#ga9063b9310082cd6b6ee1e38e5eb735ae',1,'plf::acsch']]],
   ['add_15',['add',['../group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6',1,'plf::add']]],
   ['agm_18',['agm',['../group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html#gaaf79a031e1bb735e16389b0a19a2f3d7',1,'plf::agm']]],
   ['allbits_32',['allbits',['../group__core.html#gabbd6cfcd83668ca5f081bcc515d75a59',1,'plf::allbits']]],
@@ -15,6 +17,8 @@ var searchData=
   ['as_5fpolyfloat_5flike_3c_20t_2c_20kumi_3a_3aapply_5ftraits_5ft_3c_20as_5fpolyfloat_5flike_2c_20ts_20_3e_20_3e_61',['as_polyfloat_like&lt; T, kumi::apply_traits_t&lt; as_polyfloat_like, Ts &gt; &gt;',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
   ['as_5fpolyfloat_5fn_5ft_62',['as_polyfloat_n_t',['../group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4',1,'plf']]],
   ['as_5fpolyfloat_5ft_63',['as_polyfloat_t',['../group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594',1,'plf']]],
+  ['asech_66',['asech',['../group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],
+  ['asinh_68',['asinh',['../group__core_gac6517fdf90349f548ef51ecab16a7da2.html#gac6517fdf90349f548ef51ecab16a7da2',1,'plf::asinh']]],
   ['atanh_71',['atanh',['../group__core_ga1a41e219730981cadf767bbd10cec87f.html#ga1a41e219730981cadf767bbd10cec87f',1,'plf::atanh']]],
   ['augmented_20accuracy_20functions_72',['Error free and augmented accuracy functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'']]],
   ['average_73',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf::average']]]
