@@ -11,27 +11,27 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/abs.hpp>
+#include <polyfloat/module/math/cosh.hpp>
+#include <polyfloat/module/math/sinh.hpp>
+#include <polyfloat/module/math/log.hpp>
 
 namespace plf
 {
 
-  template<typename Options>
-  struct copysign_t : eve::strict_tuple_callable<copysign_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct tanh_t : eve::elementwise_callable<tanh_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
-      return POLYFLOAT_CALL(z1, z2);
+      return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(copysign_t, copysign_);
+    POLYFLOAT_CALLABLE_OBJECT(tanh_t, tanh_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var copysign
-  //!   @brief return the first parameter with the sign of the second.
+  //!   @var tanh
+  //!   @brief return the hyperbolic tangent value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,24 +44,24 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto copysign(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto tanh(T z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     *  `z1`, `z2`: Values to process.
+  //!     * `z`: Value to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the z1 with the sign of z2
+  //!     Returns the  hyperbolic tangent of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/copysign.cpp}
+  //!  @godbolt_todo{doc/core/tanh.cpp}
   //======================================================================================================================
 
-  inline constexpr auto copysign = eve::functor<copysign_t>;
+  inline constexpr auto tanh = eve::functor<tanh_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -69,10 +69,19 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto copysign_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
+  template<typename T, eve::callable_options O> constexpr auto tanh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    auto az1 = abs(z1);
-    return plf::if_else(eve::is_positive(hi(z2)), az1, -az1);
+    if constexpr (dimension_v<T> == 1) return eve::tanh[o](a0);
+    else
+    {
+      auto x = plf::abs(a0 + a0);
+      auto test = x > T(0.5493) * 2;
+      auto t = plf::expm1[o](x);
+      auto rt2 = plf::rec[eve::pedantic](t + T(2));
+      auto z1 = plf::fnma(T(2), rt2, T(1));
+      auto z2 = t * rt2;
+      auto r = plf::if_else(test, z1, z2);
+      return if_else(is_infinite(a0), a0, plf::copysign(r, a0));
+    }
   }
 }

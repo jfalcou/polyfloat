@@ -24,12 +24,20 @@ TTS_CASE_WITH("Check rec",
       pv_t pa(a0, a1);
       pv_t rpa = plf::rec(pa);
       TTS_RELATIVE_EQUAL(rpa, tts::mpfr_exec(mrec, pa), tts::epsprec<pv_t>());
+      pv_t inf(plf::inf(eve::as(pa)));
+      TTS_EQUAL(plf::rec(inf), pv_t(0));
+      TTS_EQUAL(plf::rec(plf::zero(eve::as(pa))), inf);
+      TTS_EQUAL(plf::rec(plf::mzero(eve::as(pa))), -inf);
     }
     {
       using pv_t = plf::polyfloat<T, 3>;
       pv_t pa(a0, a1, a2);
       pv_t rpa = plf::rec(pa);
       TTS_RELATIVE_EQUAL(rpa, tts::mpfr_exec(mrec, pa), tts::epsprec<pv_t>());
+      pv_t inf(plf::inf(eve::as(pa)));
+      TTS_EQUAL(plf::rec(inf), pv_t(0));
+      TTS_EQUAL(plf::rec(plf::zero(eve::as(pa))), inf);
+      TTS_EQUAL(plf::rec(plf::mzero(eve::as(pa))), -inf);
     }
   }
 };
