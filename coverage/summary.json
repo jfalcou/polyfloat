@@ -1687,6 +1687,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/math/constants/log_10.hpp",
+            "function_covered": 8,
+            "function_percent": 100.0,
+            "function_total": 8,
+            "line_covered": 7,
+            "line_percent": 100.0,
+            "line_total": 7
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/math/constants/maxlog.hpp",
             "function_covered": 12,
             "function_percent": 100.0,
@@ -1730,6 +1742,18 @@
             "line_covered": 15,
             "line_percent": 100.0,
             "line_total": 15
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/exp10.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 6,
+            "line_percent": 100.0,
+            "line_total": 6
         },
         {
             "branch_covered": 0,
@@ -1924,12 +1948,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 5790,
+    "function_covered": 5810,
     "function_percent": 99.9,
-    "function_total": 5794,
+    "function_total": 5814,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1561,
+    "line_covered": 1574,
     "line_percent": 99.7,
-    "line_total": 1566,
+    "line_total": 1579,
     "root": "../../.."
 }

@@ -652,6 +652,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>exp10</name>
+      <anchorfile>group__core_gab2d4aa80b5aa4a96f314f3e94932f28c.html</anchorfile>
+      <anchor>gab2d4aa80b5aa4a96f314f3e94932f28c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>exp2</name>
       <anchorfile>group__core_gaec8099077dd346085e88919e08513d84.html</anchorfile>
       <anchor>gaec8099077dd346085e88919e08513d84</anchor>
@@ -1173,6 +1180,13 @@
       <name>log2</name>
       <anchorfile>group__core_ga74fe53ba9509c1894684a4fe92865d07.html</anchorfile>
       <anchor>ga74fe53ba9509c1894684a4fe92865d07</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>log_10</name>
+      <anchorfile>group__constants_ga7d0a5181eb3193505a5be468ade48d62.html</anchorfile>
+      <anchor>ga7d0a5181eb3193505a5be468ade48d62</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1874,6 +1888,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::log_10</name>
+      <anchorfile>group__constants_ga7d0a5181eb3193505a5be468ade48d62.html</anchorfile>
+      <anchor>ga7d0a5181eb3193505a5be468ade48d62</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::log_2</name>
       <anchorfile>group__constants_gab076b85673ceedd01180cae08b3b984e.html</anchorfile>
       <anchor>gab076b85673ceedd01180cae08b3b984e</anchor>
@@ -2190,6 +2211,13 @@
       <name>plf::exp</name>
       <anchorfile>group__core_gab8e08b05daa3ee86e2ed652a07352d64.html</anchorfile>
       <anchor>gab8e08b05daa3ee86e2ed652a07352d64</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::exp10</name>
+      <anchorfile>group__core_gab2d4aa80b5aa4a96f314f3e94932f28c.html</anchorfile>
+      <anchor>gab2d4aa80b5aa4a96f314f3e94932f28c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
