@@ -16,6 +16,7 @@
 #include <polyfloat/module/math/asinh.hpp>
 #include <polyfloat/module/math/cbrt.hpp>
 #include <polyfloat/module/math/cosh.hpp>
+#include <polyfloat/module/math/coth.hpp>
 #include <polyfloat/module/math/exp.hpp>
 #include <polyfloat/module/math/exp2.hpp>
 #include <polyfloat/module/math/expm1.hpp>
@@ -24,3 +25,4 @@
 #include <polyfloat/module/math/log2.hpp>
 #include <polyfloat/module/math/nthroot.hpp>
 #include <polyfloat/module/math/sinh.hpp>
+#include <polyfloat/module/math/tanh.hpp>

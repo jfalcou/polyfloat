@@ -9,6 +9,8 @@
 #include <eve/eve.hpp>
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
+#include <polyfloat/module/core/if_else.hpp>
+
 namespace plf
 {
   namespace _
@@ -190,7 +192,8 @@ namespace plf
         auto [a0, b0] = a;
         auto x0 = eve::rec[pedantic](a0);
         auto x1 = x0 + x0 * (T(1) - a * x0);
-        return x1;
+        x1 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x1);
+        return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x1);
       }
       else if constexpr (dimension_v<T> == 3)
       {
@@ -199,7 +202,8 @@ namespace plf
         auto x1 = x0 + x0 * (T(1) - a * x0);
         auto x2 = x1 + x1 * (T(1) - a * x1);
         auto x3 = x2 + x2 * (T(1) - a * x2);
-        return x3;
+        x3 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x3);
+        return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x3);
       }
     }
   }
