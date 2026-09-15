@@ -18,6 +18,7 @@ var searchData=
   ['core_5finternal_112',['Core_internal',['../group__core__internal.html',1,'']]],
   ['cosh_116',['cosh',['../group__core_ga9c6115c7b57ba527694f481843d1edac.html#ga9c6115c7b57ba527694f481843d1edac',1,'plf::cosh']]],
   ['cosine_5fsimilarity_118',['cosine_similarity',['../group__core_gae9bf65899aaf52f81e706494a42c99d3.html#gae9bf65899aaf52f81e706494a42c99d3',1,'plf::cosine_similarity']]],
+  ['coth_120',['coth',['../group__core_gaf01f8c2e4a091896659fccc21a962290.html#gaf01f8c2e4a091896659fccc21a962290',1,'plf::coth']]],
   ['covariance_127',['covariance',['../group__core_ga849d694549afbbd8308f3509f7e2c780.html#ga849d694549afbbd8308f3509f7e2c780',1,'plf::covariance']]],
   ['cumfun_130',['cumfun',['../group__core_gad9ed275f6b6e77db5325c3893e933ef6.html#gad9ed275f6b6e77db5325c3893e933ef6',1,'plf::cumfun']]],
   ['cumprod_131',['cumprod',['../group__core_gaead0ce36438cf8108b2bf0997ff6e4f8.html#gaead0ce36438cf8108b2bf0997ff6e4f8',1,'plf::cumprod']]],

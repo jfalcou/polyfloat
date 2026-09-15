@@ -284,9 +284,9 @@
             "branch_percent": 100.0,
             "branch_total": 1,
             "filename": "include/polyfloat/module/core/constants/wrapped.hpp",
-            "function_covered": 43,
+            "function_covered": 47,
             "function_percent": 100.0,
-            "function_total": 43,
+            "function_total": 47,
             "line_covered": 4,
             "line_percent": 100.0,
             "line_total": 4
@@ -311,9 +311,9 @@
             "function_covered": 36,
             "function_percent": 100.0,
             "function_total": 36,
-            "line_covered": 5,
+            "line_covered": 6,
             "line_percent": 100.0,
-            "line_total": 5
+            "line_total": 6
         },
         {
             "branch_covered": 0,
@@ -1711,6 +1711,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/math/coth.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 10,
+            "line_percent": 100.0,
+            "line_total": 10
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/math/exp2.hpp",
             "function_covered": 12,
             "function_percent": 100.0,
@@ -1736,9 +1748,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/math/expm1.hpp",
-            "function_covered": 6,
+            "function_covered": 20,
             "function_percent": 100.0,
-            "function_total": 6,
+            "function_total": 20,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -1804,16 +1816,28 @@
             "line_total": 20
         },
         {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/tanh.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 12,
+            "line_percent": 100.0,
+            "line_total": 12
+        },
+        {
             "branch_covered": 8,
             "branch_percent": 100.0,
             "branch_total": 8,
             "filename": "include/polyfloat/types/compounds.hpp",
-            "function_covered": 109,
+            "function_covered": 111,
             "function_percent": 100.0,
-            "function_total": 109,
-            "line_covered": 101,
+            "function_total": 111,
+            "line_covered": 103,
             "line_percent": 100.0,
-            "line_total": 101
+            "line_total": 103
         },
         {
             "branch_covered": 0,
@@ -1844,9 +1868,9 @@
             "branch_percent": 94.4,
             "branch_total": 54,
             "filename": "include/polyfloat/types/ops1.hpp",
-            "function_covered": 225,
+            "function_covered": 227,
             "function_percent": 100.0,
-            "function_total": 225,
+            "function_total": 227,
             "line_covered": 39,
             "line_percent": 100.0,
             "line_total": 39
@@ -1900,12 +1924,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 5744,
+    "function_covered": 5790,
     "function_percent": 99.9,
-    "function_total": 5748,
+    "function_total": 5794,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1536,
+    "line_covered": 1561,
     "line_percent": 99.7,
-    "line_total": 1541,
+    "line_total": 1566,
     "root": "../../.."
 }

@@ -533,6 +533,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>coth</name>
+      <anchorfile>group__core_gaf01f8c2e4a091896659fccc21a962290.html</anchorfile>
+      <anchor>gaf01f8c2e4a091896659fccc21a962290</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>covariance</name>
       <anchorfile>group__core_ga849d694549afbbd8308f3509f7e2c780.html</anchorfile>
       <anchor>ga849d694549afbbd8308f3509f7e2c780</anchor>
@@ -1611,6 +1618,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>tanh</name>
+      <anchorfile>group__core_ga5e44e8b5b54edaf7a95210528073e01b.html</anchorfile>
+      <anchor>ga5e44e8b5b54edaf7a95210528073e01b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>three_add</name>
       <anchorfile>group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html</anchorfile>
       <anchor>gad714fdd7a5f3a2cfcab70658cb520cd1</anchor>
@@ -2092,6 +2106,13 @@
       <name>plf::cosine_similarity</name>
       <anchorfile>group__core_gae9bf65899aaf52f81e706494a42c99d3.html</anchorfile>
       <anchor>gae9bf65899aaf52f81e706494a42c99d3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::coth</name>
+      <anchorfile>group__core_gaf01f8c2e4a091896659fccc21a962290.html</anchorfile>
+      <anchor>gaf01f8c2e4a091896659fccc21a962290</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3023,6 +3044,13 @@
       <name>plf::sum_of_squares</name>
       <anchorfile>group__core_ga2dd0aca7295af7318c56063bd90f0730.html</anchorfile>
       <anchor>ga2dd0aca7295af7318c56063bd90f0730</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::tanh</name>
+      <anchorfile>group__core_ga5e44e8b5b54edaf7a95210528073e01b.html</anchorfile>
+      <anchor>ga5e44e8b5b54edaf7a95210528073e01b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

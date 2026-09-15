@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['tanh_1',['tanh',['../group__core_ga5e44e8b5b54edaf7a95210528073e01b.html#ga5e44e8b5b54edaf7a95210528073e01b',1,'plf::tanh']]],
   ['three_5fadd_6',['three_add',['../group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html#gad714fdd7a5f3a2cfcab70658cb520cd1',1,'plf']]],
   ['three_5ffma_7',['three_fma',['../group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html#gabda6529346e0ae007b7709fabfe7cb59',1,'plf::three_fma']]],
   ['trunc_21',['trunc',['../group__core_ga9aa5715fd56663843e5d34d9e3904338.html#ga9aa5715fd56663843e5d34d9e3904338',1,'plf::trunc']]],
