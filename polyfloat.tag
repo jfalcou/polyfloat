@@ -1457,6 +1457,20 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>pow</name>
+      <anchorfile>group__core_ga2ac39d06d5a669c537c5aef7e888ea47.html</anchorfile>
+      <anchor>ga2ac39d06d5a669c537c5aef7e888ea47</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pow_abs</name>
+      <anchorfile>group__core_gae9f28b8422733a3ec084b057c4963b8d.html</anchorfile>
+      <anchor>gae9f28b8422733a3ec084b057c4963b8d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>pown</name>
       <anchorfile>group__core_ga3309e6018e6235033a2877c0d9eece8c.html</anchorfile>
       <anchor>ga3309e6018e6235033a2877c0d9eece8c</anchor>
@@ -2925,6 +2939,20 @@
       <name>plf::oneminus</name>
       <anchorfile>group__core_gaffe46da86ea6a171bb1de5203b24334a.html</anchorfile>
       <anchor>gaffe46da86ea6a171bb1de5203b24334a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pow</name>
+      <anchorfile>group__core_ga2ac39d06d5a669c537c5aef7e888ea47.html</anchorfile>
+      <anchor>ga2ac39d06d5a669c537c5aef7e888ea47</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pow_abs</name>
+      <anchorfile>group__core_gae9f28b8422733a3ec084b057c4963b8d.html</anchorfile>
+      <anchor>gae9f28b8422733a3ec084b057c4963b8d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
