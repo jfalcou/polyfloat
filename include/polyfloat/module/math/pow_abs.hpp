@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var pow_abs
-  //!   @brief return \f$x^y\f$.
+  //!   @brief return \f$|x|^y\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,7 +53,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns \f$x^y\f$.
+  //!     Returns \f$|x|^y\f$.
   //!
   //!  @groupheader{Example}
   //!
@@ -77,8 +77,6 @@ namespace plf::_
     using u_t = eve::underlying_type_t<r_t>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
     if constexpr (dimension_v<T> == 1) return eve::pow_abs[o](a, b);
-    //     else if constexpr(O::contains(eve::raw))
-    //       return plf::exp[o](plf::log[o](plf::abs(a)*b));
     else
     {
       auto x = cvt(a);

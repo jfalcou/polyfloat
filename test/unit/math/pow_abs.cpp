@@ -48,27 +48,46 @@ TTS_CASE_WITH("Check pow_abs ",
 };
 
 TTS_CASE_TPL("Check limits of pow_abs", plf::scalar_real_types)
-<typename T>(tts::type<T>)
+<typename T>(tts::type<T>){
+
+  {using pv_t = plf::polyfloat<T, 2>;
+TTS_IEEE_EQUAL(plf::pow_abs(plf::minf(plf::as<pv_t>()), plf::minf(plf::as<pv_t>())), T(0));
+
+TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(-0.5)), pv_t(0));
+TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(0.5)), plf::inf(plf::as<pv_t>()));
+TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
+TTS_IEEE_EQUAL(plf::pow_abs(plf::nan(plf::as<pv_t>()), plf::nan(plf::as<pv_t>())), plf::nan(plf::as<pv_t>()));
+
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::minf(plf::as<pv_t>())), T(0));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
+
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-1)), plf::inf(plf::as<pv_t>()));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-2)), plf::inf(plf::as<pv_t>()));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::inf(plf::as<pv_t>())), T(0));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::minf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(-1)), pv_t(1));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(5)), pv_t(1));
+TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(6)), pv_t(1));
+}
 {
-  using pv_t = plf::polyfloat<T, 2>;
-  if constexpr (eve::platform::supports_invalids)
-  {
-    TTS_IEEE_EQUAL(plf::pow_abs(plf::minf(plf::as<pv_t>()), plf::minf(plf::as<pv_t>())), T(0));
+  using pv_t = plf::polyfloat<T, 3>;
+  TTS_IEEE_EQUAL(plf::pow_abs(plf::minf(plf::as<pv_t>()), plf::minf(plf::as<pv_t>())), T(0));
 
-    TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(-0.5)), pv_t(0));
-    TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(0.5)), plf::inf(plf::as<pv_t>()));
-    TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
-    TTS_IEEE_EQUAL(plf::pow_abs(plf::nan(plf::as<pv_t>()), plf::nan(plf::as<pv_t>())), plf::nan(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(-0.5)), pv_t(0));
+  TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), pv_t(0.5)), plf::inf(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(plf::inf(plf::as<pv_t>()), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(plf::nan(plf::as<pv_t>()), plf::nan(plf::as<pv_t>())), plf::nan(plf::as<pv_t>()));
 
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::minf(plf::as<pv_t>())), T(0));
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::minf(plf::as<pv_t>())), T(0));
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(2), plf::inf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
 
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-1)), plf::inf(plf::as<pv_t>()));
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-2)), plf::inf(plf::as<pv_t>()));
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::inf(plf::as<pv_t>())), T(0));
-    TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::minf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
-  }
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-1)), plf::inf(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0), pv_t(-2)), plf::inf(plf::as<pv_t>()));
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::inf(plf::as<pv_t>())), T(0));
+  TTS_IEEE_EQUAL(plf::pow_abs(pv_t(0.5), plf::minf(plf::as<pv_t>())), plf::inf(plf::as<pv_t>()));
   TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(-1)), pv_t(1));
   TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(5)), pv_t(1));
   TTS_IEEE_EQUAL(plf::pow_abs(pv_t(-1), pv_t(6)), pv_t(1));
-};
+}
+}
+;
