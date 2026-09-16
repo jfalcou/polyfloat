@@ -20,6 +20,7 @@
 #include <polyfloat/module/math/exp.hpp>
 #include <polyfloat/module/math/exp10.hpp>
 #include <polyfloat/module/math/exp2.hpp>
+#include <polyfloat/module/math/expx2.hpp>
 #include <polyfloat/module/math/expm1.hpp>
 #include <polyfloat/module/math/log.hpp>
 #include <polyfloat/module/math/log10.hpp>
@@ -27,5 +28,6 @@
 #include <polyfloat/module/math/nthroot.hpp>
 #include <polyfloat/module/math/pow.hpp>
 #include <polyfloat/module/math/pow_abs.hpp>
+#include <polyfloat/module/math/sigmoid.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
