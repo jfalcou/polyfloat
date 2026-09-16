@@ -69,6 +69,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto rec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    return _::rec(z);
+    if constexpr (dimension_v<Z> == 1) return eve::rec[eve::pedantic](z);
+    else return _::rec(z);
   }
 }
