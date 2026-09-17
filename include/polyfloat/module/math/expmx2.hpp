@@ -11,26 +11,25 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/math/expm1.hpp>
+#include <polyfloat/module/math/expx2.hpp>
 
 namespace plf
 {
 
-  template<typename Options>
-  struct sigmoid_t : eve::elementwise_callable<sigmoid_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct expmx2_t : eve::elementwise_callable<expmx2_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(sigmoid_t, sigmoid_);
+    POLYFLOAT_CALLABLE_OBJECT(expmx2_t, expmx2_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var sigmoid
-  //!   @brief return the hyperbolic cotangent value.
+  //!   @var expmx2
+  //!   @brief return \f$e^{z^2]\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -43,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sigmoid(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto expmx2(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -53,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the  hyperbolic cotangent of z.
+  //!     Returns \f$e^{z^2]\f$.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sigmoid.cpp}
+  //!  @godbolt_todo{doc/core/expmx2.cpp}
   //======================================================================================================================
 
-  inline constexpr auto sigmoid = eve::functor<sigmoid_t>;
+  inline constexpr auto expmx2 = eve::functor<expmx2_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -68,12 +67,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto sigmoid_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto expmx2_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::sigmoid[o](a0);
-    else
-    {
-      return plf::rec[plf::pedantic](plf::inc(plf::exp[o](-a0)));
-    }
+    if constexpr (dimension_v<T> == 1) return eve::expmx2[o](a0);
+    else return plf::rec(plf::expx2[o](a0));
   }
 }

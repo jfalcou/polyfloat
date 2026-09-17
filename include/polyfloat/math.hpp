@@ -20,6 +20,7 @@
 #include <polyfloat/module/math/exp.hpp>
 #include <polyfloat/module/math/exp10.hpp>
 #include <polyfloat/module/math/exp2.hpp>
+#include <polyfloat/module/math/expmx2.hpp>
 #include <polyfloat/module/math/expx2.hpp>
 #include <polyfloat/module/math/expm1.hpp>
 #include <polyfloat/module/math/log.hpp>
