@@ -21,6 +21,8 @@
 #include <polyfloat/module/math/exp10.hpp>
 #include <polyfloat/module/math/exp2.hpp>
 #include <polyfloat/module/math/expm1.hpp>
+#include <polyfloat/module/math/geommean.hpp>
+#include <polyfloat/module/math/harmmean.hpp>
 #include <polyfloat/module/math/log.hpp>
 #include <polyfloat/module/math/log10.hpp>
 #include <polyfloat/module/math/log2.hpp>
