@@ -93,24 +93,24 @@ namespace plf::_
     else
     {
       auto e = -eve::maxmag(exponent(cvt(a0)), exponent(cvt(args))...);
-      if constexpr (eve::scalar_value<r_t> && (sizeof...(Ts) + 1 >= eve::expected_cardinal_v<e_t>))
-      {
-        auto head = eve::as_wides(plf::one(as<r_t>()), cvt(ldexp[o](a0, e)), cvt(ldexp[o](args, e))...);
-        auto s = eve::mul[o](head);
-        auto p = eve::_::butterfly_reduction(s, plf::mul[o]).get(0);
-        auto sgn = sign(p);
-        p = plf::nthroot(p, sz + 1);
-        p = plf::ldexp[eve::pedantic](p, -e);
-        return plf::if_else(plf::is_even(sz) && plf::is_ltz(sgn), eve::allbits, sgn * p);
-      }
-      else
-      {
-        auto p = plf::mul[o](cvt(ldexp[o](a0, e)), cvt(ldexp[o](args, e))...);
-        auto sgn = plf::sign(p);
-        p = plf::nthroot(p, sz + 1);
-        p = ldexp[pedantic](p, -e);
-        return if_else(plf::is_even(sz) && plf::is_ltz(sgn), eve::allbits, sgn * p);
-      }
+      //       if constexpr (eve::scalar_value<r_t> && (sizeof...(Ts) + 1 >= eve::expected_cardinal_v<e_t>))
+      //       {
+      //         auto head = eve::as_wides(plf::one(as<r_t>()), cvt(ldexp[o](a0, e)), cvt(ldexp[o](args, e))...);
+      //         auto s = eve::mul[o](head);
+      //         auto p = eve::_::butterfly_reduction(s, plf::mul[o]).get(0);
+      //         auto sgn = sign(p);
+      //         p = plf::nthroot(p, sz + 1);
+      //         p = plf::ldexp[eve::pedantic](p, -e);
+      //         return plf::if_else(plf::is_even(sz) && plf::is_ltz(sgn), eve::allbits, sgn * p);
+      //       }
+      //       else
+      //      {
+      auto p = plf::mul[o](cvt(ldexp[o](a0, e)), cvt(ldexp[o](args, e))...);
+      auto sgn = plf::sign(p);
+      p = plf::nthroot(p, sz + 1);
+      p = ldexp[pedantic](p, -e);
+      return if_else(plf::is_even(sz) && plf::is_ltz(sgn), eve::allbits, sgn * p);
     }
+    //    }
   }
 }
