@@ -23,6 +23,7 @@
 #include <polyfloat/module/math/expm1.hpp>
 #include <polyfloat/module/math/geommean.hpp>
 #include <polyfloat/module/math/harmmean.hpp>
+#include <polyfloat/module/math/kolmmean.hpp>
 #include <polyfloat/module/math/log.hpp>
 #include <polyfloat/module/math/log10.hpp>
 #include <polyfloat/module/math/log2.hpp>
@@ -31,3 +32,4 @@
 #include <polyfloat/module/math/pow_abs.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
+#include <polyfloat/module/math/pipo.hpp>
