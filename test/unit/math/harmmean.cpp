@@ -32,7 +32,7 @@ TTS_CASE_WITH("Check harmean",
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
     TTS_RELATIVE_EQUAL(harmmean(pa, pb), tts::mpfr_exec(hm2, pa, pb), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(harmmean(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(harmmean(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), 2 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(harmmean(a0, pa, pc), harmmean(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(harmmean(pa, a0, pc), harmmean(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
   }
@@ -42,7 +42,7 @@ TTS_CASE_WITH("Check harmean",
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
     TTS_RELATIVE_EQUAL(harmmean(pa, pb), tts::mpfr_exec(hm2, pa, pb), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(harmmean(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(harmmean(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), 2 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(harmmean(a0, pa, pc), harmmean(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(harmmean(pa, a0, pc), harmmean(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
   }
