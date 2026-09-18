@@ -32,4 +32,3 @@
 #include <polyfloat/module/math/pow_abs.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
-#include <polyfloat/module/math/pipo.hpp>
