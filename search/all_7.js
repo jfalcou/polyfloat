@@ -1,6 +1,7 @@
 var searchData=
 [
   ['half_0',['half',['../group__core.html#gafdc7f58bede6debd2ef66a4b3521cb84',1,'plf::half']]],
+  ['harmmean_3',['harmmean',['../group__core_ga1a9ee49f483a6bc0728c30b0ecdb500d.html#ga1a9ee49f483a6bc0728c30b0ecdb500d',1,'plf::harmmean']]],
   ['heaviside_9',['heaviside',['../group__core_gaacc157e51d44695e50b1e1af7643abc0.html#gaacc157e51d44695e50b1e1af7643abc0',1,'plf::heaviside']]],
   ['hi_14',['hi',['../group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d',1,'plf::hi']]],
   ['horner_15',['horner',['../group__functions_gae998e94f32f326d4c67342e2ceb35982.html#gae998e94f32f326d4c67342e2ceb35982',1,'plf::horner']]],

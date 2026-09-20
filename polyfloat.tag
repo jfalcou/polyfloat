@@ -750,9 +750,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>geommean</name>
+      <anchorfile>group__core_ga94e49091e938d9924175ca01e67a974e.html</anchorfile>
+      <anchor>ga94e49091e938d9924175ca01e67a974e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>half</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>harmmean</name>
+      <anchorfile>group__core_ga1a9ee49f483a6bc0728c30b0ecdb500d.html</anchorfile>
+      <anchor>ga1a9ee49f483a6bc0728c30b0ecdb500d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1138,6 +1152,13 @@
       <name>is_unordered</name>
       <anchorfile>group__core_ga46fff13f9c73cf8cdbe1ed78f4083f65.html</anchorfile>
       <anchor>ga46fff13f9c73cf8cdbe1ed78f4083f65</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>kolmmean</name>
+      <anchorfile>group__core_gacc494abd22af242970d010990f088ede.html</anchorfile>
+      <anchor>gacc494abd22af242970d010990f088ede</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2320,9 +2341,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::geommean</name>
+      <anchorfile>group__core_ga94e49091e938d9924175ca01e67a974e.html</anchorfile>
+      <anchor>ga94e49091e938d9924175ca01e67a974e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::half</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::harmmean</name>
+      <anchorfile>group__core_ga1a9ee49f483a6bc0728c30b0ecdb500d.html</anchorfile>
+      <anchor>ga1a9ee49f483a6bc0728c30b0ecdb500d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2673,6 +2708,13 @@
       <name>plf::is_unordered</name>
       <anchorfile>group__core_ga46fff13f9c73cf8cdbe1ed78f4083f65.html</anchorfile>
       <anchor>ga46fff13f9c73cf8cdbe1ed78f4083f65</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::kolmmean</name>
+      <anchorfile>group__core_gacc494abd22af242970d010990f088ede.html</anchorfile>
+      <anchor>gacc494abd22af242970d010990f088ede</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
