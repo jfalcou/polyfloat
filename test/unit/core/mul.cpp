@@ -21,12 +21,14 @@ TTS_CASE_WITH("Check mul two params",
   using mpfr::mpreal;
   using plf::mul;
   auto mmul = [](auto a, auto b) { return a * b; };
+  auto mmul3 = [](auto a, auto b, auto c) { return a * b * c; };
   {
     {
       using pv_t = plf::polyfloat<T, 2>;
       pv_t pa(a0, a1);
       pv_t pb(a3, a4);
       TTS_RELATIVE_EQUAL(plf::mul(pa, pb), tts::mpfr_exec(mmul, pa, pb), tts::epsprec<pv_t>());
+      TTS_RELATIVE_EQUAL(plf::mul(pa, pb, pb), tts::mpfr_exec(mmul3, pa, pb, pb), tts::epsprec<pv_t>());
       TTS_RELATIVE_EQUAL(mul(a0, pa), mul(pv_t(a0), pa), tts::epsprec<pv_t>());
       TTS_RELATIVE_EQUAL(mul(pa, a0), mul(pa, pv_t(a0)), tts::epsprec<pv_t>());
     }

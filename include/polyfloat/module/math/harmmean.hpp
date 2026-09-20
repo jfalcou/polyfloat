@@ -11,27 +11,37 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/if_else.hpp>
-#include <polyfloat/module/core/is_not_finite.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct harmmean_t : eve::strict_tuple_callable<harmmean_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Zs...> operator()(Zs... zs) const noexcept
+    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
-      return POLYFLOAT_CALL(zs...);
+    };
+
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
+    {
+      return POLYFLOAT_CALL(z1, zs...);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
+    template<eve::non_empty_product_type Tup>
+    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup tup) const noexcept
+    requires(eve::same_lanes_or_scalar_tuple<Tup> && kumi::size_v<Tup> >= 1)
+    {
+      return POLYFLOAT_CALL(tup);
+    }
+
+    POLYFLOAT_CALLABLE_OBJECT(harmmean_t, harmmean_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var mul
-  //!   @brief return the product of the values.
+  //!   @var harmmean
+  //!   @brief  Callable object computing the harmonic mean of the inputs.\f$ \fracn{\sum \frac1/xs} \f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -44,54 +54,42 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto mul(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto harmmean(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z, zs...`: Values to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the product of the arguments.
+  //!      Returns the harmmean of the parameters.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/mul.cpp}
+  //!  @godbolt_todo{doc/core/harmmean.cpp}
   //======================================================================================================================
 
-  inline constexpr auto mul = eve::functor<mul_t>;
+  inline constexpr auto harmmean = eve::functor<harmmean_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template<typename Options> constexpr auto neutral(mul_t<Options>) noexcept
-  {
-    return plf::one;
-  }
-
-  // Required for optimisation detections
-  using callable_mul_ = eve::tag_t<mul>;
-
 }
 
 namespace plf::_
 {
-  template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Zs const&... zs) noexcept
+  template<typename T1, typename... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto harmmean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
-    constexpr auto sz = sizeof...(Zs);
-    if constexpr (sz == 0) return z1;
-    else if constexpr (sz == 1) return z1 * (zs * ...);
+    if constexpr (sizeof...(Ts) == 0) return a0;
     else
     {
-      using r_t = as_polyfloat_like_t<Z1, Zs...>;
+      using r_t = as_polyfloat_like_t<T1, Ts...>;
       using e_t = eve::element_type_t<r_t>;
       auto cvt = [](auto a) { return plf::convert(a, as<e_t>()); };
-      r_t r0 = cvt(z1);
-      ((r0 = mul[o](r0, cvt(zs))), ...);
-      return r0;
+      return plf::rec[eve::pedantic](
+        plf::average[o](plf::rec[eve::pedantic](cvt(a0)), plf::rec[pedantic](cvt(args))...));
     }
   }
 }
