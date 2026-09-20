@@ -98,7 +98,6 @@ namespace plf::_
   {
     using r_t = as_polyfloat_like_t<T, U>;
     using e_t = eve::element_type_t<r_t>;
-    //    using u_t = eve::underlying_type_t<r_t>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
     if constexpr (dimension_v<T> == 1) return eve::pow(a, b);
     else
