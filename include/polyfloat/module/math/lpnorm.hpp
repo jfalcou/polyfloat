@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/pow_abs.hpp>
+#include <polyfloat/module/core/maxmag.hpp>
 
 namespace plf
 {
@@ -41,7 +42,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lpnorm_t, lpnorm_);
   };
   //======================================================================================================================
-  //! @lpnormtogroup core
+  //! @addtogroup core
   //! @{
   //!   @var lpnorm
   //!   @brief object computing the lpnorm operation \f$ \left(\sum_{i = 0}^n  |x_i|^p\right)^{\frac1p} \f$.
@@ -72,7 +73,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/lpnorm.cpp}
+  //!  @godbolt{doc/math/lpnorm.cpp}
   //======================================================================================================================
 
   inline constexpr auto lpnorm = eve::functor<lpnorm_t>;
@@ -93,10 +94,11 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
   {
     using r_t = as_polyfloat_like_t<P, Ts...>;
+    //    using u_t = eve::underlying_type_t<r_t>;
     using e_t = eve::element_type_t<r_t>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
-    r_t rp = cvt(p);
-    auto e = -plf::maxmag(-plf::if_else(-plf::is_nan(ts), zero, -plf::exponent(ts))...);
+    r_t rp(p);
+    auto e = -eve::maxmag(plf::if_else(plf::is_nan(ts), zero, eve::exponent(hi(ts)))...);
     auto f = [&](auto a) { return plf::pow_abs(plf::ldexp[eve::pedantic](cvt(a), e), rp); };
     r_t that = plf::add[o](f(ts)...);
     return plf::ldexp[eve::pedantic](plf::pow_abs(that, plf::rec[eve::pedantic](rp)), -e);

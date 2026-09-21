@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/logspace_sub.cpp}
+  //!  @godbolt{doc/math/logspace_sub.cpp}
   //======================================================================================================================
 
   inline constexpr auto logspace_sub = eve::functor<logspace_sub_t>;

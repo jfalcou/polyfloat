@@ -41,7 +41,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(logspace_add_t, logspace_add_);
   };
   //======================================================================================================================
-  //! @logspace_addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var logspace_add
   //!   @brief object computing the logspace_add operation: \f$\log\left(\sum_{i = 0}^n e^{\log x_i}\right)\f$
@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/logspace_add.cpp}
+  //!  @godbolt{doc/math/logspace_add.cpp}
   //======================================================================================================================
 
   inline constexpr auto logspace_add = eve::functor<logspace_add_t>;
