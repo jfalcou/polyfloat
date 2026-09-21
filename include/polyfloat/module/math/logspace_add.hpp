@@ -78,15 +78,6 @@ namespace plf
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template<typename Options> constexpr auto neutral(logspace_add_t<Options>) noexcept
-  {
-    return plf::zero;
-  }
-
-  // Required for optimisation detections
-  using callable_logspace_add_ = eve::tag_t<logspace_add>;
-
 }
 
 namespace plf::_

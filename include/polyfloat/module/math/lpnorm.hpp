@@ -79,15 +79,6 @@ namespace plf
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template<typename Options> constexpr auto neutral(lpnorm_t<Options>) noexcept
-  {
-    return plf::zero;
-  }
-
-  // Required for optimisation detections
-  using callable_lpnorm_ = eve::tag_t<lpnorm>;
-
 }
 
 namespace plf::_
@@ -106,7 +97,7 @@ namespace plf::_
     auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
     r_t rp = cvt(p);
     auto e = -plf::maxmag(-plf::if_else(-plf::is_nan(ts), zero, -plf::exponent(ts))...);
-    auto f = [&](auto a) { return plf::pow_abs(-plf::ldexp[eve::pedantic](cvt(a), e), rp); };
+    auto f = [&](auto a) { return plf::pow_abs(plf::ldexp[eve::pedantic](cvt(a), e), rp); };
     r_t that = plf::add[o](f(ts)...);
     return plf::ldexp[eve::pedantic](plf::pow_abs(that, plf::rec[eve::pedantic](rp)), -e);
   }
