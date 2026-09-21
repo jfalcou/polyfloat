@@ -7,7 +7,7 @@
 int main()
 {
   std::cout << std::setprecision(15);
-  using plf::maxabs;
+  using plf::max;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);
   auto b = plf::polyfloat(1.0, 1.0e-300);
@@ -17,16 +17,16 @@ int main()
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;
   std::cout << "c  " << c << std::endl;
-  std::cout << "maxabs(f, f) " << maxabs(f, f) << std::endl;
-  std::cout << "maxabs(a, a) " << maxabs(a, a) << std::endl;
-  std::cout << "maxabs(b, b) " << maxabs(b, b) << std::endl;
-  std::cout << "maxabs(c, c) " << maxabs(c, c) << std::endl;
-  std::cout << "maxabs(a, f) " << maxabs(a, f) << std::endl;
-  std::cout << "maxabs(b, a) " << maxabs(b, a) << std::endl;
-  std::cout << "maxabs(c, b) " << maxabs(c, b) << std::endl;
-  std::cout << "maxabs(f, a) " << maxabs(f, a) << std::endl;
-  std::cout << "maxabs(a, b) " << maxabs(a, b) << std::endl;
-  std::cout << "maxabs(b, c) " << maxabs(b, c) << std::endl;
+  std::cout << "max(f, f) " << max(f, f) << std::endl;
+  std::cout << "max(a, a) " << max(a, a) << std::endl;
+  std::cout << "max(b, b) " << max(b, b) << std::endl;
+  std::cout << "max(c, c) " << max(c, c) << std::endl;
+  std::cout << "max(a, f) " << max(a, f) << std::endl;
+  std::cout << "max(b, a) " << max(b, a) << std::endl;
+  std::cout << "max(c, b) " << max(c, b) << std::endl;
+  std::cout << "max(f, a) " << max(f, a) << std::endl;
+  std::cout << "max(a, b) " << max(a, b) << std::endl;
+  std::cout << "max(b, c) " << max(b, c) << std::endl;
 
   using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
@@ -34,9 +34,9 @@ int main()
   pf3_t wc(c);
   std::cout << "wb          " << wb << std::endl;
   std::cout << "wc          " << wc << std::endl;
-  std::cout << "maxabs(wb, wb) " << maxabs(wb, wb) << std::endl;
-  std::cout << "maxabs(wc, wc) " << maxabs(wc, wc) << std::endl;
-  std::cout << "maxabs(wc, wb) " << maxabs(wc, wb) << std::endl;
+  std::cout << "max(wb, wb) " << max(wb, wb) << std::endl;
+  std::cout << "max(wc, wc) " << max(wc, wc) << std::endl;
+  std::cout << "max(wc, wb) " << max(wc, wb) << std::endl;
 
   return 0;
 }
