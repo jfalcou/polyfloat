@@ -37,6 +37,7 @@ int main()
   std::cout << "mul(wb, wb) " << mul(wb, wb) << std::endl;
   std::cout << "mul(wc, wc) " << mul(wc, wc) << std::endl;
   std::cout << "mul(wc, wb) " << mul(wc, wb) << std::endl;
+  std::cout << "mul(wc, wb, wb) " << mul(wc, wb, wb) << std::endl;
 
   return 0;
 }
