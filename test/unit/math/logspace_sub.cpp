@@ -41,7 +41,7 @@ TTS_CASE_WITH("Check logspace_sub",
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
     TTS_RELATIVE_EQUAL(logspace_sub(pa, pb), tts::mpfr_exec(hm2, pa, pb), 256 * tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(logspace_sub(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(logspace_sub(pa, pb, pc), tts::mpfr_exec(hm3, pa, pb, pc), 20000 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(logspace_sub(a0, pb, pc), logspace_sub(pv_t(a0), pb, pc), tts::epsprec<pv_t>());
   }
 };

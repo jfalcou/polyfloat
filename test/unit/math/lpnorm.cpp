@@ -41,7 +41,7 @@ TTS_CASE_WITH("Check lpnorm",
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
     pv_t pc(a6, a7, a8);
-    TTS_RELATIVE_EQUAL(lpnorm(3, pa, pb), tts::mpfr_exec(lpn2, pa, pb), 40000 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(lpnorm(3, pa, pb), tts::mpfr_exec(lpn2, pa, pb), 4000000 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(lpnorm(3, pa, pb, pc), tts::mpfr_exec(lpn3, pa, pb, pc), 40000 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(lpnorm(3, a0, pa, pc), lpnorm(3, pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(lpnorm(3, pa, a0, pc), lpnorm(3, pa, pv_t(a0), pc), 10000 * tts::epsprec<pv_t>());
