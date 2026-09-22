@@ -27,6 +27,9 @@
 #include <polyfloat/module/math/log.hpp>
 #include <polyfloat/module/math/log10.hpp>
 #include <polyfloat/module/math/log2.hpp>
+#include <polyfloat/module/math/logspace_add.hpp>
+#include <polyfloat/module/math/logspace_sub.hpp>
+#include <polyfloat/module/math/lpnorm.hpp>
 #include <polyfloat/module/math/nthroot.hpp>
 #include <polyfloat/module/math/pow.hpp>
 #include <polyfloat/module/math/pow_abs.hpp>

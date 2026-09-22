@@ -11,12 +11,14 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/math/pow_abs.hpp>
+#include <polyfloat/module/core/maxmag.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct lpnorm_t : eve::strict_tuple_callable<lpnorm_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -37,13 +39,14 @@ namespace plf
       return POLYFLOAT_CALL(t);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(add_t, add_);
+    POLYFLOAT_CALLABLE_OBJECT(lpnorm_t, lpnorm_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var add
-  //!   @brief return the sum of the parameters.
+  //!   @var lpnorm
+  //!   @brief object computing the lpnorm operation \f$ \left(\sum_{i = 0}^n  |x_i|^p\right)^{\frac1p} \f$.
+  //!
   //!
   //!   @groupheader{Header file}
   //!
@@ -56,13 +59,13 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like ... Zs> constexpr auto add(Z1 z1, Zs... zs) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z, polyfloat_like ... Zs> constexpr auto lpnorm(Z z, Zs... zs) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `zs...`: Values to process.
+  //!     * `z, zs...`: Values to process.
   //!
   //!   **Return value**
   //!
@@ -70,66 +73,34 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/add.cpp}
+  //!  @godbolt{doc/math/lpnorm.cpp}
   //======================================================================================================================
 
-  inline constexpr auto add = eve::functor<add_t>;
+  inline constexpr auto lpnorm = eve::functor<lpnorm_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template<typename Options> constexpr auto neutral(add_t<Options>) noexcept
-  {
-    return plf::zero;
-  }
-
-  // Required for optimisation detections
-  using callable_add_ = eve::tag_t<add>;
-
 }
 
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  EVE_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  EVE_FORCEINLINE constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
-    return t0;
-  }
-  template<typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
-  {
-    auto t12 = t1 + t2;
-    //    if constexpr(O::contains(pedantic))
-    //     {
-    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-    //       if (eve::any(inf))
-    //       {
-    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-    //       }
-    //       else
-    //         return t12;
-    //     }
-    //     else
-    return t12;
+    return plf::abs(t0);
   }
 
-  template<eve::callable_options O,
-           concepts::polyfloat_like T0,
-           concepts::polyfloat_like T1,
-           concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(
-    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
+  template<typename P, typename... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
   {
-    using t_t = as_polyfloat_t<T0, T1, Ts...>;
-    if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);
-    else
-    {
-      using u_t = eve::element_type_t<t_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto p0 = add[o](cvt(t0), cvt(t1));
-      ((p0 = add[o](p0, cvt(ts))), ...);
-      return p0;
-    }
+    using r_t = as_polyfloat_like_t<P, Ts...>;
+    //    using u_t = eve::underlying_type_t<r_t>;
+    using e_t = eve::element_type_t<r_t>;
+    auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
+    r_t rp(p);
+    auto e = -eve::maxmag(plf::if_else(plf::is_nan(ts), zero, eve::exponent(hi(ts)))...);
+    auto f = [&](auto a) { return plf::pow_abs(plf::ldexp[eve::pedantic](cvt(a), e), rp); };
+    r_t that = plf::add[o](f(ts)...);
+    return plf::ldexp[eve::pedantic](plf::pow_abs(that, plf::rec[eve::pedantic](rp)), -e);
   }
-
 }

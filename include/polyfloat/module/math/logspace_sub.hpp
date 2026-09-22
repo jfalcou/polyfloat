@@ -11,12 +11,13 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/math/pow_abs.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct logspace_sub_t : eve::strict_tuple_callable<logspace_sub_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -37,13 +38,13 @@ namespace plf
       return POLYFLOAT_CALL(t);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(add_t, add_);
+    POLYFLOAT_CALLABLE_OBJECT(logspace_sub_t, logspace_sub_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
-  //!   @var add
-  //!   @brief return the sum of the parameters.
+  //!   @var logspace_sub
+  //!   @brief object computing the logspace_sub operation: \f$\log\left(e^{\log x_0}-\sum_{i = 1}^n e^{\log x_i}\right)\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -56,13 +57,13 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like ... Zs> constexpr auto add(Z1 z1, Zs... zs) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like Z, polyfloat_like ... Zs> constexpr auto logspace_sub(Z z, Zs... zs) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `zs...`: Values to process.
+  //!     * `z, zs...`: Values to process.
   //!
   //!   **Return value**
   //!
@@ -70,66 +71,49 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/add.cpp}
+  //!  @godbolt{doc/math/logspace_sub.cpp}
   //======================================================================================================================
 
-  inline constexpr auto add = eve::functor<add_t>;
+  inline constexpr auto logspace_sub = eve::functor<logspace_sub_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
-
-  template<typename Options> constexpr auto neutral(add_t<Options>) noexcept
-  {
-    return plf::zero;
-  }
-
-  // Required for optimisation detections
-  using callable_add_ = eve::tag_t<add>;
-
 }
 
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  EVE_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  EVE_FORCEINLINE constexpr auto logspace_sub_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
-    return t0;
-  }
-  template<typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
-  {
-    auto t12 = t1 + t2;
-    //    if constexpr(O::contains(pedantic))
-    //     {
-    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-    //       if (eve::any(inf))
-    //       {
-    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-    //       }
-    //       else
-    //         return t12;
-    //     }
-    //     else
-    return t12;
+    return plf::abs(t0);
   }
 
-  template<eve::callable_options O,
-           concepts::polyfloat_like T0,
-           concepts::polyfloat_like T1,
-           concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(
-    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
+  template<typename T0, typename T1, typename... Ts, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto logspace_sub_(
+    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts... ts) noexcept
   {
-    using t_t = as_polyfloat_t<T0, T1, Ts...>;
-    if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);
+    using r_t = as_polyfloat_like_t<T0, T1, Ts...>;
+    using e_t = eve::element_type_t<r_t>;
+    auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
+    if constexpr (sizeof...(Ts) == 0)
+    {
+      auto r0 = cvt(t0);
+      auto r1 = cvt(t1);
+      auto x = r1 - r0;
+      auto test = x > -log_2(as(x));
+      if (eve::all(test)) return r0 + plf::log(-plf::expm1(x));
+      else if (eve::any(test)) return r0 + if_else(test, log[o](-expm1(x)), plf::log[o](plf::oneminus(exp(x))));
+      else return r0 + plf::log(plf::oneminus(plf::exp(x)));
+    }
     else
     {
-      using u_t = eve::element_type_t<t_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto p0 = add[o](cvt(t0), cvt(t1));
-      ((p0 = add[o](p0, cvt(ts))), ...);
-      return p0;
+      r_t that(logspace_sub[o](t0, t1));
+      auto lsub = [o](auto that_, auto next) -> r_t {
+        that_ = logspace_sub[o](that_, next);
+        return that_;
+      };
+      ((that = lsub(that, ts)), ...);
+      return that;
     }
   }
-
 }
