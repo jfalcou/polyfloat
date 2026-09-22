@@ -55,6 +55,10 @@ namespace plf::concepts
   template<typename T>
   concept scalar_real = real<T> && eve::scalar_value<T>;
 
+  //! @brief An Integral value.
+  template<typename T>
+  concept simd_integral = eve::integral_value<T> && eve::simd_value<T>;
+
 }
 //! @}
 //======================================================================================================================

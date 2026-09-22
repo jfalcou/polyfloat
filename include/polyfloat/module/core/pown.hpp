@@ -26,7 +26,7 @@ namespace plf
     }
 
     template<concepts::polyfloat_like Z, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<N, Z> operator()(Z z, N n) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Z, N> operator()(Z z, N n) const noexcept
     {
       return POLYFLOAT_CALL(z, n);
     }
@@ -77,13 +77,13 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename Z, eve::integral_value N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
-  {
-    using r_t = eve::as_wide_as<N, Z>;
-    auto cvt = [](auto a) { return plf::convert(a, eve::as(eve::underlying_type_t<r_t>())); };
-    return pown(cvt(z), cvt(n));
-  }
+  //   template<typename Z, eve::integral_value N, eve::callable_options O>
+  //   POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
+  //   {
+  //     using r_t = eve::as_wide_as<N, Z>;
+  //     auto cvt = [](auto a) { return plf::convert(a, eve::as(eve::underlying_type_t<r_t>())); };
+  //     return pown(cvt(z), cvt(n));
+  //   }
 
   template<typename Z, typename N, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
