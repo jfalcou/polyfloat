@@ -1226,6 +1226,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>logspace_add</name>
+      <anchorfile>group__math_ga0a1e0bab561000aa41ed2f5142cb9c37.html</anchorfile>
+      <anchor>ga0a1e0bab561000aa41ed2f5142cb9c37</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>logspace_sub</name>
+      <anchorfile>group__math_gac6e8817a750645f722883e1b8f7d319d.html</anchorfile>
+      <anchor>gac6e8817a750645f722883e1b8f7d319d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>lpnorm</name>
+      <anchorfile>group__core_ga0b35ba464177d39b675aebaae393d1e6.html</anchorfile>
+      <anchor>ga0b35ba464177d39b675aebaae393d1e6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>mantissa</name>
       <anchorfile>group__core_ga592c5eb0fdeb82b41dd07a2ddc48dd6e.html</anchorfile>
       <anchor>ga592c5eb0fdeb82b41dd07a2ddc48dd6e</anchor>
@@ -2761,6 +2782,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::lpnorm</name>
+      <anchorfile>group__core_ga0b35ba464177d39b675aebaae393d1e6.html</anchorfile>
+      <anchor>ga0b35ba464177d39b675aebaae393d1e6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::mantissa</name>
       <anchorfile>group__core_ga592c5eb0fdeb82b41dd07a2ddc48dd6e.html</anchorfile>
       <anchor>ga592c5eb0fdeb82b41dd07a2ddc48dd6e</anchor>
@@ -3269,6 +3297,25 @@
       <name>plf::reverse_horner</name>
       <anchorfile>group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.html</anchorfile>
       <anchor>gaec0903d03ecaa41fc2f06bd4d9598fbe</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>math</name>
+    <title>Math</title>
+    <filename>group__math.html</filename>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::logspace_add</name>
+      <anchorfile>group__math_ga0a1e0bab561000aa41ed2f5142cb9c37.html</anchorfile>
+      <anchor>ga0a1e0bab561000aa41ed2f5142cb9c37</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::logspace_sub</name>
+      <anchorfile>group__math_gac6e8817a750645f722883e1b8f7d319d.html</anchorfile>
+      <anchor>gac6e8817a750645f722883e1b8f7d319d</anchor>
       <arglist></arglist>
     </member>
   </compound>

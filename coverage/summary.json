@@ -1,7 +1,7 @@
 {
-    "branch_covered": 181,
-    "branch_percent": 96.3,
-    "branch_total": 188,
+    "branch_covered": 203,
+    "branch_percent": 95.8,
+    "branch_total": 212,
     "files": [
         {
             "branch_covered": 0,
@@ -104,9 +104,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/add.hpp",
-            "function_covered": 185,
+            "function_covered": 191,
             "function_percent": 100.0,
-            "function_total": 185,
+            "function_total": 191,
             "line_covered": 15,
             "line_percent": 100.0,
             "line_total": 15
@@ -1028,9 +1028,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/max.hpp",
-            "function_covered": 121,
+            "function_covered": 122,
             "function_percent": 100.0,
-            "function_total": 121,
+            "function_total": 122,
             "line_covered": 11,
             "line_percent": 100.0,
             "line_total": 11
@@ -1852,6 +1852,42 @@
             "line_total": 14
         },
         {
+            "branch_covered": 12,
+            "branch_percent": 100.0,
+            "branch_total": 12,
+            "filename": "include/polyfloat/module/math/logspace_add.hpp",
+            "function_covered": 80,
+            "function_percent": 100.0,
+            "function_total": 80,
+            "line_covered": 17,
+            "line_percent": 100.0,
+            "line_total": 17
+        },
+        {
+            "branch_covered": 10,
+            "branch_percent": 83.3,
+            "branch_total": 12,
+            "filename": "include/polyfloat/module/math/logspace_sub.hpp",
+            "function_covered": 56,
+            "function_percent": 100.0,
+            "function_total": 56,
+            "line_covered": 18,
+            "line_percent": 100.0,
+            "line_total": 18
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/lpnorm.hpp",
+            "function_covered": 54,
+            "function_percent": 100.0,
+            "function_total": 54,
+            "line_covered": 10,
+            "line_percent": 100.0,
+            "line_total": 10
+        },
+        {
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
@@ -1880,9 +1916,9 @@
             "branch_percent": 100.0,
             "branch_total": 8,
             "filename": "include/polyfloat/module/math/pow_abs.hpp",
-            "function_covered": 12,
+            "function_covered": 14,
             "function_percent": 100.0,
-            "function_total": 12,
+            "function_total": 14,
             "line_covered": 38,
             "line_percent": 100.0,
             "line_total": 38
@@ -1940,9 +1976,9 @@
             "branch_percent": 100.0,
             "branch_total": 17,
             "filename": "include/polyfloat/types/io.hpp",
-            "function_covered": 7,
+            "function_covered": 11,
             "function_percent": 100.0,
-            "function_total": 7,
+            "function_total": 11,
             "line_covered": 7,
             "line_percent": 100.0,
             "line_total": 7
@@ -1952,9 +1988,9 @@
             "branch_percent": 94.4,
             "branch_total": 54,
             "filename": "include/polyfloat/types/ops1.hpp",
-            "function_covered": 227,
+            "function_covered": 228,
             "function_percent": 100.0,
-            "function_total": 227,
+            "function_total": 228,
             "line_covered": 39,
             "line_percent": 100.0,
             "line_total": 39
@@ -2008,12 +2044,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 6098,
+    "function_covered": 6302,
     "function_percent": 99.9,
-    "function_total": 6102,
+    "function_total": 6306,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1654,
+    "line_covered": 1699,
     "line_percent": 99.7,
-    "line_total": 1659,
+    "line_total": 1704,
     "root": "../../.."
 }
