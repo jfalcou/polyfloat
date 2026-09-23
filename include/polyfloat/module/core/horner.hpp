@@ -23,13 +23,9 @@ namespace plf
   template<typename Options>
   struct horner_t : eve::strict_tuple_callable<horner_t, Options, kahan_option, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-    {
-    };
-
     template<concepts::polyfloat_like... Ts>
-    requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    //    requires(eve::same_lanes_or_scalar<Ts...>)
+    EVE_FORCEINLINE as_polyfloat_like_t<Ts...> constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
@@ -133,7 +129,7 @@ namespace plf::_
   template<typename X, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
-    return eve::zero(eve::as<X>());
+    return plf::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
@@ -169,7 +165,7 @@ namespace plf::_
       }
       else
       {
-        auto x = plf::convert(xx, eve::as_element<r_t>{}); //r_t(xx);
+        auto x = plf::convert(xx, eve::as_element<r_t>{});
         r_t that(c);
         ((that = fma[pedantic](that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
         return that;

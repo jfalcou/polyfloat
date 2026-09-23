@@ -7,7 +7,6 @@
 int main()
 {
   std::cout << std::setprecision(15);
-  //   using plf::abs;
   using w_t = eve::wide<plf::double_real_t<double>, eve::fixed<4>>;
 
   w_t xd = {-0.3, 0.5, 0.0, 2.0};
@@ -35,15 +34,20 @@ int main()
             << "-> horner(1.0f, eve::coefficients(t))       = " << plf::horner(1.0f, eve::coefficients(t)) << '\n';
 
   using d2_t = plf::triple_real_t<double>;
+  plf::double_real_t<float> dx(1.0f, 1.0e-30f);
+  plf::triple_real_t<float> tx(1.0f, 1.0e-30f);
   d2_t xs(2.0, 1.0e-30, 1.0e-54);
   std::cout << "---- scalar" << '\n'
             << "<- xs                          = " << xs << '\n'
+            << "<- dx                          = " << dx << '\n'
+            << "<- tx                          = " << tx << '\n'
             << "-> horner(xs, 1.5, 2.0, 4.0)   = " << plf::horner(xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0)
             << '\n'
             << "-> horner(xs, 1.5, 2.0, 4.0)   = "
             << plf::horner[eve::kahan](xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0) << '\n'
             << "-> horner(xs, kumi::tuple{1.5, 2.0, 4.0}) = "
-            << plf::horner(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) << '\n';
-
+            << plf::horner(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) << '\n'
+            << "-> horner(dx, 1.0f, 2.0f, 3.0f)           = " << plf::horner(dx, 1.0f, 2.0f, 3.0f) << '\n'
+            << "-> horner(tx, 1.0f, 2.0f, 3.0f)           = " << plf::horner(tx, 1.0f, 2.0f, 3.0f) << '\n';
   return 0;
 }

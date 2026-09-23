@@ -113,6 +113,7 @@
 #include <polyfloat/module/core/negatenz.hpp>
 #include <polyfloat/module/core/negmaxabs.hpp>
 #include <polyfloat/module/core/negminabs.hpp>
+#include <polyfloat/module/core/neville.hpp>
 #include <polyfloat/module/core/next.hpp>
 #include <polyfloat/module/core/nextafter.hpp>
 #include <polyfloat/module/core/nextint.hpp>
