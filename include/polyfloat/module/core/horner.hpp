@@ -165,7 +165,7 @@ namespace plf::_
       }
       else
       {
-        auto x = plf::convert(xx, eve::as_element<r_t>{}); //r_t(xx);
+        auto x = plf::convert(xx, eve::as_element<r_t>{});
         r_t that(c);
         ((that = fma[pedantic](that, x, plf::convert(cs, eve::as_element<r_t>{}))), ...);
         return that;

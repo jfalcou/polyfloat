@@ -85,6 +85,7 @@ namespace plf::_
 
   template<typename X, typename... XsYs, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto neville_(POLYFLOAT_DELAY(), O const& o, X x, XsYs... xsys) noexcept
+  requires(sizeof...(XsYs) % 2 == 0)
   {
     using t_t = as_polyfloat_like_t<X, XsYs...>;
     constexpr auto siz = sizeof...(XsYs);
@@ -95,7 +96,8 @@ namespace plf::_
       if constexpr (siz == 0) return eve::zero(eve::as<X>());
       else
       {
-        auto xsyst = eve::zip(t_t(xsys)...);
+        auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<t_t>>()); };
+        auto xsyst = eve::zip(t_t(cvt(xsys))...);
         if constexpr (siz == 2) return get<0>(xsyst);
         else if constexpr (siz == 4)
         {
