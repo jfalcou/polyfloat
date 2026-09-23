@@ -1541,6 +1541,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>quadrant</name>
+      <anchorfile>group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html</anchorfile>
+      <anchor>ga01ac2266639f9cb05ad11ced1a4e0619</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>rat</name>
       <anchorfile>group__core_gae7854c4bf7224d75816c16d3141b868c.html</anchorfile>
       <anchor>gae7854c4bf7224d75816c16d3141b868c</anchor>
@@ -3051,6 +3058,13 @@
       <name>plf::prevint</name>
       <anchorfile>group__core_ga4bf8537407a460e745d9df6f37fac5f7.html</anchorfile>
       <anchor>ga4bf8537407a460e745d9df6f37fac5f7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::quadrant</name>
+      <anchorfile>group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html</anchorfile>
+      <anchor>ga01ac2266639f9cb05ad11ced1a4e0619</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
