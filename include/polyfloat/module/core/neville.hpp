@@ -11,6 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/module/core/sum_of_prod.hpp>
 
 namespace plf
 {
@@ -85,13 +86,13 @@ namespace plf::_
   template<typename X, typename... XsYs, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto neville_(POLYFLOAT_DELAY(), O const& o, X x, XsYs... xsys) noexcept
   {
-    using t_t = as_polyfloat_like_t<X, Xs...>;
+    using t_t = as_polyfloat_like_t<X, XsYs...>;
     constexpr auto siz = sizeof...(XsYs);
     constexpr auto siz_2 = siz / 2;
-    if constexpr (dimension_v<t_t> == 1) return eve::neville[o](x, c, cs...);
+    if constexpr (dimension_v<t_t> == 1) return eve::neville[o](x, xsys...);
     else
     {
-      if constexpr (siz == 0) return eve::zero(eve::as<T>());
+      if constexpr (siz == 0) return eve::zero(eve::as<X>());
       else
       {
         auto xsyst = eve::zip(t_t(xsys)...);
@@ -102,7 +103,7 @@ namespace plf::_
           auto x1 = get<1>(xsyst);
           auto y0 = get<2>(xsyst);
           auto y1 = get<3>(xsyst);
-          return eve::sum_of_prod[o]((x - x1), y0, (x0 - x), y1) / (x0 - x1);
+          return plf::sum_of_prod[o]((x - x1), y0, (x0 - x), y1) / (x0 - x1);
         }
         else
         {
@@ -111,7 +112,7 @@ namespace plf::_
           {
             for (size_t i = 0, is2 = siz_2; i < siz_2 - k; ++i, ++is2)
             {
-              xy[is2] = sum_of_prod[o]((x - xy[i + k]), xy[is2], (xy[i] - x), xy[is2 + 1]) / (xy[i] - xy[i + k]);
+              xy[is2] = plf::sum_of_prod[o]((x - xy[i + k]), xy[is2], (xy[i] - x), xy[is2 + 1]) / (xy[i] - xy[i + k]);
             }
           }
           return xy[siz_2];
