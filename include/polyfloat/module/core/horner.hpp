@@ -133,7 +133,7 @@ namespace plf::_
   template<typename X, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
-    return eve::zero(eve::as<X>());
+    return plf::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
