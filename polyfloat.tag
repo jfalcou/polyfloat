@@ -1450,6 +1450,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>neville</name>
+      <anchorfile>group__functions_gada98330f63111f37aa310dcb450fb2aa.html</anchorfile>
+      <anchor>gada98330f63111f37aa310dcb450fb2aa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>next</name>
       <anchorfile>group__core_ga60c7f280243a468485f42421a2c06739.html</anchorfile>
       <anchor>ga60c7f280243a468485f42421a2c06739</anchor>
@@ -3290,6 +3297,13 @@
       <name>plf::horner</name>
       <anchorfile>group__functions_gae998e94f32f326d4c67342e2ceb35982.html</anchorfile>
       <anchor>gae998e94f32f326d4c67342e2ceb35982</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::neville</name>
+      <anchorfile>group__functions_gada98330f63111f37aa310dcb450fb2aa.html</anchorfile>
+      <anchor>gada98330f63111f37aa310dcb450fb2aa</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

@@ -174,7 +174,7 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[pedantic](<span class="comment">/*any of the above overloads*/</span>)                     <span class="keyword">noexcept</span>; <span class="comment">// 4</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[kahan](<span class="comment">/*any of the above overloads*/</span>)                        <span class="keyword">noexcept</span>; <span class="comment">// 5</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__functions_gae998e94f32f326d4c67342e2ceb35982_html_gae998e94f32f326d4c67342e2ceb35982"><div class="ttname"><a href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a></div><div class="ttdeci">constexpr auto horner</div><div class="ttdoc">Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order.</div><div class="ttdef"><b>Definition</b> horner.hpp:124</div></div>
+<div class="ttc" id="agroup__functions_gae998e94f32f326d4c67342e2ceb35982_html_gae998e94f32f326d4c67342e2ceb35982"><div class="ttname"><a href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a></div><div class="ttdeci">constexpr auto horner</div><div class="ttdoc">Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order.</div><div class="ttdef"><b>Definition</b> horner.hpp:120</div></div>
 <div class="ttc" id="anamespaceeve_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -212,7 +212,6 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
-<div class="line">  <span class="comment">//   using plf::abs;</span></div>
 <div class="line">  <span class="keyword">using </span>w_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::double_real_t&lt;double&gt;</a>, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed&lt;4&gt;</a>&gt;;</div>
 <div class="line"> </div>
 <div class="line">  w_t xd = {-0.3, 0.5, 0.0, 2.0};</div>
@@ -240,19 +239,25 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(1.0f, eve::coefficients(t))       = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(1.0f, eve::coefficients(t)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a> dx(1.0f, 1.0e-30f);</div>
+<div class="line">  <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a> tx(1.0f, 1.0e-30f);</div>
 <div class="line">  d2_t xs(2.0, 1.0e-30, 1.0e-54);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;---- scalar&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;&lt;- xs                          = &quot;</span> &lt;&lt; xs &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;&lt;- dx                          = &quot;</span> &lt;&lt; dx &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;&lt;- tx                          = &quot;</span> &lt;&lt; tx &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(xs, 1.5, 2.0, 4.0)   = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0)</div>
 <div class="line">            &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(xs, 1.5, 2.0, 4.0)   = &quot;</span></div>
 <div class="line">            &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>[eve::kahan](xs, d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(xs, kumi::tuple{1.5, 2.0, 4.0}) = &quot;</span></div>
-<div class="line">            &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"> </div>
+<div class="line">            &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(dx, 1.0f, 2.0f, 3.0f)           = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(dx, 1.0f, 2.0f, 3.0f) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(tx, 1.0f, 2.0f, 3.0f)           = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(tx, 1.0f, 2.0f, 3.0f) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
 <div class="ttc" id="astructeve_1_1fixed_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --> 
