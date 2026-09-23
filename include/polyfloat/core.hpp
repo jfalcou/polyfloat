@@ -121,6 +121,7 @@
 #include <polyfloat/module/core/pown.hpp>
 #include <polyfloat/module/core/prev.hpp>
 #include <polyfloat/module/core/prevint.hpp>
+#include <polyfloat/module/core/quadrant.hpp>
 #include <polyfloat/module/core/rec.hpp>
 #include <polyfloat/module/core/reldist.hpp>
 #include <polyfloat/module/core/rat.hpp>
