@@ -160,7 +160,7 @@ $(function(){initNavTree('group__core_ga3596810b24bfc8fb774e184cf3c2787e.html','
 <div class="line">{</div>
 <div class="line">  <span class="keyword">template</span>&lt;eve::scalar_value U&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga3596810b24bfc8fb774e184cf3c2787e">convert</a>(<span class="keyword">auto</span> x, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;U&gt;</a> ) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga3596810b24bfc8fb774e184cf3c2787e_html_ga3596810b24bfc8fb774e184cf3c2787e"><div class="ttname"><a href="#ga3596810b24bfc8fb774e184cf3c2787e">plf::convert</a></div><div class="ttdeci">constexpr auto convert</div><div class="ttdoc">convert to a target type</div><div class="ttdef"><b>Definition</b> convert.hpp:72</div></div>
+<div class="ttc" id="agroup__core_ga3596810b24bfc8fb774e184cf3c2787e_html_ga3596810b24bfc8fb774e184cf3c2787e"><div class="ttname"><a href="#ga3596810b24bfc8fb774e184cf3c2787e">plf::convert</a></div><div class="ttdeci">constexpr auto convert</div><div class="ttdoc">convert to a target type</div><div class="ttdef"><b>Definition</b> convert.hpp:78</div></div>
 <div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --><p><b>Parameter</b></p><ul>
@@ -183,11 +183,12 @@ $(function(){initNavTree('group__core_ga3596810b24bfc8fb774e184cf3c2787e.html','
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga3596810b24bfc8fb774e184cf3c2787e">plf::convert</a>;</div>
 <div class="line">  <span class="comment">//  using d1_t = double;</span></div>
+<div class="line">  <span class="keyword">using </span>f4 = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed&lt;4&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>w1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>w2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t&gt;</a>;</div>
-<div class="line">  <span class="comment">//  using w3_t = eve::wide&lt;d3_t&gt;;</span></div>
+<div class="line">  <span class="keyword">using </span>w1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double, f4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>w2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t, f4&gt;</a>;</div>
+<div class="line">  <span class="comment">//  using w3_t = eve::wide&lt;d3_t, f4&gt;;</span></div>
 <div class="line">  <span class="keywordtype">double</span> a1(1.0);</div>
 <div class="line">  d2_t a2(a1);</div>
 <div class="line">  std::cout &lt;&lt; plf::convert(a1, eve::as&lt;d2_t&gt;()) &lt;&lt; std::endl;</div>
@@ -201,10 +202,22 @@ $(function(){initNavTree('group__core_ga3596810b24bfc8fb774e184cf3c2787e.html','
 <div class="line">  <span class="comment">//  std::cout &lt;&lt; plf::convert(w2_t(a2), eve::as&lt;u_t&gt;()) &lt;&lt; std::endl;</span></div>
 <div class="line">  std::cout &lt;&lt; plf::convert(w2_t(a2), eve::as&lt;d2_t&gt;()) &lt;&lt; std::endl;</div>
 <div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> n = 3;</div>
+<div class="line">  std::cout &lt;&lt; plf::convert(n, eve::as&lt;d2_t&gt;()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; plf::convert(n, eve::as&lt;d3_t&gt;()) &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">using </span>wint_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;int, f4&gt;</a>;</div>
+<div class="line">  wint_t wn(1, 2, 3, 4);</div>
+<div class="line">  std::cout &lt;&lt; plf::convert(wn, eve::as&lt;d2_t&gt;()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; plf::convert(wn, eve::as&lt;d3_t&gt;()) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  w1_t wd{1.0, 2.0, 3.0, 4.0};</div>
+<div class="line">  std::cout &lt;&lt; plf::convert(wd, eve::as&lt;d3_t&gt;()) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
 <div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="astructeve_1_1fixed_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --> 
 </div>

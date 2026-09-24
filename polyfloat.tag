@@ -326,6 +326,10 @@
     <filename>conceptplf_1_1concepts_1_1scalar__real.html</filename>
   </compound>
   <compound kind="concept">
+    <name>plf::concepts::simd_integral</name>
+    <filename>conceptplf_1_1concepts_1_1simd__integral.html</filename>
+  </compound>
+  <compound kind="concept">
     <name>plf::concepts::triplereal_like</name>
     <filename>conceptplf_1_1concepts_1_1triplereal__like.html</filename>
   </compound>
