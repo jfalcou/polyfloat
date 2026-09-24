@@ -32,6 +32,12 @@ namespace plf
       return POLYFLOAT_CALL(v, tgt);
     }
 
+    template<concepts::simd_integral V, concepts::scalar_polyfloat Tgt>
+    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
+    {
+      return POLYFLOAT_CALL(v, tgt);
+    }
+
     POLYFLOAT_CALLABLE_OBJECT(convert_t, convert_);
   };
   //======================================================================================================================
@@ -84,7 +90,12 @@ namespace plf::_
     else if constexpr (concepts::polyfloat<Z>)
     {
       using type = eve::as_wide_as_t<Z, T>;
-      if constexpr (dimension_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
+      if constexpr (concepts::simd_integral<T>)
+      {
+        auto vr = eve::convert(v, eve::as<eve::underlying_type_t<Z>>());
+        return type{plf::convert(vr, eve::as<eve::element_type_t<Z>>{})};
+      }
+      else if constexpr (dimension_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
       else
       {
         using u_t = as_component_type_t<Z>;

@@ -12,7 +12,7 @@ int main()
   auto a = plf::polyfloat(-1.3);
   auto b = plf::polyfloat(2.0, -1.0e-55);
   auto c = plf::polyfloat(2.0, -1.0e-55, 0.0);
-  auto n = 2.;
+  auto n = 2;
   std::setprecision(15);
   std::cout << "f  " << f << std::endl;
   std::cout << "a  " << a << std::endl;
@@ -29,7 +29,10 @@ int main()
   pf3_t wc(c);
   std::cout << "wb      " << wb << std::endl;
   std::cout << "wc      " << wc << std::endl;
-  std::cout << "pown(wb) " << pown(wb, 2.0) << std::endl;
-  std::cout << "pown(wc) " << pown(wc, 2.0) << std::endl;
+  std::cout << "pown(wb, 2.0) " << pown(wb, 2.0) << std::endl;
+  std::cout << "pown(wc, 2.0) " << pown(wc, 2.0) << std::endl;
+  pf3_t m([](auto i, auto) { return plf::polyfloat<double, 3>(i); });
+  std::cout << "m           " << m << std::endl;
+  std::cout << "pown(wc, m) " << pown(wc, m) << std::endl;
   return 0;
 }
