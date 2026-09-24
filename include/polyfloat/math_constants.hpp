@@ -13,3 +13,7 @@
 #include <polyfloat/module/math/constants/log_2.hpp>
 #include <polyfloat/module/math/constants/maxlog.hpp>
 #include <polyfloat/module/math/constants/pi.hpp>
+#include <polyfloat/module/math/constants/pio_2.hpp>
+#include <polyfloat/module/math/constants/pio_3.hpp>
+#include <polyfloat/module/math/constants/pio_4.hpp>
+#include <polyfloat/module/math/constants/pio_6.hpp>
