@@ -7,6 +7,7 @@
 //======================================================================================================================
 #pragma once
 
+#include <polyfloat/module/math/constants/catalan.hpp>
 #include <polyfloat/module/math/constants/euler.hpp>
 #include <polyfloat/module/math/constants/invlog_10.hpp>
 #include <polyfloat/module/math/constants/invlog_2.hpp>
