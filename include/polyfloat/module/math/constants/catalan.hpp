@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/catalan.cpp}
+  //!  @godbolt{doc/cath/catalan.cpp}
   //======================================================================================================================
 
   inline constexpr auto catalan = eve::functor<catalan_t>;

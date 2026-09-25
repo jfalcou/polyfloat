@@ -79,7 +79,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/egamma.cpp}
+  //!  @godbolt{doc/math/egamma.cpp}
   //======================================================================================================================
 
   inline constexpr auto egamma = eve::functor<egamma_t>;

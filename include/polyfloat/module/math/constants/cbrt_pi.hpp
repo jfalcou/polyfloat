@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/cbrt_pi.cpp}
+  //!  @godbolt{doc/math/cbrt_pi.cpp}
   //======================================================================================================================
 
   inline constexpr auto cbrt_pi = eve::functor<cbrt_pi_t>;
