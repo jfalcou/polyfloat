@@ -13,7 +13,7 @@ TTS_CASE_TPL("Check cosh_1", plf::scalar_real_types)
 {
   using mpfr::mpreal;
   using plf::cosh_1;
-  auto mcosh_1 = []<typename TT>(TT) { return mpfr::mpreal::cosh(1); };
+  auto mcosh_1 = []<typename TT>(TT) { return (mpfr::mpreal::exp(1) + mpfr::mpreal::exp(-1)) / 2; };
   {
     {
       TTS_EQUAL(cosh_1(eve::as<T>()), eve::cosh_1(eve::as<T>()));
