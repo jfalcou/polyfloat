@@ -50,7 +50,8 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var egamma
-  //!   @brief return the egamma value.
+  //!   @brief Callable object computing the Euler-Mascheroni constant : \f$\gamma =
+  //!   \lim_{n\to\infty}\left( \sum_{k = 0}^n \frac1k - \log n\right )\f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -73,7 +74,8 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the egamma value as T.
+  //!      The call `eve::egamma(as<T>())` returns  \f$\gamma =
+  //!      \lim_{n\to\infty}\left( \sum_{k = 0}^n \frac1k - \log n\right )\f$. γ is an alias.
   //!
   //!  @groupheader{Example}
   //!
@@ -81,6 +83,7 @@ namespace plf
   //======================================================================================================================
 
   inline constexpr auto egamma = eve::functor<egamma_t>;
+  inline constexpr auto γ = eve::functor<egamma_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
