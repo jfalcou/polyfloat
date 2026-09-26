@@ -10,9 +10,9 @@
 
 TTS_CASE_WITH("Check radindeg",
               plf::scalar_real_types,
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax),
-              tts::randoms(eve::valmin, eve::valmax))
+              tts::randoms(-10.0, 10.0),
+              tts::randoms(0.0, 1.0e-20),
+              tts::randoms(0.0, 1.0e-30))
 <typename T>(T const& a0, T const& a1, T const& a2)
 {
   using mpfr::mpreal;

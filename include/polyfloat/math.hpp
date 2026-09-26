@@ -33,10 +33,6 @@
 #include <polyfloat/module/math/nthroot.hpp>
 #include <polyfloat/module/math/pow.hpp>
 #include <polyfloat/module/math/pow_abs.hpp>
-<<<<<<< Updated upstream
-=======
 #include <polyfloat/module/math/radindeg.hpp>
-#include <polyfloat/module/math/sigmoid.hpp>
-  >>>>>>> Stashed changes
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
