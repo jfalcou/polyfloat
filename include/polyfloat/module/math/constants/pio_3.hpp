@@ -13,32 +13,29 @@
 
 namespace plf
 {
-  template<typename Options> struct oneosqrteps_t : eve::constant_callable<oneosqrteps_t, Options>
+  template<typename Options> struct pio_3_t : eve::constant_callable<pio_3_t, Options>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
-      using u_t = plf::as_component_type_t<T>;
+      using u_t = eve::underlying_type_t<T>;
 
       if constexpr (plf::dimension_v<T> == 1)
       {
-        return eve::oneosqrteps(eve::as(u_t()));
+        return eve::pio_3(eve::as(u_t()));
       }
       if constexpr (plf::dimension_v<T> == 2)
       {
-        if constexpr (std::same_as<u_t, eve::float16_t>) return T(0x1p+10);
-        else if constexpr (std::same_as<u_t, float>) return T(0x1p+23);
-        else if constexpr (std::same_as<u_t, double>) return T(0x1p+52);
+        if constexpr (std::same_as<u_t, float>)
+          return plf::_::from_pair<u_t>(0x1.0c15240000000p+0, -0x1.f4a3260000000p-26);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_pair<u_t>(0x1.0c152382d7366p+0, -0x1.ee6913347c2a6p-54);
       }
       else if constexpr (plf::dimension_v<T> == 3)
       {
-        if constexpr (std::same_as<u_t, eve::float16_t>) return T(0x1p+15);
-        else if constexpr (std::same_as<u_t, float>)
-          return plf::_::from_triple<u_t>(0x1.6a09e6p+34, 0x1.9fcef4p+8, -0x1.b7ba68p-17);
-        else if constexpr (std::same_as<u_t, double>) return T(0x1p+78);
-      }
-      else
-      {
-        return eve::oneosqrteps(eve::as<u_t>());
+        if constexpr (std::same_as<u_t, float>)
+          return plf::_::from_triple<u_t>(0x1.0c15240000000p+0, -0x1.f4a3260000000p-26, -0x1.3dcd220000000p-51);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_triple<u_t>(0x1.0c152382d7366p+0, -0x1.ee6913347c2a6p-54, -0x1.4bba47a9e5fd2p-110);
       }
     }
 
@@ -47,13 +44,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(oneosqrteps_t, oneosqrteps_);
+    EVE_CALLABLE_OBJECT(pio_3_t, pio_3_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var oneosqrteps
-  //!   @brief return the inverse of sqrteps value.
+  //!   @var pio_3
+  //!   @brief return the pio_3 value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -66,7 +63,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto oneosqrteps(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto pio_3(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -76,14 +73,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the inverse of sqrteps value.
+  //!     Returns the pio_3 value as T.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/oneosqrteps.cpp}
+  //!  @godbolt_todo{doc/pio_3.cpp}
   //======================================================================================================================
 
-  inline constexpr auto oneosqrteps = eve::functor<oneosqrteps_t>;
+  inline constexpr auto pio_3 = eve::functor<pio_3_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

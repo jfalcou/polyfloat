@@ -13,32 +13,29 @@
 
 namespace plf
 {
-  template<typename Options> struct oneosqrteps_t : eve::constant_callable<oneosqrteps_t, Options>
+  template<typename Options> struct catalan_t : eve::constant_callable<catalan_t, Options>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
-      using u_t = plf::as_component_type_t<T>;
+      using u_t = eve::underlying_type_t<T>;
 
       if constexpr (plf::dimension_v<T> == 1)
       {
-        return eve::oneosqrteps(eve::as(u_t()));
+        return eve::catalan(eve::as(u_t()));
       }
       if constexpr (plf::dimension_v<T> == 2)
       {
-        if constexpr (std::same_as<u_t, eve::float16_t>) return T(0x1p+10);
-        else if constexpr (std::same_as<u_t, float>) return T(0x1p+23);
-        else if constexpr (std::same_as<u_t, double>) return T(0x1p+52);
+        if constexpr (std::same_as<u_t, float>)
+          return plf::_::from_pair<u_t>(0x1.d4f9720000000p-1, -0x1.82fd940000000p-26);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_pair<u_t>(0x1.d4f9713e8135dp-1, 0x1.1485608b8df4dp-58);
       }
       else if constexpr (plf::dimension_v<T> == 3)
       {
-        if constexpr (std::same_as<u_t, eve::float16_t>) return T(0x1p+15);
-        else if constexpr (std::same_as<u_t, float>)
-          return plf::_::from_triple<u_t>(0x1.6a09e6p+34, 0x1.9fcef4p+8, -0x1.b7ba68p-17);
-        else if constexpr (std::same_as<u_t, double>) return T(0x1p+78);
-      }
-      else
-      {
-        return eve::oneosqrteps(eve::as<u_t>());
+        if constexpr (std::same_as<u_t, float>)
+          return plf::_::from_triple<u_t>(0x1.d4f9720000000p-1, -0x1.82fd940000000p-26, -0x1.7badea0000000p-52);
+        else if constexpr (std::same_as<u_t, double>)
+          return plf::_::from_triple<u_t>(0x1.d4f9713e8135dp-1, 0x1.1485608b8df4dp-58, -0x1.2f39c13bc1ec8p-112);
       }
     }
 
@@ -47,13 +44,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(oneosqrteps_t, oneosqrteps_);
+    EVE_CALLABLE_OBJECT(catalan_t, catalan_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var oneosqrteps
-  //!   @brief return the inverse of sqrteps value.
+  //!   @var catalan
+  //!   @brief return the catalan value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -66,7 +63,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto oneosqrteps(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto catalan(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -76,14 +73,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the inverse of sqrteps value.
+  //!     Returns the catalan value as T.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/oneosqrteps.cpp}
+  //!  @godbolt{doc/math/catalan.cpp}
   //======================================================================================================================
 
-  inline constexpr auto oneosqrteps = eve::functor<oneosqrteps_t>;
+  inline constexpr auto catalan = eve::functor<catalan_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
