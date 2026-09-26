@@ -481,9 +481,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>catalan</name>
+      <anchorfile>group__constants_gaee63e6e9e1962dca40c5cde1b52ab905.html</anchorfile>
+      <anchor>gaee63e6e9e1962dca40c5cde1b52ab905</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>cbrt</name>
       <anchorfile>group__core_gaa0cc19fbc27cb06fc0f81bb87148fd2b.html</anchorfile>
       <anchor>gaa0cc19fbc27cb06fc0f81bb87148fd2b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>cbrt_pi</name>
+      <anchorfile>group__constants_gaba67a1ce281a6722928fcdbe6d037f60.html</anchorfile>
+      <anchor>gaba67a1ce281a6722928fcdbe6d037f60</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -523,9 +537,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>cos_1</name>
+      <anchorfile>group__constants_ga9d32e0a5bf045bfbde9ac25549b2e1cc.html</anchorfile>
+      <anchor>ga9d32e0a5bf045bfbde9ac25549b2e1cc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>cosh</name>
       <anchorfile>group__core_ga9c6115c7b57ba527694f481843d1edac.html</anchorfile>
       <anchor>ga9c6115c7b57ba527694f481843d1edac</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>cosh_1</name>
+      <anchorfile>group__constants_ga196b76f0b9a3da0eb1612216fec0adee.html</anchorfile>
+      <anchor>ga196b76f0b9a3da0eb1612216fec0adee</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -624,6 +652,13 @@
       <name>effective_mantissa_bits</name>
       <anchorfile>group__constants_gac4277864eeceb38de7a3e18e4f329337.html</anchorfile>
       <anchor>gac4277864eeceb38de7a3e18e4f329337</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>egamma</name>
+      <anchorfile>group__constants_gab41420b093b23cbda01fe8617f29e5cb.html</anchorfile>
+      <anchor>gab41420b093b23cbda01fe8617f29e5cb</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1510,6 +1545,41 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>pi</name>
+      <anchorfile>group__constants_gab9b05ae205213ff9eb38c22b9f777eb4.html</anchorfile>
+      <anchor>gab9b05ae205213ff9eb38c22b9f777eb4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pio_2</name>
+      <anchorfile>group__constants_ga4f050d319a737624f6fda3edc2f10d64.html</anchorfile>
+      <anchor>ga4f050d319a737624f6fda3edc2f10d64</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pio_3</name>
+      <anchorfile>group__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70.html</anchorfile>
+      <anchor>ga6474fff2fbfd3debcb1e6c08bc6b8e70</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pio_4</name>
+      <anchorfile>group__constants_ga2833089ea102010508589ab0a7c62ae5.html</anchorfile>
+      <anchor>ga2833089ea102010508589ab0a7c62ae5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>pio_6</name>
+      <anchorfile>group__constants_ga3a5657d9a62ca57b93cff8f720aae898.html</anchorfile>
+      <anchor>ga3a5657d9a62ca57b93cff8f720aae898</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>pow</name>
       <anchorfile>group__core_ga2ac39d06d5a669c537c5aef7e888ea47.html</anchorfile>
       <anchor>ga2ac39d06d5a669c537c5aef7e888ea47</anchor>
@@ -1913,9 +1983,44 @@
     <filename>group__constants.html</filename>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::catalan</name>
+      <anchorfile>group__constants_gaee63e6e9e1962dca40c5cde1b52ab905.html</anchorfile>
+      <anchor>gaee63e6e9e1962dca40c5cde1b52ab905</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cbrt_pi</name>
+      <anchorfile>group__constants_gaba67a1ce281a6722928fcdbe6d037f60.html</anchorfile>
+      <anchor>gaba67a1ce281a6722928fcdbe6d037f60</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cos_1</name>
+      <anchorfile>group__constants_ga9d32e0a5bf045bfbde9ac25549b2e1cc.html</anchorfile>
+      <anchor>ga9d32e0a5bf045bfbde9ac25549b2e1cc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cosh_1</name>
+      <anchorfile>group__constants_ga196b76f0b9a3da0eb1612216fec0adee.html</anchorfile>
+      <anchor>ga196b76f0b9a3da0eb1612216fec0adee</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::effective_mantissa_bits</name>
       <anchorfile>group__constants_gac4277864eeceb38de7a3e18e4f329337.html</anchorfile>
       <anchor>gac4277864eeceb38de7a3e18e4f329337</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::egamma</name>
+      <anchorfile>group__constants_gab41420b093b23cbda01fe8617f29e5cb.html</anchorfile>
+      <anchor>gab41420b093b23cbda01fe8617f29e5cb</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2007,6 +2112,41 @@
       <name>plf::oneosqrteps</name>
       <anchorfile>group__constants_gaf37d435e94d94585ba4b0848c520316b.html</anchorfile>
       <anchor>gaf37d435e94d94585ba4b0848c520316b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pi</name>
+      <anchorfile>group__constants_gab9b05ae205213ff9eb38c22b9f777eb4.html</anchorfile>
+      <anchor>gab9b05ae205213ff9eb38c22b9f777eb4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pio_2</name>
+      <anchorfile>group__constants_ga4f050d319a737624f6fda3edc2f10d64.html</anchorfile>
+      <anchor>ga4f050d319a737624f6fda3edc2f10d64</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pio_3</name>
+      <anchorfile>group__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70.html</anchorfile>
+      <anchor>ga6474fff2fbfd3debcb1e6c08bc6b8e70</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pio_4</name>
+      <anchorfile>group__constants_ga2833089ea102010508589ab0a7c62ae5.html</anchorfile>
+      <anchor>ga2833089ea102010508589ab0a7c62ae5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::pio_6</name>
+      <anchorfile>group__constants_ga3a5657d9a62ca57b93cff8f720aae898.html</anchorfile>
+      <anchor>ga3a5657d9a62ca57b93cff8f720aae898</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
