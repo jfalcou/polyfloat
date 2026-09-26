@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sigmoid_11',['sigmoid',['../group__core_gab9a23ada2593afbfcb3adc93c5be697a.html#gab9a23ada2593afbfcb3adc93c5be697a',1,'plf::sigmoid']]],
   ['sign_12',['sign',['../group__core_ga71f110b670810f9e0e3ee1b5745a37a8.html#ga71f110b670810f9e0e3ee1b5745a37a8',1,'plf::sign']]],
   ['sign_5falternate_13',['sign_alternate',['../group__core_ga564e4bc99fc8f5704fae107a5f83e847.html#ga564e4bc99fc8f5704fae107a5f83e847',1,'plf::sign_alternate']]],
   ['signnz_17',['signnz',['../group__core_gaa1b1663acb0eb4bbc16fd9beb3dff197.html#gaa1b1663acb0eb4bbc16fd9beb3dff197',1,'plf::signnz']]],

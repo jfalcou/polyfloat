@@ -1685,6 +1685,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>sigmoid</name>
+      <anchorfile>group__core_gab9a23ada2593afbfcb3adc93c5be697a.html</anchorfile>
+      <anchor>gab9a23ada2593afbfcb3adc93c5be697a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>sign</name>
       <anchorfile>group__core_ga71f110b670810f9e0e3ee1b5745a37a8.html</anchorfile>
       <anchor>ga71f110b670810f9e0e3ee1b5745a37a8</anchor>
@@ -3265,6 +3272,13 @@
       <name>plf::rsqrt</name>
       <anchorfile>group__core_ga6b68af3438bb67d5a0ac3634a01fd610.html</anchorfile>
       <anchor>ga6b68af3438bb67d5a0ac3634a01fd610</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sigmoid</name>
+      <anchorfile>group__core_gab9a23ada2593afbfcb3adc93c5be697a.html</anchorfile>
+      <anchor>gab9a23ada2593afbfcb3adc93c5be697a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

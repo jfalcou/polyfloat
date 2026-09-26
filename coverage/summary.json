@@ -2092,6 +2092,18 @@
             "line_total": 38
         },
         {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/sigmoid.hpp",
+            "function_covered": 18,
+            "function_percent": 100.0,
+            "function_total": 18,
+            "line_covered": 6,
+            "line_percent": 100.0,
+            "line_total": 6
+        },
+        {
             "branch_covered": 2,
             "branch_percent": 100.0,
             "branch_total": 2,
@@ -2212,12 +2224,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 6653,
+    "function_covered": 6671,
     "function_percent": 99.9,
-    "function_total": 6657,
+    "function_total": 6675,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1826,
+    "line_covered": 1832,
     "line_percent": 99.7,
-    "line_total": 1831,
+    "line_total": 1837,
     "root": "../../.."
 }
