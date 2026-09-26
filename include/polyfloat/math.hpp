@@ -36,5 +36,6 @@
 #include <polyfloat/module/math/pow_abs.hpp>
 #include <polyfloat/module/math/radindeg.hpp>
 #include <polyfloat/module/math/radinpi.hpp>
+#include <polyfloat/module/math/sigmoid.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
