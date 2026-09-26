@@ -22,3 +22,4 @@
 #include <polyfloat/module/math/constants/pio_3.hpp>
 #include <polyfloat/module/math/constants/pio_4.hpp>
 #include <polyfloat/module/math/constants/pio_6.hpp>
+#include <polyfloat/module/math/constants/rad2deg.hpp>
