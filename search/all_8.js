@@ -4,6 +4,7 @@ var searchData=
   ['implementation_20provide_12',['What does this implementation provide',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md2',1,'']]],
   ['inc_13',['inc',['../group__core_gad3d7ea17362a2244fb6ec0ca2d5a78e5.html#gad3d7ea17362a2244fb6ec0ca2d5a78e5',1,'plf::inc']]],
   ['inf_15',['inf',['../group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7',1,'plf::inf']]],
+  ['inv_5fpi_25',['inv_pi',['../group__constants_ga8c20889a18fc8b1d8e5b40960a0c104d.html#ga8c20889a18fc8b1d8e5b40960a0c104d',1,'plf::inv_pi']]],
   ['inveps_27',['inveps',['../group__constants_gae1bef0c184e2dead4007764d4e821835.html#gae1bef0c184e2dead4007764d4e821835',1,'plf']]],
   ['invlog_5f10_32',['invlog_10',['../group__constants_gae5ba2e8a8ea4d88c2799dcdf8424f574.html#gae5ba2e8a8ea4d88c2799dcdf8424f574',1,'plf::invlog_10']]],
   ['invlog_5f2_33',['invlog_2',['../group__constants_ga558ed10477a5c340a720e2ea3866327c.html#ga558ed10477a5c340a720e2ea3866327c',1,'plf::invlog_2']]],

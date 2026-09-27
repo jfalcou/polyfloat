@@ -642,6 +642,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>div_180</name>
+      <anchorfile>group__math_gad588675f0e3b67228f703e4729b95996.html</anchorfile>
+      <anchor>gad588675f0e3b67228f703e4729b95996</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>dot</name>
       <anchorfile>group__core_gaf5ce77de394a85c44e05c7f96215fc27.html</anchorfile>
       <anchor>gaf5ce77de394a85c44e05c7f96215fc27</anchor>
@@ -855,6 +862,13 @@
       <name>inf</name>
       <anchorfile>group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html</anchorfile>
       <anchor>ga17a6561e33fcb9f3bf0be566ca5751f7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>inv_pi</name>
+      <anchorfile>group__constants_ga8c20889a18fc8b1d8e5b40960a0c104d.html</anchorfile>
+      <anchor>ga8c20889a18fc8b1d8e5b40960a0c104d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1538,6 +1552,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>oneo_180</name>
+      <anchorfile>group__constants_gaa48483e2def333b32d0921c7622caa11.html</anchorfile>
+      <anchor>gaa48483e2def333b32d0921c7622caa11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>oneosqrteps</name>
       <anchorfile>group__constants_gaf37d435e94d94585ba4b0848c520316b.html</anchorfile>
       <anchor>gaf37d435e94d94585ba4b0848c520316b</anchor>
@@ -1618,6 +1639,27 @@
       <name>quadrant</name>
       <anchorfile>group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html</anchorfile>
       <anchor>ga01ac2266639f9cb05ad11ced1a4e0619</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>rad2deg</name>
+      <anchorfile>group__constants_gade6dc8cc08c7e513fa33b5c461d449a6.html</anchorfile>
+      <anchor>gade6dc8cc08c7e513fa33b5c461d449a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>radindeg</name>
+      <anchorfile>group__math_ga9296f6efaa1e2f591284ffe5c46e0b11.html</anchorfile>
+      <anchor>ga9296f6efaa1e2f591284ffe5c46e0b11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>radinpi</name>
+      <anchorfile>group__math_ga7c6799944109d3ef28d44e8c65d46ccf.html</anchorfile>
+      <anchor>ga7c6799944109d3ef28d44e8c65d46ccf</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2053,6 +2095,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::inv_pi</name>
+      <anchorfile>group__constants_ga8c20889a18fc8b1d8e5b40960a0c104d.html</anchorfile>
+      <anchor>ga8c20889a18fc8b1d8e5b40960a0c104d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::inveps</name>
       <anchorfile>group__constants_gae1bef0c184e2dead4007764d4e821835.html</anchorfile>
       <anchor>gae1bef0c184e2dead4007764d4e821835</anchor>
@@ -2116,6 +2165,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::oneo_180</name>
+      <anchorfile>group__constants_gaa48483e2def333b32d0921c7622caa11.html</anchorfile>
+      <anchor>gaa48483e2def333b32d0921c7622caa11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::oneosqrteps</name>
       <anchorfile>group__constants_gaf37d435e94d94585ba4b0848c520316b.html</anchorfile>
       <anchor>gaf37d435e94d94585ba4b0848c520316b</anchor>
@@ -2154,6 +2210,13 @@
       <name>plf::pio_6</name>
       <anchorfile>group__constants_ga3a5657d9a62ca57b93cff8f720aae898.html</anchorfile>
       <anchor>ga3a5657d9a62ca57b93cff8f720aae898</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::rad2deg</name>
+      <anchorfile>group__constants_gade6dc8cc08c7e513fa33b5c461d449a6.html</anchorfile>
+      <anchor>gade6dc8cc08c7e513fa33b5c461d449a6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3492,6 +3555,13 @@
     <filename>group__math.html</filename>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::div_180</name>
+      <anchorfile>group__math_gad588675f0e3b67228f703e4729b95996.html</anchorfile>
+      <anchor>gad588675f0e3b67228f703e4729b95996</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::logspace_add</name>
       <anchorfile>group__math_ga0a1e0bab561000aa41ed2f5142cb9c37.html</anchorfile>
       <anchor>ga0a1e0bab561000aa41ed2f5142cb9c37</anchor>
@@ -3502,6 +3572,20 @@
       <name>plf::logspace_sub</name>
       <anchorfile>group__math_gac6e8817a750645f722883e1b8f7d319d.html</anchorfile>
       <anchor>gac6e8817a750645f722883e1b8f7d319d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::radindeg</name>
+      <anchorfile>group__math_ga9296f6efaa1e2f591284ffe5c46e0b11.html</anchorfile>
+      <anchor>ga9296f6efaa1e2f591284ffe5c46e0b11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::radinpi</name>
+      <anchorfile>group__math_ga7c6799944109d3ef28d44e8c65d46ccf.html</anchorfile>
+      <anchor>ga7c6799944109d3ef28d44e8c65d46ccf</anchor>
       <arglist></arglist>
     </member>
   </compound>

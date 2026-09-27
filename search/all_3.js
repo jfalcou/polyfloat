@@ -6,6 +6,7 @@ var searchData=
   ['dimension_5fv_24',['dimension_v',['../group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f',1,'plf']]],
   ['dist_25',['dist',['../group__core_ga31aaafd7f21c599693e7a2fd6533e315.html#ga31aaafd7f21c599693e7a2fd6533e315',1,'plf::dist']]],
   ['div_26',['div',['../group__core_gad96f947d70b23427a0305b9998aad337.html#gad96f947d70b23427a0305b9998aad337',1,'plf::div']]],
+  ['div_5f180_27',['div_180',['../group__math_gad588675f0e3b67228f703e4729b95996.html#gad588675f0e3b67228f703e4729b95996',1,'plf::div_180']]],
   ['does_20this_20implementation_20provide_29',['What does this implementation provide',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md2',1,'']]],
   ['dot_30',['dot',['../group__core_gaf5ce77de394a85c44e05c7f96215fc27.html#gaf5ce77de394a85c44e05c7f96215fc27',1,'plf::dot']]],
   ['double_5freal_5ft_32',['double_real_t',['../group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61',1,'plf']]],

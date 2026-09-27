@@ -6,5 +6,6 @@ var searchData=
   ['dimension_5fv_13',['dimension_v',['../group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f',1,'plf']]],
   ['dist_14',['dist',['../group__core_ga31aaafd7f21c599693e7a2fd6533e315.html#ga31aaafd7f21c599693e7a2fd6533e315',1,'plf::dist']]],
   ['div_15',['div',['../group__core_gad96f947d70b23427a0305b9998aad337.html#gad96f947d70b23427a0305b9998aad337',1,'plf::div']]],
+  ['div_5f180_16',['div_180',['../group__math_gad588675f0e3b67228f703e4729b95996.html#gad588675f0e3b67228f703e4729b95996',1,'plf::div_180']]],
   ['dot_18',['dot',['../group__core_gaf5ce77de394a85c44e05c7f96215fc27.html#gaf5ce77de394a85c44e05c7f96215fc27',1,'plf::dot']]],
 ];
