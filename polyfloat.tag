@@ -1762,6 +1762,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>sinhcosh</name>
+      <anchorfile>group__core_ga02d2b89a953909ef1283cb5847c2054a.html</anchorfile>
+      <anchor>ga02d2b89a953909ef1283cb5847c2054a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>smallestposval</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
@@ -3370,6 +3377,13 @@
       <name>plf::sinh</name>
       <anchorfile>group__core_gab98365d8cb868ac99d97f9d0297fedfa.html</anchorfile>
       <anchor>gab98365d8cb868ac99d97f9d0297fedfa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sinhcosh</name>
+      <anchorfile>group__core_ga02d2b89a953909ef1283cb5847c2054a.html</anchorfile>
+      <anchor>ga02d2b89a953909ef1283cb5847c2054a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

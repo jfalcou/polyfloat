@@ -8,6 +8,7 @@ var searchData=
   ['signnz_39',['signnz',['../group__core_gaa1b1663acb0eb4bbc16fd9beb3dff197.html#gaa1b1663acb0eb4bbc16fd9beb3dff197',1,'plf::signnz']]],
   ['simd_5fintegral_45',['simd_integral',['../conceptplf_1_1concepts_1_1simd__integral.html',1,'plf::concepts']]],
   ['sinh_54',['sinh',['../group__core_gab98365d8cb868ac99d97f9d0297fedfa.html#gab98365d8cb868ac99d97f9d0297fedfa',1,'plf::sinh']]],
+  ['sinhcosh_57',['sinhcosh',['../group__core_ga02d2b89a953909ef1283cb5847c2054a.html#ga02d2b89a953909ef1283cb5847c2054a',1,'plf::sinhcosh']]],
   ['smallestposval_64',['smallestposval',['../group__core.html#ga1089f4e0a6091f3da50a5c7655ec3643',1,'plf::smallestposval']]],
   ['special_20functions_71',['Math special functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md11',1,'']]],
   ['sqr_74',['sqr',['../group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf',1,'plf::sqr']]],

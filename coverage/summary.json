@@ -1,7 +1,7 @@
 {
-    "branch_covered": 218,
-    "branch_percent": 96.0,
-    "branch_total": 227,
+    "branch_covered": 220,
+    "branch_percent": 96.1,
+    "branch_total": 229,
     "files": [
         {
             "branch_covered": 0,
@@ -2188,6 +2188,18 @@
             "line_total": 20
         },
         {
+            "branch_covered": 2,
+            "branch_percent": 100.0,
+            "branch_total": 2,
+            "filename": "include/polyfloat/module/math/sinhcosh.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 23,
+            "line_percent": 100.0,
+            "line_total": 23
+        },
+        {
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
@@ -2296,12 +2308,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 6767,
+    "function_covered": 6779,
     "function_percent": 99.9,
-    "function_total": 6771,
+    "function_total": 6783,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1877,
+    "line_covered": 1900,
     "line_percent": 99.7,
-    "line_total": 1882,
+    "line_total": 1905,
     "root": "../../.."
 }

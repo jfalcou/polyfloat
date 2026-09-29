@@ -5,6 +5,7 @@ var searchData=
   ['sign_5falternate_13',['sign_alternate',['../group__core_ga564e4bc99fc8f5704fae107a5f83e847.html#ga564e4bc99fc8f5704fae107a5f83e847',1,'plf::sign_alternate']]],
   ['signnz_17',['signnz',['../group__core_gaa1b1663acb0eb4bbc16fd9beb3dff197.html#gaa1b1663acb0eb4bbc16fd9beb3dff197',1,'plf::signnz']]],
   ['sinh_25',['sinh',['../group__core_gab98365d8cb868ac99d97f9d0297fedfa.html#gab98365d8cb868ac99d97f9d0297fedfa',1,'plf::sinh']]],
+  ['sinhcosh_28',['sinhcosh',['../group__core_ga02d2b89a953909ef1283cb5847c2054a.html#ga02d2b89a953909ef1283cb5847c2054a',1,'plf::sinhcosh']]],
   ['smallestposval_31',['smallestposval',['../group__core.html#ga1089f4e0a6091f3da50a5c7655ec3643',1,'plf::smallestposval']]],
   ['sqr_35',['sqr',['../group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf',1,'plf::sqr']]],
   ['sqrt_36',['sqrt',['../group__core_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77',1,'plf::sqrt']]],
