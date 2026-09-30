@@ -10,7 +10,8 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <polyfloat/module/core/sum_of_prod.hpp>
+#include <polyfloat/module/math/pow.hpp>
+#include <polyfloat/module/core/pown.hpp>
 #include <type_traits>
 
 namespace plf
@@ -19,17 +20,15 @@ namespace plf
   template<typename Options> struct nthroot_t : eve::callable<nthroot_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<N, Z1> operator()(Z1 z1, N n) const noexcept
     {
-      using r_t = eve::element_type_t<decltype(hi(Z1()))>;
-      return POLYFLOAT_CALL(z1, eve::convert(n, eve::as<r_t>()));
+      return POLYFLOAT_CALL(z1, n);
     }
 
-    template<concepts::polyfloat_like Z, eve::floating_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
+    template<concepts::polyfloat_like Z, concepts::polyfloat_like N>
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z, N> operator()(Z z, N n) const noexcept
     {
-      using r_t = eve::element_type_t<as_component_type_t<Z>>;
-      return POLYFLOAT_CALL(z, plf::convert(n, eve::as<r_t>()));
+      return POLYFLOAT_CALL(z, n);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(nthroot_t, nthroot_);
@@ -78,23 +77,36 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, typename N, eve::callable_options O>
-  constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, T xx, N nn) noexcept
+  template<typename Z1, eve::integral_value N, eve::callable_options O>
+  constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, Z1 xx, N n) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::nthroot[o](xx, nn);
+    using r_t = eve::as_wide_as_t<N, Z1>;
+    using e_t = eve::element_type_t<r_t>;
+    return nthroot[o](plf::convert(xx, eve::as<e_t>()), plf::convert(n, eve::as<e_t>()));
+  }
+
+  template<typename T, typename N, eve::callable_options O>
+  constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, T x, N n) noexcept
+  requires(!eve::integral_value<N>)
+  {
+    if constexpr (dimension_v<T> == 1) return eve::nthroot[o](x, n);
     else
     {
+      using r_t = plf::as_polyfloat_like_t<T, N>;
+      using e_t = eve::element_type_t<r_t>;
+      auto xx = plf::convert(x, eve::as<e_t>());
+      auto nn = plf::convert(n, eve::as<e_t>());
       auto ltz = plf::is_ltz(xx);
-      T r = eve::pow(eve::abs(plf::hi(xx)), eve::rec[pedantic](nn));
-      r = (dec(nn) * r + xx * pown(r, -dec(nn))) / nn;
+      r_t r{};
+      hi(r) = eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn)));
+      r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
       if constexpr (dimension_v<T> == 3)
       {
-        r = (dec(nn) * r + xx * pown(r, -dec(nn))) / nn;
-        r = (dec(nn) * r + xx * pown(r, -dec(nn))) / nn;
+        r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
       }
-      auto res = if_else(is_eqz(xx), xx, r);
-      if constexpr (!O::contains(raw)) res = if_else(plf::is_not_finite(xx), xx, res);
-      return if_else(ltz && plf::is_even(nn), eve::nan, res);
+      auto res = plf::if_else(plf::is_eqz(xx), xx, r);
+      if constexpr (!O::contains(raw)) res = plf::if_else(plf::is_not_finite(xx), xx, res);
+      return plf::if_else(ltz && plf::is_even(nn), plf::nan(eve::as(res)), res);
     }
   }
 }
