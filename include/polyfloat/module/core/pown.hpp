@@ -76,20 +76,30 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, typename N, eve::callable_options O>
+  template<typename Z, eve::integral_value N, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::pow(z, n);
+    using r_t = eve::as_wide_as_t<Z, N>;
+    return pown(z, plf::convert(n, eve::as(eve::element_type_t<r_t>())));
+  }
+
+  template<typename Z, typename N, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N nn) noexcept
+  requires(!eve::integral_value<N>)
+  {
+    using r_t = eve::as_wide_as_t<Z, N>;
+    if constexpr (dimension_v<Z> == 1 && !eve::integral_value<N>) return eve::pow(z, nn);
     else
     {
-      auto isneg = plf::is_ltz(n);
-      auto expo = trunc(abs(n));
-      Z base(z);
-      Z result(1);
-      while (eve::any(plf::is_nez(expo)))
+      auto isneg = plf::is_ltz(nn);
+      auto n = plf::abs(r_t(nn));
+      r_t base(z);
+      r_t result(1);
+      while (eve::any(plf::is_nez(n)))
       {
-        result = mul(result, plf::if_else(is_odd(expo), base, one));
-        expo = plf::floor(expo / 2);
+        r_t fac = plf::if_else(is_odd(n), base, one(eve::as(base)));
+        result *= fac;
+        n = plf::floor(n / 2);
         base = plf::sqr(base);
       }
       return if_else(isneg, plf::rec(result), result);
