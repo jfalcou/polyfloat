@@ -20,13 +20,14 @@ namespace plf
   template<typename Options> struct nthroot_t : eve::callable<nthroot_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<N, Z1> operator()(Z1 z1, N n) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Z1, N> operator()(Z1 z1, N n) const noexcept
     {
       return POLYFLOAT_CALL(z1, n);
     }
 
     template<concepts::polyfloat_like Z, concepts::polyfloat_like N>
     POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z, N> operator()(Z z, N n) const noexcept
+    requires(!eve::integral_value<N>)
     {
       return POLYFLOAT_CALL(z, n);
     }
@@ -80,7 +81,7 @@ namespace plf::_
   template<typename Z1, eve::integral_value N, eve::callable_options O>
   constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, Z1 xx, N n) noexcept
   {
-    using r_t = eve::as_wide_as_t<N, Z1>;
+    using r_t = eve::as_wide_as_t<Z1, N>;
     using e_t = eve::element_type_t<r_t>;
     return nthroot[o](plf::convert(xx, eve::as<e_t>()), plf::convert(n, eve::as<e_t>()));
   }

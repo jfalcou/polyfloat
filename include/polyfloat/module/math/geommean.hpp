@@ -86,6 +86,7 @@ namespace plf::_
   {
     using r_t = as_polyfloat_like_t<T1, Ts...>;
     using e_t = eve::element_type_t<r_t>;
+    using u_t = eve::underlying_type_t<r_t>;
     auto cvt = [](auto a) { return plf::convert(a, as<e_t>()); };
     constexpr auto sz = sizeof...(Ts);
     if constexpr (sz == 0) return a0;
@@ -94,7 +95,7 @@ namespace plf::_
       auto e = -eve::maxmag(exponent(cvt(a0)), exponent(cvt(args))...);
       auto p = plf::mul[o](cvt(ldexp[o](a0, e)), cvt(ldexp[o](args, e))...);
       auto sgn = plf::sign(p);
-      p = plf::nthroot(p, sz + 1);
+      p = plf::nthroot(p, u_t(sz + 1));
       p = ldexp[pedantic](p, -e);
       return if_else(plf::is_even(sz) && plf::is_ltz(sgn), eve::allbits, sgn * p);
     }
