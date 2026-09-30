@@ -48,7 +48,14 @@ namespace plf::_
 
   template<typename Z> POLYFLOAT_FORCEINLINE constexpr auto inner_three_add(Z const& x, Z const& y, Z const& z) noexcept
   {
-    auto [xh, xl] = eve::two_add(x, y);
-    return inner_cr_dw_fp_add_with_err(xh, xl, z);
+    auto [xh, xl] = eve::two_add[eve::pedantic](x, y);
+    auto r = inner_cr_dw_fp_add_with_err(xh, xl, z);
+    auto isnf = eve::is_not_finite(x);
+    if (eve::none(isnf)) return r;
+    else
+    {
+      auto h = eve::zip(x, eve::zero(as(x)), eve::zero(as(x)));
+      return eve::if_else(eve::is_not_finite(x), h, r);
+    }
   }
 }

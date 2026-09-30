@@ -7,38 +7,34 @@
 //======================================================================================================================
 #pragma once
 
-#include <eve/eve.hpp>
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <type_traits>
 
 namespace plf
 {
-  template<typename Options> struct inf_t : eve::constant_callable<inf_t, Options>
+
+  template<typename Options> struct is_gez_t : eve::callable<is_gez_t, Options, raw_option, pedantic_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<concepts::polyfloat_like Z>
+    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z) const noexcept -> eve::as_logical_t<as_component_type_t<Z>>
     {
-      using u_t = eve::underlying_type_t<T>;
-      return T(eve::inf(eve::as<u_t>()));
+      return POLYFLOAT_CALL(z);
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
-    {
-      return POLYFLOAT_CALL(v);
-    }
-
-    EVE_CALLABLE_OBJECT(inf_t, inf_);
+    POLYFLOAT_CALLABLE_OBJECT(is_gez_t, is_gez_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @addtogroup core
   //! @{
-  //!   @var inf
-  //!   @brief return the infinite value.
+  //!   @var is_gez
+  //!   @brief test the parameter for greater or equal to zero.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/module/core.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -46,25 +42,34 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inf(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_gez(T z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `T`: type to return.
+  //!     * `z`: Value to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the inf value in type T.
+  //!     Returns the value of z >= 0.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/inf.cpp}
+  //!  @godbolt_todo{doc/core/core/is_gez.cpp}
   //======================================================================================================================
 
-  inline constexpr auto inf = eve::functor<inf_t>;
+  inline constexpr auto is_gez = eve::functor<is_gez_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
+}
+
+namespace plf::_
+{
+  template<typename Z, eve::callable_options O>
+  POLYFLOAT_FORCEINLINE constexpr auto is_gez_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  {
+    return eve::is_gez(hi(z));
+  }
 }

@@ -37,16 +37,16 @@ int main()
   using wf2_t = eve::wide<f2_t, eve::fixed<4>>;
   using wf3_t = eve::wide<f3_t, eve::fixed<4>>;
 
-  wf1_t wxf([](auto i, auto) { return -0.5f + i; });
-  wd1_t wxd([](auto i, auto) { return -0.5 + i; });
+  wf1_t wxf([](auto i, auto) { return 0.5f + i; });
+  wd1_t wxd([](auto i, auto) { return 0.5 + i; });
 
   std::cout << "wxf " << wxf << std::endl;
   std::cout << "wxd " << wxd << std::endl;
   std::cout << "acosh(wxf) = " << acosh(wxf) << std::endl;
   std::cout << "acosh(wxd) = " << acosh(wxd) << std::endl;
 
-  wf2_t wxf2([](auto i, auto) { return f1_t(-0.5f + i); });
-  wd2_t wxd2([](auto i, auto) { return d1_t(-0.5 + i); });
+  wf2_t wxf2([](auto i, auto) { return f1_t(0.5f + i); });
+  wd2_t wxd2([](auto i, auto) { return d1_t(0.5 + i); });
 
   std::cout << "wxf2 = " << wxf2 << std::endl;
   std::cout << "wxd2 = " << wxd2 << std::endl;
