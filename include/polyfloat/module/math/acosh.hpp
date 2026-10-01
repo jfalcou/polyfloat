@@ -11,8 +11,6 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/math/cosh.hpp>
-#include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/log.hpp>
 
 namespace plf
@@ -74,8 +72,9 @@ namespace plf::_
     if constexpr (dimension_v<T> == 1) return eve::acosh[o](a0);
     else
     {
-      auto r = plf::log(a0 + plf::sqrt(plf::dec(plf::sqr(a0))));
-      return if_else(is_pinf(a0), a0, r);
+      auto da02 = plf::dec(plf::sqr(a0));
+      auto r = plf::if_else(plf::is_gez(da02), plf::log(a0 + plf::sqrt(da02)), plf::nan(as(da02)));
+      return plf::if_else(plf::is_pinf(a0), a0, r);
     }
   }
 }

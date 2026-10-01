@@ -14,12 +14,12 @@
 
 namespace plf
 {
-  template<typename Options> struct inf_t : eve::constant_callable<inf_t, Options>
+  template<typename Options> struct nan_t : eve::constant_callable<nan_t, Options>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      return T(eve::inf(eve::as<u_t>()));
+      return T(eve::nan(eve::as<u_t>()));
     }
 
     template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
@@ -27,13 +27,13 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(inf_t, inf_);
+    EVE_CALLABLE_OBJECT(nan_t, nan_);
   };
   //======================================================================================================================
   //! @addtogroup constants
   //! @{
-  //!   @var inf
-  //!   @brief return the infinite value.
+  //!   @var nan
+  //!   @brief return the naninite value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -46,7 +46,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inf(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto nan(as<T>) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,14 +56,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the inf value in type T.
+  //!     Returns the nan value in type T.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/inf.cpp}
+  //!  @godbolt_todo{doc/nan.cpp}
   //======================================================================================================================
 
-  inline constexpr auto inf = eve::functor<inf_t>;
+  inline constexpr auto nan = eve::functor<nan_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================

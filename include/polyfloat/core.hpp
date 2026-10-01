@@ -59,6 +59,7 @@
 #include <polyfloat/module/core/is_flint.hpp>
 #include <polyfloat/module/core/is_greater.hpp>
 #include <polyfloat/module/core/is_greater_equal.hpp>
+#include <polyfloat/module/core/is_gez.hpp>
 #include <polyfloat/module/core/is_gtz.hpp>
 #include <polyfloat/module/core/is_infinite.hpp>
 #include <polyfloat/module/core/is_less.hpp>

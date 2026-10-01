@@ -71,9 +71,6 @@ namespace plf::_
   template<typename T, eve::callable_options O> constexpr auto cbrt_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
     if constexpr (dimension_v<T> == 1) return eve::cbrt(xx);
-    else
-    {
-      return plf::nthroot(xx, 3);
-    }
+    else return plf::nthroot(xx, T(3));
   }
 }

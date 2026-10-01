@@ -19,7 +19,8 @@ namespace plf
   template<typename Options>
   struct pow_abs_t : eve::elementwise_callable<pow_abs_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z1, Z z2) const noexcept
+    template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
+    POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z1, z2);
     }
@@ -81,6 +82,7 @@ namespace plf::_
     {
       auto x = cvt(a);
       auto y = cvt(b);
+
       auto iseqzx = plf::is_eqz(x);
       auto ylt0 = y < plf::zero(as(y));
       auto ax = plf::abs(x);
