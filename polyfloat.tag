@@ -957,6 +957,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>is_gez</name>
+      <anchorfile>group__core_ga2a265c7a54226e24c82cd97ef610c7e2.html</anchorfile>
+      <anchor>ga2a265c7a54226e24c82cd97ef610c7e2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>is_greater</name>
       <anchorfile>group__core_ga1a413faf72a8ca404c5445c18660b038.html</anchorfile>
       <anchor>ga1a413faf72a8ca404c5445c18660b038</anchor>
@@ -1385,7 +1392,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>minf</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga53eeee70008790007d0da7e69ad152e5.html</anchorfile>
       <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
       <arglist></arglist>
     </member>
@@ -1441,7 +1448,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>nan</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gab815a9e20ea8d0c215108a23413f0347.html</anchorfile>
       <anchor>gab815a9e20ea8d0c215108a23413f0347</anchor>
       <arglist></arglist>
     </member>
@@ -2165,6 +2172,20 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::minf</name>
+      <anchorfile>group__constants_ga53eeee70008790007d0da7e69ad152e5.html</anchorfile>
+      <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::nan</name>
+      <anchorfile>group__constants_gab815a9e20ea8d0c215108a23413f0347.html</anchorfile>
+      <anchor>gab815a9e20ea8d0c215108a23413f0347</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::nbmantissabits</name>
       <anchorfile>group__constants_ga353f26b1179c82267a8066987951a553.html</anchorfile>
       <anchor>ga353f26b1179c82267a8066987951a553</anchor>
@@ -2716,6 +2737,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::is_gez</name>
+      <anchorfile>group__core_ga2a265c7a54226e24c82cd97ef610c7e2.html</anchorfile>
+      <anchor>ga2a265c7a54226e24c82cd97ef610c7e2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::is_greater</name>
       <anchorfile>group__core_ga1a413faf72a8ca404c5445c18660b038.html</anchorfile>
       <anchor>ga1a413faf72a8ca404c5445c18660b038</anchor>
@@ -3094,13 +3122,6 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>plf::minf</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>plf::minmag</name>
       <anchorfile>group__core_ga3edebc887d62d202367258c76f7a1a7f.html</anchorfile>
       <anchor>ga3edebc887d62d202367258c76f7a1a7f</anchor>
@@ -3146,13 +3167,6 @@
       <name>plf::mzero</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::nan</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gab815a9e20ea8d0c215108a23413f0347</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['nan_1',['nan',['../group__core.html#gab815a9e20ea8d0c215108a23413f0347',1,'plf::nan']]],
+  ['nan_1',['nan',['../group__constants_gab815a9e20ea8d0c215108a23413f0347.html#gab815a9e20ea8d0c215108a23413f0347',1,'plf::nan']]],
   ['nbmantissabits_3',['nbmantissabits',['../group__constants_ga353f26b1179c82267a8066987951a553.html#ga353f26b1179c82267a8066987951a553',1,'plf::nbmantissabits']]],
   ['nearest_4',['nearest',['../group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197',1,'plf::nearest']]],
   ['negabsmax_5',['negabsmax',['../group__core_ga54e69f527759113beefec446c9c8f7de.html#ga54e69f527759113beefec446c9c8f7de',1,'plf::negabsmax']]],

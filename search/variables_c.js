@@ -12,7 +12,7 @@ var searchData=
   ['minabs_28',['minabs',['../group__core_gaa190c10bef44628e4701ff2fcd6728a0.html#gaa190c10bef44628e4701ff2fcd6728a0',1,'plf::minabs']]],
   ['mindenormal_29',['mindenormal',['../group__core.html#ga0a3e5881bfb4a0de7977621996c339a9',1,'plf::mindenormal']]],
   ['minexponent_30',['minexponent',['../group__core.html#ga4647ba96a04ee2f05047b93c70509bd9',1,'plf::minexponent']]],
-  ['minf_31',['minf',['../group__core.html#ga53eeee70008790007d0da7e69ad152e5',1,'plf::minf']]],
+  ['minf_31',['minf',['../group__constants_ga53eeee70008790007d0da7e69ad152e5.html#ga53eeee70008790007d0da7e69ad152e5',1,'plf::minf']]],
   ['minmag_39',['minmag',['../group__core_ga3edebc887d62d202367258c76f7a1a7f.html#ga3edebc887d62d202367258c76f7a1a7f',1,'plf::minmag']]],
   ['minmax_40',['minmax',['../group__core_ga830c684d59f4722059bef14bb7f92da2.html#ga830c684d59f4722059bef14bb7f92da2',1,'plf::minmax']]],
   ['minus_42',['minus',['../group__core_gae33d4d1bd5488f7aed156cd106f4ce74.html#gae33d4d1bd5488f7aed156cd106f4ce74',1,'plf::minus']]],
