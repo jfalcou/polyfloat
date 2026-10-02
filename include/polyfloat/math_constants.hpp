@@ -12,10 +12,16 @@
 #include <polyfloat/module/math/constants/cos_1.hpp>
 #include <polyfloat/module/math/constants/cosh_1.hpp>
 #include <polyfloat/module/math/constants/egamma.hpp>
+#include <polyfloat/module/math/constants/exp_pi.hpp>
 #include <polyfloat/module/math/constants/euler.hpp>
+#include <polyfloat/module/math/constants/four_minus_pi.hpp>
+#include <polyfloat/module/math/constants/four_pio_3.hpp>
 #include <polyfloat/module/math/constants/invlog_10.hpp>
 #include <polyfloat/module/math/constants/invlog_2.hpp>
+#include <polyfloat/module/math/constants/invcbrt_pi.hpp>
+#include <polyfloat/module/math/constants/inv_e.hpp>
 #include <polyfloat/module/math/constants/inv_pi.hpp>
+#include <polyfloat/module/math/constants/inv_2pi.hpp>
 #include <polyfloat/module/math/constants/log_2.hpp>
 #include <polyfloat/module/math/constants/maxlog.hpp>
 #include <polyfloat/module/math/constants/oneo_180.hpp>
