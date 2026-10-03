@@ -15,6 +15,7 @@
 #include <polyfloat/module/math/asech.hpp>
 #include <polyfloat/module/math/asinh.hpp>
 #include <polyfloat/module/math/cbrt.hpp>
+#include <polyfloat/module/math/cos.hpp>
 #include <polyfloat/module/math/cosh.hpp>
 #include <polyfloat/module/math/coth.hpp>
 #include <polyfloat/module/math/div_180.hpp>
