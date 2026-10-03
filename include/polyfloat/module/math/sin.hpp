@@ -16,20 +16,20 @@
 namespace plf
 {
 
-  template<typename Options> struct cos_t : eve::elementwise_callable<cos_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct sin_t : eve::elementwise_callable<sin_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
-    POLYFLOAT_CALLABLE_OBJECT(cos_t, cos_);
+    POLYFLOAT_CALLABLE_OBJECT(sin_t, sin_);
   };
   //======================================================================================================================
   //! @addtogroup core
   //! @{
-  //!   @var cos
-  //!   @brief return the inverse hyperbolic cosine value.
+  //!   @var sin
+  //!   @brief return the inverse hyperbolic sinine value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -42,7 +42,7 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto cos(T z) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sin(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,14 +52,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the invese hyperbolic cosine of z.
+  //!     Returns the invese hyperbolic sinine of z.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/cos.cpp}
+  //!  @godbolt_todo{doc/core/sin.cpp}
   //======================================================================================================================
 
-  inline constexpr auto cos = eve::functor<cos_t>;
+  inline constexpr auto sin = eve::functor<sin_t>;
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -67,18 +67,18 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto cos_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto sin_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::cos[o](a0);
+    if constexpr (dimension_v<T> == 1) return eve::sin[o](a0);
     else
     {
       using e_t = eve::element_type_t<T>;
       auto a02 = plf::sqr(a0);
-      auto t = cos_coefs<e_t>();
+      auto t = sino_x_coefs<e_t>();
       //      std::cout << t << std::endl;
-      //   return plf::reverse_horner(a02, cos_coefs<T>());
+      //   return plf::reverse_horner(a02, sin_coefs<T>());
       auto r = kumi::apply([a02](auto... m) { return plf::reverse_horner(a02, m...); }, t);
-      return r;
+      return a0 * r;
       //    return plf::reverse_horner(a02, kumi::tuple{T(1.0), T(0.5)});
     }
   }
