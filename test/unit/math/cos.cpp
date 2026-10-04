@@ -1,0 +1,54 @@
+//======================================================================================================================
+/*
+ POLYFLOAT - Extended precision floating points
+ Copyright : POLYFLOAT Contributors & Maintainers
+ SPDX-License-Identifier: BSL-1.0
+*/
+//======================================================================================================================
+#include "test.hpp"
+#include <polyfloat/polyfloat.hpp>
+
+TTS_CASE_WITH("Check cosh ",
+              plf::scalar_real_types,
+              tts::randoms(-3.14 / 4, 3.14 / 4),
+              tts::randoms(0.0, 1.e-20),
+              tts::randoms(0.0, 1.e-30))
+<typename T>(T const& a0, T const& a1, T const& a2)
+{
+  using mpfr::mpreal;
+  using plf::cos;
+  auto mcos = [](auto a) { return mpfr::cos(a); };
+  {
+    using pv_t = plf::polyfloat<T, 2>;
+    //   pv_t nan(plf::nan(eve::as<pv_t>()));
+    pv_t pa(a0, a1);
+    TTS_RELATIVE_EQUAL(cos(pa), tts::mpfr_exec(mcos, pa), tts::epsprec<pv_t>());
+    pv_t o(T(1.0) / 3, T(0));
+    TTS_RELATIVE_EQUAL(cos(o), tts::mpfr_exec(mcos, o), tts::epsprec<pv_t>());
+    //     pv_t oe = plf::inc(plf::eps(eve::as(o)));
+    //     std::cout << std::setprecision(30) << cos(oe) << std::endl;
+    //     TTS_RELATIVE_EQUAL(cos(oe), tts::mpfr_exec(mcos, oe), tts::epsprec<pv_t>());
+    pv_t z(T(0), T(0));
+    //     TTS_IEEE_EQUAL(plf::cos(z), nan);
+    //     pv_t inf(plf::inf(eve::as<pv_t>()));
+    //     TTS_EQUAL(cos(inf), inf);
+    //     TTS_IEEE_EQUAL(cos(nan), nan);
+    //     pv_t minf(plf::minf(eve::as<pv_t>()));
+    //     TTS_IEEE_EQUAL(cos(minf), nan);
+  }
+  {
+    using pv_t = plf::polyfloat<T, 3>;
+    pv_t pa(a0, a1, a2);
+    //    pv_t nan(plf::nan(eve::as<pv_t>()));
+    TTS_RELATIVE_EQUAL(cos(pa), tts::mpfr_exec(mcos, pa), tts::epsprec<pv_t>());
+    pv_t o(T(1.0) / 3, T(0), T(0));
+    TTS_RELATIVE_EQUAL(cos(o), tts::mpfr_exec(mcos, o), tts::epsprec<pv_t>());
+    pv_t z(T(0), T(0), T(0));
+    //    TTS_IEEE_EQUAL(cos(z), nan);
+    //     pv_t inf(plf::inf(eve::as<pv_t>()));
+    //     TTS_EQUAL(cos(inf), inf);
+    //     TTS_IEEE_EQUAL(cos(nan), nan);
+    //     pv_t minf(plf::minf(eve::as<pv_t>()));
+    //     TTS_IEEE_EQUAL(cos(minf), nan);
+  }
+};
