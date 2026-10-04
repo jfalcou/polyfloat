@@ -16,7 +16,7 @@ TTS_CASE_TPL("Check rad2deg", plf::scalar_real_types)
   auto mrad2deg = []<typename TT>(TT) { return 180 / mpfr::const_pi(); };
   {
     {
-      TTS_RELATIVE_EQUAL(rad2deg(eve::as<T>()), 180 / eve::pi(eve::as(T())), tts::epsprec<T>());
+      TTS_RELATIVE_EQUAL(rad2deg(eve::as<T>()), 180 / eve::pi(eve::as(T())), 0.01 * tts::epsprec<T>());
     }
     {
       using pv_t = plf::polyfloat<T, 2>;
