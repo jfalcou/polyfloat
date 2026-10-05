@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/details/sincos_coefs.hpp>
+#include <polyfloat/module/math/details/pio_2_splitting.hpp>
 
 namespace plf
 {
