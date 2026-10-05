@@ -7,6 +7,8 @@ var searchData=
   ['fms_21',['fms',['../group__core_ga528f7b968ee1663dd96dcbf976e96491.html#ga528f7b968ee1663dd96dcbf976e96491',1,'plf::fms']]],
   ['fnma_22',['fnma',['../group__core_ga5b4600c48a905e3808b32a9441a6d19d.html#ga5b4600c48a905e3808b32a9441a6d19d',1,'plf::fnma']]],
   ['fnms_23',['fnms',['../group__core_ga820c60b72b131ea41f424290e4777842.html#ga820c60b72b131ea41f424290e4777842',1,'plf::fnms']]],
+  ['four_5fminus_5fpi_29',['four_minus_pi',['../group__constants_ga54faf31f647165ae47e3a880e23d5d3f.html#ga54faf31f647165ae47e3a880e23d5d3f',1,'plf::four_minus_pi']]],
+  ['four_5fpio_5f3_30',['four_pio_3',['../group__constants_gaf5af972a1c9b8ba32015011e7462f64f.html#gaf5af972a1c9b8ba32015011e7462f64f',1,'plf::four_pio_3']]],
   ['frac_31',['frac',['../group__core_ga6cbff9063806f25141fbe0f5863becae.html#ga6cbff9063806f25141fbe0f5863becae',1,'plf::frac']]],
   ['frexp_33',['frexp',['../group__core_ga89334551f0d0c2f81bf852d2a0b9f502.html#ga89334551f0d0c2f81bf852d2a0b9f502',1,'plf::frexp']]],
   ['fsm_34',['fsm',['../group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html#gab6ffa7b2b7b589bc9bbf790c8555e7f3',1,'plf::fsm']]],

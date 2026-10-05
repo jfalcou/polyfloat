@@ -1,7 +1,7 @@
 {
-    "branch_covered": 297,
+    "branch_covered": 303,
     "branch_percent": 97.1,
-    "branch_total": 306,
+    "branch_total": 312,
     "files": [
         {
             "branch_covered": 0,
@@ -1807,7 +1807,79 @@
             "branch_covered": 1,
             "branch_percent": 100.0,
             "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/exp_pi.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/four_minus_pi.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/four_pio_3.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/inv_2pi.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/inv_e.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
             "filename": "include/polyfloat/module/math/constants/inv_pi.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 8,
+            "line_percent": 100.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/invcbrt_pi.hpp",
             "function_covered": 12,
             "function_percent": 100.0,
             "function_total": 12,
@@ -2356,12 +2428,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 8613,
+    "function_covered": 8685,
     "function_percent": 99.8,
-    "function_total": 8629,
+    "function_total": 8701,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 1951,
-    "line_percent": 99.7,
-    "line_total": 1956,
+    "line_covered": 1999,
+    "line_percent": 99.8,
+    "line_total": 2004,
     "root": "../../.."
 }

@@ -712,6 +712,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>exp_pi</name>
+      <anchorfile>group__constants_ga6fa3edda699d41702f6c3daca8202d6a.html</anchorfile>
+      <anchor>ga6fa3edda699d41702f6c3daca8202d6a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>expm1</name>
       <anchorfile>group__core_ga6b355641ddbdb7ec0d1daa0bcf7be425.html</anchorfile>
       <anchor>ga6b355641ddbdb7ec0d1daa0bcf7be425</anchor>
@@ -771,6 +778,20 @@
       <name>fnms</name>
       <anchorfile>group__core_ga820c60b72b131ea41f424290e4777842.html</anchorfile>
       <anchor>ga820c60b72b131ea41f424290e4777842</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>four_minus_pi</name>
+      <anchorfile>group__constants_ga54faf31f647165ae47e3a880e23d5d3f.html</anchorfile>
+      <anchor>ga54faf31f647165ae47e3a880e23d5d3f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>four_pio_3</name>
+      <anchorfile>group__constants_gaf5af972a1c9b8ba32015011e7462f64f.html</anchorfile>
+      <anchor>gaf5af972a1c9b8ba32015011e7462f64f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -866,9 +887,30 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>inv_2pi</name>
+      <anchorfile>group__constants_ga44c0709faa879e32e2cc9ccbd5d2d999.html</anchorfile>
+      <anchor>ga44c0709faa879e32e2cc9ccbd5d2d999</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>inv_e</name>
+      <anchorfile>group__constants_gadfc4db657908ea0e29851034a825b058.html</anchorfile>
+      <anchor>gadfc4db657908ea0e29851034a825b058</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>inv_pi</name>
       <anchorfile>group__constants_ga8c20889a18fc8b1d8e5b40960a0c104d.html</anchorfile>
       <anchor>ga8c20889a18fc8b1d8e5b40960a0c104d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>invcbrt_pi</name>
+      <anchorfile>group__constants_ga3821c8d6cf74a9a66a893f37c4f82139.html</anchorfile>
+      <anchor>ga3821c8d6cf74a9a66a893f37c4f82139</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2102,6 +2144,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::exp_pi</name>
+      <anchorfile>group__constants_ga6fa3edda699d41702f6c3daca8202d6a.html</anchorfile>
+      <anchor>ga6fa3edda699d41702f6c3daca8202d6a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::four_minus_pi</name>
+      <anchorfile>group__constants_ga54faf31f647165ae47e3a880e23d5d3f.html</anchorfile>
+      <anchor>ga54faf31f647165ae47e3a880e23d5d3f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::four_pio_3</name>
+      <anchorfile>group__constants_gaf5af972a1c9b8ba32015011e7462f64f.html</anchorfile>
+      <anchor>gaf5af972a1c9b8ba32015011e7462f64f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::inf</name>
       <anchorfile>group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html</anchorfile>
       <anchor>ga17a6561e33fcb9f3bf0be566ca5751f7</anchor>
@@ -2109,9 +2172,30 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::inv_2pi</name>
+      <anchorfile>group__constants_ga44c0709faa879e32e2cc9ccbd5d2d999.html</anchorfile>
+      <anchor>ga44c0709faa879e32e2cc9ccbd5d2d999</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::inv_e</name>
+      <anchorfile>group__constants_gadfc4db657908ea0e29851034a825b058.html</anchorfile>
+      <anchor>gadfc4db657908ea0e29851034a825b058</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::inv_pi</name>
       <anchorfile>group__constants_ga8c20889a18fc8b1d8e5b40960a0c104d.html</anchorfile>
       <anchor>ga8c20889a18fc8b1d8e5b40960a0c104d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::invcbrt_pi</name>
+      <anchorfile>group__constants_ga3821c8d6cf74a9a66a893f37c4f82139.html</anchorfile>
+      <anchor>ga3821c8d6cf74a9a66a893f37c4f82139</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
