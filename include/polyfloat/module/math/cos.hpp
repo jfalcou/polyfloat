@@ -12,12 +12,25 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/details/sincos_coefs.hpp>
-#include <polyfloat/module/math/details/pio_2_splitting.hpp>
+#include <polyfloat/module/math/details/trig_finalize.hpp>
+#include <polyfloat/module/math/details/rempio2_limits.hpp>
+#include <polyfloat/module/math/details/pio2_reduce.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct cos_t : eve::elementwise_callable<cos_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct cos_t : eve::elementwise_callable<cos_t,
+                                           Options,
+                                           raw_option,
+                                           pedantic_option,
+                                           eve::quarter_circle_option,
+                                           eve::half_circle_option,
+                                           eve::full_circle_option,
+                                           eve::medium_option,
+                                           eve::big_option,
+                                           eve::radpi_option,
+                                           eve::deg_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -30,7 +43,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var cos
-  //!   @brief return the inverse hyperbolic cosine value.
+  //!   @brief return the cosine value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,7 +66,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the invese hyperbolic cosine of z.
+  //!     Returns the cosine of z.
   //!
   //!  @groupheader{Example}
   //!
@@ -70,17 +83,37 @@ namespace plf::_
 {
   template<typename T, eve::callable_options O> constexpr auto cos_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
+    //    using e_t =  eve::element_type_t<T>;
     if constexpr (dimension_v<T> == 1) return eve::cos[o](a0);
+    else if constexpr (O::contains(eve::deg))
+    {
+      return a0;
+    }
+    else if constexpr (O::contains(eve::radpi))
+    {
+      return a0;
+    }
     else
     {
-      using e_t = eve::element_type_t<T>;
-      auto a02 = plf::sqr(a0);
-      auto t = cos_coefs<e_t>();
-      //      std::cout << t << std::endl;
-      //   return plf::reverse_horner(a02, cos_coefs<T>());
-      auto r = kumi::apply([a02](auto... m) { return plf::reverse_horner(a02, m...); }, t);
-      return r;
-      //    return plf::reverse_horner(a02, kumi::tuple{T(1.0), T(0.5)});
+      if constexpr (O::contains(eve::quarter_circle))
+      {
+        return cos_eval(a0);
+      }
+      else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
+      {
+        auto x = plf::abs(a0);
+        auto [fn, xr, dxr] = pio_2_reduce(x);
+        return cos_finalize(fn, xr, dxr);
+      }
+      else
+      {
+        auto x = abs(a0);
+        if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return cos[quarter_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[half_circle](as(a0)))) return cos[half_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[full_circle](as(a0)))) return cos[full_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return cos[medium](a0);
+        else return cos[big](a0);
+      }
     }
   }
 }

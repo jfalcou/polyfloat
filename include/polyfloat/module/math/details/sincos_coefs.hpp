@@ -10,51 +10,64 @@
 namespace plf::_
 {
 
+  // Sollya coefficients for sin and cos remez polynomials on [0, pi/4]
+
   template<typename T> auto cos_coefs()
   {
-    if constexpr (std::same_as<T, double_real_t<float>>)
+    if constexpr (std::is_same_v<T, float>)
+    {
+      return kumi::tuple{T(0x1p+0f), T(0x1p-1f), T(0x1.55554ap-5f), T(-0x1.6c0c32p-10f), T(0x1.99eb9cp-16f)};
+    }
+    else if constexpr (std::is_same_v<T, double>)
+    {
+      return kumi::tuple{T(0x1p+0),
+                         T(0x1.p-1),
+                         T(-0x1.5555555555551p-5),
+                         T(0x1.6c16c16c15d47p-10),
+                         T(-0x1.a01a019ddbcd9p-16),
+                         T(0x1.27e4f8e06d9a5p-22),
+                         T(-0x1.1eea7c1e514d4p-29),
+                         T(0x1.8ff831ad9b219p-37)};
+    }
+    else if constexpr (std::same_as<T, double_real_t<float>>)
     {
       //using r_t = double_real_t<float>
-      return kumi::tuple{plf::_::from_pair<float>(0x1p+0, +0x0p+0),
-                         plf::_::from_pair<float>(-0x1p-1, +0x1.8p-48),
-                         plf::_::from_pair<float>(0x1.555556p-5, -0x1.55614p-30),
-                         plf::_::from_pair<float>(-0x1.6c16c2p-10, +0x1.376484p-35),
-                         plf::_::from_pair<float>(0x1.a019f8p-16, +0x1.33c19p-42),
-                         plf::_::from_pair<float>(-0x1.27df56p-22, -0x1.fe7cbp-49),
-                         plf::_::from_pair<float>(0x1.1b8fbcp-29, -0x1.3ccf8p-58)};
+      return kumi::tuple{plf::_::from_pair<float>(0x1p+0f, +0x0p+0f),
+                         plf::_::from_pair<float>(-0x1p-1f, +0x1.8p-48f),
+                         plf::_::from_pair<float>(0x1.555556p-5f, -0x1.55614p-30f),
+                         plf::_::from_pair<float>(-0x1.6c16c2p-10f, +0x1.376484p-35f),
+                         plf::_::from_pair<float>(0x1.a019f8p-16f, +0x1.33c19p-42f),
+                         plf::_::from_pair<float>(-0x1.27df56p-22f, -0x1.fe7cbp-49f),
+                         plf::_::from_pair<float>(0x1.1b8fbcp-29f, -0x1.3ccf8p-58)};
     }
     else if constexpr (std::same_as<T, triple_real_t<float>>)
     {
       //using r_t = double_real_t<float>;
-      return kumi::tuple{
-        plf::_::from_triple<float>(0x1p+0, +0x0p+0, +0x0p+0),
-        plf::_::from_triple<float>(-0x1p-1, +0x1p-68, +0x0p+0),
-        plf::_::from_triple<float>(0x1.555556p-5, -0x1.555556p-30, +0x1.53c8cp-55),
-        plf::_::from_triple<float>(-0x1.6c16c2p-10, +0x1.27d27ep-35, +0x1.a71a8p-60),
-        plf::_::from_triple<float>(0x1.a01a02p-16, -0x1.7f9f04p-42, -0x1.36ep-72),
-        plf::_::from_triple<float>(-0x1.27e4fcp-22, +0x1.150d44p-47, +0x1.b0d88p-72),
-        plf::_::from_triple<float>(0x1.1eed8cp-29, +0x1.4dd5p-56, +0x1.19bbp-81),
-        plf::_::from_triple<float>(-0x1.9392c2p-37, -0x1.8aab28p-63, -0x1.7c58p-89),
-        plf::_::from_triple<float>(0x1.aa972ep-45, -0x1.9e9332p-70, -0x1.74e9p-95),
-      };
+      return kumi::tuple{plf::_::from_triple<float>(0x1p+0f, +0x0p+0f, +0x0p+0f),
+                         plf::_::from_triple<float>(-0x1p-1f, +0x1p-68f, +0x0p+0f),
+                         plf::_::from_triple<float>(0x1.555556p-5f, -0x1.555556p-30f, +0x1.53c8cp-55f),
+                         plf::_::from_triple<float>(-0x1.6c16c2p-10f, +0x1.27d27ep-35f, +0x1.a71a8p-60f),
+                         plf::_::from_triple<float>(0x1.a01a02p-16f, -0x1.7f9f04p-42f, -0x1.36ep-72f),
+                         plf::_::from_triple<float>(-0x1.27e4fcp-22f, +0x1.150d44p-47f, +0x1.b0d88p-72f),
+                         plf::_::from_triple<float>(0x1.1eed8cp-29f, +0x1.4dd5p-56f, +0x1.19bbp-81f),
+                         plf::_::from_triple<float>(-0x1.9392c2p-37f, -0x1.8aab28p-63f, -0x1.7c58p-89f),
+                         plf::_::from_triple<float>(0x1.aa972ep-45f, -0x1.9e9332p-70f, -0x1.74e9p-95f)};
     }
     else if constexpr (std::same_as<T, double_real_t<double>>)
     {
       //using r_t = double_real_t<double>;
-      return kumi::tuple{
-        plf::_::from_pair<double>(0x1p+0, +0x0p+0),
-        plf::_::from_pair<double>(-0x1p-1, +0x1.18p-102),
-        plf::_::from_pair<double>(0x1.5555555555555p-5, +0x1.5555555548eb4p-59),
-        plf::_::from_pair<double>(-0x1.6c16c16c16c17p-10, +0x1.f49f4a5768168p-65),
-        plf::_::from_pair<double>(0x1.a01a01a01a01ap-16, +0x1.9fe8c4b57e18p-76),
-        plf::_::from_pair<double>(-0x1.27e4fb7789f5cp-22, -0x1.c9f238e0a982dp-76),
-        plf::_::from_pair<double>(0x1.1eed8eff8d896p-29, +0x1.978ac9749f96fp-83),
-        plf::_::from_pair<double>(-0x1.93974a8c07793p-37, +0x1.82ee317825dbp-94),
-        plf::_::from_pair<double>(0x1.ae7f3e726ce4fp-45, -0x1.6d4bb0e413fafp-99),
-        plf::_::from_pair<double>(-0x1.682784de2f11p-53, -0x1.7124a4345b29ep-108),
-        plf::_::from_pair<double>(0x1.e53fccfb5614cp-62, -0x1.daedc787b65f8p-117),
-        plf::_::from_pair<double>(-0x1.0b15f05d82628p-70, +0x1.b38f07d777c42p-125),
-      };
+      return kumi::tuple{plf::_::from_pair<double>(0x1p+0, +0x0p+0),
+                         plf::_::from_pair<double>(-0x1p-1, +0x1.18p-102),
+                         plf::_::from_pair<double>(0x1.5555555555555p-5, +0x1.5555555548eb4p-59),
+                         plf::_::from_pair<double>(-0x1.6c16c16c16c17p-10, +0x1.f49f4a5768168p-65),
+                         plf::_::from_pair<double>(0x1.a01a01a01a01ap-16, +0x1.9fe8c4b57e18p-76),
+                         plf::_::from_pair<double>(-0x1.27e4fb7789f5cp-22, -0x1.c9f238e0a982dp-76),
+                         plf::_::from_pair<double>(0x1.1eed8eff8d896p-29, +0x1.978ac9749f96fp-83),
+                         plf::_::from_pair<double>(-0x1.93974a8c07793p-37, +0x1.82ee317825dbp-94),
+                         plf::_::from_pair<double>(0x1.ae7f3e726ce4fp-45, -0x1.6d4bb0e413fafp-99),
+                         plf::_::from_pair<double>(-0x1.682784de2f11p-53, -0x1.7124a4345b29ep-108),
+                         plf::_::from_pair<double>(0x1.e53fccfb5614cp-62, -0x1.daedc787b65f8p-117),
+                         plf::_::from_pair<double>(-0x1.0b15f05d82628p-70, +0x1.b38f07d777c42p-125)};
     }
     else if constexpr (std::same_as<T, triple_real_t<double>>)
     {
@@ -82,7 +95,21 @@ namespace plf::_
 
   template<typename T> auto sino_x_coefs()
   {
-    if constexpr (std::same_as<T, double_real_t<float>>)
+    if constexpr (std::is_same_v<T, float>)
+    {
+      return kumi::tuple{T(0x1p+0), T(-0x1.555544p-3f), T(0x1.11073ap-7f), T(-0x1.9943f2p-13f)};
+    }
+    else if constexpr (std::is_same_v<T, double>)
+    {
+      return kumi::tuple{T(0x1p+0),
+                         T(-0x1.5555555555548p-3),
+                         T(0x1.111111110f7d0p-7),
+                         T(-0x1.a01a019bfdf03p-13),
+                         T(0x1.71de3567d4896p-19),
+                         T(-0x1.ae5e5a9291691p-26),
+                         T(0x1.5d8fd1fcf0ec1p-33)};
+    }
+    else if constexpr (std::same_as<T, double_real_t<float>>)
     {
       //using r_t = double_real_t<float>
       return kumi::tuple{plf::_::from_pair<float>(0x1p+0, +0x0p+0),

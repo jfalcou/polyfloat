@@ -12,12 +12,25 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/details/sincos_coefs.hpp>
+#include <polyfloat/module/math/details/trig_finalize.hpp>
 #include <polyfloat/module/math/details/rempio2_limits.hpp>
+#include <polyfloat/module/math/details/pio2_reduce.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct sin_t : eve::elementwise_callable<sin_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct sin_t : eve::elementwise_callable<sin_t,
+                                           Options,
+                                           raw_option,
+                                           pedantic_option,
+                                           eve::quarter_circle_option,
+                                           eve::half_circle_option,
+                                           eve::full_circle_option,
+                                           eve::medium_option,
+                                           eve::big_option,
+                                           eve::radpi_option,
+                                           eve::deg_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -30,7 +43,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var sin
-  //!   @brief return the inverse hyperbolic sinine value.
+  //!   @brief return the sine value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -53,7 +66,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the invese hyperbolic sinine of z.
+  //!     Returns the sine of z.
   //!
   //!  @groupheader{Example}
   //!
@@ -71,16 +84,54 @@ namespace plf::_
   template<typename T, eve::callable_options O> constexpr auto sin_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
     if constexpr (dimension_v<T> == 1) return eve::sin[o](a0);
+    else if constexpr (O::contains(eve::deg))
+    {
+      if constexpr (O::contains(quarter_circle))
+      {
+        return plf::sin[radpi][quarter_circle](plf::div_180(a0));
+      }
+      else
+      {
+        auto x = eve::abs(a0);
+        if (eve::all(x <= T(45))) return plf::sin[deg][quarter_circle](x);
+        auto [fn, xr, dxr] = rem180(x);
+        return sin_finalize(a0, fn, xr, dxr);
+      }
+    }
+    else if constexpr (O::contains(eve::radpi))
+    {
+      if constexpr (O::contains(quarter_circle))
+      {
+        return eve::sin_kernel[quarter_circle](a0 * pi(eve::as<T>()));
+      }
+      else
+      {
+        x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
+        x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero, x);
+        auto [fn, xr, dxr] = rem2(x);
+        return sin_finalize(fn, xr, dxr);
+      }
+    }
     else
     {
-      using e_t = eve::element_type_t<T>;
-      auto a02 = plf::sqr(a0);
-      auto t = sino_x_coefs<e_t>();
-      //      std::cout << t << std::endl;
-      //   return plf::reverse_horner(a02, sin_coefs<T>());
-      auto r = kumi::apply([a02](auto... m) { return plf::reverse_horner(a02, m...); }, t);
-      return a0 * r;
-      //    return plf::reverse_horner(a02, kumi::tuple{T(1.0), T(0.5)});
+      if constexpr (O::contains(eve::quarter_circle))
+      {
+        return sin_eval(a0);
+      }
+      else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
+      {
+        auto [fn, xr, dxr] = pio_2_reduce(plf::abs(a0));
+        return sin_finalize(a0, fn, xr, dxr);
+      }
+      else
+      {
+        auto x = abs(a0);
+        if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return sin[quarter_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[half_circle](as(a0)))) return sin[half_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[full_circle](as(a0)))) return sin[full_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return sin[medium](a0);
+        else return sin[big](a0);
+      }
     }
   }
 }
