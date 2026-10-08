@@ -22,7 +22,7 @@ TTS_CASE_WITH("Check nthroot ",
   {
     using pv_t = T;
     pv_t pd(T(25));
-    TTS_RELATIVE_EQUAL(nthroot(pd, 2), tts::mpfr_exec(msqrt, pd), 128 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(nthroot(pd, 2), tts::mpfr_exec(msqrt, pd), 1.28 * tts::epsprec<pv_t>());
   }
   {
     using pv_t = plf::polyfloat<T, 2>;

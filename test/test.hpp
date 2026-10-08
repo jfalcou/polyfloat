@@ -21,24 +21,32 @@
 
 namespace tts
 {
-  template<typename T, eve::generator V> auto convert_as(V const& v, type<T> const&)
+  // A bound is anything callable with eve::as<T>: an EVE constant, or a lambda computing it per type.
+  template<typename T, typename V>
+  requires(requires(V v) { v(eve::as<T>{}); })
+  struct conversion<T, V>
   {
-    return v(eve::as<T>{});
-  }
-}
+    static auto from(V const& v)
+    {
+      auto r = v(eve::as<T>{});
+      if constexpr (std::convertible_to<decltype(r), T>) return static_cast<T>(r);
+      else return r;
+    }
+  };
 
-namespace eve
-{
-  template<typename T, typename N> inline bool compare_equal(wide<T, N> const& l, wide<T, N> const& r)
+  template<typename T, typename N> struct comparison<eve::wide<T, N>, eve::wide<T, N>>
   {
-    return eve::all(l == r);
-  }
+    static bool equal(eve::wide<T, N> const& l, eve::wide<T, N> const& r) { return eve::all(l == r); }
+  };
 
-  template<typename T> inline bool compare_equal(logical<T> const& l, logical<T> const& r)
+  template<typename T> struct comparison<eve::logical<T>, eve::logical<T>>
   {
-    if constexpr (eve::simd_value<T>) return eve::all(l == r);
-    else return l == r;
-  }
+    static bool equal(eve::logical<T> const& l, eve::logical<T> const& r)
+    {
+      if constexpr (eve::simd_value<T>) return eve::all(l == r);
+      else return l == r;
+    }
+  };
 }
 namespace plf
 {
@@ -83,82 +91,83 @@ int main(int argc, char const** argv)
   return tts::report(0, 0);
 }
 
-namespace eve
+namespace tts
 {
-  template<typename T, typename N> inline double ulp_distance(eve::wide<T, N> const& l, eve::wide<T, N> const& r)
+  // A register is measured lane by lane, each lane through the trait of its element type.
+  template<typename T, typename N> struct precision<eve::wide<T, N>>
   {
-    double max_ulp = 0;
-    for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::ulp_check(T(l.get(i)), T(r.get(i))));
+    using wide_t = eve::wide<T, N>;
 
-    return max_ulp;
-  }
+    static double ulp(wide_t const& l, wide_t const& r)
+    {
+      double max_ulp = 0;
+      for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::ulp_check(T(l.get(i)), T(r.get(i))));
 
-  template<typename T, typename N> inline double relative_distance(eve::wide<T, N> const& l, eve::wide<T, N> const& r)
+      return max_ulp;
+    }
+
+    static double relative(wide_t const& l, wide_t const& r)
+    {
+      double max_ulp = 0;
+      for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::relative_check(T(l.get(i)), T(r.get(i))));
+
+      return max_ulp;
+    }
+
+    static double absolute(wide_t const& l, wide_t const& r)
+    {
+      double max_ulp = 0;
+      for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::absolute_check(T(l.get(i)), T(r.get(i))));
+
+      return max_ulp;
+    }
+
+    static bool ieee(wide_t const& l, wide_t const& r)
+    {
+      bool check = true;
+      for (auto i = 0; i < l.size(); ++i) check = check && tts::ieee_check(l.get(i), r.get(i));
+
+      return check;
+    }
+  };
+
+  template<plf::concepts::polyfloat T> struct precision<T>
   {
-    double max_ulp = 0;
-    for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::relative_check(T(l.get(i)), T(r.get(i))));
+    static bool ieee(T const& l, T const& r)
+    {
+      return kumi::all_of(kumi::map([](auto a, auto b) { return tts::ieee_check(a, b); }, l, r));
+    }
 
-    return max_ulp;
-  }
+    //   static double ulp(T const& l, T const& r)
+    //   {
+    //     if (ieee(l, r)) return 0.0;
+    //     else return plf::hi(plf::ulpdist(l, r));
+    //   }
 
-  template<typename T, typename N> inline double absolute_distance(eve::wide<T, N> const& l, eve::wide<T, N> const& r)
+    static double relative(T const& l, T const& r)
+    {
+      return eve::maximum(plf::hi(plf::reldist /*[eve::numeric]*/ (l, r)));
+    }
+
+    static double absolute(T const& l, T const& r)
+    {
+      //     if (ieee(l, r)) return 0.0;
+      //     else
+      return eve::maximum(plf::hi(plf::dist(l, r)));
+    }
+  };
+
+  template<typename T>
+  requires(eve::simd_value<T> || plf::concepts::polyfloat<T>)
+  struct display<T>
   {
-    double max_ulp = 0;
-    for (auto i = 0; i < l.size(); ++i) max_ulp = std::max(max_ulp, tts::absolute_check(T(l.get(i)), T(r.get(i))));
-
-    return max_ulp;
-  }
-
-  template<typename T, typename N> inline bool ieee_equal(eve::wide<T, N> const& l, eve::wide<T, N> const& r)
-  {
-    bool check = true;
-    for (auto i = 0; i < l.size(); ++i) check = check && tts::ieee_check(l.get(i), r.get(i));
-
-    return check;
-  }
-}
-
-namespace eve
-{
-  template<simd_value V> inline tts::text to_text(V const& v)
-  {
-    std::ostringstream ss;
-    ss << v;
-    return tts::text(ss.str().c_str());
-  }
-}
-
-namespace plf
-{
-  template<plf::concepts::polyfloat T> inline tts::text to_text(T const& z)
-  {
-    std::ostringstream ss;
-    ss << z;
-    return tts::text(ss.str().c_str());
-  }
-
-  template<plf::concepts::polyfloat T> inline bool ieee_equal(T const& l, T const& r)
-  {
-    return kumi::all_of(kumi::map([](auto a, auto b) { return tts::ieee_check(a, b); }, l, r));
-  }
-
-  //   template<plf::concepts::polyfloat T> double ulp_distance(T const& l, T const& r)
-  //   {
-  //     if (ieee_equal(l, r)) return 0.0;
-  //     else return plf::hi(plf::ulpdist(l, r));
-  //   }
-
-  template<plf::concepts::polyfloat T> double relative_distance(T const& l, T const& r)
-  {
-    return eve::maximum(hi(plf::reldist /*[eve::numeric]*/ (l, r)));
-  }
-
-  template<plf::concepts::polyfloat T> double absolute_distance(T const& l, T const& r)
-  {
-    //     if (ieee_equal(l, r)) return 0.0;
-    //     else
-    return eve::maximum(hi(plf::dist(l, r)));
-  }
+    static text render(T const& v)
+    {
+      std::ostringstream ss;
+      ss << v;
+      return text(ss.str().c_str());
+    }
+  };
 }
 
 namespace tts
@@ -227,29 +236,18 @@ namespace tts
   //================================================================================================
   // Customization point for argument building
   //================================================================================================
-  template<eve::simd_value T> auto produce(type<T> const&, auto g, auto... args)
+  template<eve::simd_value T> struct generation<T>
   {
-    using e_t = eve::element_type_t<T>;
-    auto data = produce(type<std::array<e_t, T::size()>>{}, g, args...);
+    static auto make(auto g, auto... args)
+    {
+      using e_t = eve::element_type_t<T>;
+      auto data = produce(type<std::array<e_t, T::size()>>{}, g, args...);
 
-    using v_t = typename decltype(data)::value_type;
-    eve::as_wide_t<v_t, eve::cardinal_t<T>> that = eve::load(&data[0], eve::cardinal_t<T>{});
+      using v_t = typename decltype(data)::value_type;
+      eve::as_wide_t<v_t, eve::cardinal_t<T>> that = eve::load(&data[0], eve::cardinal_t<T>{});
 
-    return poison(that);
-  }
-
-  //================================================================================================
-  // Constant wrapper
-  //================================================================================================
-  template<typename F> struct constant : F
-  {
-    constant(F f) : F(f) {}
-    using F::operator();
+      return poison(that);
+    }
   };
-
-  template<typename T, typename V> auto as_value(constant<V> const& v)
-  {
-    return v(eve::as<T>{});
-  }
 }
 #include "mpfr_helpers.hpp"
