@@ -37,10 +37,10 @@ namespace plf
       if constexpr (dimension_v<T> == 1) return eve::Rempio2_limit(at);
       else if constexpr (concepts::polyfloat_like<T>)
       {
-        if constexpr (O::contains(quarter_circle)) return plf::prev(pio_4(eve::as<T>()));
-        else if constexpr (O::contains(half_circle)) return plf::prev(pio_2(eve::as<T>()));
-        else if constexpr (O::contains(full_circle)) return plf::prev(pi(eve::as<float>()));
-        else if constexpr (O::contains(medium))
+        if constexpr (O::contains(eve::quarter_circle)) return plf::prev(pio_4(eve::as<T>()));
+        else if constexpr (O::contains(eve::half_circle)) return plf::prev(pio_2(eve::as<T>()));
+        else if constexpr (O::contains(eve::full_circle)) return plf::prev(pi(eve::as<float>()));
+        else if constexpr (O::contains(eve::medium))
           return ieee_constant<0x1.6bcc41e900000p+47, 0x1.9220e60p+50f>(eve::as<T>{}); // 1.76858e+15,  2.0e14
         else return plf::valmax(eve::as<T>());
       }

@@ -86,17 +86,18 @@ namespace plf::_
     if constexpr (dimension_v<T> == 1) return eve::sin[o](a0);
     else if constexpr (O::contains(eve::deg))
     {
-      if constexpr (O::contains(quarter_circle))
-      {
-        return plf::sin[eve::radpi][quarter_circle](plf::div_180(a0));
-      }
-      else
-      {
-        auto x = eve::abs(a0);
-        if (eve::all(x <= T(45))) return plf::sin[eve::deg][eve::quarter_circle](x);
-        auto [fn, xr, dxr] = rem180(x);
-        return sin_finalize(a0, fn, xr, dxr);
-      }
+      return plf::sin[eve::radpi](plf::div_180(a0));
+      //       if constexpr (O::contains(quarter_circle))
+      //       {
+      //         return plf::sin[eve::radpi][quarter_circle](plf::div_180(a0));
+      //       }
+      //       else
+      //       {
+      //         auto x = eve::abs(a0);
+      //         if (eve::all(x <= T(45))) return plf::sin[eve::deg][eve::quarter_circle](x);
+      //         auto [fn, xr, dxr] = plf::_::rem180(x);
+      //         return sin_finalize(a0, fn, xr, dxr);
+      //      }
     }
     else if constexpr (O::contains(eve::radpi))
     {
@@ -106,11 +107,11 @@ namespace plf::_
       }
       else
       {
-        auto x = eve::abs(a0);
+        auto x = plf::abs(a0);
         x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
         x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero, x);
-        auto [fn, xr, dxr] = rem2(x);
-        return sin_finalize(fn, xr, dxr);
+        auto [fn, xr, dxr] = plf::_::rem2(x);
+        return sin_finalize(a0, fn, xr, dxr);
       }
     }
     else

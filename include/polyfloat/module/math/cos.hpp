@@ -15,6 +15,10 @@
 #include <polyfloat/module/math/details/trig_finalize.hpp>
 #include <polyfloat/module/math/details/rempio2_limits.hpp>
 #include <polyfloat/module/math/details/pio2_reduce.hpp>
+#include <polyfloat/module/math/details/rem2.hpp>
+#include <polyfloat/module/math/details/rem180.hpp>
+#include <polyfloat/module/math/div_180.hpp>
+#include <iostream>
 
 namespace plf
 {
@@ -87,11 +91,22 @@ namespace plf::_
     if constexpr (dimension_v<T> == 1) return eve::cos[o](a0);
     else if constexpr (O::contains(eve::deg))
     {
-      return a0;
+      return plf::cos[eve::radpi](plf::div_180(a0));
     }
     else if constexpr (O::contains(eve::radpi))
     {
-      return a0;
+      if constexpr (O::contains(eve::quarter_circle))
+      {
+        return plf::cos[eve::quarter_circle](a0 * plf::pi(eve::as<T>()));
+      }
+      else
+      {
+        auto x = plf::abs(a0);
+        x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
+        x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero, x);
+        auto [fn, xr, dxr] = plf::_::rem2(x);
+        return cos_finalize(fn, xr, dxr);
+      }
     }
     else
     {
