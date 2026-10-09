@@ -6,6 +6,7 @@
 */
 //======================================================================================================================
 #pragma once
+#include <eve/module/math/decorator/math.hpp>
 
 namespace plf
 {
@@ -80,6 +81,11 @@ namespace plf
   using eve::upper;
   using eve::upward;
 
+  using eve::big;
+  using eve::full_circle;
+  using eve::half_circle;
+  using eve::medium;
+  using eve::quarter_circle;
   using eve::rad;
   using eve::radpi;
 }

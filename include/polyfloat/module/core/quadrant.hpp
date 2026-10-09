@@ -79,7 +79,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto quadrant_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
-    if constexpr (dimension_v<Z> == 1 || eve::integral_value<Z>) return eve::quadrant(a);
+    if constexpr (eve::integral_value<Z>) return a & Z(3);
     else
     {
       Z b = plf::trunc(a) / 4;

@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/three_fma.hpp>
+#include <polyfloat/details/graillat.hpp>
 
 namespace plf
 {
@@ -81,10 +82,10 @@ namespace plf::_
     if constexpr (dimension_v<r_t> == 1) return eve::fma[pedantic](x, y, z);
     else if constexpr ((dimension_v<Z1> > 2) || (dimension_v<Z2> > 2) || (dimension_v<Z3> > 2))
     {
-      auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<r_t>>()); };
+      auto cvt = [](auto a) { return r_t(plf::convert(a, eve::as<eve::element_type_t<r_t>>())); };
 
       auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
-      return cr_dw_fp_add(xl, xh, cvt(z));
+      return plf::_::cr_dw_fp_add(xl, xh, cvt(z));
     }
     else if constexpr ((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) && (dimension_v<Z3> == 2))
     {
