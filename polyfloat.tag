@@ -537,6 +537,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>cos</name>
+      <anchorfile>group__core_ga305ef58bb0ca0c9ba8819663f74e70a3.html</anchorfile>
+      <anchor>ga305ef58bb0ca0c9ba8819663f74e70a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>cos_1</name>
       <anchorfile>group__constants_ga9d32e0a5bf045bfbde9ac25549b2e1cc.html</anchorfile>
       <anchor>ga9d32e0a5bf045bfbde9ac25549b2e1cc</anchor>
@@ -1804,6 +1811,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>sin</name>
+      <anchorfile>group__core_gaf5e77c3acf98245222c45029d7ad486d.html</anchorfile>
+      <anchor>gaf5e77c3acf98245222c45029d7ad486d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sinc</name>
+      <anchorfile>group__core_gaf483ad7b861bf6d4966000ac0dfe1bc2.html</anchorfile>
+      <anchor>gaf483ad7b861bf6d4966000ac0dfe1bc2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sincos</name>
+      <anchorfile>group__core_gae73a40c7a5d33fd5e75dc8fda06ecbc7.html</anchorfile>
+      <anchor>gae73a40c7a5d33fd5e75dc8fda06ecbc7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>sinh</name>
       <anchorfile>group__core_gab98365d8cb868ac99d97f9d0297fedfa.html</anchorfile>
       <anchor>gab98365d8cb868ac99d97f9d0297fedfa</anchor>
@@ -2509,6 +2537,13 @@
       <name>plf::copysign</name>
       <anchorfile>group__core_gae88e21eb3751b1d0fd7b71d288d9d1ee.html</anchorfile>
       <anchor>gae88e21eb3751b1d0fd7b71d288d9d1ee</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::cos</name>
+      <anchorfile>group__core_ga305ef58bb0ca0c9ba8819663f74e70a3.html</anchorfile>
+      <anchor>ga305ef58bb0ca0c9ba8819663f74e70a3</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3468,6 +3503,27 @@
       <name>plf::signnz</name>
       <anchorfile>group__core_gaa1b1663acb0eb4bbc16fd9beb3dff197.html</anchorfile>
       <anchor>gaa1b1663acb0eb4bbc16fd9beb3dff197</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sin</name>
+      <anchorfile>group__core_gaf5e77c3acf98245222c45029d7ad486d.html</anchorfile>
+      <anchor>gaf5e77c3acf98245222c45029d7ad486d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sinc</name>
+      <anchorfile>group__core_gaf483ad7b861bf6d4966000ac0dfe1bc2.html</anchorfile>
+      <anchor>gaf483ad7b861bf6d4966000ac0dfe1bc2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sincos</name>
+      <anchorfile>group__core_gae73a40c7a5d33fd5e75dc8fda06ecbc7.html</anchorfile>
+      <anchor>gae73a40c7a5d33fd5e75dc8fda06ecbc7</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

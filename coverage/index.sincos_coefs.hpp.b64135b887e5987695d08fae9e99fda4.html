@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html class="theme-green">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>GCC Code Coverage Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="index.css"/>
+  </head>
+
+  <body>
+    <header>
+      <h1>GCC Code Coverage Report</h1>
+
+      <hr/>
+
+      <div class="summary">
+<div>
+  <table class="legend">
+    <tr>
+      <th scope="row">Directory:</th>
+      <td>include/polyfloat/</td>
+    </tr>
+    <tr>
+      <th scope="row">File:</th>
+      <td>include/polyfloat/module/math/details/sincos_coefs.hpp</td>
+    </tr>
+    <tr>
+      <th scope="row">Date:</th>
+      <td>2026-10-09 21:31:57</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <table class="coverage">
+    <tr>
+      <th></th>
+      <th scope="col">Exec</th>
+      <th scope="col">Total</th>
+      <th scope="col">Coverage</th>
+    </tr>
+    <tr>
+      <th scope="row">Lines:</th>
+      <td>94</td>
+      <td>94</td>
+      <td class="coverage-high">100.0%</td>
+    </tr>
+    <tr>
+      <th scope="row">Functions:</th>
+      <td>8</td>
+      <td>8</td>
+      <td class="coverage-high">100.0%</td>
+    </tr>
+    <tr>
+      <th scope="row">Branches:</th>
+      <td>0</td>
+      <td>0</td>
+      <td class="coverage-unknown">-%</td>
+    </tr>
+  </table>
+</div>
+      </div>
+
+      <hr/>
+    </header>
+
+    <nav>
+<details>
+  <summary>List of functions</summary>
+  <table class="listOfFunctions">
+    <tr>
+      <th>Function (Line)</th>
+      <th>Call count</th>
+      <th>Block coverage</th>
+    </tr>
+    <tr><td><a href="#l15">auto plf::_::cos_coefs&lt;plf::polyfloat&lt;double, 2u&gt; &gt;() (line 15)</a></td><td>called 71 times, returned 71 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l15">auto plf::_::cos_coefs&lt;plf::polyfloat&lt;double, 3u&gt; &gt;() (line 15)</a></td><td>called 44 times, returned 44 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l15">auto plf::_::cos_coefs&lt;plf::polyfloat&lt;float, 2u&gt; &gt;() (line 15)</a></td><td>called 48 times, returned 48 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l15">auto plf::_::cos_coefs&lt;plf::polyfloat&lt;float, 3u&gt; &gt;() (line 15)</a></td><td>called 44 times, returned 44 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l96">auto plf::_::sino_x_coefs&lt;plf::polyfloat&lt;double, 2u&gt; &gt;() (line 96)</a></td><td>called 71 times, returned 71 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l96">auto plf::_::sino_x_coefs&lt;plf::polyfloat&lt;double, 3u&gt; &gt;() (line 96)</a></td><td>called 44 times, returned 44 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l96">auto plf::_::sino_x_coefs&lt;plf::polyfloat&lt;float, 2u&gt; &gt;() (line 96)</a></td><td>called 48 times, returned 48 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l96">auto plf::_::sino_x_coefs&lt;plf::polyfloat&lt;float, 3u&gt; &gt;() (line 96)</a></td><td>called 44 times, returned 44 times</td><td>100.0%</td></tr>
+  </table>
+</details>
+
+    </nav>
+
+    <main>
+<div class="file-source">
+  <table>
+    <tr>
+      <th align="right">Line</th>
+      <th align="right">Branch</th>
+      <th align="right">Exec</th>
+      <th align="left">Source</th>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l1" href="#l1">1</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="c1">//======================================================================================================================</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l2" href="#l2">2</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">/*</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l3" href="#l3">3</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm"> POLYFLOAT - Extended precision floating points</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l4" href="#l4">4</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm"> Copyright : POLYFLOAT Contributors &amp; Maintainers</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l5" href="#l5">5</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm"> SPDX-License-Identifier: BSL-1.0</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l6" href="#l6">6</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cm">*/</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l7" href="#l7">7</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="c1">//======================================================================================================================</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l8" href="#l8">8</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="cp">#pragma once</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l9" href="#l9">9</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l10" href="#l10">10</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="k">namespace</span><span class="w"> </span><span class="nn">plf</span><span class="o">::</span><span class="nn">_</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l11" href="#l11">11</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l12" href="#l12">12</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l13" href="#l13">13</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="c1">// Sollya coefficients for sin and cos remez polynomials on [0, pi/4]</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l14" href="#l14">14</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l15" href="#l15">15</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">414</td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">cos_coefs</span><span class="p">()</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l16" href="#l16">16</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l17" href="#l17">17</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l18" href="#l18">18</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l19" href="#l19">19</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">T</span><span class="p">(</span><span class="mf">0x1p+0f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1p-1f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.55554ap-5f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">c0c32p</span><span class="mi">-10</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.99eb9cp-16f</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l20" href="#l20">20</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l21" href="#l21">21</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l22" href="#l22">22</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l23" href="#l23">23</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">T</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l24" href="#l24">24</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">0x1</span><span class="p">.</span><span class="n">p</span><span class="mi">-1</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l25" href="#l25">25</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.5555555555551</span><span class="n">p</span><span class="mi">-5</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l26" href="#l26">26</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.6c16c16c15d47p-10</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l27" href="#l27">27</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a019ddbcd9p</span><span class="mi">-16</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l28" href="#l28">28</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.27e4f8e06d9a5p-22</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l29" href="#l29">29</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.1</span><span class="n">eea7c1e514d4p</span><span class="mi">-29</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l30" href="#l30">30</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.8ff831ad9b219p-37</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l31" href="#l31">31</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l32" href="#l32">32</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">double_real_t</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l33" href="#l33">33</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l34" href="#l34">34</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;float&gt;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l35" href="#l35">35</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l36" href="#l36">36</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="n">p</span><span class="mi">-1</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.8p-48f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l37" href="#l37">37</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.555556p-5f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.55614</span><span class="n">p</span><span class="mi">-30</span><span class="n">f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l38" href="#l38">38</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">c16c2p</span><span class="mi">-10</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.376484p-35f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l39" href="#l39">39</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.a019f8p-16f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.33c19p-42f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l40" href="#l40">40</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.27</span><span class="n">df56p</span><span class="mi">-22</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">fe7cbp</span><span class="mi">-49</span><span class="n">f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l41" href="#l41">41</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1b8fbcp-29f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.3</span><span class="n">ccf8p</span><span class="mi">-58</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l42" href="#l42">42</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l43" href="#l43">43</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">triple_real_t</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l44" href="#l44">44</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l45" href="#l45">45</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;float&gt;;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l46" href="#l46">46</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l47" href="#l47">47</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="n">p</span><span class="mi">-1</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1p-68f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l48" href="#l48">48</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.555556p-5f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.555556</span><span class="n">p</span><span class="mi">-30</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.53c8cp-55f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l49" href="#l49">49</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">c16c2p</span><span class="mi">-10</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.27d27ep-35f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.a71a8p-60f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l50" href="#l50">50</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.a01a02p-16f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.7f9f</span><span class="mo">04</span><span class="n">p</span><span class="mi">-42</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.36</span><span class="n">ep</span><span class="mi">-72</span><span class="n">f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l51" href="#l51">51</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.27e4f</span><span class="n">cp</span><span class="mi">-22</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.150d44p-47f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.b0d88p-72f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l52" href="#l52">52</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1eed8cp-29f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.4dd5p-56f</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.19bbp-81f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l53" href="#l53">53</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.9392</span><span class="n">c2p</span><span class="mi">-37</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.8</span><span class="n">aab28p</span><span class="mi">-63</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.7</span><span class="n">c58p</span><span class="mi">-89</span><span class="n">f</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l54" href="#l54">54</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.aa972ep-45f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.9e9332</span><span class="n">p</span><span class="mi">-70</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.74e9</span><span class="n">p</span><span class="mi">-95</span><span class="n">f</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l55" href="#l55">55</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l56" href="#l56">56</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">double_real_t</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l57" href="#l57">57</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l58" href="#l58">58</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;double&gt;;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l59" href="#l59">59</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l60" href="#l60">60</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="n">p</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.18p-102</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l61" href="#l61">61</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.5555555555555p-5</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.5555555548eb4p-59</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l62" href="#l62">62</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">c16c16c16c17p</span><span class="mi">-10</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.f49f4a5768168p-65</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l63" href="#l63">63</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.a01a01a01a01ap-16</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.9fe8c4b57e18p-76</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l64" href="#l64">64</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.27e4f</span><span class="n">b7789f5cp</span><span class="mi">-22</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">c9f238e0a982dp</span><span class="mi">-76</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l65" href="#l65">65</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1eed8eff8d896p-29</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.978ac9749f96fp-83</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l66" href="#l66">66</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.93974</span><span class="n">a8c07793p</span><span class="mi">-37</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.82ee317825dbp-94</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l67" href="#l67">67</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.ae7f3e726ce4fp-45</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">d4bb0e413fafp</span><span class="mi">-99</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l68" href="#l68">68</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.682784</span><span class="n">de2f11p</span><span class="mi">-53</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.7124</span><span class="n">a4345b29ep</span><span class="mi">-108</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l69" href="#l69">69</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.e53fccfb5614cp-62</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">daedc787b65f8p</span><span class="mi">-117</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l70" href="#l70">70</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.0</span><span class="n">b15f05d82628p</span><span class="mi">-70</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.b38f07d777c42p-125</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l71" href="#l71">71</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l72" href="#l72">72</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">triple_real_t</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l73" href="#l73">73</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l74" href="#l74">74</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = triple_real_t&lt;double&gt;;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l75" href="#l75">75</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l76" href="#l76">76</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l77" href="#l77">77</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="n">p</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l78" href="#l78">78</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.5555555555555p-5</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.5555555555555p-59</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.5555555555474p-113</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l79" href="#l79">79</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">c16c16c16c17p</span><span class="mi">-10</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.f49f49f49f49fp-65</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.27d27d29369cep-119</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l80" href="#l80">80</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.a01a01a01a01ap-16</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.a01a01a01a01ap-76</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.9fa8bd5859p-136</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l81" href="#l81">81</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.27e4f</span><span class="n">b7789f5cp</span><span class="mi">-22</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">cbbc05b4fa99ap</span><span class="mi">-76</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.c7712d610a62p-132</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l82" href="#l82">82</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1eed8eff8d898p-29</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.2</span><span class="n">aec959e14c06p</span><span class="mi">-83</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.97e00071</span><span class="n">ede88p</span><span class="mi">-138</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l83" href="#l83">83</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.93974</span><span class="n">a8c07c9dp</span><span class="mi">-37</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.05</span><span class="n">d6f8a2ef7e7p</span><span class="mi">-92</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.d326c1a15e4eep-146</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l84" href="#l84">84</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.ae7f3e733b81fp-45</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.1d8656ac84d0dp-101</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.1fd2c1d0996f4p-155</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l85" href="#l85">85</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.6827863</span><span class="n">b97d97p</span><span class="mi">-53</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">eec00cb429655p</span><span class="mi">-107</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.4</span><span class="n">ee20fb1234p</span><span class="mi">-167</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l86" href="#l86">86</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.e542ba4020225p-62</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.e7fb335aedc9bp-120</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">fffab29cc914p</span><span class="mi">-174</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l87" href="#l87">87</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.0</span><span class="n">ce396db7f852p</span><span class="mi">-70</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">e690437d35839p</span><span class="mi">-124</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.5c76a791a5431p-178</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l88" href="#l88">88</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.f2cf01972f4a2p-80</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.4ea269f34fe63p-138</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.750170</span><span class="n">debd68p</span><span class="mi">-192</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l89" href="#l89">89</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.88e85f</span><span class="n">c67dc3cp</span><span class="mi">-89</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.17e7f4e4</span><span class="n">b8ed6p</span><span class="mi">-143</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.486eb1e708244p-199</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l90" href="#l90">90</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.0a18a211f01bdp-98</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.206dbe6558fcp-153</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.4057</span><span class="n">cbbd0b374p</span><span class="mi">-207</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l91" href="#l91">91</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.3931e172</span><span class="n">b6931p</span><span class="mi">-108</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae8922f8ac0fp</span><span class="mi">-163</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.6</span><span class="n">b9f3d518571ap</span><span class="mi">-217</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l92" href="#l92">92</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.41cd7944e8bc1p-118</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">c71cf34af3e2p</span><span class="mi">-177</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.eda8cfeb4e1p-234</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l93" href="#l93">93</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l94" href="#l94">94</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l95" href="#l95">95</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l96" href="#l96">96</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">414</td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">sino_x_coefs</span><span class="p">()</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l97" href="#l97">97</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l98" href="#l98">98</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l99" href="#l99">99</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l100" href="#l100">100</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">T</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.555544</span><span class="n">p</span><span class="mi">-3</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.11073ap-7f</span><span class="p">),</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.9943f</span><span class="mi">2</span><span class="n">p</span><span class="mi">-13</span><span class="n">f</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l101" href="#l101">101</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l102" href="#l102">102</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l103" href="#l103">103</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l104" href="#l104">104</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">T</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l105" href="#l105">105</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.5555555555548</span><span class="n">p</span><span class="mi">-3</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l106" href="#l106">106</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.111111110f7d0p-7</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l107" href="#l107">107</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a019bfdf03p</span><span class="mi">-13</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l108" href="#l108">108</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.71de3567d4896p-19</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l109" href="#l109">109</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae5e5a9291691p</span><span class="mi">-26</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l110" href="#l110">110</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">                         </span><span class="n">T</span><span class="p">(</span><span class="mf">0x1.5d8fd1fcf0ec1p-33</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l111" href="#l111">111</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l112" href="#l112">112</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">double_real_t</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l113" href="#l113">113</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l114" href="#l114">114</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;float&gt;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l115" href="#l115">115</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l116" href="#l116">116</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.555556</span><span class="n">p</span><span class="mi">-3</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.555558p-28</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l117" href="#l117">117</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.111112p-7</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">dde238p</span><span class="mi">-32</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l118" href="#l118">118</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a02p</span><span class="mi">-13</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.93dd88p-39</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l119" href="#l119">119</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71de34p-19</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.692c54p-44</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l120" href="#l120">120</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae5dep</span><span class="mi">-26</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">d8e3cp</span><span class="mi">-52</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l121" href="#l121">121</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">96</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.5d7052p-33</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.74a7ep-61</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l122" href="#l122">122</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l123" href="#l123">123</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">triple_real_t</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l124" href="#l124">124</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l125" href="#l125">125</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;float&gt;;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l126" href="#l126">126</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l127" href="#l127">127</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.555556</span><span class="n">p</span><span class="mi">-3</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.555556p-28</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.555558</span><span class="n">p</span><span class="mi">-53</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l128" href="#l128">128</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.111112p-7</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">dddddep</span><span class="mi">-32</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.112cp-59</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l129" href="#l129">129</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a02p</span><span class="mi">-13</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.7f97fap-39</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.334f</span><span class="n">ep</span><span class="mi">-64</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l130" href="#l130">130</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71de3ap-19</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.55b1fcp-45</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.ac39p-70</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l131" href="#l131">131</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae6456p</span><span class="mi">-26</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">fdb8d4p</span><span class="mi">-52</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.28c7p-78</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l132" href="#l132">132</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.612462p-33</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.489358</span><span class="n">p</span><span class="mi">-58</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.0ae3p-85</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l133" href="#l133">133</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae7f7p</span><span class="mi">-41</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">abd16ep</span><span class="mi">-68</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.415f</span><span class="n">cp</span><span class="mi">-94</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l134" href="#l134">134</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.95546cp-49</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a12e54p</span><span class="mi">-74</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.1da4p-103</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l135" href="#l135">135</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.3</span><span class="n">beacep</span><span class="mi">-57</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.2c0736p-82</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.d2aea8p-107</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l136" href="#l136">136</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l137" href="#l137">137</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">double_real_t</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l138" href="#l138">138</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l139" href="#l139">139</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l140" href="#l140">140</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.5555555555555</span><span class="n">p</span><span class="mi">-3</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.5555555555555</span><span class="n">p</span><span class="mi">-57</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l141" href="#l141">141</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1111111111111p-7</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.1111111110b28p-63</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l142" href="#l142">142</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a01a01a01ap</span><span class="mi">-13</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a017855fcp</span><span class="mi">-73</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l143" href="#l143">143</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71de3a556c734p-19</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">c154fb0f012e5p</span><span class="mi">-73</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l144" href="#l144">144</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae64567f544e4p</span><span class="mi">-26</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.c06c29a3555bcp-80</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l145" href="#l145">145</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.6124613a86d09p-33</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.d93f6f54fe66cp-87</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l146" href="#l146">146</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae7f3e733b808p</span><span class="mi">-41</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.4</span><span class="n">c0dfcb7beee8p</span><span class="mi">-97</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l147" href="#l147">147</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.952c7703074efp-49</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.800a8d6fc3118p-105</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l148" href="#l148">148</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.2f</span><span class="mi">49</span><span class="n">b4624f386p</span><span class="mi">-57</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.107bdd978ff7cp-113</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l149" href="#l149">149</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71b8e345c53b4p-66</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.62182f0e94</span><span class="n">a3p</span><span class="mi">-123</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l150" href="#l150">150</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.760</span><span class="n">c2a005ccbep</span><span class="mi">-75</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.f000c1aff4a2ep-129</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l151" href="#l151">151</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">142</td>
+      <td class="src coveredLine"><span class="w">                         </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.365f1b4976ce5p-84</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.0292</span><span class="n">b83c87daep</span><span class="mi">-138</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l152" href="#l152">152</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l153" href="#l153">153</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">triple_real_t</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">)</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l154" href="#l154">154</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l155" href="#l155">155</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="c1">//using r_t = double_real_t&lt;double&gt;;</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l156" href="#l156">156</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l157" href="#l157">157</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x0p+0</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l158" href="#l158">158</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.5555555555555</span><span class="n">p</span><span class="mi">-3</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.5555555555555</span><span class="n">p</span><span class="mi">-57</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.5555555555555</span><span class="n">p</span><span class="mi">-111</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l159" href="#l159">159</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1111111111111p-7</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.1111111111111p-63</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.111111110e62p-119</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l160" href="#l160">160</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a01a01a01ap</span><span class="mi">-13</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a01a01a01a01ap</span><span class="mi">-73</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">a019e05fd4p</span><span class="mi">-133</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l161" href="#l161">161</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71de3a556c734p-19</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">c154f8ddc6cp</span><span class="mi">-73</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.71de2c8b111d6p-127</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l162" href="#l162">162</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae64567f544e4p</span><span class="mi">-26</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.c062e06d1f209p-80</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">c5c35ae4e386cp</span><span class="mi">-136</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l163" href="#l163">163</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.6124613a86d09p-33</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.f28e0cc748ebdp-87</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.698c02ecfb12p-145</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l164" href="#l164">164</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">ae7f3e733b81fp</span><span class="mi">-41</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.1</span><span class="n">d8656b0ed5fap</span><span class="mi">-97</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.332f46ff869ep-152</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l165" href="#l165">165</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.952c77030ad4ap-49</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.ac9814643646cp-103</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.672f</span><span class="n">f9149e1e4p</span><span class="mi">-157</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l166" href="#l166">166</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.2f</span><span class="mi">49</span><span class="n">b46814157p</span><span class="mi">-57</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.2650e850</span><span class="n">a9639p</span><span class="mi">-112</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.87</span><span class="n">d4dcc7949f8p</span><span class="mi">-167</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l167" href="#l167">167</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.71b8ef6dcf572p-66</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">d06ed193305d2p</span><span class="mi">-120</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.c8a6569527851p-174</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l168" href="#l168">168</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.761</span><span class="n">b41316381ap</span><span class="mi">-75</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.64ae3e5cd8493p-129</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">e07ede3a3bb48p</span><span class="mi">-184</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l169" href="#l169">169</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.3f3ccdd165ef7p-84</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.8e705b5f4306bp-140</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.6170961</span><span class="n">bf218p</span><span class="mi">-198</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l170" href="#l170">170</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="p">.</span><span class="n">d1ab1c2d9396ap</span><span class="mi">-94</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.0fb92a3020019p-149</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.79c7336af0a5ap-203</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l171" href="#l171">171</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.259f984ab1657p-103</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.115b541983fe8p-157</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">b6ec9fca0d8bap</span><span class="mi">-211</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l172" href="#l172">172</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mh">-0x1</span><span class="mf">.434</span><span class="n">c28656c9d2p</span><span class="mi">-113</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.04f1739868a88p-170</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.70d3ba901a7ep-224</span><span class="p">),</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l173" href="#l173">173</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">88</td>
+      <td class="src coveredLine"><span class="w">        </span><span class="n">plf</span><span class="o">::</span><span class="n">_</span><span class="o">::</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.37f7bad17451dp-123</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0x1.682a8cc6ac10dp-177</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.6f</span><span class="n">e5ff9fe424ep</span><span class="mi">-232</span><span class="p">)};</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l174" href="#l174">174</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l175" href="#l175">175</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l176" href="#l176">176</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="p">}</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l177" href="#l177">177</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "></td>
+    </tr>
+  </table>
+</div>
+      <hr/>
+    </main>
+
+    <footer>
+      Generated by: <a href="http://gcovr.com/en/7.2">GCOVR (Version 7.2)</a>
+    </footer>
+  </body>
+</html>

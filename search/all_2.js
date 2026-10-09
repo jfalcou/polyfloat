@@ -18,6 +18,7 @@ var searchData=
   ['core_20functions_133',['Core functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md6',1,'Core functions']]],
   ['core_5faccuracy_134',['Core_accuracy',['../group__core__accuracy.html',1,'']]],
   ['core_5finternal_135',['Core_internal',['../group__core__internal.html',1,'']]],
+  ['cos_136',['cos',['../group__core_ga305ef58bb0ca0c9ba8819663f74e70a3.html#ga305ef58bb0ca0c9ba8819663f74e70a3',1,'plf::cos']]],
   ['cos_5f1_137',['cos_1',['../group__constants_ga9d32e0a5bf045bfbde9ac25549b2e1cc.html#ga9d32e0a5bf045bfbde9ac25549b2e1cc',1,'plf::cos_1']]],
   ['cosh_139',['cosh',['../group__core_ga9c6115c7b57ba527694f481843d1edac.html#ga9c6115c7b57ba527694f481843d1edac',1,'plf::cosh']]],
   ['cosh_5f1_140',['cosh_1',['../group__constants_ga196b76f0b9a3da0eb1612216fec0adee.html#ga196b76f0b9a3da0eb1612216fec0adee',1,'plf::cosh_1']]],

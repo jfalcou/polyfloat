@@ -8,6 +8,7 @@ var searchData=
   ['clamp_5',['clamp',['../group__core_gaf3b6e14fd2890b610b24438a70b5ba87.html#gaf3b6e14fd2890b610b24438a70b5ba87',1,'plf::clamp']]],
   ['convert_16',['convert',['../group__core_ga3596810b24bfc8fb774e184cf3c2787e.html#ga3596810b24bfc8fb774e184cf3c2787e',1,'plf::convert']]],
   ['copysign_20',['copysign',['../group__core_gae88e21eb3751b1d0fd7b71d288d9d1ee.html#gae88e21eb3751b1d0fd7b71d288d9d1ee',1,'plf::copysign']]],
+  ['cos_21',['cos',['../group__core_ga305ef58bb0ca0c9ba8819663f74e70a3.html#ga305ef58bb0ca0c9ba8819663f74e70a3',1,'plf::cos']]],
   ['cos_5f1_22',['cos_1',['../group__constants_ga9d32e0a5bf045bfbde9ac25549b2e1cc.html#ga9d32e0a5bf045bfbde9ac25549b2e1cc',1,'plf::cos_1']]],
   ['cosh_24',['cosh',['../group__core_ga9c6115c7b57ba527694f481843d1edac.html#ga9c6115c7b57ba527694f481843d1edac',1,'plf::cosh']]],
   ['cosh_5f1_25',['cosh_1',['../group__constants_ga196b76f0b9a3da0eb1612216fec0adee.html#ga196b76f0b9a3da0eb1612216fec0adee',1,'plf::cosh_1']]],
