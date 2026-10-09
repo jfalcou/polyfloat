@@ -32,6 +32,12 @@ namespace plf::_
     return z * plf::reverse_horner(z2, eve::coefficients(sino_x_coefs<e_t>()));
   }
 
+  template<typename T> POLYFLOAT_FORCEINLINE constexpr auto sinc_eval(T const& z2) noexcept
+  {
+    using e_t = eve::element_type_t<T>;
+    return plf::reverse_horner(z2, eve::coefficients(sino_x_coefs<e_t>()));
+  }
+
   //========================================================================
 
   template<typename T>

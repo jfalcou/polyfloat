@@ -8,11 +8,8 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-TTS_CASE_WITH("Check cos ",
-              plf::scalar_real_types,
-              tts::randoms(-100, 100), //(-3.14 / 4, 3.14 / 4),
-              tts::randoms(0.0, 1.e-20),
-              tts::randoms(0.0, 1.e-30))
+TTS_CASE_WITH(
+  "Check cos ", plf::scalar_real_types, tts::randoms(-100, 100), tts::randoms(0.0, 1.e-20), tts::randoms(0.0, 1.e-30))
 <typename T>(T const& a0, T const& a1, T const& a2)
 {
   using mpfr::mpreal;
