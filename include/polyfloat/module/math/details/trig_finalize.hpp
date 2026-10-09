@@ -72,7 +72,7 @@ namespace plf::_
     auto swap = plf::is_nez(plf::fma(T(-2), tmp, fn));
     auto cos_sign = plf::if_else(plf::is_odd(fn + tmp), plf::mone(plf::as(xr)), plf::one(plf::as(xr)));
     auto sin_sign = plf::signnz(a0);
-    sin_sign *= plf::if_else(tmp, plf::mone(plf::as(a0)), plf::one(plf::as(a0)));
+    sin_sign *= plf::if_else(plf::is_nez(tmp), plf::mone(plf::as(a0)), plf::one(plf::as(a0)));
     auto xr2 = plf::sqr(xr);
     auto se0 = sin_eval(xr2, xr);
     auto ce0 = cos_eval(xr2);
@@ -80,5 +80,4 @@ namespace plf::_
     auto se = plf::fma(dxr, ce0, se0);
     return kumi::make_tuple((plf::if_else(swap, ce, se) * sin_sign), plf::if_else(swap, se, ce) * cos_sign);
   }
-
 }

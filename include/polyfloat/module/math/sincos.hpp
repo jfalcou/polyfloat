@@ -109,7 +109,7 @@ namespace plf::_
       {
         auto x = eve::abs(a0);
         auto nn = kumi::tuple(plf::nan(eve::as(x)));
-        auto zz = kumi::tuple(plf::zero(eve::as(x));
+        auto zz = kumi::tuple(plf::zero(eve::as(x)));
         x = plf::if_else(plf::is_not_finite(x), nn, x); // nan or Inf input
         x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), zz, x);
         auto [fn, xr, dxr] = rem2(x);
@@ -120,7 +120,8 @@ namespace plf::_
     {
       if constexpr (O::contains(eve::quarter_circle))
       {
-        return sincos_eval(plf::sqr(a0), a0);
+        auto a02 = plf::sqr(a0);
+        return kumi::tuple{sin_eval(a02, a0), cos_eval(a02)};
       }
       else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
       {

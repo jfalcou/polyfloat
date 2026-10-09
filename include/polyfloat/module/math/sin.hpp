@@ -87,17 +87,6 @@ namespace plf::_
     else if constexpr (O::contains(eve::deg))
     {
       return plf::sin[eve::radpi](plf::div_180(a0));
-      //       if constexpr (O::contains(quarter_circle))
-      //       {
-      //         return plf::sin[eve::radpi][quarter_circle](plf::div_180(a0));
-      //       }
-      //       else
-      //       {
-      //         auto x = eve::abs(a0);
-      //         if (eve::all(x <= T(45))) return plf::sin[eve::deg][eve::quarter_circle](x);
-      //         auto [fn, xr, dxr] = plf::_::rem180(x);
-      //         return sin_finalize(a0, fn, xr, dxr);
-      //      }
     }
     else if constexpr (O::contains(eve::radpi))
     {

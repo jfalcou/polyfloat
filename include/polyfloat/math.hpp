@@ -39,6 +39,7 @@
 #include <polyfloat/module/math/sigmoid.hpp>
 #include <polyfloat/module/math/radinpi.hpp>
 #include <polyfloat/module/math/sin.hpp>
+#include <polyfloat/module/math/sincos.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/sinhcosh.hpp>
 #include <polyfloat/module/math/tanh.hpp>
