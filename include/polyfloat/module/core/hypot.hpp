@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct hypot_t : eve::strict_tuple_callable<hypot_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct hypot_t : plf::strict_tuple_callable<hypot_t, eve::hypot_t, Options, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -111,29 +112,25 @@ namespace plf::_
     else
     {
       using r_t = as_polyfloat_t<T0, T1, Ts...>;
-      if constexpr (dimension_v<r_t> == 1) return eve::hypot[o](r0, r1, rs...);
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+      auto expo = [&](auto x) { return if_else(plf::is_nan(x), eve::zero, plf::exponent(cvt(x))); };
+      auto e = -eve::maxmag(expo(r0), expo(r1), expo(rs)...);
+      if constexpr (O::contains(pedantic))
+      {
+        auto nan_found = plf::false_(eve::as<r_t>());
+        auto f = [&](auto a) {
+          nan_found = plf::is_nan(a);
+          return if_else(nan_found, zero, plf::sqr(ldexp[o](cvt(a), e)));
+        };
+        r_t that = plf::add[o](f(r0), f(r1), f(rs)...);
+        auto r = plf::ldexp[pedantic](plf::sqrt(that), -e);
+        return if_else(nan_found && !is_infinite(r), plf::nan, r);
+      }
       else
       {
-        auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
-        auto expo = [&](auto x) { return if_else(plf::is_nan(x), eve::zero, plf::exponent(cvt(x))); };
-        auto e = -eve::maxmag(expo(r0), expo(r1), expo(rs)...);
-        if constexpr (O::contains(pedantic))
-        {
-          auto nan_found = plf::false_(eve::as<r_t>());
-          auto f = [&](auto a) {
-            nan_found = plf::is_nan(a);
-            return if_else(nan_found, zero, plf::sqr(ldexp[o](cvt(a), e)));
-          };
-          r_t that = plf::add[o](f(r0), f(r1), f(rs)...);
-          auto r = plf::ldexp[pedantic](plf::sqrt(that), -e);
-          return if_else(nan_found && !is_infinite(r), plf::nan, r);
-        }
-        else
-        {
-          auto f = [&](auto a) { return cvt(plf::sqr(ldexp[o](cvt(a), e))); };
-          r_t that = plf::add[o](f(r0), f(r1), f(rs)...);
-          return plf::ldexp[pedantic](plf::sqrt(that), -e);
-        }
+        auto f = [&](auto a) { return cvt(plf::sqr(ldexp[o](cvt(a), e))); };
+        r_t that = plf::add[o](f(r0), f(r1), f(rs)...);
+        return plf::ldexp[pedantic](plf::sqrt(that), -e);
       }
     }
   }

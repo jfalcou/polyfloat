@@ -16,7 +16,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct is_bit_equal_t : eve::callable<is_bit_equal_t, Options, raw_option, pedantic_option, numeric_option>
+  struct is_bit_equal_t
+    : plf::callable<is_bit_equal_t, eve::is_bit_equal_t, Options, raw_option, pedantic_option, numeric_option>
   {
     //     template <typename T, typename U > using  b_t = bit_value_t<T, U>;
     //     template <typename T, typename U > using  ui_t = as_integer_t<b_t<T, U>, unsigned>;
@@ -75,9 +76,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_bit_equal_(POLYFLOAT_DELAY(), O const&, Z const& z1, Z const& z2) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::is_bit_equal(z1, z2);
-    else if constexpr (dimension_v<Z> == 2)
-      return eve::is_bit_equal(lo(z1), lo(z2)) && eve::is_bit_equal(hi(z1), hi(z2));
+    if constexpr (dimension_v<Z> == 2) return eve::is_bit_equal(lo(z1), lo(z2)) && eve::is_bit_equal(hi(z1), hi(z2));
     else if constexpr (dimension_v<Z> == 3)
       return eve::is_bit_equal(lo(z1), lo(z2)) && eve::is_bit_equal(md(z1), md(z2)) &&
              eve::is_bit_equal(hi(z1), hi(z2));

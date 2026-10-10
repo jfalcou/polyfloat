@@ -18,7 +18,8 @@
 namespace plf
 {
 
-  template<typename Options> struct ceil_t : eve::elementwise_callable<ceil_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct ceil_t : plf::elementwise_callable<ceil_t, eve::ceil_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -72,8 +73,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto ceil_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::ceil(z);
-    else if constexpr (dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
 

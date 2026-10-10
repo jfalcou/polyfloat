@@ -16,7 +16,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct radindeg_t : eve::elementwise_callable<radindeg_t, Options, raw_option, pedantic_option>
+  struct radindeg_t : plf::elementwise_callable<radindeg_t, eve::radindeg_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -76,11 +76,7 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto radindeg_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::radindeg(a);
-    else
-    {
-      auto [r2dh, r2dl] = plf::two_split(plf::rad2deg(eve::as<T>()));
-      return plf::fma(a, r2dh, a * r2dl);
-    }
+    auto [r2dh, r2dl] = plf::two_split(plf::rad2deg(eve::as<T>()));
+    return plf::fma(a, r2dh, a * r2dl);
   }
 }

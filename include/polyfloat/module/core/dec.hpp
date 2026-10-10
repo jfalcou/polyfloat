@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct dec_t : eve::elementwise_callable<dec_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct dec_t : plf::elementwise_callable<dec_t, eve::dec_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -71,7 +72,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto dec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::dec(z);
-    else return z - eve::one(eve::as(hi(z)));
+    return z - eve::one(eve::as(hi(z)));
   }
 }

@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct pow_t : eve::elementwise_callable<pow_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct pow_t : plf::elementwise_callable<pow_t, eve::pow_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -99,25 +100,21 @@ namespace plf::_
     using r_t = as_polyfloat_like_t<T, U>;
     using e_t = eve::element_type_t<r_t>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as<e_t>()); };
-    if constexpr (dimension_v<T> == 1) return eve::pow(a, b);
+    auto x = cvt(a);
+    auto y = cvt(b);
+    if constexpr (O::contains(eve::raw))
+    {
+      return exp[o](y * log[o](x));
+    }
     else
     {
-      auto x = cvt(a);
-      auto y = cvt(b);
-      if constexpr (O::contains(eve::raw))
+      if constexpr (eve::scalar_value<T> && eve::scalar_value<U>)
       {
-        return exp[o](y * log[o](x));
+        if (a == plf::mone(eve::as(a)) && plf::is_infinite(b)) return plf::one(eve::as(x));
       }
-      else
-      {
-        if constexpr (eve::scalar_value<T> && eve::scalar_value<U>)
-        {
-          if (a == plf::mone(eve::as(a)) && plf::is_infinite(b)) return plf::one(eve::as(x));
-        }
-        auto nega = plf::is_negative(a);
-        auto z = plf::pow_abs(x, y);
-        return minus[is_odd(b) && nega](z);
-      }
+      auto nega = plf::is_negative(a);
+      auto z = plf::pow_abs(x, y);
+      return minus[is_odd(b) && nega](z);
     }
   }
 }

@@ -17,7 +17,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct mantissa_t : eve::elementwise_callable<mantissa_t, Options, raw_option, pedantic_option>
+  struct mantissa_t : plf::elementwise_callable<mantissa_t, eve::mantissa_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
     {
@@ -87,22 +87,18 @@ namespace plf
     template<typename Z, eve::callable_options O>
     POLYFLOAT_FORCEINLINE constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
-      if constexpr (dimension_v<Z> == 1) return eve::mantissa(z);
-      else
+      auto n = plf::exponent(z);
+      auto h = eve::ldexp[o](hi(z), -n);
+      if constexpr (dimension_v<Z> == 2)
       {
-        auto n = plf::exponent(z);
-        auto h = eve::ldexp[o](hi(z), -n);
-        if constexpr (dimension_v<Z> == 2)
-        {
-          auto l = eve::ldexp[o](lo(z), -n);
-          return plf::_::from_pair(h, l);
-        }
-        else if constexpr (dimension_v<Z> == 3)
-        {
-          auto m = eve::ldexp[o](md(z), -n);
-          auto l = eve::ldexp[o](lo(z), -n);
-          return plf::_::from_triple(h, m, l);
-        }
+        auto l = eve::ldexp[o](lo(z), -n);
+        return plf::_::from_pair(h, l);
+      }
+      else if constexpr (dimension_v<Z> == 3)
+      {
+        auto m = eve::ldexp[o](md(z), -n);
+        auto l = eve::ldexp[o](lo(z), -n);
+        return plf::_::from_triple(h, m, l);
       }
     }
   }

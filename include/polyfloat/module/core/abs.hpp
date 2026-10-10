@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct abs_t : eve::elementwise_callable<abs_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct abs_t : plf::elementwise_callable<abs_t, eve::abs_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -71,7 +72,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto abs_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::abs(z);
-    else return minus[is_negative(z)](z);
+    return minus[is_negative(z)](z);
   }
 }

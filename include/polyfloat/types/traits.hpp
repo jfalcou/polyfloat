@@ -59,7 +59,7 @@ namespace plf
   //! @brief Obtains the rank containing a given type
   //!
   //! If `T` satisfies plf::concepts::polyfloat, evaluates to the number of parts of a
-  //! poly-float.
+  //! poly-float. If `T` is another product type, evaluates to the largest dimension of its elements.
   //!
   //! @tparam T Type to analyze.
   //====================================================================================================================
@@ -72,6 +72,14 @@ namespace plf
 
   template<concepts::polyfloat T>
   inline constexpr auto dimension_v<T> = eve::element_type_t<std::remove_cvref_t<T>>::static_dimension;
+
+#if !defined(POLYFLOAT_DOXYGEN_INVOKED)
+  template<typename T>
+  requires(kumi::concepts::product_type<T> && !concepts::polyfloat<T>)
+  inline constexpr unsigned int dimension_v<T> = []<std::size_t... I>(std::index_sequence<I...>) {
+    return std::max({1u, dimension_v<kumi::element_t<I, T>>...});
+  }(std::make_index_sequence<kumi::size_v<T>>{});
+#endif
 
   template<typename T> struct as_component_type
   {
@@ -208,13 +216,16 @@ namespace plf
   {
   };
 
-  template<typename T, typename Ts>
-  struct as_polyfloat_like<T, coefficients<Ts>> : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
+  template<typename Tup>
+  requires(kumi::concepts::product_type<Tup> && !concepts::polyfloat<Tup>)
+  struct as_polyfloat_like<Tup>
   {
+    using type = Tup;
   };
 
-  template<typename T, typename Ts>
-  struct as_polyfloat_like<T, nodes<Ts>> : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Ts>>
+  template<typename T, typename Tup>
+  requires(kumi::concepts::product_type<Tup> && !concepts::polyfloat<Tup>)
+  struct as_polyfloat_like<T, Tup> : as_polyfloat_like<T, kumi::apply_traits_t<as_polyfloat_like, Tup>>
   {
   };
 

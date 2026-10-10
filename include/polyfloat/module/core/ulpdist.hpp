@@ -19,7 +19,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct ulpdist_t : eve::strict_tuple_callable<ulpdist_t, Options, raw_option, pedantic_option>
+  struct ulpdist_t : plf::strict_tuple_callable<ulpdist_t, eve::ulpdist_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -77,14 +77,10 @@ namespace plf::_
   {
     using r_t = as_polyfloat_like_t<Z0, Z1>;
     using u_t = eve::underlying_type_t<as_component_type_t<r_t>>;
-    if constexpr (dimension_v<r_t> == 1) return eve::ulpdist(z0, z1);
-    else
-    {
-      auto [m1, e1] = frexp(z0);
-      auto [m2, e2] = frexp(z1);
-      auto expo = -max(e1, e2);
-      auto e = abs(if_else(e1 == e2, m1 - m2, ldexp(z0, expo) - ldexp(z1, expo)));
-      return if_else((is_nan(z0) && is_nan(z1)) || (z0 == z1), eve::zero, e * inveps(eve::as<u_t>()));
-    }
+    auto [m1, e1] = frexp(z0);
+    auto [m2, e2] = frexp(z1);
+    auto expo = -max(e1, e2);
+    auto e = abs(if_else(e1 == e2, m1 - m2, ldexp(z0, expo) - ldexp(z1, expo)));
+    return if_else((is_nan(z0) && is_nan(z1)) || (z0 == z1), eve::zero, e * inveps(eve::as<u_t>()));
   }
 }

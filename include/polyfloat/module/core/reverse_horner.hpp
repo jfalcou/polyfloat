@@ -21,8 +21,12 @@ namespace plf
 {
 
   template<typename Options>
-  struct reverse_horner_t
-    : eve::strict_tuple_callable<reverse_horner_t, Options, kahan_option, raw_option, pedantic_option>
+  struct reverse_horner_t : plf::strict_tuple_callable<reverse_horner_t,
+                                                       eve::reverse_horner_t,
+                                                       Options,
+                                                       kahan_option,
+                                                       raw_option,
+                                                       pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -37,8 +41,7 @@ namespace plf
 
     template<concepts::polyfloat_like X, eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, eve::coefficients<Tup>> operator()(X const& x,
-                                                                                        Tup const& t) const noexcept
+    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, Tup> operator()(X const& x, Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(x, t);
@@ -141,18 +144,14 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
   {
     using r_t = as_polyfloat_like_t<X, C, Cs...>;
-    if constexpr (dimension_v<r_t> == 1) return eve::reverse_horner[o](xx, c0, cs...);
+    constexpr auto N = sizeof...(Cs);
+    if constexpr (N == 0) return plf::convert(c0, eve::as_element<r_t>{});
     else
     {
-      constexpr auto N = sizeof...(Cs);
-      if constexpr (N == 0) return plf::convert(c0, eve::as_element<r_t>{});
-      else
-      {
-        auto x = r_t(xx);
-        using t_t = kumi::result::fill_t<sizeof...(cs) + 1, r_t>;
-        t_t c{r_t{c0}, r_t{cs}...};
-        return reverse_horner[o](x, coefficients<t_t>(c));
-      }
+      auto x = r_t(xx);
+      using t_t = kumi::result::fill_t<sizeof...(cs) + 1, r_t>;
+      t_t c{r_t{c0}, r_t{cs}...};
+      return reverse_horner[o](x, coefficients<t_t>(c));
     }
   }
 

@@ -13,16 +13,13 @@
 
 namespace plf
 {
-  template<typename Options> struct logeps_t : eve::constant_callable<logeps_t, Options>
+  template<typename Options>
+  struct logeps_t : plf::constant_callable<logeps_t, eve::logeps_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 1)
-      {
-        return eve::logeps(eve::as(u_t()));
-      }
       if constexpr (plf::dimension_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<u_t>(-0x1.fe2804p+4, -0x1.d0f668p-21);

@@ -10,20 +10,16 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <eve/module/math/constant/pi.hpp>
 
 namespace plf
 {
-  template<typename Options> struct pi_t : eve::constant_callable<pi_t, Options>
+  template<typename Options> struct pi_t : plf::constant_callable<pi_t, eve::pi_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 1)
-      {
-        if constexpr (std::same_as<u_t, float>) return u_t(0x1.921fb6p+1);
-        else if constexpr (std::same_as<u_t, double>) return u_t(0x1.921fb54442d18p+1);
-      }
       if constexpr (plf::dimension_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<u_t>(0x1.921fb6p+1, -0x1.777a5cp-24);

@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct coth_t : eve::elementwise_callable<coth_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct coth_t : plf::elementwise_callable<coth_t, eve::coth_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -67,17 +68,13 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto coth_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto coth_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::coth[o](a0);
-    else
-    {
-      auto x = plf::abs(a0 + a0);
-      auto t = plf::rec[pedantic](plf::expm1(x));
-      auto r = plf::fma(T(2), t, T(1));
-      r = plf::if_else(plf::is_pinf(x), one(eve::as(x)), r);
-      r = plf::if_else(plf::is_eqz(x), plf::inf(eve::as(x)), r);
-      return plf::copysign(r, a0);
-    }
+    auto x = plf::abs(a0 + a0);
+    auto t = plf::rec[pedantic](plf::expm1(x));
+    auto r = plf::fma(T(2), t, T(1));
+    r = plf::if_else(plf::is_pinf(x), one(eve::as(x)), r);
+    r = plf::if_else(plf::is_eqz(x), plf::inf(eve::as(x)), r);
+    return plf::copysign(r, a0);
   }
 }

@@ -99,7 +99,7 @@ namespace plf::_
     if constexpr (PT::size() == 0) return kumi::make_tuple();
     else
     {
-      using e_t = kumi::apply_traits_t<plf::as_polyfloat, PT>;
+      using e_t = kumi::apply_traits_t<plf::as_polyfloat_like, PT>;
       auto n = neutral(f)(eve::as<e_t>());
       auto cvt = [](auto a) { return plf::convert(a, eve::as_element<e_t>{}); };
       return kumi::inclusive_scan_left(f[o], kumi::map(cvt, tup), n);

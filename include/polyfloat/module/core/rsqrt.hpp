@@ -22,7 +22,7 @@
 namespace plf
 {
 
-  template<typename Options> struct rsqrt_t : eve::callable<rsqrt_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct rsqrt_t : plf::callable<rsqrt_t, eve::rsqrt_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -79,7 +79,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto div2 = [](auto x) { return ldexp(x, -1); };
-    if constexpr (!O::contains(eve::raw) && dimension_v<Z> > 1) //avoid overflow;
+    if constexpr (!O::contains(eve::raw)) //avoid overflow;
     {
       auto [zz, n] = frexp[pedantic](z);
       auto oddn = eve::is_odd(n);
@@ -88,7 +88,6 @@ namespace plf::_
       auto r = ldexp(rsqrt[eve::raw](zz), -n / 2);
       return r;
     }
-    else if constexpr (dimension_v<Z> == 1) return eve::rsqrt(z);
     else if constexpr (dimension_v<Z> == 2)
     {
       auto [a0, b0] = z;

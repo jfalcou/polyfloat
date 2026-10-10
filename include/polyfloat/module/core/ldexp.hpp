@@ -15,7 +15,7 @@
 namespace plf
 {
 
-  template<typename Options> struct ldexp_t : eve::callable<ldexp_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct ldexp_t : plf::callable<ldexp_t, eve::ldexp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
     POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
@@ -97,8 +97,7 @@ namespace plf::_
   template<typename Z, typename N, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto ldexp_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::ldexp(z, n);
-    else if constexpr (dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 2)
     {
       auto [zh, zl] = z;
       auto h = eve::ldexp(zh, n);

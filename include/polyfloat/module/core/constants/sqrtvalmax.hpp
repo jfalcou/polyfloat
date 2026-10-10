@@ -16,13 +16,13 @@
 
 namespace plf
 {
-  template<typename Options> struct sqrtvalmax_t : eve::constant_callable<sqrtvalmax_t, Options>
+  template<typename Options>
+  struct sqrtvalmax_t : plf::constant_callable<sqrtvalmax_t, eve::sqrtvalmax_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      if constexpr (dimension_v<T> == 1) return eve::sqrtvalmax(eve::as<u_t>());
-      else if constexpr (dimension_v<T> == 2)
+      if constexpr (dimension_v<T> == 2)
       {
         if constexpr (sizeof(u_t) == 8) return plf::_::from_pair<u_t>(0x1p+512, -0x1p+405);
         else return plf::_::from_pair<u_t>(0x1p+64, -0x1p+15);

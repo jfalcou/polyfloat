@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct trunc_t : eve::elementwise_callable<trunc_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct trunc_t : plf::elementwise_callable<trunc_t, eve::trunc_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -71,11 +72,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto trunc_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::trunc(z);
-    else
-    {
-      auto t = plf::is_positive(z);
-      return minus[t](ceil(minus[t](z)));
-    }
+    auto t = plf::is_positive(z);
+    return minus[t](ceil(minus[t](z)));
   }
 }

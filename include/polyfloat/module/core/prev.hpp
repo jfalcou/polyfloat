@@ -15,7 +15,8 @@
 namespace plf
 {
 
-  template<typename Options> struct prev_t : eve::elementwise_callable<prev_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct prev_t : plf::elementwise_callable<prev_t, eve::prev_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -80,8 +81,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto prev_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     using c_t = plf::as_component_type_t<Z>;
-    if constexpr (dimension_v<Z> == 1) return eve::prev(z);
-    else if constexpr (dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return plf::_::from_pair<c_t>(h, eve::prev(l));
@@ -97,8 +97,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto prev_(POLYFLOAT_DELAY(), O const&, Z const& z, N n) noexcept
   {
     using c_t = plf::as_component_type_t<Z>;
-    if constexpr (dimension_v<Z> == 1) return eve::prev(z, n);
-    else if constexpr (dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return plf::_::from_pair<c_t>(h, eve::prev(l, n));

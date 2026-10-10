@@ -23,7 +23,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct cos_t : eve::elementwise_callable<cos_t,
+  struct cos_t : plf::elementwise_callable<cos_t,
+                                           eve::cos_t,
                                            Options,
                                            raw_option,
                                            pedantic_option,
@@ -84,11 +85,10 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto cos_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto cos_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
     //    using e_t =  eve::element_type_t<T>;
-    if constexpr (dimension_v<T> == 1) return eve::cos[o](a0);
-    else if constexpr (O::contains(eve::deg))
+    if constexpr (O::contains(eve::deg))
     {
       return plf::cos[eve::radpi](plf::div_180(a0));
     }

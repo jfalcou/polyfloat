@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct is_less_t : eve::callable<is_less_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct is_less_t : plf::callable<is_less_t, eve::is_less_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>> operator()(Z1 z1,
@@ -72,8 +73,6 @@ namespace plf::_
   template<typename Z1, typename Z2, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_less_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
-    using r_t = as_polyfloat_t<Z1, Z2>;
-    if constexpr (dimension_v<r_t> == 1) return eve::is_less(z1, z2);
-    else return z1 < z2;
+    return z1 < z2;
   }
 }

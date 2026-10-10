@@ -18,7 +18,8 @@
 namespace plf
 {
 
-  template<typename Options> struct tanh_t : eve::elementwise_callable<tanh_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct tanh_t : plf::elementwise_callable<tanh_t, eve::tanh_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -71,17 +72,13 @@ namespace plf::_
 {
   template<typename T, eve::callable_options O> constexpr auto tanh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::tanh[o](a0);
-    else
-    {
-      auto x = plf::abs(a0 + a0);
-      auto test = x > T(0.5493) * 2;
-      auto t = plf::expm1[o](x);
-      auto rt2 = plf::rec[eve::pedantic](t + T(2));
-      auto z1 = plf::fnma(T(2), rt2, T(1));
-      auto z2 = t * rt2;
-      auto r = plf::if_else(test, z1, z2);
-      return if_else(is_infinite(a0), a0, plf::copysign(r, a0));
-    }
+    auto x = plf::abs(a0 + a0);
+    auto test = x > T(0.5493) * 2;
+    auto t = plf::expm1[o](x);
+    auto rt2 = plf::rec[eve::pedantic](t + T(2));
+    auto z1 = plf::fnma(T(2), rt2, T(1));
+    auto z2 = t * rt2;
+    auto r = plf::if_else(test, z1, z2);
+    return if_else(is_infinite(a0), a0, plf::copysign(r, a0));
   }
 }

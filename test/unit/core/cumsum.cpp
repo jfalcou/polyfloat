@@ -89,3 +89,19 @@ TTS_CASE_WITH("Check cumsum three params",
     TTS_RELATIVE_EQUAL(kumi::get<2>(cumsum(pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
   }
 };
+
+TTS_CASE_WITH("Check cumsum of reals with a chosen cardinal",
+              plf::scalar_real_types,
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000))
+<typename T>(T const& a0, T const& a1)
+{
+  using w_t = eve::wide<T, eve::fixed<2>>;
+  using r_t = kumi::tuple<w_t, w_t>;
+  w_t a(a0, a1);
+  w_t b(a1, a0);
+
+  TTS_EXPR_IS(plf::cumsum(kumi::tuple{a, b}), r_t);
+  TTS_EQUAL(kumi::get<0>(plf::cumsum(kumi::tuple{a, b})), a);
+  TTS_EQUAL(kumi::get<1>(plf::cumsum(kumi::tuple{a, b})), a + b);
+};

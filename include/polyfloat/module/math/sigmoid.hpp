@@ -16,7 +16,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct sigmoid_t : eve::elementwise_callable<sigmoid_t, Options, raw_option, pedantic_option>
+  struct sigmoid_t : plf::elementwise_callable<sigmoid_t, eve::sigmoid_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -88,7 +88,6 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto sigmoid_(POLYFLOAT_DELAY(), O const& o, T xx) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::sigmoid(xx);
-    else return plf::rec[eve::pedantic](plf::inc(plf::exp[o](-xx)));
+    return plf::rec[eve::pedantic](plf::inc(plf::exp[o](-xx)));
   }
 }
