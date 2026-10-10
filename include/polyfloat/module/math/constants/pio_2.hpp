@@ -13,16 +13,13 @@
 
 namespace plf
 {
-  template<typename Options> struct pio_2_t : eve::constant_callable<pio_2_t, Options>
+  template<typename Options>
+  struct pio_2_t : plf::constant_callable<pio_2_t, eve::pio_2_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 1)
-      {
-        return eve::pio_2(eve::as(u_t()));
-      }
       if constexpr (plf::dimension_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>)

@@ -14,13 +14,12 @@
 
 namespace plf
 {
-  template<typename Options> struct maxflint_t : eve::constant_callable<maxflint_t, Options>
+  template<typename Options>
+  struct maxflint_t : plf::constant_callable<maxflint_t, eve::maxflint_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
     {
-      using u_t = eve::underlying_type_t<T>;
-      if constexpr (dimension_v<T> == 1) return T(eve::maxflint(eve::as<u_t>()));
-      else if constexpr (dimension_v<T> == 2) return T(ldexp(1.0, 106), ldexp(1.0, 53));
+      if constexpr (dimension_v<T> == 2) return T(ldexp(1.0, 106), ldexp(1.0, 53));
       else if constexpr (dimension_v<T> == 3) return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
     }
 

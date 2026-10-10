@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct acsch_t : eve::elementwise_callable<acsch_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct acsch_t : plf::elementwise_callable<acsch_t, eve::acsch_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -68,14 +69,10 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename T, eve::callable_options O> constexpr auto acsch_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto acsch_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::acsch[o](a0);
-    else
-    {
-      auto r = if_else(plf::is_eqz(a0), plf::signnz[eve::pedantic](a0) * inf(eve::as(a0)), plf::asinh(plf::rec(a0)));
-      r = if_else(plf::is_infinite(a0), plf::signnz[eve::pedantic](a0) * zero(eve::as(a0)), r);
-      return r;
-    }
+    auto r = if_else(plf::is_eqz(a0), plf::signnz[eve::pedantic](a0) * inf(eve::as(a0)), plf::asinh(plf::rec(a0)));
+    r = if_else(plf::is_infinite(a0), plf::signnz[eve::pedantic](a0) * zero(eve::as(a0)), r);
+    return r;
   }
 }

@@ -15,7 +15,8 @@
 namespace plf
 {
 
-  template<typename Options> struct log10_t : eve::elementwise_callable<log10_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct log10_t : plf::elementwise_callable<log10_t, eve::log10_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -69,13 +70,9 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto log10_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::log10(xx);
-    else
-    {
-      auto z = plf::log(xx);
-      auto l10 = plf::invlog_10(eve::as(xx));
-      auto vh = hi(z) * hi(l10);
-      return plf::if_else(eve::is_infinite(vh), vh, plf::log(xx) * plf::invlog_10(eve::as(xx)));
-    }
+    auto z = plf::log(xx);
+    auto l10 = plf::invlog_10(eve::as(xx));
+    auto vh = hi(z) * hi(l10);
+    return plf::if_else(eve::is_infinite(vh), vh, plf::log(xx) * plf::invlog_10(eve::as(xx)));
   }
 }

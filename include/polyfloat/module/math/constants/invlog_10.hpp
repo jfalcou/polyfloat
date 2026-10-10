@@ -10,21 +10,18 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <eve/module/math/constant/invlog_10.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct invlog_10_t : eve::constant_callable<invlog_10_t, Options>
+  template<typename Options>
+  struct invlog_10_t : plf::constant_callable<invlog_10_t, eve::invlog_10_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
-      if constexpr (plf::dimension_v<T> == 1)
-      {
-        if constexpr (std::same_as<u_t, float>) return float(0x1.26bb1cp+1);
-        else if constexpr (std::same_as<u_t, double>) return double(0x1.26bb1bbb55516p+1);
-      }
-      else if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::dimension_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<float>(0x1.bcb7b2p-2, -0x1.5b235ep-27);
         else if constexpr (std::same_as<u_t, double>)

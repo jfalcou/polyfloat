@@ -17,7 +17,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct neville_t : eve::strict_tuple_callable<neville_t, Options, kahan_option, raw_option, pedantic_option>
+  struct neville_t
+    : plf::strict_tuple_callable<neville_t, eve::neville_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -90,35 +91,31 @@ namespace plf::_
     using t_t = as_polyfloat_like_t<X, XsYs...>;
     constexpr auto siz = sizeof...(XsYs);
     constexpr auto siz_2 = siz / 2;
-    if constexpr (dimension_v<t_t> == 1) return eve::neville[o](x, xsys...);
+    if constexpr (siz == 0) return eve::zero(eve::as<X>());
     else
     {
-      if constexpr (siz == 0) return eve::zero(eve::as<X>());
+      auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<t_t>>()); };
+      auto xsyst = eve::zip(t_t(cvt(xsys))...);
+      if constexpr (siz == 2) return get<0>(xsyst);
+      else if constexpr (siz == 4)
+      {
+        auto x0 = get<0>(xsyst);
+        auto x1 = get<1>(xsyst);
+        auto y0 = get<2>(xsyst);
+        auto y1 = get<3>(xsyst);
+        return plf::sum_of_prod[o]((x - x1), y0, (x0 - x), y1) / (x0 - x1);
+      }
       else
       {
-        auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<t_t>>()); };
-        auto xsyst = eve::zip(t_t(cvt(xsys))...);
-        if constexpr (siz == 2) return get<0>(xsyst);
-        else if constexpr (siz == 4)
+        std::array<t_t, siz> xy{t_t(xsys)...};
+        for (size_t k = 1; k < siz_2; ++k)
         {
-          auto x0 = get<0>(xsyst);
-          auto x1 = get<1>(xsyst);
-          auto y0 = get<2>(xsyst);
-          auto y1 = get<3>(xsyst);
-          return plf::sum_of_prod[o]((x - x1), y0, (x0 - x), y1) / (x0 - x1);
-        }
-        else
-        {
-          std::array<t_t, siz> xy{t_t(xsys)...};
-          for (size_t k = 1; k < siz_2; ++k)
+          for (size_t i = 0, is2 = siz_2; i < siz_2 - k; ++i, ++is2)
           {
-            for (size_t i = 0, is2 = siz_2; i < siz_2 - k; ++i, ++is2)
-            {
-              xy[is2] = plf::sum_of_prod[o]((x - xy[i + k]), xy[is2], (xy[i] - x), xy[is2 + 1]) / (xy[i] - xy[i + k]);
-            }
+            xy[is2] = plf::sum_of_prod[o]((x - xy[i + k]), xy[is2], (xy[i] - x), xy[is2 + 1]) / (xy[i] - xy[i + k]);
           }
-          return xy[siz_2];
         }
+        return xy[siz_2];
       }
     }
   }

@@ -17,7 +17,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct sum_of_squares_t : eve::callable<sum_of_squares_t, Options, kahan_option, raw_option, pedantic_option>
+  struct sum_of_squares_t
+    : plf::callable<sum_of_squares_t, eve::sum_of_squares_t, Options, kahan_option, raw_option, pedantic_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -92,8 +93,7 @@ namespace plf::_
                                                                                       Ts const&... args) noexcept
   {
     using r_t = plf::as_polyfloat_like_t<T0, Ts...>;
-    if constexpr (dimension_v<r_t> == 1) return eve::sum_of_squares(args...);
-    else if constexpr (sizeof...(Ts) == 0) return plf::sqr[o](a0);
+    if constexpr (sizeof...(Ts) == 0) return plf::sqr[o](a0);
     else if constexpr (O::contains(kahan))
     {
       auto pair_sqr_add = [](auto pair0, auto r1) {

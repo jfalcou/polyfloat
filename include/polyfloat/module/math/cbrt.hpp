@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct cbrt_t : eve::elementwise_callable<cbrt_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct cbrt_t : plf::elementwise_callable<cbrt_t, eve::cbrt_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -70,7 +71,6 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto cbrt_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::cbrt(xx);
-    else return plf::nthroot(xx, T(3));
+    return plf::nthroot(xx, T(3));
   }
 }

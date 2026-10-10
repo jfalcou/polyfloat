@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct cosh_t : eve::elementwise_callable<cosh_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct cosh_t : plf::elementwise_callable<cosh_t, eve::cosh_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -70,24 +71,20 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto cosh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::cosh(a0);
-    else
-    {
-      using u_t = eve::underlying_type_t<T>;
-      auto inf = is_not_finite(a0);
-      T ovflimitmln2 = maxlog(as(a0)) - log_2(as(a0));
-      auto aa0 = plf::abs(a0);
-      auto x = plf::if_else(inf, zero, aa0);
-      auto t = plf::exp[o](x);
-      auto invt = if_else(x > 22, eve::zero, plf::rec[pedantic](t));
-      auto c = plf::average(t, invt);
-      auto test = (x < ovflimitmln2) || inf;
-      if (eve::all(test)) return if_else(inf, aa0, c);
-      auto w = plf::exp[o](x * half(eve::as<T>()));
-      t = eve::half(eve::as<u_t>()) * w;
-      t *= w;
-      c = if_else(test, c, t);
-      return if_else(inf, aa0, c);
-    }
+    using u_t = eve::underlying_type_t<T>;
+    auto inf = is_not_finite(a0);
+    T ovflimitmln2 = maxlog(as(a0)) - log_2(as(a0));
+    auto aa0 = plf::abs(a0);
+    auto x = plf::if_else(inf, zero, aa0);
+    auto t = plf::exp[o](x);
+    auto invt = if_else(x > 22, eve::zero, plf::rec[pedantic](t));
+    auto c = plf::average(t, invt);
+    auto test = (x < ovflimitmln2) || inf;
+    if (eve::all(test)) return if_else(inf, aa0, c);
+    auto w = plf::exp[o](x * half(eve::as<T>()));
+    t = eve::half(eve::as<u_t>()) * w;
+    t *= w;
+    c = if_else(test, c, t);
+    return if_else(inf, aa0, c);
   }
 }

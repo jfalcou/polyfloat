@@ -27,7 +27,7 @@
 namespace plf
 {
 
-  template<typename Options> struct agm_t : eve::callable<agm_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct agm_t : plf::callable<agm_t, eve::agm_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
     requires(eve::same_lanes_or_scalar<T0, T1>)
@@ -90,34 +90,30 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto agm_(POLYFLOAT_DELAY(), O const&, T0 const& t0, T1 const& t1) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1>;
-    if constexpr (dimension_v<r_t> == 1) return eve::agm(t0, t1);
-    else
+    auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+    auto a = cvt(t0);
+    auto b = cvt(t1);
+    auto ex = exponent(average(a, b));
+    auto r = nan(as<r_t>());
+    auto null = is_eqz(a) || is_eqz(b);
+    r = if_else(null, zero, r);
+    auto infi = is_infinite(a) || is_infinite(b);
+    r = if_else(infi, a + b, r);
+    auto unord = is_unordered(a, b);
+    auto done = is_lez(sign(a) * sign(b)) || unord || infi;
+    a = if_else(done, zero, a);
+    b = if_else(done, zero, b);
+    a = ldexp(a, -ex);
+    b = ldexp(b, -ex);
+    auto c = average(a, -b);
+    while (eve::any(abs(c) > 2 * eps(as(c))))
     {
-      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
-      auto a = cvt(t0);
-      auto b = cvt(t1);
-      auto ex = exponent(average(a, b));
-      auto r = nan(as<r_t>());
-      auto null = is_eqz(a) || is_eqz(b);
-      r = if_else(null, zero, r);
-      auto infi = is_infinite(a) || is_infinite(b);
-      r = if_else(infi, a + b, r);
-      auto unord = is_unordered(a, b);
-      auto done = is_lez(sign(a) * sign(b)) || unord || infi;
-      a = if_else(done, zero, a);
-      b = if_else(done, zero, b);
-      a = ldexp(a, -ex);
-      b = ldexp(b, -ex);
-      auto c = average(a, -b);
-      while (eve::any(abs(c) > 2 * eps(as(c))))
-      {
-        auto an = average(a, b);
-        auto bn = sqrt(a * b);
-        c = average(a, -b);
-        a = an;
-        b = bn;
-      }
-      return if_else(done, r, ldexp(b, ex));
+      auto an = average(a, b);
+      auto bn = sqrt(a * b);
+      c = average(a, -b);
+      a = an;
+      b = bn;
     }
+    return if_else(done, r, ldexp(b, ex));
   }
 }

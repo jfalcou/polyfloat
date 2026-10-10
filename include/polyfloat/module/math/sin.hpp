@@ -20,7 +20,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct sin_t : eve::elementwise_callable<sin_t,
+  struct sin_t : plf::elementwise_callable<sin_t,
+                                           eve::sin_t,
                                            Options,
                                            raw_option,
                                            pedantic_option,
@@ -81,10 +82,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto sin_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto sin_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::sin[o](a0);
-    else if constexpr (O::contains(eve::deg))
+    if constexpr (O::contains(eve::deg))
     {
       return plf::sin[eve::radpi](plf::div_180(a0));
     }

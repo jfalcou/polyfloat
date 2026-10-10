@@ -16,7 +16,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct div_180_t : eve::elementwise_callable<div_180_t, Options, raw_option, pedantic_option>
+  struct div_180_t : plf::elementwise_callable<div_180_t, eve::div_180_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -77,11 +77,7 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto div_180_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::div_180(a);
-    else
-    {
-      auto [dh, dl] = plf::two_split(plf::oneo_180(eve::as<T>()));
-      return plf::fma(a, dh, a * dl);
-    }
+    auto [dh, dl] = plf::two_split(plf::oneo_180(eve::as<T>()));
+    return plf::fma(a, dh, a * dl);
   }
 }

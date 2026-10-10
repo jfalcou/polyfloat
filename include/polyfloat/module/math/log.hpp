@@ -18,7 +18,8 @@
 namespace plf
 {
 
-  template<typename Options> struct log_t : eve::elementwise_callable<log_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct log_t : plf::elementwise_callable<log_t, eve::log_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -72,22 +73,18 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto log_(POLYFLOAT_DELAY(), O const&, T xx) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::log(xx);
-    else
+    T r(eve::log[eve::pedantic](plf::hi(xx)));
+    auto ex = plf::exp[eve::pedantic](-r);
+    ex = if_else(eve::is_nan(ex), eve::zero, ex);
+    r -= plf::oneminus(xx * ex);
+    if constexpr (dimension_v<T> == 3)
     {
-      T r(eve::log[eve::pedantic](plf::hi(xx)));
-      auto ex = plf::exp[eve::pedantic](-r);
-      ex = if_else(eve::is_nan(ex), eve::zero, ex);
-      r -= plf::oneminus(xx * ex);
-      if constexpr (dimension_v<T> == 3)
-      {
-        r -= plf::oneminus(xx * plf::exp[pedantic](-r));
-        r -= plf::oneminus(xx * plf::exp[pedantic](-r));
-      }
-      r = if_else(is_ltz(xx) || is_nan(xx), eve::nan, r);
-      r = if_else(is_infinite(xx), plf::inf(as(xx)), r);
-      r = if_else(is_eqz(xx), plf::minf(as(xx)), r);
-      return r;
+      r -= plf::oneminus(xx * plf::exp[pedantic](-r));
+      r -= plf::oneminus(xx * plf::exp[pedantic](-r));
     }
+    r = if_else(is_ltz(xx) || is_nan(xx), eve::nan, r);
+    r = if_else(is_infinite(xx), plf::inf(as(xx)), r);
+    r = if_else(is_eqz(xx), plf::minf(as(xx)), r);
+    return r;
   }
 }

@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct ulp_t : eve::elementwise_callable<ulp_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct ulp_t : plf::elementwise_callable<ulp_t, eve::ulp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -71,8 +72,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto ulp_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::ulp(z);
-    else if constexpr (dimension_v<Z> == 2)
+    if constexpr (dimension_v<Z> == 2)
     {
       auto [h, l] = z;
       return if_else(is_nez(l), ulp(l), ulp(h));

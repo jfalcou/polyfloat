@@ -18,7 +18,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct oneminus_t : eve::elementwise_callable<oneminus_t, Options, raw_option, pedantic_option>
+  struct oneminus_t : plf::elementwise_callable<oneminus_t, eve::oneminus_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -72,7 +72,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto oneminus_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::oneminus(z);
-    else return eve::one(eve::as(hi(z))) - z;
+    return eve::one(eve::as(hi(z))) - z;
   }
 }

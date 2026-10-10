@@ -16,7 +16,7 @@ namespace plf
 {
 
   template<typename Options>
-  struct prevint_t : eve::elementwise_callable<prevint_t, Options, raw_option, pedantic_option>
+  struct prevint_t : plf::elementwise_callable<prevint_t, eve::prevint_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -70,12 +70,8 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto prevint_(POLYFLOAT_DELAY(), O const& o, Z const& v) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::prevint(v);
-    else
-    {
-      auto ni = plf::floor(plf::prev[o.drop(raw)](v));
-      if (!O::contains(raw)) ni = if_else(plf::is_nan(v), v, ni);
-      return ni;
-    }
+    auto ni = plf::floor(plf::prev[o.drop(raw)](v));
+    if (!O::contains(raw)) ni = if_else(plf::is_nan(v), v, ni);
+    return ni;
   }
 }

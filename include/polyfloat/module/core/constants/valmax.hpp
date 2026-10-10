@@ -13,14 +13,14 @@
 #include <polyfloat/types/traits.hpp>
 namespace plf
 {
-  template<typename Options> struct valmax_t : eve::constant_callable<valmax_t, Options>
+  template<typename Options>
+  struct valmax_t : plf::constant_callable<valmax_t, eve::valmax_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmax(eve::as<u_t>());
-      if constexpr (dimension_v<T> == 1) return vlm;
-      else if constexpr (dimension_v<T> == 2)
+      if constexpr (dimension_v<T> == 2)
       {
         auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
         return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));

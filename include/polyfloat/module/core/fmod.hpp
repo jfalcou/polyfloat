@@ -18,7 +18,8 @@
 namespace plf
 {
 
-  template<typename Options> struct fmod_t : eve::strict_tuple_callable<fmod_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct fmod_t : plf::strict_tuple_callable<fmod_t, eve::fmod_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -91,15 +92,11 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto fmod_(POLYFLOAT_DELAY(), O const&, Z1 const& aa, Z2 const& bb) noexcept
   {
     using plf_t = as_polyfloat_t<Z1, Z2>;
-    if constexpr (dimension_v<plf_t> == 1) return eve::fmod(aa, bb);
-    else
-    {
-      using u_t = eve::element_type_t<plf_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto a = cvt(aa);
-      auto b = cvt(bb);
-      return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b), eve::allbits,
-                     plf::if_else(is_eqz(a) || is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
-    }
+    using u_t = eve::element_type_t<plf_t>;
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    auto a = cvt(aa);
+    auto b = cvt(bb);
+    return if_else(is_unordered(a, b) || is_infinite(a) || is_eqz(b), eve::allbits,
+                   plf::if_else(is_eqz(a) || is_infinite(b), a, fnma(b, div[toward_zero](a, b), a)));
   }
 }

@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct nthroot_t : eve::callable<nthroot_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct nthroot_t : plf::callable<nthroot_t, eve::nthroot_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
     POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Z1, N> operator()(Z1 z1, N n) const noexcept
@@ -90,24 +91,20 @@ namespace plf::_
   constexpr auto nthroot_(POLYFLOAT_DELAY(), O const& o, T x, N n) noexcept
   requires(!eve::integral_value<N>)
   {
-    if constexpr (dimension_v<T> == 1) return eve::nthroot[o](x, n);
-    else
+    using r_t = plf::as_polyfloat_like_t<T, N>;
+    using e_t = eve::element_type_t<r_t>;
+    auto xx = plf::convert(x, eve::as<e_t>());
+    auto nn = plf::convert(n, eve::as<e_t>());
+    auto ltz = plf::is_ltz(xx);
+    r_t r{};
+    hi(r) = eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn)));
+    r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
+    if constexpr (dimension_v<T> == 3)
     {
-      using r_t = plf::as_polyfloat_like_t<T, N>;
-      using e_t = eve::element_type_t<r_t>;
-      auto xx = plf::convert(x, eve::as<e_t>());
-      auto nn = plf::convert(n, eve::as<e_t>());
-      auto ltz = plf::is_ltz(xx);
-      r_t r{};
-      hi(r) = eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn)));
       r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
-      if constexpr (dimension_v<T> == 3)
-      {
-        r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
-      }
-      auto res = plf::if_else(plf::is_eqz(xx), xx, r);
-      if constexpr (!O::contains(raw)) res = plf::if_else(plf::is_not_finite(xx), xx, res);
-      return plf::if_else(ltz && plf::is_even(nn), plf::nan(eve::as(res)), res);
     }
+    auto res = plf::if_else(plf::is_eqz(xx), xx, r);
+    if constexpr (!O::contains(raw)) res = plf::if_else(plf::is_not_finite(xx), xx, res);
+    return plf::if_else(ltz && plf::is_even(nn), plf::nan(eve::as(res)), res);
   }
 }

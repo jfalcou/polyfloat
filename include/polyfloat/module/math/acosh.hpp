@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct acosh_t : eve::elementwise_callable<acosh_t, Options, raw_option, pedantic_option>
+  template<typename Options>
+  struct acosh_t : plf::elementwise_callable<acosh_t, eve::acosh_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -67,14 +68,10 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto acosh_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto acosh_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::acosh[o](a0);
-    else
-    {
-      auto da02 = plf::dec(plf::sqr(a0));
-      auto r = plf::if_else(plf::is_gez(da02), plf::log(a0 + plf::sqrt(da02)), plf::nan(as(da02)));
-      return plf::if_else(plf::is_pinf(a0), a0, r);
-    }
+    auto da02 = plf::dec(plf::sqr(a0));
+    auto r = plf::if_else(plf::is_gez(da02), plf::log(a0 + plf::sqrt(da02)), plf::nan(as(da02)));
+    return plf::if_else(plf::is_pinf(a0), a0, r);
   }
 }

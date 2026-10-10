@@ -20,7 +20,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct sincos_t : eve::elementwise_callable<sincos_t,
+  struct sincos_t : plf::elementwise_callable<sincos_t,
+                                              eve::sincos_t,
                                               Options,
                                               raw_option,
                                               pedantic_option,
@@ -82,10 +83,9 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto sincos_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto sincos_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::sincos[o](a0);
-    else if constexpr (O::contains(eve::deg))
+    if constexpr (O::contains(eve::deg))
     {
       if constexpr (O::contains(quarter_circle))
       {

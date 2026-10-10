@@ -16,7 +16,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct is_not_flint_t : eve::elementwise_callable<is_not_flint_t, Options, raw_option, pedantic_option>
+  struct is_not_flint_t
+    : plf::elementwise_callable<is_not_flint_t, eve::is_not_flint_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
     POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
@@ -87,8 +88,7 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   POLYFLOAT_FORCEINLINE constexpr auto is_not_flint_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 1) return eve::is_not_flint(z);
-    else if constexpr (dimension_v<Z> == 2) return eve::is_not_flint(lo(z)) || eve::is_not_flint(hi(z));
+    if constexpr (dimension_v<Z> == 2) return eve::is_not_flint(lo(z)) || eve::is_not_flint(hi(z));
     else if constexpr (dimension_v<Z> == 3)
       return eve::is_not_flint(lo(z)) || eve::is_not_flint(md(z)) || (eve::is_not_flint(hi(z)));
   }

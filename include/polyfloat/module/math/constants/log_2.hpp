@@ -10,21 +10,18 @@
 #include <polyfloat/details/callable.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
+#include <eve/module/math/constant/log_2.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct log_2_t : eve::constant_callable<log_2_t, Options>
+  template<typename Options>
+  struct log_2_t : plf::constant_callable<log_2_t, eve::log_2_t, Options, lower_option, upper_option>
   {
     template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
-      if constexpr (plf::dimension_v<T> == 1)
-      {
-        if constexpr (std::same_as<u_t, float>) return float(0x1.62e43p-1);
-        else if constexpr (std::same_as<u_t, double>) return double(0x1.62e42fefa39efp-1);
-      }
-      else if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::dimension_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<float>(0x1.62e43p-1, -0x1.05c61p-29);
         else if constexpr (std::same_as<u_t, double>)
