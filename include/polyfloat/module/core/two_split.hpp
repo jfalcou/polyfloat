@@ -17,14 +17,14 @@ namespace plf
 
   template<typename Options> struct two_split_t : eve::callable<two_split_t, Options>
   {
-    //     template<auto N, concepts::polyfloat_like T>
-    //     POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t, std::integral_constant<int, N> s) const noexcept
-    //     {
-    //       return POLYFLOAT_CALL(t, s);
-    //     }
+    template<auto N, concepts::polyfloat_like T>
+    POLYFLOAT_FORCEINLINE eve::zipped<T, T> constexpr operator()(T t, std::integral_constant<int, N> s) const noexcept
+    {
+      return POLYFLOAT_CALL(t, s);
+    }
 
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t) const noexcept
+    POLYFLOAT_FORCEINLINE eve::zipped<T, T> constexpr operator()(T t) const noexcept
     {
       return POLYFLOAT_CALL(t);
     }

@@ -20,12 +20,8 @@ namespace plf
   template<typename Options>
   struct two_add_t : eve::strict_tuple_callable<two_add_t, Options, raw_option, pedantic_option>
   {
-    //     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-    //     {
-    //     };
-
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0, T t1) const noexcept
+    POLYFLOAT_FORCEINLINE typename eve::zipped<T, T> constexpr operator()(T t0, T t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }

@@ -23,7 +23,7 @@ namespace plf
   {
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
     POLYFLOAT_FORCEINLINE
-      typename kumi::tuple<plf::as_polyfloat_like_t<T0, T1>, plf::as_polyfloat_like_t<T0, T1>> constexpr
+      typename eve::zipped<plf::as_polyfloat_like_t<T0, T1>, plf::as_polyfloat_like_t<T0, T1>> constexpr
       operator()(T0 t0, T1 t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);

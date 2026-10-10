@@ -23,7 +23,7 @@ namespace plf
   struct minmax_t : eve::strict_tuple_callable<minmax_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr kumi::tuple<as_polyfloat_like_t<Z1, Zs...>, as_polyfloat_like_t<Z1, Zs...>>
+    POLYFLOAT_FORCEINLINE constexpr eve::zipped<as_polyfloat_like_t<Z1, Zs...>, as_polyfloat_like_t<Z1, Zs...>>
     operator()(Z1 z1, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(z1, zs...);

@@ -21,12 +21,8 @@ namespace plf
   template<typename Options>
   struct two_prod_t : eve::strict_tuple_callable<two_prod_t, Options, raw_option, pedantic_option>
   {
-    //     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
-    //     {
-    //     };
-
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0, T t1) const noexcept
+    POLYFLOAT_FORCEINLINE typename eve::zipped<T, T> constexpr operator()(T t0, T t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
@@ -98,7 +94,7 @@ namespace plf
       }
       else
       {
-        auto e0 = if_else(plf::is_not_finite(r0), zero, plf::_::inner_fma(a, b, -r0));
+        auto e0 = if_else(plf::is_not_finite(r0), zero(eve::as(a)), plf::_::inner_fma(a, b, -r0));
         return eve::zip(r0, e0);
       }
     }
