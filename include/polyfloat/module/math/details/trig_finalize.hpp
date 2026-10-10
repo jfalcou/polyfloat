@@ -84,6 +84,6 @@ namespace plf::_
     auto ce0 = cos_eval(xr2);
     auto ce = plf::fnma(se0, dxr, ce0);
     auto se = plf::fma(dxr, ce0, se0);
-    return kumi::make_tuple((plf::if_else(swap, ce, se) * sin_sign), plf::if_else(swap, se, ce) * cos_sign);
+    return eve::zip((plf::if_else(swap, ce, se) * sin_sign), plf::if_else(swap, se, ce) * cos_sign);
   }
 }

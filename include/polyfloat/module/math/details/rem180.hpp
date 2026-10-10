@@ -35,6 +35,6 @@ namespace plf::_
     xr = plf::if_else(tst, x - T(45), xr);
     xr = plf::div_180(xr) * pi(as(xr));
     auto dxr = plf::zero(eve::as(xr)); //dx_2 * plf::pi(as(xr));
-    return kumi::make_tuple(fn, xr, dxr);
+    return eve::zip(fn, xr, dxr);
   }
 }

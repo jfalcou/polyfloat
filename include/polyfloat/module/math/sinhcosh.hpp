@@ -20,7 +20,7 @@ namespace plf
   struct sinhcosh_t : eve::elementwise_callable<sinhcosh_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr kumi::tuple<Z, Z> operator()(Z z) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }

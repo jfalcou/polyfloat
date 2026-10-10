@@ -27,6 +27,6 @@ namespace plf::_
     auto xr = x_2 * pi(eve::as<T>());
     auto dxr = plf::zero(eve::as(xr));
     //    auto dxr         = dx_2* pi(eve::as<T>());
-    return kumi::make_tuple(plf::quadrant(xi), xr, dxr);
+    return eve::zip(plf::quadrant(xi), xr, dxr);
   }
 }

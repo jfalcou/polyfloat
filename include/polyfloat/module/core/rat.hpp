@@ -20,13 +20,13 @@ namespace plf
   template<typename Options> struct rat_t : eve::callable<rat_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr kumi::tuple<Z, Z> operator()(Z z) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1>
-    POLYFLOAT_FORCEINLINE constexpr kumi::tuple<as_polyfloat_like_t<Z0, Z1>, as_polyfloat_like_t<Z0, Z1>> operator()(
+    POLYFLOAT_FORCEINLINE constexpr eve::zipped<as_polyfloat_like_t<Z0, Z1>, as_polyfloat_like_t<Z0, Z1>> operator()(
       Z0 z0, Z1 tol) const noexcept
     {
       return POLYFLOAT_CALL(z0, tol);

@@ -22,13 +22,13 @@ namespace plf
   template<typename Options>
   struct two_fma_approx_t : eve::strict_tuple_callable<two_fma_approx_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts>
+    struct result : eve::zipped<as_polyfloat_like<Ts...>, as_polyfloat_like<Ts...>, as_polyfloat_like<Ts...>>
     {
     };
 
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1, concepts::polyfloat_like T2>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<result<T0, T1, T2>, result<T0, T1, T2>> constexpr operator()(
-      T0 t0, T1 t1, T2 t2) const noexcept
+    POLYFLOAT_FORCEINLINE typename result<T0, T1, T2>::type constexpr operator()(T0 t0, T1 t1, T2 t2) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1, t2);
     }

@@ -21,7 +21,7 @@ namespace plf
   struct two_div_approx_t : eve::strict_tuple_callable<two_div_approx_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename kumi::tuple<T, T> constexpr operator()(T t0, T t1) const noexcept
+    POLYFLOAT_FORCEINLINE typename eve::zipped<T, T> constexpr operator()(T t0, T t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
