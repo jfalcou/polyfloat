@@ -14,7 +14,7 @@ var searchData=
   ['as_5fcomponent_56',['as_component',['../structplf_1_1as__component.html',1,'plf']]],
   ['as_5fcomponent_5ftype_5ft_57',['as_component_type_t',['../group__traits_gaa325dcaa3d30c3a89c5333b2800aac54.html#gaa325dcaa3d30c3a89c5333b2800aac54',1,'plf']]],
   ['as_5fpolyfloat_5flike_60',['as_polyfloat_like',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
-  ['as_5fpolyfloat_5flike_3c_20t_2c_20kumi_3a_3aapply_5ftraits_5ft_3c_20as_5fpolyfloat_5flike_2c_20ts_20_3e_20_3e_61',['as_polyfloat_like&lt; T, kumi::apply_traits_t&lt; as_polyfloat_like, Ts &gt; &gt;',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
+  ['as_5fpolyfloat_5flike_3c_20t_2c_20kumi_3a_3aapply_5ftraits_5ft_3c_20as_5fpolyfloat_5flike_2c_20tup_20_3e_20_3e_61',['as_polyfloat_like&lt; T, kumi::apply_traits_t&lt; as_polyfloat_like, Tup &gt; &gt;',['../structplf_1_1as__polyfloat__like.html',1,'plf']]],
   ['as_5fpolyfloat_5fn_5ft_62',['as_polyfloat_n_t',['../group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4',1,'plf']]],
   ['as_5fpolyfloat_5ft_63',['as_polyfloat_t',['../group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594',1,'plf']]],
   ['asech_66',['asech',['../group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],

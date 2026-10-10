@@ -12,8 +12,32 @@
     <templarg>typename... Ts</templarg>
   </compound>
   <compound kind="struct">
+    <name>plf::callable</name>
+    <filename>structplf_1_1callable.html</filename>
+    <templarg>template&lt; typename &gt; class Func</templarg>
+    <templarg>template&lt; typename &gt; class Eve</templarg>
+    <templarg>typename OptionsValues</templarg>
+    <templarg>typename... Options</templarg>
+  </compound>
+  <compound kind="struct">
     <name>complexify</name>
     <filename>structcomplexify.html</filename>
+  </compound>
+  <compound kind="struct">
+    <name>plf::constant_callable</name>
+    <filename>structplf_1_1constant__callable.html</filename>
+    <templarg>template&lt; typename &gt; class Func</templarg>
+    <templarg>template&lt; typename &gt; class Eve</templarg>
+    <templarg>typename OptionsValues</templarg>
+    <templarg>typename... Options</templarg>
+  </compound>
+  <compound kind="struct">
+    <name>plf::elementwise_callable</name>
+    <filename>structplf_1_1elementwise__callable.html</filename>
+    <templarg>template&lt; typename &gt; class Func</templarg>
+    <templarg>template&lt; typename &gt; class Eve</templarg>
+    <templarg>typename OptionsValues</templarg>
+    <templarg>typename... Options</templarg>
   </compound>
   <compound kind="class">
     <name>plf::polyfloat</name>
@@ -301,6 +325,14 @@
       <arglist>(T0, Ts...) -&gt; polyfloat&lt; T0, 1+sizeof...(Ts)&gt;</arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>plf::strict_tuple_callable</name>
+    <filename>structplf_1_1strict__tuple__callable.html</filename>
+    <templarg>template&lt; typename &gt; class Func</templarg>
+    <templarg>template&lt; typename &gt; class Eve</templarg>
+    <templarg>typename OptionsValues</templarg>
+    <templarg>typename... Options</templarg>
+  </compound>
   <compound kind="concept">
     <name>plf::concepts::doublereal_like</name>
     <filename>conceptplf_1_1concepts_1_1doublereal__like.html</filename>
@@ -338,7 +370,11 @@
     <filename>namespaceplf.html</filename>
     <class kind="struct">plf::as_component</class>
     <class kind="struct">plf::as_polyfloat_like</class>
+    <class kind="struct">plf::callable</class>
+    <class kind="struct">plf::constant_callable</class>
+    <class kind="struct">plf::elementwise_callable</class>
     <class kind="class">plf::polyfloat</class>
+    <class kind="struct">plf::strict_tuple_callable</class>
     <member kind="typedef">
       <type>typename as_component_type&lt; T &gt;::type</type>
       <name>as_component_type_t</name>
@@ -3762,6 +3798,10 @@
     <title>Traits</title>
     <filename>group__traits.html</filename>
     <class kind="struct">plf::as_component</class>
+    <class kind="struct">plf::callable</class>
+    <class kind="struct">plf::constant_callable</class>
+    <class kind="struct">plf::elementwise_callable</class>
+    <class kind="struct">plf::strict_tuple_callable</class>
     <member kind="typedef">
       <type>typename as_component_type&lt; T &gt;::type</type>
       <name>plf::as_component_type_t</name>

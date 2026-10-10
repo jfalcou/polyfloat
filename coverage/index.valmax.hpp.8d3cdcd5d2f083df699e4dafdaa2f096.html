@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2026-10-10 16:04:42</td>
+      <td>2026-10-10 18:04:02</td>
     </tr>
   </table>
 </div>
@@ -74,9 +74,9 @@
       <th>Block coverage</th>
     </tr>
     <tr><td><a href="#l35">plf::polyfloat&lt;double, 2u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::operator()&lt;plf::polyfloat&lt;double, 2u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 2u&gt; &gt; const&amp;) const (line 35)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-    <tr><td><a href="#l18">plf::polyfloat&lt;double, 2u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::value&lt;plf::polyfloat&lt;double, 2u&gt;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 2u&gt; &gt; const&amp;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; const&amp;) (line 18)</a></td><td>called 2 times, returned 2 times</td><td>89.0%</td></tr>
+    <tr><td><a href="#l19">plf::polyfloat&lt;double, 2u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::value&lt;plf::polyfloat&lt;double, 2u&gt;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 2u&gt; &gt; const&amp;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; const&amp;) (line 19)</a></td><td>called 2 times, returned 2 times</td><td>89.0%</td></tr>
     <tr><td><a href="#l35">plf::polyfloat&lt;double, 3u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::operator()&lt;plf::polyfloat&lt;double, 3u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 3u&gt; &gt; const&amp;) const (line 35)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-    <tr><td><a href="#l18">plf::polyfloat&lt;double, 3u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::value&lt;plf::polyfloat&lt;double, 3u&gt;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 3u&gt; &gt; const&amp;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; const&amp;) (line 18)</a></td><td>called 1 time, returned 1 time</td><td>90.0%</td></tr>
+    <tr><td><a href="#l19">plf::polyfloat&lt;double, 3u&gt; plf::valmax_t&lt;eve::options&lt;rbr::settings&lt;&gt; &gt; &gt;::value&lt;plf::polyfloat&lt;double, 3u&gt;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 3u&gt; &gt; const&amp;, eve::options&lt;rbr::settings&lt;rbr::option&lt;eve::_::condition_key_t, eve::ignore_none_&gt; &gt; &gt; const&amp;) (line 19)</a></td><td>called 1 time, returned 1 time</td><td>90.0%</td></tr>
   </table>
 </details>
 
@@ -201,38 +201,45 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">valmax_t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">constant_callable</span><span class="o">&lt;</span><span class="n">valmax_t</span><span class="p">,</span><span class="w"> </span><span class="n">Options</span><span class="o">&gt;</span></td>
+      <td class="src "><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Options</span><span class="o">&gt;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l17" href="#l17">17</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="p">{</span></td>
+      <td class="src "><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">valmax_t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">plf</span><span class="o">::</span><span class="n">constant_callable</span><span class="o">&lt;</span><span class="n">valmax_t</span><span class="p">,</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">valmax_t</span><span class="p">,</span><span class="w"> </span><span class="n">Options</span><span class="p">,</span><span class="w"> </span><span class="n">lower_option</span><span class="p">,</span><span class="w"> </span><span class="n">upper_option</span><span class="o">&gt;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l18" href="#l18">18</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">{</span></td>
+    </tr>
+    <tr class="source-line">
+      <td class="lineno"><a id="l19" href="#l19">19</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">5</td>
       <td class="src coveredLine"><span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">POLYFLOAT_FORCEINLINE</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">(</span><span class="n">eve</span><span class="o">::</span><span class="n">as</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="p">)</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l19" href="#l19">19</a></td>
+      <td class="lineno"><a id="l20" href="#l20">20</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
       <td class="src "><span class="w">    </span><span class="p">{</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l20" href="#l20">20</a></td>
+      <td class="lineno"><a id="l21" href="#l21">21</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
       <td class="src "><span class="w">      </span><span class="k">using</span><span class="w"> </span><span class="n">u_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">underlying_type_t</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l21" href="#l21">21</a></td>
+      <td class="lineno"><a id="l22" href="#l22">22</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">1/1</summary>
@@ -245,18 +252,11 @@
       <td class="src coveredLine"><span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">vlm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eve</span><span class="o">::</span><span class="n">valmax</span><span class="p">(</span><span class="n">eve</span><span class="o">::</span><span class="n">as</span><span class="o">&lt;</span><span class="n">u_t</span><span class="o">&gt;</span><span class="p">());</span></td>
     </tr>
     <tr class="source-line">
-      <td class="lineno"><a id="l22" href="#l22">22</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">vlm</span><span class="p">;</span></td>
-    </tr>
-    <tr class="source-line">
       <td class="lineno"><a id="l23" href="#l23">23</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></td>
+      <td class="src "><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">dimension_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l24" href="#l24">24</a></td>
