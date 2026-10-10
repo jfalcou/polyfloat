@@ -2108,12 +2108,12 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/math/details/rem2.hpp",
-            "function_covered": 4,
+            "function_covered": 12,
             "function_percent": 100.0,
-            "function_total": 4,
-            "line_covered": 6,
+            "function_total": 12,
+            "line_covered": 9,
             "line_percent": 100.0,
-            "line_total": 6
+            "line_total": 9
         },
         {
             "branch_covered": 0,
@@ -2560,12 +2560,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 9250,
+    "function_covered": 9258,
     "function_percent": 96.0,
-    "function_total": 9639,
+    "function_total": 9647,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2237,
+    "line_covered": 2240,
     "line_percent": 99.6,
-    "line_total": 2245,
+    "line_total": 2248,
     "root": "../../.."
 }
