@@ -18,7 +18,6 @@
 #include <polyfloat/module/math/details/rem2.hpp>
 #include <polyfloat/module/math/details/rem180.hpp>
 #include <polyfloat/module/math/div_180.hpp>
-#include <iostream>
 
 namespace plf
 {
