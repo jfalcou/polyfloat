@@ -22,13 +22,9 @@ namespace plf
   template<typename Options>
   struct two_fma_approx_t : eve::strict_tuple_callable<two_fma_approx_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts>
-    struct result : eve::zipped<as_polyfloat_like<Ts...>, as_polyfloat_like<Ts...>, as_polyfloat_like<Ts...>>
-    {
-    };
 
-    template<concepts::polyfloat_like T0, concepts::polyfloat_like T1, concepts::polyfloat_like T2>
-    POLYFLOAT_FORCEINLINE typename result<T0, T1, T2>::type constexpr operator()(T0 t0, T1 t1, T2 t2) const noexcept
+    template<concepts::polyfloat_like T>
+    POLYFLOAT_FORCEINLINE eve::zipped<T, T> operator()(T t0, T t1, T t2) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1, t2);
     }
@@ -90,15 +86,9 @@ namespace plf
 
   namespace _
   {
-    template<typename T0, typename T1, typename T2, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T0 aa, T1 bb, T2 cc)
+    template<typename T, eve::callable_options O>
+    constexpr POLYFLOAT_FORCEINLINE auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T a, T b, T c)
     {
-      using r_t = as_polyfloat_like_t<T0, T1, T2>;
-      using u_t = eve::element_type_t<r_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto a = cvt(aa);
-      auto b = cvt(bb);
-      auto c = cvt(cc);
       auto d = fma(a, b, c);
       auto [v1, v2] = dekker_prod(a, b);
       auto [w1, w2] = two_add(c, v1);

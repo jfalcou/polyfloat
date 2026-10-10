@@ -104,7 +104,7 @@ namespace plf::_
         auto x = plf::abs(a0);
         x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
         x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero, x);
-        auto [fn, xr, dxr] = plf::_::rem2(x);
+        auto [fn, xr, dxr] = plf::rem2(x);
         return cos_finalize(fn, xr, dxr);
       }
     }
