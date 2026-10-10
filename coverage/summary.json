@@ -1,7 +1,7 @@
 {
-    "branch_covered": 319,
+    "branch_covered": 320,
     "branch_percent": 94.7,
-    "branch_total": 337,
+    "branch_total": 338,
     "files": [
         {
             "branch_covered": 0,
@@ -1583,21 +1583,21 @@
             "function_covered": 18,
             "function_percent": 100.0,
             "function_total": 18,
-            "line_covered": 7,
+            "line_covered": 6,
             "line_percent": 100.0,
-            "line_total": 7
+            "line_total": 6
         },
         {
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/three_fma.hpp",
-            "function_covered": 4,
+            "function_covered": 3,
             "function_percent": 100.0,
-            "function_total": 4,
-            "line_covered": 7,
+            "function_total": 3,
+            "line_covered": 6,
             "line_percent": 100.0,
-            "line_total": 7
+            "line_total": 6
         },
         {
             "branch_covered": 0,
@@ -1624,9 +1624,9 @@
             "line_total": 9
         },
         {
-            "branch_covered": 0,
-            "branch_percent": null,
-            "branch_total": 0,
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
             "filename": "include/polyfloat/module/core/two_prod.hpp",
             "function_covered": 3,
             "function_percent": 100.0,
@@ -2560,12 +2560,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 9251,
+    "function_covered": 9250,
     "function_percent": 96.0,
-    "function_total": 9640,
+    "function_total": 9639,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2239,
+    "line_covered": 2237,
     "line_percent": 99.6,
-    "line_total": 2247,
+    "line_total": 2245,
     "root": "../../.."
 }
