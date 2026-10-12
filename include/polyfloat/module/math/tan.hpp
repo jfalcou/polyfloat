@@ -112,14 +112,14 @@ namespace plf::_
     {
       if constexpr (O::contains(eve::quarter_circle))
       {
-        return tan_eval(a0);
+        return tancot_eval(a0);
       }
-      //       else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
-      //       {
-      //         auto x = plf::abs(a0);
-      //         auto [fn, xr, dxr] = pio_2_reduce(x);
-      //         return tan_finalize(fn, xr, dxr);
-      //       }
+      else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
+      {
+        auto x = plf::abs(a0);
+        auto [fn, xr, dxr] = pio_2_reduce(x);
+        return tan_finalize(a0, fn, xr, dxr);
+      }
       //       else
       //       {
       //         auto x = abs(a0);

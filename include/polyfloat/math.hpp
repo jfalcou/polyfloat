@@ -43,4 +43,5 @@
 #include <polyfloat/module/math/sincos.hpp>
 #include <polyfloat/module/math/sinh.hpp>
 #include <polyfloat/module/math/sinhcosh.hpp>
+#include <polyfloat/module/math/tan.hpp>
 #include <polyfloat/module/math/tanh.hpp>
