@@ -18,6 +18,7 @@
 #include <polyfloat/module/math/cos.hpp>
 #include <polyfloat/module/math/cosh.hpp>
 #include <polyfloat/module/math/coth.hpp>
+#include <polyfloat/module/math/csc.hpp>
 #include <polyfloat/module/math/div_180.hpp>
 #include <polyfloat/module/math/exp.hpp>
 #include <polyfloat/module/math/exp10.hpp>
@@ -38,6 +39,7 @@
 #include <polyfloat/module/math/radindeg.hpp>
 #include <polyfloat/module/math/sigmoid.hpp>
 #include <polyfloat/module/math/radinpi.hpp>
+#include <polyfloat/module/math/sec.hpp>
 #include <polyfloat/module/math/sin.hpp>
 #include <polyfloat/module/math/sinc.hpp>
 #include <polyfloat/module/math/sincos.hpp>

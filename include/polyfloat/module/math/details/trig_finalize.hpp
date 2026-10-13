@@ -18,7 +18,6 @@
 #include <polyfloat/module/math/details/sincos_coefs.hpp>
 #include <polyfloat/module/math/details/tancot_coefs.hpp>
 #include <eve/traits/helpers.hpp>
-#include <iostream>
 
 namespace plf::_
 {
@@ -54,7 +53,6 @@ namespace plf::_
 
   template<typename T> POLYFLOAT_FORCEINLINE auto tancot_eval(T const& z) noexcept
   {
-    std::cout << "latte " << z << std::endl;
     using e_t = eve::element_type_t<T>;
     // here z is positive
     T z2 = eve::sqr(z);
@@ -72,8 +70,6 @@ namespace plf::_
     }
     else if constexpr (std::same_as<e_t, plf::double_real_t<float>>)
     {
-      std::cout << "lattef2 " << z << std::endl;
-
       kumi::tuple num_coefs{plf::_::from_pair(0x1p+0f, 0x0p+0f), plf::_::from_pair(-0x1.06b888p-3f, 0x1.f8471p-28f),
                             plf::_::from_pair(0x1.6fc02cp-9f, 0x1.8e0b8p-36f),
                             plf::_::from_pair(-0x1.f6161cp-18f, -0x1.70d7f6p-43f)};
@@ -82,7 +78,6 @@ namespace plf::_
                             plf::_::from_pair(-0x1.b51608p-13f, -0x1.12306p-38f)};
       auto num = plf::reverse_horner(z2, eve::coefficients(num_coefs));
       auto den = plf::reverse_horner(z2, eve::coefficients(den_coefs));
-      std::cout << "lattef2 " << z * (num / den) << std::endl;
       return z * (num / den);
     }
     else if constexpr (std::same_as<e_t, plf::double_real_t<double>>)
@@ -120,13 +115,13 @@ namespace plf::_
   {
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));
     auto swap_bit = plf::is_nez(plf::fma(T(-2), tmp, fn));
-    auto sign = plf::signnz(a0);
+    auto sign = plf::signnz[eve::pedantic](a0);
     sign *= plf::if_else(plf::is_nez(tmp), plf::mone(eve::as(a0)), plf::one(eve::as(xr)));
     auto xr2 = plf::sqr(xr);
     auto se = sin_eval(xr2, xr);
     auto ce = cos_eval(xr2);
     auto z = plf::if_else(swap_bit, plf::fnma(se, dxr, ce), plf::fma(dxr, ce, se));
-    return sign * z;
+    return plf::if_else(plf::is_ltz(sign), -z, z);
   }
 
   template<typename T>
@@ -148,13 +143,11 @@ namespace plf::_
   template<typename T>
   POLYFLOAT_FORCEINLINE constexpr auto tan_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
   {
-    std::cout << "finalize xr " << xr << " dxr " << dxr << " fn " << fn << std::endl;
     auto aa0lteps = plf::abs(xr) < eps(as<T>());
     auto tmp = one[fn >= T(2)](eve::as(xr));
     auto swap_bit = (fma(T(-2), tmp, fn));
     auto test = plf::is_eqz(swap_bit);
     auto y = tancot_eval(xr);
-    std::cout << "finalize y " << y << " test " << test << std::endl;
     y = plf::if_else(test, y, -plf::rec[pedantic](y));
     y = plf::fma(dxr, plf::fma(y, y, plf::one(eve::as<T>())), y);
     return plf::if_else(aa0lteps, a0, y * plf::signnz(a0));

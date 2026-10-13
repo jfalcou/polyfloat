@@ -89,25 +89,26 @@ namespace plf::_
   {
     //    using e_t =  eve::element_type_t<T>;
     if constexpr (dimension_v<T> == 1) return eve::tan[o](a0);
-    //     else if constexpr (O::contains(eve::deg))
-    //     {
-    //       return plf::tan[eve::radpi](plf::div_180(a0));
-    //     }
-    //     else if constexpr (O::contains(eve::radpi))
-    //     {
-    //       if constexpr (O::contains(eve::quarter_circle))
-    //       {
-    //         return plf::tan[eve::quarter_circle](a0 * plf::pi(eve::as<T>()));
-    //       }
-    //       else
-    //       {
-    //         auto x = plf::abs(a0);
-    //         x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
-    //         x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero, x);
-    //         auto [fn, xr, dxr] = plf::_::rem2(x);
-    //         return tan_finalize(fn, xr, dxr);
-    //       }
-    //     }
+    else if constexpr (O::contains(eve::deg))
+    {
+      return plf::tan[eve::radpi](plf::div_180(a0));
+    }
+    else if constexpr (O::contains(eve::radpi))
+    {
+      if constexpr (O::contains(eve::quarter_circle))
+      {
+        return plf::tan[eve::quarter_circle](a0 * plf::pi(eve::as<T>()));
+      }
+      else
+      {
+        auto x = plf::abs(a0);
+        x = plf::if_else(plf::is_not_finite(x), plf::nan(eve::as(x)), x); // nan or Inf input
+        x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero,
+                         x); //over maxflint all inputs are even integers
+        auto [fn, xr, dxr] = plf::rem2(x);
+        return tan_finalize(fn, xr, dxr);
+      }
+    }
     else
     {
       if constexpr (O::contains(eve::quarter_circle))
@@ -116,21 +117,26 @@ namespace plf::_
       }
       else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
       {
-        std::cout << "icitte" << std::endl;
         auto x = plf::abs(a0);
         auto [fn, xr, dxr] = pio_2_reduce(x);
         return tan_finalize(a0, fn, xr, dxr);
       }
-      //       else
-      //       {
-      //         auto x = abs(a0);
-      //         if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return tan[quarter_circle](a0);
-      //         else if (eve::all(x <= Rempio2_limit[half_circle](as(a0)))) return tan[half_circle](a0);
-      //         else if (eve::all(x <= Rempio2_limit[full_circle](as(a0)))) return tan[full_circle](a0);
-      //         else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return tan[medium](a0);
-      //         else return tan[big](a0);
-      //       }
-      else return a0;
+      else
+      {
+        auto x = abs(a0);
+        if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return tan[quarter_circle](a0);
+        else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return tan[medium](a0);
+        else
+          return tan[medium](
+            plf::if_else(is_not_less_equal(x, Rempio2_limit[medium](as(a0))), nan(eve::as(a0)), tan[medium](a0)));
+        //else return tan[big](a0); TO DO REPLACE previous line
+      }
     }
   }
+}
+
+namespace plf
+{
+  constexpr auto tand = plf::tan[eve::deg];
+  constexpr auto tanpi = plf::tan[eve::radpi];
 }
