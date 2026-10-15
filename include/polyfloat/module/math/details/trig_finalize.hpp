@@ -144,13 +144,26 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto tan_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
   {
     auto aa0lteps = plf::abs(xr) < eps(as<T>());
-    auto tmp = one[fn >= T(2)](eve::as(xr));
-    auto swap_bit = (fma(T(-2), tmp, fn));
+    auto tmp = plf::one[fn >= T(2)](eve::as(xr));
+    auto swap_bit = (plf::fma(T(-2), tmp, fn));
     auto test = plf::is_eqz(swap_bit);
     auto y = tancot_eval(xr);
     y = plf::if_else(test, y, -plf::rec[pedantic](y));
     y = plf::fma(dxr, plf::fma(y, y, plf::one(eve::as<T>())), y);
-    return plf::if_else(aa0lteps, a0, y * plf::signnz(a0));
+    y = plf::if_else(aa0lteps, xr, y);
+    return plf::if_else(plf::is_negative(a0), -y, y);
   }
 
+  template<typename T> EVE_FORCEINLINE constexpr auto cot_finalize(T a0, T fn, T xr, T dxr) noexcept
+  {
+    auto aa0lteps = plf::abs(xr) < plf::eps(as<T>());
+    auto tmp = plf::one[fn >= T(2)](eve::as(xr));
+    auto swap_bit = (plf::fma(T(-2), tmp, fn));
+    auto test = plf::is_eqz(swap_bit);
+    auto y = tancot_eval(xr);
+    y = plf::if_else(test, plf::rec[eve::pedantic](y), -y);
+    y = plf::fma(dxr, plf::fma(y, y, plf::one(eve::as<T>())), y);
+    y = plf::if_else(aa0lteps, xr, y);
+    return plf::if_else(plf::is_negative(a0), -y, y);
+  }
 }

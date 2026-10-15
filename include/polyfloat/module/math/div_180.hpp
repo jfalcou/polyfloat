@@ -78,6 +78,6 @@ namespace plf::_
   template<typename T, eve::callable_options O> constexpr auto div_180_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
     auto [dh, dl] = plf::two_split(plf::oneo_180(eve::as<T>()));
-    return plf::fma(a, dh, a * dl);
+    return plf::fma[plf::is_nez(a)](a, dh, a * dl);
   }
 }

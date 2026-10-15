@@ -17,6 +17,7 @@
 #include <polyfloat/module/math/cbrt.hpp>
 #include <polyfloat/module/math/cos.hpp>
 #include <polyfloat/module/math/cosh.hpp>
+#include <polyfloat/module/math/cot.hpp>
 #include <polyfloat/module/math/coth.hpp>
 #include <polyfloat/module/math/csc.hpp>
 #include <polyfloat/module/math/div_180.hpp>
@@ -33,6 +34,7 @@
 #include <polyfloat/module/math/logspace_add.hpp>
 #include <polyfloat/module/math/logspace_sub.hpp>
 #include <polyfloat/module/math/lpnorm.hpp>
+#include <polyfloat/module/math/mul_pi.hpp>
 #include <polyfloat/module/math/nthroot.hpp>
 #include <polyfloat/module/math/pow.hpp>
 #include <polyfloat/module/math/pow_abs.hpp>

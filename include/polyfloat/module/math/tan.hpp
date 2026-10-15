@@ -11,12 +11,12 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/math/details/sincos_coefs.hpp>
 #include <polyfloat/module/math/details/trig_finalize.hpp>
 #include <polyfloat/module/math/details/rempio2_limits.hpp>
 #include <polyfloat/module/math/details/pio2_reduce.hpp>
 #include <polyfloat/module/math/details/rem2.hpp>
 #include <polyfloat/module/math/details/rem180.hpp>
+#include <polyfloat/module/math/mul_pi.hpp>
 #include <polyfloat/module/math/div_180.hpp>
 #include <iostream>
 
@@ -24,7 +24,8 @@ namespace plf
 {
 
   template<typename Options>
-  struct tan_t : eve::elementwise_callable<tan_t,
+  struct tan_t : plf::elementwise_callable<tan_t,
+                                           eve::tan_t,
                                            Options,
                                            raw_option,
                                            pedantic_option,
@@ -87,9 +88,7 @@ namespace plf::_
 {
   template<typename T, eve::callable_options O> constexpr auto tan_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    //    using e_t =  eve::element_type_t<T>;
-    if constexpr (dimension_v<T> == 1) return eve::tan[o](a0);
-    else if constexpr (O::contains(eve::deg))
+    if constexpr (O::contains(eve::deg))
     {
       return plf::tan[eve::radpi](plf::div_180(a0));
     }
@@ -97,7 +96,7 @@ namespace plf::_
     {
       if constexpr (O::contains(eve::quarter_circle))
       {
-        return plf::tan[eve::quarter_circle](a0 * plf::pi(eve::as<T>()));
+        return plf::tan[eve::quarter_circle](plf::mul_pi(a0));
       }
       else
       {
@@ -106,28 +105,32 @@ namespace plf::_
         x = plf::if_else(plf::is_greater(x, plf::maxflint(eve::as(x))), eve::zero,
                          x); //over maxflint all inputs are even integers
         auto [fn, xr, dxr] = plf::rem2(x);
-        return tan_finalize(fn, xr, dxr);
+        return tan_finalize(a0, fn, xr, dxr);
       }
     }
     else
     {
+      auto x = plf::abs(a0);
       if constexpr (O::contains(eve::quarter_circle))
       {
-        return tancot_eval(a0);
+        auto r = tancot_eval(x);
+        return plf::if_else(plf::is_negative(a0), -r, r);
       }
       else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
       {
-        auto x = plf::abs(a0);
         auto [fn, xr, dxr] = pio_2_reduce(x);
         return tan_finalize(a0, fn, xr, dxr);
       }
       else
       {
-        auto x = abs(a0);
-        if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return tan[quarter_circle](a0);
+        if (eve::all(x <= Rempio2_limit[eve::quarter_circle](eve::as(a0))))
+        {
+          return plf::tan[eve::quarter_circle](a0);
+        }
+        else if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return tan[quarter_circle](a0);
         else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return tan[medium](a0);
         else
-          return tan[medium](
+          return plf::tan[eve::medium](
             plf::if_else(is_not_less_equal(x, Rempio2_limit[medium](as(a0))), nan(eve::as(a0)), tan[medium](a0)));
         //else return tan[big](a0); TO DO REPLACE previous line
       }
