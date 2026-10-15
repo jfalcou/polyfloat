@@ -91,7 +91,7 @@ namespace plf::_
     auto x = abs(a0);
     if constexpr (O::contains(eve::deg))
     {
-      return plf::tan[eve::radpi](plf::div_180(a0));
+      return plf::cot[eve::radpi](plf::div_180(a0));
     }
     else if constexpr (O::contains(eve::radpi))
     {
