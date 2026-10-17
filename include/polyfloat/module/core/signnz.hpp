@@ -72,5 +72,7 @@ namespace plf::_
   POLYFLOAT_FORCEINLINE constexpr auto signnz_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
     return Z(eve::signnz[o](hi(z)));
+    //     if constexpr(O::contains(eve::pedantic))
+    //      return if_else(eve::is_negative(plf::hi(z)), Z(-1), Z(1));
   }
 }
