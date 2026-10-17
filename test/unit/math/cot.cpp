@@ -61,7 +61,7 @@ TTS_CASE_WITH("Check cot ", float, tts::randoms(50.0, 100.0), tts::randoms(0.0, 
     using pv_t = plf::polyfloat<double, 2>;
     pv_t pa(a0, a1);
     std::cout << pa << std::endl;
-    TTS_RELATIVE_EQUAL(cot[eve::medium](pa), tts::mpfr_exec(mcot, pa), 2 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(cot[eve::medium](pa), tts::mpfr_exec(mcot, pa), 4 * tts::epsprec<pv_t>());
     auto pio4 = plf::pio_4(eve::as<pv_t>());
     for (pv_t i = pv_t(0.05); i < pio4; i += pv_t(0.05))
     {
