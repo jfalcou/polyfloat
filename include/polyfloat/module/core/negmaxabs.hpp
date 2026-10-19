@@ -23,7 +23,7 @@ namespace plf
   struct negmaxabs_t : eve::strict_tuple_callable<negmaxabs_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(z1, zs...);
     }
@@ -74,7 +74,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto negmaxabs_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
+  POLYFLOAT_ABI constexpr auto negmaxabs_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
     return -plf::maxabs(z1, zs...);
   }

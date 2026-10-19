@@ -29,10 +29,7 @@ namespace plf
                                           downward_option,
                                           upward_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
-    {
-      return POLYFLOAT_CALL(z);
-    }
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI Z operator()(Z z) const noexcept { return POLYFLOAT_CALL(z); }
 
     POLYFLOAT_CALLABLE_OBJECT(sign_alternate_t, sign_alternate_);
   };
@@ -87,7 +84,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto sign_alternate_(POLYFLOAT_DELAY(), O const& o, T n) noexcept
+  POLYFLOAT_ABI constexpr auto sign_alternate_(POLYFLOAT_DELAY(), O const& o, T n) noexcept
   {
     if constexpr (O::contains_any(upward, downward, to_nearest, toward_zero))
       return plf::if_else(is_odd(plf::round[o](n)), eve::mone, plf::one(as(n)));

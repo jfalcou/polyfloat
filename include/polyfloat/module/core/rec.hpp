@@ -17,10 +17,7 @@ namespace plf
 
   template<typename Options> struct rec_t : eve::elementwise_callable<rec_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
-    {
-      return POLYFLOAT_CALL(z);
-    }
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI Z operator()(Z z) const noexcept { return POLYFLOAT_CALL(z); }
 
     POLYFLOAT_CALLABLE_OBJECT(rec_t, rec_);
   };
@@ -67,7 +64,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto rec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 1) return eve::rec[eve::pedantic](z);
     else return _::rec(z);

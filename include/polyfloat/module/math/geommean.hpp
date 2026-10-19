@@ -24,13 +24,13 @@ namespace plf
     };
 
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(z1, zs...);
     }
 
     template<eve::non_empty_product_type Tup>
-    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup tup) const noexcept
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, Tup> operator()(Tup tup) const noexcept
     requires(eve::same_lanes_or_scalar_tuple<Tup> && kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(tup);
@@ -82,7 +82,7 @@ namespace plf::_
 {
 
   template<typename T1, typename... Ts, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto geommean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
+  POLYFLOAT_ABI constexpr auto geommean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
     using r_t = as_polyfloat_like_t<T1, Ts...>;
     using e_t = eve::element_type_t<r_t>;

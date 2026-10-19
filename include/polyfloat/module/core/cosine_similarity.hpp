@@ -26,13 +26,13 @@ namespace plf
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    POLYFLOAT_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_ABI typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<eve::non_empty_product_type Tup1, eve::non_empty_product_type Tup2>
-    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, kumi::result::cat_t<Tup1, Tup2>> operator()(
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, kumi::result::cat_t<Tup1, Tup2>> operator()(
       Tup1 const& t1, Tup2 const& t2) const noexcept
     requires(eve::same_lanes_or_scalar_tuple<Tup1> && eve::same_lanes_or_scalar_tuple<Tup2> &&
              (Tup1::size() == Tup2::size()) && !concepts::polyfloat_like<Tup1> && !concepts::polyfloat_like<Tup2>)
@@ -42,7 +42,7 @@ namespace plf
 
     template<eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(t);
@@ -100,7 +100,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const&, Ts const&... args) noexcept
+  POLYFLOAT_ABI constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const&, Ts const&... args) noexcept
   requires(sizeof...(Ts) > 1 && sizeof...(Ts) % 2 == 0)
   {
     using r_t = as_polyfloat_like_t<Ts...>;
@@ -112,7 +112,7 @@ namespace plf::_
   }
 
   template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& o, PT1 f, PT2 s) noexcept
+  POLYFLOAT_ABI constexpr auto cosine_similarity_(POLYFLOAT_DELAY(), O const& o, PT1 f, PT2 s) noexcept
   requires(kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size() && !concepts::polyfloat_like<PT1> &&
            !concepts::polyfloat_like<PT2>)
   {

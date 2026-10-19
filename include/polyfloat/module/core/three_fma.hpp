@@ -22,7 +22,7 @@ namespace plf
   struct three_fma_t : eve::strict_tuple_callable<three_fma_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE eve::zipped<Z, Z, Z> constexpr operator()(Z z0, Z z1, Z z2) const noexcept
+    POLYFLOAT_ABI eve::zipped<Z, Z, Z> constexpr operator()(Z z0, Z z1, Z z2) const noexcept
     {
       return POLYFLOAT_CALL(z0, z1, z2);
     }
@@ -72,8 +72,7 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto three_fma_(
-    POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto three_fma_(POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
   {
     auto [xh, xl] = dekker_prod(x, y);
     return cr_dw_fp_add_with_err(xl, xh, z);

@@ -23,7 +23,7 @@ namespace plf
   struct minmag_t : eve::strict_tuple_callable<minmag_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(z1, zs...);
     }
@@ -78,7 +78,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto minmag_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
+  POLYFLOAT_ABI constexpr auto minmag_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
     if constexpr (sizeof...(Zs) == 0) return z1;
     else

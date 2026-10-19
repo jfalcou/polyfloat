@@ -33,8 +33,7 @@ namespace plf
                                               eve::radpi_option,
                                               eve::deg_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }

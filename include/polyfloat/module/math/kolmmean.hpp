@@ -21,7 +21,7 @@ namespace plf
   {
 
     template<typename F, typename G, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Zs...> operator()(F f, G g, Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Zs...> operator()(F f, G g, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(f, g, zs...);
     }
@@ -80,7 +80,7 @@ namespace plf::_
 {
 
   template<typename F, typename G, typename T0, typename... Ts, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto kolmmean_(POLYFLOAT_DELAY(), O const& o, F f, G g, T0 t0, Ts... ts) noexcept
+  POLYFLOAT_ABI constexpr auto kolmmean_(POLYFLOAT_DELAY(), O const& o, F f, G g, T0 t0, Ts... ts) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, Ts...>;
     using e_t = eve::element_type_t<r_t>;

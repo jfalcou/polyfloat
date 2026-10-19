@@ -21,8 +21,7 @@ namespace plf
     : plf::strict_tuple_callable<is_less_equal_t, eve::is_less_equal_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>> operator()(Z1 z1,
-                                                                                              Z2 z2) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_logical_t<as_polyfloat_like_t<Z1, Z2>> operator()(Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z1, z2);
     }
@@ -72,7 +71,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_less_equal_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
+  POLYFLOAT_ABI constexpr auto is_less_equal_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
     return z1 <= z2;
   }

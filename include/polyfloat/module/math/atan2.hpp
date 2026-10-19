@@ -30,7 +30,7 @@ namespace plf
                                              eve::deg_option>
   {
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1>
-    POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<Z0, Z1> operator()(Z0 z0, Z1 z1) const noexcept
+    POLYFLOAT_ABI constexpr plf::as_polyfloat_like_t<Z0, Z1> operator()(Z0 z0, Z1 z1) const noexcept
     {
       return POLYFLOAT_CALL(z0, z1);
     }

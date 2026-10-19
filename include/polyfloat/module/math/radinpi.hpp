@@ -18,7 +18,7 @@ namespace plf
   template<typename Options>
   struct radinpi_t : plf::elementwise_callable<radinpi_t, eve::radinpi_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -77,7 +77,7 @@ namespace plf::_
 {
 
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr T radinpi_(POLYFLOAT_DELAY(), O const&, T const& a) noexcept
+  POLYFLOAT_ABI constexpr T radinpi_(POLYFLOAT_DELAY(), O const&, T const& a) noexcept
   {
     auto [r2ph, r2pl] = plf::two_split(plf::inv_pi(eve::as<T>()));
     return plf::fma(a, r2ph, a * r2pl);

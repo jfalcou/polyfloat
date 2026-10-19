@@ -18,7 +18,7 @@ namespace plf
   template<typename Options> struct frexp_t : plf::callable<frexp_t, eve::frexp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE auto operator()(Z z) const noexcept -> eve::zipped<Z, as_component_type_t<Z>>
+    POLYFLOAT_ABI auto operator()(Z z) const noexcept -> eve::zipped<Z, as_component_type_t<Z>>
     {
       return POLYFLOAT_CALL(z);
     }
@@ -86,7 +86,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_FORCEINLINE constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+    POLYFLOAT_ABI constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
       auto [h, n] = eve::frexp[o](hi(z));
       if constexpr (dimension_v<Z> == 2)

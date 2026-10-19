@@ -24,7 +24,7 @@ namespace plf
 
   template<typename Options> struct rsqrt_t : plf::callable<rsqrt_t, eve::rsqrt_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -76,7 +76,7 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto div2 = [](auto x) { return ldexp(x, -1); };
     if constexpr (!O::contains(eve::raw)) //avoid overflow;

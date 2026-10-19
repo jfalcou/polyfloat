@@ -19,14 +19,13 @@ namespace plf
 
   template<typename Options> struct rat_t : plf::callable<rat_t, eve::rat_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1>
-    POLYFLOAT_FORCEINLINE constexpr eve::zipped<as_polyfloat_like_t<Z0, Z1>, as_polyfloat_like_t<Z0, Z1>> operator()(
+    POLYFLOAT_ABI constexpr eve::zipped<as_polyfloat_like_t<Z0, Z1>, as_polyfloat_like_t<Z0, Z1>> operator()(
       Z0 z0, Z1 tol) const noexcept
     {
       return POLYFLOAT_CALL(z0, tol);
@@ -81,13 +80,13 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rat_(POLYFLOAT_DELAY(), O const&, Z const& x) noexcept
+  POLYFLOAT_ABI constexpr auto rat_(POLYFLOAT_DELAY(), O const&, Z const& x) noexcept
   {
     return rat(x, 10 * hi(plf::eps(eve::as(x)) * plf::abs(x)));
   }
 
   template<typename Z0, typename Z1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rat_(POLYFLOAT_DELAY(), O const&, Z0 const& xx, Z1 const& tol) noexcept
+  POLYFLOAT_ABI constexpr auto rat_(POLYFLOAT_DELAY(), O const&, Z0 const& xx, Z1 const& tol) noexcept
   {
     using r_t = as_polyfloat_like_t<Z0, Z1>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as<eve::element_type_t<r_t>>()); };

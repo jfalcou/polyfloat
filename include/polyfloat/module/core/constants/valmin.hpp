@@ -17,7 +17,7 @@ namespace plf
   template<typename Options>
   struct valmin_t : plf::constant_callable<valmin_t, eve::valmin_t, Options, lower_option, upper_option>
   {
-    template<typename T> POLYFLOAT_FORCEINLINE static constexpr T value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmin(eve::as<u_t>());
@@ -33,7 +33,7 @@ namespace plf
       }
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }

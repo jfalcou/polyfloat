@@ -26,14 +26,14 @@ namespace plf
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    POLYFLOAT_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_ABI typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    POLYFLOAT_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(t);
@@ -85,7 +85,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto absmin_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, Ts const&... ts) noexcept
+  POLYFLOAT_ABI constexpr auto absmin_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, Ts const&... ts) noexcept
   {
     return plf::abs[o.drop(pedantic, numeric)](plf::min(t0, ts...));
   }

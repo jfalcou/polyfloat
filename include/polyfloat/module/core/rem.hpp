@@ -30,7 +30,7 @@ namespace plf
                                             upward_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z1, z2);
     }
@@ -89,7 +89,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rem_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
+  POLYFLOAT_ABI constexpr auto rem_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
   {
     if constexpr (O::contains(to_nearest))
     {

@@ -23,7 +23,7 @@ namespace plf
     };
 
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
+    POLYFLOAT_ABI typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z0, z1, z2);
     }
@@ -76,7 +76,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto clamp_(POLYFLOAT_DELAY(), O const&, T0 a, T1 l, T2 h) noexcept
+  POLYFLOAT_ABI constexpr auto clamp_(POLYFLOAT_DELAY(), O const&, T0 a, T1 l, T2 h) noexcept
   {
     return plf::min(plf::max(a, l), h);
   }

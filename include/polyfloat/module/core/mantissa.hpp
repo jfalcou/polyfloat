@@ -19,10 +19,7 @@ namespace plf
   template<typename Options>
   struct mantissa_t : plf::elementwise_callable<mantissa_t, eve::mantissa_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE Z operator()(Z z) const noexcept
-    {
-      return POLYFLOAT_CALL(z);
-    }
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI Z operator()(Z z) const noexcept { return POLYFLOAT_CALL(z); }
 
     POLYFLOAT_CALLABLE_OBJECT(mantissa_t, mantissa_);
   };
@@ -85,7 +82,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_FORCEINLINE constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+    POLYFLOAT_ABI constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
       auto n = plf::exponent(z);
       auto h = eve::ldexp[o](hi(z), -n);

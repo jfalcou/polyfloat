@@ -18,15 +18,15 @@ namespace plf
   {
     template<typename M, typename T, typename F>
     requires(concepts::polyfloat<T> || concepts::polyfloat<F>)
-    POLYFLOAT_FORCEINLINE constexpr expected_result_t<eve::if_else, M, T, F> operator()(M const& m,
-                                                                                        T const& t,
-                                                                                        F const& f) const noexcept
+    POLYFLOAT_ABI constexpr expected_result_t<eve::if_else, M, T, F> operator()(M const& m,
+                                                                                T const& t,
+                                                                                F const& f) const noexcept
     {
       return POLYFLOAT_CALL(m, t, f);
     }
 
     template<typename M, typename T, typename F>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(M const& m, T const& t, F const& f) const noexcept
+    POLYFLOAT_ABI constexpr auto operator()(M const& m, T const& t, F const& f) const noexcept
       -> decltype(eve::if_else(m, t, f))
     {
       return eve::if_else(m, t, f);
@@ -78,8 +78,7 @@ namespace plf
 namespace plf::_
 {
   template<typename M, typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto if_else_(
-    POLYFLOAT_DELAY(), O const&, M const& m, Z1 const& t, Z2 const& f) noexcept
+  POLYFLOAT_ABI constexpr auto if_else_(POLYFLOAT_DELAY(), O const&, M const& m, Z1 const& t, Z2 const& f) noexcept
   {
     if constexpr (concepts::polyfloat<Z1> && concepts::polyfloat<Z2>)
     {

@@ -18,13 +18,13 @@ namespace plf
   template<typename Options>
   struct next_t : plf::elementwise_callable<next_t, eve::next_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
 
     template<concepts::polyfloat_like Z, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
+    POLYFLOAT_ABI constexpr Z operator()(Z z, N n) const noexcept
     requires(eve::same_lanes_or_scalar<Z, N>)
     {
       POLYFLOAT_ASSERT(eve::all(n >= 0), "[plf::next] : second parameter must be positive");
@@ -78,7 +78,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {
@@ -94,7 +94,7 @@ namespace plf::_
   }
 
   template<typename Z, typename N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z, N n) noexcept
+  POLYFLOAT_ABI constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z, N n) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {

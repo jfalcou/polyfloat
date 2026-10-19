@@ -46,7 +46,7 @@ namespace plf::_
     //    return eve::if_else(eve::is_nan(z), eve::zip(z, u_t(0),u_t(0)), eve::zip(z, delta, vl));
   }
 
-  template<typename Z> POLYFLOAT_FORCEINLINE constexpr auto inner_three_add(Z const& x, Z const& y, Z const& z) noexcept
+  template<typename Z> POLYFLOAT_ABI constexpr auto inner_three_add(Z const& x, Z const& y, Z const& z) noexcept
   {
     auto [xh, xl] = eve::two_add[eve::pedantic](x, y);
     auto r = inner_cr_dw_fp_add_with_err(xh, xl, z);

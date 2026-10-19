@@ -18,7 +18,7 @@ namespace plf
   template<typename Options> struct is_eqz_t : eve::elementwise_callable<is_eqz_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -68,7 +68,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_eqz_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto is_eqz_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return eve::is_eqz(hi(z));
   }

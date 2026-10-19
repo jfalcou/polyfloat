@@ -14,26 +14,26 @@ namespace plf
   template<typename Options> struct convert_t : eve::callable<convert_t, Options>
   {
     template<concepts::polyfloat V, concepts::scalar_polyfloat Tgt>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     requires(dimension_v<V> <= dimension_v<Tgt>)
     {
       return POLYFLOAT_CALL(v, tgt);
     }
 
     template<concepts::real V, concepts::scalar_polyfloat Tgt>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     {
       return POLYFLOAT_CALL(v, tgt);
     }
 
     template<concepts::real V, concepts::scalar_real Tgt>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     {
       return POLYFLOAT_CALL(v, tgt);
     }
 
     template<concepts::simd_integral V, concepts::scalar_polyfloat Tgt>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
     {
       return POLYFLOAT_CALL(v, tgt);
     }
@@ -84,7 +84,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto convert_(POLYFLOAT_DELAY(), O const&, T const& v, as<Z>) noexcept
+  POLYFLOAT_ABI constexpr auto convert_(POLYFLOAT_DELAY(), O const&, T const& v, as<Z>) noexcept
   {
     if constexpr (std::same_as<T, Z>) return v;
     else if constexpr (concepts::polyfloat<Z>)
