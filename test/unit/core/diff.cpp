@@ -82,7 +82,7 @@ TTS_CASE_WITH("Check add three params",
   }
 
   {
-    using pv_t = plf::triple_real_t<eve::wide<T, eve::fixed<2>>>;
+    using pv_t = plf::triple_real_t<eve::wide<T, 2>>;
     pv_t pa0(a0, a1, a2);
     pv_t pa1(a3, a4, a5);
     pv_t pa2(a6, a7, a8);

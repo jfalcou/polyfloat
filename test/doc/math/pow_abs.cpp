@@ -32,10 +32,10 @@ int main()
   std::cout << "pow_abs(f2_t(xf), f2_t(yf)) = " << pow_abs(f2_t(xf), f2_t(yf)) << std::endl;
   std::cout << "pow_abs(f3_t(xf), f3_t(yf)) = " << pow_abs(f3_t(xf), f3_t(yf)) << std::endl;
 
-  using wd1_t = eve::wide<d1_t, eve::fixed<4>>;
-  using wd2_t = eve::wide<d2_t, eve::fixed<4>>;
-  using wf1_t = eve::wide<f1_t, eve::fixed<4>>;
-  using wf2_t = eve::wide<f2_t, eve::fixed<4>>;
+  using wd1_t = eve::wide<d1_t, 4>;
+  using wd2_t = eve::wide<d2_t, 4>;
+  using wf1_t = eve::wide<f1_t, 4>;
+  using wf2_t = eve::wide<f2_t, 4>;
 
   wf1_t wxf([](auto i, auto) { return 0.51f + i; });
   wf1_t wyf([](auto i, auto) { return 2.0f + i; });
@@ -60,8 +60,8 @@ int main()
   std::cout << "pow_abs(wxf2, wyf2 ) = " << pow_abs(wxf2, wyf2) << std::endl;
   std::cout << "pow_abs(wxd2, wyd2 ) = " << pow_abs(wxd2, wyd2) << std::endl;
 
-  using wd3_t = eve::wide<d3_t, eve::fixed<4>>;
-  using wf3_t = eve::wide<f3_t, eve::fixed<4>>;
+  using wd3_t = eve::wide<d3_t, 4>;
+  using wf3_t = eve::wide<f3_t, 4>;
   wf3_t wxf3([](auto i, auto) { return f1_t(0.51f + i); });
   wf3_t wyf3([](auto i, auto) { return f1_t(2.0f + i); });
   wd3_t wxd3([](auto i, auto) { return d1_t(0.51 + i); });

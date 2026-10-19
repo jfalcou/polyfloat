@@ -22,8 +22,8 @@ int main()
   std::cout << "is_bit_equal(b, a) " << is_bit_equal(b, a) << std::endl;
   std::cout << "is_bit_equal(a, b) " << is_bit_equal(a, b) << std::endl;
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>, eve::fixed<4>>;
-  using pf2_t = eve::wide<plf::polyfloat<double, 2>, eve::fixed<4>>;
+  using pf3_t = eve::wide<plf::polyfloat<double, 3>, 4>;
+  using pf2_t = eve::wide<plf::polyfloat<double, 2>, 4>;
   pf2_t wb(b);
   pf2_t waabb(a, a, b, b);
   pf2_t wabab(a, b, a, b);

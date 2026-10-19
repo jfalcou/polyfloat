@@ -30,7 +30,7 @@ TTS_CASE_WITH("Check hypot two params",
     TTS_RELATIVE_EQUAL(hypot[eve::pedantic](pa, pb), tts::mpfr_exec(mhypot, pa, pb), 2 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(a0, pa), hypot(pv_t(a0), pa), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(pa, a0), hypot(pa, pv_t(a0)), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(hypot(wpab, wpab), plf::sqrt(2 * wpab * wpab), tts::epsprec<T>());
   }
@@ -41,7 +41,7 @@ TTS_CASE_WITH("Check hypot two params",
     TTS_RELATIVE_EQUAL(hypot(pa, pb), tts::mpfr_exec(mhypot, pa, pb), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(a0, pa), hypot(pv_t(a0), pa), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(pa, a0), hypot(pa, pv_t(a0)), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(hypot(wpab, wpab), plf::sqrt(2 * wpab * wpab), tts::epsprec<T>());
   }
@@ -72,7 +72,7 @@ TTS_CASE_WITH("Check hypot three params",
     TTS_RELATIVE_EQUAL(hypot(pa, pb, pc), tts::mpfr_exec(mhypot, pa, pb, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(a0, pa, pc), hypot(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(pa, a0, pc), hypot(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(hypot(wpab, wpab, wpab), plf::sqrt(3 * wpab * wpab), tts::epsprec<T>());
   }
@@ -84,7 +84,7 @@ TTS_CASE_WITH("Check hypot three params",
     TTS_RELATIVE_EQUAL(hypot(pa, pb, pc), tts::mpfr_exec(mhypot, pa, pb, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(a0, pa, pc), hypot(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(hypot(pa, a0, pc), hypot(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(hypot(wpab, wpab, wpab), plf::sqrt(3 * wpab * wpab), tts::epsprec<T>());
   }

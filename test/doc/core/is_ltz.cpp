@@ -20,8 +20,8 @@ int main()
   std::cout << "is_ltz(b) " << is_ltz(b) << std::endl;
   std::cout << "is_ltz(c) " << is_ltz(c) << std::endl;
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>, eve::fixed<2>>;
-  using pf2_t = eve::wide<plf::polyfloat<double, 2>, eve::fixed<2>>;
+  using pf3_t = eve::wide<plf::polyfloat<double, 3>, 2>;
+  using pf2_t = eve::wide<plf::polyfloat<double, 2>, 2>;
   pf2_t wb(b, 0.0);
   pf3_t wc(c, 0.0);
   std::cout << "wb          " << wb << std::endl;

@@ -37,7 +37,7 @@ TTS_CASE_WITH("Check cumfun two params",
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(max, pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(max, pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumfun(plf::add, wpab, wpab, wpab)), wpab, tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumfun(plf::add, wpab, wpab, wpab)), 2 * wpab, tts::epsprec<T>());

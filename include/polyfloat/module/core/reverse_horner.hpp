@@ -111,7 +111,7 @@ namespace plf
   //!     4. `fma[pedantic]` instead of `fma` is used in internal computations.
   //!     5. a Kahan like compensated algorithm is used to enhance accuracy.
   //!
-  //!    @note If the coefficients are simd values of cardinal N, this means you simultaneously
+  //!    @note If the coefficients are simd values of width N, this means you simultaneously
   //!      compute the values of N polynomials.
   //!        *  If x is scalar, the polynomials are all computed at the same point
   //!        *  If x is simd, the nth polynomial is computed on the nth value of x

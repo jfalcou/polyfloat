@@ -22,7 +22,7 @@ TTS_CASE_WITH("Check ldexp",
     pv_t pa(a0, a1);
     auto n = 2;
     TTS_EQUAL(ldexp(pa, n), pa * 4);
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pa);
     std::cout << ldexp(wpab, n) << std::endl;
     TTS_RELATIVE_EQUAL(ldexp(wpab, n), wpab * 4, tts::epsprec<T>());

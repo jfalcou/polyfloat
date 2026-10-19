@@ -30,7 +30,7 @@ TTS_CASE_WITH("Check cumsum two params",
     pv_t pb(a3, a4);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(wpab, wpab, wpab)), 2 * wpab, tts::epsprec<T>());
@@ -42,7 +42,7 @@ TTS_CASE_WITH("Check cumsum two params",
     pv_t pb(a3, a4, a5);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(pa, pb)), kumi::get<0>(mcs(pa, pb)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(pa, pb)), kumi::get<1>(mcs(pa, pb)), tts::epsprec<pv_t>());
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumsum(wpab, wpab, wpab)), wpab, tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumsum(wpab, wpab, wpab)), 2 * wpab, tts::epsprec<T>());
@@ -90,13 +90,13 @@ TTS_CASE_WITH("Check cumsum three params",
   }
 };
 
-TTS_CASE_WITH("Check cumsum of reals with a chosen cardinal",
+TTS_CASE_WITH("Check cumsum of reals with a chosen width",
               plf::scalar_real_types,
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000))
 <typename T>(T const& a0, T const& a1)
 {
-  using w_t = eve::wide<T, eve::fixed<2>>;
+  using w_t = eve::wide<T, 2>;
   using r_t = kumi::tuple<w_t, w_t>;
   w_t a(a0, a1);
   w_t b(a1, a0);

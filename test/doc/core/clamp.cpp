@@ -9,7 +9,7 @@ int main()
   std::cout << std::setprecision(15);
   using plf::clamp;
   using dd = plf::double_real_t<double>;
-  using wdd = eve::wide<dd, eve::fixed<4>>;
+  using wdd = eve::wide<dd, 4>;
   eve::wide lo = {2.0, 4.0, -10.0, 0.0};
   eve::wide hi = {4.0, 8.0, 0.0, 5.0};
   dd x(2.0, 2.0e-25);

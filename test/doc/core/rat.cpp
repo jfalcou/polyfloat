@@ -26,8 +26,8 @@ int main()
   //   std::cout << "rat(b) " << rat(b) << std::endl;
   //   std::cout << "rat(c) "<<  rat(c) << std::endl;
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>, eve::fixed<2>>;
-  using pf2_t = eve::wide<plf::polyfloat<double, 2>, eve::fixed<2>>;
+  using pf3_t = eve::wide<plf::polyfloat<double, 3>, 2>;
+  using pf2_t = eve::wide<plf::polyfloat<double, 2>, 2>;
   auto d = plf::polyfloat(70.0 / 3.0, 0.0);
 
   pf2_t wb(b, d);
