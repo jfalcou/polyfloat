@@ -31,3 +31,4 @@
 #include <polyfloat/module/math/constants/pio_4.hpp>
 #include <polyfloat/module/math/constants/pio_6.hpp>
 #include <polyfloat/module/math/constants/rad2deg.hpp>
+#include <polyfloat/module/math/constants/three_pio_4.hpp>

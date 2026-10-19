@@ -84,21 +84,23 @@ namespace plf::_
     auto thresh = axx > plf::dec(plf::sqrt(T(2)));                        //plf::sqrt_2m1(eve::as(x));
     auto axxx = plf::if_else(thresh, plf::oneminus(axx) / inc(axx), axx); // all lanes are less than sqrt(2)-1)
     T r(eve::atan(plf::hi(axxx)));
-    auto t = plf::tan(r);
-    r -= (t - axxx) / plf::inc(plf::sqr(t));
+    auto t = plf::tan[quarter_circle](r);
+    r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
     if constexpr (dimension_v<T> == 2)
     {
-      r = if_else(thresh, pio_4(eve::as(a0)) - r, r);
-      r = if_else(invax, pio_2(eve::as(a0)) - r, r);
+      r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
+      r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
+      r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
       r = if_else(a0pos, r, -r);
       return r;
     }
     else if constexpr (dimension_v<T> == 3)
     {
-      t = plf::tan(r);
-      r -= (t - axxx) / plf::inc(plf::sqr(t));
-      r = if_else(thresh, pio_4(eve::as(a0)) - r, r);
-      r = if_else(invax, pio_2(eve::as(a0)) - r, r);
+      t = plf::tan[quarter_circle](r);
+      r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
+      r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
+      r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
+      r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
       r = if_else(a0pos, r, -r);
       return r;
     }

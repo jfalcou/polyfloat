@@ -83,6 +83,10 @@ TTS_CASE_WITH("Check tan ", double, tts::randoms(50.0, 100.0), tts::randoms(0.0,
     pv_t z(0.0);
     TTS_BIT_EQUAL(tan[eve::medium](z), z);
     TTS_BIT_EQUAL(tan[eve::medium](-z), -z);
+    for (pv_t i = 0; i < plf::pio_4(eve::as<pv_t>()); i += pv_t(0.0011))
+    {
+      TTS_RELATIVE_EQUAL(plf::tan(i), tts::mpfr_exec(mtan, i), 2 * tts::epsprec<pv_t>()) << "i " << i << "\n";
+    }
   }
   {
     using pv_t = plf::polyfloat<double, 3>;
@@ -97,5 +101,10 @@ TTS_CASE_WITH("Check tan ", double, tts::randoms(50.0, 100.0), tts::randoms(0.0,
     pv_t z(0.0);
     TTS_BIT_EQUAL(tan[eve::medium](z), z);
     TTS_BIT_EQUAL(tan[eve::medium](-z), -z);
+
+    for (pv_t i = 0; i < plf::pio_4(eve::as<pv_t>()); i += pv_t(0.0011))
+    {
+      TTS_RELATIVE_EQUAL(plf::tan(i), tts::mpfr_exec(mtan, i), 2 * tts::epsprec<pv_t>()) << "i " << i << "\n";
+    }
   }
 };
