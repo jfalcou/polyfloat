@@ -9,7 +9,7 @@ int main()
   std::cout << std::setprecision(15);
   using plf::convert;
   //  using d1_t = double;
-  using f4 = eve::fixed<4>;
+  constexpr eve::width_type f4 = 4;
   using d2_t = plf::double_real_t<double>;
   using d3_t = plf::triple_real_t<double>;
   using w1_t = eve::wide<double, f4>;

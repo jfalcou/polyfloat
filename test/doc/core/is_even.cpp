@@ -26,8 +26,8 @@ int main()
   std::cout << "is_even(d) " << is_even(d) << std::endl;
   std::cout << "is_even(e) " << is_even(e) << std::endl;
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>, eve::fixed<2>>;
-  using pf2_t = eve::wide<plf::polyfloat<double, 2>, eve::fixed<2>>;
+  using pf3_t = eve::wide<plf::polyfloat<double, 3>, 2>;
+  using pf2_t = eve::wide<plf::polyfloat<double, 2>, 2>;
   pf2_t wb(b, e);
   pf3_t wc(c, d);
   std::cout << "wb          " << wb << std::endl;

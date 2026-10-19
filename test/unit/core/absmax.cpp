@@ -30,7 +30,7 @@ TTS_CASE_WITH("Check absmax two params",
     TTS_EQUAL(absmax(pa, pb), plf::if_else(pa < pb, abs(pb), abs(pa)));
     TTS_EQUAL(absmax(a0, pa), absmax(pv_t(a0), pa));
     TTS_EQUAL(absmax(pa, a0), absmax(pa, pv_t(a0)));
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(absmax(wpab, wpab), plf::abs(wpab), tts::epsprec<T>());
   }
@@ -42,7 +42,7 @@ TTS_CASE_WITH("Check absmax two params",
     TTS_EQUAL(absmax(pa, pb), plf::if_else(pa < pb, abs(pb), abs(pa)));
     TTS_EQUAL(absmax(a0, pa), absmax(pv_t(a0), pa));
     TTS_EQUAL(absmax(pa, a0), absmax(pa, pv_t(a0)));
-    using wpv_t = eve::wide<pv_t, eve::fixed<2>>;
+    using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(absmax(wpab, wpab), plf::abs(wpab), tts::epsprec<T>());
   }

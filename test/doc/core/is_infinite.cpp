@@ -20,8 +20,8 @@ int main()
   std::cout << "is_infinite(b) " << is_infinite(b) << std::endl;
   std::cout << "is_infinite(c) " << is_infinite(c) << std::endl;
 
-  using pf3_t = eve::wide<plf::polyfloat<double, 3>, eve::fixed<2>>;
-  using pf2_t = eve::wide<plf::polyfloat<double, 2>, eve::fixed<2>>;
+  using pf3_t = eve::wide<plf::polyfloat<double, 3>, 2>;
+  using pf2_t = eve::wide<plf::polyfloat<double, 2>, 2>;
   pf2_t wb(b, eve::inf(eve::as(f)));
   pf3_t wc(c, eve::inf(eve::as(f)));
   std::cout << "wb          " << wb << std::endl;
