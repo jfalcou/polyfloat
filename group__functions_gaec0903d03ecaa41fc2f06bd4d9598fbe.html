@@ -193,7 +193,7 @@ $(function(){initNavTree('group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.ht
 <li><span class="tt"><a class="el" href="group__core_gafe2539e930df632442830952eafe983f.html#gafe2539e930df632442830952eafe983f" title="return the fused multiply add of the parameters.">fma</a>[pedantic]</span> instead of <span class="tt"><a class="el" href="group__core_gafe2539e930df632442830952eafe983f.html#gafe2539e930df632442830952eafe983f" title="return the fused multiply add of the parameters.">fma</a></span> is used in internal computations.</li>
 <li>a Kahan like compensated algorithm is used to enhance accuracy.</li>
 </ol>
-<dl class="section note"><dt>Note</dt><dd>If the coefficients are simd values of cardinal N, this means you simultaneously compute the values of N polynomials.<ul>
+<dl class="section note"><dt>Note</dt><dd>If the coefficients are simd values of width N, this means you simultaneously compute the values of N polynomials.<ul>
 <li>If x is scalar, the polynomials are all computed at the same point</li>
 <li>If x is simd, the nth polynomial is computed on the nth value of x</li>
 </ul>
@@ -213,7 +213,7 @@ $(function(){initNavTree('group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.ht
 <div class="line">{</div>
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
 <div class="line">  <span class="comment">//   using plf::abs;</span></div>
-<div class="line">  <span class="keyword">using </span>w_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::double_real_t&lt;double&gt;</a>, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed&lt;4&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>w_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::double_real_t&lt;double&gt;</a>, 4&gt;;</div>
 <div class="line"> </div>
 <div class="line">  w_t xd = {-0.3, 0.5, 0.0, 2.0};</div>
 <div class="line">  w_t b = {-2, 10.5, -4, 0.1};</div>
@@ -259,7 +259,6 @@ $(function(){initNavTree('group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.ht
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-<div class="ttc" id="astructeve_1_1fixed_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1fixed.html">eve::fixed</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --> 
 </div>
