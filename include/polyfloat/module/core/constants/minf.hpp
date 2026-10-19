@@ -16,7 +16,7 @@ namespace plf
 {
   template<typename Options> struct minf_t : eve::constant_callable<minf_t, Options>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       return T(eve::minf(eve::as<u_t>()));
@@ -27,7 +27,7 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(minf_t, minf_);
+    POLYFLOAT_CALLABLE_OBJECT(minf_t, minf_);
   };
   //======================================================================================================================
   //! @addtogroup constants

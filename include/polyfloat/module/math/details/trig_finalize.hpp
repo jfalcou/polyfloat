@@ -154,7 +154,7 @@ namespace plf::_
     return plf::if_else(plf::is_negative(a0), -y, y);
   }
 
-  template<typename T> EVE_FORCEINLINE constexpr auto cot_finalize(T a0, T fn, T xr, T dxr) noexcept
+  template<typename T> POLYFLOAT_FORCEINLINE constexpr auto cot_finalize(T a0, T fn, T xr, T dxr) noexcept
   {
     auto aa0lteps = plf::abs(xr) < plf::eps(as<T>());
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));

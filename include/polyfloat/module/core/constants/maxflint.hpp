@@ -17,7 +17,7 @@ namespace plf
   template<typename Options>
   struct maxflint_t : plf::constant_callable<maxflint_t, eve::maxflint_t, Options, lower_option, upper_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr auto value(eve::as<T> const&, auto const&)
     {
       if constexpr (dimension_v<T> == 2) return T(ldexp(1.0, 106), ldexp(1.0, 53));
       else if constexpr (dimension_v<T> == 3) return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
@@ -28,7 +28,7 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(maxflint_t, maxflint_);
+    POLYFLOAT_CALLABLE_OBJECT(maxflint_t, maxflint_);
   };
   //======================================================================================================================
   //! @addtogroup constants

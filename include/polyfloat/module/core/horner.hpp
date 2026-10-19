@@ -26,14 +26,14 @@ namespace plf
   {
     template<concepts::polyfloat_like... Ts>
     //    requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE as_polyfloat_like_t<Ts...> constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_FORCEINLINE as_polyfloat_like_t<Ts...> constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<concepts::polyfloat_like X, eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, Tup> operator()(X const& x, Tup const& t) const noexcept
+    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<X, Tup> operator()(X const& x, Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(x, t);

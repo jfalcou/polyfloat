@@ -16,7 +16,7 @@ namespace plf
   template<typename Options>
   struct exp_pi_t : plf::constant_callable<exp_pi_t, eve::exp_pi_t, Options, lower_option, upper_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
@@ -41,7 +41,7 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(exp_pi_t, exp_pi_);
+    POLYFLOAT_CALLABLE_OBJECT(exp_pi_t, exp_pi_);
   };
   //======================================================================================================================
   //! @addtogroup constants

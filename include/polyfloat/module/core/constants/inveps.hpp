@@ -16,7 +16,7 @@ namespace plf
 
   template<typename Options> struct inveps_t : eve::constant_callable<inveps_t, Options>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
       if constexpr (std::integral<T>) return T(1);

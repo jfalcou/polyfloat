@@ -17,7 +17,7 @@ namespace plf
   template<typename Options>
   struct sqrt_2_t : plf::constant_callable<sqrt_2_t, eve::sqrt_2_t, Options, lower_option, upper_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
@@ -39,7 +39,7 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(sqrt_2_t, sqrt_2_);
+    POLYFLOAT_CALLABLE_OBJECT(sqrt_2_t, sqrt_2_);
   };
   //======================================================================================================================
   //! @addtogroup constants

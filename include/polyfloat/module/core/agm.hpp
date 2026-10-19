@@ -31,7 +31,7 @@ namespace plf
   {
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
     requires(eve::same_lanes_or_scalar<T0, T1>)
-    EVE_FORCEINLINE as_polyfloat_like_t<T0, T1> constexpr operator()(T0 t0, T1 t1) const noexcept
+    POLYFLOAT_FORCEINLINE as_polyfloat_like_t<T0, T1> constexpr operator()(T0 t0, T1 t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }

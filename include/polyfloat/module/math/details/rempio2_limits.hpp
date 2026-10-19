@@ -23,7 +23,7 @@ namespace plf
                                                      eve::medium_option,
                                                      eve::big_option>
   {
-    template<concepts::polyfloat_like T> constexpr POLYFLOAT_FORCEINLINE T operator()(as<T> v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> v) const
     {
       return POLYFLOAT_CALL(v);
     }

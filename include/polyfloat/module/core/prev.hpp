@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
     requires(eve::same_lanes_or_scalar<Z, N>)
     {
-      EVE_ASSERT(eve::all(n >= 0), "[plf::prev] : second parameter must be positive");
+      POLYFLOAT_ASSERT(eve::all(n >= 0), "[plf::prev] : second parameter must be positive");
       return POLYFLOAT_CALL(z, n);
     }
 

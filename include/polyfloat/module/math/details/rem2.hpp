@@ -21,7 +21,7 @@ namespace plf
 {
   template<typename Options> struct rem2_t : eve::elementwise_callable<rem2_t, Options, pedantic_option, raw_option>
   {
-    template<concepts::polyfloat_like T> constexpr POLYFLOAT_FORCEINLINE eve::zipped<T, T, T> operator()(T v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr eve::zipped<T, T, T> operator()(T v) const
     {
       return POLYFLOAT_CALL(v);
     }

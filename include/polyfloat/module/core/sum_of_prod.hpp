@@ -28,10 +28,10 @@ namespace plf
              concepts::polyfloat_like T2,
              concepts::polyfloat_like T3>
     requires(eve::same_lanes_or_scalar<T0, T1, T2, T3>)
-    EVE_FORCEINLINE typename result<T0, T1, T2, T3>::type constexpr operator()(T0 t0,
-                                                                               T1 t1,
-                                                                               T2 t2,
-                                                                               T3 t3) const noexcept
+    POLYFLOAT_FORCEINLINE typename result<T0, T1, T2, T3>::type constexpr operator()(T0 t0,
+                                                                                     T1 t1,
+                                                                                     T2 t2,
+                                                                                     T3 t3) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1, t2, t3);
     }

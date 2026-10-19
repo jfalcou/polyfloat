@@ -16,7 +16,7 @@ namespace plf
   template<typename Options>
   struct valmax_t : plf::constant_callable<valmax_t, eve::valmax_t, Options, lower_option, upper_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_FORCEINLINE static constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmax(eve::as<u_t>());
@@ -37,7 +37,7 @@ namespace plf
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(valmax_t, valmax_);
+    POLYFLOAT_CALLABLE_OBJECT(valmax_t, valmax_);
   };
   //======================================================================================================================
   //! @addtogroup constants

@@ -21,7 +21,7 @@ namespace plf
   struct three_add_t : eve::strict_tuple_callable<three_add_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    EVE_FORCEINLINE eve::zipped<Z, Z, Z> constexpr operator()(Z z0, Z z1, Z z2) const noexcept
+    POLYFLOAT_FORCEINLINE eve::zipped<Z, Z, Z> constexpr operator()(Z z0, Z z1, Z z2) const noexcept
     {
       return POLYFLOAT_CALL(z0, z1, z2);
     }

@@ -86,7 +86,7 @@ namespace plf
   namespace _
   {
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_add_(POLYFLOAT_DELAY(), O const&, T a, T b)
+    POLYFLOAT_FORCEINLINE constexpr auto two_add_(POLYFLOAT_DELAY(), O const&, T a, T b)
     {
       auto r0 = a + b;
       T err;
