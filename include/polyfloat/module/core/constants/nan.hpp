@@ -16,18 +16,18 @@ namespace plf
 {
   template<typename Options> struct nan_t : eve::constant_callable<nan_t, Options>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       return T(eve::nan(eve::as<u_t>()));
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(nan_t, nan_);
+    POLYFLOAT_CALLABLE_OBJECT(nan_t, nan_);
   };
   //======================================================================================================================
   //! @addtogroup constants

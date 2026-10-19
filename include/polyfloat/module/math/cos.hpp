@@ -36,7 +36,7 @@ namespace plf
                                            eve::radpi_option,
                                            eve::deg_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -123,11 +123,18 @@ namespace plf::_
       {
         auto x = abs(a0);
         if (eve::all(x <= Rempio2_limit[quarter_circle](as(a0)))) return cos[quarter_circle](a0);
-        else if (eve::all(x <= Rempio2_limit[half_circle](as(a0)))) return cos[half_circle](a0);
-        else if (eve::all(x <= Rempio2_limit[full_circle](as(a0)))) return cos[full_circle](a0);
         else if (eve::all(x <= Rempio2_limit[medium](as(a0)))) return cos[medium](a0);
-        else return cos[big](a0);
+        else
+          return cos[medium](
+            plf::if_else(is_not_less_equal(x, Rempio2_limit[medium](as(a0))), nan(eve::as(a0)), cos[medium](a0)));
+        //else return cos[big](a0); TO DO REPLACE previous line
       }
     }
   }
+}
+
+namespace plf
+{
+  constexpr auto cosd = plf::cos[eve::deg];
+  constexpr auto cospi = plf::cos[eve::radpi];
 }

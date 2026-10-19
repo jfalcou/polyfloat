@@ -23,7 +23,7 @@ namespace plf
                                                      eve::medium_option,
                                                      eve::big_option>
   {
-    template<concepts::polyfloat_like T> constexpr POLYFLOAT_FORCEINLINE T operator()(as<T> v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> v) const
     {
       return POLYFLOAT_CALL(v);
     }
@@ -37,7 +37,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr T Rempio2_limit_(POLYFLOAT_DELAY(), O const&, eve::as<T> const& at) noexcept
+  POLYFLOAT_ABI constexpr T Rempio2_limit_(POLYFLOAT_DELAY(), O const&, eve::as<T> const& at) noexcept
   {
     if constexpr (dimension_v<T> == 1) return eve::Rempio2_limit(at);
     else if constexpr (concepts::polyfloat_like<T>)

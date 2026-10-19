@@ -22,7 +22,7 @@ namespace plf
   template<typename Options> struct min_t : eve::strict_tuple_callable<min_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Zs...> operator()(Z1 z1, Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(z1, zs...);
     }
@@ -77,7 +77,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto min_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
+  POLYFLOAT_ABI constexpr auto min_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Zs...>;
     using u_t = eve::element_type_t<r_t>;

@@ -22,7 +22,7 @@ namespace plf
   struct two_prod_t : eve::strict_tuple_callable<two_prod_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE typename eve::zipped<T, T> constexpr operator()(T t0, T t1) const noexcept
+    POLYFLOAT_ABI typename eve::zipped<T, T> constexpr operator()(T t0, T t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
@@ -84,7 +84,7 @@ namespace plf
   namespace _
   {
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_prod_(POLYFLOAT_DELAY(), O const&, T a, T b)
+    POLYFLOAT_ABI constexpr auto two_prod_(POLYFLOAT_DELAY(), O const&, T a, T b)
     {
       auto r0 = a * b;
       if constexpr (dimension_v<T> == 1)

@@ -9,7 +9,7 @@
 
 namespace plf::_
 {
-  template<typename T> EVE_FORCEINLINE constexpr auto pio_2_splitting(as<T> const&) noexcept
+  template<typename T> POLYFLOAT_ABI constexpr auto pio_2_splitting(as<T> const&) noexcept
   {
     using u_t = eve::underlying_type_t<T>;
     //   using e_t =  eve::element_type_t<T>;

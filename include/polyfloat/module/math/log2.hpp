@@ -18,7 +18,7 @@ namespace plf
   template<typename Options>
   struct log2_t : plf::elementwise_callable<log2_t, eve::log2_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }

@@ -19,14 +19,14 @@ namespace plf
   template<typename Options> struct pown_t : eve::callable<pown_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1>
-    POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<Z0, Z1> operator()(Z0 z, Z1 n) const noexcept
+    POLYFLOAT_ABI constexpr plf::as_polyfloat_like_t<Z0, Z1> operator()(Z0 z, Z1 n) const noexcept
     requires(!eve::integral_value<Z1>)
     {
       return POLYFLOAT_CALL(z, n);
     }
 
     template<concepts::polyfloat_like Z, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Z, N> operator()(Z z, N n) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Z, N> operator()(Z z, N n) const noexcept
     {
       return POLYFLOAT_CALL(z, n);
     }
@@ -77,14 +77,14 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::integral_value N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
+  POLYFLOAT_ABI constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
     using r_t = eve::as_wide_as_t<Z, N>;
     return pown(z, plf::convert(n, eve::as(eve::element_type_t<r_t>())));
   }
 
   template<typename Z, typename N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N nn) noexcept
+  POLYFLOAT_ABI constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N nn) noexcept
   requires(!eve::integral_value<N>)
   {
     using r_t = eve::as_wide_as_t<Z, N>;

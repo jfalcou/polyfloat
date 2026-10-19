@@ -16,14 +16,14 @@ namespace plf
 {
   template<std::ptrdiff_t Index> struct extractor
   {
-    template<concepts::polyfloat Z> POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(Z&& z) const noexcept
+    template<concepts::polyfloat Z> POLYFLOAT_ABI constexpr decltype(auto) operator()(Z&& z) const noexcept
     {
       using type = eve::element_type_t<std::remove_cvref_t<Z>>;
       if constexpr (Index < type::static_dimension) return get<Index>(POLYFLOAT_FWD(z));
       else return as_component_type_t<std::remove_cvref_t<Z>>{0};
     }
 
-    template<concepts::real V> POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(V&& v) const noexcept
+    template<concepts::real V> POLYFLOAT_ABI constexpr decltype(auto) operator()(V&& v) const noexcept
     {
       using type = std::remove_cvref_t<V>;
       if constexpr (Index == 0) return POLYFLOAT_FWD(v);
@@ -149,7 +149,7 @@ namespace plf
   // TODO
   template<typename Options> struct lo_t : eve::elementwise_callable<lo_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr decltype(auto) operator()(Z&& z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr decltype(auto) operator()(Z&& z) const noexcept
     {
       if constexpr (dimension_v<Z> == 1) return extractor<1>{}(z);
       else return extractor<dimension_v<Z> - 1>{}(z);

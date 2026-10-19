@@ -23,8 +23,7 @@ namespace plf
   struct two_fma_approx_t : eve::strict_tuple_callable<two_fma_approx_t, Options, raw_option, pedantic_option>
   {
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE eve::zipped<T, T> operator()(T t0, T t1, T t2) const noexcept
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI eve::zipped<T, T> operator()(T t0, T t1, T t2) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1, t2);
     }
@@ -87,7 +86,7 @@ namespace plf
   namespace _
   {
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T a, T b, T c)
+    POLYFLOAT_ABI constexpr auto two_fma_approx_(POLYFLOAT_DELAY(), O const&, T a, T b, T c)
     {
       auto d = fma(a, b, c);
       auto [v1, v2] = dekker_prod(a, b);

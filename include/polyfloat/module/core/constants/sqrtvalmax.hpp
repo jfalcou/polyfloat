@@ -19,7 +19,7 @@ namespace plf
   template<typename Options>
   struct sqrtvalmax_t : plf::constant_callable<sqrtvalmax_t, eve::sqrtvalmax_t, Options, lower_option, upper_option>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr T value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       if constexpr (dimension_v<T> == 2)
@@ -34,12 +34,12 @@ namespace plf
       }
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(sqrtvalmax_t, sqrtvalmax_);
+    POLYFLOAT_CALLABLE_OBJECT(sqrtvalmax_t, sqrtvalmax_);
   };
   //======================================================================================================================
   //! @addtogroup constants

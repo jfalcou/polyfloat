@@ -21,7 +21,7 @@ namespace plf
   struct is_unit_t : eve::elementwise_callable<is_unit_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -71,7 +71,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_unit_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto is_unit_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return plf::is_equal(plf::abs(z), Z(1));
   }

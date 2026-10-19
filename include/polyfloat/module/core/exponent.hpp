@@ -18,7 +18,7 @@ namespace plf
   template<typename Options> struct exponent_t : eve::callable<exponent_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE eve::as_integer_t<as_component_type_t<Z>, signed> operator()(Z z) const noexcept
+    POLYFLOAT_ABI eve::as_integer_t<as_component_type_t<Z>, signed> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -76,7 +76,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_FORCEINLINE constexpr auto exponent_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+    POLYFLOAT_ABI constexpr auto exponent_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
     {
       return eve::exponent(hi(z));
     }

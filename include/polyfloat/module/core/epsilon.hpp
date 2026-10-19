@@ -20,8 +20,7 @@ namespace plf
   template<typename Options>
   struct epsilon_t : plf::elementwise_callable<epsilon_t, eve::epsilon_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr as_component_type_t<Z> operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr as_component_type_t<Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -71,7 +70,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto epsilon_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto epsilon_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {

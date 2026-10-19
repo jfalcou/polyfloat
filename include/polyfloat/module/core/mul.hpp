@@ -20,7 +20,7 @@ namespace plf
   template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like... Zs>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Zs...> operator()(Zs... zs) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Zs...> operator()(Zs... zs) const noexcept
     {
       return POLYFLOAT_CALL(zs...);
     }
@@ -79,7 +79,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto mul_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Zs const&... zs) noexcept
+  POLYFLOAT_ABI constexpr auto mul_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Zs const&... zs) noexcept
   {
     constexpr auto sz = sizeof...(Zs);
     if constexpr (sz == 0) return z1;

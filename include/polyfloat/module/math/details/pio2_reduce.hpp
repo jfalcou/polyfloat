@@ -16,7 +16,7 @@
 
 namespace plf::_
 {
-  template<typename T> POLYFLOAT_FORCEINLINE constexpr auto pio_2_reduce(T const& x) noexcept
+  template<typename T> POLYFLOAT_ABI constexpr auto pio_2_reduce(T const& x) noexcept
   {
     using e_t = eve::element_type_t<T>;
     auto const coefs = eve::coefficients(pio_2_splitting(as<e_t>()));

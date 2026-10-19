@@ -23,13 +23,13 @@ namespace plf
     };
 
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    EVE_FORCEINLINE typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
+    POLYFLOAT_ABI typename result<Z0, Z1, Z2>::type constexpr operator()(Z0 z0, Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z0, z1, z2);
     }
 
     template<concepts::polyfloat_like T, typename B>
-    constexpr POLYFLOAT_FORCEINLINE T operator()(T a, B const& belongs) const noexcept
+    POLYFLOAT_ABI T constexpr operator()(T a, B const& belongs) const noexcept
     {
       return POLYFLOAT_CALL(a, belongs);
     }
@@ -88,7 +88,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T0 a, T1 l, T2 h) noexcept
+  POLYFLOAT_ABI constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T0 a, T1 l, T2 h) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1, T2>;
     using u_t = eve::element_type_t<r_t>;
@@ -99,7 +99,7 @@ namespace plf::_
   }
 
   template<typename T, typename B, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T x, B const& b) noexcept
+  POLYFLOAT_ABI constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T x, B const& b) noexcept
   {
     auto z = if_else(b(x), T(1), eve::zero);
     if constexpr (O::contains(eve::condition_key)) return mask_op(c[eve::condition_key], eve::_::return_2nd, x, z);

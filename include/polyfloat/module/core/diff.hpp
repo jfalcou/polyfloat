@@ -34,28 +34,27 @@ namespace plf
     };
 
     template<eve::same_lanes_or_scalar_tuple Tup>
-    POLYFLOAT_FORCEINLINE typename result<1, Tup>::type constexpr operator()(Tup const& t) const noexcept
+    POLYFLOAT_ABI typename result<1, Tup>::type constexpr operator()(Tup const& t) const noexcept
     {
       return POLYFLOAT_CALL(t);
     }
 
     template<std::size_t N, eve::same_lanes_or_scalar_tuple Tup>
-    POLYFLOAT_FORCEINLINE typename result<N, Tup>::type constexpr operator()(kumi::index_t<N>,
-                                                                             Tup const& t) const noexcept
+    POLYFLOAT_ABI typename result<N, Tup>::type constexpr operator()(kumi::index_t<N>, Tup const& t) const noexcept
     {
       return POLYFLOAT_CALL(kumi::index_t<N>{}, t);
     }
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    POLYFLOAT_FORCEINLINE typename result<1, Ts...>::type constexpr operator()(Ts const&... ts) const noexcept
+    POLYFLOAT_ABI typename result<1, Ts...>::type constexpr operator()(Ts const&... ts) const noexcept
     {
       return POLYFLOAT_CALL(kumi::make_tuple(ts...));
     }
 
     template<size_t N, concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    POLYFLOAT_FORCEINLINE typename result<N, Ts...>::type constexpr operator()(kumi::index_t<N>, Ts const&... ts) const
+    POLYFLOAT_ABI typename result<N, Ts...>::type constexpr operator()(kumi::index_t<N>, Ts const&... ts) const
     {
       return POLYFLOAT_CALL(kumi::index_t<N>{}, kumi::make_tuple(ts...));
     }

@@ -18,13 +18,12 @@ namespace plf
   template<typename Options> struct two_split_t : eve::callable<two_split_t, Options>
   {
     template<auto N, concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE eve::zipped<T, T> constexpr operator()(T t, std::integral_constant<int, N> s) const noexcept
+    POLYFLOAT_ABI eve::zipped<T, T> constexpr operator()(T t, std::integral_constant<int, N> s) const noexcept
     {
       return POLYFLOAT_CALL(t, s);
     }
 
-    template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE eve::zipped<T, T> constexpr operator()(T t) const noexcept
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI eve::zipped<T, T> constexpr operator()(T t) const noexcept
     {
       return POLYFLOAT_CALL(t);
     }
@@ -81,7 +80,7 @@ namespace plf
   namespace _
   {
     template<auto N, typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_split_(POLYFLOAT_DELAY(), O const&, T x, std::integral_constant<int, N>)
+    POLYFLOAT_ABI constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x, std::integral_constant<int, N>)
     {
       auto K = ldexp(T(1), N);
       auto g = K * x;
@@ -91,7 +90,7 @@ namespace plf
     }
 
     template<typename T, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto two_split_(POLYFLOAT_DELAY(), O const&, T x)
+    POLYFLOAT_ABI constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x)
     {
       using u_t = eve::underlying_type_t<T>;
       auto N = (plf::nbmantissabits(eve::as<u_t>()) + 1) / 2;

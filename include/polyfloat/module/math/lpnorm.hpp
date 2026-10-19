@@ -26,14 +26,14 @@ namespace plf
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_ABI typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(t);
@@ -85,13 +85,13 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  EVE_FORCEINLINE constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  POLYFLOAT_ABI constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return plf::abs(t0);
   }
 
   template<typename P, typename... Ts, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
+  POLYFLOAT_ABI constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
   {
     using r_t = as_polyfloat_like_t<P, Ts...>;
     //    using u_t = eve::underlying_type_t<r_t>;

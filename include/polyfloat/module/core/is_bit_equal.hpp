@@ -23,8 +23,7 @@ namespace plf
     //     template <typename T, typename U > using  ui_t = as_integer_t<b_t<T, U>, unsigned>;
 
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr auto operator()(Z z1, Z z2) const noexcept
-      -> decltype(eve::is_bit_equal(hi(z1), hi(z2)))
+    POLYFLOAT_ABI constexpr auto operator()(Z z1, Z z2) const noexcept -> decltype(eve::is_bit_equal(hi(z1), hi(z2)))
     {
       return POLYFLOAT_CALL(z1, z2);
     }
@@ -74,7 +73,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto is_bit_equal_(POLYFLOAT_DELAY(), O const&, Z const& z1, Z const& z2) noexcept
+  POLYFLOAT_ABI constexpr auto is_bit_equal_(POLYFLOAT_DELAY(), O const&, Z const& z1, Z const& z2) noexcept
   {
     if constexpr (dimension_v<Z> == 2) return eve::is_bit_equal(lo(z1), lo(z2)) && eve::is_bit_equal(hi(z1), hi(z2));
     else if constexpr (dimension_v<Z> == 3)

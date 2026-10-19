@@ -22,9 +22,8 @@ namespace plf
   struct dekker_prod_t : eve::strict_tuple_callable<dekker_prod_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
-    POLYFLOAT_FORCEINLINE
-      typename eve::zipped<plf::as_polyfloat_like_t<T0, T1>, plf::as_polyfloat_like_t<T0, T1>> constexpr
-      operator()(T0 t0, T1 t1) const noexcept
+    POLYFLOAT_ABI typename eve::zipped<plf::as_polyfloat_like_t<T0, T1>, plf::as_polyfloat_like_t<T0, T1>> constexpr
+    operator()(T0 t0, T1 t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
@@ -86,7 +85,7 @@ namespace plf
   namespace _
   {
     template<typename T0, typename T1, eve::callable_options O>
-    constexpr POLYFLOAT_FORCEINLINE auto dekker_prod_(POLYFLOAT_DELAY(), O const&, T0 aa, T1 bb) noexcept
+    POLYFLOAT_ABI constexpr auto dekker_prod_(POLYFLOAT_DELAY(), O const&, T0 aa, T1 bb) noexcept
     {
       using r_t = plf::as_polyfloat_like_t<T0, T1>;
       auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };

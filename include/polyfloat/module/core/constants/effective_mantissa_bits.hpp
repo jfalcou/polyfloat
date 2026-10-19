@@ -17,19 +17,18 @@ namespace plf
   template<typename Options>
   struct effective_mantissa_bits_t : eve::constant_callable<effective_mantissa_bits_t, Options>
   {
-    template<typename T>
-    static POLYFLOAT_FORCEINLINE constexpr eve::as_integer_t<T> value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr eve::as_integer_t<T> value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       return (eve::nbmantissabits(eve::as<u_t>()) + 1) * dimension_v<T>;
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(effective_mantissa_bits_t, effective_mantissa_bits_);
+    POLYFLOAT_CALLABLE_OBJECT(effective_mantissa_bits_t, effective_mantissa_bits_);
   };
   //======================================================================================================================
   //! @addtogroup constants

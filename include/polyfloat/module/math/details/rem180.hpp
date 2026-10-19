@@ -22,7 +22,7 @@ namespace plf
 {
   template<typename Options> struct rem180_t : eve::elementwise_callable<rem180_t, Options, pedantic_option, raw_option>
   {
-    template<concepts::polyfloat_like T> constexpr POLYFLOAT_FORCEINLINE eve::zipped<T, T, T> operator()(T v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr eve::zipped<T, T, T> operator()(T v) const
     {
       return POLYFLOAT_CALL(v);
     }
@@ -36,7 +36,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rem180_(POLYFLOAT_DELAY(), O const&, T x) noexcept
+  POLYFLOAT_ABI constexpr auto rem180_(POLYFLOAT_DELAY(), O const&, T x) noexcept
   {
     auto xi = plf::nearest(2 * plf::div_180(x));
     auto fn = plf::quadrant(xi);

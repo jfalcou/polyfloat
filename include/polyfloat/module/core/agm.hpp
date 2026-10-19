@@ -31,7 +31,7 @@ namespace plf
   {
     template<concepts::polyfloat_like T0, concepts::polyfloat_like T1>
     requires(eve::same_lanes_or_scalar<T0, T1>)
-    EVE_FORCEINLINE as_polyfloat_like_t<T0, T1> constexpr operator()(T0 t0, T1 t1) const noexcept
+    POLYFLOAT_ABI as_polyfloat_like_t<T0, T1> constexpr operator()(T0 t0, T1 t1) const noexcept
     {
       return POLYFLOAT_CALL(t0, t1);
     }
@@ -87,7 +87,7 @@ namespace plf::_
 {
 
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto agm_(POLYFLOAT_DELAY(), O const&, T0 const& t0, T1 const& t1) noexcept
+  POLYFLOAT_ABI constexpr auto agm_(POLYFLOAT_DELAY(), O const&, T0 const& t0, T1 const& t1) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };

@@ -107,21 +107,21 @@ namespace plf
     //==================================================================================================================
 
     //! Pre-incrementation operator
-    POLYFLOAT_FORCEINLINE auto& operator++() noexcept
+    POLYFLOAT_ABI auto& operator++() noexcept
     {
       kumi::get<0>(contents)++;
       return *this;
     };
 
     //! Pre-decrementation operator
-    POLYFLOAT_FORCEINLINE auto& operator--() noexcept
+    POLYFLOAT_ABI auto& operator--() noexcept
     {
       kumi::get<0>(contents)--;
       return *this;
     }
 
     //! Post-incrementation operator
-    POLYFLOAT_FORCEINLINE auto operator++(int) noexcept
+    POLYFLOAT_ABI auto operator++(int) noexcept
     {
       auto that(*this);
       this->operator++();
@@ -129,7 +129,7 @@ namespace plf
     }
 
     //! Post-decrementation operator
-    POLYFLOAT_FORCEINLINE auto operator--(int) noexcept
+    POLYFLOAT_ABI auto operator--(int) noexcept
     {
       auto that(*this);
       this->operator--();

@@ -18,8 +18,7 @@ namespace plf
 
   template<typename Options> struct modf_t : eve::elementwise_callable<modf_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
+    template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr eve::zipped<Z, Z> operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -69,7 +68,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto modf_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  POLYFLOAT_ABI constexpr auto modf_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto t = trunc(z);
     return kumi::tuple{z - t, t};

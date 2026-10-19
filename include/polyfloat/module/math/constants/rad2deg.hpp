@@ -15,7 +15,7 @@ namespace plf
 {
   template<typename Options> struct rad2deg_t : eve::constant_callable<rad2deg_t, Options>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
 
@@ -39,12 +39,12 @@ namespace plf
       }
     }
 
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE constexpr T operator()(as<T> const& v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(rad2deg_t, rad2deg_);
+    POLYFLOAT_CALLABLE_OBJECT(rad2deg_t, rad2deg_);
   };
   //======================================================================================================================
   //! @addtogroup constants

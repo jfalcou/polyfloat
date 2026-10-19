@@ -21,7 +21,7 @@ namespace plf
 {
   template<typename Options> struct rem2_t : eve::elementwise_callable<rem2_t, Options, pedantic_option, raw_option>
   {
-    template<concepts::polyfloat_like T> constexpr POLYFLOAT_FORCEINLINE eve::zipped<T, T, T> operator()(T v) const
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr eve::zipped<T, T, T> operator()(T v) const
     {
       return POLYFLOAT_CALL(v);
     }
@@ -35,7 +35,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto rem2_(POLYFLOAT_DELAY(), O const&, T x) noexcept
+  POLYFLOAT_ABI constexpr auto rem2_(POLYFLOAT_DELAY(), O const&, T x) noexcept
   {
     auto xi = plf::nearest(x + x);
     if constexpr (O::contains(eve::pedantic))

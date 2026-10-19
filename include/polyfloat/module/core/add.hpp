@@ -24,14 +24,14 @@ namespace plf
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_ABI typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
+    POLYFLOAT_ABI constexpr kumi::apply_traits_t<result, Tup> operator()(Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(t);
@@ -91,12 +91,12 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  EVE_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return t0;
   }
   template<typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
+  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
   {
     auto t12 = t1 + t2;
     //    if constexpr(O::contains(pedantic))
@@ -117,8 +117,7 @@ namespace plf::_
            concepts::polyfloat_like T0,
            concepts::polyfloat_like T1,
            concepts::polyfloat_like... Ts>
-  POLYFLOAT_FORCEINLINE constexpr auto add_(
-    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
+  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1, Ts...>;
     if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);

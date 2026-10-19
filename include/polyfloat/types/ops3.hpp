@@ -19,8 +19,8 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator<(
-    T1 const& aa, T2 const& bb) noexcept
+  POLYFLOAT_ABI eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator<(T1 const& aa,
+                                                                                                  T2 const& bb) noexcept
   {
     constexpr auto N = dimension_v<as_polyfloat_t<T1, T2>>;
     using plf_t = as_polyfloat_t<T1, T2>;
@@ -48,8 +48,8 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator>(
-    T1 const& aa, T2 const& bb) noexcept
+  POLYFLOAT_ABI eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator>(T1 const& aa,
+                                                                                                  T2 const& bb) noexcept
   {
     constexpr auto N = dimension_v<as_polyfloat_t<T1, T2>>;
     using plf_t = as_polyfloat_t<T1, T2>;
@@ -77,7 +77,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator<=(
+  POLYFLOAT_ABI eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator<=(
     T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto N = dimension_v<as_polyfloat_t<T1, T2>>;
@@ -106,7 +106,7 @@ namespace plf
 
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
-  POLYFLOAT_FORCEINLINE eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator>=(
+  POLYFLOAT_ABI eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>> operator>=(
     T1 const& aa, T2 const& bb) noexcept
   {
     constexpr auto N = dimension_v<as_polyfloat_t<T1, T2>>;

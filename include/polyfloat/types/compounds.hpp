@@ -15,12 +15,12 @@ namespace plf
 {
   namespace _
   {
-    template<typename T> EVE_FORCEINLINE auto clean0s(T hi, T lo) noexcept
+    template<typename T> POLYFLOAT_ABI auto clean0s(T hi, T lo) noexcept
     {
       return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
     }
 
-    template<typename T> EVE_FORCEINLINE auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
+    template<typename T> POLYFLOAT_ABI auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
     {
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::double_real_t<T>(h, l);
@@ -32,7 +32,7 @@ namespace plf
       }
     }
 
-    template<typename T> EVE_FORCEINLINE auto clean1s(auto f, auto hs, auto ho, T h, T m, T l) noexcept
+    template<typename T> POLYFLOAT_ABI auto clean1s(auto f, auto hs, auto ho, T h, T m, T l) noexcept
     {
       auto output_is_finite = eve::is_finite(h);
       if (eve::all(output_is_finite)) return plf::triple_real_t<T>(h, m, l);
@@ -44,12 +44,12 @@ namespace plf
       }
     }
 
-    template<typename T> EVE_FORCEINLINE auto clean1s(T hi, T md, T lo) noexcept
+    template<typename T> POLYFLOAT_ABI auto clean1s(T hi, T md, T lo) noexcept
     {
       return eve::if_else(eve::is_not_finite(hi), plf::triple_real_t<T>(hi), plf::triple_real_t<T>(hi, md, lo));
     }
 
-    EVE_FORCEINLINE auto four_add1(auto a, auto b, auto c, auto d) noexcept
+    POLYFLOAT_ABI auto four_add1(auto a, auto b, auto c, auto d) noexcept
     {
       auto [t0, t1] = eve::two_add(a, b);
       auto [t01, t2] = eve::two_add(t0, c);
@@ -184,7 +184,7 @@ namespace plf
 
   namespace _
   {
-    template<concepts::polyfloat_like T> POLYFLOAT_FORCEINLINE auto rec(T a) noexcept
+    template<concepts::polyfloat_like T> POLYFLOAT_ABI auto rec(T a) noexcept
     {
       if constexpr (dimension_v<T> == 1 && std::is_floating_point_v<T>) return eve::rec[pedantic](a);
       else if constexpr (dimension_v<T> == 2)

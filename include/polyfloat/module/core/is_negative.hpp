@@ -19,7 +19,7 @@ namespace plf
   struct is_negative_t : eve::elementwise_callable<is_negative_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_logical_t<plf::as_component_type_t<Z>> operator()(Z z) const noexcept
     {
       return eve::is_negative(hi(z));
     }

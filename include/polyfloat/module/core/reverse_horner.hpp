@@ -34,14 +34,14 @@ namespace plf
 
     template<concepts::polyfloat_like... Ts>
     requires(eve::same_lanes_or_scalar<Ts...>)
-    EVE_FORCEINLINE typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
+    POLYFLOAT_ABI typename result<Ts...>::type constexpr operator()(Ts... ts) const noexcept
     {
       return POLYFLOAT_CALL(ts...);
     }
 
     template<concepts::polyfloat_like X, eve::non_empty_product_type Tup>
     requires(eve::same_lanes_or_scalar_tuple<Tup> && !concepts::polyfloat_like<Tup>)
-    EVE_FORCEINLINE constexpr as_polyfloat_like_t<X, Tup> operator()(X const& x, Tup const& t) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<X, Tup> operator()(X const& x, Tup const& t) const noexcept
     requires(kumi::size_v<Tup> >= 1)
     {
       return POLYFLOAT_CALL(x, t);
@@ -135,13 +135,13 @@ namespace plf::_
 {
 
   template<typename X, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
+  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
     return plf::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
+  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
   {
     using r_t = as_polyfloat_like_t<X, C, Cs...>;
     constexpr auto N = sizeof...(Cs);
@@ -156,16 +156,16 @@ namespace plf::_
   }
 
   template<typename X, eve::product_type Tuple, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(),
-                                                       O const& o,
-                                                       X x,
-                                                       eve::coefficients<Tuple> const& tup) noexcept
+  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(),
+                                               O const& o,
+                                               X x,
+                                               eve::coefficients<Tuple> const& tup) noexcept
   {
     return horner[o](x, eve::coefficients(kumi::reverse(tup)));
   }
 
   template<typename X, eve::_::range R, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
+  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
   {
     using r_t = as_polyfloat_like<X, typename R::value_type>;
     using u_t = eve::element_type_t<r_t>;

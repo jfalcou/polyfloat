@@ -18,14 +18,14 @@ namespace plf
   template<typename Options> struct ldexp_t : plf::callable<ldexp_t, eve::ldexp_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z1 operator()(Z1 z1, N n) const noexcept
+    POLYFLOAT_ABI constexpr Z1 operator()(Z1 z1, N n) const noexcept
     {
       using r_t = eve::element_type_t<decltype(hi(Z1()))>;
       return POLYFLOAT_CALL(z1, eve::convert(n, eve::as<r_t>()));
     }
 
     template<concepts::polyfloat_like Z, eve::floating_value N>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z, N n) const noexcept
+    POLYFLOAT_ABI constexpr Z operator()(Z z, N n) const noexcept
     {
       using r_t = eve::element_type_t<as_component_type_t<Z>>;
       return POLYFLOAT_CALL(z, plf::convert(n, eve::as<r_t>()));
@@ -95,7 +95,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, typename N, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto ldexp_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
+  POLYFLOAT_ABI constexpr auto ldexp_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {

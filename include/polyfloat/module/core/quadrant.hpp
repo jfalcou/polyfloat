@@ -21,13 +21,13 @@ namespace plf
   struct quadrant_t : eve::elementwise_callable<quadrant_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z>
-    POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     requires(!eve::integral_value<Z>)
     {
       return POLYFLOAT_CALL(z);
     }
 
-    template<eve::integral_value Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
+    template<eve::integral_value Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
       return POLYFLOAT_CALL(z);
     }
@@ -77,7 +77,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto quadrant_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
+  POLYFLOAT_ABI constexpr auto quadrant_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
     if constexpr (eve::integral_value<Z>) return a & Z(3);
     else

@@ -21,13 +21,13 @@ namespace plf
   struct nthroot_t : plf::callable<nthroot_t, eve::nthroot_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, eve::integral_value N>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_wide_as_t<Z1, N> operator()(Z1 z1, N n) const noexcept
+    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Z1, N> operator()(Z1 z1, N n) const noexcept
     {
       return POLYFLOAT_CALL(z1, n);
     }
 
     template<concepts::polyfloat_like Z, concepts::polyfloat_like N>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z, N> operator()(Z z, N n) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z, N> operator()(Z z, N n) const noexcept
     requires(!eve::integral_value<N>)
     {
       return POLYFLOAT_CALL(z, n);

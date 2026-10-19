@@ -16,19 +16,19 @@ namespace plf
 {
   template<typename Options> struct nbmantissabits_t : eve::constant_callable<nbmantissabits_t, Options>
   {
-    template<typename T> static POLYFLOAT_FORCEINLINE constexpr auto value(eve::as<T> const&, auto const&)
+    template<typename T> POLYFLOAT_ABI static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
       return eve::nbmantissabits(eve::as<u_t>()) * dimension_v<T>;
     }
 
     template<concepts::polyfloat_like T>
-    POLYFLOAT_FORCEINLINE constexpr eve::as_integer_t<eve::underlying_type_t<T>> operator()(as<T> const& v) const
+    POLYFLOAT_ABI constexpr eve::as_integer_t<eve::underlying_type_t<T>> operator()(as<T> const& v) const
     {
       return POLYFLOAT_CALL(v);
     }
 
-    EVE_CALLABLE_OBJECT(nbmantissabits_t, nbmantissabits_);
+    POLYFLOAT_CALLABLE_OBJECT(nbmantissabits_t, nbmantissabits_);
   };
   //======================================================================================================================
   //! @addtogroup constants

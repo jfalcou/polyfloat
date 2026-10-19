@@ -22,7 +22,7 @@ namespace plf
   struct ulpdist_t : plf::strict_tuple_callable<ulpdist_t, eve::ulpdist_t, Options, raw_option, pedantic_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
-    POLYFLOAT_FORCEINLINE constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
+    POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
     {
       return POLYFLOAT_CALL(z1, z2);
     }
@@ -73,7 +73,7 @@ namespace plf::_
 {
 
   template<typename Z0, typename Z1, eve::callable_options O>
-  POLYFLOAT_FORCEINLINE constexpr auto ulpdist_(POLYFLOAT_DELAY(), O const&, Z0 const& z0, Z1 const& z1) noexcept
+  POLYFLOAT_ABI constexpr auto ulpdist_(POLYFLOAT_DELAY(), O const&, Z0 const& z0, Z1 const& z1) noexcept
   {
     using r_t = as_polyfloat_like_t<Z0, Z1>;
     using u_t = eve::underlying_type_t<as_component_type_t<r_t>>;
