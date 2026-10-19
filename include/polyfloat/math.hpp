@@ -8,6 +8,7 @@
 #pragma once
 #include <polyfloat/core.hpp>
 #include <polyfloat/math_constants.hpp>
+#include <polyfloat/module/math/acos.hpp>
 #include <polyfloat/module/math/acosh.hpp>
 #include <polyfloat/module/math/acoth.hpp>
 #include <polyfloat/module/math/acsch.hpp>

@@ -13,7 +13,7 @@ TTS_CASE_TPL("Check three_pio_4", plf::scalar_real_types)
 {
   using mpfr::mpreal;
   using plf::three_pio_4;
-  auto mthree_pio_4 = []<typename TT>(TT) { return mpfr::mpreal(atan(1) * 3); };
+  auto mthree_pio_4 = []<typename TT>(TT) { return mpfr::mpreal((mpfr::const_pi() * 3) / 4); };
   {
     {
       TTS_EQUAL(three_pio_4(eve::as<T>()), eve::three_pio_4(eve::as<T>()));

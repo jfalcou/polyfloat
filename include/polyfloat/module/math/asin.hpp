@@ -30,7 +30,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var asin
-  //!   @brief return the inverse cocose value.
+  //!   @brief return the arcsine value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -51,9 +51,14 @@ namespace plf
   //!
   //!     * `z`: Value to process.
   //!
-  //!   **Return value**
+  //! **Return value**
   //!
-  //!     Returns the inverse cocose of z.
+  //!    Returns the [elementwise](@ref glossary_elementwise) arc sine of the
+  //!      input in the range  \f$[-\frac\pi2, \frac\pi2]\f$.
+  //!      In particular:
+  //!      * If the element is \f$\pm0\f$, \f$\pm0\f$ is returned unmodified.
+  //!      * If the element \f$|x| > 1\f$, `NaN` is returned.
+  //!      * If the element is a `NaN`, `NaN` is returned.
   //!
   //!  @groupheader{Example}
   //!
@@ -71,21 +76,5 @@ namespace plf::_
   template<typename T, eve::callable_options O> constexpr auto asin_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
   {
     return plf::atan2(a0, plf::sqrt(oneminus(plf::sqr(a0))));
-    //     a0 = plf::if_else(plf::abs(a0) <= plf::one(eve::as(a0)), a0, plf::nan(as(a0)));
-    //     T x0(eve::asin(hi(a0)));
-    //     std::cout << "a0 " << a0 << std::endl;
-    //     //    auto [c, s] = plf::coscos(x0);
-    //     auto c = plf::cos(x0);
-    //     auto s = plf::sin(x0);
-    //     auto x1 = x0 - (s - a0) / c;
-    //     c = plf::cos(x1);
-    //     s = plf::sin(x1);
-    //     x1 -= (s - a0) / c;
-    //     if constexpr (dimension_v<T> == 2) return if_else(plf::is_eqz(a0), plf::pio_2(eve::as(a0)), x1);
-    //     c = plf::cos(x1);
-    //     s = plf::sin(x1);
-    //     //    auto [c, s] = plf::sincos(x0);
-    //     x1 -= (s - a0) / c;
-    //     return x1;
   }
 }
