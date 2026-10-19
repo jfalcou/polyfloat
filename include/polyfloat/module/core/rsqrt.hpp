@@ -75,8 +75,7 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto div2 = [](auto x) { return ldexp(x, -1); };
     if constexpr (!O::contains(eve::raw)) //avoid overflow;

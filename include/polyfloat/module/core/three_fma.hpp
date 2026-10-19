@@ -72,7 +72,7 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto three_fma_(POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
+  constexpr auto three_fma_(POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
   {
     auto [xh, xl] = dekker_prod(x, y);
     return cr_dw_fp_add_with_err(xl, xh, z);

@@ -76,7 +76,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto fma_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
+  constexpr auto fma_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2, Z3>;
     if constexpr (dimension_v<r_t> == 1) return eve::fma[pedantic](x, y, z);

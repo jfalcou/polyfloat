@@ -69,7 +69,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto signnz_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+  constexpr auto signnz_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
     return Z(eve::signnz[o](hi(z)));
     //     if constexpr(O::contains(eve::pedantic))

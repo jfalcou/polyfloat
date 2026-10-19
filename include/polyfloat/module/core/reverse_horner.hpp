@@ -134,14 +134,13 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename X, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
+  template<typename X, eve::callable_options O> constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const&, X) noexcept
   {
     return plf::zero(eve::as<X>());
   }
 
   template<typename X, typename C, typename... Cs, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
+  constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, C c0, Cs... cs) noexcept
   {
     using r_t = as_polyfloat_like_t<X, C, Cs...>;
     constexpr auto N = sizeof...(Cs);
@@ -156,16 +155,13 @@ namespace plf::_
   }
 
   template<typename X, eve::product_type Tuple, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(),
-                                               O const& o,
-                                               X x,
-                                               eve::coefficients<Tuple> const& tup) noexcept
+  constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X x, eve::coefficients<Tuple> const& tup) noexcept
   {
     return horner[o](x, eve::coefficients(kumi::reverse(tup)));
   }
 
   template<typename X, eve::_::range R, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
+  constexpr auto reverse_horner_(POLYFLOAT_DELAY(), O const& o, X xx, R const& r) noexcept
   {
     using r_t = as_polyfloat_like<X, typename R::value_type>;
     using u_t = eve::element_type_t<r_t>;

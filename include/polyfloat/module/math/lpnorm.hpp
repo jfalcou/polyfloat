@@ -84,14 +84,13 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T0, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  template<typename T0, eve::callable_options O> constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return plf::abs(t0);
   }
 
   template<typename P, typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
+  constexpr auto lpnorm_(POLYFLOAT_DELAY(), O const& o, P const& p, Ts... ts) noexcept
   {
     using r_t = as_polyfloat_like_t<P, Ts...>;
     //    using u_t = eve::underlying_type_t<r_t>;

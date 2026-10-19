@@ -77,14 +77,14 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::integral_value N, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
+  constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
     using r_t = eve::as_wide_as_t<Z, N>;
     return pown(z, plf::convert(n, eve::as(eve::element_type_t<r_t>())));
   }
 
   template<typename Z, typename N, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N nn) noexcept
+  constexpr auto pown_(POLYFLOAT_DELAY(), O const&, Z const& z, N nn) noexcept
   requires(!eve::integral_value<N>)
   {
     using r_t = eve::as_wide_as_t<Z, N>;

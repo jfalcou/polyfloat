@@ -92,13 +92,13 @@ namespace plf
 namespace plf::_
 {
   template<eve::product_type PT, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto cumsum_(POLYFLOAT_DELAY(), O const& o, PT tup) noexcept
+  constexpr auto cumsum_(POLYFLOAT_DELAY(), O const& o, PT tup) noexcept
   {
     return plf::cumfun[o](plf::add, tup);
   }
 
   template<typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto cumsum_(POLYFLOAT_DELAY(), O const& o, Ts... ts) noexcept
+  constexpr auto cumsum_(POLYFLOAT_DELAY(), O const& o, Ts... ts) noexcept
   {
     return plf::cumfun[o](plf::add, kumi::make_tuple(ts...));
   }

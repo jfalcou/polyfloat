@@ -74,7 +74,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto reldist_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Z2 const& z2) noexcept
+  constexpr auto reldist_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Z2 const& z2) noexcept
   {
     auto d = dist[o](z1, z2);
     return if_else(is_infinite(d) || is_eqz(d), d, d / plf::max(abs(z1), abs(z2), eve::one(eve::as(abs(hi(z1))))));

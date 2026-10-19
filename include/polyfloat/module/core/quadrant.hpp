@@ -77,7 +77,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto quadrant_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
+  constexpr auto quadrant_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
     if constexpr (eve::integral_value<Z>) return a & Z(3);
     else

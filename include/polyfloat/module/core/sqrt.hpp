@@ -71,8 +71,7 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
     return if_else(plf::is_eqz(z) || plf::is_pinf(z), z, plf::rsqrt[o](z) * z);
   }

@@ -69,8 +69,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_odd_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto is_odd_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
     auto da = dec(a);
     return (a != da) && is_even(da);

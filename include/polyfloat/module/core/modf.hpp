@@ -67,8 +67,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto modf_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto modf_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto t = trunc(z);
     return kumi::tuple{z - t, t};

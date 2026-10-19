@@ -73,7 +73,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, typename Z3, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto fnms_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
+  constexpr auto fnms_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     return fma(minus(x), y, minus(z));
   }

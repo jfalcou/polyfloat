@@ -70,8 +70,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto ceil_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto ceil_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {

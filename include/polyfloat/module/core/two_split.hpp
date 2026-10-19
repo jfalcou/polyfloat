@@ -80,7 +80,7 @@ namespace plf
   namespace _
   {
     template<auto N, typename T, eve::callable_options O>
-    POLYFLOAT_ABI constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x, std::integral_constant<int, N>)
+    constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x, std::integral_constant<int, N>)
     {
       auto K = ldexp(T(1), N);
       auto g = K * x;
@@ -89,8 +89,7 @@ namespace plf
       return eve::zip(xh, x - xh);
     }
 
-    template<typename T, eve::callable_options O>
-    POLYFLOAT_ABI constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x)
+    template<typename T, eve::callable_options O> constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x)
     {
       using u_t = eve::underlying_type_t<T>;
       auto N = (plf::nbmantissabits(eve::as<u_t>()) + 1) / 2;

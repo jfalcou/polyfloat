@@ -87,7 +87,7 @@ namespace plf::_
 {
 
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto agm_(POLYFLOAT_DELAY(), O const&, T0 const& t0, T1 const& t1) noexcept
+  constexpr auto agm_(POLYFLOAT_DELAY(), O const&, T0 const& t0, T1 const& t1) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1>;
     auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };

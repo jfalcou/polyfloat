@@ -80,7 +80,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T1, typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto harmmean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
+  constexpr auto harmmean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
     if constexpr (sizeof...(Ts) == 0) return a0;
     else

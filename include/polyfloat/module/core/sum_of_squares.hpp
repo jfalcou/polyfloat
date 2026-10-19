@@ -87,10 +87,10 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr plf::as_polyfloat_like_t<T0, Ts...> sum_of_squares_(POLYFLOAT_DELAY(),
-                                                                              O const& o,
-                                                                              T0 const& a0,
-                                                                              Ts const&... args) noexcept
+  constexpr plf::as_polyfloat_like_t<T0, Ts...> sum_of_squares_(POLYFLOAT_DELAY(),
+                                                                O const& o,
+                                                                T0 const& a0,
+                                                                Ts const&... args) noexcept
   {
     using r_t = plf::as_polyfloat_like_t<T0, Ts...>;
     if constexpr (sizeof...(Ts) == 0) return plf::sqr[o](a0);
@@ -117,7 +117,7 @@ namespace plf::_
   }
 
   template<eve::product_type PT, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto sum_of_squares_(POLYFLOAT_DELAY(), O const& o, PT tup) noexcept
+  constexpr auto sum_of_squares_(POLYFLOAT_DELAY(), O const& o, PT tup) noexcept
   requires(eve::same_lanes_or_scalar_tuple<PT> && !concepts::polyfloat_like<PT> && kumi::size_v<PT> >= 1)
   {
     return kumi::apply([o](auto... m) { return sum_of_squares[o](m...); }, tup);

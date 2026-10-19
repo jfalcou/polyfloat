@@ -92,8 +92,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T0, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto hypot_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  template<typename T0, eve::callable_options O> constexpr auto hypot_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return plf::abs(t0);
   }
@@ -102,8 +101,7 @@ namespace plf::_
            concepts::polyfloat_like T0,
            concepts::polyfloat_like T1,
            concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr auto hypot_(
-    POLYFLOAT_DELAY(), O const& o, T0 const& r0, T1 const& r1, Ts const&... rs) noexcept
+  constexpr auto hypot_(POLYFLOAT_DELAY(), O const& o, T0 const& r0, T1 const& r1, Ts const&... rs) noexcept
   {
     if constexpr (O::contains(raw))
     {

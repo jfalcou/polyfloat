@@ -72,7 +72,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_even_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  constexpr auto is_even_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     auto t = is_flint(z);
     return t && is_flint(ldexp(z, -1));

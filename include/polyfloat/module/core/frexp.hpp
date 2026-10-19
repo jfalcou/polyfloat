@@ -86,7 +86,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_ABI constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+    constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
       auto [h, n] = eve::frexp[o](hi(z));
       if constexpr (dimension_v<Z> == 2)

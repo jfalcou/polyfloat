@@ -91,7 +91,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto div_(POLYFLOAT_DELAY(), O const&, T0 const& a, T1 const& b) noexcept
+  constexpr auto div_(POLYFLOAT_DELAY(), O const&, T0 const& a, T1 const& b) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1>;
     using u_t = eve::element_type_t<t_t>;

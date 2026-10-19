@@ -82,7 +82,7 @@ namespace plf::_
 {
 
   template<typename T1, typename T2, typename T3, typename T4, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto sum_of_prod_(
+  constexpr auto sum_of_prod_(
     POLYFLOAT_DELAY(), O const& o, T1 const& a, T2 const& b, T3 const& c, T4 const& d) noexcept
   {
     if constexpr (O::contains(raw)) return a * b + c * d;

@@ -82,7 +82,7 @@ namespace plf::_
 {
 
   template<typename T1, typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto geommean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
+  constexpr auto geommean_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
     using r_t = as_polyfloat_like_t<T1, Ts...>;
     using e_t = eve::element_type_t<r_t>;

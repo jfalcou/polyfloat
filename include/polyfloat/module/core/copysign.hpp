@@ -70,7 +70,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto copysign_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
+  constexpr auto copysign_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
     auto az1 = abs(z1);
     return plf::if_else(eve::is_positive(hi(z2)), az1, -az1);

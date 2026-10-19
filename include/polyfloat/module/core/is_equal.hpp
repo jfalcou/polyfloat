@@ -71,7 +71,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_equal_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
+  constexpr auto is_equal_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
   {
     auto eq = z1 == z2;
     if constexpr (O::contains(numeric)) return eq || (is_nan(z1) && is_nan(z2));

@@ -85,7 +85,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_flint_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  constexpr auto is_flint_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 2) return eve::is_flint(lo(z)) && eve::is_flint(hi(z));
     else if constexpr (dimension_v<Z> == 3)

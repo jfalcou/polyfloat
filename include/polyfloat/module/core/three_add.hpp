@@ -72,7 +72,7 @@ namespace plf::_
 {
 
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto three_add_(POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
+  constexpr auto three_add_(POLYFLOAT_DELAY(), O const&, Z const& x, Z const& y, Z const& z) noexcept
   {
     auto [xh, xl] = two_add(x, y);
     return cr_dw_fp_add_with_err(xl, xh, z);

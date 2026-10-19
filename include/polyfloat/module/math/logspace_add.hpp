@@ -83,14 +83,13 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto logspace_add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  constexpr auto logspace_add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return plf::abs(t0);
   }
 
   template<typename T0, typename T1, typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto logspace_add_(
-    POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts... ts) noexcept
+  constexpr auto logspace_add_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts... ts) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1, Ts...>;
     using e_t = eve::element_type_t<r_t>;

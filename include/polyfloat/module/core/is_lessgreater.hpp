@@ -71,7 +71,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_lessgreater_(POLYFLOAT_DELAY(), O const& o, Z1 const& a, Z2 const& b) noexcept
+  constexpr auto is_lessgreater_(POLYFLOAT_DELAY(), O const& o, Z1 const& a, Z2 const& b) noexcept
   {
     return is_not_equal[o](a, b) && is_ordered(a, b);
   }

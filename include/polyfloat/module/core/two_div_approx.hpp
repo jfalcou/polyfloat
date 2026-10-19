@@ -83,8 +83,7 @@ namespace plf
 
   namespace _
   {
-    template<typename T, eve::callable_options O>
-    POLYFLOAT_ABI constexpr auto two_div_approx_(POLYFLOAT_DELAY(), O const&, T x, T y)
+    template<typename T, eve::callable_options O> constexpr auto two_div_approx_(POLYFLOAT_DELAY(), O const&, T x, T y)
     {
       auto r0 = x / y;
       auto e0 = if_else(is_not_finite(r0), zero, plf::fma[pedantic](-r0, y, x) / y);

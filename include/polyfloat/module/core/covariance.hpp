@@ -95,7 +95,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
+  constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, Ts const&... args) noexcept
   requires(sizeof...(Ts) > 1 && sizeof...(Ts) % 2 == 0)
   {
     using r_t = as_polyfloat_like_t<Ts...>;
@@ -107,7 +107,7 @@ namespace plf::_
   }
 
   template<eve::non_empty_product_type PT1, eve::non_empty_product_type PT2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, PT1 f, PT2 s) noexcept
+  constexpr auto covariance_(POLYFLOAT_DELAY(), O const& o, PT1 f, PT2 s) noexcept
   requires(kumi::as_tuple_t<PT1>::size() == kumi::as_tuple_t<PT2>::size())
   {
     using Tup1 = kumi::as_tuple_t<PT1>;

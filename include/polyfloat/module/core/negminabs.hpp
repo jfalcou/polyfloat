@@ -78,7 +78,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto negminabs_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
+  constexpr auto negminabs_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
     return -plf::minabs(z1, zs...);
   }

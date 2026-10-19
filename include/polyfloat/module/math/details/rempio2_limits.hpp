@@ -37,7 +37,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr T Rempio2_limit_(POLYFLOAT_DELAY(), O const&, eve::as<T> const& at) noexcept
+  constexpr T Rempio2_limit_(POLYFLOAT_DELAY(), O const&, eve::as<T> const& at) noexcept
   {
     if constexpr (dimension_v<T> == 1) return eve::Rempio2_limit(at);
     else if constexpr (concepts::polyfloat_like<T>)
