@@ -77,7 +77,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename... Zs, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto min_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
+  constexpr auto min_(POLYFLOAT_DELAY(), O const&, Z1 z1, Zs... zs) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Zs...>;
     using u_t = eve::element_type_t<r_t>;

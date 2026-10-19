@@ -84,7 +84,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto sign_alternate_(POLYFLOAT_DELAY(), O const& o, T n) noexcept
+  constexpr auto sign_alternate_(POLYFLOAT_DELAY(), O const& o, T n) noexcept
   {
     if constexpr (O::contains_any(upward, downward, to_nearest, toward_zero))
       return plf::if_else(is_odd(plf::round[o](n)), eve::mone, plf::one(as(n)));

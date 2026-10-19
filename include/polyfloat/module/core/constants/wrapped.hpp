@@ -20,7 +20,7 @@ namespace plf::_
     using base_callable = Func<Opts>;
 
     template<typename T>
-    POLYFLOAT_ABI constexpr auto operator[](T t) const
+    constexpr auto operator[](T t) const
     requires(requires(base_callable const& b) { b[t]; })
     {
       auto new_traits = base_callable::base::operator[](t);
@@ -28,14 +28,14 @@ namespace plf::_
     }
 
     template<concepts::real T>
-    POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const
+    constexpr T operator()(as<T> const& v) const
     requires(requires(base_callable const& b) { b(v); })
     {
       return base_callable::operator()(v);
     }
 
     template<concepts::polyfloat T>
-    POLYFLOAT_ABI constexpr T operator()(as<T> const&) const
+    constexpr T operator()(as<T> const&) const
     requires(requires(base_callable const& b) { b(plf::as_component<T>{}); })
     {
       return T{base_callable::operator()(as_component<T>{})};

@@ -90,13 +90,12 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T0, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  template<typename T0, eve::callable_options O> constexpr auto add_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return t0;
   }
   template<typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
+  constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
   {
     auto t12 = t1 + t2;
     //    if constexpr(O::contains(pedantic))
@@ -117,7 +116,7 @@ namespace plf::_
            concepts::polyfloat_like T0,
            concepts::polyfloat_like T1,
            concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
+  constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1, Ts...>;
     if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);

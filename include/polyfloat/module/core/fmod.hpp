@@ -89,7 +89,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto fmod_(POLYFLOAT_DELAY(), O const&, Z1 const& aa, Z2 const& bb) noexcept
+  constexpr auto fmod_(POLYFLOAT_DELAY(), O const&, Z1 const& aa, Z2 const& bb) noexcept
   {
     using plf_t = as_polyfloat_t<Z1, Z2>;
     using u_t = eve::element_type_t<plf_t>;

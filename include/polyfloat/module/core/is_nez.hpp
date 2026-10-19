@@ -67,8 +67,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_nez_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto is_nez_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return eve::is_nez(hi(z));
   }

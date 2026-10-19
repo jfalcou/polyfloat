@@ -94,7 +94,7 @@ namespace plf
 namespace plf::_
 {
   template<typename F, eve::product_type PT, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, PT tup) noexcept
+  constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, PT tup) noexcept
   {
     if constexpr (PT::size() == 0) return kumi::make_tuple();
     else
@@ -107,7 +107,7 @@ namespace plf::_
   }
 
   template<typename F, typename... Ts, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, Ts... ts) noexcept
+  constexpr auto cumfun_(POLYFLOAT_DELAY(), O const& o, F f, Ts... ts) noexcept
   {
     return plf::cumfun[o](f, kumi::make_tuple(ts...));
   }

@@ -34,8 +34,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto rem2_(POLYFLOAT_DELAY(), O const&, T x) noexcept
+  template<typename T, eve::callable_options O> constexpr auto rem2_(POLYFLOAT_DELAY(), O const&, T x) noexcept
   {
     auto xi = plf::nearest(x + x);
     if constexpr (O::contains(eve::pedantic))

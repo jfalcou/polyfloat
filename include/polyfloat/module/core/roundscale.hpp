@@ -89,13 +89,13 @@ namespace plf
 namespace plf::_
 {
   template<auto S, typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr T roundscale_(POLYFLOAT_DELAY(), O const& o, T const& a0, eve::index_t<S> const&) noexcept
+  constexpr T roundscale_(POLYFLOAT_DELAY(), O const& o, T const& a0, eve::index_t<S> const&) noexcept
   {
     return roundscale[o](a0, S);
   }
 
   template<typename T, typename S, eve::callable_options O>
-  POLYFLOAT_ABI constexpr T roundscale_(POLYFLOAT_DELAY(), O const& o, T const& a0, S const& scale) noexcept
+  constexpr T roundscale_(POLYFLOAT_DELAY(), O const& o, T const& a0, S const& scale) noexcept
   {
     auto nbmb = return plf::ldexp[eve::pedantic](plf::round[o](plf::ldexp[eve::pedantic](a0, scale)), -scale);
   }

@@ -28,7 +28,7 @@ namespace plf
     template<template<typename> class Eve, typename Base> struct deferring_callable : Base
     {
       template<eve::callable_options O, typename... Ts>
-      POLYFLOAT_ABI constexpr auto behavior(auto arch, O const& opts, Ts... xs) const
+      constexpr auto behavior(auto arch, O const& opts, Ts... xs) const
       {
         if constexpr (((dimension_v<Ts> == 1) && ...)) return eve::functor<Eve>[opts](xs...);
         else return Base::behavior(arch, opts, xs...);
@@ -37,8 +37,7 @@ namespace plf
 
     template<template<typename> class Eve, typename Base> struct deferring_constant : Base
     {
-      template<typename O, typename T>
-      POLYFLOAT_ABI constexpr auto behavior(auto arch, O const& opts, eve::as<T> target) const
+      template<typename O, typename T> constexpr auto behavior(auto arch, O const& opts, eve::as<T> target) const
       {
         if constexpr (dimension_v<T> == 1) return eve::functor<Eve>[opts](target);
         else return Base::behavior(arch, opts, target);

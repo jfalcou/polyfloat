@@ -21,7 +21,7 @@
 
 namespace plf::_
 {
-  template<typename T> POLYFLOAT_ABI constexpr auto gauss(T z2, T z, int order)
+  template<typename T> constexpr auto gauss(T z2, T z, int order)
   {
     // Gauss continued fraction of Rank order
     T a(order);
@@ -33,25 +33,25 @@ namespace plf::_
     return z / a;
   }
 
-  template<typename T> POLYFLOAT_ABI constexpr auto cos_eval(T const& z2) noexcept
+  template<typename T> constexpr auto cos_eval(T const& z2) noexcept
   {
     using e_t = eve::element_type_t<T>;
     return plf::reverse_horner(z2, eve::coefficients(cos_coefs<e_t>()));
   }
 
-  template<typename T> POLYFLOAT_ABI constexpr auto sin_eval(T const& z2, T const& z) noexcept
+  template<typename T> constexpr auto sin_eval(T const& z2, T const& z) noexcept
   {
     using e_t = eve::element_type_t<T>;
     return z * plf::reverse_horner(z2, eve::coefficients(sino_x_coefs<e_t>()));
   }
 
-  template<typename T> POLYFLOAT_ABI constexpr auto sinc_eval(T const& z2) noexcept
+  template<typename T> constexpr auto sinc_eval(T const& z2) noexcept
   {
     using e_t = eve::element_type_t<T>;
     return plf::reverse_horner(z2, eve::coefficients(sino_x_coefs<e_t>()));
   }
 
-  template<typename T> POLYFLOAT_ABI auto tancot_eval(T const& z) noexcept
+  template<typename T> auto tancot_eval(T const& z) noexcept
   {
     using e_t = eve::element_type_t<T>;
     // here z is positive
@@ -96,7 +96,7 @@ namespace plf::_
 
   //========================================================================
 
-  template<typename T> POLYFLOAT_ABI constexpr auto cos_finalize(T const& fn, T const& xr, T const& dxr = T(0)) noexcept
+  template<typename T> constexpr auto cos_finalize(T const& fn, T const& xr, T const& dxr = T(0)) noexcept
   {
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));
     auto swap_bit = plf::is_nez(plf::fma(T(-2), tmp, fn));
@@ -109,8 +109,7 @@ namespace plf::_
     return sign * z;
   }
 
-  template<typename T>
-  POLYFLOAT_ABI constexpr auto sin_finalize(T const& a0, T const& fn, T const& xr, T const& dxr = T(0)) noexcept
+  template<typename T> constexpr auto sin_finalize(T const& a0, T const& fn, T const& xr, T const& dxr = T(0)) noexcept
   {
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));
     auto swap_bit = plf::is_nez(plf::fma(T(-2), tmp, fn));
@@ -123,8 +122,7 @@ namespace plf::_
     return plf::if_else(plf::is_ltz(sign), -z, z);
   }
 
-  template<typename T>
-  POLYFLOAT_ABI constexpr auto sincos_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
+  template<typename T> constexpr auto sincos_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
   {
     auto tmp = plf::one[fn >= T(2)](plf::as(xr));
     auto swap = plf::is_nez(plf::fma(T(-2), tmp, fn));
@@ -139,8 +137,7 @@ namespace plf::_
     return eve::zip((plf::if_else(swap, ce, se) * sin_sign), plf::if_else(swap, se, ce) * cos_sign);
   }
 
-  template<typename T>
-  POLYFLOAT_ABI constexpr auto tan_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
+  template<typename T> constexpr auto tan_finalize(T const& a0, T const& fn, T const& xr, T const& dxr) noexcept
   {
     auto aa0lteps = plf::abs(xr) < eps(as<T>());
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));
@@ -153,7 +150,7 @@ namespace plf::_
     return plf::if_else(plf::is_negative(a0), -y, y);
   }
 
-  template<typename T> POLYFLOAT_ABI constexpr auto cot_finalize(T a0, T fn, T xr, T dxr) noexcept
+  template<typename T> constexpr auto cot_finalize(T a0, T fn, T xr, T dxr) noexcept
   {
     auto aa0lteps = plf::abs(xr) < plf::eps(as<T>());
     auto tmp = plf::one[fn >= T(2)](eve::as(xr));

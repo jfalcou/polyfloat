@@ -35,8 +35,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto rem180_(POLYFLOAT_DELAY(), O const&, T x) noexcept
+  template<typename T, eve::callable_options O> constexpr auto rem180_(POLYFLOAT_DELAY(), O const&, T x) noexcept
   {
     auto xi = plf::nearest(2 * plf::div_180(x));
     auto fn = plf::quadrant(xi);

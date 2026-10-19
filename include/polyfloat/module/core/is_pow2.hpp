@@ -71,7 +71,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto is_pow2_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  constexpr auto is_pow2_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     return is_unit(mantissa(z));
   }

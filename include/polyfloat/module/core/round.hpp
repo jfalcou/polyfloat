@@ -89,8 +89,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto round_(POLYFLOAT_DELAY(), O const&, T a) noexcept
+  template<typename T, eve::callable_options O> constexpr auto round_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
     if constexpr (O::contains(toward_zero)) return trunc(a);
     else if constexpr (O::contains(downward)) return floor(a);

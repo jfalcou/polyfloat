@@ -85,7 +85,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr auto negabsmin_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, Ts const&... ts) noexcept
+  constexpr auto negabsmin_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, Ts const&... ts) noexcept
   {
     return -plf::abs[o.drop(pedantic, numeric)](plf::min(t0, ts...));
   }

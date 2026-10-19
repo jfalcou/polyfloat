@@ -82,7 +82,7 @@ namespace plf
   namespace _
   {
     template<typename Z, eve::callable_options O>
-    POLYFLOAT_ABI constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+    constexpr auto mantissa_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
       auto n = plf::exponent(z);
       auto h = eve::ldexp[o](hi(z), -n);

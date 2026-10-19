@@ -20,7 +20,7 @@ namespace plf::_
 {
 
   template<typename X, typename C, typename Cn, typename C0, typename... Cs>
-  POLYFLOAT_ABI constexpr auto cody_waite_reduce(X x, C invc, Cn lastc, C0 c0, Cs... cs) noexcept
+  constexpr auto cody_waite_reduce(X x, C invc, Cn lastc, C0 c0, Cs... cs) noexcept
   {
     using r_t = as_polyfloat_like_t<X, C, Cn, C0, Cs...>;
     auto xn = -plf::nearest(x * invc);
@@ -34,7 +34,7 @@ namespace plf::_
   }
 
   template<typename X, typename C, eve::product_type Tuple>
-  POLYFLOAT_ABI constexpr auto cody_waite_reduce(X x, C invc, eve::coefficients<Tuple> const& tup) noexcept
+  constexpr auto cody_waite_reduce(X x, C invc, eve::coefficients<Tuple> const& tup) noexcept
   {
     constexpr auto lst = kumi::size_v<Tuple> - 1;
     auto butlast = kumi::extract(tup, kumi::index<0>, kumi::index<lst>);

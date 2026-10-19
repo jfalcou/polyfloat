@@ -84,7 +84,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T, typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto convert_(POLYFLOAT_DELAY(), O const&, T const& v, as<Z>) noexcept
+  constexpr auto convert_(POLYFLOAT_DELAY(), O const&, T const& v, as<Z>) noexcept
   {
     if constexpr (std::same_as<T, Z>) return v;
     else if constexpr (concepts::polyfloat<Z>)

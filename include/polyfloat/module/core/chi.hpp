@@ -88,7 +88,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, typename T1, typename T2, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T0 a, T1 l, T2 h) noexcept
+  constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T0 a, T1 l, T2 h) noexcept
   {
     using r_t = as_polyfloat_like_t<T0, T1, T2>;
     using u_t = eve::element_type_t<r_t>;
@@ -99,7 +99,7 @@ namespace plf::_
   }
 
   template<typename T, typename B, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T x, B const& b) noexcept
+  constexpr auto chi_(POLYFLOAT_DELAY(), O const& c, T x, B const& b) noexcept
   {
     auto z = if_else(b(x), T(1), eve::zero);
     if constexpr (O::contains(eve::condition_key)) return mask_op(c[eve::condition_key], eve::_::return_2nd, x, z);

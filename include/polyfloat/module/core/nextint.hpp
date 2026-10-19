@@ -68,7 +68,7 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto nextint_(POLYFLOAT_DELAY(), O const& o, Z const& v) noexcept
+  constexpr auto nextint_(POLYFLOAT_DELAY(), O const& o, Z const& v) noexcept
   {
     auto ni = plf::ceil(plf::next[o.drop(raw)](v));
     if (!O::contains(raw)) ni = if_else(plf::is_nan(v), v, ni);

@@ -85,7 +85,7 @@ namespace plf::_
 {
 
   template<eve::callable_options O, concepts::polyfloat_like T0, concepts::polyfloat_like... Ts>
-  POLYFLOAT_ABI constexpr auto variance_(POLYFLOAT_DELAY(), O const& o, T0 const& a0, Ts const&... args) noexcept
+  constexpr auto variance_(POLYFLOAT_DELAY(), O const& o, T0 const& a0, Ts const&... args) noexcept
   {
     auto avg = plf::average[o](a0, args...);
     auto var = plf::average[o](plf::sqr(a0 - avg), plf::sqr(args - avg)...);

@@ -85,7 +85,7 @@ namespace plf::_
 {
 
   template<typename X, typename... XsYs, eve::callable_options O>
-  POLYFLOAT_ABI constexpr auto neville_(POLYFLOAT_DELAY(), O const& o, X x, XsYs... xsys) noexcept
+  constexpr auto neville_(POLYFLOAT_DELAY(), O const& o, X x, XsYs... xsys) noexcept
   requires(sizeof...(XsYs) % 2 == 0)
   {
     using t_t = as_polyfloat_like_t<X, XsYs...>;
