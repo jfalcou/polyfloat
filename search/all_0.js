@@ -4,6 +4,7 @@ var searchData=
   ['absmax_5',['absmax',['../group__core_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6',1,'plf::absmax']]],
   ['absmin_6',['absmin',['../group__core_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807',1,'plf::absmin']]],
   ['accuracy_20functions_7',['Error free and augmented accuracy functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'']]],
+  ['acos_9',['acos',['../group__core_ga16bd93f50121516a6f2321aec146b4c1.html#ga16bd93f50121516a6f2321aec146b4c1',1,'plf::acos']]],
   ['acosh_10',['acosh',['../group__core_gaed114cf184f7a06cadd10432981d3516.html#gaed114cf184f7a06cadd10432981d3516',1,'plf::acosh']]],
   ['acoth_12',['acoth',['../group__core_ga255478078703a5e3983f9a1f391c5807.html#ga255478078703a5e3983f9a1f391c5807',1,'plf::acoth']]],
   ['acsch_14',['acsch',['../group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html#ga9063b9310082cd6b6ee1e38e5eb735ae',1,'plf::acsch']]],
@@ -18,7 +19,10 @@ var searchData=
   ['as_5fpolyfloat_5fn_5ft_62',['as_polyfloat_n_t',['../group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4',1,'plf']]],
   ['as_5fpolyfloat_5ft_63',['as_polyfloat_t',['../group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594',1,'plf']]],
   ['asech_66',['asech',['../group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],
+  ['asin_67',['asin',['../group__core_gac33460dcd2548f05618f163aa6b8f447.html#gac33460dcd2548f05618f163aa6b8f447',1,'plf::asin']]],
   ['asinh_68',['asinh',['../group__core_gac6517fdf90349f548ef51ecab16a7da2.html#gac6517fdf90349f548ef51ecab16a7da2',1,'plf::asinh']]],
+  ['atan_69',['atan',['../group__core_ga786c4561195e6d5b68b02db954d79f3f.html#ga786c4561195e6d5b68b02db954d79f3f',1,'plf::atan']]],
+  ['atan2_70',['atan2',['../group__core_ga7620db80392919b6ae699eeec18fe979.html#ga7620db80392919b6ae699eeec18fe979',1,'plf::atan2']]],
   ['atanh_71',['atanh',['../group__core_ga1a41e219730981cadf767bbd10cec87f.html#ga1a41e219730981cadf767bbd10cec87f',1,'plf::atanh']]],
   ['augmented_20accuracy_20functions_72',['Error free and augmented accuracy functions',['../md__2____w_2polyfloat_2polyfloat_2doc_2index.html#autotoc_md8',1,'']]],
   ['average_73',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf::average']]]

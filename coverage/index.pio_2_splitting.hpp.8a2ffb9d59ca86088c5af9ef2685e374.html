@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2026-10-17 06:34:07</td>
+      <td>2026-10-19 16:01:11</td>
     </tr>
   </table>
 </div>
@@ -73,10 +73,10 @@
       <th>Call count</th>
       <th>Block coverage</th>
     </tr>
-    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;double, 2u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 2u&gt; &gt; const&amp;) (line 12)</a></td><td>called 45 times, returned 45 times</td><td>100.0%</td></tr>
-    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;double, 3u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 3u&gt; &gt; const&amp;) (line 12)</a></td><td>called 19 times, returned 19 times</td><td>100.0%</td></tr>
-    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;float, 2u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;float, 2u&gt; &gt; const&amp;) (line 12)</a></td><td>called 21 times, returned 21 times</td><td>100.0%</td></tr>
-    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;float, 3u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;float, 3u&gt; &gt; const&amp;) (line 12)</a></td><td>called 19 times, returned 19 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;double, 2u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 2u&gt; &gt; const&amp;) (line 12)</a></td><td>called 98 times, returned 98 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;double, 3u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;double, 3u&gt; &gt; const&amp;) (line 12)</a></td><td>called 196 times, returned 196 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;float, 2u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;float, 2u&gt; &gt; const&amp;) (line 12)</a></td><td>called 57 times, returned 57 times</td><td>100.0%</td></tr>
+    <tr><td><a href="#l12">auto plf::_::pio_2_splitting&lt;plf::polyfloat&lt;float, 3u&gt; &gt;(eve::as&lt;plf::polyfloat&lt;float, 3u&gt; &gt; const&amp;) (line 12)</a></td><td>called 191 times, returned 191 times</td><td>100.0%</td></tr>
   </table>
 </details>
 
@@ -172,8 +172,8 @@
       <td class="lineno"><a id="l12" href="#l12">12</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">208</td>
-      <td class="src coveredLine"><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">EVE_FORCEINLINE</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">pio_2_splitting</span><span class="p">(</span><span class="n">as</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span></td>
+      <td class="linecount coveredLine">1084</td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">POLYFLOAT_ABI</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">pio_2_splitting</span><span class="p">(</span><span class="n">as</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l13" href="#l13">13</a></td>
@@ -438,21 +438,21 @@
       <td class="lineno"><a id="l50" href="#l50">50</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">42</td>
+      <td class="linecount coveredLine">114</td>
       <td class="src coveredLine"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.9210000000000p+0</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l51" href="#l51">51</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">42</td>
+      <td class="linecount coveredLine">114</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.f6a0000000000p-13</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l52" href="#l52">52</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">42</td>
+      <td class="linecount coveredLine">114</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.110b460000000p-26</span><span class="p">,</span><span class="w"> </span><span class="mf">0x1.1a62640000000p-54</span><span class="p">)};</span></td>
     </tr>
     <tr class="source-line">
@@ -522,21 +522,21 @@
       <td class="lineno"><a id="l62" href="#l62">62</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">90</td>
+      <td class="linecount coveredLine">196</td>
       <td class="src coveredLine"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.921fb54000000p+0</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l63" href="#l63">63</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">90</td>
+      <td class="linecount coveredLine">196</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.10b4600000000p-30</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l64" href="#l64">64</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">90</td>
+      <td class="linecount coveredLine">196</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.1a62633145c07p-54</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">f1976b7ed8fbcp</span><span class="mi">-110</span><span class="p">)};</span></td>
     </tr>
     <tr class="source-line">
@@ -627,21 +627,21 @@
       <td class="lineno"><a id="l77" href="#l77">77</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">382</td>
       <td class="src coveredLine"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kumi</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.921fb60000000p+0</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="mf">.8000000000000</span><span class="n">p</span><span class="mi">-25</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l78" href="#l78">78</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">382</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.10b4600000000p-30</span><span class="p">,</span><span class="w"> </span><span class="mf">0x1.0000000000000p-54</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l79" href="#l79">79</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">382</td>
       <td class="src coveredLine"><span class="w">                           </span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.a626340000000p-58</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">d747f20000000p</span><span class="mi">-83</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">f1976c0000000p</span><span class="mi">-110</span><span class="p">)};</span></td>
     </tr>
     <tr class="source-line">
@@ -718,21 +718,21 @@
       <td class="lineno"><a id="l90" href="#l90">90</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">392</td>
       <td class="src coveredLine"><span class="w">          </span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.921fb54442d18p+0</span><span class="p">,</span><span class="w"> </span><span class="mf">0x1.1a62400000000p-54</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l91" href="#l91">91</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">392</td>
       <td class="src coveredLine"><span class="w">          </span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.198a2e0370734p-73</span><span class="p">,</span><span class="w"> </span><span class="mf">0x1.2902000000000p-127</span><span class="p">,</span><span class="w"> </span><span class="mf">0x0.0p+0</span><span class="p">),</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l92" href="#l92">92</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount coveredLine">38</td>
+      <td class="linecount coveredLine">392</td>
       <td class="src coveredLine"><span class="w">          </span><span class="n">from_triple</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0x1.3822299f31d01p-145</span><span class="p">,</span><span class="w"> </span><span class="mh">-0x1</span><span class="p">.</span><span class="n">f44159c4ec64ep</span><span class="mi">-199</span><span class="p">,</span><span class="w"> </span><span class="mf">0x1.28a5043cc71a0p-254</span><span class="p">)};</span></td>
     </tr>
     <tr class="source-line">

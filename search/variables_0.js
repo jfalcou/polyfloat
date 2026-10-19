@@ -3,6 +3,7 @@ var searchData=
   ['abs_2',['abs',['../group__core_ga69b3078b6a64e0467e0595929ca947de.html#ga69b3078b6a64e0467e0595929ca947de',1,'plf::abs']]],
   ['absmax_3',['absmax',['../group__core_gadd0f5df2e8971e69dd54e2b9921d04a6.html#gadd0f5df2e8971e69dd54e2b9921d04a6',1,'plf::absmax']]],
   ['absmin_4',['absmin',['../group__core_ga6b9323d57f26ce1cd555444d9b64c807.html#ga6b9323d57f26ce1cd555444d9b64c807',1,'plf::absmin']]],
+  ['acos_5',['acos',['../group__core_ga16bd93f50121516a6f2321aec146b4c1.html#ga16bd93f50121516a6f2321aec146b4c1',1,'plf::acos']]],
   ['acosh_6',['acosh',['../group__core_gaed114cf184f7a06cadd10432981d3516.html#gaed114cf184f7a06cadd10432981d3516',1,'plf::acosh']]],
   ['acoth_8',['acoth',['../group__core_ga255478078703a5e3983f9a1f391c5807.html#ga255478078703a5e3983f9a1f391c5807',1,'plf::acoth']]],
   ['acsch_10',['acsch',['../group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html#ga9063b9310082cd6b6ee1e38e5eb735ae',1,'plf::acsch']]],
@@ -10,7 +11,10 @@ var searchData=
   ['agm_13',['agm',['../group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html#gaaf79a031e1bb735e16389b0a19a2f3d7',1,'plf::agm']]],
   ['allbits_19',['allbits',['../group__core.html#gabbd6cfcd83668ca5f081bcc515d75a59',1,'plf::allbits']]],
   ['asech_29',['asech',['../group__core_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],
+  ['asin_30',['asin',['../group__core_gac33460dcd2548f05618f163aa6b8f447.html#gac33460dcd2548f05618f163aa6b8f447',1,'plf::asin']]],
   ['asinh_31',['asinh',['../group__core_gac6517fdf90349f548ef51ecab16a7da2.html#gac6517fdf90349f548ef51ecab16a7da2',1,'plf::asinh']]],
+  ['atan_32',['atan',['../group__core_ga786c4561195e6d5b68b02db954d79f3f.html#ga786c4561195e6d5b68b02db954d79f3f',1,'plf::atan']]],
+  ['atan2_33',['atan2',['../group__core_ga7620db80392919b6ae699eeec18fe979.html#ga7620db80392919b6ae699eeec18fe979',1,'plf::atan2']]],
   ['atanh_34',['atanh',['../group__core_ga1a41e219730981cadf767bbd10cec87f.html#ga1a41e219730981cadf767bbd10cec87f',1,'plf::atanh']]],
   ['average_35',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf::average']]]
 ];
