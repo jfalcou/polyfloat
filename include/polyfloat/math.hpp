@@ -11,7 +11,9 @@
 #include <polyfloat/module/math/acos.hpp>
 #include <polyfloat/module/math/acosh.hpp>
 #include <polyfloat/module/math/acoth.hpp>
+#include <polyfloat/module/math/acsc.hpp>>
 #include <polyfloat/module/math/acsch.hpp>
+#include <polyfloat/module/math/asec.hpp>
 #include <polyfloat/module/math/asech.hpp>
 #include <polyfloat/module/math/asin.hpp>
 #include <polyfloat/module/math/asinh.hpp>
