@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/math/tan.hpp>
+#include <polyfloat/module/math/atan.hpp>
 
 namespace plf
 {

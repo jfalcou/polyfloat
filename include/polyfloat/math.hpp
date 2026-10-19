@@ -12,6 +12,7 @@
 #include <polyfloat/module/math/acoth.hpp>
 #include <polyfloat/module/math/acsch.hpp>
 #include <polyfloat/module/math/asech.hpp>
+#include <polyfloat/module/math/asin.hpp>
 #include <polyfloat/module/math/asinh.hpp>
 #include <polyfloat/module/math/atan.hpp>
 #include <polyfloat/module/math/atan2.hpp>
