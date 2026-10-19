@@ -77,7 +77,7 @@ namespace plf::_
 {
 
   template<typename T, eve::callable_options O>
-  EVE_FORCEINLINE constexpr T radinpi_(POLYFLOAT_DELAY(), O const&, T const& a) noexcept
+  POLYFLOAT_FORCEINLINE constexpr T radinpi_(POLYFLOAT_DELAY(), O const&, T const& a) noexcept
   {
     auto [r2ph, r2pl] = plf::two_split(plf::inv_pi(eve::as<T>()));
     return plf::fma(a, r2ph, a * r2pl);

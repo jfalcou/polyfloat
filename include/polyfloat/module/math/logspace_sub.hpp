@@ -83,7 +83,7 @@ namespace plf
 namespace plf::_
 {
   template<typename T0, eve::callable_options O>
-  EVE_FORCEINLINE constexpr auto logspace_sub_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
+  POLYFLOAT_FORCEINLINE constexpr auto logspace_sub_(POLYFLOAT_DELAY(), O const&, T0 t0) noexcept
   {
     return plf::abs(t0);
   }
