@@ -17,7 +17,14 @@ namespace plf
 {
 
   template<typename Options>
-  struct atan_t : plf::elementwise_callable<atan_t, eve::atan_t, Options, raw_option, pedantic_option>
+  struct atan_t : plf::elementwise_callable<atan_t,
+                                            eve::atan_t,
+                                            Options,
+                                            raw_option,
+                                            pedantic_option,
+                                            eve::rad_option,
+                                            eve::radpi_option,
+                                            eve::deg_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -75,34 +82,43 @@ namespace plf::_
   //Perhaps 2 imprvt to see latter
   // 1 treat small values differently
   // 2 the three steps can be progressive T,  double_real_t<T> and triple_real_t<T>
-  template<typename T, eve::callable_options O> constexpr auto atan_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto atan_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    auto a0pos = plf::is_positive(a0);
-    auto ax = plf::abs(a0);
-    auto invax = ax > plf::one(eve::as(a0));
-    auto axx = plf::rec[eve::pedantic][invax](ax);
-    auto thresh = axx > plf::dec(plf::sqrt(T(2)));                        //plf::sqrt_2m1(eve::as(x));
-    auto axxx = plf::if_else(thresh, plf::oneminus(axx) / inc(axx), axx); // all lanes are less than sqrt(2)-1)
-    T r(eve::atan(plf::hi(axxx)));
-    auto t = plf::tan[quarter_circle](r);
-    r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
-    if constexpr (dimension_v<T> == 2)
+    if constexpr (O::contains(eve::rad)) return atan[o.drop(rad)](a0);
+    else if constexpr (O::contains(eve::deg)) return radindeg(atan[o.drop(eve::deg)](a0));
+    else if constexpr (O::contains(eve::radpi)) return radinpi(atan[o.drop(eve::radpi)](a0));
+    else
     {
-      r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
-      r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
-      r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
-      r = if_else(a0pos, r, -r);
-      return r;
-    }
-    else if constexpr (dimension_v<T> == 3)
-    {
-      t = plf::tan[quarter_circle](r);
+      auto a0pos = plf::is_positive(a0);
+      auto ax = plf::abs(a0);
+      auto invax = ax > plf::one(eve::as(a0));
+      auto axx = plf::rec[eve::pedantic][invax](ax);
+      auto thresh = axx > plf::dec(plf::sqrt(T(2)));                        //plf::sqrt_2m1(eve::as(x));
+      auto axxx = plf::if_else(thresh, plf::oneminus(axx) / inc(axx), axx); // all lanes are less than sqrt(2)-1)
+      T r(eve::atan(plf::hi(axxx)));
+      auto t = plf::tan[quarter_circle](r);
       r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
-      r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
-      r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
-      r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
-      r = if_else(a0pos, r, -r);
-      return r;
+      if constexpr (dimension_v<T> == 2)
+      {
+        r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
+        r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
+        r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
+        r = if_else(a0pos, r, -r);
+        return r;
+      }
+      else if constexpr (dimension_v<T> == 3)
+      {
+        t = plf::tan[quarter_circle](r);
+        r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
+        r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
+        r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
+        r = if_else(!thresh && invax, pio_2(eve::as(a0)) - r, r);
+        r = if_else(a0pos, r, -r);
+        return r;
+      }
     }
   }
+  constexpr auto atand = plf::atan[eve::deg];
+  constexpr auto atanpi = plf::atan[eve::radpi];
+
 }

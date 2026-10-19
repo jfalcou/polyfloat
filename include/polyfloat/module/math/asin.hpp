@@ -17,7 +17,14 @@ namespace plf
 {
 
   template<typename Options>
-  struct asin_t : plf::elementwise_callable<asin_t, eve::asin_t, Options, raw_option, pedantic_option>
+  struct asin_t : plf::elementwise_callable<asin_t,
+                                            eve::asin_t,
+                                            Options,
+                                            raw_option,
+                                            pedantic_option,
+                                            eve::rad_option,
+                                            eve::radpi_option,
+                                            eve::deg_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_FORCEINLINE constexpr Z operator()(Z z) const noexcept
     {
@@ -73,8 +80,11 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto asin_(POLYFLOAT_DELAY(), O const&, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto asin_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    return plf::atan2(a0, plf::sqrt(oneminus(plf::sqr(a0))));
+    return plf::atan2[o](a0, plf::sqrt(oneminus(plf::sqr(a0))));
   }
+
+  constexpr auto asind = plf::asin[eve::deg];
+  constexpr auto asinpi = plf::asin[eve::radpi];
 }

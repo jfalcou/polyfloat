@@ -13,12 +13,21 @@
 #include <type_traits>
 #include <polyfloat/module/math/tan.hpp>
 #include <polyfloat/module/math/atan.hpp>
+#include <polyfloat/module/math/radindeg.hpp>
+#include <polyfloat/module/math/radinpi.hpp>
 
 namespace plf
 {
 
   template<typename Options>
-  struct atan2_t : plf::elementwise_callable<atan2_t, eve::atan2_t, Options, raw_option, pedantic_option>
+  struct atan2_t : plf::elementwise_callable<atan2_t,
+                                             eve::atan2_t,
+                                             Options,
+                                             raw_option,
+                                             pedantic_option,
+                                             eve::rad_option,
+                                             eve::radpi_option,
+                                             eve::deg_option>
   {
     template<concepts::polyfloat_like Z0, concepts::polyfloat_like Z1>
     POLYFLOAT_FORCEINLINE constexpr plf::as_polyfloat_like_t<Z0, Z1> operator()(Z0 z0, Z1 z1) const noexcept
@@ -95,43 +104,48 @@ namespace plf
 namespace plf::_
 {
   template<typename T, typename U, eve::callable_options O>
-  constexpr auto atan2_(POLYFLOAT_DELAY(), O const&, T a0, U a1) noexcept
+  constexpr auto atan2_(POLYFLOAT_DELAY(), O const& o, T a0, U a1) noexcept
   {
-    using r_t = plf::as_polyfloat_like_t<T, U>;
-    using elt_t = eve::element_type_t<r_t>;
-    auto cvt = [](auto a) { return plf::convert(a, eve::as<elt_t>()); };
-    r_t a00 = cvt(a0);
-    r_t a10 = cvt(a1);
-    if constexpr (O::contains(pedantic))
-    {
-      if constexpr (eve::scalar_value<r_t> && eve::platform::supports_nans)
-      {
-        if (plf::is_unordered(a00, a10)) return plf::nan(eve::as(a00));
-      }
-      if constexpr (eve::platform::supports_infinites)
-      {
-        auto test1 = plf::is_infinite(a00) && plf::is_infinite(a10);
-        a00 = plf::if_else(test1, plf::copysign(one(eve::as(a00)), a00), a00);
-        a10 = plf::if_else(test1, plf::copysign(one(eve::as(a00)), a10), a10);
-      }
-      auto q = plf::abs(a00 / a10);
-      r_t z = plf::atan(q);
-      r_t sgn = signnz(a00);
-      z = plf::if_else(plf::is_positive(a10), z, plf::pi(eve::as(a0)) - z) * sgn;
-      z =
-        plf::if_else(plf::is_eqz(a00), plf::if_else(plf::is_negative(a10), plf::pi(eve::as(a00)) * sgn, plf::zero), z);
-      if constexpr (eve::platform::supports_nans) return plf::if_else(is_unordered(a00, a10), plf::allbits, z);
-      else return z;
-    }
+    if constexpr (O::contains(eve::rad)) return atan2[o.drop(rad)](a0, a1);
+    else if constexpr (O::contains(eve::deg)) return radindeg(atan2[o.drop(eve::deg)](a0, a1));
+    else if constexpr (O::contains(eve::radpi)) return radinpi(atan2[o.drop(eve::radpi)](a0, a1));
     else
     {
-      auto q = plf::abs(a00 / a10);
-      auto z = plf::atan(q);
-      return if_else(is_positive(a10), z, (pi(eve::as(a00)) - z)) * signnz(a00);
+      using r_t = plf::as_polyfloat_like_t<T, U>;
+      using elt_t = eve::element_type_t<r_t>;
+      auto cvt = [](auto a) { return plf::convert(a, eve::as<elt_t>()); };
+      r_t a00 = cvt(a0);
+      r_t a10 = cvt(a1);
+      if constexpr (O::contains(pedantic))
+      {
+        if constexpr (eve::scalar_value<r_t> && eve::platform::supports_nans)
+        {
+          if (plf::is_unordered(a00, a10)) return plf::nan(eve::as(a00));
+        }
+        if constexpr (eve::platform::supports_infinites)
+        {
+          auto test1 = plf::is_infinite(a00) && plf::is_infinite(a10);
+          a00 = plf::if_else(test1, plf::copysign(one(eve::as(a00)), a00), a00);
+          a10 = plf::if_else(test1, plf::copysign(one(eve::as(a00)), a10), a10);
+        }
+        auto q = plf::abs(a00 / a10);
+        r_t z = plf::atan(q);
+        r_t sgn = signnz(a00);
+        z = plf::if_else(plf::is_positive(a10), z, plf::pi(eve::as(a0)) - z) * sgn;
+        z = plf::if_else(plf::is_eqz(a00), plf::if_else(plf::is_negative(a10), plf::pi(eve::as(a00)) * sgn, plf::zero),
+                         z);
+        if constexpr (eve::platform::supports_nans) return plf::if_else(is_unordered(a00, a10), plf::allbits, z);
+        else return z;
+      }
+      else
+      {
+        auto q = plf::abs(a00 / a10);
+        auto z = plf::atan(q);
+        return if_else(is_positive(a10), z, (pi(eve::as(a00)) - z)) * signnz(a00);
+      }
     }
   }
-
-  //   constexpr auto atan2d = plf::atan2[eve::deg];
-  //   constexpr auto atan2pi= plf::atan2[eve::radpi];
+  constexpr auto atan2d = plf::atan2[eve::deg];
+  constexpr auto atan2pi = plf::atan2[eve::radpi];
 
 }
