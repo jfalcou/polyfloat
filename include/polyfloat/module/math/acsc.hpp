@@ -71,6 +71,6 @@ namespace plf::_
 
   template<typename T, eve::callable_options O> constexpr auto acsc_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
   {
-    return if_else(plf::is_eqz(a0), plf::signnz[eve::pedantic](a0) * inf(eve::as(a0)), plf::asin[o](plf::rec(a0)));
+    return plf::asin[o](plf::rec(a0));
   }
 }
