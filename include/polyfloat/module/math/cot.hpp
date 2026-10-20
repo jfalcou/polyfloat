@@ -128,7 +128,7 @@ namespace plf::_
         else if constexpr (O::contains(eve::half_circle) || O::contains(eve::full_circle) || O::contains(eve::medium))
         {
           auto [fn, xr, dxr] = pio_2_reduce(x);
-          return cot_finalize(a0, fn, xr, dxr);
+          return plf::_::cot_finalize(a0, fn, xr, dxr);
         }
         else
           return plf::cot[eve::medium](
