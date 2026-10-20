@@ -22,7 +22,7 @@ TTS_CASE_WITH(
     pv_t o(T(0.625), T(0));
     TTS_RELATIVE_EQUAL(acos(o), tts::mpfr_exec(macos, o), tts::epsprec<pv_t>());
     pv_t z(T(0), T(0));
-    TTS_IEEE_EQUAL(plf::acos(z), z);
+    TTS_IEEE_EQUAL(plf::acos(z), plf::pio_2(eve::as(z)));
 
     for (pv_t i = 0; i < 1; i += pv_t(0.01))
     {
@@ -36,7 +36,7 @@ TTS_CASE_WITH(
     pv_t o(T(0.625), T(0));
     TTS_RELATIVE_EQUAL(acos(o), tts::mpfr_exec(macos, o), tts::epsprec<pv_t>());
     pv_t z(T(0), T(0));
-    TTS_IEEE_EQUAL(plf::acos(z), z);
+    TTS_IEEE_EQUAL(plf::acos(z), plf::pio_2(eve::as(z)));
 
     for (pv_t i = 0; i < 1; i += pv_t(0.01))
     {
