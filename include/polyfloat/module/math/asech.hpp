@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/asech.cpp}
+  //!  @godbolt{doc/math/asech.cpp}
   //======================================================================================================================
 
   inline constexpr auto asech = eve::functor<asech_t>;

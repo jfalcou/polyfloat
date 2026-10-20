@@ -75,7 +75,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/cot.cpp}
+  //!  @godbolt{doc/math/cot.cpp}
   //======================================================================================================================
 
   inline constexpr auto cot = eve::functor<cot_t>;

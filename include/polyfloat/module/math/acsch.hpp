@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/acsch.cpp}
+  //!  @godbolt{doc/math/acsch.cpp}
   //======================================================================================================================
 
   inline constexpr auto acsch = eve::functor<acsch_t>;

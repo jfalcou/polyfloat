@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/exp10.cpp}
+  //!  @godbolt{doc/math/exp10.cpp}
   //======================================================================================================================
 
   inline constexpr auto exp10 = eve::functor<exp10_t>;

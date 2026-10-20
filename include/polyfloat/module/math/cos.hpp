@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/cos.cpp}
+  //!  @godbolt{doc/math/cos.cpp}
   //======================================================================================================================
 
   inline constexpr auto cos = eve::functor<cos_t>;

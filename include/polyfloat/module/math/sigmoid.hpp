@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sigmoid.cpp}
+  //!  @godbolt{doc/math/sigmoid.cpp}
   //======================================================================================================================
 
   inline constexpr auto sigmoid = eve::functor<sigmoid_t>;

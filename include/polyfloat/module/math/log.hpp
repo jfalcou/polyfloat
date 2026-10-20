@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/log.cpp}
+  //!  @godbolt{doc/math/log.cpp}
   //======================================================================================================================
 
   inline constexpr auto log = eve::functor<log_t>;

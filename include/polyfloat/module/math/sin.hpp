@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/sin.cpp}
+  //!  @godbolt{doc/math/sin.cpp}
   //======================================================================================================================
 
   inline constexpr auto sin = eve::functor<sin_t>;

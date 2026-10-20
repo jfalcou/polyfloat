@@ -75,7 +75,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/tan.cpp}
+  //!  @godbolt{doc/math/tan.cpp}
   //======================================================================================================================
 
   inline constexpr auto tan = eve::functor<tan_t>;

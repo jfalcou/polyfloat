@@ -67,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt{doc/core/kolmmean.cpp}
+  //!  @godbolt{doc/math/kolmmean.cpp}
   //======================================================================================================================
 
   inline constexpr auto kolmmean = eve::functor<kolmmean_t>;
