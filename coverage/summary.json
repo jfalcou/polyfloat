@@ -8,9 +8,9 @@
             "branch_percent": 100.0,
             "branch_total": 4,
             "filename": "include/polyfloat/details/callable.hpp",
-            "function_covered": 1448,
+            "function_covered": 1464,
             "function_percent": 96.8,
-            "function_total": 1496,
+            "function_total": 1512,
             "line_covered": 6,
             "line_percent": 100.0,
             "line_total": 6
@@ -1675,6 +1675,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/math/acos.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/math/acosh.hpp",
             "function_covered": 28,
             "function_percent": 100.0,
@@ -1699,6 +1711,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/math/acsc.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/math/acsch.hpp",
             "function_covered": 28,
             "function_percent": 100.0,
@@ -1706,6 +1730,18 @@
             "line_covered": 7,
             "line_percent": 100.0,
             "line_total": 7
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/math/asec.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
         },
         {
             "branch_covered": 0,
@@ -1724,9 +1760,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/math/asin.hpp",
-            "function_covered": 12,
+            "function_covered": 20,
             "function_percent": 100.0,
-            "function_total": 12,
+            "function_total": 20,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -2692,12 +2728,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 10842,
+    "function_covered": 10902,
     "function_percent": 96.9,
-    "function_total": 11194,
+    "function_total": 11254,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2312,
+    "line_covered": 2327,
     "line_percent": 99.1,
-    "line_total": 2334,
+    "line_total": 2349,
     "root": "../../.."
 }

@@ -461,6 +461,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>acsc</name>
+      <anchorfile>group__core_ga1c3b2469b5b4a43fb08afec46d984e35.html</anchorfile>
+      <anchor>ga1c3b2469b5b4a43fb08afec46d984e35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>acsch</name>
       <anchorfile>group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html</anchorfile>
       <anchor>ga9063b9310082cd6b6ee1e38e5eb735ae</anchor>
@@ -485,6 +492,13 @@
       <name>allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>asec</name>
+      <anchorfile>group__core_ga9d81960283c44e7fcc54624ae6985c0b.html</anchorfile>
+      <anchor>ga9d81960283c44e7fcc54624ae6985c0b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2556,6 +2570,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::acsc</name>
+      <anchorfile>group__core_ga1c3b2469b5b4a43fb08afec46d984e35.html</anchorfile>
+      <anchor>ga1c3b2469b5b4a43fb08afec46d984e35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::acsch</name>
       <anchorfile>group__core_ga9063b9310082cd6b6ee1e38e5eb735ae.html</anchorfile>
       <anchor>ga9063b9310082cd6b6ee1e38e5eb735ae</anchor>
@@ -2580,6 +2601,13 @@
       <name>plf::allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::asec</name>
+      <anchorfile>group__core_ga9d81960283c44e7fcc54624ae6985c0b.html</anchorfile>
+      <anchor>ga9d81960283c44e7fcc54624ae6985c0b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
