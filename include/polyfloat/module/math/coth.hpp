@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/coth.cpp}
+  //!  @godbolt{doc/core/coth.cpp}
   //======================================================================================================================
 
   inline constexpr auto coth = eve::functor<coth_t>;

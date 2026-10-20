@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/log2.cpp}
+  //!  @godbolt{doc/core/log2.cpp}
   //======================================================================================================================
 
   inline constexpr auto log2 = eve::functor<log2_t>;

@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/acos.cpp}
+  //!  @godbolt{doc/core/acos.cpp}
   //======================================================================================================================
 
   inline constexpr auto acos = eve::functor<acos_t>;

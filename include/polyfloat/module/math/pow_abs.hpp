@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/pow_abs.cpp}
+  //!  @godbolt{doc/core/pow_abs.cpp}
   //======================================================================================================================
 
   inline constexpr auto pow_abs = eve::functor<pow_abs_t>;

@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/exp.cpp}
+  //!  @godbolt{doc/core/exp.cpp}
   //======================================================================================================================
 
   inline constexpr auto exp = eve::functor<exp_t>;

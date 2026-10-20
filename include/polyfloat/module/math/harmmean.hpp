@@ -68,7 +68,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/harmmean.cpp}
+  //!  @godbolt{doc/core/harmmean.cpp}
   //======================================================================================================================
 
   inline constexpr auto harmmean = eve::functor<harmmean_t>;

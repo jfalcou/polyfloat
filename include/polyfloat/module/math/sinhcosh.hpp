@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sinhcosh.cpp}
+  //!  @godbolt{doc/core/sinhcosh.cpp}
   //======================================================================================================================
 
   inline constexpr auto sinhcosh = eve::functor<sinhcosh_t>;

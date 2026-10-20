@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/cosh.cpp}
+  //!  @godbolt{doc/core/cosh.cpp}
   //======================================================================================================================
 
   inline constexpr auto cosh = eve::functor<cosh_t>;

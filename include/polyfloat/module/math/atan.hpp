@@ -64,7 +64,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/atan.cpp}
+  //!  @godbolt{doc/core/atan.cpp}
   //======================================================================================================================
 
   inline constexpr auto atan = eve::functor<atan_t>;

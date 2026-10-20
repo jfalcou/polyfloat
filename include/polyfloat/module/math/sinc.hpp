@@ -70,7 +70,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sinc.cpp}
+  //!  @godbolt{doc/core/sinc.cpp}
   //======================================================================================================================
 
   inline constexpr auto sinc = eve::functor<sinc_t>;

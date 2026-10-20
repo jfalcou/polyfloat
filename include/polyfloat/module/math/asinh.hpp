@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/asinh.cpp}
+  //!  @godbolt{doc/core/asinh.cpp}
   //======================================================================================================================
 
   inline constexpr auto asinh = eve::functor<asinh_t>;

@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sincos.cpp}
+  //!  @godbolt{doc/core/sincos.cpp}
   //======================================================================================================================
 
   inline constexpr auto sincos = eve::functor<sincos_t>;

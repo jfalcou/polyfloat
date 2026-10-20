@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/geommean.cpp}
+  //!  @godbolt{doc/core/geommean.cpp}
   //======================================================================================================================
 
   inline constexpr auto geommean = eve::functor<geommean_t>;

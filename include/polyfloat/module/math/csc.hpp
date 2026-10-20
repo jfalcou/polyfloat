@@ -68,7 +68,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/csc.cpp}
+  //!  @godbolt{doc/core/csc.cpp}
   //======================================================================================================================
 
   inline constexpr auto csc = eve::functor<csc_t>;

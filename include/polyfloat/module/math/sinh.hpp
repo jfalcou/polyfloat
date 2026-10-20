@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sinh.cpp}
+  //!  @godbolt{doc/core/sinh.cpp}
   //======================================================================================================================
 
   inline constexpr auto sinh = eve::functor<sinh_t>;

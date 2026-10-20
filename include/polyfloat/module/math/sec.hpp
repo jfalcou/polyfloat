@@ -68,7 +68,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sec.cpp}
+  //!  @godbolt{doc/core/sec.cpp}
   //======================================================================================================================
 
   inline constexpr auto sec = eve::functor<sec_t>;
