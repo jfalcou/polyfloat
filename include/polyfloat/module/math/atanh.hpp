@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/atanh.cpp}
+  //!  @godbolt{doc/math/atanh.cpp}
   //======================================================================================================================
 
   inline constexpr auto atanh = eve::functor<atanh_t>;

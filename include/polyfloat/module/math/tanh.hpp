@@ -59,7 +59,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/tanh.cpp}
+  //!  @godbolt{doc/math/tanh.cpp}
   //======================================================================================================================
 
   inline constexpr auto tanh = eve::functor<tanh_t>;

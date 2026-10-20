@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/expm1.cpp}
+  //!  @godbolt{doc/math/expm1.cpp}
   //======================================================================================================================
 
   inline constexpr auto expm1 = eve::functor<expm1_t>;

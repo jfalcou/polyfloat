@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/acosh.cpp}
+  //!  @godbolt{doc/math/acosh.cpp}
   //======================================================================================================================
 
   inline constexpr auto acosh = eve::functor<acosh_t>;

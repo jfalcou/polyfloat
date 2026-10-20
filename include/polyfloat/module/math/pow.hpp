@@ -82,7 +82,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/pow.cpp}
+  //!  @godbolt{doc/math/pow.cpp}
   //======================================================================================================================
 
   inline constexpr auto pow = eve::functor<pow_t>;

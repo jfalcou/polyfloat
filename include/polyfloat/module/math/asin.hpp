@@ -69,7 +69,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/asin.cpp}
+  //!  @godbolt{doc/math/asin.cpp}
   //======================================================================================================================
 
   inline constexpr auto asin = eve::functor<asin_t>;
