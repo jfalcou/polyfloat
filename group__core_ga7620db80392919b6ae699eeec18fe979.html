@@ -194,8 +194,80 @@ $(function(){initNavTree('group__core_ga7620db80392919b6ae699eeec18fe979.html','
 </li>
 </ol>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/atan2.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="comment">//======================================================================================================================</span></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> POLYFLOAT - Extended precision floating points</span></div>
+<div class="line"><span class="comment"> Copyright : POLYFLOAT Contributors &amp; Maintainers</span></div>
+<div class="line"><span class="comment"> SPDX-License-Identifier: BSL-1.0</span></div>
+<div class="line"><span class="comment">*/</span></div>
+<div class="line"><span class="comment">//======================================================================================================================</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">plf::atan2</a>;</div>
+<div class="line">  <span class="keyword">using </span>d1_t = double;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f1_t = float;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  f1_t xf(1.5f);</div>
+<div class="line">  d1_t xd(1.5);</div>
+<div class="line">  f1_t yf(0.5f);</div>
+<div class="line">  d1_t yd(0.5);</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;yf &quot;</span> &lt;&lt; yf &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;yd &quot;</span> &lt;&lt; yd &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;xf &quot;</span> &lt;&lt; xf &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;xd &quot;</span> &lt;&lt; xd &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(d1_t(yd), d1_t(xd)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(d1_t(yd), d1_t(xd)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(d2_t(yd), d2_t(xd)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(d2_t(yd), d2_t(xd)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(d3_t(yd), d3_t(xd)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(d3_t(yd), d3_t(xd)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(f1_t(yf), f1_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(f1_t(yf), f1_t(xf)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(f2_t(yf), f2_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(f2_t(yf), f2_t(xf)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(f3_t(yf), f3_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga7620db80392919b6ae699eeec18fe979">atan2</a>(f3_t(yf), f3_t(xf)) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>wd1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d1_t, 4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wd2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t, 4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wd3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d3_t, 4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wf1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;f1_t, 4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;f2_t, 4&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;f3_t, 4&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line">  wf1_t wyf([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> -0.5f + i; });</div>
+<div class="line">  wd1_t wyd([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> -0.5 + i; });</div>
+<div class="line">  wf1_t wxf([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> 0.5f - i; });</div>
+<div class="line">  wd1_t wxd([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> 0.5 - i; });</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wyf &quot;</span> &lt;&lt; wyf &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wyd &quot;</span> &lt;&lt; wyd &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wxf &quot;</span> &lt;&lt; wxf &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wxd &quot;</span> &lt;&lt; wxd &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wyf, wxf) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wyf, wxf) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wyd, wxd) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wyd, wxd) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  wf2_t wyf2([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> f1_t(0.5f - i); });</div>
+<div class="line">  wd2_t wyd2([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d1_t(0.5 - i); });</div>
+<div class="line">  wf2_t wxf2([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> f1_t(-0.5f + i); });</div>
+<div class="line">  wd2_t wxd2([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d1_t(-0.5 + i); });</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wxf2 = &quot;</span> &lt;&lt; wxf2 &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wxd2 = &quot;</span> &lt;&lt; wxd2 &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wyf2, wxf2) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wyf2, wxf2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wyd2, wxd2) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wyd2, wxd2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wd3_t(yd), wd3_t(xd)) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wd3_t(yd), wd3_t(wxd)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wf1_t(yf), wf1_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wf1_t(yf), wf1_t(wxf)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wf2_t(yf), wf2_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wf2_t(yf), wf2_t(wxf)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;atan2(wf3_t(yf), wf3_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">atan2</a>(wf3_t(yf), wf3_t(wxf)) &lt;&lt; std::endl;</div>
+<div class="line">};</div>
+<div class="ttc" id="agroup__eve__math__invtrig_html_ga4e3cc734432c96af2f4e1bfb576ea504"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__math__invtrig.html#ga4e3cc734432c96af2f4e1bfb576ea504">eve::atan2</a></div><div class="ttdeci">constexpr auto atan2</div></div>
+<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
