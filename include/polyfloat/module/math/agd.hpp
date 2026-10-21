@@ -32,7 +32,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var agd
-  //!   @brief return the the phase angle (in radians).
+  //!   @brief return the inverse gudermannian agd : \f$2\tanh(\tan(x/2))\f$..
   //!
   //!   @groupheader{Header file}
   //!
@@ -49,8 +49,8 @@ namespace plf
   //!      constexpr auto agd(auto auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto agd[conditional_expr auto c](auto auto x) noexcept; // 3
-  //!      constexpr auto agd[logical_value auto m](auto auto x)    noexcept; // 3
+  //!      constexpr auto agd[conditional_expr auto c](auto auto x) noexcept; // 2
+  //!      constexpr auto agd[logical_value auto m](auto auto x)    noexcept; // 2
   //!   }
   //!   @endcode
   //!

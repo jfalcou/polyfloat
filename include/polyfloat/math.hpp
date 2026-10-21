@@ -28,11 +28,13 @@
 #include <polyfloat/module/math/cot.hpp>
 #include <polyfloat/module/math/coth.hpp>
 #include <polyfloat/module/math/csc.hpp>
+#include <polyfloat/module/math/csch.hpp>
 #include <polyfloat/module/math/div_180.hpp>
 #include <polyfloat/module/math/exp.hpp>
 #include <polyfloat/module/math/exp10.hpp>
 #include <polyfloat/module/math/exp2.hpp>
 #include <polyfloat/module/math/expm1.hpp>
+#include <polyfloat/module/math/gd.hpp>
 #include <polyfloat/module/math/geommean.hpp>
 #include <polyfloat/module/math/harmmean.hpp>
 #include <polyfloat/module/math/kolmmean.hpp>
@@ -50,6 +52,7 @@
 #include <polyfloat/module/math/sigmoid.hpp>
 #include <polyfloat/module/math/radinpi.hpp>
 #include <polyfloat/module/math/sec.hpp>
+#include <polyfloat/module/math/sech.hpp>
 #include <polyfloat/module/math/sin.hpp>
 #include <polyfloat/module/math/sinc.hpp>
 #include <polyfloat/module/math/sincos.hpp>

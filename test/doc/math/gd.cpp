@@ -1,0 +1,59 @@
+//======================================================================================================================
+/*
+ POLYFLOAT - Extended precision floating points
+ Copyright : POLYFLOAT Contributors & Maintainers
+ SPDX-License-Identifier: BSL-1.0
+*/
+//======================================================================================================================
+#include <polyfloat/polyfloat.hpp>
+#include <iostream>
+
+int main()
+{
+  using plf::gd;
+  using d1_t = double;
+  using d2_t = plf::double_real_t<double>;
+  using d3_t = plf::triple_real_t<double>;
+  using f1_t = float;
+  using f2_t = plf::double_real_t<float>;
+  using f3_t = plf::triple_real_t<float>;
+
+  f1_t xf(1.5f);
+  d1_t xd(1.5);
+
+  std::cout << "xf " << xf << std::endl;
+  std::cout << "xd " << xd << std::endl;
+  std::cout << "gd(d1_t(xd)) = " << gd(d1_t(xd)) << std::endl;
+  std::cout << "gd(d2_t(xd)) = " << gd(d2_t(xd)) << std::endl;
+  std::cout << "gd(d3_t(xd)) = " << gd(d3_t(xd)) << std::endl;
+  std::cout << "gd(f1_t(xf)) = " << gd(f1_t(xf)) << std::endl;
+  std::cout << "gd(f2_t(xf)) = " << gd(f2_t(xf)) << std::endl;
+  std::cout << "gd(f3_t(xf)) = " << gd(f3_t(xf)) << std::endl;
+
+  using wd1_t = eve::wide<d1_t, 4>;
+  using wd2_t = eve::wide<d2_t, 4>;
+  using wd3_t = eve::wide<d3_t, 4>;
+  using wf1_t = eve::wide<f1_t, 4>;
+  using wf2_t = eve::wide<f2_t, 4>;
+  using wf3_t = eve::wide<f3_t, 4>;
+
+  wf1_t wxf([](auto i, auto) { return -0.5f + i; });
+  wd1_t wxd([](auto i, auto) { return -0.5 + i; });
+
+  std::cout << "wxf " << wxf << std::endl;
+  std::cout << "wxd " << wxd << std::endl;
+  std::cout << "gd(wxf) = " << gd(wxf) << std::endl;
+  std::cout << "gd(wxd) = " << gd(wxd) << std::endl;
+
+  wf2_t wxf2([](auto i, auto) { return f1_t(-0.5f + i); });
+  wd2_t wxd2([](auto i, auto) { return d1_t(-0.5 + i); });
+
+  std::cout << "wxf2 = " << wxf2 << std::endl;
+  std::cout << "wxd2 = " << wxd2 << std::endl;
+  std::cout << "gd(wxf2) = " << gd(wxf2) << std::endl;
+  std::cout << "gd(wxd2) = " << gd(wxd2) << std::endl;
+  std::cout << "gd(wd3_t(xd)) = " << gd(wd3_t(wxd)) << std::endl;
+  std::cout << "gd(wf1_t(xf)) = " << gd(wf1_t(wxf)) << std::endl;
+  std::cout << "gd(wf2_t(xf)) = " << gd(wf2_t(wxf)) << std::endl;
+  std::cout << "gd(wf3_t(xf)) = " << gd(wf3_t(wxf)) << std::endl;
+};
