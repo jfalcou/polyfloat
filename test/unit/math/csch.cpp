@@ -24,7 +24,7 @@ TTS_CASE_WITH(
     pv_t z(T(0), T(0));
     pv_t inf(plf::inf(eve::as<pv_t>()));
     TTS_EQUAL(plf::csch(z), inf);
-    TTS_EQUAL(plf::csch(-z), minf);
+    TTS_EQUAL(plf::csch(-z), -inf);
     TTS_EQUAL(csch(inf), z);
     TTS_EQUAL(csch(-inf), z);
     pv_t nan(plf::nan(eve::as<pv_t>()));
@@ -39,7 +39,7 @@ TTS_CASE_WITH(
     pv_t z(T(0), T(0), T(0));
     pv_t inf(plf::inf(eve::as<pv_t>()));
     TTS_EQUAL(plf::csch(z), inf);
-    TTS_EQUAL(plf::csch(-z), minf);
+    TTS_EQUAL(plf::csch(-z), -inf);
     TTS_EQUAL(csch(inf), z);
     TTS_EQUAL(csch(-inf), z);
     pv_t nan(plf::nan(eve::as<pv_t>()));
