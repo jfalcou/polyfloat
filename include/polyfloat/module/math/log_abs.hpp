@@ -29,7 +29,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var log_abs
-  //!   @brief return the natural log_absarithm value.
+  //!   @brief return the natural logarithm of the absolute value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -52,7 +52,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the expolute,natural log_absarithm of z.
+  //!     Returns the natural logarithm of absolute value ofz.
   //!
   //!  @groupheader{Example}
   //!

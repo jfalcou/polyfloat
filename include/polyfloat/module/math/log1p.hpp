@@ -32,7 +32,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var log1p
-  //!   @brief return the natural log1parithm value.
+  //!   @brief return the natural logarithm value of one plus the argument.
   //!
   //!   @groupheader{Header file}
   //!
@@ -55,7 +55,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the expolute,natural log1parithm of z.
+  //!     Returns the expolute,natural log1parithm of of 1+z.
   //!
   //!  @groupheader{Example}
   //!
