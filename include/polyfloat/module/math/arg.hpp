@@ -37,7 +37,7 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var arg
-  //!   @brief return the arc cosine value.
+  //!   @brief return the the phase angle (in radians).
   //!
   //!   @groupheader{Header file}
   //!
@@ -61,15 +61,13 @@ namespace plf
   //!      constexpr auto arg[pedantic](floating_value auto x)        noexcept; // 3
   //!      constexpr auto arg[rad](floating_value auto x)             noexcept; // 1
   //!      constexpr auto arg[deg](floating_value auto x)             noexcept; // 4
-  //!      constexpr auto arg[pirad](floating_value auto x)           noexcept; // 5
+  //!      constexpr auto arg[radpi](floating_value auto x)           noexcept; // 5
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
   //!     * `z`: Value to process.
-  //!
-  //!   **Return value**
   //!
   //! **Return value**
   //!
@@ -80,12 +78,19 @@ namespace plf
   //!    4. Result in degrees
   //!    5. Result in \f$\pi\f$ multiples
   //!
+  //!    @note phase can be used as an alias
+  //!
   //!  @groupheader{Example}
+  //!
+  //!  @groupheader{External references}
+  //!   *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/complex/arg)
   //!
   //!  @godbolt_todo{doc/core/arg.cpp}
   //======================================================================================================================
 
   inline constexpr auto arg = eve::functor<arg_t>;
+  inline constexpr auto phase = eve::functor<arg_t>;
+
   //======================================================================================================================
   //! @}
   //======================================================================================================================
@@ -93,18 +98,21 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto arg_(POLYFLOAT_DELAY(), O const& o, T a0) noexcept
+  template<typename T, eve::callable_options O> constexpr auto arg_(POLYFLOAT_DELAY(), O const& o, T a) noexcept
   {
     auto valneg = [](auto x) {
-      if constexpr (O::contains(deg)) return T(180);
-      else if constexpr (O::contains(radpi)) return one(eve::as(x));
-      else return pi(eve::as(x));
+      if constexpr (O::contains(eve::deg)) return T(180);
+      else if constexpr (O::contains(eve::radpi)) return plf::one(eve::as(x));
+      else return plf::pi(eve::as(x));
     };
     auto z = plf::if_else(is_negative(a), valneg(a), eve::zero);
-    if constexpr (platform::supports_nans && O::contains(pedantic)) return if_else(is_nan(a), eve : nan(eve::as(z)), z);
+    if constexpr (eve::platform::supports_nans && O::contains(pedantic))
+      return plf::if_else(plf::is_nan(a), plf::nan(eve::as(z)), z);
     else return z;
   }
 
   constexpr auto argd = plf::arg[eve::deg];
   constexpr auto argpi = plf::arg[eve::radpi];
+  constexpr auto phased = plf::arg[eve::deg];
+  constexpr auto phasepi = plf::arg[eve::radpi];
 }
