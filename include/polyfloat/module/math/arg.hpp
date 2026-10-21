@@ -98,7 +98,7 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename T, eve::callable_options O> constexpr auto arg_(POLYFLOAT_DELAY(), O const& o, T a) noexcept
+  template<typename T, eve::callable_options O> constexpr auto arg_(POLYFLOAT_DELAY(), O const&, T a) noexcept
   {
     auto valneg = [](auto x) {
       if constexpr (O::contains(eve::deg)) return T(180);
