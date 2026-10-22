@@ -72,6 +72,7 @@ var searchData=
   ['coth_142',['coth',['../group__core_gaf01f8c2e4a091896659fccc21a962290.html#gaf01f8c2e4a091896659fccc21a962290',1,'plf::coth']]],
   ['covariance_149',['covariance',['../group__core_ga849d694549afbbd8308f3509f7e2c780.html#ga849d694549afbbd8308f3509f7e2c780',1,'plf::covariance']]],
   ['csc_150',['csc',['../group__core_ga0ec9ae5e0635c4e001edd52b8688c190.html#ga0ec9ae5e0635c4e001edd52b8688c190',1,'plf::csc']]],
+  ['csch_151',['csch',['../group__core_ga4f7c3e54da1f4dd5c0a97722dd4f56ed.html#ga4f7c3e54da1f4dd5c0a97722dd4f56ed',1,'plf::csch']]],
   ['cumfun_152',['cumfun',['../group__core_gad9ed275f6b6e77db5325c3893e933ef6.html#gad9ed275f6b6e77db5325c3893e933ef6',1,'plf::cumfun']]],
   ['cumprod_153',['cumprod',['../group__core_gaead0ce36438cf8108b2bf0997ff6e4f8.html#gaead0ce36438cf8108b2bf0997ff6e4f8',1,'plf::cumprod']]],
   ['cumsum_154',['cumsum',['../group__core_ga431cf7d6555dc450704863dd522499b6.html#ga431cf7d6555dc450704863dd522499b6',1,'plf::cumsum']]],

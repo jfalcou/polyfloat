@@ -482,6 +482,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>agd</name>
+      <anchorfile>group__core_ga825911adaa3fc328ca8780ab04b7a44b.html</anchorfile>
+      <anchor>ga825911adaa3fc328ca8780ab04b7a44b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>agm</name>
       <anchorfile>group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
       <anchor>gaaf79a031e1bb735e16389b0a19a2f3d7</anchor>
@@ -492,6 +499,13 @@
       <name>allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>arg</name>
+      <anchorfile>group__core_ga071efd467f1094e602acecb0896fd63c.html</anchorfile>
+      <anchor>ga071efd467f1094e602acecb0896fd63c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -674,6 +688,13 @@
       <name>csc</name>
       <anchorfile>group__core_ga0ec9ae5e0635c4e001edd52b8688c190.html</anchorfile>
       <anchor>ga0ec9ae5e0635c4e001edd52b8688c190</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>csch</name>
+      <anchorfile>group__core_ga4f7c3e54da1f4dd5c0a97722dd4f56ed.html</anchorfile>
+      <anchor>ga4f7c3e54da1f4dd5c0a97722dd4f56ed</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -912,6 +933,13 @@
       <name>fsm</name>
       <anchorfile>group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
       <anchor>gab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>gd</name>
+      <anchorfile>group__core_ga7a370ae4843d70f50869cb0d54eb2e85.html</anchorfile>
+      <anchor>ga7a370ae4843d70f50869cb0d54eb2e85</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1399,6 +1427,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>log1p</name>
+      <anchorfile>group__core_ga94a26247473867f18517eb7d654b9f5a.html</anchorfile>
+      <anchor>ga94a26247473867f18517eb7d654b9f5a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>log2</name>
       <anchorfile>group__core_ga74fe53ba9509c1894684a4fe92865d07.html</anchorfile>
       <anchor>ga74fe53ba9509c1894684a4fe92865d07</anchor>
@@ -1416,6 +1451,13 @@
       <name>log_2</name>
       <anchorfile>group__constants_gab076b85673ceedd01180cae08b3b984e.html</anchorfile>
       <anchor>gab076b85673ceedd01180cae08b3b984e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>log_abs</name>
+      <anchorfile>group__core_ga74e89d74258edc3ffa690b970ce0519d.html</anchorfile>
+      <anchor>ga74e89d74258edc3ffa690b970ce0519d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1763,9 +1805,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>pow1p</name>
+      <anchorfile>group__core_gac514868a7f61ecfeedf6a22db91aa304.html</anchorfile>
+      <anchor>gac514868a7f61ecfeedf6a22db91aa304</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>pow_abs</name>
       <anchorfile>group__core_gae9f28b8422733a3ec084b057c4963b8d.html</anchorfile>
       <anchor>gae9f28b8422733a3ec084b057c4963b8d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>powm1</name>
+      <anchorfile>group__core_ga81c3266b93996cf7e50e86c058c69674.html</anchorfile>
+      <anchor>ga81c3266b93996cf7e50e86c058c69674</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1885,6 +1941,13 @@
       <name>sec</name>
       <anchorfile>group__core_ga7df98fd9e56c73c6cfc8ab445879d514.html</anchorfile>
       <anchor>ga7df98fd9e56c73c6cfc8ab445879d514</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>sech</name>
+      <anchorfile>group__core_ga682c42c12657647392743320cfde271a.html</anchorfile>
+      <anchor>ga682c42c12657647392743320cfde271a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2591,6 +2654,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::agd</name>
+      <anchorfile>group__core_ga825911adaa3fc328ca8780ab04b7a44b.html</anchorfile>
+      <anchor>ga825911adaa3fc328ca8780ab04b7a44b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::agm</name>
       <anchorfile>group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html</anchorfile>
       <anchor>gaaf79a031e1bb735e16389b0a19a2f3d7</anchor>
@@ -2601,6 +2671,13 @@
       <name>plf::allbits</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::arg</name>
+      <anchorfile>group__core_ga071efd467f1094e602acecb0896fd63c.html</anchorfile>
+      <anchor>ga071efd467f1094e602acecb0896fd63c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2755,6 +2832,13 @@
       <name>plf::csc</name>
       <anchorfile>group__core_ga0ec9ae5e0635c4e001edd52b8688c190.html</anchorfile>
       <anchor>ga0ec9ae5e0635c4e001edd52b8688c190</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::csch</name>
+      <anchorfile>group__core_ga4f7c3e54da1f4dd5c0a97722dd4f56ed.html</anchorfile>
+      <anchor>ga4f7c3e54da1f4dd5c0a97722dd4f56ed</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2916,6 +3000,13 @@
       <name>plf::fsm</name>
       <anchorfile>group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
       <anchor>gab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::gd</name>
+      <anchorfile>group__core_ga7a370ae4843d70f50869cb0d54eb2e85.html</anchorfile>
+      <anchor>ga7a370ae4843d70f50869cb0d54eb2e85</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3340,9 +3431,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::log1p</name>
+      <anchorfile>group__core_ga94a26247473867f18517eb7d654b9f5a.html</anchorfile>
+      <anchor>ga94a26247473867f18517eb7d654b9f5a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::log2</name>
       <anchorfile>group__core_ga74fe53ba9509c1894684a4fe92865d07.html</anchorfile>
       <anchor>ga74fe53ba9509c1894684a4fe92865d07</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::log_abs</name>
+      <anchorfile>group__core_ga74e89d74258edc3ffa690b970ce0519d.html</anchorfile>
+      <anchor>ga74e89d74258edc3ffa690b970ce0519d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3571,9 +3676,23 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::pow1p</name>
+      <anchorfile>group__core_gac514868a7f61ecfeedf6a22db91aa304.html</anchorfile>
+      <anchor>gac514868a7f61ecfeedf6a22db91aa304</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::pow_abs</name>
       <anchorfile>group__core_gae9f28b8422733a3ec084b057c4963b8d.html</anchorfile>
       <anchor>gae9f28b8422733a3ec084b057c4963b8d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::powm1</name>
+      <anchorfile>group__core_ga81c3266b93996cf7e50e86c058c69674.html</anchorfile>
+      <anchor>ga81c3266b93996cf7e50e86c058c69674</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3665,6 +3784,13 @@
       <name>plf::sec</name>
       <anchorfile>group__core_ga7df98fd9e56c73c6cfc8ab445879d514.html</anchorfile>
       <anchor>ga7df98fd9e56c73c6cfc8ab445879d514</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::sech</name>
+      <anchorfile>group__core_ga682c42c12657647392743320cfde271a.html</anchorfile>
+      <anchor>ga682c42c12657647392743320cfde271a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
