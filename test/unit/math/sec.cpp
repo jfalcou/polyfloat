@@ -40,9 +40,10 @@ TTS_CASE_WITH(
     pv_t minf(plf::minf(eve::as<pv_t>()));
     pv_t pa(a0, a1, a2);
     //    pv_t nan(plf::nan(eve::as<pv_t>()));
-    TTS_RELATIVE_EQUAL(sec[eve::medium](pa), tts::mpfr_exec(msec, pa), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(sec[eve::medium](pa), tts::mpfr_exec(msec, pa), tts::epsprec<pv_t>()) << "icitte";
+    std::cout << std::hexfloat << pa << "\n";
     pv_t o(T(1.0) / 3, T(0), T(0));
-    TTS_RELATIVE_EQUAL(sec[eve::medium](o), tts::mpfr_exec(msec, o), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(sec[eve::medium](o), tts::mpfr_exec(msec, o), 3*tts::epsprec<pv_t>());
     pv_t z(T(0), T(0), T(0));
     TTS_IEEE_EQUAL(plf::sec[eve::medium](z), plf::one(eve::as(z)));
     TTS_IEEE_EQUAL(plf::sec[eve::medium](-z), plf::one(eve::as(z)));

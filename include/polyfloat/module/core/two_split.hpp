@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/constants/nbmantissabits.hpp>
+#include <polyfloat/module/core/ldexp.hpp>
 namespace plf
 {
 
@@ -82,7 +83,7 @@ namespace plf
     template<auto N, typename T, eve::callable_options O>
     constexpr auto two_split_(POLYFLOAT_DELAY(), O const&, T x, std::integral_constant<int, N>)
     {
-      auto K = ldexp(T(1), N);
+      auto K = plf::ldexp(T(1), N);
       auto g = K * x;
       auto d = x - g;
       auto xh = g + d;
@@ -93,7 +94,7 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
       auto N = (plf::nbmantissabits(eve::as<u_t>()) + 1) / 2;
-      auto K = ldexp(T(1), N);
+      auto K = plf::ldexp(T(1), N);
       auto g = K * x;
       auto d = x - g;
       auto xh = g + d;
