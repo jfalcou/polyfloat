@@ -29,8 +29,8 @@ namespace plf::_
       auto [zhi, zlo] = z;
       auto [chi, c1] = eve::two_prod(xhi, yhi);
       auto t0 = xlo * ylo;
-      auto t1 = plf::fma(xhi, ylo, t0);
-      auto c2 = plf::fma(xlo, yhi, t1);
+      auto t1 = eve::fma(xhi, ylo, t0);
+      auto c2 = eve::fma(xlo, yhi, t1);
       auto c3 = c1 + c2;
       auto [dhi, dlo] = eve::two_add[eve::raw](chi, c3);
 

@@ -10,6 +10,7 @@
 #include <polyfloat/polyfloat.hpp>
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/if_else.hpp>
+#include <polyfloat/module/core/oneminus.hpp>
 
 namespace plf
 {
@@ -187,24 +188,62 @@ namespace plf
     template<concepts::polyfloat_like T> auto rec(T a) noexcept
     {
       if constexpr (dimension_v<T> == 1 && std::is_floating_point_v<T>) return eve::rec[pedantic](a);
-      else if constexpr (dimension_v<T> == 2)
+      else
       {
-        auto [a0, b0] = a;
-        auto x0 = eve::rec[pedantic](a0);
-        auto x1 = x0 + x0 * (T(1) - a * x0);
-        x1 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x1);
-        return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x1);
+        auto correct =  [&a](auto x){
+          auto a0 = plf::hi(a); 
+          x = plf::if_else(eve::is_infinite(a0), T(eve::copysign(eve::zero(eve::as(a0)), a0)), x);
+          return plf::if_else(eve::is_eqz(a0), T(eve::copysign(eve::inf(eve::as(a0)), a0)), x);
+        };
+        if constexpr (dimension_v<T> == 2)
+        {
+          auto a0 = plf::hi(a);
+          auto x0 = eve::rec[pedantic](a0);
+          auto x1 = x0 + x0* plf::oneminus(a*x0);
+          return correct(x1);
+          
+        }
+        else if constexpr (dimension_v<T> == 3)
+        {
+          auto a0 = plf::_::from_pair(plf::hi(a), plf::md(a));
+          auto x0 = plf::_::rec(a0);
+          auto x1 = x0 + x0* plf::oneminus(a*x0);
+          return correct(x1);
+        }
       }
-      else if constexpr (dimension_v<T> == 3)
-      {
-        auto [a0, b0, c0] = a;
-        auto x0 = eve::rec[pedantic](a0);
-        auto x1 = x0 + x0 * (T(1) - a * x0);
-        auto x2 = x1 + x1 * (T(1) - a * x1);
-        auto x3 = x2 + x2 * (T(1) - a * x2);
-        x3 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x3);
-        return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x3);
-      }
+// ok aussi        
+//         auto a0 = plf::hi(a);
+//         auto correct =  [&a0](auto x){
+//           x = plf::if_else(eve::is_infinite(a0), T(eve::copysign(eve::zero(eve::as(a0)), a0)), x);
+//           return plf::if_else(eve::is_eqz(a0), T(eve::copysign(eve::inf(eve::as(a0)), a0)), x);
+//         };
+//         auto x0 = eve::rec[pedantic](a0);
+//         auto x1 = x0 + x0* plf::oneminus(a*x0);
+//         if constexpr (dimension_v<T> == 2) return correct(x1);
+//         x1 = x1 + x1* plf::oneminus(a*x1);
+//         x1 = x1 + x1* plf::oneminus(a*x1);
+//         return correct(x1);
+//       }
+
+// original
+//      else if constexpr (dimension_v<T> == 2)
+//       {
+//         auto [a0, b0] = a;
+//         auto x0 = eve::rec[pedantic](a0);
+//         auto x1 = x0 + x0 * (T(1) - a * x0);
+//         x1 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x1);
+//         return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x1);
+//       }
+//       else if constexpr (dimension_v<T> == 3)
+//       {
+//         auto [a0, b0, c0] = a;
+//         auto x0 = eve::rec[pedantic](a0);
+//         auto x1 = x0 + x0 * (T(1) - a * x0);
+//         auto x2 = x1 + x1 * (T(1) - a * x1);
+//         auto x3 = x2 + x2 * (T(1) - a * x2);
+//         x3 = plf::if_else(eve::is_infinite(hi(a)), T(eve::copysign(eve::zero(eve::as(hi(a))), plf::hi(a))), x3);
+//         return if_else(eve::is_eqz(hi(a)), T(eve::copysign(eve::inf(eve::as(hi(a))), plf::hi(a))), x3);
+//       }
     }
   }
 

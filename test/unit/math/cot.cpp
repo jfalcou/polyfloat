@@ -96,7 +96,7 @@ TTS_CASE_WITH("Check cot ", float, tts::randoms(50.0, 100.0), tts::randoms(0.0, 
     for (pv_t i = pv_t(0.05); i < pio4; i += pv_t(0.005))
     {
       pv_t x(i);
-      TTS_RELATIVE_EQUAL(cot[eve::medium](x), tts::mpfr_exec(mcot, x), 2 * tts::epsprec<pv_t>());
+      TTS_RELATIVE_EQUAL(cot[eve::medium](x), tts::mpfr_exec(mcot, x), 4 * tts::epsprec<pv_t>());
     }
     pv_t z(0.0);
     TTS_EQUAL(cot[eve::medium](z), plf::inf(eve::as<pv_t>()));

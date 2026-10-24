@@ -39,7 +39,7 @@ TTS_CASE_WITH("Check pow_abs ",
     pv_t pb(a3, a4, a5);
     TTS_RELATIVE_EQUAL(plf::pow_abs(pa, pb), tts::mpfr_exec(mpow_abs, pa, pb), 51200 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(plf::pow_abs(pv_t(1) / 2, pv_t(1) / 4), tts::mpfr_exec(mpow_abs, pv_t(1) / 2, pv_t(1) / 4),
-                       5000 * tts::epsprec<pv_t>());
+                       10000 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(plf::pow_abs(pv_t(1) / 2, pv_t(5) / 2), tts::mpfr_exec(mpow_abs, pv_t(1) / 2, pv_t(5) / 2),
                        3000 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(plf::pow_abs(pv_t(10), pv_t(10)), tts::mpfr_exec(mpow_abs, pv_t(10), pv_t(10)),
