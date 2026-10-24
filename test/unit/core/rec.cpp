@@ -48,18 +48,6 @@ TTS_CASE_WITH("Check rec",
     std::cout << " 1.0f/f       "  << 1.0f/f    << std::endl;
     std::cout << " cos(f)    "  << plf::acos( 1.0f/f)   << std::endl;
     std::cout << " acsec(f)     "  << plf::asec(f)   << std::endl;
-//tts::mpfr_exec(msec, pa) but 1.20155 - 5.2741e-08 + 1.13269e-15 == 1.22062 + 4.86012e-08 - 9.13215e-16 within 0.015625 rel
-//    when  2.1175824e-22 rel were expected.
-  auto mcos = [](auto a) { return mpfr::cos(a); };
-  auto msec = [](auto a) { return mpfr::mpreal("1")/mpfr::cos(a);};
-  auto msec2= [](auto a) { return                   mpfr::sec(a);};
-  std::cout << plf::cos[eve::medium](f) << std::endl;
-  std::cout << tts::mpfr_exec(mcos, f)<< std::endl;
-  std::cout << plf::rec(plf::cos[eve::medium](f)) << std::endl;
-  std::cout << pv_t(1)/plf::cos[eve::medium](f)   << std::endl;
-  std::cout << tts::mpfr_exec(msec, f)<< std::endl;
-  std::cout << tts::mpfr_exec(msec2, f)<< std::endl;
-
   }
 
 };
