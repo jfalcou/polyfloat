@@ -12,11 +12,12 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/core/if_else.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -94,22 +95,20 @@ namespace plf::_
   {
     return t0;
   }
+
   template<typename T1, typename T2, eve::callable_options O>
-  constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
+  constexpr auto add_(POLYFLOAT_DELAY(), O const& o , T1 const& a, T2 const& b) noexcept
   {
-    auto t12 = t1 + t2;
-    //    if constexpr(O::contains(pedantic))
-    //     {
-    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-    //       if (eve::any(inf))
-    //       {
-    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-    //       }
-    //       else
-    //         return t12;
-    //     }
-    //     else
-    return t12;
+    auto s = a+b;
+    if constexpr(O::contains(eve::mod))
+    {
+      using r_t = plf::as_polyfloat_like_t<T1, T2>;
+      using u_t = eve::element_type_t<r_t>;
+      auto p = o[eve::mod].value(eve::as<u_t>{});
+      return plf::if_else(s >= p, s-p, p);
+    }
+    else
+      return s;
   }
 
   template<eve::callable_options O,
@@ -119,15 +118,11 @@ namespace plf::_
   constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T0 const& t0, T1 const& t1, Ts const&... ts) noexcept
   {
     using t_t = as_polyfloat_t<T0, T1, Ts...>;
-    if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);
-    else
-    {
-      using u_t = eve::element_type_t<t_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto p0 = add[o](cvt(t0), cvt(t1));
-      ((p0 = add[o](p0, cvt(ts))), ...);
-      return p0;
-    }
+    using u_t = eve::element_type_t<t_t>;
+    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
+    auto p0 = add[o](cvt(t0), cvt(t1));
+    ((p0 = add[o](p0, cvt(ts))), ...);
+    return p0;
   }
-
 }
+
