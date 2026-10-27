@@ -117,4 +117,29 @@ namespace plf::_
       return minus[is_odd(b) && nega](z);
     }
   }
+
+
+  template<typename T, typename U, eve::callable_options O>
+  constexpr auto
+  pow_(POLYFLOAT_DELAY(), O const & o, T aa0, U aa1) noexcept
+  requires(O::contains(eve::mod))
+  {
+    using r_t =  plf::as_polyfloat_like_t<T, U>;
+    auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+    auto a0 = cvt(aa0);
+    auto a1 = cvt(aa1);
+    auto p = o[eve::mod].value(eve::as<r_t>{});
+    auto base(a0);
+    auto expo(a1);
+
+    auto result = plf::one(eve::as<r_t>());
+    while( eve::any(plf::is_nez(expo)))
+    {
+      result = plf::mul[eve::mod = p](result, plf::if_else(plf::is_odd(expo), base, one));
+      expo = plf::floor(expo/2);
+      base = plf::mul[eve::mod = p](base, base);
+    }
+    return result;
+  }
+
 }

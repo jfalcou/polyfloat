@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/is_ltz.hpp>
+#include <polyfloat/module/core/add.hpp>
 
 namespace plf
 {
@@ -77,7 +78,7 @@ namespace plf::_
       using r_t = plf::as_polyfloat_like_t<T1, T2>;
       using u_t = eve::element_type_t<r_t>;
       auto p = o[eve::mod].value(eve::as<u_t>());
-      return add[eve::is_ltz(s)](s, p);
+      return plf::add[eve::is_ltz(s)](s, p);
     }
     else
       return s;
@@ -93,7 +94,7 @@ namespace plf::_
     else
     {
       using t_t = as_polyfloat_t<T0, Ts...>;
-      return plf::sub[o](t0, plf::add(ts...)); 
-    }  
+      return plf::sub[o](t0, plf::add(ts...));
+    }
   }
 }

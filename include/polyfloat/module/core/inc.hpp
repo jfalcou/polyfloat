@@ -13,12 +13,15 @@
 #include <type_traits>
 #include <polyfloat/module/core/minus.hpp>
 #include <polyfloat/module/core/is_negative.hpp>
+#include <polyfloat/module/core/dec.hpp>
+#include <iostream>
+
 
 namespace plf
 {
 
   template<typename Options>
-  struct inc_t : plf::elementwise_callable<inc_t, eve::inc_t, Options, raw_option, pedantic_option>
+  struct inc_t : plf::elementwise_callable<inc_t, eve::inc_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
@@ -69,8 +72,16 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O> constexpr auto inc_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto inc_(POLYFLOAT_DELAY(), O const& o, Z const& a) noexcept
   {
-    return z + eve::one(eve::as(hi(z)));
+    if constexpr(O::contains(eve::mod))
+      {
+        auto p = o[eve::mod].value(eve::as(a));
+      std::cout << "---p " << p << std::endl;
+      std::cout << "---a " << a << std::endl;
+        return plf::if_else(a == plf::dec(p), plf::zero(eve::as(a)), plf::inc(a));
+      }
+      else
+        return a + eve::one(eve::as(hi(a)));
   }
 }

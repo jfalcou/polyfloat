@@ -13,11 +13,14 @@
 #include <type_traits>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/core/two_prod.hpp>
+#include <polyfloat/module/core/floor.hpp>
+#include <polyfloat/module/core/fnma.hpp>
 
 namespace plf
 {
 
-  template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct mul_t : eve::strict_tuple_callable<mul_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<concepts::polyfloat_like... Zs>
     POLYFLOAT_ABI constexpr as_polyfloat_like_t<Zs...> operator()(Zs... zs) const noexcept
@@ -78,6 +81,30 @@ namespace plf
 
 namespace plf::_
 {
+
+  template<typename T, typename U, eve::callable_options O>
+  constexpr auto add_(POLYFLOAT_DELAY(), O const& o , T const& a, U const& b) noexcept
+  requires(O::contains(eve::mod))
+  {
+    if constexpr(O::contains(eve::mod))
+    {
+      using r_t =  plf::as_polyfloat_like_t<T, U>;
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+      auto x = cvt(a);
+      auto y = cvt(b);
+      auto p = o[eve::mod].value(as<r_t>{});
+      auto [h, l] = plf::two_prod(x, y);
+      auto bb = h/p;
+      auto cc = plf::floor(bb);
+      auto dd = plf::fnma[pedantic](cc, p, h);
+      auto g = dd+l;
+      g = plf::add[plf::is_ltz(g)](g, p);
+      g = plf::sub[g >= p](g, p);
+      return g;
+    }
+  }
+
+
   template<typename Z1, typename... Zs, eve::callable_options O>
   constexpr auto mul_(POLYFLOAT_DELAY(), O const& o, Z1 const& z1, Zs const&... zs) noexcept
   {

@@ -142,7 +142,7 @@ TTS_CASE_WITH("Check behavior of add mod on wide",
       pv_t pa1(2, 1ul >> 47);
       pv_t p = plf::_::from_pair(eve::ldexp(1.0f, 22), eve::ldexp(1.0f, 44));
       auto z = pa0+pa1;
-      TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(z >= p, z-p, p));
+      TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(a == plf::dec(p), eve::zero, plf::add(a));
     }
   }
   {
@@ -151,6 +151,6 @@ TTS_CASE_WITH("Check behavior of add mod on wide",
     pv_t pa1(a1);
     T p = 97;
     auto z = pa0+pa1;
-    TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(z >= p, z-p, p));
+    TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(a == plf::dec(p), eve::zero, plf::add(a));
   }
 };

@@ -6,6 +6,7 @@
 //======================================================================================================================
 #pragma once
 #include <polyfloat/module/core/three_fma.hpp>
+#include <polyfloat/module/core/fma.hpp>
 
 namespace plf::_
 {

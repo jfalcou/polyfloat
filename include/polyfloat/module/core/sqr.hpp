@@ -17,7 +17,7 @@
 namespace plf
 {
 
-  template<typename Options> struct sqr_t : plf::callable<sqr_t, eve::sqr_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct sqr_t : plf::callable<sqr_t, eve::sqr_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
@@ -69,9 +69,11 @@ namespace plf
 namespace plf::_
 {
 
-  template<typename Z, eve::callable_options O> constexpr auto sqr_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto sqr_(POLYFLOAT_DELAY(), O const&o, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (O::contains(eve::mod))
+      return plf::mul[o](z, z);
+    else if constexpr (dimension_v<Z> == 2)
     {
       auto [zhi, zlo] = z;
       auto [p1, p2] = eve::two_prod(zhi, zhi);

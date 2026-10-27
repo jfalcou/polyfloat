@@ -29,3 +29,30 @@ TTS_CASE_WITH("Check dec",
     }
   }
 };
+
+//==================================================================================================
+//==  dec modular tests
+//==================================================================================================
+TTS_CASE_WITH("Check behavior of dec mod on wide",
+                plf::scalar_real_types,
+              tts::randoms(0, 96)
+             )
+  <typename T>(T const& ra0)
+{
+  using plf::dec;
+  using eve::mod;
+  {
+    using pv_t =  T;
+    pv_t a0 = plf::floor(ra0);
+    using e_t =  eve::element_type_t<T>;
+    e_t p = 97;
+    TTS_EQUAL(dec[mod = p](a0), plf::if_else(a0 == 0, p-1, a0-1));
+  }
+    {
+    using pv_t =  plf::double_real_t<T>;
+    pv_t a0 = plf::floor(ra0);
+    using e_t =  eve::element_type_t<T>;
+    e_t p = 97;
+    TTS_EQUAL(dec[mod = p](a0), plf::if_else(a0 == 0, p-1, a0-1));
+  }
+};

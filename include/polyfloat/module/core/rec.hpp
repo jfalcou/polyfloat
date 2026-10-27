@@ -15,7 +15,7 @@
 namespace plf
 {
 
-  template<typename Options> struct rec_t : eve::elementwise_callable<rec_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct rec_t : eve::elementwise_callable<rec_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI Z operator()(Z z) const noexcept { return POLYFLOAT_CALL(z); }
 
@@ -63,9 +63,28 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O> constexpr auto rec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr
+  auto rec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
     if constexpr (dimension_v<Z> == 1) return eve::rec[eve::pedantic](z);
     else return _::rec(z);
+  }
+
+  template<typename T, eve::callable_options O>
+  constexpr auto rec_(POLYFLOAT_DELAY(), O const& o, T a ) noexcept
+  requires(O::contains(eve::mod))
+  {
+    auto p = o[eve::mod].value(as(a));
+    auto base(a);
+    auto expo(p-2);
+
+    auto result = plf::one(eve::as<T>());
+    while( eve::any(plf::is_nez(expo)))
+    {
+      result = plf:: mul[eve::mod = p](result, plf::if_else(plf::is_odd(expo), base, plf::one(eve::as(expo))));
+      expo = plf::floor(expo/2);
+      base = plf::mul[eve::mod = p](base, base);
+    }
+    return result;
   }
 }
