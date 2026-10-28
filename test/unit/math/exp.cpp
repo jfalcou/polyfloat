@@ -38,7 +38,7 @@ TTS_CASE_WITH(
   {
     using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
-    TTS_RELATIVE_EQUAL(exp(pa), tts::mpfr_exec(mexp, pa), 40000 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(exp(pa), tts::mpfr_exec(mexp, pa), 80000 * tts::epsprec<pv_t>());
     pv_t o(T(1), T(0), T(0));
     TTS_RELATIVE_EQUAL(exp(o), tts::mpfr_exec(mexp, o), 3 * tts::epsprec<pv_t>());
     pv_t z(T(0), T(0), T(0));

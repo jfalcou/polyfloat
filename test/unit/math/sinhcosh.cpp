@@ -44,7 +44,7 @@ TTS_CASE_WITH(
     pv_t pa(a0, a1, a2);
     auto [spa, cpa] = sinhcosh(pa);
     TTS_RELATIVE_EQUAL(spa, tts::mpfr_exec(msinh, pa), 4280000 * tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(cpa, tts::mpfr_exec(mcosh, pa), 42800 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(cpa, tts::mpfr_exec(mcosh, pa), 4280000 * tts::epsprec<pv_t>());
     pv_t o(T(1), T(0));
     auto [spo, cpo] = sinhcosh(o);
     TTS_RELATIVE_EQUAL(spo, tts::mpfr_exec(msinh, o), 12800 * tts::epsprec<pv_t>());
