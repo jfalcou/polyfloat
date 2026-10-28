@@ -69,8 +69,28 @@ namespace plf
 namespace plf::_
 {
   template<typename Z1, typename Z2, eve::callable_options O>
-  constexpr auto sub_(POLYFLOAT_DELAY(), O const&, Z1 const& z1, Z2 const& z2) noexcept
+  constexpr auto sub_(POLYFLOAT_DELAY(), O const&, Z1 const& a, Z2 const& b) noexcept
   {
-    return z1 - z2;
+    if constexpr((O::contains(eve::lower) || O::contains(eve::upper) ))
+    {
+      if constexpr(O::contains(eve::strict))
+      {
+        auto r = a-b;
+        if constexpr(O::contains(eve::lower))
+          return plf::prev(r);
+        else
+          return plf::next(r);
+      }
+      else
+      {
+       auto [r, e] = plf::two_add(a, -b);
+       if constexpr(O::contains(eve::lower))
+         return plf::prev[plf::is_ltz(e)](r);
+       else
+         return plf::next[plf::is_gtz(e)](r);
+      }
+    }
+    else return a-b;
+
   }
 }

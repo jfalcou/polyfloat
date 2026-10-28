@@ -11,6 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/module/core/is_not_nan.hpp>
 
 namespace plf
 {

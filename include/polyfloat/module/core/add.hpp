@@ -11,12 +11,16 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/is_not_finite.hpp>
+#include <polyfloat/module/core/prev.hpp>
+#include <polyfloat/module/core/next.hpp>
+
 
 namespace plf
 {
 
-  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option>
+  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options,
+                                                                       raw_option, pedantic_option,
+                                                                       lower_option, upper_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -95,21 +99,30 @@ namespace plf::_
     return t0;
   }
   template<typename T1, typename T2, eve::callable_options O>
-  constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
+  constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& a, T2 const& b) noexcept
   {
-    auto t12 = t1 + t2;
-    //    if constexpr(O::contains(pedantic))
-    //     {
-    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-    //       if (eve::any(inf))
-    //       {
-    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-    //       }
-    //       else
-    //         return t12;
-    //     }
-    //     else
-    return t12;
+    using r_t = plf::as_polyfloat_like_t<T1, T2>;
+    auto cvt = [](auto x) { return plf::convert(x, eve::as<eve::element_type_t<r_t>>()); };
+    if constexpr((O::contains(lower) || O::contains(upper) ))
+    {
+      if constexpr(O::contains(strict))
+      {
+        auto s = a+b;
+        if constexpr(O::contains(lower))
+          return plf::prev(s);
+        else
+          return plf::next(s);
+      }
+      else
+      {
+        auto [r, e] = eve::two_add(cvt(a), cvt(b));
+        if constexpr(O::contains(lower))
+          return plf::prev[eve::is_ltz(e)](r);
+        else
+          return plf::next[eve::is_gtz(e)](r);
+      }
+    }
+    else return a+b;
   }
 
   template<eve::callable_options O,
