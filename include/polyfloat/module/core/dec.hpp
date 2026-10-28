@@ -68,15 +68,13 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O> constexpr
-  auto dec_(POLYFLOAT_DELAY(), O const& o, Z const& a) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto dec_(POLYFLOAT_DELAY(), O const& o, Z const& a) noexcept
   {
     if constexpr (O::contains(eve::mod))
     {
       auto p = o[eve::mod].value(eve::as(a));
       return plf::if_else(plf::is_eqz(a), plf::dec(p), plf::dec(a));
     }
-    else
-      return a - eve::one(eve::as(hi(a)));
+    else return a - eve::one(eve::as(hi(a)));
   }
 }

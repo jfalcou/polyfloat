@@ -93,7 +93,7 @@ namespace plf::_
   template<typename T0, typename T1, eve::callable_options O>
   constexpr auto div_(POLYFLOAT_DELAY(), O const& o, T0 const& a, T1 const& b) noexcept
   {
-    if constexpr(O::contains(eve::mod))
+    if constexpr (O::contains(eve::mod))
     {
       return eve::mul[o](a, eve::rec[o](b));
     }

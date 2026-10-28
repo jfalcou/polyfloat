@@ -56,8 +56,8 @@ TTS_CASE_WITH("Check add three params",
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000),
               tts::randoms(-1000, 1000))
-  <typename T>(
-    T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5, T const& a6, T const& a7, T const& a8)
+<typename T>(
+  T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5, T const& a6, T const& a7, T const& a8)
 {
   using mpfr::mpreal;
   using plf::add;
@@ -99,15 +99,13 @@ TTS_CASE_WITH("Check add three params",
     pv_t inf = plf::inf(eve::as(pa));
     pv_t nan = plf::nan(eve::as(pa));
     pv_t minf = plf::minf(eve::as(pa));
-    TTS_IEEE_EQUAL( add(pa, inf), inf);
-    TTS_IEEE_EQUAL( add(inf, pa), inf);
-    TTS_IEEE_EQUAL( add(minf, pa), minf);
-    TTS_IEEE_EQUAL( add(pa, minf), minf);
-    TTS_IEEE_EQUAL( add(inf, minf), nan);
+    TTS_IEEE_EQUAL(add(pa, inf), inf);
+    TTS_IEEE_EQUAL(add(inf, pa), inf);
+    TTS_IEEE_EQUAL(add(minf, pa), minf);
+    TTS_IEEE_EQUAL(add(pa, minf), minf);
+    TTS_IEEE_EQUAL(add(inf, minf), nan);
   }
 };
-
-
 
 //==================================================================================================
 //==  add modular tests
@@ -115,42 +113,41 @@ TTS_CASE_WITH("Check add three params",
 TTS_CASE_WITH("Check behavior of add mod on wide",
               float, //plf::scalar_real_types,
               tts::randoms(0, 96),
-              tts::randoms(0, 96)
-             )
-  <typename T>(T const& ra0, T const& ra1)
+              tts::randoms(0, 96))
+<typename T>(T const& ra0, T const& ra1)
 {
-  using plf::add;
   using eve::mod;
+  using plf::add;
   auto a0 = plf::floor(ra0);
   auto a1 = plf::floor(ra1);
   {
-    using pv_t =  T;
+    using pv_t = T;
     pv_t p = 97;
-    auto z = a0+a1;
-    TTS_EQUAL(add[mod = p](a0, a1), eve::if_else(z >= p, z-p, p));
+    auto z = a0 + a1;
+    TTS_EQUAL(add[mod = p](a0, a1), eve::if_else(z >= p, z - p, p));
   }
   {
-    using pv_t =  plf::double_real_t<T>;
+    using pv_t = plf::double_real_t<T>;
     pv_t pa0(a0);
     pv_t pa1(a1);
     pv_t p = 97;
-    auto z = pa0+pa1;
-    TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(z >= p, z-p, p));
-    if constexpr(sizeof(T) ==  8)
+    auto z = pa0 + pa1;
+    TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(z >= p, z - p, p));
+    if constexpr (sizeof(T) == 8)
     {
       pv_t pa0(1, 1ul >> 53);
       pv_t pa1(2, 1ul >> 47);
       pv_t p = plf::_::from_pair(eve::ldexp(1.0f, 22), eve::ldexp(1.0f, 44));
-      auto z = pa0+pa1;
+      auto z = pa0 + pa1;
       TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(a == plf::dec(p), eve::zero, plf::add(a));
     }
   }
   {
-    using pv_t =  plf::triple_real_t<T>;
+    using pv_t = plf::triple_real_t<T>;
     pv_t pa0(a0);
     pv_t pa1(a1);
     T p = 97;
-    auto z = pa0+pa1;
+    auto z = pa0 + pa1;
     TTS_EQUAL(add[mod = p](pa0, pa1), plf::if_else(a == plf::dec(p), eve::zero, plf::add(a));
   }
 };

@@ -17,7 +17,8 @@
 namespace plf
 {
 
-  template<typename Options> struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option, eve::mod_option>
+  template<typename Options>
+  struct add_t : eve::strict_tuple_callable<add_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<typename... Ts> struct result : as_polyfloat_like<Ts...>
     {
@@ -97,18 +98,17 @@ namespace plf::_
   }
 
   template<typename T1, typename T2, eve::callable_options O>
-  constexpr auto add_(POLYFLOAT_DELAY(), O const& o , T1 const& a, T2 const& b) noexcept
+  constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T1 const& a, T2 const& b) noexcept
   {
-    auto s = a+b;
-    if constexpr(O::contains(eve::mod))
+    auto s = a + b;
+    if constexpr (O::contains(eve::mod))
     {
       using r_t = plf::as_polyfloat_like_t<T1, T2>;
       using u_t = eve::element_type_t<r_t>;
       auto p = o[eve::mod].value(eve::as<u_t>{});
-      return plf::if_else(s >= p, s-p, p);
+      return plf::if_else(s >= p, s - p, p);
     }
-    else
-      return s;
+    else return s;
   }
 
   template<eve::callable_options O,
@@ -125,4 +125,3 @@ namespace plf::_
     return p0;
   }
 }
-

@@ -16,7 +16,8 @@
 namespace plf
 {
 
-  template<typename Options> struct minus_t : eve::elementwise_callable<minus_t, Options, raw_option, pedantic_option, eve::mod_option>
+  template<typename Options>
+  struct minus_t : eve::elementwise_callable<minus_t, Options, raw_option, pedantic_option, eve::mod_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
@@ -67,7 +68,8 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O> constexpr auto minus_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
+  template<typename Z, eve::callable_options O>
+  constexpr auto minus_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
     if constexpr (O::contains(eve::mod))
     {
