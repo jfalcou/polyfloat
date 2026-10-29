@@ -15,6 +15,7 @@
 #include <polyfloat/module/core/nearest.hpp>
 #include <polyfloat/module/core/ceil.hpp>
 #include <polyfloat/module/core/floor.hpp>
+#include <polyfloat/module/core/rec.hpp>
 
 namespace plf
 {
