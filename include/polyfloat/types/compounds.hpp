@@ -11,6 +11,8 @@
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/oneminus.hpp>
+#include <polyfloat/types/triple_real.hpp>
+#include <polyfloat/types/double_real.hpp>
 
 namespace plf
 {
@@ -24,12 +26,14 @@ namespace plf
     template<typename T> auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
     {
       auto output_is_finite = eve::is_finite(h);
-      if (eve::all(output_is_finite)) return plf::double_real_t<T>(h, l);
+      if (eve::all(output_is_finite)) return from_pair(h, l); //plf::double_real_t<T>(h, l);
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite)) return plf::double_real_t<T>(h, l);
-        else return eve::if_else(output_is_finite, plf::double_real_t<T>(h, l), plf::double_real_t<T>(f(hs, ho)));
+        if (eve::all(input_is_finite)) return from_pair(h, l); //plf::double_real_t<T>(h, l);
+        else
+          return eve::if_else(output_is_finite, from_pair(h, l),
+                              from_pair(hs, ho)); //plf::double_real_t<T>, plf::double_real_t<T>(f(hs, ho)));
       }
     }
 
@@ -40,14 +44,19 @@ namespace plf
       else
       {
         auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite)) return plf::triple_real_t<T>(h, m, l);
-        else return eve::if_else(output_is_finite, plf::triple_real_t<T>(h, m, l), plf::triple_real_t<T>(f(hs, ho)));
+        if (eve::all(input_is_finite)) return from_triple(h, m, l); //return plf::triple_real_t<T>(h, m, l);
+        else
+          return eve::if_else(
+            output_is_finite, from_triple(h, m, l),
+            from_triple(hs, ho,
+                        eve::zero(eve::as(ho)))); //plf::triple_real_t<T>(h, m, l), plf::triple_real_t<T>(f(hs, ho)));
       }
     }
 
     template<typename T> auto clean1s(T hi, T md, T lo) noexcept
     {
-      return eve::if_else(eve::is_not_finite(hi), plf::triple_real_t<T>(hi), plf::triple_real_t<T>(hi, md, lo));
+      return eve::if_else(eve::is_not_finite(hi), plf::triple_real_t<T>(hi),
+                          from_triple(hi, md, lo)); //plf::triple_real_t<T>(hi, md, lo));
     }
 
     auto four_add1(auto a, auto b, auto c, auto d) noexcept
@@ -77,24 +86,56 @@ namespace plf
     {
       auto [xhi, xlo] = self;
       auto [yhi, ylo] = oth;
-      auto [hi, lo] = eve::two_add(xhi, yhi);
-      auto [thi, tlo] = eve::two_add(xlo, ylo);
-      auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + thi);
-      auto [hi2, lo2] = eve::two_add[eve::raw](hi1, tlo + lo1);
-      return self = _::clean0s(eve::add, xhi, yhi, hi2, lo2);
+      auto [a, b] = eve::two_add(xhi, yhi);
+      auto [c, d] = eve::two_add(xlo, ylo);
+      auto [aa, cc] = eve::two_add[eve::raw](a, c);
+      b += d;
+      b += cc;
+      auto [e, f] = eve::two_add(aa, b);
+      auto test = eve::is_not_finite(e + f);
+      return self = plf::if_else(test, T1(xhi + yhi), plf::_::from_pair(e, f));
+
+      //       auto [xhi, xlo] = self;
+      //       auto [yhi, ylo] = oth;
+      //       auto [hi, lo] = eve::two_add(xhi, yhi);
+      //       auto [thi, tlo] = eve::two_add(xlo, ylo);
+      //       auto [hi1, lo1] = eve::two_add[eve::raw](hi, lo + thi);
+      //       auto [hi2, lo2] = eve::two_add[eve::raw](hi1, tlo + lo1);
+      //       return self = _::clean0s(eve::add, xhi, yhi, hi2, lo2);
     }
     else if constexpr (dimension_v<T1> == 3u)
     {
-      auto [ahi, amd, alo] = self;
-      auto [bhi, bmd, blo] = oth;
-      auto [zhi, t1] = eve::two_add(ahi, bhi);
-      auto [t2, t3] = eve::two_add(amd, bmd);
-      auto [t7, t4] = eve::two_add(t1, t2);
-      auto t6 = alo + blo;
-      auto t5 = t3 + t4;
-      auto t8 = t5 + t6;
-      auto [zmd, zlo] = eve::two_add(t7, t8);
-      return self = _::clean1s(eve::add, ahi, bhi, zhi, zmd, zlo);
+      auto [xhi, xmd, xlo] = self;
+      auto [yhi, ymd, ylo] = oth;
+      auto [a1, b1] = eve::two_add(xhi, yhi);
+      auto [c1, d1] = eve::two_add(xmd, ymd);
+      auto [e1, f1] = eve::two_add(xlo, ylo);
+      auto [a2, c2] = eve::two_add[raw](a1, c1);
+      b1 += f1;
+      auto [d2, e2] = eve::two_add(d1, e1);
+      auto [a3, d3] = eve::two_add[raw](a2, d2);
+      auto [b2, c3] = eve::two_add(b1, c2);
+      c3 += e2;
+      auto [c4, d4] = eve::two_add(c3, d3);
+      auto [b3, c5] = eve::two_add(b2, c4);
+      auto [a4, b4] = eve::two_add[raw](a3, b3);
+      c4 += d4;
+      auto [b5, c6] = eve::two_add[raw](b4, c5);
+      auto [a5, b6] = eve::two_add[raw](a4, b5);
+      auto [b7, c7] = eve::two_add[raw](b6, c6);
+      auto test = eve::is_not_finite(a5 + b7 + c7);
+      return self = plf::if_else(test, T1(xhi + yhi), plf::_::from_triple(a5, b7, c7));
+
+      //       auto [ahi, amd, alo] = self;
+      //       auto [bhi, bmd, blo] = oth;
+      //       auto [zhi, t1] = eve::two_add(ahi, bhi);
+      //       auto [t2, t3] = eve::two_add(amd, bmd);
+      //       auto [t7, t4] = eve::two_add(t1, t2);
+      //       auto t6 = alo + blo;
+      //       auto t5 = t3 + t4;
+      //       auto t8 = t5 + t6;
+      //       auto [zmd, zlo] = eve::two_add(t7, t8);
+      //       return self = _::clean1s(eve::add, ahi, bhi, zhi, zmd, zlo);
     }
   }
 
@@ -146,7 +187,8 @@ namespace plf
       auto t2 = xlo * yhi;
       auto t = lo + (t1 + t2);
       auto [hi2, lo2] = eve::two_add[eve::raw](hi, t);
-      return self = _::clean0s(eve::mul, xhi, yhi, hi2, lo2);
+      self = _::clean0s(eve::mul, xhi, yhi, hi2, lo2);
+      return self = if_else(eve::is_nan(xhi * yhi), T1(eve::nan(eve::as(xhi))), self);
     }
     else if constexpr (dimension_v<T1> == 3u)
     {
@@ -173,7 +215,8 @@ namespace plf
       auto [t19, t20] = eve::two_add[eve::raw](t14, t18);
       auto [t21, t22] = _::four_add1(t2, t3, t4, t5);
       auto [md, lo] = _::four_add1(t21, t22, t19, t20);
-      return self = _::clean1s(eve::mul, ahi, bhi, hi, md, lo);
+      self = _::clean1s(eve::mul, ahi, bhi, hi, md, lo);
+      return self = if_else(eve::is_nan(ahi * bhi), T1(eve::nan(eve::as(ahi))), self);
     }
   }
 }

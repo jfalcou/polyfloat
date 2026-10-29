@@ -14,6 +14,7 @@
 #include <polyfloat/module/core/rsqrt.hpp>
 #include <polyfloat/module/core/is_eqz.hpp>
 #include <polyfloat/module/core/is_pinf.hpp>
+#include <polyfloat/module/core/is_nan.hpp>
 
 namespace plf
 {
@@ -73,6 +74,6 @@ namespace plf::_
 
   template<typename Z, eve::callable_options O> constexpr auto sqrt_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
-    return if_else(plf::is_eqz(z) || plf::is_pinf(z), z, plf::rsqrt[o](z) * z);
+    return if_else(plf::is_eqz(z) || plf::is_pinf(z) || plf::is_nan(z), z, plf::rsqrt[o](z) * z);
   }
 }
