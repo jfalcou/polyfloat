@@ -124,6 +124,6 @@ TTS_CASE_WITH("Check behavior of add mod on wide",
     using pv_t = T;
     pv_t p = 97;
     auto z = a0 + a1;
-    TTS_EQUAL(add[mod = p](a0, a1), eve::if_else(z >= p, z - p, p));
+    TTS_EQUAL(add[mod = p](a0, a1), eve::if_else(z >= p, z - p, z));
   }
 };
