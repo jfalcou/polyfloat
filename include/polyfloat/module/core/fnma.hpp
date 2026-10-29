@@ -12,6 +12,7 @@
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
 #include <polyfloat/module/core/minus.hpp>
+#include <polyfloat/module/core/fma.hpp>
 
 namespace plf
 {

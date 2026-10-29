@@ -58,6 +58,6 @@ namespace plf::_
     auto [vh, vl] = two_add(xl, sl);
     auto in = is_not_1or3_times_pow2(vh) || is_eqz(vl);
     auto samsgn = eve::sign(vl) == sign(vh);
-    return add(sh, if_else(in, vh, if_else(samsgn, c9_8, c7_8)));
+    return sh + if_else(in, vh, if_else(samsgn, c9_8, c7_8));
   }
 }
