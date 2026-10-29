@@ -27,7 +27,8 @@ namespace plf
                                             to_nearest_option,
                                             toward_zero_option,
                                             downward_option,
-                                            upward_option>
+                                            upward_option,
+                                            eve::mod_option>
   {
     template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2>
     POLYFLOAT_ABI constexpr as_polyfloat_like_t<Z1, Z2> operator()(Z1 z1, Z2 z2) const noexcept
@@ -95,7 +96,7 @@ namespace plf::_
   {
     if constexpr (O::contains(eve::mod))
     {
-      return eve::mul[o](a, eve::rec[o](b));
+      return plf::mul[o](a, plf::rec[o](b));
     }
     else
     {

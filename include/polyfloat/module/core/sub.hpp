@@ -90,8 +90,9 @@ namespace plf::_
     if constexpr (sizeof...(Ts) == 0) return t0;
     else
     {
-      using t_t = as_polyfloat_t<T0, Ts...>;
-      return plf::sub[o](t0, plf::add(ts...));
+      using r_t = as_polyfloat_t<T0, Ts...>;
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+      return plf::sub[o](cvt(t0), plf::add(cvt(ts)...));
     }
   }
 }

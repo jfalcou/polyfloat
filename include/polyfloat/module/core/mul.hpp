@@ -87,22 +87,19 @@ namespace plf::_
   constexpr auto add_(POLYFLOAT_DELAY(), O const& o, T const& a, U const& b) noexcept
   requires(O::contains(eve::mod))
   {
-    if constexpr (O::contains(eve::mod))
-    {
-      using r_t = plf::as_polyfloat_like_t<T, U>;
-      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
-      auto x = cvt(a);
-      auto y = cvt(b);
-      auto p = o[eve::mod].value(as<r_t>{});
-      auto [h, l] = plf::two_prod(x, y);
-      auto bb = h / p;
-      auto cc = plf::floor(bb);
-      auto dd = plf::fnma[pedantic](cc, p, h);
-      auto g = dd + l;
-      g = plf::add[plf::is_ltz(g)](g, p);
-      g = plf::sub[g >= p](g, p);
-      return g;
-    }
+    using r_t = plf::as_polyfloat_like_t<T, U>;
+    auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
+    auto x = cvt(a);
+    auto y = cvt(b);
+    auto p = o[eve::mod].value(as<r_t>{});
+    auto [h, l] = plf::two_prod(x, y);
+    auto bb = h / p;
+    auto cc = plf::floor(bb);
+    auto dd = plf::fnma[pedantic](cc, p, h);
+    auto g = dd + l;
+    g = plf::add[plf::is_ltz(g)](g, p);
+    g = plf::sub[g >= p](g, p);
+    return g;
   }
 
   template<typename Z1, typename... Zs, eve::callable_options O>

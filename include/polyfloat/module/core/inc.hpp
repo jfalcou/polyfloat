@@ -76,10 +76,8 @@ namespace plf::_
     if constexpr (O::contains(eve::mod))
     {
       auto p = o[eve::mod].value(eve::as(a));
-      std::cout << "---p " << p << std::endl;
-      std::cout << "---a " << a << std::endl;
       return plf::if_else(a == plf::dec(p), plf::zero(eve::as(a)), plf::inc(a));
     }
-    else return a + eve::one(eve::as(hi(a)));
+    else return add[o](a, plf::one(eve::as(a)));
   }
 }

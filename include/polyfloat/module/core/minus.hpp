@@ -73,9 +73,9 @@ namespace plf::_
   {
     if constexpr (O::contains(eve::mod))
     {
-      return plf::sub[o](plf::zero(eve::zero(eve::as(z), z)));
+      return plf::sub[o](plf::zero(eve::as(z)), z);
     }
-    return -z;
+    else return -z;
   }
 
 }

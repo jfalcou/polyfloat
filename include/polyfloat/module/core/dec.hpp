@@ -75,6 +75,6 @@ namespace plf::_
       auto p = o[eve::mod].value(eve::as(a));
       return plf::if_else(plf::is_eqz(a), plf::dec(p), plf::dec(a));
     }
-    else return a - eve::one(eve::as(hi(a)));
+    else return plf::sub[o](a, plf::one(eve::as(a)));
   }
 }
