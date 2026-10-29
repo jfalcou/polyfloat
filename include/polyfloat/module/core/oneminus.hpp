@@ -72,6 +72,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   constexpr auto oneminus_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
-    return plf::sub[o](eve::one(eve::as(z)), z);
+    return plf::sub[o](plf::one(eve::as(z)), z);
   }
 }

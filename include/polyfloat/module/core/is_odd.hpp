@@ -11,7 +11,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/is_flint.hpp>
+#include <polyfloat/module/core/is_even.hpp>
 
 namespace plf
 {
@@ -71,7 +71,7 @@ namespace plf::_
 {
   template<typename Z, eve::callable_options O> constexpr auto is_odd_(POLYFLOAT_DELAY(), O const&, Z const& a) noexcept
   {
-    auto da = dec(a);
-    return (a != da) && is_even(da);
+    auto da = plf::dec(a);
+    return (a != da) && plf::is_even(da);
   }
 }
