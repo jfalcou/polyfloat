@@ -13,63 +13,9 @@
 #include <polyfloat/module/core/oneminus.hpp>
 #include <polyfloat/types/triple_real.hpp>
 #include <polyfloat/types/double_real.hpp>
-#include <iostream>
 
 namespace plf
 {
-  namespace _
-  {
-    template<typename T> auto clean0s(T hi, T lo) noexcept
-    {
-      return eve::if_else(eve::is_not_finite(hi), plf::double_real_t<T>(hi), plf::double_real_t<T>(hi, lo));
-    }
-
-    template<typename T> auto clean0s(auto f, auto hs, auto ho, T h, T l) noexcept
-    {
-      auto output_is_finite = eve::is_finite(h);
-      if (eve::all(output_is_finite)) return from_pair(h, l); //plf::double_real_t<T>(h, l);
-      else
-      {
-        auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite)) return from_pair(h, l); //plf::double_real_t<T>(h, l);
-        else
-          return eve::if_else(output_is_finite, from_pair(h, l),
-                              from_pair(hs, ho)); //plf::double_real_t<T>, plf::double_real_t<T>(f(hs, ho)));
-      }
-    }
-
-    template<typename T> auto clean1s(auto f, auto hs, auto ho, T h, T m, T l) noexcept
-    {
-      auto output_is_finite = eve::is_finite(h);
-      if (eve::all(output_is_finite)) return plf::triple_real_t<T>(h, m, l);
-      else
-      {
-        auto input_is_finite = eve::is_finite(hs) && eve::is_finite(ho);
-        if (eve::all(input_is_finite)) return from_triple(h, m, l); //return plf::triple_real_t<T>(h, m, l);
-        else
-          return eve::if_else(
-            output_is_finite, from_triple(h, m, l),
-            from_triple(hs, ho,
-                        eve::zero(eve::as(ho)))); //plf::triple_real_t<T>(h, m, l), plf::triple_real_t<T>(f(hs, ho)));
-      }
-    }
-
-    template<typename T> auto clean1s(T hi, T md, T lo) noexcept
-    {
-      return eve::if_else(eve::is_not_finite(hi), plf::triple_real_t<T>(hi),
-                          from_triple(hi, md, lo)); //plf::triple_real_t<T>(hi, md, lo));
-    }
-
-    auto four_add1(auto a, auto b, auto c, auto d) noexcept
-    {
-      auto [t0, t1] = eve::two_add(a, b);
-      auto [t01, t2] = eve::two_add(t0, c);
-      auto [aa, t3] = eve::two_add(t01, d);
-      auto t02 = t1 + t2;
-      auto bb = t02 + t3;
-      return eve::zip(aa, bb);
-    }
-  }
 
   //====================================================================================================================
   //! @name Compound Assignment Operators
@@ -224,7 +170,7 @@ namespace plf
           return correct(x1);
         }
       }
-      // ok aussi
+      // ok aussi mais est-ce plus rapide ?
       //         auto a0 = plf::hi(a);
       //         auto correct =  [&a0](auto x){
       //           x = plf::if_else(eve::is_infinite(a0), T(eve::copysign(eve::zero(eve::as(a0)), a0)), x);
