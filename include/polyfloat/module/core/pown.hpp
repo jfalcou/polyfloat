@@ -92,14 +92,15 @@ namespace plf::_
     else
     {
       auto isneg = plf::is_ltz(nn);
-      auto n = plf::abs(r_t(nn));
+      r_t n = plf::abs(r_t(nn));
       r_t base(z);
       r_t result(1);
+      r_t h(plf::half(plf::as<r_t>()));
       while (eve::any(plf::is_nez(n)))
       {
         r_t fac = plf::if_else(is_odd(n), base, one(eve::as(base)));
         result *= fac;
-        n = plf::floor(n / 2);
+        n = plf::floor(n * h);
         base = plf::sqr(base);
       }
       return if_else(isneg, plf::rec(result), result);
