@@ -22,14 +22,14 @@ TTS_CASE_WITH("Check add two params",
 {
   using mpfr::mpreal;
   using plf::add;
+  auto madd = [](auto a, auto b) { return a + b; };
   {
     using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     auto [s, e] = plf::two_add(pa, pb);
-    std::cout << s << ",    " << e << std::endl;
-    auto z0 = tts::to_mpreal(pa) + tts::to_mpreal(pb);
-    auto z1 = tts::to_mpreal(s) + tts::to_mpreal(e);
+    auto z0 = tts::mpfr_exec(madd, pa, pb);
+    auto z1 = tts::mpfr_exec(madd, s, e);
     TTS_EQUAL(z0, z1);
   }
   {
@@ -38,8 +38,8 @@ TTS_CASE_WITH("Check add two params",
     pv_t pb(a3, a4, a5);
     auto [s, e] = plf::two_add(pa, pb);
     std::cout << s << " ,   " << e << std::endl;
-    auto z0 = tts::to_mpreal(pa) + tts::to_mpreal(pb);
-    auto z1 = tts::to_mpreal(s) + tts::to_mpreal(e);
+    auto z0 = tts::mpfr_exec(madd, pa, pb);
+    auto z1 = tts::mpfr_exec(madd, s, e);
     TTS_EQUAL(z0, z1);
   }
 };
