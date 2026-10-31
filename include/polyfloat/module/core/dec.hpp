@@ -13,6 +13,7 @@
 #include <type_traits>
 #include <polyfloat/module/core/minus.hpp>
 #include <polyfloat/module/core/is_negative.hpp>
+#include <polyfloat/module/core/add.hpp>
 
 namespace plf
 {
@@ -69,8 +70,8 @@ namespace plf
 
 namespace plf::_
 {
-  template<typename Z, eve::callable_options O> constexpr auto dec_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
+  template<typename Z, eve::callable_options O> constexpr auto dec_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
   {
-    return z - eve::one(eve::as(hi(z)));
+    return plf::add[o](z, eve::mone(eve::as(hi(z))));
   }
 }

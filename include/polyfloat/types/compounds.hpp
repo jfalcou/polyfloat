@@ -25,107 +25,45 @@ namespace plf
 
   /// Adds the polyflat value `other` to `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
-  constexpr T1& operator+=(T1& self, T2 other) noexcept
+  constexpr auto& operator+=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
   {
-    if constexpr (eve::integral_value<T2>) return self += eve::convert(other, eve::as(eve::underlying_type_t<T2>()));
-    else if constexpr (dimension_v<T1> == 2u)
+    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
+    if constexpr (dimension_v<T1> == 2u)
     {
-      if constexpr (dimension_v<T2> == 1u)
-      {
-        auto [xhi, xlo] = self;
-        auto yhi = other;
-        auto [a, b] = eve::two_add(xhi, yhi);
-        auto c = xlo;
-        auto [aa, cc] = eve::two_add[eve::raw](a, c);
-        b += cc;
-        auto [e, f] = eve::two_add(aa, b);
-        auto test = eve::is_not_finite(e + f);
-        return self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
-      }
-      else if constexpr (dimension_v<T2> == 2u)
-      {
-        auto [xhi, xlo] = self;
-        auto [yhi, ylo] = other;
-        auto [a, b] = eve::two_add(xhi, yhi);
-        auto [c, d] = eve::two_add(xlo, ylo);
-        auto [aa, cc] = eve::two_add[eve::raw](a, c);
-        b += d;
-        b += cc;
-        auto [e, f] = eve::two_add(aa, b);
-        auto test = eve::is_not_finite(e + f);
-        return self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
-      }
+      auto [xhi, xlo] = self;
+      auto [yhi, ylo] = oth;
+      auto [a, b] = eve::two_add(xhi, yhi);
+      auto [c, d] = eve::two_add(xlo, ylo);
+      auto [aa, cc] = eve::two_add[eve::raw](a, c);
+      b += d;
+      b += cc;
+      auto [e, f] = eve::two_add(aa, b);
+      auto test = eve::is_not_finite(e + f);
+      return self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
     }
     else if constexpr (dimension_v<T1> == 3u)
     {
-      if constexpr (dimension_v<T2> == 1u)
-      {
-        auto [xhi, xmd, xlo] = self;
-        auto yhi = other;
-        auto [a1, b1] = eve::two_add(xhi, yhi);
-        auto [a2, c2] = eve::two_add[raw](a1, xmd);
-        auto [a3, d3] = eve::two_add[raw](a2, xlo);
-        auto [b2, c3] = eve::two_add(b1, c2);
-        auto [c4, d4] = eve::two_add(c3, d3);
-        auto [b3, c5] = eve::two_add(b2, c4);
-        auto [a4, b4] = eve::two_add[raw](a3, b3);
-        c4 += d4;
-        auto [b5, c6] = eve::two_add[raw](b4, c5);
-        auto [a5, b6] = eve::two_add[raw](a4, b5);
-        auto [b7, c7] = eve::two_add[raw](b6, c6);
-        auto test = eve::is_not_finite(a5 + b7 + c7);
-        return self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
-      }
-      else if constexpr (dimension_v<T2> == 2u)
-      {
-        auto [xhi, xmd, xlo] = self;
-        auto [yhi, ymd] = other;
-        auto [a1, b1] = eve::two_add(xhi, yhi);
-        auto [c1, d1] = eve::two_add(xmd, ymd);
-        //      auto [e1, f1] = eve::two_add(xlo, ylo);
-        auto e1 = xlo;
-        //      f1 = 0;
-        auto [a2, c2] = eve::two_add[raw](a1, c1);
-        //      b1 += f1;
-        auto [d2, e2] = eve::two_add(d1, e1);
-        auto [a3, d3] = eve::two_add[raw](a2, d2);
-        auto [b2, c3] = eve::two_add(b1, c2);
-        c3 += e2;
-        auto [c4, d4] = eve::two_add(c3, d3);
-        auto [b3, c5] = eve::two_add(b2, c4);
-        auto [a4, b4] = eve::two_add[raw](a3, b3);
-        c5 += d4;
-        auto [b5, c6] = eve::two_add[raw](b4, c5);
-        auto [a5, b6] = eve::two_add[raw](a4, b5);
-        auto [b7, c7] = eve::two_add[raw](b6, c6);
-        auto test = eve::is_not_finite(a5 + b7 + c7);
-        return self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
-      }
-      else if constexpr (dimension_v<T2> == 3u)
-      {
-        //      T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
-        auto [xhi, xmd, xlo] = self;
-        auto [yhi, ymd, ylo] = other;
-        auto [a1, b1] = eve::two_add(xhi, yhi);
-        auto [c1, d1] = eve::two_add(xmd, ymd);
-        auto [e1, f1] = eve::two_add(xlo, ylo);
-        auto [a2, c2] = eve::two_add[raw](a1, c1);
-        b1 += f1;
-        auto [d2, e2] = eve::two_add(d1, e1);
-        auto [a3, d3] = eve::two_add[raw](a2, d2);
-        auto [b2, c3] = eve::two_add(b1, c2);
-        c3 += e2;
-        auto [c4, d4] = eve::two_add(c3, d3);
-        auto [b3, c5] = eve::two_add(b2, c4);
-        auto [a4, b4] = eve::two_add[raw](a3, b3);
-        c5 += d4;
-        auto [b5, c6] = eve::two_add[raw](b4, c5);
-        auto [a5, b6] = eve::two_add[raw](a4, b5);
-        auto [b7, c7] = eve::two_add[raw](b6, c6);
-        auto test = eve::is_not_finite(a5 + b7 + c7);
-        return self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
-      }
+      auto [xhi, xmd, xlo] = self;
+      auto [yhi, ymd, ylo] = oth;
+      auto [a1, b1] = eve::two_add(xhi, yhi);
+      auto [c1, d1] = eve::two_add(xmd, ymd);
+      auto [e1, f1] = eve::two_add(xlo, ylo);
+      auto [a2, c2] = eve::two_add[raw](a1, c1);
+      b1 += f1;
+      auto [d2, e2] = eve::two_add(d1, e1);
+      auto [a3, d3] = eve::two_add[raw](a2, d2);
+      auto [b2, c3] = eve::two_add(b1, c2);
+      c3 += e2;
+      auto [c4, d4] = eve::two_add(c3, d3);
+      auto [b3, c5] = eve::two_add(b2, c4);
+      auto [a4, b4] = eve::two_add[raw](a3, b3);
+      c4 += d4;
+      auto [b5, c6] = eve::two_add[raw](b4, c5);
+      auto [a5, b6] = eve::two_add[raw](a4, b5);
+      auto [b7, c7] = eve::two_add[raw](b6, c6);
+      auto test = eve::is_not_finite(a5 + b7 + c7);
+      return self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
     }
   }
 
