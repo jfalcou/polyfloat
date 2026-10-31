@@ -77,6 +77,7 @@
 #include <polyfloat/module/core/is_ngtz.hpp>
 #include <polyfloat/module/core/is_nlez.hpp>
 #include <polyfloat/module/core/is_nltz.hpp>
+#include <polyfloat/module/core/is_normalized.hpp>
 #include <polyfloat/module/core/is_not_denormal.hpp>
 #include <polyfloat/module/core/is_not_equal.hpp>
 #include <polyfloat/module/core/is_not_finite.hpp>
