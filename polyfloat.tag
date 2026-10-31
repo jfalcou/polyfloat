@@ -1266,6 +1266,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>is_normalized</name>
+      <anchorfile>group__core_ga113b95e7d3065357cea2e7278e16b167.html</anchorfile>
+      <anchor>ga113b95e7d3065357cea2e7278e16b167</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>is_not_denormal</name>
       <anchorfile>group__core_ga315ab6ec01496d96b325d266be09767f.html</anchorfile>
       <anchor>ga315ab6ec01496d96b325d266be09767f</anchor>
@@ -3266,6 +3273,13 @@
       <name>plf::is_nltz</name>
       <anchorfile>group__core_gae2a0761ccbc5a9fe472f2f5c14a8fcd9.html</anchorfile>
       <anchor>gae2a0761ccbc5a9fe472f2f5c14a8fcd9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::is_normalized</name>
+      <anchorfile>group__core_ga113b95e7d3065357cea2e7278e16b167.html</anchorfile>
+      <anchor>ga113b95e7d3065357cea2e7278e16b167</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
