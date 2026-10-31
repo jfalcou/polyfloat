@@ -14,6 +14,7 @@
 #include <polyfloat/module/core/rsqrt.hpp>
 #include <polyfloat/module/core/is_eqz.hpp>
 #include <polyfloat/module/core/is_pinf.hpp>
+#include <polyfloat/module/core/is_nan.hpp>
 
 namespace plf
 {

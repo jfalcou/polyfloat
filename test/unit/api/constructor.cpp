@@ -63,3 +63,31 @@ TTS_CASE_TPL("Check constructors", plf::scalar_real_types)
     std::cout << wpv_t3(eve::inf(eve::as<T>()), eve::inf(eve::as<T>())) << std::endl;
   }
 };
+
+TTS_CASE_WITH("Check constructor for normalization",
+              plf::scalar_real_types,
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000),
+              tts::randoms(-1000, 1000))
+<typename T>(T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5)
+{
+  using mpfr::mpreal;
+  using plf::is_normalized;
+  {
+    using pv_t = plf::polyfloat<T, 2>;
+    pv_t pa(a0, a1);
+    pv_t pb(a3, a4);
+    TTS_EXPECT(is_normalized(pa));
+    TTS_EXPECT(is_normalized(pb));
+  }
+  {
+    using pv_t = plf::polyfloat<T, 3>;
+    pv_t pa(a0, a1, a2);
+    pv_t pb(a3, a4, a5);
+    TTS_EXPECT(is_normalized(pa));
+    TTS_EXPECT(is_normalized(pb));
+  }
+};

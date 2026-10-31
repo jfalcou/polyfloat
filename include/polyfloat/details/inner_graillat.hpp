@@ -10,6 +10,7 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/module/core/is_normalized.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // https://hal.science/hal-04575249
@@ -17,6 +18,26 @@
 
 namespace plf::_
 {
+
+  template<typename Z> constexpr auto inner_is_normalized(Z const& z) noexcept
+  {
+    auto eqnum = eve::is_equal[eve::numeric];
+    if constexpr (plf::dimension_v<Z> == 1)
+    {
+      return eve::true_(eve::as(z));
+    }
+    else if constexpr (plf::dimension_v<Z> == 2)
+    {
+      auto [h, l] = z;
+      return eqnum(h + l, h);
+    }
+    else if constexpr (plf::dimension_v<Z> == 3)
+    {
+      auto [h, m, l] = z;
+      return eqnum(h + m, h) && eqnum(m + l, m);
+    }
+  }
+
   template<typename T> constexpr auto is_n_1or3_t_p2(T x) noexcept // Graillat & Muller algorithm 5
   {
     using u_t = eve::underlying_type_t<T>;
@@ -51,11 +72,12 @@ namespace plf::_
     auto [xh, xl] = eve::two_add[eve::pedantic](x, y);
     auto r = inner_cr_dw_fp_add_with_err(xh, xl, z);
     auto isnf = eve::is_not_finite(x);
-    if (eve::none(isnf)) return r;
-    else
+    if (eve::any(isnf))
     {
       auto h = eve::zip(x, eve::zero(as(x)), eve::zero(as(x)));
-      return eve::if_else(eve::is_not_finite(x), h, r);
+      r = eve::if_else(eve::is_not_finite(x), h, r);
     }
+    EVE_ASSERT(eve::all(inner_is_normalized(r)), "[plf::_::inner_three_add] output is not normalized");
+    return r;
   }
 }

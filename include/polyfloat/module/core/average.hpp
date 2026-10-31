@@ -14,6 +14,7 @@
 #include <polyfloat/module/core/abs.hpp>
 #include <polyfloat/module/core/parts.hpp>
 #include <polyfloat/module/core/fma.hpp>
+#include <polyfloat/module/core/rec.hpp>
 
 namespace plf
 {
@@ -86,22 +87,23 @@ namespace plf::_
   constexpr auto average_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
     using r_t = as_polyfloat_like_t<T1, Ts...>;
-    using e_t = eve::element_type_t<r_t>;
+    using u_t = eve::element_type_t<r_t>;
     if constexpr (sizeof...(Ts) == 0) return a0;
     else
     {
+      auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
       constexpr auto N = sizeof...(Ts) + 1;
-      /*expr*/ e_t const invn = 1 / (e_t(N));
+      u_t const invn = plf::rec(u_t(N));
       if constexpr (O::contains(raw))
       {
-        return eve::mul[o](add[o.drop(raw)](a0, args...), invn);
+        return eve::mul[o](add[o.drop(raw)](cvt(a0), cvt(args)...), invn);
       }
       else
       {
-        using u_t = eve::element_type_t<r_t>;
-        auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-        r_t that(a0 * invn);
-        auto next = [invn](auto avg, auto x) { return x * invn + avg; }; //plf::fma(x, invn, avg); }; //fma ?
+        auto that(cvt(a0) * invn);
+        auto next = [invn](auto avg, auto x) {
+          return plf::fma(x, invn, avg);
+        }; //return x * invn + avg; }; //plf::fma(x, invn, avg); }; //fma ?
         ((that = next(that, cvt(args))), ...);
         return that;
       }
