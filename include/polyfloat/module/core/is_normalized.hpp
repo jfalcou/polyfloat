@@ -11,6 +11,8 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
+#include <polyfloat/types/traits.hpp>
+#include <polyfloat/module/core/parts.hpp>
 
 namespace plf
 {
@@ -59,7 +61,7 @@ namespace plf
   //!     1. returns true if and only if x represent an normalized number
   //!
   //!  @groupheader{Example}
-  //!  @godbolt{doc/core/is_normalized.cpp}
+  //!  @godbolt_todo{doc/core/is_normalized.cpp}
   //================================================================================================
   inline constexpr auto is_normalized = eve::functor<is_normalized_t>;
   //======================================================================================================================
@@ -72,20 +74,20 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   constexpr auto is_normalized_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
+    auto eqnum = eve::is_equal[eve::numeric];
     if constexpr (plf::dimension_v<Z> == 1)
     {
       return eve::true_(eve::as(z));
     }
     else if constexpr (plf::dimension_v<Z> == 2)
     {
-      auto h = plf::hi(z);
-      return h + plf::lo(z) == h;
+      auto [h, l] = z;
+      return eqnum(h + l, h);
     }
     else if constexpr (plf::dimension_v<Z> == 3)
     {
-      auto h = plf::hi(z);
-      auto m = plf::md(z);
-      return (h + m == h) && (m + plf::lo(z) == m);
+      auto [h, m, l] = z;
+      return eqnum(h + m, h) && eqnum(m + l, m);
     }
   }
 }
