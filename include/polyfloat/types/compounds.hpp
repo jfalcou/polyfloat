@@ -11,6 +11,7 @@
 #include <polyfloat/module/core/convert.hpp>
 #include <polyfloat/module/core/if_else.hpp>
 #include <polyfloat/module/core/oneminus.hpp>
+#include <polyfloat/module/core/is_normalized.hpp>
 #include <polyfloat/types/triple_real.hpp>
 #include <polyfloat/types/double_real.hpp>
 
@@ -40,7 +41,9 @@ namespace plf
       b += cc;
       auto [e, f] = eve::two_add(aa, b);
       auto test = eve::is_not_finite(e + f);
-      return self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
+      self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
+      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
+      return self;
     }
     else if constexpr (dimension_v<T1> == 3u)
     {
@@ -63,7 +66,9 @@ namespace plf
       auto [a5, b6] = eve::two_add[raw](a4, b5);
       auto [b7, c7] = eve::two_add[raw](b6, c6);
       auto test = eve::is_not_finite(a5 + b7 + c7);
-      return self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
+      self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
+      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
+      return self;
     }
   }
 
@@ -92,7 +97,9 @@ namespace plf
       e00 += p01;
       auto [p, e] = eve::two_add[raw](p00, e00);
       auto test = eve::is_not_finite(p + e);
-      return self = plf::if_else(test, T1(p00), plf::_::from_pair(p, e));
+      self = plf::if_else(test, T1(p00), plf::_::from_pair(p, e));
+      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
+      return self;
     }
     else if constexpr (dimension_v<T1> == 3u)
     {
@@ -133,7 +140,9 @@ namespace plf
       p00 = a7;
       e00 = b7;
       auto test = eve::is_not_finite(p00 + e00 + p01);
-      return self = plf::if_else(test, T1(p), plf::_::from_triple(p00, e00, p01));
+      self = plf::if_else(test, T1(p), plf::_::from_triple(p00, e00, p01));
+      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of *= is not normalized");
+      return self;
     }
   }
 }
@@ -210,7 +219,9 @@ namespace plf
   template<concepts::polyfloat T1, concepts::polyfloat_like T2> constexpr auto& operator/=(T1& self, T2 other) noexcept
   {
     T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
-    return self *= _::rec(oth);
+    self *= _::rec(oth);
+    EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of /= is not normalized");
+    return self;
   }
 }
 
