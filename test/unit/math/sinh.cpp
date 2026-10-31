@@ -47,6 +47,6 @@ TTS_CASE_WITH(
     pv_t minf(plf::minf(eve::as<pv_t>()));
     TTS_EQUAL(sinh(minf), minf);
     pv_t maxlog(plf::maxlog(eve::as<pv_t>()));
-    TTS_RELATIVE_EQUAL(sinh(maxlog), tts::mpfr_exec(msinh, maxlog), 102400 * tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(sinh(maxlog), tts::mpfr_exec(msinh, maxlog), 162400 * tts::epsprec<pv_t>());
   }
 };

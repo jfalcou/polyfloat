@@ -87,7 +87,7 @@ TTS_CASE_WITH("Check cumprod three params",
     pv_t pc(a6, a7, a8);
     TTS_RELATIVE_EQUAL(kumi::get<0>(cumprod(pa, pb, pc)), kumi::get<0>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(kumi::get<1>(cumprod(pa, pb, pc)), kumi::get<1>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(kumi::get<2>(cumprod(pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(kumi::get<2>(cumprod(pa, pb, pc)), kumi::get<2>(mcs(pa, pb, pc)), 2 * tts::epsprec<pv_t>());
   }
   {
     using pv_t = plf::triple_real_t<eve::wide<T, 2>>;

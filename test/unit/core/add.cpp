@@ -31,6 +31,14 @@ TTS_CASE_WITH("Check add two params",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(add(wpab, wpab), 2 * wpab, tts::epsprec<T>());
+    pv_t inf = plf::inf(eve::as(pa));
+    pv_t nan = plf::nan(eve::as(pa));
+    pv_t minf = plf::minf(eve::as(pa));
+    TTS_IEEE_EQUAL(add(pa, inf), inf) << pa << "\n";
+    TTS_IEEE_EQUAL(add(inf, pa), inf);
+    TTS_IEEE_EQUAL(add(minf, pa), minf);
+    TTS_IEEE_EQUAL(add(pa, minf), minf);
+    TTS_IEEE_EQUAL(add(inf, minf), nan);
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
@@ -42,6 +50,14 @@ TTS_CASE_WITH("Check add two params",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(add(wpab, wpab), 2 * wpab, tts::epsprec<T>());
+    pv_t inf = plf::inf(eve::as(pa));
+    pv_t nan = plf::nan(eve::as(pa));
+    pv_t minf = plf::minf(eve::as(pa));
+    TTS_IEEE_EQUAL(add(pa, inf), inf);
+    TTS_IEEE_EQUAL(add(inf, pa), inf);
+    TTS_IEEE_EQUAL(add(minf, pa), minf);
+    TTS_IEEE_EQUAL(add(pa, minf), minf);
+    TTS_IEEE_EQUAL(add(inf, minf), nan);
   }
 };
 

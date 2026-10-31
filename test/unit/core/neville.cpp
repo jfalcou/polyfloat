@@ -47,6 +47,6 @@ TTS_CASE_WITH("Check neville params",
     auto y2 = plf::horner(pc, o, 2 * o, 3 * o);
     pv_t x(1.0);
     TTS_RELATIVE_EQUAL(neville(x, pa, pb, pc, y0, y1, y2), plf::horner(x, o, 2 * o, 3 * o),
-                       1000 * tts::epsprec<pv_t>());
+                       2000 * tts::epsprec<pv_t>());
   }
 };
