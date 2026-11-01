@@ -26,7 +26,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp_t, exp_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var exp
   //!   @brief return the exponential value.

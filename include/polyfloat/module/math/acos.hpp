@@ -34,7 +34,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acos_t, acos_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var acos
   //!   @brief return the arc cosine value.

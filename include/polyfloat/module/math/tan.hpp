@@ -45,10 +45,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(tan_t, tan_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var tan
-  //!   @brief return the tanine value.
+  //!   @brief return the tangent value.
   //!
   //!   @groupheader{Header file}
   //!
@@ -71,7 +71,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the tanine of z.
+  //!     Returns the tangent of z.
   //!
   //!  @groupheader{Example}
   //!
