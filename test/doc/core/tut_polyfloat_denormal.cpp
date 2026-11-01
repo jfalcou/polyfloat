@@ -26,9 +26,5 @@ int main()
   auto a = plf::triple_real_t<double>(1.0e-20);
   std::cout << "a = " << a << "\n";
   std::cout << "b = " << b << "\n";
-
   std::cout << "a/b = " << a / b << "\n";
-  std::cout << "hi(a)/hi(b) = " << plf::hi(a) / plf::hi(b) << "\n";
-  a /= b;
-  std::cout << "a = " << a << "\n";
 }
