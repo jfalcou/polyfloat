@@ -22,6 +22,13 @@ int main()
   std::cout << "1/(z2+z2) = " << 1 / zz2 << "\n";
   std::cout << "1/(z3+z3) = " << 1 / zz3 << "\n";
   std::cout << "1/(z3+z3) = " << 1 / (-zz3) << "\n";
-  auto a = plf::triple_real_t<double>(z1, z1, z1);
+  auto b = plf::triple_real_t<double>(z1, z1, z1);
+  auto a = plf::triple_real_t<double>(1.0e-20);
+  std::cout << "a = " << a << "\n";
+  std::cout << "b = " << b << "\n";
+
+  std::cout << "a/b = " << a / b << "\n";
+  std::cout << "hi(a)/hi(b) = " << plf::hi(a) / plf::hi(b) << "\n";
+  a /= b;
   std::cout << "a = " << a << "\n";
 }

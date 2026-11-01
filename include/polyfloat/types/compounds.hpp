@@ -220,7 +220,15 @@ namespace plf
   template<concepts::polyfloat T1, concepts::polyfloat_like T2> constexpr auto& operator/=(T1& self, T2 other) noexcept
   {
     T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
-    self *= _::rec(oth);
+    auto deno = eve::is_denormal(hi(oth));
+    if (eve::none(deno)) return self *= _::rec(oth);
+    else
+    {
+      auto a = self * _::rec(oth);
+      auto b = T1(hi(self) / hi(oth));
+      auto test = deno && eve::is_infinite(hi(a));
+      return self = plf::if_else(test, b, a);
+    }
     EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of /= is not normalized");
     return self;
   }
