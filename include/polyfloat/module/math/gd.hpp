@@ -29,10 +29,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(gd_t, gd_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var gd
-  //!   @brief return the gudermanian gd: \f$\int_0^\infty 1/\cosh x dx\f$.
+  //!   @brief return the gudermanian gd: \f$\int_0^\infty \frac1{\cosh(x)}\; dx\f$.
   //!
   //!   @groupheader{Header file}
   //!

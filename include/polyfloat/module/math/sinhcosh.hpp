@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sinhcosh_t, sinhcosh_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var sinhcosh
   //!   @brief return the hyperbolic sine and cosine values.

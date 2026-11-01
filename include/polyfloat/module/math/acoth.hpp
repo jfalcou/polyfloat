@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acoth_t, acoth_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var acoth
   //!   @brief return the inverse hyperbolic cotangent value.

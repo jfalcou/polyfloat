@@ -38,10 +38,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(harmmean_t, harmmean_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var harmmean
-  //!   @brief  Callable object computing the harmonic mean of the inputs.\f$ \fracn{\sum \frac1/xs} \f$.
+  //!   @brief  Callable object computing the harmonic mean of the inputs.\f$ \frac{n}{\sum \frac1{z_i}} \f$.
   //!
   //!   @groupheader{Header file}
   //!
@@ -54,13 +54,13 @@ namespace plf
   //!   @code
   //!   namespace polyfloat
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto harmmean(T1 z1, T2 z2) noexcept;
+  //!      template<polyfloat::concepts::polyfloat_like ... Zs> constexpr auto harmmean(T1 zs...) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z, zs...`: Values to process.
+  //!     * `zs...`: Values to process.
   //!
   //!   **Return value**
   //!

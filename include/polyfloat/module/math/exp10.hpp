@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp10_t, exp10_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var exp10
   //!   @brief return \f$10^x\f$.

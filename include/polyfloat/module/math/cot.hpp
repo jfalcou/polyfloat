@@ -45,7 +45,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cot_t, cot_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var cot
   //!   @brief return the cotangent value.

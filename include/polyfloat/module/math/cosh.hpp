@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cosh_t, cosh_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var cosh
   //!   @brief return the hyperbolic cosine value.

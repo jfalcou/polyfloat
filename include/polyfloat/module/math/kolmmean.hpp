@@ -29,7 +29,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(kolmmean_t, kolmmean_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var kolmmean
   //!   @brief  Callable object computing the  'Kolmogorov-Nagumo-de Finetti' mean of the inputs: \f$ \mathbf{g}(\sum \mathbf{f}(x_s)) \f$.

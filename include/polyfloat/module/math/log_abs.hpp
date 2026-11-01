@@ -26,7 +26,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log_abs_t, log_abs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var log_abs
   //!   @brief return the natural logarithm of the absolute value.

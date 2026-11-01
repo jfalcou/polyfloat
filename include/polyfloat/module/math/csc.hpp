@@ -38,7 +38,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(csc_t, csc_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var csc
   //!   @brief return the cosecant value.

@@ -27,7 +27,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sinh_t, sinh_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var sinh
   //!   @brief return the hyperbolic sine value.

@@ -29,7 +29,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log_t, log_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var log
   //!   @brief return the natural logarithm value.

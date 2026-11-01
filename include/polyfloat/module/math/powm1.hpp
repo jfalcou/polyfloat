@@ -29,7 +29,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(powm1_t, powm1_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var powm1
   //!   @brief return \f$x^y-1\f$.

@@ -29,7 +29,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(agd_t, agd_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var agd
   //!   @brief return the inverse gudermannian agd : \f$2\tanh(\tan(x/2))\f$..

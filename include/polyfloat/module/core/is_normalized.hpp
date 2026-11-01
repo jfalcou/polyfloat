@@ -34,7 +34,7 @@ namespace plf
   //! @{
   //!   @var is_normalized
   //!   @brief returns a logical true  if and only if the element value is normalized i.e. its
-  //!   successive components satisfy Zhang condition of dtrong domination.
+  //!   successive components satisfy Zhang condition of strong domination.
   //!
   //!   @groupheader{Header file}
   //!
@@ -58,7 +58,10 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     1. returns true if and only if x represent an normalized number
+  //!     returns true if and only if x represent an normalized number.
+  //!
+  //!   @note this condition is mandatory. If you want to write any function that returns a polyfloat,
+  //!     the polyfloat returned MUST satisfy is_normalized.
   //!
   //!  @groupheader{Example}
   //!  @godbolt_todo{doc/core/is_normalized.cpp}

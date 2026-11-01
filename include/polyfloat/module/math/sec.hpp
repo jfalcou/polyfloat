@@ -38,7 +38,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sec_t, sec_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var sec
   //!   @brief return the secant value.
