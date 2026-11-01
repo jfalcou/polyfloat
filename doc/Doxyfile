@@ -13,7 +13,7 @@ PROJECT_LOGO           = logo.svg
 LAYOUT_FILE            = layout.xml
 
 ## What to read, and where the @include of a snippet looks for its file
-INPUT                  = ../include .
+INPUT                  = ../include tutorial index.hpp .
 INCLUDE_PATH           = ../include
 EXAMPLE_PATH           = ../test/doc .
 FILE_PATTERNS          = *.hpp *.md
@@ -29,6 +29,8 @@ GENERATE_LATEX         = NO
 ##======================================================================================================================
 @INCLUDE               = $(DOXYGEN_ASSETS)/base.doxyfile
 
+## The bibliography the citation page offers for download.
+HTML_EXTRA_FILES      += polyfloat.bibtex
 
 ## The image the social card metadata in head.html points at, published beside the pages.
 HTML_EXTRA_FILES      += card.png

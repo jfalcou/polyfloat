@@ -3,6 +3,14 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
+    <tab type="usergroup" visible="yes" title="Tutorials" url="@ref setup">
+      <tab type="user" url="@ref setup"                title="Installation &amp; Quick Start"/>
+      <tab type="usergroup" visible="yes" title="Getting Started" url="@ref tutorial-polyfloat">
+        <tab type="user" url="@ref tutorial-polyfloat"    title="polyfloat Numbers"/>
+        <tab type="user" url="@ref tutorial-simd"       title="Many Values At Once"/>
+      </tab>
+    </tab>
+
     <!-- <tab type="user" url="@ref polyfloat101" title="Getting Started"/> -->
     <tab type="usergroup" visible="yes" title="Reference Documentation" url="@ref types">
       <tab type="user" url="@ref types" title="Types"/>

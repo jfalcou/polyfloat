@@ -159,6 +159,7 @@ namespace plf
       if constexpr (dimension_v<T> == 1 && std::is_floating_point_v<T>) return eve::rec[pedantic](a);
       else
       {
+        a = eve::if_else(eve::is_denormal(hi(a)), T(hi(a) * eve::zero(as(hi(a)))), a);
         auto correct = [&a](auto x) {
           auto a0 = plf::hi(a);
           x = plf::if_else(eve::is_infinite(a0), T(eve::copysign(eve::zero(eve::as(a0)), a0)), x);
