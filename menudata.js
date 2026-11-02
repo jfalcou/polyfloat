@@ -24,11 +24,15 @@
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
+{text:"Tutorials",url:"setup.html",children:[
+{text:"Installation & Quick Start",url:"setup.html"},
+{text:"Getting Started",url:"tutorial-basics.html",children:[
+{text:"polyfloat Numbers",url:"tutorial-basics.html"},
+{text:"Many Values At Once",url:"tutorial-simd.html"}]}]},
 {text:"Reference Documentation",url:"group__types.html",children:[
 {text:"Types",url:"group__types.html"},
-{text:"Core Constants",url:"group__constants.html"},
 {text:"Core Functions",url:"group__core.html"},
-{text:"Core Accuracy Functions",url:"group__core__accuracy.html"},
+{text:"Math Functions",url:"group__math.html"},
 {text:"Traits",url:"group__traits.html"},
 {text:"Concept List",url:"concepts.html"}]},
 {text:"Informations",url:"licence.html",children:[

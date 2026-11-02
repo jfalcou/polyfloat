@@ -152,7 +152,7 @@ $(function(){initNavTree('group__core_ga113b95e7d3065357cea2e7278e16b167.html','
 </table>
 </div><div class="memdoc">
 
-<p>returns a logical true if and only if the element value is normalized i.e. its successive components satisfy Zhang condition of dtrong domination. </p>
+<p>returns a logical true if and only if the element value is normalized i.e. its successive components satisfy Zhang condition of strong domination. </p>
 <h2 class="groupheader">Header file </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
@@ -161,16 +161,15 @@ $(function(){initNavTree('group__core_ga113b95e7d3065357cea2e7278e16b167.html','
 <div class="line">   <span class="comment">// Regular overloads</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(<span class="keyword">auto</span> x)                 <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga113b95e7d3065357cea2e7278e16b167_html_ga113b95e7d3065357cea2e7278e16b167"><div class="ttname"><a href="#ga113b95e7d3065357cea2e7278e16b167">plf::is_normalized</a></div><div class="ttdeci">constexpr auto is_normalized</div><div class="ttdoc">returns a logical true if and only if the element value is normalized i.e. its successive components ...</div><div class="ttdef"><b>Definition</b> is_normalized.hpp:66</div></div>
+<div class="ttc" id="agroup__core_ga113b95e7d3065357cea2e7278e16b167_html_ga113b95e7d3065357cea2e7278e16b167"><div class="ttname"><a href="#ga113b95e7d3065357cea2e7278e16b167">plf::is_normalized</a></div><div class="ttdeci">constexpr auto is_normalized</div><div class="ttdoc">returns a logical true if and only if the element value is normalized i.e. its successive components ...</div><div class="ttdef"><b>Definition</b> is_normalized.hpp:69</div></div>
 <div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html" title="eve::value">argument</a>.</li>
 </ul>
 <p><b>Return value</b></p>
-<ol type="1">
-<li>returns true if and only if x represent an normalized number</li>
-</ol>
+<p>returns true if and only if x represent an normalized number.</p>
+<dl class="section note"><dt>Note</dt><dd>this condition is mandatory. If you want to write any function that returns a polyfloat, the polyfloat returned MUST satisfy is_normalized.</dd></dl>
 <h2 class="groupheader">Example </h2>
 <dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/is_normalized.cpp</span>. </dd></dl>
 

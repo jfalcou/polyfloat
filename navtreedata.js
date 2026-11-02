@@ -25,11 +25,17 @@
 var NAVTREE =
 [
   [ "polyfloat", "index.html", [
+    [ "Tutorials", "setup.html", [
+      [ "Installation & Quick Start", "setup.html", null ],
+      [ "Getting Started", "tutorial-basics.html", [
+        [ "polyfloat Numbers", "tutorial-basics.html", null ],
+        [ "Many Values At Once", "tutorial-simd.html", null ]
+      ] ]
+    ] ],
     [ "Reference Documentation", "group__types.html", [
       [ "Types", "group__types.html", null ],
-      [ "Core Constants", "group__constants.html", null ],
       [ "Core Functions", "group__core.html", null ],
-      [ "Core Accuracy Functions", "group__core__accuracy.html", null ],
+      [ "Math Functions", "group__math.html", null ],
       [ "Traits", "group__traits.html", null ],
       [ "Concept List", "concepts.html", "concepts" ]
     ] ],
