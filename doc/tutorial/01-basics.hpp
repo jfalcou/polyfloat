@@ -3,7 +3,7 @@
 //!
 //! # Naming a type
 //!
-//! A polyfloat number over `double` is written `kyosu::double_real_t<double>` or triplereal_t<double>. The `_t` is not
+//! A polyfloat number over `double` is written `plf::double_real_t<double>` or plf::triplereal_t<double>. The `_t` is not
 //! decoration: it is an alias for a polyfoat value.
 //!
 //! @godbolt{doc/core/tut_polyfloat_basics.cpp}

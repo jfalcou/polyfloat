@@ -77,7 +77,7 @@ on its own:
 ninja -C build unit.math.acos.exe
 ```
 
-`unit.exe` and `kyosu-test` are very large and want a comfortable number of cores. Working on a
+`unit.exe` and `polyfloat-test` are very large and want a comfortable number of cores. Working on a
 single function is almost always a matter of building its own target rather than either of them.
 
 # Running the tests
