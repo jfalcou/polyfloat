@@ -5,8 +5,8 @@
     <tab type="mainpage" visible="yes" title=""/>
     <tab type="usergroup" visible="yes" title="Tutorials" url="@ref setup">
       <tab type="user" url="@ref setup"                title="Installation &amp; Quick Start"/>
-      <tab type="usergroup" visible="yes" title="Getting Started" url="@ref tutorial-polyfloat">
-        <tab type="user" url="@ref tutorial-polyfloat"    title="polyfloat Numbers"/>
+      <tab type="usergroup" visible="yes" title="Getting Started" url="@ref tutorial-basics">
+        <tab type="user" url="@ref tutorial-basics"    title="polyfloat Numbers"/>
         <tab type="user" url="@ref tutorial-simd"       title="Many Values At Once"/>
       </tab>
     </tab>

@@ -1,5 +1,5 @@
 #error This file is for documentation only - DO NOT INCLUDE
-//! @page tutorial-polyfloat Polyfloat numbers
+//! @page tutorial-basics Polyfloat numbers
 //!
 //! # Naming a type
 //!
@@ -30,7 +30,7 @@
 //!
 //! polyfoat support inf, -inf and (quiet) nan values, the only non zero component of such a value is the high part.
 //!
-//! @godbolt{doc/tut_polyfloat_invalids.cpp}
+//! @godbolt{doc/core/tut_polyfloat_invalids.cpp}
 //!
 //! As it appears everything works fine even inverse computation and mixing integers with polyfloats.
 //! However this is not recommended `plf::rec(z)` is faster than `1/z`.
@@ -40,14 +40,12 @@
 //! Denormals are treated as well as possible. In fact a denormal has its high part denormal and the
 //! others are necessarily 0 because of the decreasing values and the non-overlap properties..
 //!
-//! @godbolt{doc/tut_polyfloat_denormals.cpp}
+//! @godbolt{doc/core/tut_polyfloat_denormal.cpp}
 //!
 //! <div class="section_buttons">
 //!
 //! | Previous                  |                                    Next |
 //! |:--------------------------|----------------------------------------:|
 //! | [Quick Start](@ref setup) | [Many values at once](@ref tutorial-simd) |
-//!
-//! @godbolt{doc/tut_polyfloat_denormals.cpp}
 //!
 //! </div>
