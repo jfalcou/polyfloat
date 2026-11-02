@@ -44,7 +44,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cos_t, cos_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var cos
   //!   @brief return the cosine value.

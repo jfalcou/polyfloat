@@ -28,7 +28,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(asinh_t, asinh_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var asinh
   //!   @brief return the inverse hyperbolic sine value.

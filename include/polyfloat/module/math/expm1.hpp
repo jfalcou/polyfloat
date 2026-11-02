@@ -26,7 +26,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(expm1_t, expm1_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var expm1
   //!   @brief return the the exponential minus one value.

@@ -34,7 +34,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(arg_t, arg_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var arg
   //!   @brief return the the phase angle (in radians).

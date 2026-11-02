@@ -26,7 +26,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sigmoid_t, sigmoid_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var sigmoid
   //!   @brief return the sigmoidonential value.

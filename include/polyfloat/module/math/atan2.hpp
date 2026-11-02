@@ -38,7 +38,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(atan2_t, atan2_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var atan2
   //!   @brief return the arctangent value.

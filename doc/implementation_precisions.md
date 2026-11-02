@@ -1,17 +1,19 @@
-Polyfloat
+Polyfloat (#implementation_precisions)
 =========
 
-**WORK IN PROGRESS : MANY THINGS STILL NOT AVAILABLE**
-
+# Rationale
 
 **POLYFLOAT** is an implementation of extended precision floating points numbers
 using a sequence of (currently) 2 or 3 standard floating points
+numbers of type (`float` or `double`).
+This allows better precision, still using the inner speed of floating point computation of the hardware.
+
 numbers of type (`float` or `double`)
 
 Up to now are available for polyfloat numbers:
 
   * most core functions present in **EVE** (circa 200);
-  * logaritmic and exponential math functions.
+  * trigonometric, logarithmic and exponential math functions.
 
 The main references we use to perform these representations are:
 
@@ -20,14 +22,13 @@ The main references we use to perform these representations are:
   * Many articles from J.M. Muller team describing error-free IEEE operations. For instance
     [Emulation of the FMA... ](https://hal.science/hal-04575249)
 
-Polyfloat numbers
-=================
+# Polyfloat numbers
 
 As explained in the above articles,
 Polyfloats are floating-point expansions that represent high-precision numbers as sequences of
 two, three, or four machine-precision numbers of same standard type with decreasing magnitude (so that
-they minimaly overlap) extending the effective precision to two,
-three, or four times the native mantissa precision of the standard type, but not modifying the
+they do not overlap) extending the effective precision by a factor two or three
+ times the native mantissa precision of the standard type, but not modifying the
  available exponent range.
 
 Up to now, the implementation is limited to 3 machine-precision numbers.
@@ -56,14 +57,14 @@ All these types do not extend the exponent range of their underlying type, but t
   * `triple_real_t<double>` have 159 bits of mantissa
 
 This means that for  `T` `float`, these types can only be useful to obtain `double>` precision equivalent
-on system where the hardware does not support them.
+on system where the hardware does not support them or to compute estimations of the error produced by the  `float`
+call.
 
 Contrarily, for  `T` `double`, they can be used to obtain greater precision, especially if standard
 `long double` has only 64 or 80 bits of storage.
 And of course they can be used with SIMD which is not available with `long double`.
 
-Warnings
-========
+# Warnings
 
   *  The exponent range is that of the base type `T`. Overflow and underflow happen where `T` overflows and underflows.
   *  When some parts of a `polyfloat` are denormal the accuracy cannot be maintained. Below the smallest positive
@@ -71,9 +72,10 @@ Warnings
   *  Nans and infinites values are supported. All parts but the highest part are zeros.
   *  Constructing a `polyfloat` with 2 (or 3) random `T` is ok, but the parts of the generated `polyfloat` will
      not generally contains these values as a renormalization will be done on construction.
+  *  DO NOT construct a polyfloat by assigning values to its parts,  because the lack of normalization will produces
+     silent errors
 
-What does this implementation provide
-======================================
+# What does this implementation provide
 
 Being intended that a `polyfloat_like` is a `polyfloat` or a standard floating-point number,
 all operators and functions (with a few exceptions restricted to some dimensionnalities constraints)
@@ -91,23 +93,22 @@ implemented can receive a mix of scalar or  simd of `polyfloat_like` of various 
 
 Of course the algebra operation +, -, * and / are provided.
 
-Constructors
-------------
+# Constructors
 
 Proper `polyfloat` can be constructed using callables facilities `double_real_t` and `triple_real_t`.
 
-Operators
----------
+# Operators
 
 Operators (as said before) `+`, `-`, `*` and `/` can be used in infix form and can mix `polyfloat` values of
-different dimensionalities. Of course the biggest dimensionlity is recovered in the output. Assigning operators
+different dimensionalities. Of course the biggest dimensionnality is recovered in the output. Assigning operators
 `+=`, `-=`, `*=` and `/=` are also available.
 
-Prefix forms are also provided as `add`, `sub`, `mul`, and `div`. These version are multiparameters and can also use **KUMI** tuples.
+Prefix forms are also provided as `add`, `sub`, `mul`, and `div`. These version are multiparameters and can also use **KUMI** tuples
+as inputs and support options.
+
 Also `plus` and `minus` can be used for unary versions.
 
-Functions
----------
+# Functions
 
 **POLYFLOAT** callables are object functions following the **EVE** scheme. All of them accept at least the two (incompatible)
 options `raw` and `pedantic`.
@@ -118,7 +119,7 @@ options `raw` and `pedantic`.
   - The `pedantic` option ensures that the most accurate and standard conforming computation implemented will be used.
     In particular conforming to IEEE754 corner cases if any defined.
 
-Often, these two options do nothing more than the regular (no options) call and their effects are explained in the individual
+Often, these two options do nothing more (or less) than the regular (no options) call and their effects are explained in the individual
 documentations only if it is not the case.
 
 Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref plf::concepts::polyfloat_like) types.
@@ -126,12 +127,11 @@ Most **POLYFLOAT** callables are usable with all [polyfloat_like](@ref plf::conc
   * Callables usable with all `polyfloat` types
 
     Most **EVE** arithmetic and math functions are (or will be eventually) provided for `polyfloat` datas.
-    Up to now only analogs of **EVE** core functions are implemented.
+    Up to now only analogs of **EVE** core and math functions are implemented.
 
     The following tables  present the functions that are already available.
 
-Core functions
-==============
+# Core functions
 
   These are the arithmetic functions that do not involve transcendantal computations, predicates,
   and the `sqrt` and `rsqrt` functions.
@@ -164,7 +164,7 @@ Core functions
    |[minmag](@ref plf::minmag)            |[minmax](@ref plf::minmax)                 |[minus](@ref plf::minus)                   |[modf](@ref plf::modf)                   |
    |[mul](@ref plf::mul)                  |[nearest](@ref plf::nearest)               |[negabsmax](@ref plf::negabsmax)           |[negabsmin](@ref plf::negabsmin)         |
    |[negate](@ref plf::negate)            |[negatenz](@ref plf::negatenz)             |[next](@ref plf::next)                     |[nextafter](@ref plf::nextafter)         |
-   |`parts`              |[pown](@ref plf::pown)                     |[prev](@ref plf::prev)                     |[prevint](@ref plf::prevint)             |
+   |                                      |[pown](@ref plf::pown)                     |[prev](@ref plf::prev)                     |[prevint](@ref plf::prevint)             |
    |[rat](@ref plf::rat)                  |[rec](@ref plf::rec)                       |[reldist](@ref plf::reldist)               |[rem](@ref plf::rem)                     |
    |[remainder](@ref plf::remainder)      |[reverse_horner](@ref plf::reverse_horner) |                                           |[rsqrt](@ref plf::rsqrt)                 |
    |[sign](@ref plf::sign)                |[sign_alternate](@ref plf::sign_alternate) |[signnz](@ref plf::signnz)                 |                                         |
@@ -172,12 +172,10 @@ Core functions
    |[sum_of_squares](@ref plf::sum_of_squares)|[trunc](@ref plf::trunc)               |[variance](@ref plf::variance)             |                                         |
 
 
-  @note All predicates comparing to `zero` and all one parameter predicates (except `is_even` and `is_odd` and `isflint`) are a lot faster than two parameters ones
+  @note All predicates comparing to `zero` and all one parameter predicates (except `is_even`, `is_odd` and `isflint`) are a lot faster than two parameters ones
   for which testing the 'hi' part is not sufficient.
 
-Core constants
-==============
-
+# Core constants
 
 These are proper `polyfloat` constant values related to precision internal IEEE representation  or or simple arithmetic constants wrapped from **EVE** .
 
@@ -195,11 +193,10 @@ These are proper `polyfloat` constant values related to precision internal IEEE 
    |[nan](@ref plf::nan)                     |[one](@ref plf::one)                       |                                           ||
 
 
-Error free and  augmented accuracy functions
-============================================
+# Error free and  augmented accuracy functions
 
 These functions are not of common use but are the inner bases with `fma` of the implementation of `polyfloat` numbers.
-They generally follow the descrption given in many articles of the ARENAIRE INRIA team. They return pair of triple of
+They generally follow the description given in many articles of the ARENAIRE INRIA team. They return pair of triple of
 values the first being the operation result main approximation, the others correction that could be virtually added
 in an infinite precision environnement to get an exact (or for the `approx` ones) at least a still more accurate result.
 
@@ -208,40 +205,52 @@ in an infinite precision environnement to get an exact (or for the `approx` ones
    |[dekker_prod](@ref plf::three_add) |[three_add](@ref plf::three_add)     |[three_fma](@ref plf::three_fma)     |[two_add](@ref plf::two_add)       |
    |[two_div_approx](@ref plf::two_div_approx)|[two_fma_approx](@ref plf::two_fma_approx)|[two_prod](@ref plf::two_prod)  |[two_split](@ref plf::two_split)   |
 
-Math elementary functions
-=========================
+# Math elementary functions
 
-  These are the math functions implemented up to now.
+  Mainly trigonometry and exponentials.
 
-   |                                      |                                           |                                           |                                         |
-   |--------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
-   |[cbrt](@ref plf::cbrt)                 |[exp](@ref plf::exp)                       |[exp2](@ref plf::exp2)                     |[log](@ref plf::log)                     |
-   |[log2](@ref plf::log2)                |[nthroot](@ref plf::nthroot)               |                                           |                                         |
+   |                          |                                        |                                      |                              |
+   |--------------------------|----------------------------------------|--------------------------------------|------------------------------|
+   |[acos](@ref plf::acos)         |    [acosh](@ref plf::acosh)                 |    [acoth](@ref plf::acoth)               |    [agd](@ref plf::agd)           |
+   |[acsc](@ref plf::acsc])        |    [acsch](@ref plf::acsch)                 |    [arg](@ref plf::arg)                   |    [asec](@ref plf::asec)         |
+   |[asech](@ref plf::asech)       |    [asin](@ref plf::asin)                   |    [asinh](@ref plf::asinh)               |    [atan](@ref plf::atan)         |
+   |[atan2](@ref plf::atan2)       |    [atanh](@ref plf::atanh)                 |    [cbrt](@ref plf::cbrt)                 |    [cos](@ref plf::cos)           |
+   |[cosh](@ref plf::cosh)         |    [cot](@ref plf::cot)                     |    [coth](@ref plf::coth)                 |    [csc](@ref plf::csc)           |
+   |[csch](@ref plf::csch)         |    [div_180](@ref plf::div_180)             |    [exp](@ref plf::csch)                  |    [exp10](@ref plf::exp10)       |
+   |[exp2](@ref plf::exp2)         |    [expm1](@ref plf::expm1)                 |    [gd](@ref plf::gd)                     |    [geommean](@ref plf::geommean) |
+   |[harmmean](@ref plf::harmmean) |    [kolmmean](@ref plf::kolmmean)           |    [log](@ref plf::log)                   |    [log10](@ref plf::log10)       |
+   |[log2](@ref plf::log2)         |    [logspace_add](@ref plf::logspace_add)   |    [logspace_sub](@ref plf::logspace_sub) |    [lpnorm](@ref plf::lpnorm)     |
+   |[mul_pi](@ref plf::mul_pi)     |    [nthroot](@ref plf::nthroot)             |    [pow](@ref plf::pow)                   |    [pow1p](@ref plf::pow1p)       |
+   |[powm1](@ref plf::powm1)       |    [pow_abs](@ref plf::pow_abs)             |    [radindeg](@ref plf::radindeg)         |    [sigmoid](@ref plf::sigmoid)   |
+   |[radinpi](@ref plf::radinpi)   |    [sec](@ref plf::sec)                     |    [sech](@ref plf::sech)                 |    [sin](@ref plf::sin)           |
+   |[sinc](@ref plf::sinc)         |    [sincos](@ref plf::sincos)               |    [sinh](@ref plf::sinh)                 |    [sinhcosh](@ref plf::sinhcosh) |
+   |[tan](@ref plf::tan)           |    [tanh](@ref plf::tanh)                   |                                      |                              |
 
-Math constants
-==============
+
+# Math constants
 
 These are proper `polyfloat` mathematical constant .
 
-   |   Proper values                        |                                           |                                           |                                         |
-   |----------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
-   |`euler`                 |`invlog_2`              |`exp2`                |                                         |
+  |                                |                            |                          |                                         |
+  |--------------------------------|----------------------------|--------------------------|-----------------------------------------|
+  |[catalan](@ref plf::catalan)         |[cbrt_pi](@ref plf::cbrt_pi)     |[cos_1](@ref plf::cos_1)       |[cosh_1](@ref plf::cosh_1)                    |
+  |[egamma](@ref plf::egamma)           |[exp_pi](@ref plf::exp_pi)       |[euler](@ref plf::euler)       |[four_minus_pi](@ref plf::four_minus_pi)      |
+  |[four_pio_3](@ref plf::four_pio_3)   |[invlog_10](@ref plf::invlog_10) |[invlog_2](@ref plf::invlog_2) |[invcbrt_pi](@ref plf::invcbrt_pi)            |
+  |[inv_e](@ref plf::inv_e)             |[inv_pi](@ref plf::inv_pi)       |[inv_2pi](@ref plf::inv_2pi)   |[log_2](@ref plf::log_2)                      |
+  |[maxlog](@ref plf::maxlog)           |[oneo_180](@ref plf::oneo_180)   |[pi](@ref plf::pi)             |[pio_2](@ref plf::pio_2)                      |
+  |[pio_3](@ref plf::pio_3)             |[pio_4](@ref plf::pio_4)         |[pio_6](@ref plf::pio_6)       |[rad2deg](@ref plf::rad2deg)                  |
+  |[three_pio_4](@ref plf::three_pio_4) |                            |                          |                                         |
 
 
-Math special functions
-=========================
+# Testing rationale
 
-STILL NOT DONE
-
-Testing rationale
------------------
 
 The behaviour of `polyfloat` is not the same as standard floating points numbers, for instance
-for any `polyfloat` the difference between any finite T and the next representable element is
+for any `polyfloat` the difference between any finite T and the next representable element can
 the minimum denormal value of the type T, meaning that the intervals are quite more populated.
 
 However, the following table shows the number of bits of mantissa available for each scalar
- `polyfloat` element as well as an expected machine precision (eps) related to this mantissa bit size
+ `polyfloat` value as well as an expected machine precision (eps) related to this mantissa bit size
 
    |  base  type |   dimension |   bits number  |   eps            |
    |-------------|-------------|----------------|------------------|

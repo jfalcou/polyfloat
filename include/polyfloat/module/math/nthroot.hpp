@@ -36,7 +36,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nthroot_t, nthroot_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var nthroot
   //!   @brief return  the nth root: \f$x^{1/n}\f$.

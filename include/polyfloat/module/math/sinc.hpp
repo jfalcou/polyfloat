@@ -40,7 +40,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sinc_t, sinc_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var sinc
   //!   @brief return the sine cardinal value.

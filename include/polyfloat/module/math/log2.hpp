@@ -26,10 +26,10 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log2_t, log2_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var log2
-  //!   @brief return the natural log2arithm value.
+  //!   @brief return the base 2 logarithm value.
   //!
   //!   @groupheader{Header file}
   //!

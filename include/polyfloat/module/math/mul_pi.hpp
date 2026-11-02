@@ -29,7 +29,7 @@ namespace plf
   //! @{
   //! @var mul_pi
   //!
-  //! @brief `elementwise_callable` object computing accuratelythe product of the input by \f$\pi\f$.
+  //! @brief `elementwise_callable` object computing accurately the product of the input by \f$\pi\f$.
   //!
   //!   @groupheader{Callable Signatures}
   //!

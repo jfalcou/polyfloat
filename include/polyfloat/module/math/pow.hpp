@@ -28,7 +28,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(pow_t, pow_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var pow
   //!   @brief return \f$x^y\f$.

@@ -34,7 +34,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(asin_t, asin_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var asin
   //!   @brief return the arcsine value.

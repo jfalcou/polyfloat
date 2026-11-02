@@ -29,7 +29,7 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(tanh_t, tanh_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup math
   //! @{
   //!   @var tanh
   //!   @brief return the hyperbolic tangent value.
