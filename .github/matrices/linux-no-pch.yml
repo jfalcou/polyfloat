@@ -7,7 +7,7 @@
 ## inside it; Compiler Explorer has neither, so this row compiles the documentation examples the way a reader does,
 ## and runs nothing. It is not among the checks the ruleset requires.
 runs-on: ubuntu-latest
-image: v10
+image: v11
 container-options: -u root
 configs: [Debug]
 build-targets: doc.exe
