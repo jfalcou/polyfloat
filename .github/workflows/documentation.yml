@@ -21,3 +21,4 @@ jobs:
     with:
       project: polyfloat
       coverage: true
+      image: ghcr.io/jfalcou/compilers:v11
