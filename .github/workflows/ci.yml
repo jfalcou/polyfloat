@@ -32,6 +32,7 @@ jobs:
     with:
       build-targets: doc.exe unit.exe
       test-targets: doc|unit
+      image: ghcr.io/jfalcou/compilers:v11
 
   coverage-report:
     name: Coverage
@@ -39,6 +40,7 @@ jobs:
     with:
       project: polyfloat
       build-targets: polyfloat-test
+      image: ghcr.io/jfalcou/compilers:v11
 
   linux-tests:
     name: Linux
