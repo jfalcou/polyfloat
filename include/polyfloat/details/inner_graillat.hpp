@@ -19,6 +19,12 @@
 namespace plf::_
 {
 
+  template<typename T> auto inner_is_normalized(T h, T m, T l = T(0)) noexcept
+  {
+    auto eqnum = eve::is_equal[eve::numeric];
+    return (eqnum(h + m, h) || eve::is_infinite(h + m)) && (eqnum(m + l, m) || eve::is_infinite(l + m));
+  }
+
   template<typename Z> constexpr auto inner_is_normalized(Z const& z) noexcept
   {
     auto eqnum = eve::is_equal[eve::numeric];

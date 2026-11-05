@@ -102,7 +102,8 @@ namespace plf::_
       auto [zh, zl] = z;
       auto h = eve::ldexp(zh, n);
       auto l = eve::ldexp(zl, n);
-      return Z(h, l);
+      EVE_ASSERT(eve::all(inner_is_normalized(h, l)), "output of ldexp is not normalized");
+      return double_real_t<decltype(h)>(h, l);
     }
     else if constexpr (dimension_v<Z> == 3)
     {
@@ -110,11 +111,8 @@ namespace plf::_
       auto h = eve::ldexp(zh, n);
       auto m = eve::ldexp(zm, n);
       auto l = eve::ldexp(zl, n);
-      Z z(h);
-      md(z) = m;
-      lo(z) = l;
-      return z;
-      //     return Z(h, m, l);
+      EVE_ASSERT(eve::all(inner_is_normalized(h, m, l)), "output of ldexp is not normalized");
+      return triple_real_t<decltype(h)>(h, m, l);
     }
   }
 

@@ -96,6 +96,7 @@
 #include <polyfloat/module/core/is_unit.hpp>
 #include <polyfloat/module/core/is_unordered.hpp>
 #include <polyfloat/module/core/ldexp.hpp>
+#include <polyfloat/module/core/ldexpb.hpp>
 #include <polyfloat/module/core/lerp.hpp>
 #include <polyfloat/module/core/mantissa.hpp>
 #include <polyfloat/module/core/max.hpp>

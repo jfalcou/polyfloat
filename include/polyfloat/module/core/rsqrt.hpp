@@ -81,10 +81,13 @@ namespace plf::_
     if constexpr (!O::contains(eve::raw)) //avoid overflow;
     {
       auto [zz, n] = frexp[pedantic](z);
+      std::cout << "zz " << zz << " n " << n << std::endl;
       auto oddn = eve::is_odd(n);
       zz = plf::if_else(oddn, plf::ldexp(zz, 1), zz);
       n = plf::dec[oddn](n);
+      std::cout << "rsqrt[eve::raw](zz) " << rsqrt[eve::raw](zz) << " -n/2 " << -n / 2 << std::endl;
       auto r = ldexp(rsqrt[eve::raw](zz), -n / 2);
+      std::cout << "r " << r << std::endl;
       return r;
     }
     else if constexpr (dimension_v<Z> == 2)
