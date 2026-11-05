@@ -77,15 +77,14 @@ namespace plf::_
 
   template<typename Z, eve::callable_options O> constexpr auto rsqrt_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    auto div2 = [](auto x) { return ldexp(x, -1); };
+    auto div2 = [](auto x) { return x * Z(0.5); };
     if constexpr (!O::contains(eve::raw)) //avoid overflow;
     {
       auto [zz, n] = frexp[pedantic](z);
       auto oddn = eve::is_odd(n);
-      zz = plf::if_else(oddn, plf::ldexp(zz, 1), zz);
+      zz = plf::if_else(oddn, 2 * zz, zz);
       n = plf::dec[oddn](n);
-      auto r = ldexp(rsqrt[eve::raw](zz), -n / 2);
-      return r;
+      return ldexp(rsqrt[eve::raw](zz), -n / 2);
     }
     else if constexpr (dimension_v<Z> == 2)
     {

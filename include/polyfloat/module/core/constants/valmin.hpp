@@ -29,7 +29,7 @@ namespace plf
       else if constexpr (dimension_v<T> == 3)
       {
         auto nbts = -plf::effective_mantissa_bits(eve::as<u_t>());
-        return plf::_::from_triple(vlm, eve::ldexp(vlm, nbts), eve::ldexp(vlm, 2 * nbts));
+        return plf::_::from_triple(vlm, eve::ldexp(vlm, nbts), eve::ldexp(vlm, 2 * nbts - 1));
       }
     }
 

@@ -13,7 +13,7 @@ TTS_CASE_WITH("Check ldexp",
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax),
               tts::randoms(eve::valmin, eve::valmax))
-<typename T>(T const& a0, T const& a1, T const&)
+<typename T>(T const& a0, T const& a1, T const& a2)
 {
   using mpfr::mpreal;
   using plf::ldexp;
@@ -31,10 +31,10 @@ TTS_CASE_WITH("Check ldexp",
     std::cout << tts::typename_<decltype(wpab)> << std::endl;
     std::cout << ldexp(wpab, -e) << std::endl;
   }
-  //  {
-  //     using pv_t  = plf::polyfloat<T, 3>;
-  //     pv_t pa(a0, a1, a2);
-  //     auto n = 2;
-  //     TTS_EQUAL(ldexp(pa, n), pa*4);
-  //   }
+  {
+    using pv_t = plf::polyfloat<T, 3>;
+    pv_t pa(a0, a1, a2);
+    auto n = 2;
+    TTS_EQUAL(ldexp(pa, n), pa * 4);
+  }
 };

@@ -30,9 +30,9 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "rsqrt(wb) " << rsqrt(wb) << std::endl;
   std::cout << "rsqrt(wc) " << rsqrt(wc) << std::endl;
-
   auto vlm = plf::valmax(eve::as(a));
-  std::cout << "rsqrt(valmax) " << plf::rsqrt(vlm) << std::endl;
+  auto zz = plf::rsqrt(vlm);
+  std::cout << "rsqrt(valmax) " << zz << std::endl;
 
   return 0;
 }
