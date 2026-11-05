@@ -178,13 +178,19 @@ $(function(){initNavTree('group__constants_ga107149eec536df23c4386d025b854ecf.ht
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">plf::lo</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga0745f202e4af71621d3f5e84e37c6abe.html#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a>;</div>
 <div class="line">  std::cout &lt;&lt; std::setprecision(16);</div>
 <div class="line">  <span class="keyword">auto</span> mxfl1 = <a class="code hl_variable" href="#ga107149eec536df23c4386d025b854ecf">plf::valmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;double&gt;</a>());</div>
 <div class="line">  <span class="keyword">auto</span> mxfl2 = <a class="code hl_variable" href="#ga107149eec536df23c4386d025b854ecf">plf::valmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>&gt;());</div>
 <div class="line">  <span class="keyword">auto</span> mxfl3 = <a class="code hl_variable" href="#ga107149eec536df23c4386d025b854ecf">plf::valmax</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>&lt;<a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 3&gt;</a>&gt;());</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl1 &quot;</span> &lt;&lt; mxfl1 &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; std::hexfloat &lt;&lt; <span class="stringliteral">&quot;mxfl1 &quot;</span> &lt;&lt; mxfl1 &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl2 &quot;</span> &lt;&lt; mxfl2 &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl3 &quot;</span> &lt;&lt; mxfl3 &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_morn 2  &quot;</span> &lt;&lt; plf::_::inner_is_normalized(<a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">hi</a>(mxfl2), <a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">lo</a>(mxfl2)) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_morn 3  &quot;</span> &lt;&lt; plf::_::inner_is_normalized(<a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">hi</a>(mxfl3), <a class="code hl_variable" href="group__core_ga0745f202e4af71621d3f5e84e37c6abe.html#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(mxfl3), <a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">lo</a>(mxfl3)) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
 <div class="line">  <span class="comment">//   plf::_::println(&quot;double valmax               &quot;, mxfl1);</span></div>
 <div class="line">  <span class="comment">//   plf::_::println(&quot;polyfloat&lt;double, 2&gt; valmax &quot;, mxfl2);</span></div>
 <div class="line">  <span class="comment">//   plf::_::println(&quot;polyfloat&lt;double, 3&gt; valmax &quot;, mxfl3);</span></div>
@@ -202,6 +208,9 @@ $(function(){initNavTree('group__constants_ga107149eec536df23c4386d025b854ecf.ht
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl2/2+1 &quot;</span> &lt;&lt; mxfl2 / 2 + 1 &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mxfl3/2+1 &quot;</span> &lt;&lt; mxfl3 / 2 + 1 &lt;&lt; std::endl;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__core_ga0745f202e4af71621d3f5e84e37c6abe_html_ga0745f202e4af71621d3f5e84e37c6abe"><div class="ttname"><a href="group__core_ga0745f202e4af71621d3f5e84e37c6abe.html#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a></div><div class="ttdeci">constexpr auto md</div><div class="ttdoc">Extracts the md part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:110</div></div>
+<div class="ttc" id="agroup__core_ga85fa850c93bf943fe9e434de3552293d_html_ga85fa850c93bf943fe9e434de3552293d"><div class="ttname"><a href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a></div><div class="ttdeci">constexpr auto hi</div><div class="ttdoc">Extracts the hi part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:72</div></div>
+<div class="ttc" id="agroup__core_ga986719f5a39d352e01286ab52b9a54ff_html_ga986719f5a39d352e01286ab52b9a54ff"><div class="ttname"><a href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">plf::lo</a></div><div class="ttdeci">constexpr auto lo</div><div class="ttdoc">Extracts the lo part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:160</div></div>
 <div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
 </div><!-- fragment --> 
 </div>

@@ -1406,6 +1406,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>ldexpb</name>
+      <anchorfile>group__core_ga7d76dbaf783e2205873c423084100a3b.html</anchorfile>
+      <anchor>ga7d76dbaf783e2205873c423084100a3b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>lerp</name>
       <anchorfile>group__core_ga8875d0b61cf3fbeeaa6ed18b29e5ca9f.html</anchorfile>
       <anchor>ga8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
@@ -3210,6 +3217,13 @@
       <name>plf::ldexp</name>
       <anchorfile>group__core_gaaafb5f51797ebd81c0fdc1011e0275a3.html</anchorfile>
       <anchor>gaaafb5f51797ebd81c0fdc1011e0275a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::ldexpb</name>
+      <anchorfile>group__core_ga7d76dbaf783e2205873c423084100a3b.html</anchorfile>
+      <anchor>ga7d76dbaf783e2205873c423084100a3b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

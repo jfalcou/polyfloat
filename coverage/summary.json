@@ -1,16 +1,16 @@
 {
-    "branch_covered": 354,
-    "branch_percent": 90.5,
-    "branch_total": 391,
+    "branch_covered": 359,
+    "branch_percent": 89.8,
+    "branch_total": 400,
     "files": [
         {
             "branch_covered": 4,
             "branch_percent": 100.0,
             "branch_total": 4,
             "filename": "include/polyfloat/details/callable.hpp",
-            "function_covered": 1725,
+            "function_covered": 1733,
             "function_percent": 96.2,
-            "function_total": 1793,
+            "function_total": 1801,
             "line_covered": 6,
             "line_percent": 100.0,
             "line_total": 6
@@ -56,12 +56,12 @@
             "branch_percent": 75.0,
             "branch_total": 4,
             "filename": "include/polyfloat/details/inner_graillat.hpp",
-            "function_covered": 8,
+            "function_covered": 18,
             "function_percent": 100.0,
-            "function_total": 8,
-            "line_covered": 29,
+            "function_total": 18,
+            "line_covered": 33,
             "line_percent": 100.0,
-            "line_total": 29
+            "line_total": 33
         },
         {
             "branch_covered": 40,
@@ -1084,13 +1084,25 @@
             "line_total": 5
         },
         {
-            "branch_covered": 0,
-            "branch_percent": null,
-            "branch_total": 0,
+            "branch_covered": 3,
+            "branch_percent": 60.0,
+            "branch_total": 5,
             "filename": "include/polyfloat/module/core/ldexp.hpp",
             "function_covered": 125,
             "function_percent": 100.0,
             "function_total": 125,
+            "line_covered": 17,
+            "line_percent": 100.0,
+            "line_total": 17
+        },
+        {
+            "branch_covered": 2,
+            "branch_percent": 50.0,
+            "branch_total": 4,
+            "filename": "include/polyfloat/module/core/ldexpb.hpp",
+            "function_covered": 24,
+            "function_percent": 100.0,
+            "function_total": 24,
             "line_covered": 18,
             "line_percent": 100.0,
             "line_total": 18
@@ -1511,9 +1523,9 @@
             "function_covered": 86,
             "function_percent": 100.0,
             "function_total": 86,
-            "line_covered": 22,
+            "line_covered": 21,
             "line_percent": 100.0,
-            "line_total": 22
+            "line_total": 21
         },
         {
             "branch_covered": 0,
@@ -2848,12 +2860,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 12014,
+    "function_covered": 12056,
     "function_percent": 97.5,
-    "function_total": 12328,
+    "function_total": 12370,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2438,
-    "line_percent": 98.9,
-    "line_total": 2464,
+    "line_covered": 2458,
+    "line_percent": 99.0,
+    "line_total": 2484,
     "root": "../../.."
 }
