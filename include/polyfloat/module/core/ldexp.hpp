@@ -95,22 +95,22 @@ namespace plf
 namespace plf::_
 {
   template<typename Z, typename N, eve::callable_options O>
-  constexpr auto ldexp_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
+  constexpr auto ldexp_(POLYFLOAT_DELAY(), O const& o, Z const& z, N const& n) noexcept
   {
     if constexpr (dimension_v<Z> == 2)
     {
       auto [zh, zl] = z;
-      auto h = eve::ldexp(zh, n);
-      auto l = eve::ldexp(zl, n);
+      auto h = eve::ldexp[o](zh, n);
+      auto l = eve::ldexp[o](zl, n);
       EVE_ASSERT(eve::all(inner_is_normalized(h, l)), "output of ldexp is not normalized");
       return double_real_t<decltype(h)>(h, l);
     }
     else if constexpr (dimension_v<Z> == 3)
     {
       auto [zh, zm, zl] = z;
-      auto h = eve::ldexp(zh, n);
-      auto m = eve::ldexp(zm, n);
-      auto l = eve::ldexp(zl, n);
+      auto h = eve::ldexp[o](zh, n);
+      auto m = eve::ldexp[o](zm, n);
+      auto l = eve::ldexp[o](zl, n);
       EVE_ASSERT(eve::all(inner_is_normalized(h, m, l)), "output of ldexp is not normalized");
       return triple_real_t<decltype(h)>(h, m, l);
     }
