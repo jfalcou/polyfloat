@@ -13,12 +13,12 @@ var searchData=
   ['agm_13',['agm',['../group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html#gaaf79a031e1bb735e16389b0a19a2f3d7',1,'plf::agm']]],
   ['allbits_19',['allbits',['../group__core.html#gabbd6cfcd83668ca5f081bcc515d75a59',1,'plf::allbits']]],
   ['arg_26',['arg',['../group__math_ga071efd467f1094e602acecb0896fd63c.html#ga071efd467f1094e602acecb0896fd63c',1,'plf::arg']]],
-  ['asec_28',['asec',['../group__math_ga9d81960283c44e7fcc54624ae6985c0b.html#ga9d81960283c44e7fcc54624ae6985c0b',1,'plf::asec']]],
-  ['asech_29',['asech',['../group__math_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],
-  ['asin_30',['asin',['../group__math_gac33460dcd2548f05618f163aa6b8f447.html#gac33460dcd2548f05618f163aa6b8f447',1,'plf::asin']]],
-  ['asinh_31',['asinh',['../group__math_gac6517fdf90349f548ef51ecab16a7da2.html#gac6517fdf90349f548ef51ecab16a7da2',1,'plf::asinh']]],
-  ['atan_32',['atan',['../group__math_ga786c4561195e6d5b68b02db954d79f3f.html#ga786c4561195e6d5b68b02db954d79f3f',1,'plf::atan']]],
-  ['atan2_33',['atan2',['../group__math_ga7620db80392919b6ae699eeec18fe979.html#ga7620db80392919b6ae699eeec18fe979',1,'plf::atan2']]],
-  ['atanh_34',['atanh',['../group__math_ga1a41e219730981cadf767bbd10cec87f.html#ga1a41e219730981cadf767bbd10cec87f',1,'plf::atanh']]],
-  ['average_35',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf::average']]]
+  ['asec_30',['asec',['../group__math_ga9d81960283c44e7fcc54624ae6985c0b.html#ga9d81960283c44e7fcc54624ae6985c0b',1,'plf::asec']]],
+  ['asech_31',['asech',['../group__math_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],
+  ['asin_32',['asin',['../group__math_gac33460dcd2548f05618f163aa6b8f447.html#gac33460dcd2548f05618f163aa6b8f447',1,'plf::asin']]],
+  ['asinh_33',['asinh',['../group__math_gac6517fdf90349f548ef51ecab16a7da2.html#gac6517fdf90349f548ef51ecab16a7da2',1,'plf::asinh']]],
+  ['atan_34',['atan',['../group__math_ga786c4561195e6d5b68b02db954d79f3f.html#ga786c4561195e6d5b68b02db954d79f3f',1,'plf::atan']]],
+  ['atan2_35',['atan2',['../group__math_ga7620db80392919b6ae699eeec18fe979.html#ga7620db80392919b6ae699eeec18fe979',1,'plf::atan2']]],
+  ['atanh_36',['atanh',['../group__math_ga1a41e219730981cadf767bbd10cec87f.html#ga1a41e219730981cadf767bbd10cec87f',1,'plf::atanh']]],
+  ['average_37',['average',['../group__core_gad514388c4bd4fe58d50e53e426d62140.html#gad514388c4bd4fe58d50e53e426d62140',1,'plf::average']]]
 ];
