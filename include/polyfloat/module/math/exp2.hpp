@@ -53,7 +53,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns \f$2^x\f$.
+  //!     Returns \f$2^z\f$. If x is greater than plf::maxlog2 the result is inf.
   //!
   //!  @groupheader{Example}
   //!
@@ -74,10 +74,9 @@ namespace plf::_
     using u_t = eve::underlying_type_t<T>;
     auto negative = plf::is_ltz(xx);
     auto nan = plf::is_nan(xx);
-    auto out_of_range = plf::is_greater(plf::abs(xx), plf::maxlog(eve::as<u_t>()));
+    auto out_of_range = plf::is_greater(plf::abs(xx), plf::maxlog2(eve::as<u_t>()));
     xx = plf::if_else(out_of_range, inf, xx);
     auto x = plf::if_else(out_of_range || nan, zero, xx);
-
     auto n = plf::hi(nearest(xx));
     auto xf = (x - n) * plf::log_2(eve::as(xx));
     auto r = plf::ldexp(plf::exp(xf), n);

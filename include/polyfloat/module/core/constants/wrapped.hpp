@@ -119,11 +119,12 @@ namespace plf
   inline constexpr auto mhalf = _::as_constant<eve::mhalf>;
   inline constexpr auto mindenormal = _::as_constant<eve::mindenormal>;
   inline constexpr auto minexponent = _::as_constant<eve::minexponent>;
+
+  inline constexpr auto maxexponent = _::as_constant<eve::maxexponent>;
+  inline constexpr auto maxexponentp1 = _::as_constant<eve::maxexponentp1>;
+  inline constexpr auto maxexponentm1 = _::as_constant<eve::maxexponentm1>;
   inline constexpr auto mone = _::as_constant<eve::mone>;
   inline constexpr auto mzero = _::as_constant<eve::mzero>;
   inline constexpr auto one = _::as_constant<eve::one>;
   inline constexpr auto smallestposval = _::as_constant<eve::smallestposval>;
-  //  inline constexpr auto sqrtsmallestposval = _::as_constant<eve::sqrtsmallestposval>;
-  //  inline constexpr auto sqrtvalmax = _::as_constant<eve::sqrtvalmax>;
-
 }
