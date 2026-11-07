@@ -32,8 +32,8 @@ TTS_CASE_WITH(
     TTS_IEEE_EQUAL(exp2(nan), nan);
     pv_t minf(plf::minf(eve::as<pv_t>()));
     TTS_EQUAL(exp2(minf), z);
-    pv_t maxlogp1(plf::maxlog(eve::as<pv_t>()) + 1);
-    TTS_EQUAL(exp2(maxlogp1), inf);
+    pv_t maxlog2p1(plf::maxlog2(eve::as<pv_t>()) + 1);
+    TTS_EQUAL(exp2(maxlog2p1), inf);
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
@@ -49,7 +49,7 @@ TTS_CASE_WITH(
     TTS_IEEE_EQUAL(exp2(nan), nan);
     pv_t minf(plf::minf(eve::as<pv_t>()));
     TTS_EQUAL(exp2(minf), z);
-    pv_t maxlogp1(plf::maxlog(eve::as<pv_t>()) + 1);
-    TTS_EQUAL(exp2(maxlogp1), inf);
+    pv_t maxlog2p1(plf::maxlog2(eve::as<pv_t>()) + 1);
+    TTS_EQUAL(exp2(maxlog2p1), inf);
   }
 };

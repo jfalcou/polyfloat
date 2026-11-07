@@ -32,6 +32,7 @@
 #include <polyfloat/module/core/div.hpp>
 #include <polyfloat/module/core/dot.hpp>
 #include <polyfloat/module/core/epsilon.hpp>
+#include <polyfloat/module/core/exp2n.hpp>
 #include <polyfloat/module/core/exponent.hpp>
 #include <polyfloat/module/core/fam.hpp>
 #include <polyfloat/module/core/floor.hpp>

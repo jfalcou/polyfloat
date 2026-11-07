@@ -24,6 +24,7 @@
 #include <polyfloat/module/math/constants/inv_2pi.hpp>
 #include <polyfloat/module/math/constants/log_2.hpp>
 #include <polyfloat/module/math/constants/maxlog.hpp>
+#include <polyfloat/module/math/constants/maxlog2.hpp>
 #include <polyfloat/module/math/constants/oneo_180.hpp>
 #include <polyfloat/module/math/constants/pi.hpp>
 #include <polyfloat/module/math/constants/pio_2.hpp>
