@@ -40,6 +40,9 @@ int main()
   std::cout << "exp2n(mine) " << exp2n[eve::raw](mine) << std::endl;
   auto nan = pf2_t(eve::nan(eve::as<double>()));
   std::cout << "exp2n(nan) " << exp2n(nan) << std::endl;
-  //  std::cout << "exp2n(ann) " << exp2n[eve::raw](nan) << std::endl;
+  auto inf = pf2_t(eve::inf(eve::as<double>()));
+  std::cout << "exp2n(inf) " << exp2n(inf) << std::endl;
+  auto minf = pf2_t(eve::minf(eve::as<double>()));
+  std::cout << "exp2n(minf) " << exp2n(minf) << std::endl;
   return 0;
 }

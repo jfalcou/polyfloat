@@ -73,7 +73,8 @@ namespace plf
   //!       * If n is integral you have to  choose a target
   //!
   //!  @note Mind the fact that n greater than maxexponent or less than than minexponent of the target; will
-  //!        repectively return inf and zero values,  unless 'raww' options is used and then the result is undefined.
+  //!        repectively return inf and zero values,  unless 'eve::raw' options is used and then
+  //!        in these cases the result undefined and is UB for non-finite values.
   //!
   //!  @groupheader{Example}
   //!
