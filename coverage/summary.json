@@ -1,7 +1,7 @@
 {
-    "branch_covered": 359,
+    "branch_covered": 362,
     "branch_percent": 89.8,
-    "branch_total": 400,
+    "branch_total": 403,
     "files": [
         {
             "branch_covered": 4,
@@ -248,9 +248,9 @@
             "branch_percent": 100.0,
             "branch_total": 1,
             "filename": "include/polyfloat/module/core/constants/nan.hpp",
-            "function_covered": 16,
+            "function_covered": 19,
             "function_percent": 100.0,
-            "function_total": 16,
+            "function_total": 19,
             "line_covered": 4,
             "line_percent": 100.0,
             "line_total": 4
@@ -506,6 +506,18 @@
             "line_covered": 10,
             "line_percent": 100.0,
             "line_total": 10
+        },
+        {
+            "branch_covered": 2,
+            "branch_percent": 100.0,
+            "branch_total": 2,
+            "filename": "include/polyfloat/module/core/exp2n.hpp",
+            "function_covered": 78,
+            "function_percent": 100.0,
+            "function_total": 78,
+            "line_covered": 23,
+            "line_percent": 100.0,
+            "line_total": 23
         },
         {
             "branch_covered": 0,
@@ -907,10 +919,22 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/core/is_minf.hpp",
+            "function_covered": 3,
+            "function_percent": 12.5,
+            "function_total": 24,
+            "line_covered": 5,
+            "line_percent": 100.0,
+            "line_total": 5
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_nan.hpp",
-            "function_covered": 14,
+            "function_covered": 15,
             "function_percent": 100.0,
-            "function_total": 14,
+            "function_total": 15,
             "line_covered": 2,
             "line_percent": 100.0,
             "line_total": 2
@@ -968,9 +992,9 @@
             "branch_percent": null,
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_not_finite.hpp",
-            "function_covered": 27,
+            "function_covered": 36,
             "function_percent": 100.0,
-            "function_total": 27,
+            "function_total": 36,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -1029,8 +1053,8 @@
             "branch_total": 0,
             "filename": "include/polyfloat/module/core/is_pinf.hpp",
             "function_covered": 42,
-            "function_percent": 100.0,
-            "function_total": 42,
+            "function_percent": 93.3,
+            "function_total": 45,
             "line_covered": 5,
             "line_percent": 100.0,
             "line_total": 5
@@ -2080,6 +2104,18 @@
             "line_total": 7
         },
         {
+            "branch_covered": 1,
+            "branch_percent": 100.0,
+            "branch_total": 1,
+            "filename": "include/polyfloat/module/math/constants/maxlog2.hpp",
+            "function_covered": 12,
+            "function_percent": 100.0,
+            "function_total": 12,
+            "line_covered": 4,
+            "line_percent": 100.0,
+            "line_total": 4
+        },
+        {
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
@@ -2860,12 +2896,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 12056,
-    "function_percent": 97.5,
-    "function_total": 12370,
+    "function_covered": 12162,
+    "function_percent": 97.3,
+    "function_total": 12500,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2458,
+    "line_covered": 2490,
     "line_percent": 99.0,
-    "line_total": 2484,
+    "line_total": 2516,
     "root": "../../.."
 }

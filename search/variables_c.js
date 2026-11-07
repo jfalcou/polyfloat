@@ -5,6 +5,7 @@ var searchData=
   ['maxabs_11',['maxabs',['../group__core_ga943ef8abb2c09066d89722a3ea69c78c.html#ga943ef8abb2c09066d89722a3ea69c78c',1,'plf::maxabs']]],
   ['maxflint_15',['maxflint',['../group__constants_gae321346f90402e1b5dc7875054e49a83.html#gae321346f90402e1b5dc7875054e49a83',1,'plf::maxflint']]],
   ['maxlog_17',['maxlog',['../group__constants_gaa7847ac49cf7e5db7ff5ecdd7edd9268.html#gaa7847ac49cf7e5db7ff5ecdd7edd9268',1,'plf::maxlog']]],
+  ['maxlog2_19',['maxlog2',['../group__constants_ga64fcae751fc85c4ea13187127deb5ab7.html#ga64fcae751fc85c4ea13187127deb5ab7',1,'plf::maxlog2']]],
   ['maxmag_20',['maxmag',['../group__core_gaee2e0eb2ad65678b921da8c2b4de631e.html#gaee2e0eb2ad65678b921da8c2b4de631e',1,'plf::maxmag']]],
   ['md_22',['md',['../group__core_ga0745f202e4af71621d3f5e84e37c6abe.html#ga0745f202e4af71621d3f5e84e37c6abe',1,'plf']]],
   ['mhalf_23',['mhalf',['../group__core.html#gacf3b52a44982c70d2b2b7a11531beee3',1,'plf::mhalf']]],

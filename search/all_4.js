@@ -76,8 +76,9 @@ var searchData=
   ['exp_153',['exp',['../group__math_gab8e08b05daa3ee86e2ed652a07352d64.html#gab8e08b05daa3ee86e2ed652a07352d64',1,'plf::exp']]],
   ['exp10_154',['exp10',['../group__math_gab2d4aa80b5aa4a96f314f3e94932f28c.html#gab2d4aa80b5aa4a96f314f3e94932f28c',1,'plf::exp10']]],
   ['exp2_155',['exp2',['../group__math_gaec8099077dd346085e88919e08513d84.html#gaec8099077dd346085e88919e08513d84',1,'plf::exp2']]],
-  ['exp_5fpi_157',['exp_pi',['../group__constants_ga6fa3edda699d41702f6c3daca8202d6a.html#ga6fa3edda699d41702f6c3daca8202d6a',1,'plf::exp_pi']]],
-  ['expansions_20and_20poly_20or_20multifloat_20numbers_158',['Expansions and poly or multifloat numbers',['../biblio.html#autotoc_md20',1,'']]],
-  ['expm1_161',['expm1',['../group__math_ga6b355641ddbdb7ec0d1daa0bcf7be425.html#ga6b355641ddbdb7ec0d1daa0bcf7be425',1,'plf::expm1']]],
-  ['exponent_163',['exponent',['../group__core__internal_ga60713c93ccdf574a916e2c96eede7018.html#ga60713c93ccdf574a916e2c96eede7018',1,'plf::exponent']]],
+  ['exp2n_156',['exp2n',['../group__core_ga9c7c797f076bcdb2062d2bd3205bb325.html#ga9c7c797f076bcdb2062d2bd3205bb325',1,'plf']]],
+  ['exp_5fpi_158',['exp_pi',['../group__constants_ga6fa3edda699d41702f6c3daca8202d6a.html#ga6fa3edda699d41702f6c3daca8202d6a',1,'plf::exp_pi']]],
+  ['expansions_20and_20poly_20or_20multifloat_20numbers_159',['Expansions and poly or multifloat numbers',['../biblio.html#autotoc_md20',1,'']]],
+  ['expm1_162',['expm1',['../group__math_ga6b355641ddbdb7ec0d1daa0bcf7be425.html#ga6b355641ddbdb7ec0d1daa0bcf7be425',1,'plf::expm1']]],
+  ['exponent_164',['exponent',['../group__core__internal_ga60713c93ccdf574a916e2c96eede7018.html#ga60713c93ccdf574a916e2c96eede7018',1,'plf::exponent']]],
 ];
