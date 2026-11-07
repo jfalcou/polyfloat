@@ -89,7 +89,7 @@ namespace plf
 namespace plf::_
 {
   template<eve::integral_value N, typename Z, eve::callable_options O>
-  constexpr auto exp2n_(POLYFLOAT_DELAY(), O const& o, N const& n, eve::as<Z>) noexcept
+  constexpr auto exp2n_(POLYFLOAT_DELAY(), O const&, N const& n, eve::as<Z>) noexcept
   {
     using c_t = as_component_type_t<Z>;
     using e_t = eve::element_type_t<Z>;
