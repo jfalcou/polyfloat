@@ -27,6 +27,8 @@ namespace plf::_
       return constant_t<Func<decltype(new_traits)>>{new_traits};
     }
 
+    template<typename T> using result_t = expected_result_t<Func<eve::options<>>{}, as<T>>;
+
     template<concepts::real T>
     constexpr T operator()(as<T> const& v) const
     requires(requires(base_callable const& b) { b(v); })
@@ -35,10 +37,10 @@ namespace plf::_
     }
 
     template<concepts::polyfloat T>
-    constexpr T operator()(as<T> const&) const
+    constexpr result_t<T> operator()(as<T> const&) const
     requires(requires(base_callable const& b) { b(plf::as_component<T>{}); })
     {
-      return T{base_callable::operator()(as_component<T>{})};
+      return result_t<T>(base_callable::operator()(as_component<T>{}));
     }
 
     POLYFLOAT_CALLABLE_OBJECT(constant_t, constant_);

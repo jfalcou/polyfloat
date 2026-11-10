@@ -73,6 +73,8 @@ namespace plf
   template<concepts::polyfloat T>
   inline constexpr auto dimension_v<T> = eve::element_type_t<std::remove_cvref_t<T>>::static_dimension;
 
+  template<typename T> inline constexpr auto dimension_v<eve::as<T>> = dimension_v<T>;
+
 #if !defined(POLYFLOAT_DOXYGEN_INVOKED)
   template<typename T>
   requires(kumi::concepts::product_type<T> && !concepts::polyfloat<T>)
@@ -92,6 +94,10 @@ namespace plf
   template<typename T, eve::width_type N> struct as_component_type<eve::wide<T, N>>
   {
     using type = eve::wide<typename as_component_type<T>::type, N>;
+  };
+  template<typename T> struct as_component_type<eve::as<T>>
+  {
+    using type = eve::as<typename as_component_type<T>::type>;
   };
 
   //====================================================================================================================
