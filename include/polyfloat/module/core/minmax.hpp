@@ -80,7 +80,7 @@ namespace plf::_
     if constexpr (sizeof...(Zs) == 0) return eve::zip(z1, z1);
     else
     {
-      using r_t = as_polyfloat_t<Zs...>;
+      using r_t = as_polyfloat_like_t<Z1, Zs...>;
       using u_t = eve::element_type_t<r_t>;
       auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
       if constexpr (sizeof...(Zs) == 1)
