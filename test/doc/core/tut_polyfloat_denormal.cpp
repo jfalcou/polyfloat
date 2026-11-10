@@ -3,28 +3,18 @@
 
 int main()
 {
+  // The smallest positive denormal of double, then a value built from three denormals.
+  auto d1 = plf::mindenormal(eve::as<double>());
+  auto d3 = plf::mindenormal(eve::as<plf::triple_real_t<double>>());
 
-  // The very same name, on a triple real value.
-  auto z1 = plf::mindenormal(eve::as<double>());
-  auto z2 = plf::mindenormal(eve::as<plf::double_real_t<double>>());
-  auto z3 = plf::mindenormal(eve::as<plf::triple_real_t<double>>());
+  std::cout << "d1        = " << d1 << "\n";
+  std::cout << "d3        = " << d3 << "\n";
+  std::cout << "d3 + d3   = " << d3 + d3 << "\n";
+  std::cout << "rec(d3)   = " << plf::rec(d3) << "\n";
 
-  std::cout << "z1    = " << z1 << "\n";
-  std::cout << "z2    = " << z3 << "\n";
-  std::cout << "z3    = " << z3 << "\n";
-  auto zz1 = z1 + z1;
-  auto zz2 = z2 + z2;
-  auto zz3 = z3 + z3;
-  std::cout << "z1+z1 = " << zz1 << "\n";
-  std::cout << "z2+z2 = " << zz2 << "\n";
-  std::cout << "z3+z3 = " << zz3 << "\n";
-  std::cout << "1/(z1+z1) = " << 1 / zz1 << "\n";
-  std::cout << "1/(z2+z2) = " << 1 / zz2 << "\n";
-  std::cout << "1/(z3+z3) = " << 1 / zz3 << "\n";
-  std::cout << "1/(z3+z3) = " << 1 / (-zz3) << "\n";
-  auto b = plf::triple_real_t<double>(z1, z1, z1);
   auto a = plf::triple_real_t<double>(1.0e-20);
-  std::cout << "a = " << a << "\n";
-  std::cout << "b = " << b << "\n";
-  std::cout << "a/b = " << a / b << "\n";
+  auto b = plf::triple_real_t<double>(d1, d1, d1);
+
+  std::cout << "b         = " << b << "\n";
+  std::cout << "a / b     = " << a / b << "\n";
 }

@@ -34,26 +34,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var nbmantissabits
-  //!   @brief return the number of available  mantissa bits.
+  //!   @brief return the number of stored mantissa bits of the type, the implicit bit of each part excluded.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto nbmantissabits(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto nbmantissabits(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/constants/nbmantissabits.cpp}
+  //!  @godbolt{doc/core/nbmantissabits.cpp}
   //======================================================================================================================
 
   inline constexpr auto nbmantissabits = eve::functor<nbmantissabits_t>;

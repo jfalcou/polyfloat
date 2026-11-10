@@ -42,16 +42,16 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      constexpr auto prev(value auto x)                            noexcept; // 1
-  //!      constexpr auto prev(value auto x, integral_value auto n)     noexcept; // 2
+  //!      constexpr auto prev(eve::value auto x)                            noexcept; // 1
+  //!      constexpr auto prev(eve::value auto x, eve::integral_value auto n)     noexcept; // 2
   //!   }
   //!   @endcode
   //!

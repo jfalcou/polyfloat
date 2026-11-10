@@ -41,17 +41,17 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto heaviside(value auto x)                                            noexcept; // 1
-  //!      constexpr auto heaviside(value auto x, auto s)                                    noexcept; // 2
+  //!      constexpr auto heaviside(eve::value auto x)                                            noexcept; // 1
+  //!      constexpr auto heaviside(eve::value auto x, auto s)                                    noexcept; // 2
   //!   }
   //!   @endcode
   //!

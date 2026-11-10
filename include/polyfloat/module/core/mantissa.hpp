@@ -32,23 +32,23 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto mantissa(floating_value auto x)                          noexcept; // 1
+  //!      constexpr auto mantissa(eve::floating_value auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto mantissa[conditional_expr auto c](floating_value auto x) noexcept; // 2
-  //!      constexpr auto mantissa[logical_value auto m](floating_value auto x)    noexcept; // 2
+  //!      constexpr auto mantissa[eve::conditional_expr auto c](eve::floating_value auto x) noexcept; // 2
+  //!      constexpr auto mantissa[eve::logical_value auto m](eve::floating_value auto x)    noexcept; // 2
   //!
   //!      // Semantic options
-  //!      constexpr auto mantissa[raw](floating_value auto x)                     noexcept; // 3
+  //!      constexpr auto mantissa[raw](eve::floating_value auto x)                     noexcept; // 3
   //!   }
   //!   @endcode
   //!

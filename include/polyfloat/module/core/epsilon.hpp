@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var epsilon
-  //!   @brief return the epsilon value.
+  //!   @brief return the distance from the absolute value of the parameter to the next representable value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto epsilon(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto epsilon(T z) noexcept;
   //!   }
   //!   @endcode
   //!

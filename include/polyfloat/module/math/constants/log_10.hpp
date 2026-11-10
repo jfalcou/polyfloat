@@ -52,15 +52,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto log_10(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto log_10(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -71,7 +71,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/log_10.cpp}
+  //!  @godbolt{doc/math/log_10.cpp}
   //======================================================================================================================
 
   inline constexpr auto log_10 = eve::functor<log_10_t>;

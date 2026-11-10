@@ -47,26 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var pio_3
-  //!   @brief return the pio_3 value.
+  //!   @brief return \f$\pi/3\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto pio_3(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto pio_3(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/pio_3.cpp}
+  //!  @godbolt{doc/math/pio_3.cpp}
   //======================================================================================================================
 
   inline constexpr auto pio_3 = eve::functor<pio_3_t>;

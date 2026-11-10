@@ -39,15 +39,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      constexpr auto clamp(value auto x, value auto lo,  value auto hi)  noexcept; // 1
+  //!      constexpr auto clamp(eve::value auto x, eve::value auto lo,  eve::value auto hi)  noexcept; // 1
   //!   }
   //!   @endcode
   //!

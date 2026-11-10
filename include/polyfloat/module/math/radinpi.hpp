@@ -36,20 +36,20 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/math.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto radinpi( auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto radinpi[conditional_expr auto c]( auto x) noexcept; // 2
-  //!      constexpr auto radinpi[logical_value auto m]( auto x)    noexcept; // 2
+  //!      constexpr auto radinpi[eve::conditional_expr auto c]( auto x) noexcept; // 2
+  //!      constexpr auto radinpi[eve::logical_value auto m]( auto x)    noexcept; // 2
   //!   }
   //!   @endcode
   //!

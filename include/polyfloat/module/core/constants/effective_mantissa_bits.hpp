@@ -34,20 +34,20 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var effective_mantissa_bits
-  //!   @brief return the maximal representable flint value.
+  //!   @brief the number of mantissa bits of the type, the implicit bit of each part included.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto effective_mantissa_bits(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto effective_mantissa_bits(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -57,11 +57,11 @@ namespace plf
   //!
   //!    **Return value**
   //!
-  //!     Returns the effective number of bits of the mantissa value.
+  //!     Returns the number of mantissa bits of the type, the implicit bit of each part included.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/effective_mantissa_bits.cpp}
+  //!  @godbolt{doc/core/effective_mantissa_bits.cpp}
   //======================================================================================================================
 
   inline constexpr auto effective_mantissa_bits = eve::functor<effective_mantissa_bits_t>;

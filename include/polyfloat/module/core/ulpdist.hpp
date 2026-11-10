@@ -33,30 +33,30 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var ulpdist
-  //!   @brief return the ulpdistance value.
+  //!   @brief return the distance between the values in units in the last place.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/module/core/ulpdist.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto ulpdist(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto ulpdist(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: values to compare.
   //!
   //!   **Return value**
   //!
-  //!     Returns the ulpdistolute value of z.
+  //!     Returns the distance between `z1` and `z2` in units in the last place.
   //!
   //!  @groupheader{Example}
   //!

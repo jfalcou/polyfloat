@@ -32,25 +32,25 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var agd
-  //!   @brief return the inverse gudermannian agd : \f$2\tanh(\tan(x/2))\f$..
+  //!   @brief return the inverse Gudermannian function, \f$2\,\mathrm{atanh}(\tan(x/2))\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto agd(auto auto x)                          noexcept; // 1
+  //!      constexpr auto agd(concepts::polyfloat_like auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto agd[conditional_expr auto c](auto auto x) noexcept; // 2
-  //!      constexpr auto agd[logical_value auto m](auto auto x)    noexcept; // 2
+  //!      constexpr auto agd[eve::conditional_expr auto c](concepts::polyfloat_like auto x) noexcept; // 2
+  //!      constexpr auto agd[eve::logical_value auto m](concepts::polyfloat_like auto x)    noexcept; // 2
   //!   }
   //!   @endcode
   //!
@@ -81,7 +81,7 @@ namespace plf
   //!  @groupheader{External references}
   //!   *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/complex/agd)
   //!
-  //!  @godbolt_todo{doc/core/agd.cpp}
+  //!  @godbolt{doc/math/agd.cpp}
   //======================================================================================================================
 
   inline constexpr auto agd = eve::functor<agd_t>;

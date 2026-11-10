@@ -45,15 +45,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto round(T z) noexcept; //1
+  //!      template<concepts::polyfloat_like T> constexpr auto round(T z) noexcept; //1
   //!
   //!      // Semantic exclusive options
   //!      constexpr auto round[upward](/*any of the above overloads*/)                   noexcept; // 2
@@ -78,7 +78,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/round.cpp}
+  //!  @godbolt{doc/core/round.cpp}
   //======================================================================================================================
 
   inline constexpr auto round = eve::functor<round_t>;

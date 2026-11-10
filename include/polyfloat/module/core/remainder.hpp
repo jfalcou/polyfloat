@@ -33,20 +33,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var remainder
-  //!   @brief return the remainder after division of the values.
+  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded to the nearest integer, as `std::remainder`.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like T2> constexpr auto remainder(T1 x, T2 y) noexcept; //1
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto remainder(T1 x, T2 y) noexcept; //1
   //!   }
   //!   @endcode
   //!
@@ -61,7 +61,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/remainder.cpp}
+  //!  @godbolt{doc/core/remainder.cpp}
   //======================================================================================================================
 
   inline constexpr auto remainder = eve::functor<remainder_t>;

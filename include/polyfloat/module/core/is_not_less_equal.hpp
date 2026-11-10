@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_less_equal(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto is_not_less_equal(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/is_not_less_equal.cpp}
+  //!  @godbolt{doc/core/is_not_less_equal.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_less_equal = eve::functor<is_not_less_equal_t>;

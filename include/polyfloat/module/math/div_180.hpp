@@ -41,13 +41,13 @@ namespace plf
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto div_180(auto x)                                   noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto div_180[conditional_expr auto c](auto x)          noexcept; // 2
+  //!      constexpr auto div_180[eve::conditional_expr auto c](auto x)          noexcept; // 2
   //!      constexpr auto div_180[logical_floating_value auto m](auto x)    noexcept; // 2
   //!   }
   //!   @endcode

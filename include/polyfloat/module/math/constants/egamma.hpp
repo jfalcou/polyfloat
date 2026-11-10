@@ -47,27 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var egamma
-  //!   @brief Callable object computing the Euler-Mascheroni constant : \f$\gamma =
-  //!   \lim_{n\to\infty}\left( \sum_{k = 0}^n \frac1k - \log n\right )\f$.
+  //!   @brief the Euler-Mascheroni constant, \f$\gamma = \lim_{n\to\infty}\left(\sum_{k = 1}^n \frac1k - \log n\right)\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto egamma(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto egamma(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!

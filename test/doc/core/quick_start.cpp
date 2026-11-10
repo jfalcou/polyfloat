@@ -3,13 +3,11 @@
 
 int main()
 {
-  // eps is the epsilon machine so that  1.0+eve::eps(eve::as<double>())/2 is 1.0
+  // Half the machine epsilon of double: 1 + eps/2 rounds to 1 in double, and is kept here.
   auto z = plf::triple_real_t<double>(1.0, eve::eps(eve::as<double>()) / 2);
 
-  std::cout << "z      = " << z << "\n";
-  std::cout << "|z|    = " << plf::abs(z) << "\n";
-  std::cout << "log(z) = " << plf::log(z) << "\n";
-
-  // A negative real has no real square root, so a nan comes back. Only the first part of the number is a Nan value.
+  std::cout << "z        = " << z << "\n";
+  std::cout << "|z|      = " << plf::abs(z) << "\n";
+  std::cout << "log(z)   = " << plf::log(z) << "\n";
   std::cout << "sqrt(-z) = " << plf::sqrt(-z) << "\n";
 }

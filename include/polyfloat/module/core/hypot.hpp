@@ -45,20 +45,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var hypot
-  //!   @brief return the sum of the parameters.
+  //!   @brief return the square root of the sum of the squares of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto hypot(Z1 z1, Z2 z2) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2> constexpr auto hypot(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -68,11 +68,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the sum of the arguments.
+  //!     Returns the square root of the sum of the squares of the arguments.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/hypot.cpp}
+  //!  @godbolt{doc/core/hypot.cpp}
   //======================================================================================================================
 
   inline constexpr auto hypot = eve::functor<hypot_t>;

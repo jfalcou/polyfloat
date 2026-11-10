@@ -47,26 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var invcbrt_pi
-  //!   @brief return the invcbrt_pi value.
+  //!   @brief return \f$1/\sqrt[3]\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto invcbrt_pi(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto invcbrt_pi(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/invcbrt_pi.cpp}
+  //!  @godbolt{doc/math/invcbrt_pi.cpp}
   //======================================================================================================================
 
   inline constexpr auto invcbrt_pi = eve::functor<invcbrt_pi_t>;

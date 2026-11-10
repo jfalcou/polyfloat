@@ -56,7 +56,7 @@ namespace plf
   //====================================================================================================================
 
   //====================================================================================================================
-  //! @brief Obtains the rank containing a given type
+  //! @brief Obtains the dimension of a type, the number of its parts.
   //!
   //! If `T` satisfies plf::concepts::polyfloat, evaluates to the number of parts of a
   //! poly-float. If `T` is another product type, evaluates to the largest dimension of its elements.

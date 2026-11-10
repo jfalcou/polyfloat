@@ -48,15 +48,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like ... Zs> constexpr auto add(Z1 z1, Zs... zs) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like ... Zs> constexpr auto add(Z1 z1, Zs... zs) noexcept;
   //!   }
   //!   @endcode
   //!

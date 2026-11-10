@@ -44,23 +44,22 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var covariance
-  //!   @brief `elementwise_callable` object computing the elementwise  covariance product
-  //!     of the vector of the first half parameters by the vector of the last half.
+  //!   @brief return the covariance of the vector of the first half of the parameters and the vector of the second half.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
   //!      constexpr auto covariance(auto xsys...)                                                              noexcept; // 1
-  //!      constexpr auto covariance(eve::non_empty_product_type xs, eve::non_empty_product_type ys)            noexcept; // 2
+  //!      constexpr auto covariance(eve::non_empty_product_type auto xs, eve::non_empty_product_type auto ys)            noexcept; // 2
   //!
   //!      // Semantic options
   //!      constexpr auto covariance[unbiased](/*any of the above overloads*/)                                  noexcept; // 3
@@ -82,7 +81,7 @@ namespace plf
   //!  @see `welford_covariance` for incremental or parallel covariance and averages computations.
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/covariance.cpp}
+  //!  @godbolt{doc/core/covariance.cpp}
   //======================================================================================================================
 
   inline constexpr auto covariance = eve::functor<covariance_t>;

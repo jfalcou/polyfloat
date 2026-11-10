@@ -34,20 +34,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var fnms
-  //!   @brief return the fused negated-multiply substract of the parameters.
+  //!   @brief return the fused negated multiply subtract \f$-x y - z\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fnms(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2, concepts::polyfloat_like Z3> constexpr auto fnms(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -57,11 +57,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the fused negated-multiply substract of the arguments (-z1*z2-z3).
+  //!     Returns the fused negated multiply subtract of the arguments, `-z1*z2-z3`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/fnms.cpp}
+  //!  @godbolt{doc/core/fnms.cpp}
   //======================================================================================================================
 
   inline constexpr auto fnms = eve::functor<fnms_t>;

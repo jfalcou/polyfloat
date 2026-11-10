@@ -31,21 +31,21 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_not_equal
-  //!   @brief return the is_not_equal value.
+  //!   @brief test the parameters for inequality.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_equal(T1 z1, T2 z2)          noexcept; //1
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_not_equal[numeric](T1 z1, T2 z2) noexcept; //2
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto is_not_equal(T1 z1, T2 z2)          noexcept; //1
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto is_not_equal[numeric](T1 z1, T2 z2) noexcept; //2
   //!   }
   //!   @endcode
   //!
@@ -55,12 +55,12 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     1. Returns true is  `z1` is not_equal to `z2`.
+  //!     1. Returns true if `z1` is not equal to `z2`.
   //!     2. consider nan values as not_equal
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/is_not_equal.cpp}
+  //!  @godbolt{doc/core/is_not_equal.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_equal = eve::functor<is_not_equal_t>;

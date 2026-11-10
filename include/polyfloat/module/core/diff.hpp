@@ -65,13 +65,12 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var diff
-  //!   @brief convert a pack of values into
-  //!     a tuple of the cumulative sum of its values
+  //!   @brief computes the adjacent differences of its arguments, applied n times.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -79,10 +78,10 @@ namespace plf
   //!   @code
   //!   namespace plf
   //!   {
-  //!      constexpr auto diff(auto const& xs...)                                                            noexcept; // 1
+  //!      constexpr auto diff(auto const&... xs)                                                            noexcept; // 1
   //!      constexpr auto diff(eve::non_empty_product_type auto const& x)                                    noexcept; // 1
-  //!      typename<auto N> constexpr auto diff(kumi::index_t<N>,  auto const& xs...)                        noexcept; // 2
-  //!      typename<auto N> constexpr auto diff(kumi::index_t<N>,eve::non_empty_product_type auto const& x)  noexcept; // 2
+  //!      template<auto N> constexpr auto diff(kumi::index_t<N>,  auto const&... xs)                        noexcept; // 2
+  //!      template<auto N> constexpr auto diff(kumi::index_t<N>,eve::non_empty_product_type auto const& x)  noexcept; // 2
   //!   }
   //!   @endcode
   //!

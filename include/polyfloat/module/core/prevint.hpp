@@ -29,34 +29,34 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var prevint
-  //!   @brief returns the least flint greater than the input.
+  //!   @brief returns the greatest flint strictly less than the input.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      constexpr auto prevint(value auto x)                            noexcept;
+  //!      constexpr auto prevint(eve::value auto x)                            noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `x`: value to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the least flint greater than the input.
+  //!     Returns the greatest flint strictly less than `x`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/prevint.cpp}
+  //!  @godbolt{doc/core/prevint.cpp}
   //======================================================================================================================
 
   inline constexpr auto prevint = eve::functor<prevint_t>;

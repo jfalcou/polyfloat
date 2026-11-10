@@ -24,7 +24,7 @@ namespace plf
   //! @{
   //====================================================================================================================
 
-  /// Adds the polyflat value `other` to `self` and returns the new value of `self`.
+  /// Adds the polyfloat value `other` to `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator+=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
@@ -72,7 +72,7 @@ namespace plf
     }
   }
 
-  /// Substracts the polyfloat value `other` to `self` and returns the new value of `self`.
+  /// Subtracts the polyfloat value `other` from `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator-=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)

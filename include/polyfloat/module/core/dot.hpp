@@ -59,17 +59,17 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto dot(auto value... xs, auto value... ys)        noexcept; // 1
-  //!      constexpr auto dot(kumi::tuple xs, kumi::tuple ys)            noexcept; // 2
+  //!      constexpr auto dot(concepts::polyfloat_like auto... zs)        noexcept; // 1
+  //!      constexpr auto dot(eve::non_empty_product_type auto xs, eve::non_empty_product_type auto ys)            noexcept; // 2
   //!   }
   //!   @endcode
   //!

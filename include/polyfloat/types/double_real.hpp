@@ -21,9 +21,8 @@ namespace plf
 
   //====================================================================================================================
   //! @typedef double_real_t
-  //! @brief Type alias for  double_real numbers
-  //!
-  //! Double_Real numbers are implemented as Poly Float numbers of dimension 2.
+  //! @brief Floating-point expansion of two values of type `T`, `plf::polyfloat<T, 2>`, and
+  //! `eve::wide<plf::polyfloat<E, 2>>` when `T` is the register `eve::wide<E>`.
   //====================================================================================================================
   template<eve::floating_value T> using double_real_t = as_polyfloat_n_t<2, T>;
 

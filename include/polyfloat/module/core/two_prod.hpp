@@ -33,19 +33,18 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var two_prod
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
-  //!   product and its resulting rounding error.
+  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded product of two values and its rounding error, with an fma.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto two_prod( auto x, auto y)            noexcept; // 1
@@ -56,25 +55,21 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `x`, `y`:  polyfloatt arguments](@ref eve::floating_value) of same dimension.
+  //!     * `x`, `y`: two values of the same type, `float` or `double`, or their registers.
   //!
   //!   **Return value**
   //!
-  //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
-  //!       * `a` is `x+y`
-  //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
-  //!          where \f$\oplus\f$ adds its two parameters with infinite precision.
-  //!
-  //!     The algorithm depends on the overload:
-  //!
-  //!     1. Classical algorithm, always valid.
-  //!     2. Handles overflow.
+  //!     A pair \f$(a, e)\f$ where \f$a = \mathrm{RN}(x y)\f$ and \f$e = \mathrm{fma}(x, y, -a)\f$. In rounding to
+  //!     nearest, \f$a + e = x y\f$ exactly when the product does not overflow and
+  //!     \f$e_x + e_y \ge e_{\min} + p - 1\f$, \f$e_x\f$ and \f$e_y\f$ being the exponents of `x` and `y` and \f$p\f$
+  //!     the precision. The error is zero when the product is not finite. The option `pedantic` does not
+  //!     change the result.
   //!
   //!  @groupheader{External references}
-  //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
+  //!   *  [J.-M. Muller et al., Handbook of Floating-Point Arithmetic, 2nd edition](https://doi.org/10.1007/978-3-319-76526-6)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/core/two_prod.cpp}
+  //!  @godbolt{doc/core/two_prod.cpp}
   //================================================================================================
   inline constexpr auto two_prod = eve::functor<two_prod_t>;
   //================================================================================================

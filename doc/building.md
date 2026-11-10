@@ -1,35 +1,32 @@
 Building for Testing {#building}
 ====================
 
-This page is for working on **POLYFLOAT** itself. Consuming it from another project needs none of
-this and is covered in @ref setup.
+The tests and the documentation of **POLYFLOAT** are built from a clone of its repository. A
+project that uses the library builds neither, and installs it as in @ref setup.
 
 # CMake setup
 
-Use a preset. `CMakePresets.json` carries the configurations the CI judges a pull request on, so
-a preset reproduces one of them exactly rather than approximating it:
+`CMakePresets.json` holds the configurations of the CI, and a preset reproduces one of them:
 
 | Preset | Configuration |
 | ------ | ------------- |
-| `gcc`, `clang` | the compiler, everything else left alone |
+| `gcc`, `clang` | the compiler, every other setting at its default |
 | `gcc-avx2`, `clang-avx2` | the same with AVX2 enabled |
-| `gcc-no-pch` | without the precompiled header, which is what catches a missing include |
+| `gcc-no-pch` | without the precompiled header, which detects a missing include |
 | `gcc-sanitize`, `clang-sanitize` | AddressSanitizer and UndefinedBehaviorSanitizer |
 | `gcc-coverage`, `clang-coverage` | coverage instrumentation |
-| `gcc-bench`, `clang-bench` | the benchmarks rather than the tests |
-| `gcc-demos`, `clang-demos` | the interactive demos |
+| `clang-compile-cost` | the compilation time and memory of every test unit |
 | `clang-macos`, `clang-macos-libc++` | macOS, against libstdc++ and libc++ |
 
 ```bash
 cmake --preset=gcc
 ```
 
-Each also settles the generator, a build directory named after itself, and `Debug` as the
-configuration built by default. The compilers they name are the ones in the CI image, which is
-published as a Docker image and described on
-[EVE's development environment page](https://jfalcou.github.io/eve/dev_environment.html).
+Each preset also sets the generator, a build directory named after the preset, and `Debug` as
+the default configuration. The compilers it names are those of the CI image, a Docker image
+described on [EVE's development environment page](https://jfalcou.github.io/eve/dev_environment.html).
 
-Without one, the equivalent by hand is:
+The equivalent configuration without a preset is:
 
 ```bash
 cmake -S . -B build -G Ninja \
@@ -37,11 +34,11 @@ cmake -S . -B build -G Ninja \
       -DCMAKE_CXX_FLAGS="-O0 -DEVE_NO_FORCEINLINE"
 ```
 
-`EVE_NO_FORCEINLINE` is the flag worth knowing about there. It takes the forced inlining off
-EVE's functions, which the tests do not need and which otherwise dominates their compilation
-time. `clang++` works in place of `g++`, and any version meeting the requirements in @ref setup.
+`EVE_NO_FORCEINLINE` removes the forced inlining of the functions of EVE, which the tests do not
+need and which dominates their compilation time otherwise. `clang++` replaces `g++`, in any
+version that meets the requirements of @ref setup.
 
-Six options steer what gets declared, and the presets set them for you:
+Six options select the targets, and the presets set them:
 
 | Option | Default | Effect |
 | ------ | ------- | ------ |
@@ -50,45 +47,44 @@ Six options steer what gets declared, and the presets set them for you:
 | `POLYFLOAT_BUILD_DOCUMENTATION` | `OFF` | declare the `polyfloat-doxygen` target |
 | `POLYFLOAT_ENABLE_SANITIZERS` | `OFF` | AddressSanitizer and UndefinedBehaviorSanitizer |
 | `POLYFLOAT_ENABLE_COVERAGE` | `OFF` | coverage instrumentation |
-| `POLYFLOAT_BUILD_DEMOS` | `OFF` | build the interactive demos |
+| `POLYFLOAT_COMPILE_COST` | `OFF` | measure the compilation of every test unit |
 
 # Compiling the tests
 
-The tests are named targets rather than part of `all`, so `--target all` builds nothing. The
-whole suite is `polyfloat-test`, and below it every directory of `test/` has a target of its own,
-named after its path with the separators turned into dots:
+The tests are named targets outside of `all`, so `--target all` builds nothing. The whole suite
+is `polyfloat-test`, and every directory of `test/` has a target of its own, named after its path
+with the separators replaced by dots:
 
 | Target | Content |
 | ------ | ------- |
-| `polyfloat-test` | everything below, 493 tests |
+| `polyfloat-test` | every test |
 | `unit.exe` | all unit tests |
-| `unit.core.exe` | core aritmetic unit tests |
-| `unit.math.exe` | elementary math unit tests |
-| `unit.infra.exe` | unit tests of the infrastructure itself |
-| `doc.exe` | every example that appears in the documentation |
-| `doc.core.exe`            | the examples for core |
-| `doc.math.exe`            | the examples for math |
-| `doc.<module>.<function>.exe` | the examples of one function in one module, `doc.core.sqrt.exe` and so on |
+| `unit.api.exe` | unit tests of the types, the traits, and the operators |
+| `unit.core.exe` | unit tests of the core functions |
+| `unit.math.exe` | unit tests of the elementary functions |
+| `doc.exe` | every example of the documentation |
+| `doc.core.exe` | the examples of the core functions and of the tutorials |
+| `doc.math.exe` | the examples of the elementary functions |
+| `doc.<module>.<function>.exe` | the example of one function, `doc.core.sqrt.exe` and so on |
 
-For example, the unit test of `polyfloat::acos` over polyfloat numbers is one file, and it compiles
-on its own:
+The unit test of plf::acos is one file, compiled by its own target:
 
 ```bash
 ninja -C build unit.math.acos.exe
 ```
 
-`unit.exe` and `polyfloat-test` are very large and want a comfortable number of cores. Working on a
-single function is almost always a matter of building its own target rather than either of them.
+`unit.exe` and `polyfloat-test` compile hundreds of units, while the target of one function
+compiles one.
 
 # Running the tests
 
-The executables land in `build/unit`, and each can be run directly:
+The executables are written to `build/unit`, and each one runs on its own:
 
 ```bash
 ./build/unit/unit.math.acos.exe
 ```
 
-`ctest` runs them all, and takes the same preset as the build:
+`ctest` runs them all, with the build directory or with the preset of the build:
 
 ```bash
 ctest --test-dir build
@@ -102,5 +98,6 @@ cmake -S . -B build -G Ninja -DPOLYFLOAT_BUILD_TEST=OFF -DPOLYFLOAT_BUILD_DOCUME
 cmake --build build --target polyfloat-doxygen
 ```
 
-The pages land in `build/doc`. EVE's tagfile is downloaded while configuring, which is what makes
-the `eve::` references resolve; with no network they degrade to plain text and a warning says so.
+The pages are written to `build/doc`. The configuration downloads the tag file of EVE, through
+which the `eve::` references resolve. Without network access, they render as plain text, and a
+warning reports it.

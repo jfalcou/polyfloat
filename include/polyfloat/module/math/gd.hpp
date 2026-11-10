@@ -32,25 +32,25 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var gd
-  //!   @brief return the gudermanian gd: \f$\int_0^\infty \frac1{\cosh(x)}\; dx\f$.
+  //!   @brief return the Gudermannian function, \f$\int_0^x \frac1{\cosh t}\, dt\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto gd(auto auto x)                          noexcept; // 1
+  //!      constexpr auto gd(concepts::polyfloat_like auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto gd[conditional_expr auto c](auto auto x) noexcept; // 2
-  //!      constexpr auto gd[logical_value auto m](auto auto x)    noexcept; // 2
+  //!      constexpr auto gd[eve::conditional_expr auto c](concepts::polyfloat_like auto x) noexcept; // 2
+  //!      constexpr auto gd[eve::logical_value auto m](concepts::polyfloat_like auto x)    noexcept; // 2
   //!   }
   //!   @endcode
   //!
@@ -77,7 +77,7 @@ namespace plf
   //!  @groupheader{External references}
   //!   *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/complex/gd)
   //!
-  //!  @godbolt_todo{doc/core/gd.cpp}
+  //!  @godbolt{doc/math/gd.cpp}
   //======================================================================================================================
 
   inline constexpr auto gd = eve::functor<gd_t>;

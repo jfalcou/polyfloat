@@ -41,21 +41,21 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var atan2
-  //!   @brief return the arctangent value.
+  //!   @brief return the arctangent of \f$y/x\f$, in the quadrant of the point \f$(x, y)\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto atan2(T z) noexcept;           //1
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto atan2[pedantic](T z) noexcept; //2
+  //!      template<concepts::polyfloat_like T> constexpr auto atan2(T z) noexcept;           //1
+  //!      template<concepts::polyfloat_like T> constexpr auto atan2[pedantic](T z) noexcept; //2
   //!   }
   //!   @endcode
   //!

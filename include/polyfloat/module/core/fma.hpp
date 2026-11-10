@@ -40,15 +40,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2, concepts::polyfloat_like Z3> constexpr auto fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -64,7 +64,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/fma.cpp}
+  //!  @godbolt{doc/core/fma.cpp}
   //======================================================================================================================
 
   inline constexpr auto fma = eve::functor<fma_t>;

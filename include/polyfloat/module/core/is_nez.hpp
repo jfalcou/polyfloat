@@ -34,15 +34,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_nez(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto is_nez(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/is_nez.cpp}
+  //!  @godbolt{doc/core/is_nez.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_nez = eve::functor<is_nez_t>;

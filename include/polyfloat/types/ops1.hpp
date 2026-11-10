@@ -51,7 +51,7 @@ namespace plf
     return that += b;
   }
 
-  //! @brief  Returns the difference of a poly float and a floating point value
+  //! @brief Returns the difference of two poly float values
   //! @related polyfloat
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)

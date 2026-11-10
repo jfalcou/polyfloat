@@ -37,21 +37,21 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var rat
-  //!   @brief return the ratolute value.
+  //!   @brief return a rational approximation of the value, as a numerator and a denominator.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      constexpr auto rat(floating_value auto x)                           noexcept;
-  //!      constexpr auto rat(floating_value auto x, floating_value auto tol)  noexcept;
+  //!      constexpr auto rat(eve::floating_value auto x)                           noexcept;
+  //!      constexpr auto rat(eve::floating_value auto x, eve::floating_value auto tol)  noexcept;
   //!   }
   //!   @endcode
   //!
@@ -64,7 +64,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the ratolute value of z.
+  //!     Returns a pair of the numerator and the denominator of a rational approximation of `x`, within the tolerance `tol`.
   //!
   //!  @groupheader{Example}
   //!

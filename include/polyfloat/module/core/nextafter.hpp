@@ -31,18 +31,18 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var nextafter
-  //!   @brief return the nextafter representable value.
+  //!   @brief return the next representable value after `x` in the direction of `y`.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      constexpr auto nextafter( auto x, auto y)                         noexcept; // 1
   //!   }
@@ -58,7 +58,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/nextafter.cpp}
+  //!  @godbolt{doc/core/nextafter.cpp}
   //======================================================================================================================
 
   inline constexpr auto nextafter = eve::functor<nextafter_t>;

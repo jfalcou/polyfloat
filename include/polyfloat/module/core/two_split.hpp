@@ -35,43 +35,43 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var two_split
-  //!   @brief Computes the pair from Veltkamp's splitting algorithm
+  //!   @brief Computes the pair of the high and low parts of a value, by splitting its significand.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      template <auto N> constexpr auto two_split(auto x, std::integral_constant<N> s)  noexcept; // 1
+  //!      template<int N> constexpr auto two_split(auto x, std::integral_constant<int, N> s)  noexcept; // 1
   //!      constexpr auto two_split( auto x)                                               noexcept; // 2
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `x`:  polyfloat argument](@ref eve::floating_value) of same dimension.
-  //!
+  //!     * `x`: a value of type `float` or `double`, or a register of them.
+  //!     * `s`: the split point, a number of bits.
   //!
   //!   **Return value**
   //!
-  //!     1.  Returns a pair \f$(x_h, x_l)\f$ such that the significand of \f$x_h\f$ fits in p − s bits,
-  //!      the significand of \f$x_l\f$  fits in s−1 bits, and \f$x_h \oplus x_l = x\f$.
-  //!      p is the number of mantissa bits of x,  With 2 ≤ s ≤ p − 2
-  //!     2. s is taken as \f$\lceil p/2 \rceil\f$
-  //!
+  //!     1. A pair \f$(x_h, x_l)\f$ where \f$x_h = g + (x - g)\f$, with \f$g = 2^s x\f$, both operations rounded
+  //!        in the base type, and \f$x_l = x - x_h\f$.
+  //!     2. The same with \f$s = \lfloor (m + 1)/2 \rfloor\f$, \f$m\f$ being the number of stored mantissa bits,
+  //!        26 for `double` and 12 for `float`.
   //!
   //!  @groupheader{External references}
-  //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
+  //!   *  [T. J. Dekker, A floating-point technique for extending the available precision](https://doi.org/10.1007/BF01397083)
+  //!   *  [J.-M. Muller et al., Handbook of Floating-Point Arithmetic, 2nd edition](https://doi.org/10.1007/978-3-319-76526-6)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/core/two_split.cpp}
+  //!  @godbolt{doc/core/two_split.cpp}
   //================================================================================================
   inline constexpr auto two_split = eve::functor<two_split_t>;
   //================================================================================================

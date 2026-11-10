@@ -44,20 +44,20 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var valmin
-  //!   @brief return the minimal representable flint value.
+  //!   @brief the lowest finite value of the type, the opposite of plf::valmax.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto valmin(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto valmin(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -67,11 +67,11 @@ namespace plf
   //!
   //!    **Return value**
   //!
-  //!     Returns the effective number of bits of the mantissa value.
+  //!     Returns the lowest finite value of the type of the constant.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/valmin.cpp}
+  //!  @godbolt{doc/core/valmin.cpp}
   //======================================================================================================================
 
   inline constexpr auto valmin = eve::functor<valmin_t>;

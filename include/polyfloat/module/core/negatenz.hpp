@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var negatenz
-  //!   @brief return the first parametermultiplied with the  signnz of the second.
+  //!   @brief return the first parameter multiplied by the never zero sign of the second.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signnzatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto negatenz(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto negatenz(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,11 +54,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the z1 multiplied by the signnz of z2
+  //!     Returns `z1` multiplied by the never zero sign of `z2`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/negatenz.cpp}
+  //!  @godbolt{doc/core/negatenz.cpp}
   //======================================================================================================================
 
   inline constexpr auto negatenz = eve::functor<negatenz_t>;

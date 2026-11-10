@@ -41,20 +41,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var rem
-  //!   @brief return the remender after division of the values.
+  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, or as the option rounds it.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like T2> constexpr auto rem(T1 x, T2 y) noexcept; //1
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto rem(T1 x, T2 y) noexcept; //1
   //!
   //!      // Semantic exclusive options
   //!      constexpr auto rem[upward](/*any of the above overloads*/)                   noexcept; // 2
@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/rem.cpp}
+  //!  @godbolt{doc/core/rem.cpp}
   //======================================================================================================================
 
   inline constexpr auto rem = eve::functor<rem_t>;

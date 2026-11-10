@@ -30,20 +30,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_ngtz
-  //!   @brief test the parameter for not greater or equal to zero.
+  //!   @brief test the parameter for not greater than zero.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_ngtz(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto is_ngtz(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -53,11 +53,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the value of !(z >= 0).
+  //!     Returns the value of `!(z > 0)`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/is_ngtz.cpp}
+  //!  @godbolt{doc/core/is_ngtz.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_ngtz = eve::functor<is_ngtz_t>;

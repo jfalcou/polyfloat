@@ -25,20 +25,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var rec
-  //!   @brief return the ratio of the values.
+  //!   @brief return the inverse \f$1/x\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto rec(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto rec(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -48,7 +48,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the ratio of the arguments.
+  //!     Returns the inverse of `z`, \f$1/z\f$.
   //!
   //!  @groupheader{Example}
   //!

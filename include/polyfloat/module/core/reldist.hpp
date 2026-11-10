@@ -39,25 +39,25 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto reldist(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto reldist(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: values to compare.
   //!
   //!   **Return value**
   //!
-  //!      Returns the the relative distance computed as the absolute value of the arguments difference given by `dist`
+  //!      Returns the relative distance computed as the absolute value of the arguments difference given by `dist`
   //!        divided by the maximum of their absolute values and 1.
   //!
   //!  @groupheader{Example}

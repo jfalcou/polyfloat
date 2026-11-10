@@ -40,15 +40,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Ts...> constexpr auto minmax(Ts...zs) noexcept;
+  //!      template<concepts::polyfloat_like... Ts> constexpr auto minmax(Ts... zs) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -62,7 +62,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/minmax.cpp}
+  //!  @godbolt{doc/core/minmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto minmax = eve::functor<minmax_t>;

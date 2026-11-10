@@ -38,15 +38,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inf(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto inf(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -60,7 +60,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/inf.cpp}
+  //!  @godbolt{doc/core/inf.cpp}
   //======================================================================================================================
 
   inline constexpr auto inf = eve::functor<inf_t>;

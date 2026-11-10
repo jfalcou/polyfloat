@@ -53,56 +53,494 @@ namespace plf::_
 namespace plf
 {
   //====================================================================================================================
-  //! @addtogroup core
+  //! @addtogroup constants
   //! @{
-  //!   @var allbits
-  //!   @brief every bit set, which is the pattern of a quiet NaN for a floating point type, for the requested polyfloat type.
+  //====================================================================================================================
+
+  //! @var allbits
+  //! @brief every bit set in the high part, the pattern of a quiet NaN, and the other parts zero, for the requested
+  //! polyfloat type.
   //!
-  //!   @var bitincrement
-  //!   @brief the smallest increment representable in the type's bit pattern, for the requested polyfloat type.
+  //! @groupheader{Header file}
   //!
-  //!   @var half
-  //!   @brief one half, for the requested polyfloat type.
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
   //!
-  //!   @var inf
-  //!   @brief positive infinity, for the requested polyfloat type.
+  //! @groupheader{Callable Signatures}
   //!
-  //!   @var mhalf
-  //!   @brief minus one half, for the requested polyfloat type.
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T allbits(eve::as<T> t);
+  //! }
+  //! @endcode
   //!
-  //!   @var mindenormal
-  //!   @brief the smallest denormal value, for the requested polyfloat type.
+  //! **Parameters**
   //!
-  //!   @var minexponent
-  //!   @brief the smallest exponent of the type, for the requested polyfloat type.
+  //!   * `t`: type wrapper of the result.
   //!
-  //!   @var minf
-  //!   @brief negative infinity, for the requested polyfloat type.
+  //! **Return value**
   //!
-  //!   @var mone
-  //!   @brief minus one, for the requested polyfloat type.
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
   //!
-  //!   @var mzero
-  //!   @brief negative zero, for the requested polyfloat type.
+  //! @groupheader{Example}
   //!
-  //!   @var nan
-  //!   @brief a quiet NaN, for the requested polyfloat type.
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var bitincrement
+  //! @brief the value whose high part has only its lowest bit set and whose other parts are zero, for the requested
+  //! polyfloat type, equal to plf::mindenormal.
   //!
-  //!   @var one
-  //!   @brief one, for the requested polyfloat type.
+  //! @groupheader{Header file}
   //!
-  //!   @var smallestposval
-  //!   @brief the smallest positive normal value, for the requested polyfloat type.
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
   //!
-  //!   @var false_
-  //!   @brief the false logical value, for the requested polyfloat type.
+  //! @groupheader{Callable Signatures}
   //!
-  //!   @var true_
-  //!   @brief the true logical value, for the requested polyfloat type.
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T bitincrement(eve::as<T> t);
+  //! }
+  //! @endcode
   //!
-  //!   @var zero
-  //!   @brief zero, for the requested polyfloat type.
+  //! **Parameters**
   //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var half
+  //! @brief one half, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T half(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var maxexponent
+  //! @brief the largest exponent of a finite value of the base type, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T maxexponent(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var maxexponentm1
+  //! @brief plf::maxexponent minus one, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T maxexponentm1(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var maxexponentp1
+  //! @brief plf::maxexponent plus one, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T maxexponentp1(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var mhalf
+  //! @brief minus one half, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T mhalf(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var mindenormal
+  //! @brief the smallest positive denormal of the base type in the high part, the other parts zero, for the requested
+  //! polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T mindenormal(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var minexponent
+  //! @brief the smallest exponent of a normal value of the base type, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T minexponent(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var mone
+  //! @brief minus one, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T mone(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var mzero
+  //! @brief negative zero, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T mzero(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var one
+  //! @brief one, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T one(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var smallestposval
+  //! @brief the smallest positive normal value, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<concepts::polyfloat_like T> constexpr T smallestposval(eve::as<T> t);
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the constant in type `T`, in the high part and with the other parts zero for a polyfloat type.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var false_
+  //! @brief the false logical value, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<eve::value T> constexpr eve::as_logical_t<T> false_(eve::as<T> t) noexcept;
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the logical value `false` of the logical type of `T`.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var true_
+  //! @brief the true logical value, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<eve::value T> constexpr eve::as_logical_t<T> true_(eve::as<T> t) noexcept;
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns the logical value `true` of the logical type of `T`.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //! @var zero
+  //! @brief zero, for the requested polyfloat type.
+  //!
+  //! @groupheader{Header file}
+  //!
+  //! @code
+  //! #include <polyfloat/polyfloat.hpp>
+  //! @endcode
+  //!
+  //! @groupheader{Callable Signatures}
+  //!
+  //! @code
+  //! namespace plf
+  //! {
+  //!   template<eve::value T> constexpr T zero(eve::as<T> t) noexcept;
+  //! }
+  //! @endcode
+  //!
+  //! **Parameters**
+  //!
+  //!   * `t`: type wrapper of the result.
+  //!
+  //! **Return value**
+  //!
+  //!   Returns zero in type `T`.
+  //!
+  //! @groupheader{Example}
+  //!
+  //! @godbolt{doc/core/wrapped_constants.cpp}
+
+  //====================================================================================================================
   //! @}
   //====================================================================================================================
 

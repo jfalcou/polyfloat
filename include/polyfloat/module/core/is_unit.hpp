@@ -32,20 +32,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_unit
-  //!   @brief test the parameter for equality to is\f$\pm1\f$.
+  //!   @brief test the parameter for equality to \f$\pm1\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_unit(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto is_unit(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -55,7 +55,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns true iff z is\f$\pm1\f$.
+  //!     Returns true if and only if `z` is \f$\pm1\f$.
   //!
   //!  @groupheader{Example}
   //!

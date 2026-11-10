@@ -37,7 +37,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -46,7 +46,7 @@ namespace plf
   //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto is_not_denormal(floating_value auto x)                 noexcept;
+  //!      constexpr auto is_not_denormal(eve::floating_value auto x)                 noexcept;
   //!   }
   //!   @endcode
   //!
@@ -59,7 +59,7 @@ namespace plf
   //!     returns true if and only if x is not a denormal number
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/is_not_denormal.cpp}
+  //!  @godbolt{doc/core/is_not_denormal.cpp}
   //================================================================================================
   inline constexpr auto is_not_denormal = eve::functor<is_not_denormal_t>;
   //======================================================================================================================

@@ -32,20 +32,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var ceil
-  //!   @brief return the ceil value.
+  //!   @brief return the smallest integral value not less than the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto ceil(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto ceil(T z) noexcept;
   //!   }
   //!   @endcode
   //!

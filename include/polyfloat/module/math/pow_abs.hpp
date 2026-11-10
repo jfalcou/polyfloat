@@ -36,15 +36,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constpow_absr auto pow_abs(T x, T x) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto pow_abs(T x, T y) noexcept;
   //!   }
   //!   @endcode
   //!

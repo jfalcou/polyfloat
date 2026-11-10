@@ -33,20 +33,20 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var nan
-  //!   @brief return the naninite value.
+  //!   @brief a quiet NaN.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto nan(as<T>) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto nan(as<T>) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,11 +56,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the nan value in type T.
+  //!     Returns a quiet NaN of type `T`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/nan.cpp}
+  //!  @godbolt{doc/core/nan.cpp}
   //======================================================================================================================
 
   inline constexpr auto nan = eve::functor<nan_t>;

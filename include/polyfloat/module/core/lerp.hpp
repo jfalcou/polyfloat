@@ -34,26 +34,27 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var lerp
-  //!   @brief return the fused multiply add of the parameters.
+  //!   @brief return the linear interpolation \f$x + t(y - x)\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto lerp(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2, concepts::polyfloat_like Z3> constexpr auto lerp(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `z2`, `z3`: Values to process.
+  //!     * `z1`, `z2`: the two ends of the interpolation.
+  //!     * `z3`: the interpolation coefficient, `z1` at 0 and `z2` at 1.
   //!
   //!   **Return value**
   //!
@@ -62,7 +63,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/lerp.cpp}
+  //!  @godbolt{doc/core/lerp.cpp}
   //======================================================================================================================
 
   inline constexpr auto lerp = eve::functor<lerp_t>;

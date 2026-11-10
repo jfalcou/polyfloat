@@ -29,26 +29,26 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var sigmoid
-  //!   @brief return the sigmoidonential value.
+  //!   @brief return the logistic sigmoid \f$1/(1 + e^{-x})\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!
   //!   {
   //!      // Regular overload
   //!      constexpr auto sigmoid( auto x)                              noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto sigmoid[conditional_expr auto c]( auto x)     noexcept; // 2
-  //!      constexpr auto sigmoid[logical_value auto m]( auto x)        noexcept; // 2
+  //!      constexpr auto sigmoid[eve::conditional_expr auto c]( auto x)     noexcept; // 2
+  //!      constexpr auto sigmoid[eve::logical_value auto m]( auto x)        noexcept; // 2
   //!   }
   //!   @endcode
   //!
@@ -61,7 +61,7 @@ namespace plf
   //! **Return value**
   //!
   //!   1.  Returns \f$\frac{1}{1+e^{-x}}\f$. In particular:
-  //!       * If the element is \f$1/2\f$, \f$1\f$ is returned
+  //!       * If the element is \f$\pm0\f$, \f$1/2\f$ is returned
   //!       * If the element is \f$-\infty\f$, \f$+0\f$ is returned
   //!       * If the element is \f$\infty\f$, \f$1\f$ is returned
   //!       * If the element is a `NaN`, `NaN` is returned

@@ -29,20 +29,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var frac
-  //!   @brief return the fractionnal part of the value.
+  //!   @brief return the fractional part of the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto frac(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto frac(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,7 +52,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the fractionnal part of z.
+  //!     Returns the fractional part of z.
   //!
   //!  @groupheader{Example}
   //!

@@ -45,34 +45,34 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var variance
-  //!   @brief return the absolute value of the maximum of the parameters.
+  //!   @brief return the variance of the parameters.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto variance(Z1 z1, Z2 z2) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2> constexpr auto variance(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `z2`: Values to process.
+  //!     * `zs`: values, or a tuple of values.
   //!
   //!   **Return value**
   //!
-  //!      Returns the absolute value of the maximum of the arguments.
+  //!      Returns the variance of the arguments.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/variance.cpp}
+  //!  @godbolt{doc/core/variance.cpp}
   //======================================================================================================================
 
   inline constexpr auto variance = eve::functor<variance_t>;

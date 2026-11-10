@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var ulp
-  //!   @brief return the ulpolute value.
+  //!   @brief return the unit in the last place of the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/module/core/ulp.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,7 +54,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the ulpolute value of z.
+  //!     Returns the unit in the last place of `z`.
   //!
   //!  @groupheader{Example}
   //!

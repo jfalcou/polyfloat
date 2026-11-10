@@ -34,20 +34,20 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto frexp(floating_value auto x)                          noexcept; // 1
+  //!      constexpr auto frexp(eve::floating_value auto x)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto frexp[conditional_expr auto c](floating_value auto x) noexcept; // 2
-  //!      constexpr auto frexp[logical_value auto m](floating_value auto x)    noexcept; // 2
+  //!      constexpr auto frexp[eve::conditional_expr auto c](eve::floating_value auto x) noexcept; // 2
+  //!      constexpr auto frexp[eve::logical_value auto m](eve::floating_value auto x)    noexcept; // 2
   //!
   //!      // Semantic options
   //!      constexpr auto frexp[pedantic](floating_value x)                     noexcept; // 3

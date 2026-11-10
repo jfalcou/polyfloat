@@ -7,6 +7,30 @@
 //======================================================================================================================
 #pragma once
 
+//======================================================================================================================
+//! @defgroup core Core functions
+//! @brief Arithmetic, rounding, comparison, and classification of polyfloat values.
+//!
+//! The core functions involve no transcendental computation, except plf::sqrt and plf::rsqrt.
+//!
+//! @note The predicates of one argument and the comparisons to zero, except plf::is_even, plf::is_odd, and
+//! plf::is_flint, test the high part alone, and are faster than the predicates of two arguments.
+//======================================================================================================================
+
+//======================================================================================================================
+//! @defgroup core_accuracy Error-free transformations
+//! @brief Sums, products, quotients, and fma returned with their rounding errors, and the splitting of a value.
+//!
+//! Each function returns a pair or a triple: the rounded result of the operation, then the corrections whose exact
+//! sum with it is the exact result, or, for the functions ending in `_approx`, a more accurate result. With plf::fma,
+//! they implement the arithmetic of the polyfloat values. Each entry cites the paper of its algorithm.
+//======================================================================================================================
+
+//======================================================================================================================
+//! @defgroup functions Polynomial evaluation
+//! @brief Evaluation and interpolation of polynomials with polyfloat coefficients.
+//======================================================================================================================
+
 #include <polyfloat/core_constants.hpp>
 #include <polyfloat/module/core/abs.hpp>
 #include <polyfloat/module/core/absmax.hpp>
