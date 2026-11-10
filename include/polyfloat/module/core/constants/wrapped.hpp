@@ -27,7 +27,7 @@ namespace plf::_
       return constant_t<Func<decltype(new_traits)>>{new_traits};
     }
 
-    template<typename T> using result_t = expected_result_t<Func<eve::options<>>{}, as<T>>;
+    template<typename T> using result_t = expected_result_t<eve::functor<Func>, as<T>>;
 
     template<concepts::real T>
     constexpr T operator()(as<T> const& v) const
