@@ -20,7 +20,8 @@ namespace plf
   struct neville_t
     : plf::strict_tuple_callable<neville_t, eve::neville_t, Options, kahan_option, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 

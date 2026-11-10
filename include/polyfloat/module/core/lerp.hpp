@@ -18,7 +18,8 @@ namespace plf
 
   template<typename Options> struct lerp_t : eve::strict_tuple_callable<lerp_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
