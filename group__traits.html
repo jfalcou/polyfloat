@@ -159,24 +159,140 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gaa325dcaa3d30c3a89c5333b2800aac54" id="r_gaa325dcaa3d30c3a89c5333b2800aac54"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:gaa325dcaa3d30c3a89c5333b2800aac54 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gaa325dcaa3d30c3a89c5333b2800aac54.html#gaa325dcaa3d30c3a89c5333b2800aac54">plf::as_component_type_t</a> = typename as_component_type&lt;T&gt;::type</td></tr>
+<tr class="memitem:gaa325dcaa3d30c3a89c5333b2800aac54 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#gaa325dcaa3d30c3a89c5333b2800aac54">plf::as_component_type_t</a> = typename as_component_type&lt;T&gt;::type</td></tr>
 <tr class="memdesc:gaa325dcaa3d30c3a89c5333b2800aac54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the real type associated to a Poly-Float-like type.  <br /></td></tr>
 <tr class="memitem:gaa65fa3ada94ae1d661001889062623b4" id="r_gaa65fa3ada94ae1d661001889062623b4"><td class="memTemplParams" colspan="2">template&lt;unsigned int Dim, typename... Ts&gt; </td></tr>
-<tr class="memitem:gaa65fa3ada94ae1d661001889062623b4 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">plf::as_polyfloat_n_t</a> = typename as_polyfloat_n&lt;Dim, Ts...&gt;::type</td></tr>
+<tr class="memitem:gaa65fa3ada94ae1d661001889062623b4 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#gaa65fa3ada94ae1d661001889062623b4">plf::as_polyfloat_n_t</a> = typename as_polyfloat_n&lt;Dim, Ts...&gt;::type</td></tr>
 <tr class="memdesc:gaa65fa3ada94ae1d661001889062623b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes a Poly-Float type of a given dimension.  <br /></td></tr>
 <tr class="memitem:gabb544245c689b7e0ea2f9f6e8feb8594" id="r_gabb544245c689b7e0ea2f9f6e8feb8594"><td class="memTemplParams" colspan="2">template&lt;typename... Ts&gt; </td></tr>
-<tr class="memitem:gabb544245c689b7e0ea2f9f6e8feb8594 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594">plf::as_polyfloat_t</a> = typename as_polyfloat&lt;Ts...&gt;::type</td></tr>
+<tr class="memitem:gabb544245c689b7e0ea2f9f6e8feb8594 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#gabb544245c689b7e0ea2f9f6e8feb8594">plf::as_polyfloat_t</a> = typename as_polyfloat&lt;Ts...&gt;::type</td></tr>
 <tr class="memdesc:gabb544245c689b7e0ea2f9f6e8feb8594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the best fitting Poly-Float type from a series of types.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ga846021636ff96cc73a58d2f664e7ce1f" id="r_ga846021636ff96cc73a58d2f664e7ce1f"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:ga846021636ff96cc73a58d2f664e7ce1f template"><td class="memItemLeft">constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="group__traits_ga846021636ff96cc73a58d2f664e7ce1f.html#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v</a> = *implementation - defined*</td></tr>
+<tr class="memitem:ga846021636ff96cc73a58d2f664e7ce1f template"><td class="memItemLeft">constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#ga846021636ff96cc73a58d2f664e7ce1f">plf::dimension_v</a> = *implementation - defined*</td></tr>
 <tr class="memdesc:ga846021636ff96cc73a58d2f664e7ce1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the dimension of a type, the number of its parts.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Type functions computing the polyfloat type, the dimension, and the base type of an expression, and the bases of the callable objects. </p>
-</div></div><!-- contents -->
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
+<a id="gaa325dcaa3d30c3a89c5333b2800aac54" name="gaa325dcaa3d30c3a89c5333b2800aac54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa325dcaa3d30c3a89c5333b2800aac54">&#9670;&#160;</a></span>as_component_type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#gaa325dcaa3d30c3a89c5333b2800aac54">plf::as_component_type_t</a> = typename as_component_type&lt;T&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;polyfloat/types/traits.hpp&gt;</code></p>
+
+<p>Compute the real type associated to a Poly-Float-like type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to convert to a real type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gaa65fa3ada94ae1d661001889062623b4" name="gaa65fa3ada94ae1d661001889062623b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa65fa3ada94ae1d661001889062623b4">&#9670;&#160;</a></span>as_polyfloat_n_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int Dim, typename... Ts&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#gaa65fa3ada94ae1d661001889062623b4">plf::as_polyfloat_n_t</a> = typename as_polyfloat_n&lt;Dim, Ts...&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;polyfloat/types/traits.hpp&gt;</code></p>
+
+<p>Computes a Poly-Float type of a given dimension. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Dim</td><td>Dimension of the Poly-Float to use. </td></tr>
+    <tr><td class="paramname">Ts</td><td>Types used to compute the Poly-Float underlying type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gabb544245c689b7e0ea2f9f6e8feb8594" name="gabb544245c689b7e0ea2f9f6e8feb8594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb544245c689b7e0ea2f9f6e8feb8594">&#9670;&#160;</a></span>as_polyfloat_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Ts&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#gabb544245c689b7e0ea2f9f6e8feb8594">plf::as_polyfloat_t</a> = typename as_polyfloat&lt;Ts...&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;polyfloat/types/traits.hpp&gt;</code></p>
+
+<p>Computes the best fitting Poly-Float type from a series of types. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Ts</td><td>Types used to compute the Poly-Float underlying type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="ga846021636ff96cc73a58d2f664e7ce1f" name="ga846021636ff96cc73a58d2f664e7ce1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga846021636ff96cc73a58d2f664e7ce1f">&#9670;&#160;</a></span>dimension_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int plf::dimension_v = *implementation - defined*</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;polyfloat/types/traits.hpp&gt;</code></p>
+
+<p>Obtains the dimension of a type, the number of its parts. </p>
+<p>If <span class="tt">T</span> satisfies <a class="el" href="conceptplf_1_1concepts_1_1polyfloat.html" title="A polyfloat_like of dimension 2 or more, which excludes the reals.">plf::concepts::polyfloat</a>, evaluates to the number of parts of a poly-float. If <span class="tt">T</span> is another product type, evaluates to the largest dimension of its elements.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to analyze. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- HTML footer for doxygen 1.8.20-->
