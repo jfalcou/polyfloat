@@ -154,13 +154,14 @@ $(function(){initNavTree('group__core_ga315ab6ec01496d96b325d266be09767f.html','
 
 <p>returns a logical true if and only if the element value is not a denormal value </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overloads</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(floating_value <span class="keyword">auto</span> x)                 <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> x)                 <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
+<div class="ttc" id="aconcepteve_1_1floating__value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a></div></div>
 <div class="ttc" id="agroup__core_ga315ab6ec01496d96b325d266be09767f_html_ga315ab6ec01496d96b325d266be09767f"><div class="ttname"><a href="#ga315ab6ec01496d96b325d266be09767f">plf::is_not_denormal</a></div><div class="ttdeci">constexpr auto is_not_denormal</div><div class="ttdoc">returns a logical true if and only if the element value is not a denormal value</div><div class="ttdef"><b>Definition</b> is_not_denormal.hpp:64</div></div>
 <div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
@@ -170,8 +171,51 @@ $(function(){initNavTree('group__core_ga315ab6ec01496d96b325d266be09767f.html','
 <p><b>Return value</b></p>
 <p>returns true if and only if x is not a denormal number</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/is_not_denormal.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// The smallest denormal is tested beside normal values.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">plf::is_not_denormal</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
+<div class="line">  <span class="keyword">auto</span> dn = <a class="code hl_variable" href="group__constants_ga0a3e5881bfb4a0de7977621996c339a9.html#ga0a3e5881bfb4a0de7977621996c339a9">plf::mindenormal</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d2_t&gt;</a>());</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;dn  &quot;</span> &lt;&lt; dn &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> z = plf::zero(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d2_t&gt;</a>());</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;z  &quot;</span> &lt;&lt; z &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(dn) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(dn) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(z) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(z) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_not_denormal(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga315ab6ec01496d96b325d266be09767f">is_not_denormal</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__constants_ga0a3e5881bfb4a0de7977621996c339a9_html_ga0a3e5881bfb4a0de7977621996c339a9"><div class="ttname"><a href="group__constants_ga0a3e5881bfb4a0de7977621996c339a9.html#ga0a3e5881bfb4a0de7977621996c339a9">plf::mindenormal</a></div><div class="ttdeci">constexpr auto mindenormal</div><div class="ttdoc">the smallest positive denormal of the base type in the high part, the other parts zero,...</div><div class="ttdef"><b>Definition</b> wrapped.hpp:560</div></div>
+<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

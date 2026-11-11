@@ -154,28 +154,31 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 
 <p>Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/functions.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespaceRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overloads</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>(floating_value <span class="keyword">auto</span> x, value <span class="keyword">auto</span> ...ci)                      <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>(floating_value <span class="keyword">auto</span> x, eve::coefficients <span class="keyword">auto</span> tci)            <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> x, <a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> <span class="keyword">auto</span> ...ci)                      <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> x, eve::non_empty_product_type <span class="keyword">auto</span> tci)            <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line"> </div>
 <div class="line">   <span class="comment">// Lanes masking</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[conditional_expr <span class="keyword">auto</span> c](<span class="comment">/*any of the above overloads*/</span>)       <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[logical_value <span class="keyword">auto</span> m](<span class="comment">/*any of the above overloads*/</span>)          <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1conditional__expr.html">eve::conditional_expr</a> <span class="keyword">auto</span> c](<span class="comment">/*any of the above overloads*/</span>)       <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1logical__value.html">eve::logical_value</a> <span class="keyword">auto</span> m](<span class="comment">/*any of the above overloads*/</span>)          <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
 <div class="line"> </div>
 <div class="line">   <span class="comment">// Semantic options</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[pedantic](<span class="comment">/*any of the above overloads*/</span>)                     <span class="keyword">noexcept</span>; <span class="comment">// 4</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">horner</a>[kahan](<span class="comment">/*any of the above overloads*/</span>)                        <span class="keyword">noexcept</span>; <span class="comment">// 5</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aconcepteve_1_1conditional__expr_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1conditional__expr.html">eve::conditional_expr</a></div></div>
+<div class="ttc" id="aconcepteve_1_1floating__value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a></div></div>
+<div class="ttc" id="aconcepteve_1_1logical__value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1logical__value.html">eve::logical_value</a></div></div>
+<div class="ttc" id="aconcepteve_1_1value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a></div></div>
 <div class="ttc" id="agroup__functions_gae998e94f32f326d4c67342e2ceb35982_html_gae998e94f32f326d4c67342e2ceb35982"><div class="ttname"><a href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a></div><div class="ttdeci">constexpr auto horner</div><div class="ttdoc">Implement the horner scheme to evaluate polynomials with coefficients in decreasing power order.</div><div class="ttdef"><b>Definition</b> horner.hpp:120</div></div>
-<div class="ttc" id="anamespaceeve_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html" title="eve::floating_value">evaluation point floating value</a> arguments.</li>
@@ -238,9 +241,9 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(xd, wv)                           = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(xd, eve::coefficients(wv)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(1.0f, eve::coefficients(t))       = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(1.0f, eve::coefficients(t)) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a> dx(1.0f, 1.0e-30f);</div>
-<div class="line">  <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a> tx(1.0f, 1.0e-30f);</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a> dx(1.0f, 1.0e-30f);</div>
+<div class="line">  <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a> tx(1.0f, 1.0e-30f);</div>
 <div class="line">  d2_t xs(2.0, 1.0e-30, 1.0e-54);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;---- scalar&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;&lt;- xs                          = &quot;</span> &lt;&lt; xs &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
@@ -256,8 +259,8 @@ $(function(){initNavTree('group__functions_gae998e94f32f326d4c67342e2ceb35982.ht
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;-&gt; horner(tx, 1.0f, 2.0f, 3.0f)           = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gae998e94f32f326d4c67342e2ceb35982">plf::horner</a>(tx, 1.0f, 2.0f, 3.0f) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --> 
 </div>

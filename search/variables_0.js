@@ -11,7 +11,7 @@ var searchData=
   ['add_11',['add',['../group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6',1,'plf::add']]],
   ['agd_12',['agd',['../group__math_ga825911adaa3fc328ca8780ab04b7a44b.html#ga825911adaa3fc328ca8780ab04b7a44b',1,'plf::agd']]],
   ['agm_13',['agm',['../group__core_gaaf79a031e1bb735e16389b0a19a2f3d7.html#gaaf79a031e1bb735e16389b0a19a2f3d7',1,'plf::agm']]],
-  ['allbits_19',['allbits',['../group__core.html#gabbd6cfcd83668ca5f081bcc515d75a59',1,'plf::allbits']]],
+  ['allbits_19',['allbits',['../group__constants_gabbd6cfcd83668ca5f081bcc515d75a59.html#gabbd6cfcd83668ca5f081bcc515d75a59',1,'plf::allbits']]],
   ['arg_26',['arg',['../group__math_ga071efd467f1094e602acecb0896fd63c.html#ga071efd467f1094e602acecb0896fd63c',1,'plf::arg']]],
   ['asec_30',['asec',['../group__math_ga9d81960283c44e7fcc54624ae6985c0b.html#ga9d81960283c44e7fcc54624ae6985c0b',1,'plf::asec']]],
   ['asech_31',['asech',['../group__math_ga99313b04dd90c0e4b99898bd9adff2d7.html#ga99313b04dd90c0e4b99898bd9adff2d7',1,'plf::asech']]],

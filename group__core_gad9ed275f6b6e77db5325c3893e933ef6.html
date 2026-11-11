@@ -152,19 +152,19 @@ $(function(){initNavTree('group__core_gad9ed275f6b6e77db5325c3893e933ef6.html','
 </table>
 </div><div class="memdoc">
 
-<p>convert a pack of values into a tuple of the cumulative application of a two parameter eve fonction defining an abelian monoid. </p>
+<p>convert a pack of values into a tuple of the cumulative application of an associative function of two parameters with an identity. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overloads</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gad9ed275f6b6e77db5325c3893e933ef6">cumfun</a>(<span class="keyword">auto</span> f, <a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> <span class="keyword">auto</span> ... xs)     <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gad9ed275f6b6e77db5325c3893e933ef6">cumfun</a>(<span class="keyword">auto</span> f, non_empty_product_type tup) <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gad9ed275f6b6e77db5325c3893e933ef6">cumfun</a>(<span class="keyword">auto</span> f, eve::non_empty_product_type <span class="keyword">auto</span> tup) <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="ttc" id="aconcepteve_1_1value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a></div></div>
-<div class="ttc" id="agroup__core_gad9ed275f6b6e77db5325c3893e933ef6_html_gad9ed275f6b6e77db5325c3893e933ef6"><div class="ttname"><a href="#gad9ed275f6b6e77db5325c3893e933ef6">plf::cumfun</a></div><div class="ttdeci">constexpr auto cumfun</div><div class="ttdoc">convert a pack of values into a tuple of the cumulative application of a two parameter eve fonction d...</div><div class="ttdef"><b>Definition</b> cumfun.hpp:88</div></div>
+<div class="ttc" id="agroup__core_gad9ed275f6b6e77db5325c3893e933ef6_html_gad9ed275f6b6e77db5325c3893e933ef6"><div class="ttname"><a href="#gad9ed275f6b6e77db5325c3893e933ef6">plf::cumfun</a></div><div class="ttdeci">constexpr auto cumfun</div><div class="ttdoc">convert a pack of values into a tuple of the cumulative application of an associative function of two...</div><div class="ttdef"><b>Definition</b> cumfun.hpp:86</div></div>
 <div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -177,7 +177,7 @@ $(function(){initNavTree('group__core_gad9ed275f6b6e77db5325c3893e933ef6.html','
 <li>return a kumi tuple of the values of the cumulated values of all <span class="tt">xs</span> converted to the element type of the common value of the <span class="tt">xs</span> using f.</li>
 <li>same as 1., using the tuple elements.</li>
 </ol>
-<dl class="section note"><dt>Note</dt><dd>currently cumfun can only be applied with <span class="tt">f</span> being one of these POLYFLOAT functors : <span class="tt"><a class="el" href="group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6" title="return the sum of the parameters.">add</a></span>, <span class="tt"><a class="el" href="group__core_ga856a221cd309873711b978ce55df4635.html#ga856a221cd309873711b978ce55df4635" title="return the product of the values.">mul</a></span>, <span class="tt"><a class="el" href="group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html#gaf2ecab0082e8fa1007d5ea49c9fa1a87" title="return the minimum value.">min</a></span>, <span class="tt"><a class="el" href="group__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1" title="return the maximum value.">max</a></span> that define abelian monoids and each possess a well defined neutral element.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>currently cumfun can only be applied with <span class="tt">f</span> being one of these <b>POLYFLOAT</b> functors : <span class="tt"><a class="el" href="group__core_ga4d1ed930ff0fa7d990dddb01882515e6.html#ga4d1ed930ff0fa7d990dddb01882515e6" title="return the sum of the parameters.">add</a></span>, <span class="tt"><a class="el" href="group__core_ga856a221cd309873711b978ce55df4635.html#ga856a221cd309873711b978ce55df4635" title="return the product of the values.">mul</a></span>, <span class="tt"><a class="el" href="group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html#gaf2ecab0082e8fa1007d5ea49c9fa1a87" title="return the minimum value.">min</a></span>, <span class="tt"><a class="el" href="group__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1" title="return the maximum value.">max</a></span> that define abelian monoids and each possess a well defined neutral element.</dd></dl>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
@@ -191,9 +191,9 @@ $(function(){initNavTree('group__core_gad9ed275f6b6e77db5325c3893e933ef6.html','
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gad9ed275f6b6e77db5325c3893e933ef6">plf::cumfun</a>;</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1">plf::max</a>;</div>
 <div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
-<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
-<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
-<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
 <div class="line">  std::setprecision(15);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
@@ -226,7 +226,7 @@ $(function(){initNavTree('group__core_gad9ed275f6b6e77db5325c3893e933ef6.html','
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1_html_ga1d6b7e84a59f51f3fdeab89704ce3bb1"><div class="ttname"><a href="group__core_ga1d6b7e84a59f51f3fdeab89704ce3bb1.html#ga1d6b7e84a59f51f3fdeab89704ce3bb1">plf::max</a></div><div class="ttdeci">constexpr auto max</div><div class="ttdoc">return the maximum value.</div><div class="ttdef"><b>Definition</b> max.hpp:66</div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

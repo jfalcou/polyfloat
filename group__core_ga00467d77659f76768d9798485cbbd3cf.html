@@ -154,14 +154,14 @@ $(function(){initNavTree('group__core_ga00467d77659f76768d9798485cbbd3cf.html','
 
 <p>returns <span class="tt">a*b+c*d</span>. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">  <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">sum_of_prod</a>(<span class="keyword">auto</span> a,  <span class="keyword">auto</span>,  <span class="keyword">auto</span> c,  <span class="keyword">auto</span> d) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga00467d77659f76768d9798485cbbd3cf_html_ga00467d77659f76768d9798485cbbd3cf"><div class="ttname"><a href="#ga00467d77659f76768d9798485cbbd3cf">plf::sum_of_prod</a></div><div class="ttdeci">constexpr auto sum_of_prod</div><div class="ttdoc">returns a*b+c*d.</div><div class="ttdef"><b>Definition</b> sum_of_prod.hpp:72</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="agroup__core_ga00467d77659f76768d9798485cbbd3cf_html_ga00467d77659f76768d9798485cbbd3cf"><div class="ttname"><a href="#ga00467d77659f76768d9798485cbbd3cf">plf::sum_of_prod</a></div><div class="ttdeci">constexpr auto sum_of_prod</div><div class="ttdoc">returns a*b+c*d.</div><div class="ttdef"><b>Definition</b> sum_of_prod.hpp:73</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">a</span>, <span class="tt">b</span>, <span class="tt">c</span>, <span class="tt">d</span>: Values to process.</li>
@@ -169,8 +169,39 @@ $(function(){initNavTree('group__core_ga00467d77659f76768d9798485cbbd3cf.html','
 <p><b>Return value</b></p>
 <p>Returns a*b+c*d.</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/sum_of_prod.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// The four arguments mix the dimensions 1, 2, and 3.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">plf::sum_of_prod</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sum_of_prod(f, f, f, f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">sum_of_prod</a>(f, f, f, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sum_of_prod(a, b, c, f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">sum_of_prod</a>(a, b, c, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sum_of_prod(c, b, a, -f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">sum_of_prod</a>(c, b, a, -f) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sum_of_prod(wb, wc, wb, wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga00467d77659f76768d9798485cbbd3cf">sum_of_prod</a>(wb, wc, wb, wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

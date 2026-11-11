@@ -136,38 +136,36 @@ $(function(){initNavTree('building.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2____w_2polyfloat_2polyfloat_2doc_2building"></a></p>
-<p>This page is for working on <b>POLYFLOAT</b> itself. Consuming it from another project needs none of this and is covered in <a class="el" href="setup.html" title="Installation &amp; Quick Start">Installation &amp; Quick Start</a>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+<p>The tests and the documentation of <b>POLYFLOAT</b> are built from a clone of its repository. A project that uses the library builds neither, and installs it as in <a class="el" href="setup.html" title="Installation">Installation</a>.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 CMake setup</h1>
-<p>Use a preset. <span class="tt">CMakePresets.json</span> carries the configurations the CI judges a pull request on, so a preset reproduces one of them exactly rather than approximating it:</p>
+<p><span class="tt">CMakePresets.json</span> holds the configurations of the CI, and a preset reproduces one of them:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Preset  </th><th class="markdownTableHeadNone">Configuration  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">gcc</span>, <span class="tt">clang</span>  </td><td class="markdownTableBodyNone">the compiler, everything else left alone  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">gcc</span>, <span class="tt">clang</span>  </td><td class="markdownTableBodyNone">the compiler, every other setting at its default  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">gcc-avx2</span>, <span class="tt">clang-avx2</span>  </td><td class="markdownTableBodyNone">the same with AVX2 enabled  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">gcc-no-pch</span>  </td><td class="markdownTableBodyNone">without the precompiled header, which is what catches a missing include  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">gcc-no-pch</span>  </td><td class="markdownTableBodyNone">without the precompiled header, which detects a missing include  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">gcc-sanitize</span>, <span class="tt">clang-sanitize</span>  </td><td class="markdownTableBodyNone">AddressSanitizer and UndefinedBehaviorSanitizer  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">gcc-coverage</span>, <span class="tt">clang-coverage</span>  </td><td class="markdownTableBodyNone">coverage instrumentation  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">gcc-bench</span>, <span class="tt">clang-bench</span>  </td><td class="markdownTableBodyNone">the benchmarks rather than the tests  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">clang-compile-cost</span>  </td><td class="markdownTableBodyNone">the compilation time and memory of every test unit  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">gcc-demos</span>, <span class="tt">clang-demos</span>  </td><td class="markdownTableBodyNone">the interactive demos  </td></tr>
-<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">clang-macos</span>, <span class="tt">clang-macos-libc++</span>  </td><td class="markdownTableBodyNone">macOS, against libstdc++ and libc++  </td></tr>
 </table>
 <div class="fragment"><div class="line">cmake --preset=gcc</div>
-</div><!-- fragment --><p>Each also settles the generator, a build directory named after itself, and <span class="tt">Debug</span> as the configuration built by default. The compilers they name are the ones in the CI image, which is published as a Docker image and described on <a href="https://jfalcou.github.io/eve/dev_environment.html">EVE's development environment page</a>.</p>
-<p>Without one, the equivalent by hand is:</p>
+</div><!-- fragment --><p>Each preset also sets the generator, a build directory named after the preset, and <span class="tt">Debug</span> as the default configuration. The compilers it names are those of the CI image, a Docker image described on <a href="https://jfalcou.github.io/eve/dev_environment.html">EVE's development environment page</a>.</p>
+<p>The equivalent configuration without a preset is:</p>
 <div class="fragment"><div class="line">cmake -S . -B build -G Ninja \</div>
 <div class="line">      -DCMAKE_CXX_COMPILER=g++ \</div>
 <div class="line">      -DCMAKE_CXX_FLAGS=&quot;-O0 -DEVE_NO_FORCEINLINE&quot;</div>
-</div><!-- fragment --><p><span class="tt">EVE_NO_FORCEINLINE</span> is the flag worth knowing about there. It takes the forced inlining off EVE's functions, which the tests do not need and which otherwise dominates their compilation time. <span class="tt">clang++</span> works in place of <span class="tt">g++</span>, and any version meeting the requirements in <a class="el" href="setup.html" title="Installation &amp; Quick Start">Installation &amp; Quick Start</a>.</p>
-<p>Six options steer what gets declared, and the presets set them for you:</p>
+</div><!-- fragment --><p><span class="tt">EVE_NO_FORCEINLINE</span> removes the forced inlining of the functions of EVE, which the tests do not need and which dominates their compilation time otherwise. <span class="tt">clang++</span> replaces <span class="tt">g++</span>, in any version that meets the requirements of <a class="el" href="setup.html" title="Installation">Installation</a>.</p>
+<p>Six options select the targets, and the presets set them:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Option  </th><th class="markdownTableHeadNone">Default  </th><th class="markdownTableHeadNone">Effect  </th></tr>
@@ -182,48 +180,48 @@ CMake setup</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_ENABLE_COVERAGE</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">coverage instrumentation  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_BUILD_DEMOS</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">build the interactive demos  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_COMPILE_COST</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">measure the compilation of every test unit  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 Compiling the tests</h1>
-<p>The tests are named targets rather than part of <span class="tt">all</span>, so <span class="tt">--target all</span> builds nothing. The whole suite is <span class="tt">polyfloat-test</span>, and below it every directory of <span class="tt">test/</span> has a target of its own, named after its path with the separators turned into dots:</p>
+<p>The tests are named targets outside of <span class="tt">all</span>, so <span class="tt">--target all</span> builds nothing. The whole suite is <span class="tt">polyfloat-test</span>, and every directory of <span class="tt">test/</span> has a target of its own, named after its path with the separators replaced by dots:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Target  </th><th class="markdownTableHeadNone">Content  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">polyfloat-test</span>  </td><td class="markdownTableBodyNone">everything below, 493 tests  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">polyfloat-test</span>  </td><td class="markdownTableBodyNone">every test  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">unit.exe</span>  </td><td class="markdownTableBodyNone">all unit tests  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">unit.core.exe</span>  </td><td class="markdownTableBodyNone">core aritmetic unit tests  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">unit.api.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the types, the traits, and the operators  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">unit.math.exe</span>  </td><td class="markdownTableBodyNone">elementary math unit tests  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">unit.core.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the core functions  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">unit.infra.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the infrastructure itself  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">unit.math.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the elementary functions  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">doc.exe</span>  </td><td class="markdownTableBodyNone">every example that appears in the documentation  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">doc.exe</span>  </td><td class="markdownTableBodyNone">every example of the documentation  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">doc.core.exe</span>  </td><td class="markdownTableBodyNone">the examples for core  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">doc.core.exe</span>  </td><td class="markdownTableBodyNone">the examples of the core functions and of the tutorials  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">doc.math.exe</span>  </td><td class="markdownTableBodyNone">the examples for math  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">doc.math.exe</span>  </td><td class="markdownTableBodyNone">the examples of the elementary functions  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">doc.&lt;module&gt;.&lt;function&gt;.exe</span>  </td><td class="markdownTableBodyNone">the examples of one function in one module, <span class="tt">doc.core.sqrt.exe</span> and so on  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">doc.&lt;module&gt;.&lt;function&gt;.exe</span>  </td><td class="markdownTableBodyNone">the example of one function, <span class="tt">doc.core.sqrt.exe</span> and so on  </td></tr>
 </table>
-<p>For example, the unit test of <span class="tt">polyfloat::acos</span> over polyfloat numbers is one file, and it compiles on its own:</p>
+<p>The unit test of <a class="el" href="group__math_ga16bd93f50121516a6f2321aec146b4c1.html#ga16bd93f50121516a6f2321aec146b4c1" title="return the arc cosine value.">plf::acos</a> is one file, compiled by its own target:</p>
 <div class="fragment"><div class="line">ninja -C build unit.math.acos.exe</div>
-</div><!-- fragment --><p><span class="tt">unit.exe</span> and <span class="tt">polyfloat-test</span> are very large and want a comfortable number of cores. Working on a single function is almost always a matter of building its own target rather than either of them.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+</div><!-- fragment --><p><span class="tt">unit.exe</span> and <span class="tt">polyfloat-test</span> compile hundreds of units, while the target of one function compiles one.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 Running the tests</h1>
-<p>The executables land in <span class="tt">build/unit</span>, and each can be run directly:</p>
+<p>The executables are written to <span class="tt">build/unit</span>, and each one runs on its own:</p>
 <div class="fragment"><div class="line">./build/unit/unit.math.acos.exe</div>
-</div><!-- fragment --><p><span class="tt">ctest</span> runs them all, and takes the same preset as the build:</p>
+</div><!-- fragment --><p><span class="tt">ctest</span> runs them all, with the build directory or with the preset of the build:</p>
 <div class="fragment"><div class="line">ctest --test-dir build</div>
 <div class="line">ctest --preset=gcc</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 Building the documentation</h1>
 <div class="fragment"><div class="line">cmake -S . -B build -G Ninja -DPOLYFLOAT_BUILD_TEST=OFF -DPOLYFLOAT_BUILD_DOCUMENTATION=ON</div>
 <div class="line">cmake --build build --target polyfloat-doxygen</div>
-</div><!-- fragment --><p>The pages land in <span class="tt">build/doc</span>. EVE's tagfile is downloaded while configuring, which is what makes the <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a>::</span> references resolve; with no network they degrade to plain text and a warning says so. </p>
+</div><!-- fragment --><p>The pages are written to <span class="tt">build/doc</span>. The configuration downloads the tag file of EVE, through which the <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a>::</span> references resolve. Without network access, they render as plain text, and a warning reports it. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

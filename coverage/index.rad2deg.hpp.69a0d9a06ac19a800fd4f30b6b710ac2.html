@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2026-11-10 17:12:17</td>
+      <td>2026-11-11 17:02:40</td>
     </tr>
   </table>
 </div>
@@ -474,7 +474,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   @brief return the rad2deg value.</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   @brief return \f$180/\pi\f$, the number of degrees in a radian.</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l54" href="#l54">54</a></td>
@@ -509,7 +509,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   #include &lt;polyfloat/core.hpp&gt;</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   #include &lt;polyfloat/polyfloat.hpp&gt;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l59" href="#l59">59</a></td>
@@ -551,7 +551,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   namespace polyfloat</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   namespace plf</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l65" href="#l65">65</a></td>
@@ -565,7 +565,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!      template&lt;polyfloat::concepts::polyfloat_like T&gt; constexpr auto rad2deg(T z) noexcept;</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!      template&lt;concepts::polyfloat_like T&gt; constexpr auto rad2deg(eve::as&lt;T&gt; z) noexcept;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l67" href="#l67">67</a></td>
@@ -607,7 +607,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!     * `z`: Value to process.</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l73" href="#l73">73</a></td>
@@ -663,7 +663,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!  @godbolt_todo{doc/rad2deg.cpp}</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!  @godbolt{doc/math/rad2deg.cpp}</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l81" href="#l81">81</a></td>

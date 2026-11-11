@@ -24,16 +24,22 @@
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"Tutorials",url:"setup.html",children:[
-{text:"Installation & Quick Start",url:"setup.html"},
-{text:"Getting Started",url:"tutorial-basics.html",children:[
-{text:"polyfloat Numbers",url:"tutorial-basics.html"},
-{text:"Many Values At Once",url:"tutorial-simd.html"}]}]},
+{text:"Getting Started",url:"setup.html",children:[
+{text:"Installation",url:"setup.html"},
+{text:"Polyfloat numbers",url:"tutorial-basics.html"},
+{text:"SIMD support",url:"tutorial-simd.html"}]},
 {text:"Reference Documentation",url:"group__types.html",children:[
 {text:"Types",url:"group__types.html"},
-{text:"Core Functions",url:"group__core.html"},
-{text:"Math Functions",url:"group__math.html"},
+{text:"Core functions",url:"group__core.html"},
+{text:"Elementary functions",url:"group__math.html"},
+{text:"Constants",url:"group__constants.html"},
+{text:"Error-free transformations",url:"group__core__accuracy.html"},
+{text:"Polynomial evaluation",url:"group__functions.html"},
 {text:"Traits",url:"group__traits.html"},
 {text:"Concept List",url:"concepts.html"}]},
-{text:"Informations",url:"licence.html",children:[
+{text:"Informations",url:"implementation_precisions.html",children:[
+{text:"Precision",url:"implementation_precisions.html"},
+{text:"Bibliography",url:"biblio.html"},
+{text:"Building for Testing",url:"building.html"},
+{text:"Changelog",url:"changelog.html"},
 {text:"Licence",url:"licence.html"}]}]}

@@ -154,14 +154,14 @@ $(function(){initNavTree('group__math_ga0ec9ae5e0635c4e001edd52b8688c190.html','
 
 <p>return the cosecant value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga0ec9ae5e0635c4e001edd52b8688c190">csc</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga0ec9ae5e0635c4e001edd52b8688c190">csc</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__math_ga0ec9ae5e0635c4e001edd52b8688c190_html_ga0ec9ae5e0635c4e001edd52b8688c190"><div class="ttname"><a href="#ga0ec9ae5e0635c4e001edd52b8688c190">plf::csc</a></div><div class="ttdeci">constexpr auto csc</div><div class="ttdoc">return the cosecant value.</div><div class="ttdef"><b>Definition</b> csc.hpp:74</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span>: Value to process.</li>
@@ -183,11 +183,11 @@ $(function(){initNavTree('group__math_ga0ec9ae5e0635c4e001edd52b8688c190.html','
 <div class="line">{</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga0ec9ae5e0635c4e001edd52b8688c190">plf::csc</a>;</div>
 <div class="line">  <span class="keyword">using </span>d1_t = double;</div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>f1_t = float;</div>
-<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  f1_t xf(0.5f);</div>
 <div class="line">  d1_t xd(0.5);</div>
@@ -262,13 +262,14 @@ $(function(){initNavTree('group__math_ga0ec9ae5e0635c4e001edd52b8688c190.html','
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;eve::csc[eve::medium](-x) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__trig.html#ga58de56369367394561f438e248bb51d7">eve::csc</a>[eve::medium](-hx) &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;plf::csc[eve::medium](-x) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga0ec9ae5e0635c4e001edd52b8688c190">plf::csc</a>[eve::medium](-x) &lt;&lt; std::endl;</div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70_html_ga6474fff2fbfd3debcb1e6c08bc6b8e70"><div class="ttname"><a href="group__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70.html#ga6474fff2fbfd3debcb1e6c08bc6b8e70">plf::pio_3</a></div><div class="ttdeci">constexpr auto pio_3</div><div class="ttdoc">return the pio_3 value.</div><div class="ttdef"><b>Definition</b> pio_3.hpp:80</div></div>
-<div class="ttc" id="agroup__core_ga85fa850c93bf943fe9e434de3552293d_html_ga85fa850c93bf943fe9e434de3552293d"><div class="ttname"><a href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a></div><div class="ttdeci">constexpr auto hi</div><div class="ttdoc">Extracts the hi part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:72</div></div>
+<div class="ttc" id="agroup__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70_html_ga6474fff2fbfd3debcb1e6c08bc6b8e70"><div class="ttname"><a href="group__constants_ga6474fff2fbfd3debcb1e6c08bc6b8e70.html#ga6474fff2fbfd3debcb1e6c08bc6b8e70">plf::pio_3</a></div><div class="ttdeci">constexpr auto pio_3</div><div class="ttdoc">return .</div><div class="ttdef"><b>Definition</b> pio_3.hpp:80</div></div>
+<div class="ttc" id="agroup__core_ga85fa850c93bf943fe9e434de3552293d_html_ga85fa850c93bf943fe9e434de3552293d"><div class="ttname"><a href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a></div><div class="ttdeci">constexpr auto hi</div><div class="ttdoc">returns the high part of a value, its first part, the largest in magnitude when the value is normaliz...</div><div class="ttdef"><b>Definition</b> parts.hpp:72</div></div>
 <div class="ttc" id="agroup__eve__math__trig_html_ga58de56369367394561f438e248bb51d7"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__math__trig.html#ga58de56369367394561f438e248bb51d7">eve::csc</a></div><div class="ttdeci">constexpr auto csc</div></div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
 <div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

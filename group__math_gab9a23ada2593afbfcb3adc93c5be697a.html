@@ -152,22 +152,24 @@ $(function(){initNavTree('group__math_gab9a23ada2593afbfcb3adc93c5be697a.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the sigmoidonential value. </p>
+<p>return the logistic sigmoid \(1/(1 + e^{-x})\). </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line"> </div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overload</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>( <span class="keyword">auto</span> x)                              <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
 <div class="line"> </div>
 <div class="line">   <span class="comment">// Lanes masking</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>[conditional_expr <span class="keyword">auto</span> c]( <span class="keyword">auto</span> x)     <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>[logical_value <span class="keyword">auto</span> m]( <span class="keyword">auto</span> x)        <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>[<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1conditional__expr.html">eve::conditional_expr</a> <span class="keyword">auto</span> c]( <span class="keyword">auto</span> x)     <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>[<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1logical__value.html">eve::logical_value</a> <span class="keyword">auto</span> m]( <span class="keyword">auto</span> x)        <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__math_gab9a23ada2593afbfcb3adc93c5be697a_html_gab9a23ada2593afbfcb3adc93c5be697a"><div class="ttname"><a href="#gab9a23ada2593afbfcb3adc93c5be697a">plf::sigmoid</a></div><div class="ttdeci">constexpr auto sigmoid</div><div class="ttdoc">return the sigmoidonential value.</div><div class="ttdef"><b>Definition</b> sigmoid.hpp:80</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconcepteve_1_1conditional__expr_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1conditional__expr.html">eve::conditional_expr</a></div></div>
+<div class="ttc" id="aconcepteve_1_1logical__value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1logical__value.html">eve::logical_value</a></div></div>
+<div class="ttc" id="agroup__math_gab9a23ada2593afbfcb3adc93c5be697a_html_gab9a23ada2593afbfcb3adc93c5be697a"><div class="ttname"><a href="#gab9a23ada2593afbfcb3adc93c5be697a">plf::sigmoid</a></div><div class="ttdeci">constexpr auto sigmoid</div><div class="ttdoc">return the logistic sigmoid .</div><div class="ttdef"><b>Definition</b> sigmoid.hpp:80</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html" title="eve::floating_value">floating value</a>.</li>
@@ -177,7 +179,7 @@ $(function(){initNavTree('group__math_gab9a23ada2593afbfcb3adc93c5be697a.html','
 <p><b>Return value</b></p>
 <ol type="1">
 <li>Returns \(\frac{1}{1+e^{-x}}\). In particular:<ul>
-<li>If the element is \(1/2\), \(1\) is returned</li>
+<li>If the element is \(\pm0\), \(1/2\) is returned</li>
 <li>If the element is \(-\infty\), \(+0\) is returned</li>
 <li>If the element is \(\infty\), \(1\) is returned</li>
 <li>If the element is a <span class="tt">NaN</span>, <span class="tt">NaN</span> is returned</li>
@@ -205,11 +207,11 @@ $(function(){initNavTree('group__math_gab9a23ada2593afbfcb3adc93c5be697a.html','
 <div class="line">{</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">plf::sigmoid</a>;</div>
 <div class="line">  <span class="keyword">using </span>d1_t = double;</div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>f1_t = float;</div>
-<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  f1_t xf(1.5f);</div>
 <div class="line">  d1_t xd(1.5);</div>
@@ -223,8 +225,8 @@ $(function(){initNavTree('group__math_gab9a23ada2593afbfcb3adc93c5be697a.html','
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sigmoid(f2_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>(f2_t(xf)) &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sigmoid(f3_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gab9a23ada2593afbfcb3adc93c5be697a">sigmoid</a>(f3_t(xf)) &lt;&lt; std::endl;</div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

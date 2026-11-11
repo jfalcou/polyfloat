@@ -154,14 +154,14 @@ $(function(){initNavTree('group__core_gaff62e2a7284c69e0b8c388e70ad2e066.html','
 
 <p>test the parameter equal \(\infty\). </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(T z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_gaff62e2a7284c69e0b8c388e70ad2e066_html_gaff62e2a7284c69e0b8c388e70ad2e066"><div class="ttname"><a href="#gaff62e2a7284c69e0b8c388e70ad2e066">plf::is_pinf</a></div><div class="ttdeci">constexpr auto is_pinf</div><div class="ttdoc">test the parameter equal .</div><div class="ttdef"><b>Definition</b> is_pinf.hpp:63</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span>: Value to process.</li>
@@ -169,8 +169,52 @@ $(function(){initNavTree('group__core_gaff62e2a7284c69e0b8c388e70ad2e066.html','
 <p><b>Return value</b></p>
 <p>Returns the true if z value is \(\infty\).</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/is_pinf.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Both infinities are tested beside finite values.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">plf::is_pinf</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
+<div class="line">  <span class="keyword">auto</span> i = <a class="code hl_variable" href="group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7">plf::inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d2_t&gt;</a>());</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;i  &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> mi = <a class="code hl_variable" href="group__constants_ga53eeee70008790007d0da7e69ad152e5.html#ga53eeee70008790007d0da7e69ad152e5">plf::minf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d2_t&gt;</a>());</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;mi  &quot;</span> &lt;&lt; mi &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(i) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(i) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(mi) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(mi) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_pinf(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaff62e2a7284c69e0b8c388e70ad2e066">is_pinf</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__constants_ga17a6561e33fcb9f3bf0be566ca5751f7_html_ga17a6561e33fcb9f3bf0be566ca5751f7"><div class="ttname"><a href="group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7">plf::inf</a></div><div class="ttdeci">constexpr auto inf</div><div class="ttdoc">return the infinite value.</div><div class="ttdef"><b>Definition</b> inf.hpp:66</div></div>
+<div class="ttc" id="agroup__constants_ga53eeee70008790007d0da7e69ad152e5_html_ga53eeee70008790007d0da7e69ad152e5"><div class="ttname"><a href="group__constants_ga53eeee70008790007d0da7e69ad152e5.html#ga53eeee70008790007d0da7e69ad152e5">plf::minf</a></div><div class="ttdeci">constexpr auto minf</div><div class="ttdoc">return the minus infinity value.</div><div class="ttdef"><b>Definition</b> minf.hpp:66</div></div>
+<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

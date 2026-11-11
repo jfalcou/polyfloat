@@ -154,20 +154,20 @@ $(function(){initNavTree('group__math_gaec8099077dd346085e88919e08513d84.html','
 
 <p>return \(2^x\). </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; constexp2r <span class="keyword">auto</span> <a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">exp2</a>(T x) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">exp2</a>(T x) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__math_gaec8099077dd346085e88919e08513d84_html_gaec8099077dd346085e88919e08513d84"><div class="ttname"><a href="#gaec8099077dd346085e88919e08513d84">plf::exp2</a></div><div class="ttdeci">constexpr auto exp2</div><div class="ttdoc">return .</div><div class="ttdef"><b>Definition</b> exp2.hpp:63</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z</span>: Value to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns \(2^z\). If x is greater than <a class="el" href="group__constants_ga64fcae751fc85c4ea13187127deb5ab7.html#ga64fcae751fc85c4ea13187127deb5ab7" title="return the exp(1) value.">plf::maxlog2</a> the result is inf.</p>
+<p>Returns \(2^z\). If x is greater than <a class="el" href="group__constants_ga64fcae751fc85c4ea13187127deb5ab7.html#ga64fcae751fc85c4ea13187127deb5ab7" title="return the largest value whose base 2 exponential is finite.">plf::maxlog2</a> the result is inf.</p>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"><div class="line"><span class="comment">//======================================================================================================================</span></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -183,11 +183,11 @@ $(function(){initNavTree('group__math_gaec8099077dd346085e88919e08513d84.html','
 <div class="line">{</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">plf::exp2</a>;</div>
 <div class="line">  <span class="keyword">using </span>d1_t = double;</div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>f1_t = float;</div>
-<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  f1_t xf(1.5f);</div>
 <div class="line">  d1_t xd(1.5);</div>
@@ -229,15 +229,15 @@ $(function(){initNavTree('group__math_gaec8099077dd346085e88919e08513d84.html','
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;exp2(wf3_t(xf)) = &quot;</span> &lt;&lt; <a class="code hl_variableRef" href="https://jfalcou.github.io/eve/group__eve__math__exp.html#ga0a3642b91604e578b8d4ef6314d39495">exp2</a>(wf3_t(wxf)) &lt;&lt; std::endl;</div>
 <div class="line">};</div>
 <div class="ttc" id="agroup__eve__math__exp_html_ga0a3642b91604e578b8d4ef6314d39495"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__math__exp.html#ga0a3642b91604e578b8d4ef6314d39495">eve::exp2</a></div><div class="ttdeci">constexpr auto exp2</div></div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --><h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/module/math/maxlog2.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; constexp2r <span class="keyword">auto</span> <a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">exp2</a>(T x) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">exp2</a>(T x) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -260,11 +260,11 @@ $(function(){initNavTree('group__math_gaec8099077dd346085e88919e08513d84.html','
 <div class="line">{</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gaec8099077dd346085e88919e08513d84">plf::exp2</a>;</div>
 <div class="line">  <span class="keyword">using </span>d1_t = double;</div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <span class="keyword">using </span>f1_t = float;</div>
-<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  f1_t xf(1.5f);</div>
 <div class="line">  d1_t xd(1.5);</div>

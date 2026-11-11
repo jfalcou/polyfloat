@@ -138,22 +138,29 @@ $(function(){initNavTree('group__types.html','',''); });
   <div class="headertitle"><div class="title">Types </div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Floating-point expansions of dimension 2 and 3 over <span class="tt">float</span> and <span class="tt">double</span>.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:plf_3A_3Apolyfloat_3C_20Type_2C_20N_20_3E" id="r_plf_3A_3Apolyfloat_3C_20Type_2C_20N_20_3E"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="structplf_1_1polyfloat.html">plf::polyfloat&lt; Type, N &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">representing an extended precision floating point by a sequence of standards ones  <a href="structplf_1_1polyfloat.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Floating-point expansion of <span class="tt">N</span> values of type <span class="tt">Type</span>, of decreasing magnitude and without overlap.  <a href="structplf_1_1polyfloat.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gad8203f72c65a6761f03db03f8ac55c61" id="r_gad8203f72c65a6761f03db03f8ac55c61"><td class="memTemplParams" colspan="2">template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> T&gt; </td></tr>
-<tr class="memitem:gad8203f72c65a6761f03db03f8ac55c61 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;2, T&gt;</td></tr>
-<tr class="memdesc:gad8203f72c65a6761f03db03f8ac55c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for double_real numbers.  <br /></td></tr>
-<tr class="memitem:ga3150408863a87ad5a78978ea1eebf102" id="r_ga3150408863a87ad5a78978ea1eebf102"><td class="memTemplParams" colspan="2">template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> T&gt; </td></tr>
-<tr class="memitem:ga3150408863a87ad5a78978ea1eebf102 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;3, T&gt;</td></tr>
-<tr class="memdesc:ga3150408863a87ad5a78978ea1eebf102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for triple_real numbers.  <br /></td></tr>
+<tr class="memitem:gad8203f72c65a6761f03db03f8ac55c61" id="r_gad8203f72c65a6761f03db03f8ac55c61"><td class="memTemplParams" colspan="2"><a id="gad8203f72c65a6761f03db03f8ac55c61" name="gad8203f72c65a6761f03db03f8ac55c61"></a>
+template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> T&gt; </td></tr>
+<tr class="memitem:gad8203f72c65a6761f03db03f8ac55c61 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><b>plf::double_real_t</b> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;2, T&gt;</td></tr>
+<tr class="memdesc:gad8203f72c65a6761f03db03f8ac55c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Floating-point expansion of two values of type <span class="tt">T</span>, <span class="tt"><a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;T, 2&gt;</span>, and <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;<a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;E, 2&gt;&gt;</span> when <span class="tt">T</span> is the register <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;E&gt;</span>. <br /></td></tr>
+<tr class="memitem:ga3150408863a87ad5a78978ea1eebf102" id="r_ga3150408863a87ad5a78978ea1eebf102"><td class="memTemplParams" colspan="2"><a id="ga3150408863a87ad5a78978ea1eebf102" name="ga3150408863a87ad5a78978ea1eebf102"></a>
+template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> T&gt; </td></tr>
+<tr class="memitem:ga3150408863a87ad5a78978ea1eebf102 template"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><b>plf::triple_real_t</b> = <a class="el" href="group__traits_gaa65fa3ada94ae1d661001889062623b4.html#gaa65fa3ada94ae1d661001889062623b4">as_polyfloat_n_t</a>&lt;3, T&gt;</td></tr>
+<tr class="memdesc:ga3150408863a87ad5a78978ea1eebf102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Floating-point expansion of three values of type <span class="tt">T</span>, <span class="tt"><a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;T, 3&gt;</span>, and <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;<a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;E, 3&gt;&gt;</span> when <span class="tt">T</span> is the register <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;E&gt;</span>. <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Floating-point expansions of dimension 2 and 3 over <span class="tt">float</span> and <span class="tt">double</span>. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- HTML footer for doxygen 1.8.20-->

@@ -139,14 +139,14 @@ $(function(){initNavTree('structplf_1_1polyfloat.html','','structplf_1_1polyfloa
 </div><!--header-->
 <div class="contents">
 
-<p>representing an extended precision floating point by a sequence of standards ones  
+<p>Floating-point expansion of <span class="tt">N</span> values of type <span class="tt">Type</span>, of decreasing magnitude and without overlap.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;polyfloat/types/polyfloat.hpp&gt;</code></p>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__scalar__value.html">eve::floating_scalar_value</a> Type, unsigned int N&gt;<br />
 requires (N &gt; 1 &amp;&amp; N &lt;= polyfloat_implementation_defined)<br />
-class plf::polyfloat&lt; Type, N &gt;</div><p>representing an extended precision floating point by a sequence of standards ones </p>
+class plf::polyfloat&lt; Type, N &gt;</div><p>Floating-point expansion of <span class="tt">N</span> values of type <span class="tt">Type</span>, of decreasing magnitude and without overlap. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -169,30 +169,30 @@ requires (T::static_dimension &lt; N)</td></tr>
 <tr class="memdesc:a4f0c0eccaaaa165c4d7e889912fe4214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign a smaller Poly-Float to another. <br /></td></tr>
 <tr class="memitem:a5c166e3458fabf448a2b10c43725a3bb" id="r_a5c166e3458fabf448a2b10c43725a3bb"><td class="memItemLeft"><a id="a5c166e3458fabf448a2b10c43725a3bb" name="a5c166e3458fabf448a2b10c43725a3bb"></a>
 constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> () noexcept</td></tr>
-<tr class="memdesc:a5c166e3458fabf448a2b10c43725a3bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Poly-Float constructor. <br /></td></tr>
+<tr class="memdesc:a5c166e3458fabf448a2b10c43725a3bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs zero, every part zero. <br /></td></tr>
 <tr class="memitem:aeb2f8de40a9c426bbf0b1427b6223821" id="r_aeb2f8de40a9c426bbf0b1427b6223821"><td class="memItemLeft"><a id="aeb2f8de40a9c426bbf0b1427b6223821" name="aeb2f8de40a9c426bbf0b1427b6223821"></a>
 constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (eve::sized_product_type&lt; N &gt; auto const &amp;vs)</td></tr>
-<tr class="memdesc:aeb2f8de40a9c426bbf0b1427b6223821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Poly-Float instance from a properly sized product_type supposed normalized. <br /></td></tr>
+<tr class="memdesc:aeb2f8de40a9c426bbf0b1427b6223821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a product type of <span class="tt">N</span> parts, taken as they are, without normalization. <br /></td></tr>
 <tr class="memitem:a1d09ab160ac18d2406ef85f99c06febf" id="r_a1d09ab160ac18d2406ef85f99c06febf"><td class="memTemplParams" colspan="2"><a id="a1d09ab160ac18d2406ef85f99c06febf" name="a1d09ab160ac18d2406ef85f99c06febf"></a>
 template&lt;unsigned int M&gt; <br />
 requires (N &gt; 1)</td></tr>
 <tr class="memitem:a1d09ab160ac18d2406ef85f99c06febf template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (polyfloat&lt; Type, M &gt; const &amp;a) noexcept</td></tr>
-<tr class="memdesc:a1d09ab160ac18d2406ef85f99c06febf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Poly-Float instance from an Poly-Float of smaller dimension. <br /></td></tr>
+<tr class="memdesc:a1d09ab160ac18d2406ef85f99c06febf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a polyfloat of the same base type and of dimension 2 to <span class="tt">N</span>, the missing parts zero. <br /></td></tr>
 <tr class="memitem:a6b08a160d470da14cb201f61404b0a9b" id="r_a6b08a160d470da14cb201f61404b0a9b"><td class="memTemplParams" colspan="2"><a id="a6b08a160d470da14cb201f61404b0a9b" name="a6b08a160d470da14cb201f61404b0a9b"></a>
 template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__scalar__value.html">eve::floating_scalar_value</a> T&gt; </td></tr>
 <tr class="memitem:a6b08a160d470da14cb201f61404b0a9b template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (T v) noexcept</td></tr>
-<tr class="memdesc:a6b08a160d470da14cb201f61404b0a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Poly-Float from a real value of another type. <br /></td></tr>
+<tr class="memdesc:a6b08a160d470da14cb201f61404b0a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a real of another floating-point type, split over the parts when it is wider. <br /></td></tr>
 <tr class="memitem:a93d98a333193dec59b5a3aaffa6dc4f6" id="r_a93d98a333193dec59b5a3aaffa6dc4f6"><td class="memTemplParams" colspan="2"><a id="a93d98a333193dec59b5a3aaffa6dc4f6" name="a93d98a333193dec59b5a3aaffa6dc4f6"></a>
 template&lt;std::convertible_to&lt; Type &gt; T0, std::convertible_to&lt; Type &gt; T1&gt; </td></tr>
 <tr class="memitem:a93d98a333193dec59b5a3aaffa6dc4f6 template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0 v0, T1 v1) noexcept</td></tr>
-<tr class="memdesc:a93d98a333193dec59b5a3aaffa6dc4f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Poly-Float instance from a pair of real values. <br /></td></tr>
+<tr class="memdesc:a93d98a333193dec59b5a3aaffa6dc4f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from two reals converted to the base type, as their exact sum by 2Sum, the rest zero. <br /></td></tr>
 <tr class="memitem:af550d771b0aae725115d9d62841b41f1" id="r_af550d771b0aae725115d9d62841b41f1"><td class="memTemplParams" colspan="2"><a id="af550d771b0aae725115d9d62841b41f1" name="af550d771b0aae725115d9d62841b41f1"></a>
 template&lt;std::convertible_to&lt; Type &gt; T0, std::convertible_to&lt; Type &gt; T1, std::convertible_to&lt; Type &gt; T2&gt; </td></tr>
 <tr class="memitem:af550d771b0aae725115d9d62841b41f1 template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0 v0, T1 v1, T2 v2) noexcept</td></tr>
-<tr class="memdesc:af550d771b0aae725115d9d62841b41f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Poly-Float instance from a triple of real values. <br /></td></tr>
+<tr class="memdesc:af550d771b0aae725115d9d62841b41f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value of dimension 3 from three reals, each converted to the base type, as their normalized sum. <br /></td></tr>
 <tr class="memitem:a9daf3b86eca68c8191af6022d577d99e" id="r_a9daf3b86eca68c8191af6022d577d99e"><td class="memItemLeft"><a id="a9daf3b86eca68c8191af6022d577d99e" name="a9daf3b86eca68c8191af6022d577d99e"></a>
 constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (Type v) noexcept</td></tr>
-<tr class="memdesc:a9daf3b86eca68c8191af6022d577d99e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Poly-Float from a real value of the base type. <br /></td></tr>
+<tr class="memdesc:a9daf3b86eca68c8191af6022d577d99e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a real of the base type, in the high part, the other parts zero. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-related" class="groupheader"><a id="related" name="related"></a>
 Related Symbols</h2></td></tr>
@@ -202,11 +202,11 @@ Related Symbols</h2></td></tr>
 <tr class="memitem:a17a30537c795078304e6f7510f0c4731" id="r_a17a30537c795078304e6f7510f0c4731"><td class="memTemplParams" colspan="2"><a id="a17a30537c795078304e6f7510f0c4731" name="a17a30537c795078304e6f7510f0c4731"></a>
 template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 <tr class="memitem:a17a30537c795078304e6f7510f0c4731 template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator+=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
-<tr class="memdesc:a17a30537c795078304e6f7510f0c4731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the polyflat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
+<tr class="memdesc:a17a30537c795078304e6f7510f0c4731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the polyfloat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
 <tr class="memitem:aef49920793b4da92e687b8d178be4835" id="r_aef49920793b4da92e687b8d178be4835"><td class="memTemplParams" colspan="2"><a id="aef49920793b4da92e687b8d178be4835" name="aef49920793b4da92e687b8d178be4835"></a>
 template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 <tr class="memitem:aef49920793b4da92e687b8d178be4835 template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator-=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
-<tr class="memdesc:aef49920793b4da92e687b8d178be4835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Substracts the polyfloat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
+<tr class="memdesc:aef49920793b4da92e687b8d178be4835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the polyfloat value <span class="tt">other</span> from <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
 <tr class="memitem:a58e25f46704ea034002c861386db069c" id="r_a58e25f46704ea034002c861386db069c"><td class="memTemplParams" colspan="2"><a id="a58e25f46704ea034002c861386db069c" name="a58e25f46704ea034002c861386db069c"></a>
 template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 <tr class="memitem:a58e25f46704ea034002c861386db069c template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator*=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
@@ -233,7 +233,7 @@ template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1v
 <tr class="memitem:a665bbd4d727132496baa7e4a19e00ba5" id="r_a665bbd4d727132496baa7e4a19e00ba5"><td class="memTemplParams" colspan="2"><a id="a665bbd4d727132496baa7e4a19e00ba5" name="a665bbd4d727132496baa7e4a19e00ba5"></a>
 template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> T1, <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> T2&gt; </td></tr>
 <tr class="memitem:a665bbd4d727132496baa7e4a19e00ba5 template"><td class="memItemLeft"><a class="el" href="group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594">as_polyfloat_t</a>&lt; T1, T2 &gt;&#160;</td><td class="memItemRight"><b>operator-</b> (T1 const &amp;a, T2 const &amp;b) noexcept</td></tr>
-<tr class="memdesc:a665bbd4d727132496baa7e4a19e00ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the difference of a poly float and a floating point value. <br /></td></tr>
+<tr class="memdesc:a665bbd4d727132496baa7e4a19e00ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the difference of two poly float values. <br /></td></tr>
 <tr class="memitem:ac8720871310050866ed9dbef62bc4908" id="r_ac8720871310050866ed9dbef62bc4908"><td class="memTemplParams" colspan="2"><a id="ac8720871310050866ed9dbef62bc4908" name="ac8720871310050866ed9dbef62bc4908"></a>
 template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> T1, <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> T2&gt; </td></tr>
 <tr class="memitem:ac8720871310050866ed9dbef62bc4908 template"><td class="memItemLeft"><a class="el" href="group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594">as_polyfloat_t</a>&lt; T1, T2 &gt;&#160;</td><td class="memItemRight"><b>operator*</b> (T1 const &amp;a, T2 const &amp;b) noexcept</td></tr>
@@ -252,13 +252,14 @@ template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1v
 <tr class="memitem:a99e34a798da1443432b03f9e5e6f9b6e template"><td class="memItemLeft"><a class="el" href="group__traits_gabb544245c689b7e0ea2f9f6e8feb8594.html#gabb544245c689b7e0ea2f9f6e8feb8594">as_polyfloat_t</a>&lt; T1, T2 &gt;&#160;</td><td class="memItemRight"><b>operator/</b> (T1 const &amp;a, T2 const &amp;b) noexcept</td></tr>
 <tr class="memdesc:a99e34a798da1443432b03f9e5e6f9b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ratio of two poly float values. <br /></td></tr>
 <tr id="related-5" class="groupHeader"><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
-<tr class="memitem:a5bc8d3714e201b591e64a8901fdeb667" id="r_a5bc8d3714e201b591e64a8901fdeb667"><td class="memTemplParams" colspan="2">template&lt;typename T0, std::convertible_to&lt; T0 &gt;... Ts&gt; </td></tr>
-<tr class="memitem:a5bc8d3714e201b591e64a8901fdeb667 template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">polyfloat</a> (T0) -&gt; polyfloat&lt; T0, 2u &gt;</td></tr>
-<tr class="memdesc:a5bc8d3714e201b591e64a8901fdeb667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduction guide for constructing from product type.  <br /></td></tr>
+<tr class="memitem:a5bc8d3714e201b591e64a8901fdeb667" id="r_a5bc8d3714e201b591e64a8901fdeb667"><td class="memTemplParams" colspan="2"><a id="a5bc8d3714e201b591e64a8901fdeb667" name="a5bc8d3714e201b591e64a8901fdeb667"></a>
+template&lt;typename T0, std::convertible_to&lt; T0 &gt;... Ts&gt; </td></tr>
+<tr class="memitem:a5bc8d3714e201b591e64a8901fdeb667 template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0) -&gt; polyfloat&lt; T0, 2u &gt;</td></tr>
+<tr class="memdesc:a5bc8d3714e201b591e64a8901fdeb667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces dimension 2 from one value. <br /></td></tr>
 <tr class="memitem:acb02165730e7ed765fdde7603c186597" id="r_acb02165730e7ed765fdde7603c186597"><td class="memTemplParams" colspan="2"><a id="acb02165730e7ed765fdde7603c186597" name="acb02165730e7ed765fdde7603c186597"></a>
 template&lt;typename T0, std::convertible_to&lt; T0 &gt;... Ts&gt; </td></tr>
 <tr class="memitem:acb02165730e7ed765fdde7603c186597 template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0, Ts...) -&gt; polyfloat&lt; T0, 1+sizeof...(Ts)&gt;</td></tr>
-<tr class="memdesc:acb02165730e7ed765fdde7603c186597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduction guide for constructing from sequence of values. <br /></td></tr>
+<tr class="memdesc:acb02165730e7ed765fdde7603c186597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the dimension from the number of values, two or three. <br /></td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

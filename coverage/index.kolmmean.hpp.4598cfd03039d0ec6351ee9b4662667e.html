@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2026-11-10 17:12:17</td>
+      <td>2026-11-11 17:02:40</td>
     </tr>
   </table>
 </div>
@@ -403,7 +403,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   @brief  Callable object computing the  &#39;Kolmogorov-Nagumo-de Finetti&#39; mean of the inputs: \f$ \mathbf{g}(\sum \mathbf{f}(x_s)) \f$.</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   @brief  computes \f$g\left(\frac1n \sum f(x_i)\right)\f$, the Kolmogorov-Nagumo-de Finetti mean when \f$g\f$ is the inverse of \f$f\f$.</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l36" href="#l36">36</a></td>
@@ -438,7 +438,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   #include &lt;polyfloat/core.hpp&gt;</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   #include &lt;polyfloat/polyfloat.hpp&gt;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l41" href="#l41">41</a></td>
@@ -480,7 +480,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!   namespace polyfloat</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!   namespace plf</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l47" href="#l47">47</a></td>
@@ -494,7 +494,7 @@
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="c1">//!      template&lt;polyfloat::concepts::polyfloat_like ... Ts&gt; constexpr auto kolmmean(auto f,  auto g, Ts ... ts) noexcept;</span></td>
+      <td class="src "><span class="w">  </span><span class="c1">//!      template&lt;concepts::polyfloat_like ... Ts&gt; constexpr auto kolmmean(auto f,  auto g, Ts ... ts) noexcept;</span></td>
     </tr>
     <tr class="source-line">
       <td class="lineno"><a id="l49" href="#l49">49</a></td>

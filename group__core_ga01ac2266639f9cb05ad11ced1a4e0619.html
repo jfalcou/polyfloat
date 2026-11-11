@@ -152,16 +152,16 @@ $(function(){initNavTree('group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the quadrant value. </p>
+<p>return the integral part of the value modulo 4. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga01ac2266639f9cb05ad11ced1a4e0619">quadrant</a>(T n) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga01ac2266639f9cb05ad11ced1a4e0619">quadrant</a>(T n) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga01ac2266639f9cb05ad11ced1a4e0619_html_ga01ac2266639f9cb05ad11ced1a4e0619"><div class="ttname"><a href="#ga01ac2266639f9cb05ad11ced1a4e0619">plf::quadrant</a></div><div class="ttdeci">constexpr auto quadrant</div><div class="ttdoc">return the quadrant value.</div><div class="ttdef"><b>Definition</b> quadrant.hpp:71</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="agroup__core_ga01ac2266639f9cb05ad11ced1a4e0619_html_ga01ac2266639f9cb05ad11ced1a4e0619"><div class="ttname"><a href="#ga01ac2266639f9cb05ad11ced1a4e0619">plf::quadrant</a></div><div class="ttdeci">constexpr auto quadrant</div><div class="ttdoc">return the integral part of the value modulo 4.</div><div class="ttdef"><b>Definition</b> quadrant.hpp:71</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">n</span>: Value to process. Must be of integral type or a <a class="el" href="group__core_ga72a296047ea9f24dc1438e3a1161e58b.html#ga72a296047ea9f24dc1438e3a1161e58b" title="is_flint">flint</a></li>
@@ -175,7 +175,7 @@ $(function(){initNavTree('group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html','
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span>pv_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>pv_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line"><a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;pv_t&gt;</a> wf([](<span class="keyword">auto</span> i, <span class="keyword">auto</span> c) -&gt; <span class="keywordtype">float</span> { <span class="keywordflow">return</span> 2 * (i - c / 2); });</div>
 <div class="line"><a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;std::int32_t&gt;</a> wi([](<span class="keyword">auto</span> i, <span class="keyword">auto</span> c) -&gt; std::int32_t { <span class="keywordflow">return</span> i - c / 2; });</div>
 <div class="line"><a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;std::uint32_t&gt;</a> wu([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) -&gt; std::uint32_t { <span class="keywordflow">return</span> i; });</div>
@@ -190,7 +190,7 @@ $(function(){initNavTree('group__core_ga01ac2266639f9cb05ad11ced1a4e0619.html','
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;-&gt; quadrant(wi)= &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga01ac2266639f9cb05ad11ced1a4e0619">plf::quadrant</a>(wi) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;-&gt; quadrant(wu)= &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga01ac2266639f9cb05ad11ced1a4e0619">plf::quadrant</a>(wu) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 </div><!-- fragment --> 
 </div>

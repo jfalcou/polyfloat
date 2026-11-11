@@ -152,18 +152,18 @@ $(function(){initNavTree('group__core_ga0745f202e4af71621d3f5e84e37c6abe.html','
 </table>
 </div><div class="memdoc">
 
-<p>Extracts the md part of a value. </p>
+<p>returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;plf/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat.html">concepts::polyfloat</a> <span class="keyword">auto</span>&amp;&amp; v)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
 <div class="line">  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(<a class="code hl_concept" href="conceptplf_1_1concepts_1_1real.html">concepts::real</a> <span class="keyword">auto</span>&amp;&amp; v)       <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">An actual polyfloat, of rank strictly greater than one, excluding plain reals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:44</div></div>
-<div class="ttc" id="aconceptplf_1_1concepts_1_1real_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1real.html">plf::concepts::real</a></div><div class="ttdoc">A polyfloat_like of rank one, that is, a plain real.</div><div class="ttdef"><b>Definition</b> concepts.hpp:52</div></div>
-<div class="ttc" id="agroup__core_ga0745f202e4af71621d3f5e84e37c6abe_html_ga0745f202e4af71621d3f5e84e37c6abe"><div class="ttname"><a href="#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a></div><div class="ttdeci">constexpr auto md</div><div class="ttdoc">Extracts the md part of a value.</div><div class="ttdef"><b>Definition</b> parts.hpp:110</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat.html">plf::concepts::polyfloat</a></div><div class="ttdoc">A polyfloat_like of dimension 2 or more, which excludes the reals.</div><div class="ttdef"><b>Definition</b> concepts.hpp:45</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1real_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1real.html">plf::concepts::real</a></div><div class="ttdoc">A polyfloat_like of dimension one, a scalar integer or a floating-point scalar or register.</div><div class="ttdef"><b>Definition</b> concepts.hpp:53</div></div>
+<div class="ttc" id="agroup__core_ga0745f202e4af71621d3f5e84e37c6abe_html_ga0745f202e4af71621d3f5e84e37c6abe"><div class="ttname"><a href="#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a></div><div class="ttdeci">constexpr auto md</div><div class="ttdoc">returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3.</div><div class="ttdef"><b>Definition</b> parts.hpp:107</div></div>
 <div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -171,13 +171,52 @@ $(function(){initNavTree('group__core_ga0745f202e4af71621d3f5e84e37c6abe.html','
 </ul>
 <p><b>Return value</b></p>
 <ol type="1">
-<li>Returns a properly const-qualified reference to the md part of <span class="tt">v</span>.</li>
-<li>Returns a properly const-qualified reference to <span class="tt">v</span>.</li>
+<li>Returns a properly const-qualified reference to the second part of <span class="tt">v</span>.</li>
+<li>Returns zero, of the type of <span class="tt">v</span>.</li>
 </ol>
-<dl class="section note"><dt>Note</dt><dd>the md part of a floating point value is always 0, for polyfloat the md part always refers to the second component.</dd></dl>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/md.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Parts of values of dimensions 2 and 3, and of registers of them.</span></div>
+<div class="line">  <span class="comment">// Each argument is under half an ulp of the one before it, so the parts stay as written.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">plf::lo</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">plf::md</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 0x1p-60);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 0x1p-60, 0x1p-120);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;hi(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">hi</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;lo(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">lo</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;hi(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">hi</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;lo(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">lo</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;md(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(c) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;hi(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">hi</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;md(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga0745f202e4af71621d3f5e84e37c6abe">md</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;lo(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">lo</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__core_ga85fa850c93bf943fe9e434de3552293d_html_ga85fa850c93bf943fe9e434de3552293d"><div class="ttname"><a href="group__core_ga85fa850c93bf943fe9e434de3552293d.html#ga85fa850c93bf943fe9e434de3552293d">plf::hi</a></div><div class="ttdeci">constexpr auto hi</div><div class="ttdoc">returns the high part of a value, its first part, the largest in magnitude when the value is normaliz...</div><div class="ttdef"><b>Definition</b> parts.hpp:72</div></div>
+<div class="ttc" id="agroup__core_ga986719f5a39d352e01286ab52b9a54ff_html_ga986719f5a39d352e01286ab52b9a54ff"><div class="ttname"><a href="group__core_ga986719f5a39d352e01286ab52b9a54ff.html#ga986719f5a39d352e01286ab52b9a54ff">plf::lo</a></div><div class="ttdeci">constexpr auto lo</div><div class="ttdoc">returns the low part of a value, its last part, the smallest in magnitude when the value is normalize...</div><div class="ttdef"><b>Definition</b> parts.hpp:154</div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

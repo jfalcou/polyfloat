@@ -152,34 +152,60 @@ $(function(){initNavTree('group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc67
 </table>
 </div><div class="memdoc">
 
-<p>Computes the pair from Veltkamp's splitting algorithm. </p>
+<p>Computes the pair of the high and low parts of a value, by splitting its significand. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespaceRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overload</span></div>
-<div class="line">   <span class="keyword">template</span> &lt;auto N&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9086f4afc7e04d20a2a3bf8212dc677a">two_split</a>(<span class="keyword">auto</span> x, std::integral_constant&lt;N&gt; s)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
+<div class="line">   <span class="keyword">template</span>&lt;<span class="keywordtype">int</span> N&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9086f4afc7e04d20a2a3bf8212dc677a">two_split</a>(<span class="keyword">auto</span> x, std::integral_constant&lt;int, N&gt; s)  <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9086f4afc7e04d20a2a3bf8212dc677a">two_split</a>( <span class="keyword">auto</span> x)                                               <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a_html_ga9086f4afc7e04d20a2a3bf8212dc677a"><div class="ttname"><a href="#ga9086f4afc7e04d20a2a3bf8212dc677a">plf::two_split</a></div><div class="ttdeci">constexpr auto two_split</div><div class="ttdoc">Computes the pair from Veltkamp&#39;s splitting algorithm.</div><div class="ttdef"><b>Definition</b> two_split.hpp:76</div></div>
-<div class="ttc" id="anamespaceeve_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div></div>
+<div class="ttc" id="agroup__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a_html_ga9086f4afc7e04d20a2a3bf8212dc677a"><div class="ttname"><a href="#ga9086f4afc7e04d20a2a3bf8212dc677a">plf::two_split</a></div><div class="ttdeci">constexpr auto two_split</div><div class="ttdoc">Computes the pair of the high and low parts of a value, by splitting its significand.</div><div class="ttdef"><b>Definition</b> two_split.hpp:76</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">x</span>: polyfloat argument](<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html" title="eve::floating_value">eve::floating_value</a>) of same dimension.</li>
+<li><span class="tt">x</span>: a value of type <span class="tt">float</span> or <span class="tt">double</span>, or a register of them.</li>
+<li><span class="tt">s</span>: the split point, a number of bits.</li>
 </ul>
 <p><b>Return value</b></p>
 <ol type="1">
-<li>Returns a pair \((x_h, x_l)\) such that the significand of \(x_h\) fits in p &#x241B;$B!]&#x241B;(B s bits, the significand of \(x_l\) fits in s&#x241B;$B!]&#x241B;(B1 bits, and \(x_h \oplus x_l = x\). p is the number of mantissa bits of x, With 2 &#x241B;$(C!B&#x241B;(B s &#x241B;$(C!B&#x241B;(B p &#x241B;$B!]&#x241B;(B 2</li>
-<li>s is taken as \(\lceil p/2 \rceil\)</li>
+<li>A pair \((x_h, x_l)\) where \(x_h = g + (x - g)\), with \(g = 2^s x\), both operations rounded in the base type, and \(x_l = x - x_h\).</li>
+<li>The same with \(s = \lfloor (m + 1)/2 \rfloor\), \(m\) being the number of stored mantissa bits, 26 for <span class="tt">double</span> and 12 for <span class="tt">float</span>.</li>
 </ol>
 <h2 class="groupheader">External references </h2>
 <ul>
-<li><a href="https://www.vinc17.net/research/papers/rr_ccrsums2.pdf">On the Computation of Correctly-Rounded Sums</a></li>
+<li><a href="https://doi.org/10.1007/BF01397083">T. J. Dekker, A floating-point technique for extending the available precision</a></li>
+<li><a href="https://doi.org/10.1007/978-3-319-76526-6">J.-M. Muller et al., Handbook of Floating-Point Arithmetic, 2nd edition</a></li>
 </ul>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/core/two_split.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// A value whose significand uses every bit, split in two halves.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga9086f4afc7e04d20a2a3bf8212dc677a">plf::two_split</a>;</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(17);</div>
+<div class="line">  <span class="keywordtype">double</span> x = 1.0 / 3.0, y = 1.0e-17 / 7.0, z = -2.0 / 9.0;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x  &quot;</span> &lt;&lt; x &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;y  &quot;</span> &lt;&lt; y &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;z  &quot;</span> &lt;&lt; z &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> [s, e] = <a class="code hl_variable" href="#ga9086f4afc7e04d20a2a3bf8212dc677a">two_split</a>(x);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;s  &quot;</span> &lt;&lt; s &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;e  &quot;</span> &lt;&lt; e &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double&gt;</a> wx([](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> 1.0 / (3.0 + i); });</div>
+<div class="line">  <span class="keyword">auto</span> [ws, we] = two_split(wx);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wx  &quot;</span> &lt;&lt; wx &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ws  &quot;</span> &lt;&lt; ws &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;we  &quot;</span> &lt;&lt; we &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

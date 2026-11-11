@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="POLYFLOAT - Flexible Multiprecision Types" />
 <meta name="twitter:description" content="Flexible multiprecision types" />
 <meta name="twitter:image" content="https://jfalcou.github.io/polyfloat/card.png" />
-<title>polyfloat: Many values at once</title>
+<title>polyfloat: SIMD support</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -132,58 +132,62 @@ $(function(){initNavTree('tutorial-simd.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Many values at once </div></div>
+  <div class="headertitle"><div class="title">SIMD support </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Every processor made in the last twenty years can add several numbers in the time it takes to add one. The instruction exists, the register exists, and the only difficulty is expressing it. <b>POLYFLOAT</b> is built on <a href="https://github.com/jfalcou/eve">EVE</a>, whose whole purpose is that expression, so the facility comes for free.</p>
-<p>You do not need to know anything about SIMD to read this page. The idea is simply that a value can hold several numbers at once, and that the code does not change.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
-A register of floating numbers</h1>
-<p><span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;</span> holds as many <span class="tt">double</span> as the machine's registers allow. Arithmetic on it reads exactly like arithmetic on one:</p>
+<div class="textblock"><p><b>POLYFLOAT</b> is built on <a href="https://github.com/jfalcou/eve">EVE</a>, and every function accepts an <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></span> where it accepts a scalar. An <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;T&gt;</span> is a SIMD register of <span class="tt">T</span>, whose operators apply to every lane as they apply to a scalar. <span class="tt">polyfloat/polyfloat.hpp</span> also includes EVE, so <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></span> and the constants of EVE need no header of their own.</p>
+<dl class="section note"><dt>Note</dt><dd>The <a href="https://jfalcou.github.io/eve/">EVE documentation</a> and its <a href="https://jfalcou.github.io/eve/intro-01.html">tutorials</a> cover SIMD programming: the registers, the masks, the algorithms, and the architectures.</dd></dl>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Registers of reals</h1>
+<p><span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;</span> holds as many <span class="tt">double</span> as a register of the target machine:</p>
+<ul>
+<li>two on x86-64 with SSE2,</li>
+<li>four with AVX,</li>
+<li>eight with AVX-512.</li>
+</ul>
+<p>The width is selected at compile time from the target, and the source never names it.</p>
+<p>A register is built from a function of two arguments, the lane index and the width, called once per lane, or from one value copied into every lane, <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;(2.0)</span>. <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;::size()</span> is the number of <span class="tt">double</span> in the register, <span class="tt">x.get(i)</span> reads lane <span class="tt">i</span>, and <span class="tt">x.set(i, v)</span> writes it. Below, a <a href="https://en.cppreference.com/w/cpp/language/lambda">lambda</a> puts \(-1 + k\) in lane \(k\) and leaves the width unused:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">// eve is at hand as soon as polyfloat is</span></div>
+<div class="line">  <span class="comment">// Lane i holds -1 + i. The second argument of the lambda, the width, is unused.</span></div>
 <div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double&gt;</a> x = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> -1.0 + i; };</div>
 <div class="line"> </div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;cardinal            = &quot;</span> &lt;&lt; <a class="code hl_functionRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html#a4c5abb1c30d231b46212e2f7d61855a0">eve::wide&lt;double&gt;::size</a>() &lt;&lt; <span class="stringliteral">&quot; values at a time\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x                   = &quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x * x               = &quot;</span> &lt;&lt; x * x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;size  = &quot;</span> &lt;&lt; <a class="code hl_functionRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html#a4c5abb1c30d231b46212e2f7d61855a0">eve::wide&lt;double&gt;::size</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x     = &quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x * x = &quot;</span> &lt;&lt; x * x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html_a4c5abb1c30d231b46212e2f7d61855a0"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html#a4c5abb1c30d231b46212e2f7d61855a0">eve::wide::size</a></div><div class="ttdeci">static constexpr width_type size() noexcept</div></div>
-</div><!-- fragment --><p>Two things to read in that output. The cardinal is not a constant of the library but of the machine you compile for — two on a plain x86-64, four with AVX, eight with AVX-512 — and the source never mentions it.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-A register of polyfloats</h1>
-<p>The interesting part is that this composes. A polyfloat number whose components are registers is written by handing <span class="tt"><a class="el" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61" title="Type alias for double_real numbers.">plf::double_real_t</a></span> or <span class="tt">plf_triple_real_t</span> two or three <span class="tt">wide&lt;double&gt;</span> instead of two or three <span class="tt">double</span>, and every function of the library then applies to all of them at once.</p>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Registers of polyfloat values</h1>
+<p><span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;<a class="el" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61" title="Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...">plf::double_real_t</a>&lt;double&gt;&gt;</span> is a register of polyfloat values, with as many lanes as <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;</span>. It is built in the same way, and the functions apply to all its lanes, the source differing from the scalar case only by the type of the values:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">// eve is at hand as soon as polyfloat is</span></div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="comment">// A register of double_real_t&lt;double&gt;, lane i holding -1 + i.</span></div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
 <div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t&gt;</a> x = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d2_t(-1.0 + i); };</div>
 <div class="line"> </div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;cardinal            = &quot;</span> &lt;&lt; <a class="code hl_functionRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html#a4c5abb1c30d231b46212e2f7d61855a0">eve::wide&lt;d2_t&gt;::size</a>() &lt;&lt; <span class="stringliteral">&quot; values at a time\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x                   = &quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x * x               = &quot;</span> &lt;&lt; x * x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// The rule from the previous page still holds: a square root may leave the reals,</span></div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt(x)             = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77">plf::sqrt</a>(x) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;size    = &quot;</span> &lt;&lt; <a class="code hl_functionRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html#a4c5abb1c30d231b46212e2f7d61855a0">eve::wide&lt;d2_t&gt;::size</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x       = &quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;x * x   = &quot;</span> &lt;&lt; x * x &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt(x) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="group__core_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77">plf::sqrt</a>(x) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_gab25eb1782219136d8368a2a090bcac77_html_gab25eb1782219136d8368a2a090bcac77"><div class="ttname"><a href="group__core_gab25eb1782219136d8368a2a090bcac77.html#gab25eb1782219136d8368a2a090bcac77">plf::sqrt</a></div><div class="ttdeci">constexpr auto sqrt</div><div class="ttdoc">return the square root value.</div><div class="ttdef"><b>Definition</b> sqrt.hpp:66</div></div>
-<div class="ttc" id="agroup__types_gad8203f72c65a6761f03db03f8ac55c61_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Type alias for double_real numbers.</div><div class="ttdef"><b>Definition</b> double_real.hpp:28</div></div>
-</div><!-- fragment --><p><span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double_real_t&lt;double&gt;&gt;</span> holds as many <span class="tt">double_real_t&lt;double&gt;</span> as the machine's registers allow for <span class="tt">double</span>. Arithmetic on it reads exactly like arithmetic on one:</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Writing code that does not care</h1>
-<p>Because the spelling is identical, a function template covers both. The same body, called once on scalars and once on registers:</p>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
+</div><!-- fragment --><dl class="section warning"><dt>Warning</dt><dd>A register of polyfloat values is <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;<a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;T,N&gt;&gt;</span>, the same type as <span class="tt"><a class="el" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61" title="Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...">plf::double_real_t</a>&lt;<a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;T&gt;&gt;</span> or <span class="tt"><a class="el" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102" title="Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...">plf::triple_real_t</a>&lt;<a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;T&gt;&gt;</span>. The type <span class="tt"><a class="el" href="structplf_1_1polyfloat.html" title="Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.">plf::polyfloat</a>&lt;<a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;T&gt;,N&gt;</span> is not supported.</dd></dl>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Generic code</h1>
+<p>A <a href="https://en.cppreference.com/w/cpp/language/function_template">function template</a> accepts scalars and registers of every dimension with the same body. It is instantiated once for each argument type, and <span class="tt">energy</span> below returns a value of the type of its argument, a scalar or a register, of dimension 1, 2, or 3, with no code written per width or per dimension:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// One body, whatever the caller hands over.</span></div>
+<div class="line"><span class="comment">// One body for a scalar or a register, of any dimension.</span></div>
 <div class="line"><span class="keyword">auto</span> energy(<span class="keyword">auto</span> z)</div>
 <div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code hl_variable" href="group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a>(z) + <a class="code hl_variable" href="group__math_gab8e08b05daa3ee86e2ed652a07352d64.html#gab8e08b05daa3ee86e2ed652a07352d64">plf::exp</a>(z);</div>
@@ -191,32 +195,29 @@ Writing code that does not care</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="keyword">using </span>d1_t = double;</div>
-<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types_gad8203f72c65a6761f03db03f8ac55c61.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;scalar d1_t : &quot;</span> &lt;&lt; energy(d1_t(1.0)) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;scalar d2_t : &quot;</span> &lt;&lt; energy(d2_t(1.0)) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;scalar d3_t : &quot;</span> &lt;&lt; energy(d3_t(1.0)) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d1_t&gt;</a> re1 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d1_t(1.0 + i); };</div>
-<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t&gt;</a> re2 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d1_t(1.0 + i); };</div>
-<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d3_t&gt;</a> re3 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d1_t(1.0 + i); };</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;re1                     &quot;</span> &lt;&lt; re1 &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;re2                     &quot;</span> &lt;&lt; re2 &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;re3                     &quot;</span> &lt;&lt; re3 &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide energy 1           &quot;</span> &lt;&lt; energy(re1) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide energy 2           &quot;</span> &lt;&lt; energy(re2) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide energy 3           &quot;</span> &lt;&lt; energy(re3) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;double            : &quot;</span> &lt;&lt; energy(1.0) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;d2_t              : &quot;</span> &lt;&lt; energy(d2_t(1.0)) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;d3_t              : &quot;</span> &lt;&lt; energy(d3_t(1.0)) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double&gt;</a> w1 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> 1.0 + i; };</div>
+<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d2_t&gt;</a> w2 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d2_t(1.0 + i); };</div>
+<div class="line">  <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;d3_t&gt;</a> w3 = [](<span class="keyword">auto</span> i, <span class="keyword">auto</span>) { <span class="keywordflow">return</span> d3_t(1.0 + i); };</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide&lt;double&gt;      : &quot;</span> &lt;&lt; energy(w1) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide&lt;d2_t&gt;        : &quot;</span> &lt;&lt; energy(w2) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wide&lt;d3_t&gt;        : &quot;</span> &lt;&lt; energy(w3) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_gac72a278d06c43be14dce2cfbd8e67bdf_html_gac72a278d06c43be14dce2cfbd8e67bdf"><div class="ttname"><a href="group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a></div><div class="ttdeci">constexpr auto sqr</div><div class="ttdoc">return the square value.</div><div class="ttdef"><b>Definition</b> sqr.hpp:65</div></div>
 <div class="ttc" id="agroup__math_gab8e08b05daa3ee86e2ed652a07352d64_html_gab8e08b05daa3ee86e2ed652a07352d64"><div class="ttname"><a href="group__math_gab8e08b05daa3ee86e2ed652a07352d64.html#gab8e08b05daa3ee86e2ed652a07352d64">plf::exp</a></div><div class="ttdeci">constexpr auto exp</div><div class="ttdoc">return the exponential value.</div><div class="ttdef"><b>Definition</b> exp.hpp:62</div></div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
-</div><!-- fragment --><p>This is the shape most <b>POLYFLOAT</b> code ends up taking: write the mathematics once, let the caller decide whether it runs on one value or on a register of them.</p>
-<div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+</div><!-- fragment --><div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Previous  </th><th class="markdownTableHeadRight">Next  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><a class="el" href="tutorial-basics.html" title="Polyfloat numbers">Polyfloat Numbers</a>  </td><td class="markdownTableBodyRight"><a class="el" href="md__2____w_2polyfloat_2polyfloat_2doc_2implementation__precisions.html" title="Polyfloat (#implementation_precisions)">Implementation precisions</a>  </td></tr>
+<td class="markdownTableBodyLeft"><a class="el" href="tutorial-basics.html" title="Polyfloat numbers">Polyfloat numbers</a>  </td><td class="markdownTableBodyRight"><a class="el" href="implementation_precisions.html" title="Precision">Precision</a>  </td></tr>
 </table>
 </div><div class="section_buttons"></div> </div></div><!-- contents -->
 </div><!-- PageDoc -->

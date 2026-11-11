@@ -154,14 +154,15 @@ $(function(){initNavTree('group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.ht
 
 <p>return the infinite value. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(T z) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;T&gt;</a> z) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__constants_ga17a6561e33fcb9f3bf0be566ca5751f7_html_ga17a6561e33fcb9f3bf0be566ca5751f7"><div class="ttname"><a href="#ga17a6561e33fcb9f3bf0be566ca5751f7">plf::inf</a></div><div class="ttdeci">constexpr auto inf</div><div class="ttdoc">return the infinite value.</div><div class="ttdef"><b>Definition</b> inf.hpp:66</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
+<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">T</span>: type to return.</li>
@@ -169,8 +170,50 @@ $(function(){initNavTree('group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.ht
 <p><b>Return value</b></p>
 <p>Returns the inf value in type T.</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/inf.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="comment">//======================================================================================================================</span></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> POLYFLOAT - Extended precision floating points</span></div>
+<div class="line"><span class="comment"> Copyright : POLYFLOAT Contributors &amp; Maintainers</span></div>
+<div class="line"><span class="comment"> SPDX-License-Identifier: BSL-1.0</span></div>
+<div class="line"><span class="comment">*/</span></div>
+<div class="line"><span class="comment">//======================================================================================================================</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="keyword">using </span>d1_t = double;</div>
+<div class="line">  <span class="keyword">using </span>d2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>d3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f1_t = float;</div>
+<div class="line">  <span class="keyword">using </span>f2_t = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>f3_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">plf::inf</a>;</div>
+<div class="line">  std::cout &lt;&lt; std::hexfloat;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;d1_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;d2_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;d3_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;d3_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;f1_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;f1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;f2_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;f2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;f3_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;f3_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">using </span>wd1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;double&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wd2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::double_real_t&lt;double&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>wd3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::triple_real_t&lt;double&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>wf1_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;float&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>wf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::double_real_t&lt;float&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>wf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::triple_real_t&lt;float&gt;</a>&gt;;</div>
+<div class="line">  std::cout &lt;&lt; std::hexfloat;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wd1_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wd1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wd2_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wd2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wd3_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wd3_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wf1_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wf1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wf2_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wf2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;inf(&lt;as&lt;wf3_t&gt;()) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga17a6561e33fcb9f3bf0be566ca5751f7">inf</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;wf3_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">};</div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

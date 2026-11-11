@@ -215,7 +215,7 @@
     <member kind="function">
       <type></type>
       <name>polyfloat</name>
-      <anchorfile>structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html</anchorfile>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
       <anchor>a5bc8d3714e201b591e64a8901fdeb667</anchor>
       <arglist>(T0) -&gt; polyfloat&lt; T0, 2u &gt;</arglist>
     </member>
@@ -313,7 +313,7 @@
     <member kind="function">
       <type></type>
       <name>polyfloat</name>
-      <anchorfile>structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html</anchorfile>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
       <anchor>a5bc8d3714e201b591e64a8901fdeb667</anchor>
       <arglist>(T0) -&gt; polyfloat&lt; T0, 2u &gt;</arglist>
     </member>
@@ -399,14 +399,14 @@
     <member kind="typedef">
       <type>as_polyfloat_n_t&lt; 2, T &gt;</type>
       <name>double_real_t</name>
-      <anchorfile>group__types_gad8203f72c65a6761f03db03f8ac55c61.html</anchorfile>
+      <anchorfile>group__types.html</anchorfile>
       <anchor>gad8203f72c65a6761f03db03f8ac55c61</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>as_polyfloat_n_t&lt; 3, T &gt;</type>
       <name>triple_real_t</name>
-      <anchorfile>group__types_ga3150408863a87ad5a78978ea1eebf102.html</anchorfile>
+      <anchorfile>group__types.html</anchorfile>
       <anchor>ga3150408863a87ad5a78978ea1eebf102</anchor>
       <arglist></arglist>
     </member>
@@ -497,7 +497,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>allbits</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gabbd6cfcd83668ca5f081bcc515d75a59.html</anchorfile>
       <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
       <arglist></arglist>
     </member>
@@ -567,7 +567,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>bitincrement</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga8fa056d215485ffdb11c9e151f307df0.html</anchorfile>
       <anchor>ga8fa056d215485ffdb11c9e151f307df0</anchor>
       <arglist></arglist>
     </member>
@@ -959,7 +959,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>half</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gafdc7f58bede6debd2ef66a4b3521cb84.html</anchorfile>
       <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
       <arglist></arglist>
     </member>
@@ -1532,6 +1532,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>maxexponent</name>
+      <anchorfile>group__constants_ga2657732c3d32e5f7ebf52928cc7e77d2.html</anchorfile>
+      <anchor>ga2657732c3d32e5f7ebf52928cc7e77d2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>maxexponentm1</name>
+      <anchorfile>group__constants_ga9a853f802e2e8048694dadfbf66109b3.html</anchorfile>
+      <anchor>ga9a853f802e2e8048694dadfbf66109b3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>maxexponentp1</name>
+      <anchorfile>group__constants_ga41487618f4587a15ff32960dd2f94945.html</anchorfile>
+      <anchor>ga41487618f4587a15ff32960dd2f94945</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>maxflint</name>
       <anchorfile>group__constants_gae321346f90402e1b5dc7875054e49a83.html</anchorfile>
       <anchor>gae321346f90402e1b5dc7875054e49a83</anchor>
@@ -1568,7 +1589,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>mhalf</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gacf3b52a44982c70d2b2b7a11531beee3.html</anchorfile>
       <anchor>gacf3b52a44982c70d2b2b7a11531beee3</anchor>
       <arglist></arglist>
     </member>
@@ -1589,14 +1610,14 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>mindenormal</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga0a3e5881bfb4a0de7977621996c339a9.html</anchorfile>
       <anchor>ga0a3e5881bfb4a0de7977621996c339a9</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
       <name>minexponent</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga4647ba96a04ee2f05047b93c70509bd9.html</anchorfile>
       <anchor>ga4647ba96a04ee2f05047b93c70509bd9</anchor>
       <arglist></arglist>
     </member>
@@ -1638,7 +1659,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>mone</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gafd51d660d060685287a61ceb9a0619c5.html</anchorfile>
       <anchor>gafd51d660d060685287a61ceb9a0619c5</anchor>
       <arglist></arglist>
     </member>
@@ -1659,7 +1680,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>mzero</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga889a98f4b2269954d9c5326e07ffdd9f.html</anchorfile>
       <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
       <arglist></arglist>
     </member>
@@ -1764,7 +1785,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>one</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_gaf4a21d2a045aedd47efa31fcc8be1fcf.html</anchorfile>
       <anchor>gaf4a21d2a045aedd47efa31fcc8be1fcf</anchor>
       <arglist></arglist>
     </member>
@@ -2044,7 +2065,7 @@
     <member kind="variable">
       <type>constexpr auto</type>
       <name>smallestposval</name>
-      <anchorfile>group__core.html</anchorfile>
+      <anchorfile>group__constants_ga1089f4e0a6091f3da50a5c7655ec3643.html</anchorfile>
       <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
       <arglist></arglist>
     </member>
@@ -2303,7 +2324,7 @@
     <member kind="function">
       <type></type>
       <name>polyfloat</name>
-      <anchorfile>structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html</anchorfile>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
       <anchor>a5bc8d3714e201b591e64a8901fdeb667</anchor>
       <arglist>(T0) -&gt; polyfloat&lt; T0, 2u &gt;</arglist>
     </member>
@@ -2325,6 +2346,20 @@
     <name>constants</name>
     <title>Constants</title>
     <filename>group__constants.html</filename>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::allbits</name>
+      <anchorfile>group__constants_gabbd6cfcd83668ca5f081bcc515d75a59.html</anchorfile>
+      <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::bitincrement</name>
+      <anchorfile>group__constants_ga8fa056d215485ffdb11c9e151f307df0.html</anchorfile>
+      <anchor>ga8fa056d215485ffdb11c9e151f307df0</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="variable">
       <type>constexpr auto</type>
       <name>plf::catalan</name>
@@ -2400,6 +2435,13 @@
       <name>plf::four_pio_3</name>
       <anchorfile>group__constants_gaf5af972a1c9b8ba32015011e7462f64f.html</anchorfile>
       <anchor>gaf5af972a1c9b8ba32015011e7462f64f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::half</name>
+      <anchorfile>group__constants_gafdc7f58bede6debd2ef66a4b3521cb84.html</anchorfile>
+      <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2481,6 +2523,27 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::maxexponent</name>
+      <anchorfile>group__constants_ga2657732c3d32e5f7ebf52928cc7e77d2.html</anchorfile>
+      <anchor>ga2657732c3d32e5f7ebf52928cc7e77d2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::maxexponentm1</name>
+      <anchorfile>group__constants_ga9a853f802e2e8048694dadfbf66109b3.html</anchorfile>
+      <anchor>ga9a853f802e2e8048694dadfbf66109b3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::maxexponentp1</name>
+      <anchorfile>group__constants_ga41487618f4587a15ff32960dd2f94945.html</anchorfile>
+      <anchor>ga41487618f4587a15ff32960dd2f94945</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::maxflint</name>
       <anchorfile>group__constants_gae321346f90402e1b5dc7875054e49a83.html</anchorfile>
       <anchor>gae321346f90402e1b5dc7875054e49a83</anchor>
@@ -2502,9 +2565,44 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::mhalf</name>
+      <anchorfile>group__constants_gacf3b52a44982c70d2b2b7a11531beee3.html</anchorfile>
+      <anchor>gacf3b52a44982c70d2b2b7a11531beee3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mindenormal</name>
+      <anchorfile>group__constants_ga0a3e5881bfb4a0de7977621996c339a9.html</anchorfile>
+      <anchor>ga0a3e5881bfb4a0de7977621996c339a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::minexponent</name>
+      <anchorfile>group__constants_ga4647ba96a04ee2f05047b93c70509bd9.html</anchorfile>
+      <anchor>ga4647ba96a04ee2f05047b93c70509bd9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::minf</name>
       <anchorfile>group__constants_ga53eeee70008790007d0da7e69ad152e5.html</anchorfile>
       <anchor>ga53eeee70008790007d0da7e69ad152e5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mone</name>
+      <anchorfile>group__constants_gafd51d660d060685287a61ceb9a0619c5.html</anchorfile>
+      <anchor>gafd51d660d060685287a61ceb9a0619c5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::mzero</name>
+      <anchorfile>group__constants_ga889a98f4b2269954d9c5326e07ffdd9f.html</anchorfile>
+      <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2519,6 +2617,13 @@
       <name>plf::nbmantissabits</name>
       <anchorfile>group__constants_ga353f26b1179c82267a8066987951a553.html</anchorfile>
       <anchor>ga353f26b1179c82267a8066987951a553</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::one</name>
+      <anchorfile>group__constants_gaf4a21d2a045aedd47efa31fcc8be1fcf.html</anchorfile>
+      <anchor>gaf4a21d2a045aedd47efa31fcc8be1fcf</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2579,6 +2684,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>plf::smallestposval</name>
+      <anchorfile>group__constants_ga1089f4e0a6091f3da50a5c7655ec3643.html</anchorfile>
+      <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>plf::sqrt_2</name>
       <anchorfile>group__constants_ga4242d1daac24e1aa6e29ce62d230d171.html</anchorfile>
       <anchor>ga4242d1daac24e1aa6e29ce62d230d171</anchor>
@@ -2622,7 +2734,7 @@
   </compound>
   <compound kind="group">
     <name>core</name>
-    <title>Core</title>
+    <title>Core functions</title>
     <filename>group__core.html</filename>
     <member kind="variable">
       <type>constexpr auto</type>
@@ -2661,23 +2773,9 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>plf::allbits</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gabbd6cfcd83668ca5f081bcc515d75a59</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>plf::average</name>
       <anchorfile>group__core_gad514388c4bd4fe58d50e53e426d62140.html</anchorfile>
       <anchor>gad514388c4bd4fe58d50e53e426d62140</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::bitincrement</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga8fa056d215485ffdb11c9e151f307df0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -2867,13 +2965,6 @@
       <name>plf::fsm</name>
       <anchorfile>group__core_gab6ffa7b2b7b589bc9bbf790c8555e7f3.html</anchorfile>
       <anchor>gab6ffa7b2b7b589bc9bbf790c8555e7f3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::half</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gafdc7f58bede6debd2ef66a4b3521cb84</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3305,13 +3396,6 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>plf::mhalf</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gacf3b52a44982c70d2b2b7a11531beee3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>plf::min</name>
       <anchorfile>group__core_gaf2ecab0082e8fa1007d5ea49c9fa1a87.html</anchorfile>
       <anchor>gaf2ecab0082e8fa1007d5ea49c9fa1a87</anchor>
@@ -3322,20 +3406,6 @@
       <name>plf::minabs</name>
       <anchorfile>group__core_gaa190c10bef44628e4701ff2fcd6728a0.html</anchorfile>
       <anchor>gaa190c10bef44628e4701ff2fcd6728a0</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::mindenormal</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga0a3e5881bfb4a0de7977621996c339a9</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::minexponent</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga4647ba96a04ee2f05047b93c70509bd9</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3368,23 +3438,9 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>plf::mone</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gafd51d660d060685287a61ceb9a0619c5</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>plf::mul</name>
       <anchorfile>group__core_ga856a221cd309873711b978ce55df4635.html</anchorfile>
       <anchor>ga856a221cd309873711b978ce55df4635</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::mzero</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga889a98f4b2269954d9c5326e07ffdd9f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3455,13 +3511,6 @@
       <name>plf::nextint</name>
       <anchorfile>group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html</anchorfile>
       <anchor>gaf1c232d7bc7f81fc1a42edb3c7b7cd88</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::one</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>gaf4a21d2a045aedd47efa31fcc8be1fcf</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -3578,13 +3627,6 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>plf::smallestposval</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga1089f4e0a6091f3da50a5c7655ec3643</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>plf::sqr</name>
       <anchorfile>group__core_gac72a278d06c43be14dce2cfbd8e67bdf.html</anchorfile>
       <anchor>gac72a278d06c43be14dce2cfbd8e67bdf</anchor>
@@ -3648,67 +3690,6 @@
     </member>
   </compound>
   <compound kind="group">
-    <name>core_accuracy</name>
-    <title>Core_accuracy</title>
-    <filename>group__core__accuracy.html</filename>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::dekker_prod</name>
-      <anchorfile>group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a893f.html</anchorfile>
-      <anchor>ga1a41dc23e01e636ab69b39a3238a893f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::three_add</name>
-      <anchorfile>group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html</anchorfile>
-      <anchor>gad714fdd7a5f3a2cfcab70658cb520cd1</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::three_fma</name>
-      <anchorfile>group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html</anchorfile>
-      <anchor>gabda6529346e0ae007b7709fabfe7cb59</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::two_add</name>
-      <anchorfile>group__core__accuracy_ga4f331a5f0e10706ede78c9ac753d6ef4.html</anchorfile>
-      <anchor>ga4f331a5f0e10706ede78c9ac753d6ef4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::two_div_approx</name>
-      <anchorfile>group__core__accuracy_gab1a360af3bf67971c24e0b8c94ff4c1c.html</anchorfile>
-      <anchor>gab1a360af3bf67971c24e0b8c94ff4c1c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::two_fma_approx</name>
-      <anchorfile>group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html</anchorfile>
-      <anchor>gae79e44f7a860ba7c33be885213090df1</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::two_prod</name>
-      <anchorfile>group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html</anchorfile>
-      <anchor>gae8d597dabc4dc057e3110c0a89afe8f3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::two_split</name>
-      <anchorfile>group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a.html</anchorfile>
-      <anchor>ga9086f4afc7e04d20a2a3bf8212dc677a</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="group">
     <name>core_internal</name>
     <title>Core_internal</title>
     <filename>group__core__internal.html</filename>
@@ -3721,34 +3702,8 @@
     </member>
   </compound>
   <compound kind="group">
-    <name>functions</name>
-    <title>Functions</title>
-    <filename>group__functions.html</filename>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::horner</name>
-      <anchorfile>group__functions_gae998e94f32f326d4c67342e2ceb35982.html</anchorfile>
-      <anchor>gae998e94f32f326d4c67342e2ceb35982</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::neville</name>
-      <anchorfile>group__functions_gada98330f63111f37aa310dcb450fb2aa.html</anchorfile>
-      <anchor>gada98330f63111f37aa310dcb450fb2aa</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::reverse_horner</name>
-      <anchorfile>group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.html</anchorfile>
-      <anchor>gaec0903d03ecaa41fc2f06bd4d9598fbe</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="group">
     <name>math</name>
-    <title>Math</title>
+    <title>Elementary functions</title>
     <filename>group__math.html</filename>
     <member kind="variable">
       <type>constexpr auto</type>
@@ -4144,6 +4099,93 @@
     </member>
   </compound>
   <compound kind="group">
+    <name>core_accuracy</name>
+    <title>Error-free transformations</title>
+    <filename>group__core__accuracy.html</filename>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::dekker_prod</name>
+      <anchorfile>group__core__accuracy_ga1a41dc23e01e636ab69b39a3238a893f.html</anchorfile>
+      <anchor>ga1a41dc23e01e636ab69b39a3238a893f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::three_add</name>
+      <anchorfile>group__core__accuracy_gad714fdd7a5f3a2cfcab70658cb520cd1.html</anchorfile>
+      <anchor>gad714fdd7a5f3a2cfcab70658cb520cd1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::three_fma</name>
+      <anchorfile>group__core__accuracy_gabda6529346e0ae007b7709fabfe7cb59.html</anchorfile>
+      <anchor>gabda6529346e0ae007b7709fabfe7cb59</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::two_add</name>
+      <anchorfile>group__core__accuracy_ga4f331a5f0e10706ede78c9ac753d6ef4.html</anchorfile>
+      <anchor>ga4f331a5f0e10706ede78c9ac753d6ef4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::two_div_approx</name>
+      <anchorfile>group__core__accuracy_gab1a360af3bf67971c24e0b8c94ff4c1c.html</anchorfile>
+      <anchor>gab1a360af3bf67971c24e0b8c94ff4c1c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::two_fma_approx</name>
+      <anchorfile>group__core__accuracy_gae79e44f7a860ba7c33be885213090df1.html</anchorfile>
+      <anchor>gae79e44f7a860ba7c33be885213090df1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::two_prod</name>
+      <anchorfile>group__core__accuracy_gae8d597dabc4dc057e3110c0a89afe8f3.html</anchorfile>
+      <anchor>gae8d597dabc4dc057e3110c0a89afe8f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::two_split</name>
+      <anchorfile>group__core__accuracy_ga9086f4afc7e04d20a2a3bf8212dc677a.html</anchorfile>
+      <anchor>ga9086f4afc7e04d20a2a3bf8212dc677a</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>functions</name>
+    <title>Polynomial evaluation</title>
+    <filename>group__functions.html</filename>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::horner</name>
+      <anchorfile>group__functions_gae998e94f32f326d4c67342e2ceb35982.html</anchorfile>
+      <anchor>gae998e94f32f326d4c67342e2ceb35982</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::neville</name>
+      <anchorfile>group__functions_gada98330f63111f37aa310dcb450fb2aa.html</anchorfile>
+      <anchor>gada98330f63111f37aa310dcb450fb2aa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::reverse_horner</name>
+      <anchorfile>group__functions_gaec0903d03ecaa41fc2f06bd4d9598fbe.html</anchorfile>
+      <anchor>gaec0903d03ecaa41fc2f06bd4d9598fbe</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="group">
     <name>traits</name>
     <title>Traits</title>
     <filename>group__traits.html</filename>
@@ -4189,14 +4231,14 @@
     <member kind="typedef">
       <type>as_polyfloat_n_t&lt; 2, T &gt;</type>
       <name>plf::double_real_t</name>
-      <anchorfile>group__types_gad8203f72c65a6761f03db03f8ac55c61.html</anchorfile>
+      <anchorfile>group__types.html</anchorfile>
       <anchor>gad8203f72c65a6761f03db03f8ac55c61</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>as_polyfloat_n_t&lt; 3, T &gt;</type>
       <name>plf::triple_real_t</name>
-      <anchorfile>group__types_ga3150408863a87ad5a78978ea1eebf102.html</anchorfile>
+      <anchorfile>group__types.html</anchorfile>
       <anchor>ga3150408863a87ad5a78978ea1eebf102</anchor>
       <arglist></arglist>
     </member>
@@ -4215,7 +4257,7 @@
   </compound>
   <compound kind="page">
     <name>setup</name>
-    <title>Installation &amp; Quick Start</title>
+    <title>Installation</title>
     <filename>setup.html</filename>
     <docanchor file="setup.html" title="/__w/polyfloat/polyfloat/doc/setup.md">md__2____w_2polyfloat_2polyfloat_2doc_2setup</docanchor>
   </compound>
@@ -4226,7 +4268,7 @@
   </compound>
   <compound kind="page">
     <name>tutorial-simd</name>
-    <title>Many values at once</title>
+    <title>SIMD support</title>
     <filename>tutorial-simd.html</filename>
   </compound>
   <compound kind="page">
@@ -4242,8 +4284,14 @@
     <docanchor file="building.html" title="/__w/polyfloat/polyfloat/doc/building.md">md__2____w_2polyfloat_2polyfloat_2doc_2building</docanchor>
   </compound>
   <compound kind="page">
-    <name>md__2____w_2polyfloat_2polyfloat_2doc_2implementation__precisions</name>
-    <title>Polyfloat (#implementation_precisions)</title>
-    <filename>md__2____w_2polyfloat_2polyfloat_2doc_2implementation__precisions.html</filename>
+    <name>implementation_precisions</name>
+    <title>Precision</title>
+    <filename>implementation_precisions.html</filename>
+    <docanchor file="implementation_precisions.html" title="/__w/polyfloat/polyfloat/doc/implementation_precisions.md">md__2____w_2polyfloat_2polyfloat_2doc_2implementation__precisions</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>index</name>
+    <title>SIMD-Aware Extended Precision Floating-Point</title>
+    <filename>index.html</filename>
   </compound>
 </tagfile>

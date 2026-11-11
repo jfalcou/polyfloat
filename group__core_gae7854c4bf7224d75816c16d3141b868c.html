@@ -152,23 +152,24 @@ $(function(){initNavTree('group__core_gae7854c4bf7224d75816c16d3141b868c.html','
 </table>
 </div><div class="memdoc">
 
-<p>return the ratolute value. </p>
+<p>return a rational approximation of the value, as a numerator and a denominator. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae7854c4bf7224d75816c16d3141b868c">rat</a>(floating_value <span class="keyword">auto</span> x)                           <span class="keyword">noexcept</span>;</div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae7854c4bf7224d75816c16d3141b868c">rat</a>(floating_value <span class="keyword">auto</span> x, floating_value <span class="keyword">auto</span> tol)  <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae7854c4bf7224d75816c16d3141b868c">rat</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> x)                           <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#gae7854c4bf7224d75816c16d3141b868c">rat</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> x, <a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a> <span class="keyword">auto</span> tol)  <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_gae7854c4bf7224d75816c16d3141b868c_html_gae7854c4bf7224d75816c16d3141b868c"><div class="ttname"><a href="#gae7854c4bf7224d75816c16d3141b868c">plf::rat</a></div><div class="ttdeci">constexpr auto rat</div><div class="ttdoc">return the ratolute value.</div><div class="ttdef"><b>Definition</b> rat.hpp:74</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconcepteve_1_1floating__value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html">eve::floating_value</a></div></div>
+<div class="ttc" id="agroup__core_gae7854c4bf7224d75816c16d3141b868c_html_gae7854c4bf7224d75816c16d3141b868c"><div class="ttname"><a href="#gae7854c4bf7224d75816c16d3141b868c">plf::rat</a></div><div class="ttdeci">constexpr auto rat</div><div class="ttdoc">return a rational approximation of the value, as a numerator and a denominator.</div><div class="ttdef"><b>Definition</b> rat.hpp:74</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <pre class="fragment">* `x` :  [argument](@ref eve::value).
 * `tol`: [floating value](@ref eve::value). By  default `tol`
    is equal to `10*eps(as(x))*eve::abs(x)`.
 </pre><p><b>Return value</b></p>
-<p>Returns the ratolute value of z.</p>
+<p>Returns a pair of the numerator and the denominator of a rational approximation of <span class="tt">x</span>, within the tolerance <span class="tt">tol</span>.</p>
 <h2 class="groupheader">Example </h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;eve/module/math.hpp&gt;</span></div>
@@ -181,8 +182,8 @@ $(function(){initNavTree('group__core_gae7854c4bf7224d75816c16d3141b868c.html','
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gae7854c4bf7224d75816c16d3141b868c">plf::rat</a>;</div>
 <div class="line">  <span class="keyword">auto</span> a = 1.23456;</div>
-<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.23456, 0.0);</div>
-<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.23456, 0.0, 0.0);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.23456, 0.0);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.23456, 0.0, 0.0);</div>
 <div class="line">  std::setprecision(15);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
@@ -200,7 +201,7 @@ $(function(){initNavTree('group__core_gae7854c4bf7224d75816c16d3141b868c.html','
 <div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>, 2&gt;;</div>
 <div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>, 2&gt;;</div>
-<div class="line">  <span class="keyword">auto</span> d = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(70.0 / 3.0, 0.0);</div>
+<div class="line">  <span class="keyword">auto</span> d = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(70.0 / 3.0, 0.0);</div>
 <div class="line"> </div>
 <div class="line">  pf2_t wb(b, d);</div>
 <div class="line">  pf3_t wc(c);</div>
@@ -211,7 +212,7 @@ $(function(){initNavTree('group__core_gae7854c4bf7224d75816c16d3141b868c.html','
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

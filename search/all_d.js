@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['naming_20a_20type_2',['Naming a type',['../tutorial-basics.html#autotoc_md0',1,'']]],
+  ['nan_2',['Infinities and NaN',['../tutorial-basics.html#autotoc_md3',1,'']]],
   ['nan_3',['nan',['../group__constants_gab815a9e20ea8d0c215108a23413f0347.html#gab815a9e20ea8d0c215108a23413f0347',1,'plf::nan']]],
   ['nbmantissabits_6',['nbmantissabits',['../group__constants_ga353f26b1179c82267a8066987951a553.html#ga353f26b1179c82267a8066987951a553',1,'plf::nbmantissabits']]],
   ['nearest_7',['nearest',['../group__core_ga1c1e5e03fa7f21ea1a74311813762197.html#ga1c1e5e03fa7f21ea1a74311813762197',1,'plf::nearest']]],
@@ -11,10 +11,10 @@ var searchData=
   ['negmaxabs_12',['negmaxabs',['../group__core_ga0ddb4ae3b0954209eca0c7257d166dbc.html#ga0ddb4ae3b0954209eca0c7257d166dbc',1,'plf::negmaxabs']]],
   ['negminabs_13',['negminabs',['../group__core_gace9b23e8f34fdc09478d8901078f1bb6.html#gace9b23e8f34fdc09478d8901078f1bb6',1,'plf::negminabs']]],
   ['neville_15',['neville',['../group__functions_gada98330f63111f37aa310dcb450fb2aa.html#gada98330f63111f37aa310dcb450fb2aa',1,'plf::neville']]],
-  ['next_17',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf::next'],['../setup.html#autotoc_md44',1,'Where to go next']]],
+  ['next_17',['next',['../group__core_ga60c7f280243a468485f42421a2c06739.html#ga60c7f280243a468485f42421a2c06739',1,'plf::next']]],
   ['nextafter_19',['nextafter',['../group__core_ga09f396a43b0cf65385e8a586a2b410e9.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf::nextafter']]],
   ['nextint_20',['nextint',['../group__core_gaf1c232d7bc7f81fc1a42edb3c7b7cd88.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf::nextint']]],
-  ['not_20care_28',['Writing code that does not care',['../tutorial-simd.html#autotoc_md5',1,'']]],
+  ['normalization_28',['Normalization',['../tutorial-basics.html#autotoc_md1',1,'']]],
   ['nthroot_31',['nthroot',['../group__math_ga51f47a92f62d391bf10c55c304a691da.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
-  ['numbers_32',['numbers',['../tutorial-simd.html#autotoc_md3',1,'A register of floating numbers'],['../biblio.html#autotoc_md20',1,'Expansions and poly or multifloat numbers'],['../tutorial-basics.html',1,'Polyfloat numbers'],['..//__w/polyfloat/polyfloat/doc/index.hpp#autotoc_md7',1,'Polyfloat numbers'],['../md__2____w_2polyfloat_2polyfloat_2doc_2implementation__precisions.html#autotoc_md26',1,'Polyfloat numbers']]],
+  ['numbers_32',['Polyfloat numbers',['../tutorial-basics.html',1,'']]],
 ];

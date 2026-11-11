@@ -152,25 +152,62 @@ $(function(){initNavTree('group__core_ga4bf8537407a460e745d9df6f37fac5f7.html','
 </table>
 </div><div class="memdoc">
 
-<p>returns the least flint greater than the input. </p>
+<p>returns the greatest flint strictly less than the input. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(value <span class="keyword">auto</span> x)                            <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(<a class="code hl_conceptRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a> <span class="keyword">auto</span> x)                            <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga4bf8537407a460e745d9df6f37fac5f7_html_ga4bf8537407a460e745d9df6f37fac5f7"><div class="ttname"><a href="#ga4bf8537407a460e745d9df6f37fac5f7">plf::prevint</a></div><div class="ttdeci">constexpr auto prevint</div><div class="ttdoc">returns the least flint greater than the input.</div><div class="ttdef"><b>Definition</b> prevint.hpp:62</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconcepteve_1_1value_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/concepteve_1_1value.html">eve::value</a></div></div>
+<div class="ttc" id="agroup__core_ga4bf8537407a460e745d9df6f37fac5f7_html_ga4bf8537407a460e745d9df6f37fac5f7"><div class="ttname"><a href="#ga4bf8537407a460e745d9df6f37fac5f7">plf::prevint</a></div><div class="ttdeci">constexpr auto prevint</div><div class="ttdoc">returns the greatest flint strictly less than the input.</div><div class="ttdef"><b>Definition</b> prevint.hpp:62</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
-<li><span class="tt">z</span>: Value to process.</li>
+<li><span class="tt">x</span>: value to process.</li>
 </ul>
 <p><b>Return value</b></p>
-<p>Returns the least flint greater than the input.</p>
+<p>Returns the greatest flint strictly less than <span class="tt">x</span>.</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/prevint.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// A negative non-integer value is added to the usual ones.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">plf::prevint</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> d = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-2.5, 1.0e-20);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;d  &quot;</span> &lt;&lt; d &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(d) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(d) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;prevint(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4bf8537407a460e745d9df6f37fac5f7">prevint</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

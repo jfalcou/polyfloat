@@ -154,16 +154,16 @@ $(function(){initNavTree('group__core_ga9c7c797f076bcdb2062d2bd3205bb325.html','
 
 <p>return \(2^n\) where n is flint or integral. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T&gt;                        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9c7c797f076bcdb2062d2bd3205bb325">exp2n</a>(T n) <span class="keyword">noexcept</span>;            <span class="comment">//1</span></div>
-<div class="line">   <span class="keyword">template</span>&lt;eve::<span class="keywordtype">int</span>egral_value I, poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like U&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9c7c797f076bcdb2062d2bd3205bb325">exp2n</a>(I n, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;U&gt;</a>) <span class="keyword">noexcept</span>;<span class="comment">//2</span></div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T&gt;                        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9c7c797f076bcdb2062d2bd3205bb325">exp2n</a>(T n) <span class="keyword">noexcept</span>;            <span class="comment">//1</span></div>
+<div class="line">   <span class="keyword">template</span>&lt;eve::<span class="keywordtype">int</span>egral_value I, concepts::poly<span class="keywordtype">float</span>_like U&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga9c7c797f076bcdb2062d2bd3205bb325">exp2n</a>(I n, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;U&gt;</a>) <span class="keyword">noexcept</span>;<span class="comment">//2</span></div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_ga9c7c797f076bcdb2062d2bd3205bb325_html_ga9c7c797f076bcdb2062d2bd3205bb325"><div class="ttname"><a href="#ga9c7c797f076bcdb2062d2bd3205bb325">plf::exp2n</a></div><div class="ttdeci">constexpr auto exp2n</div><div class="ttdoc">return  where n is flint or integral.</div><div class="ttdef"><b>Definition</b> exp2n.hpp:84</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 <div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <p><span class="tt">n</span>: flint exponent (if it is not flint it is truncated before use).</p>
 <p><b>Template Parameter</b></p>
@@ -189,8 +189,8 @@ $(function(){initNavTree('group__core_ga9c7c797f076bcdb2062d2bd3205bb325.html','
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga9c7c797f076bcdb2062d2bd3205bb325">plf::exp2n</a>;</div>
 <div class="line">  <span class="keyword">auto</span> a = -2.0;</div>
-<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-2.0, 0.0);</div>
-<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-2.0, 0.0, 0.0);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-2.0, 0.0);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-2.0, 0.0, 0.0);</div>
 <div class="line">  std::setprecision(15);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
@@ -228,7 +228,7 @@ $(function(){initNavTree('group__core_ga9c7c797f076bcdb2062d2bd3205bb325.html','
 <div class="line">}</div>
 <div class="ttc" id="agroup__constants_ga17a6561e33fcb9f3bf0be566ca5751f7_html_ga17a6561e33fcb9f3bf0be566ca5751f7"><div class="ttname"><a href="group__constants_ga17a6561e33fcb9f3bf0be566ca5751f7.html#ga17a6561e33fcb9f3bf0be566ca5751f7">plf::inf</a></div><div class="ttdeci">constexpr auto inf</div><div class="ttdoc">return the infinite value.</div><div class="ttdef"><b>Definition</b> inf.hpp:66</div></div>
 <div class="ttc" id="agroup__constants_ga53eeee70008790007d0da7e69ad152e5_html_ga53eeee70008790007d0da7e69ad152e5"><div class="ttname"><a href="group__constants_ga53eeee70008790007d0da7e69ad152e5.html#ga53eeee70008790007d0da7e69ad152e5">plf::minf</a></div><div class="ttdeci">constexpr auto minf</div><div class="ttdoc">return the minus infinity value.</div><div class="ttdef"><b>Definition</b> minf.hpp:66</div></div>
-<div class="ttc" id="agroup__constants_gab815a9e20ea8d0c215108a23413f0347_html_gab815a9e20ea8d0c215108a23413f0347"><div class="ttname"><a href="group__constants_gab815a9e20ea8d0c215108a23413f0347.html#gab815a9e20ea8d0c215108a23413f0347">plf::nan</a></div><div class="ttdeci">constexpr auto nan</div><div class="ttdoc">return the naninite value.</div><div class="ttdef"><b>Definition</b> nan.hpp:66</div></div>
+<div class="ttc" id="agroup__constants_gab815a9e20ea8d0c215108a23413f0347_html_gab815a9e20ea8d0c215108a23413f0347"><div class="ttname"><a href="group__constants_gab815a9e20ea8d0c215108a23413f0347.html#gab815a9e20ea8d0c215108a23413f0347">plf::nan</a></div><div class="ttdeci">constexpr auto nan</div><div class="ttdoc">a quiet NaN.</div><div class="ttdef"><b>Definition</b> nan.hpp:66</div></div>
 <div class="ttc" id="agroup__eve__core__constants_html_ga34b67924fa53bec83dfc96b51bd8fe56"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__constants.html#ga34b67924fa53bec83dfc96b51bd8fe56">eve::nan</a></div><div class="ttdeci">constexpr auto nan</div></div>
 <div class="ttc" id="agroup__eve__core__constants_html_ga44e6675c343b28dca02c76705b40f854"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__constants.html#ga44e6675c343b28dca02c76705b40f854">eve::maxexponent</a></div><div class="ttdeci">constexpr auto maxexponent</div></div>
 <div class="ttc" id="agroup__eve__core__constants_html_ga59cbceaa5903da81191784af48fed2c4"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__constants.html#ga59cbceaa5903da81191784af48fed2c4">eve::minexponent</a></div><div class="ttdeci">constexpr auto minexponent</div></div>
@@ -236,7 +236,7 @@ $(function(){initNavTree('group__core_ga9c7c797f076bcdb2062d2bd3205bb325.html','
 <div class="ttc" id="agroup__eve__core__constants_html_gacb2fe7bcb76509497ca32681494e30d4"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__constants.html#gacb2fe7bcb76509497ca32681494e30d4">eve::minf</a></div><div class="ttdeci">constexpr auto minf</div></div>
 <div class="ttc" id="agroup__eve__core__decorators_html_gab99e44220c7f6c31754e4fbadec3403a"><div class="ttname"><a href="https://jfalcou.github.io/eve/group__eve__core__decorators.html#gab99e44220c7f6c31754e4fbadec3403a">eve::raw</a></div><div class="ttdeci">constexpr auto raw</div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat_a5bc8d3714e201b591e64a8901fdeb667.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduction guide for constructing from product type.</div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

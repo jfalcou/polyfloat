@@ -154,14 +154,14 @@ $(function(){initNavTree('group__core_ga3edebc887d62d202367258c76f7a1a7f.html','
 
 <p>return the value having the minimum of the absolute values. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;poly<span class="keywordtype">float</span>::concepts::poly<span class="keywordtype">float</span>_like T1, poly<span class="keywordtype">float</span>_like Z2&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(T1 z1, T2 z2) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;concepts::poly<span class="keywordtype">float</span>_like T1, concepts::poly<span class="keywordtype">float</span>_like T2&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(T1 z1, T2 z2) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_ga3edebc887d62d202367258c76f7a1a7f_html_ga3edebc887d62d202367258c76f7a1a7f"><div class="ttname"><a href="#ga3edebc887d62d202367258c76f7a1a7f">plf::minmag</a></div><div class="ttdeci">constexpr auto minmag</div><div class="ttdoc">return the value having the minimum of the absolute values.</div><div class="ttdef"><b>Definition</b> minmag.hpp:67</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z, zs...</span>: Values to process.</li>
@@ -169,8 +169,48 @@ $(function(){initNavTree('group__core_ga3edebc887d62d202367258c76f7a1a7f.html','
 <p><b>Return value</b></p>
 <p>Returns the value having the minimum of the absolute of the parameters.</p>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/minmag.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Each pair mixes values of the same or of different dimensions.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">plf::minmag</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(f, f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(f, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(a, a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(a, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(b, b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(b, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(c, c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(c, c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(a, f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(a, f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(b, a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(b, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(c, b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(c, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(f, a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(f, a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(a, b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(a, b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(b, c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(b, c) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(wb, wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(wb, wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(wc, wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(wc, wc) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;minmag(wc, wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga3edebc887d62d202367258c76f7a1a7f">minmag</a>(wc, wb) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

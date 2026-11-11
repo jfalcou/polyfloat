@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['setup_2',['CMake setup',['../building.html#autotoc_md21',1,'']]],
-  ['special_20functions_5',['Math special functions',['..//__w/polyfloat/polyfloat/doc/index.hpp#autotoc_md18',1,'']]],
-  ['start_6',['Installation &amp;amp; Quick Start',['../setup.html',1,'']]],
+  ['setup_2',['CMake setup',['../building.html#autotoc_md19',1,'']]],
+  ['simd_20aware_20extended_20precision_20floating_20point_4',['SIMD-Aware Extended Precision Floating-Point',['../index.html',1,'']]],
+  ['simd_20registers_5',['SIMD registers',['../index.html#autotoc_md11',1,'']]],
+  ['simd_20support_6',['SIMD support',['../tutorial-simd.html',1,'']]],
+  ['support_9',['SIMD support',['../tutorial-simd.html',1,'']]]
 ];

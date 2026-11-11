@@ -154,14 +154,15 @@ $(function(){initNavTree('group__math_ga0b35ba464177d39b675aebaae393d1e6.html','
 
 <p>object computing the lpnorm operation \( \left(\sum_{i = 0}^n  |x_i|^p\right)^{\frac1p} \). </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_class" href="structplf_1_1polyfloat.html">polyfloat</a></div>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
-<div class="line">   <span class="keyword">template</span>&lt;polyfloat::concepts::polyfloat_like Z, polyfloat_like ... Zs&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga0b35ba464177d39b675aebaae393d1e6">lpnorm</a>(Z z, Zs... zs) <span class="keyword">noexcept</span>;</div>
+<div class="line">   <span class="keyword">template</span>&lt;<a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat__like.html">concepts::polyfloat_like</a> Z, <a class="code hl_concept" href="conceptplf_1_1concepts_1_1polyfloat__like.html">concepts::polyfloat_like</a> ... Zs&gt; <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga0b35ba464177d39b675aebaae393d1e6">lpnorm</a>(Z z, Zs... zs) <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__math_ga0b35ba464177d39b675aebaae393d1e6_html_ga0b35ba464177d39b675aebaae393d1e6"><div class="ttname"><a href="#ga0b35ba464177d39b675aebaae393d1e6">plf::lpnorm</a></div><div class="ttdeci">constexpr auto lpnorm</div><div class="ttdoc">object computing the lpnorm operation .</div><div class="ttdef"><b>Definition</b> lpnorm.hpp:79</div></div>
-<div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">representing an extended precision floating point by a sequence of standards ones</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
+<div class="ttc" id="aconceptplf_1_1concepts_1_1polyfloat__like_html"><div class="ttname"><a href="conceptplf_1_1concepts_1_1polyfloat__like.html">plf::concepts::polyfloat_like</a></div><div class="ttdoc">Any value a POLYFLOAT function accepts: a scalar integer, a floating-point scalar or register,...</div><div class="ttdef"><b>Definition</b> concepts.hpp:33</div></div>
+<div class="ttc" id="agroup__math_ga0b35ba464177d39b675aebaae393d1e6_html_ga0b35ba464177d39b675aebaae393d1e6"><div class="ttname"><a href="#ga0b35ba464177d39b675aebaae393d1e6">plf::lpnorm</a></div><div class="ttdeci">constexpr auto lpnorm</div><div class="ttdoc">object computing the lpnorm operation .</div><div class="ttdef"><b>Definition</b> lpnorm.hpp:80</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">z, zs...</span>: Values to process.</li>
@@ -173,7 +174,7 @@ $(function(){initNavTree('group__math_ga0b35ba464177d39b675aebaae393d1e6.html','
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using </span>pv_t = <a class="code hl_typedef" href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>pv_t = <a class="code hl_typedef" href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t&lt;float&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
@@ -193,7 +194,7 @@ $(function(){initNavTree('group__math_ga0b35ba464177d39b675aebaae393d1e6.html','
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__types_ga3150408863a87ad5a78978ea1eebf102_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types_ga3150408863a87ad5a78978ea1eebf102.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Type alias for triple_real numbers.</div><div class="ttdef"><b>Definition</b> triple_real.hpp:28</div></div>
+<div class="ttc" id="agroup__types_html_ga3150408863a87ad5a78978ea1eebf102"><div class="ttname"><a href="group__types.html#ga3150408863a87ad5a78978ea1eebf102">plf::triple_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 3, T &gt; triple_real_t</div><div class="ttdoc">Floating-point expansion of three values of type T, plf::polyfloat&lt;T, 3&gt;, and eve::wide&lt;plf::polyfloa...</div><div class="ttdef"><b>Definition</b> triple_real.hpp:27</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

@@ -25,21 +25,27 @@
 var NAVTREE =
 [
   [ "polyfloat", "index.html", [
-    [ "Tutorials", "setup.html", [
-      [ "Installation & Quick Start", "setup.html", null ],
-      [ "Getting Started", "tutorial-basics.html", [
-        [ "polyfloat Numbers", "tutorial-basics.html", null ],
-        [ "Many Values At Once", "tutorial-simd.html", null ]
-      ] ]
+    [ "SIMD-Aware Extended Precision Floating-Point", "index.html", "index" ],
+    [ "Getting Started", "setup.html", [
+      [ "Installation", "setup.html", null ],
+      [ "Polyfloat numbers", "tutorial-basics.html", null ],
+      [ "SIMD support", "tutorial-simd.html", null ]
     ] ],
     [ "Reference Documentation", "group__types.html", [
       [ "Types", "group__types.html", null ],
-      [ "Core Functions", "group__core.html", null ],
-      [ "Math Functions", "group__math.html", null ],
+      [ "Core functions", "group__core.html", null ],
+      [ "Elementary functions", "group__math.html", null ],
+      [ "Constants", "group__constants.html", null ],
+      [ "Error-free transformations", "group__core__accuracy.html", null ],
+      [ "Polynomial evaluation", "group__functions.html", null ],
       [ "Traits", "group__traits.html", null ],
       [ "Concept List", "concepts.html", "concepts" ]
     ] ],
-    [ "Informations", "licence.html", [
+    [ "Informations", "implementation_precisions.html", [
+      [ "Precision", "implementation_precisions.html", null ],
+      [ "Bibliography", "biblio.html", null ],
+      [ "Building for Testing", "building.html", null ],
+      [ "Changelog", "changelog.html", null ],
       [ "Licence", "licence.html", null ]
     ] ]
   ] ]
@@ -47,7 +53,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"conceptplf_1_1concepts_1_1doublereal__like.html"
+"biblio.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

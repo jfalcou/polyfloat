@@ -152,16 +152,16 @@ $(function(){initNavTree('group__core_ga113b95e7d3065357cea2e7278e16b167.html','
 </table>
 </div><div class="memdoc">
 
-<p>returns a logical true if and only if the element value is normalized i.e. its successive components satisfy Zhang condition of strong domination. </p>
+<p>returns a logical true if and only if two successive parts \(x\) and \(y\) of the value satisfy \(x + y = x\) in the base type, two NaN comparing equal. </p>
 <h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 </div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
 <div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceplf.html">plf</a></div>
 <div class="line">{</div>
 <div class="line">   <span class="comment">// Regular overloads</span></div>
 <div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(<span class="keyword">auto</span> x)                 <span class="keyword">noexcept</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__core_ga113b95e7d3065357cea2e7278e16b167_html_ga113b95e7d3065357cea2e7278e16b167"><div class="ttname"><a href="#ga113b95e7d3065357cea2e7278e16b167">plf::is_normalized</a></div><div class="ttdeci">constexpr auto is_normalized</div><div class="ttdoc">returns a logical true if and only if the element value is normalized i.e. its successive components ...</div><div class="ttdef"><b>Definition</b> is_normalized.hpp:69</div></div>
+<div class="ttc" id="agroup__core_ga113b95e7d3065357cea2e7278e16b167_html_ga113b95e7d3065357cea2e7278e16b167"><div class="ttname"><a href="#ga113b95e7d3065357cea2e7278e16b167">plf::is_normalized</a></div><div class="ttdeci">constexpr auto is_normalized</div><div class="ttdoc">returns a logical true if and only if two successive parts  and  of the value satisfy  in the base ty...</div><div class="ttdef"><b>Definition</b> is_normalized.hpp:68</div></div>
 <div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
@@ -171,8 +171,45 @@ $(function(){initNavTree('group__core_ga113b95e7d3065357cea2e7278e16b167.html','
 <p>returns true if and only if x represent an normalized number.</p>
 <dl class="section note"><dt>Note</dt><dd>this condition is mandatory. If you want to write any function that returns a polyfloat, the polyfloat returned MUST satisfy is_normalized.</dd></dl>
 <h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/is_normalized.cpp</span>. </dd></dl>
-
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/wide.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Values built by a constructor are normalized, whatever the order of their arguments.</span></div>
+<div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">plf::is_normalized</a>;</div>
+<div class="line">  <span class="keyword">auto</span> f = 1.0;</div>
+<div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.3);</div>
+<div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-300);</div>
+<div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, 1.0e-10, 1.0e-300);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> r = <a class="code hl_typedef" href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t&lt;double&gt;</a>(1.0e-10, 1.0);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;r  &quot;</span> &lt;&lt; r &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(f) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(f) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(a) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(a) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(b) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(b) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(c) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(c) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(r) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(r) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
+<div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
+<div class="line">  pf2_t wb(b);</div>
+<div class="line">  pf3_t wc(c);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb          &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc          &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(wb) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(wb) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;is_normalized(wc) = &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga113b95e7d3065357cea2e7278e16b167">is_normalized</a>(wc) &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__types_html_gad8203f72c65a6761f03db03f8ac55c61"><div class="ttname"><a href="group__types.html#gad8203f72c65a6761f03db03f8ac55c61">plf::double_real_t</a></div><div class="ttdeci">as_polyfloat_n_t&lt; 2, T &gt; double_real_t</div><div class="ttdoc">Floating-point expansion of two values of type T, plf::polyfloat&lt;T, 2&gt;, and eve::wide&lt;plf::polyfloat&lt;...</div><div class="ttdef"><b>Definition</b> double_real.hpp:27</div></div>
+<div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
+<div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
