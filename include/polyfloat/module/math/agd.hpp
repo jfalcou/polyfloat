@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(agd_t, agd_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_agd plf::agd
+  //! @ingroup math
+  //! @brief return the inverse Gudermannian function, \f$2\,\mathrm{atanh}(\tan(x/2))\f$.
   //! @{
   //!   @var agd
-  //!   @brief return the inverse Gudermannian function, \f$2\,\mathrm{atanh}(\tan(x/2))\f$.
   //!
   //!   @groupheader{Header file}
   //!

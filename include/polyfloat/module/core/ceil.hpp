@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(ceil_t, ceil_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_ceil plf::ceil
+  //! @ingroup core
+  //! @brief return the smallest integral value not less than the value.
   //! @{
   //!   @var ceil
-  //!   @brief return the smallest integral value not less than the value.
   //!
   //!   @groupheader{Header file}
   //!

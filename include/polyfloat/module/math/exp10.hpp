@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp10_t, exp10_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_exp10 plf::exp10
+  //! @ingroup math
+  //! @brief return \f$10^x\f$.
   //! @{
   //!   @var exp10
-  //!   @brief return \f$10^x\f$.
   //!
   //!   @groupheader{Header file}
   //!

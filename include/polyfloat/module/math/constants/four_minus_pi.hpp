@@ -45,10 +45,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(four_minus_pi_t, four_minus_pi_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_four_minus_pi plf::four_minus_pi
+  //! @ingroup constants
+  //! @brief return \f$4 - \pi\f$.
   //! @{
   //!   @var four_minus_pi
-  //!   @brief return \f$4 - \pi\f$.
   //!
   //!   @groupheader{Header file}
   //!

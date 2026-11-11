@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(inf_t, inf_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_inf plf::inf
+  //! @ingroup constants
+  //! @brief return the infinite value.
   //! @{
   //!   @var inf
-  //!   @brief return the infinite value.
   //!
   //!   @groupheader{Header file}
   //!

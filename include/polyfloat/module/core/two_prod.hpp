@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_prod_t, two_prod_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_two_prod plf::two_prod
+  //! @ingroup core_accuracy
+  //! @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded product of two values and its rounding error, with an fma.
   //! @{
   //!   @var two_prod
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded product of two values and its rounding error, with an fma.
   //!
   //!   @groupheader{Header file}
   //!

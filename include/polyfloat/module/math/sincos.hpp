@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sincos_t, sincos_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sincos plf::sincos
+  //! @ingroup math
+  //! @brief return the sine and cosine values.
   //! @{
   //!   @var sincos
-  //!   @brief return the sine and cosine values.
   //!
   //!   @groupheader{Header file}
   //!

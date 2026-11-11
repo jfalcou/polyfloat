@@ -47,10 +47,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(logeps_t, logeps_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_logeps plf::logeps
+  //! @ingroup constants
+  //! @brief the natural logarithm of plf::eps.
   //! @{
   //!   @var logeps
-  //!   @brief the natural logarithm of plf::eps.
   //!
   //!   @groupheader{Header file}
   //!

@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp_pi_t, exp_pi_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_exp_pi plf::exp_pi
+  //! @ingroup constants
+  //! @brief return \f$e^\pi\f$.
   //! @{
   //!   @var exp_pi
-  //!   @brief return \f$e^\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!

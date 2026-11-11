@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sin_t, sin_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sin plf::sin
+  //! @ingroup math
+  //! @brief return the sine value.
   //! @{
   //!   @var sin
-  //!   @brief return the sine value.
   //!
   //!   @groupheader{Header file}
   //!

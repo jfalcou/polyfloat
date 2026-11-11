@@ -28,10 +28,11 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_odd plf::is_odd
+  //! @ingroup core
+  //! @brief returns a logical true if and only if the element value is a floating value representing an odd integer.
   //! @{
   //!   @var is_odd
-  //!   @brief returns a logical true if and only if the element value is a floating value representing an odd integer.
   //!
   //!   @groupheader{Header file}
   //!

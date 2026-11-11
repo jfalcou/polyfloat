@@ -47,10 +47,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sqrteps_t, sqrteps_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_sqrteps plf::sqrteps
+  //! @ingroup constants
+  //! @brief the square root of plf::eps.
   //! @{
   //!   @var sqrteps
-  //!   @brief the square root of plf::eps.
   //!
   //!   @groupheader{Header file}
   //!

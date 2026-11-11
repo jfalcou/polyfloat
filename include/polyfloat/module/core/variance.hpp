@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(variance_t, variance_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_variance plf::variance
+  //! @ingroup core
+  //! @brief return the variance of the parameters.
   //! @{
   //!   @var variance
-  //!   @brief return the variance of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

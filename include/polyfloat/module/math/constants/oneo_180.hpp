@@ -47,10 +47,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(oneo_180_t, oneo_180_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_oneo_180 plf::oneo_180
+  //! @ingroup constants
+  //! @brief return \f$1/180\f$.
   //! @{
   //!   @var oneo_180
-  //!   @brief return \f$1/180\f$.
   //!
   //!   @groupheader{Header file}
   //!

@@ -25,10 +25,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(minus_t, minus_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_minus plf::minus
+  //! @ingroup core
+  //! @brief return the opposite value.
   //! @{
   //!   @var minus
-  //!   @brief return the opposite value.
   //!
   //!   @groupheader{Header file}
   //!

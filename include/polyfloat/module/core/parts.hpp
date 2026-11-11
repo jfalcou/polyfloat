@@ -32,13 +32,11 @@ namespace plf
   };
 
   //====================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_hi plf::hi
+  //! @ingroup core
+  //! @brief returns the high part of a value, its first part, the largest in magnitude when the value is normalized.
   //! @{
-  //====================================================================================================================
-
-  //====================================================================================================================
   //!   @var hi
-  //!   @brief returns the high part of a value, its first part, the largest in magnitude when the value is normalized.
   //!
   //!   @groupheader{Header file}
   //!
@@ -70,10 +68,16 @@ namespace plf
   //!  @godbolt{doc/core/hi.cpp}
   //====================================================================================================================
   inline constexpr auto hi = extractor<0>{};
+  //====================================================================================================================
+  //! @}
+  //====================================================================================================================
 
   //====================================================================================================================
+  //! @defgroup plf_md plf::md
+  //! @ingroup core
+  //! @brief returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3.
+  //! @{
   //!   @var md
-  //!   @brief returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3.
   //!
   //!   @groupheader{Header file}
   //!
@@ -105,10 +109,16 @@ namespace plf
   //!  @godbolt{doc/core/md.cpp}
   //====================================================================================================================
   inline constexpr auto md = extractor<1>{};
+  //====================================================================================================================
+  //! @}
+  //====================================================================================================================
 
   //====================================================================================================================
+  //! @defgroup plf_lo plf::lo
+  //! @ingroup core
+  //! @brief returns the low part of a value, its last part, the smallest in magnitude when the value is normalized.
+  //! @{
   //!   @var lo
-  //!   @brief returns the low part of a value, its last part, the smallest in magnitude when the value is normalized.
   //!
   //!   @groupheader{Header file}
   //!
@@ -152,5 +162,8 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lo_t, lo_);
   };
   inline constexpr auto lo = eve::functor<lo_t>;
+  //====================================================================================================================
+  //! @}
+  //====================================================================================================================
 
 }

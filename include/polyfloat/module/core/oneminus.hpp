@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(oneminus_t, oneminus_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_oneminus plf::oneminus
+  //! @ingroup core
+  //! @brief return one minus the value.
   //! @{
   //!   @var oneminus
-  //!   @brief return one minus the value.
   //!
   //!   @groupheader{Header file}
   //!

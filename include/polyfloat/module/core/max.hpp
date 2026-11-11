@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(max_t, max_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_max plf::max
+  //! @ingroup core
+  //! @brief return the maximum value.
   //! @{
   //!   @var max
-  //!   @brief return the maximum value.
   //!
   //!   @groupheader{Header file}
   //!

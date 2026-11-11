@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negmaxabs_t, negmaxabs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negmaxabs plf::negmaxabs
+  //! @ingroup core
+  //! @brief return the negated maximum of the absolute values.
   //! @{
   //!   @var negmaxabs
-  //!   @brief return the negated maximum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

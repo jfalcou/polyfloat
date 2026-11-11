@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(frac_t, frac_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_frac plf::frac
+  //! @ingroup core
+  //! @brief return the fractional part of the value.
   //! @{
   //!   @var frac
-  //!   @brief return the fractional part of the value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(valmin_t, valmin_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_valmin plf::valmin
+  //! @ingroup constants
+  //! @brief the lowest finite value of the type, the opposite of plf::valmax.
   //! @{
   //!   @var valmin
-  //!   @brief the lowest finite value of the type, the opposite of plf::valmax.
   //!
   //!   @groupheader{Header file}
   //!

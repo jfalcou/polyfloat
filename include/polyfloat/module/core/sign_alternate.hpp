@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sign_alternate_t, sign_alternate_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sign_alternate plf::sign_alternate
+  //! @ingroup core
+  //! @brief return \f$(-1)^n\f$.
   //! @{
   //!   @var sign_alternate
-  //!   @brief return \f$(-1)^n\f$.
   //!
   //!   @groupheader{Header file}
   //!

@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negate_t, negate_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negate plf::negate
+  //! @ingroup core
+  //! @brief return the first parameter multiplied by the sign of the second.
   //! @{
   //!   @var negate
-  //!   @brief return the first parameter multiplied by the sign of the second.
   //!
   //!   @groupheader{Header file}
   //!

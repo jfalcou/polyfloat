@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(minf_t, minf_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_minf plf::minf
+  //! @ingroup constants
+  //! @brief return the minus infinity value.
   //! @{
   //!   @var minf
-  //!   @brief return the minus infinity value.
   //!
   //!   @groupheader{Header file}
   //!

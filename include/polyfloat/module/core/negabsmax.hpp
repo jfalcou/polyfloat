@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negabsmax_t, negabsmax_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negabsmax plf::negabsmax
+  //! @ingroup core
+  //! @brief return the opposite of the absolute value of the maximum of the parameters.
   //! @{
   //!   @var negabsmax
-  //!   @brief return the opposite of the absolute value of the maximum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

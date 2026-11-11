@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(prevint_t, prevint_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_prevint plf::prevint
+  //! @ingroup core
+  //! @brief returns the greatest flint strictly less than the input.
   //! @{
   //!   @var prevint
-  //!   @brief returns the greatest flint strictly less than the input.
   //!
   //!   @groupheader{Header file}
   //!

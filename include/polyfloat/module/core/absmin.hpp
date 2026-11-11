@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(absmin_t, absmin_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_absmin plf::absmin
+  //! @ingroup core
+  //! @brief return the absolute value of the minimum of the parameters.
   //! @{
   //!   @var absmin
-  //!   @brief return the absolute value of the minimum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

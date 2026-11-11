@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lerp_t, lerp_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_lerp plf::lerp
+  //! @ingroup core
+  //! @brief return the linear interpolation \f$x + t(y - x)\f$.
   //! @{
   //!   @var lerp
-  //!   @brief return the linear interpolation \f$x + t(y - x)\f$.
   //!
   //!   @groupheader{Header file}
   //!

@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_not_greater_equal_t, is_not_greater_equal_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_not_greater_equal plf::is_not_greater_equal
+  //! @ingroup core
+  //! @brief return true iff !(z1 >= z2)
   //! @{
   //!   @var is_not_greater_equal
-  //!   @brief return true iff !(z1 >= z2)
   //!
   //!   @groupheader{Header file}
   //!

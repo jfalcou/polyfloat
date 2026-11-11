@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nbmantissabits_t, nbmantissabits_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_nbmantissabits plf::nbmantissabits
+  //! @ingroup constants
+  //! @brief return the number of stored mantissa bits of the type, the implicit bit of each part excluded.
   //! @{
   //!   @var nbmantissabits
-  //!   @brief return the number of stored mantissa bits of the type, the implicit bit of each part excluded.
   //!
   //!   @groupheader{Header file}
   //!

@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(three_fma_t, three_fma_);
   };
   //======================================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_three_fma plf::three_fma
+  //! @ingroup core_accuracy
+  //! @brief Computes the triple of the rounded fma of three values and its two error terms.
   //! @{
   //!   @var three_fma
-  //!   @brief Computes the triple of the rounded fma of three values and its two error terms.
   //!
   //!   @groupheader{Header file}
   //!

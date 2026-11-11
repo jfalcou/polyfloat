@@ -39,10 +39,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(harmmean_t, harmmean_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_harmmean plf::harmmean
+  //! @ingroup math
+  //! @brief  Callable object computing the harmonic mean of the inputs.\f$ \frac{n}{\sum \frac1{z_i}} \f$.
   //! @{
   //!   @var harmmean
-  //!   @brief  Callable object computing the harmonic mean of the inputs.\f$ \frac{n}{\sum \frac1{z_i}} \f$.
   //!
   //!   @groupheader{Header file}
   //!

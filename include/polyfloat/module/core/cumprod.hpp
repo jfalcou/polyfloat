@@ -41,11 +41,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cumprod_t, cumprod_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_cumprod plf::cumprod
+  //! @ingroup core
+  //! @brief convert a pack of values into
+  //!   a tuple of the cumulative product of its values
   //! @{
   //!   @var cumprod
-  //!   @brief convert a pack of values into
-  //!     a tuple of the cumulative product of its values
   //!
   //!   @groupheader{Header file}
   //!

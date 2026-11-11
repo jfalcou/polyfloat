@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(next_t, next_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_next plf::next
+  //! @ingroup core
+  //! @brief return the next representable value.
   //! @{
   //!   @var next
-  //!   @brief return the next representable value.
   //!
   //!   @groupheader{Header file}
   //!

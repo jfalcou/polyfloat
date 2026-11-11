@@ -38,10 +38,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sec_t, sec_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sec plf::sec
+  //! @ingroup math
+  //! @brief return the secant value.
   //! @{
   //!   @var sec
-  //!   @brief return the secant value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(absmax_t, absmax_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_absmax plf::absmax
+  //! @ingroup core
+  //! @brief return the absolute value of the maximum of the parameters.
   //! @{
   //!   @var absmax
-  //!   @brief return the absolute value of the maximum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

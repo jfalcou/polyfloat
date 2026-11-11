@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log1p_t, log1p_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_log1p plf::log1p
+  //! @ingroup math
+  //! @brief return the natural logarithm value of one plus the argument.
   //! @{
   //!   @var log1p
-  //!   @brief return the natural logarithm value of one plus the argument.
   //!
   //!   @groupheader{Header file}
   //!

@@ -52,10 +52,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cosine_similarity_t, cosine_similarity_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_cosine_similarity plf::cosine_similarity
+  //! @ingroup core
+  //! @brief return the cosine similarity \f$u \cdot v / (|u|\,|v|)\f$ of the vector \f$u\f$ of the first half of the parameters and the vector \f$v\f$ of the second half.
   //! @{
   //!   @var cosine_similarity
-  //!   @brief return the cosine similarity \f$u \cdot v / (|u|\,|v|)\f$ of the vector \f$u\f$ of the first half of the parameters and the vector \f$v\f$ of the second half.
   //!
   //!   @groupheader{Header file}
   //!

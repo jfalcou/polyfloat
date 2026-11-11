@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sigmoid_t, sigmoid_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sigmoid plf::sigmoid
+  //! @ingroup math
+  //! @brief return the logistic sigmoid \f$1/(1 + e^{-x})\f$.
   //! @{
   //!   @var sigmoid
-  //!   @brief return the logistic sigmoid \f$1/(1 + e^{-x})\f$.
   //!
   //!   @groupheader{Header file}
   //!

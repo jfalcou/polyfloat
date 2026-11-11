@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(minabs_t, minabs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_minabs plf::minabs
+  //! @ingroup core
+  //! @brief return the minimum of the absolute values.
   //! @{
   //!   @var minabs
-  //!   @brief return the minimum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sign_t, sign_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sign plf::sign
+  //! @ingroup core
+  //! @brief return the sign value.
   //! @{
   //!   @var sign
-  //!   @brief return the sign value.
   //!
   //!   @groupheader{Header file}
   //!

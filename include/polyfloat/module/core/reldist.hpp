@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(reldist_t, reldist_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_reldist plf::reldist
+  //! @ingroup core
+  //! @brief return the relative distance value.
   //! @{
   //!   @var reldist
-  //!   @brief return the relative distance value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -22,10 +22,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rec_t, rec_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_rec plf::rec
+  //! @ingroup core
+  //! @brief return the inverse \f$1/x\f$.
   //! @{
   //!   @var rec
-  //!   @brief return the inverse \f$1/x\f$.
   //!
   //!   @groupheader{Header file}
   //!

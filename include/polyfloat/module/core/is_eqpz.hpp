@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_eqpz_t, is_eqpz_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_eqpz plf::is_eqpz
+  //! @ingroup core
+  //! @brief test the parameter for equality to positive zero.
   //! @{
   //!   @var is_eqpz
-  //!   @brief test the parameter for equality to positive zero.
   //!
   //!   @groupheader{Header file}
   //!

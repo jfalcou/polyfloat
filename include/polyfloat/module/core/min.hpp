@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(min_t, min_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_min plf::min
+  //! @ingroup core
+  //! @brief return the minimum value.
   //! @{
   //!   @var min
-  //!   @brief return the minimum value.
   //!
   //!   @groupheader{Header file}
   //!

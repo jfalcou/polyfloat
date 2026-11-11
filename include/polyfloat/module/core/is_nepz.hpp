@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_nepz_t, is_nepz_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_nepz plf::is_nepz
+  //! @ingroup core
+  //! @brief test the parameter for not equality to positive zero.
   //! @{
   //!   @var is_nepz
-  //!   @brief test the parameter for not equality to positive zero.
   //!
   //!   @groupheader{Header file}
   //!

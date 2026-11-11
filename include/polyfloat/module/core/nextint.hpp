@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nextint_t, nextint_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_nextint plf::nextint
+  //! @ingroup core
+  //! @brief returns the least flint strictly greater than the input.
   //! @{
   //!   @var nextint
-  //!   @brief returns the least flint strictly greater than the input.
   //!
   //!   @groupheader{Header file}
   //!

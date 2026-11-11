@@ -46,10 +46,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(eps_t, eps_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_eps plf::eps
+  //! @ingroup constants
+  //! @brief the machine epsilon of the type.
   //! @{
   //!   @var eps
-  //!   @brief the machine epsilon of the type.
   //!
   //!   @groupheader{Header file}
   //!

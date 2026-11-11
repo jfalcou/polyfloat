@@ -40,10 +40,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(geommean_t, geommean_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_geommean plf::geommean
+  //! @ingroup math
+  //! @brief  Callable object computing the geometric mean of the inputs \f$\left(\prod_{i = 1}^n z_i\right)^{\frac1n}\f$.
   //! @{
   //!   @var geommean
-  //!   @brief  Callable object computing the geometric mean of the inputs \f$\left(\prod_{i = 1}^n z_i\right)^{\frac1n}\f$.
   //!
   //!   @groupheader{Header file}
   //!

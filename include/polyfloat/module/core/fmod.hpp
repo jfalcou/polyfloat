@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fmod_t, fmod_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fmod plf::fmod
+  //! @ingroup core
+  //! @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, as `std::fmod`.
   //! @{
   //!   @var fmod
-  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, as `std::fmod`.
   //!
   //!   @groupheader{Header file}
   //!

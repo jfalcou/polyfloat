@@ -38,10 +38,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rem_t, rem_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_rem plf::rem
+  //! @ingroup core
+  //! @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, or as the option rounds it.
   //! @{
   //!   @var rem
-  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, or as the option rounds it.
   //!
   //!   @groupheader{Header file}
   //!

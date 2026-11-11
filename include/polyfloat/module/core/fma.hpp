@@ -33,10 +33,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fma_t, fma_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fma plf::fma
+  //! @ingroup core
+  //! @brief return the fused multiply add of the parameters.
   //! @{
   //!   @var fma
-  //!   @brief return the fused multiply add of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

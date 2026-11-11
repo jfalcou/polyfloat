@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cosh_1_t, cosh_1_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_cosh_1 plf::cosh_1
+  //! @ingroup constants
+  //! @brief return \f$\cosh 1\f$.
   //! @{
   //!   @var cosh_1
-  //!   @brief return \f$\cosh 1\f$.
   //!
   //!   @groupheader{Header file}
   //!

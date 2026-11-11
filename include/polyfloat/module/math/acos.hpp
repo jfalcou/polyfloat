@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acos_t, acos_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_acos plf::acos
+  //! @ingroup math
+  //! @brief return the arc cosine value.
   //! @{
   //!   @var acos
-  //!   @brief return the arc cosine value.
   //!
   //!   @groupheader{Header file}
   //!

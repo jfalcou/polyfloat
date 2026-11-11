@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cosh_t, cosh_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_cosh plf::cosh
+  //! @ingroup math
+  //! @brief return the hyperbolic cosine value.
   //! @{
   //!   @var cosh
-  //!   @brief return the hyperbolic cosine value.
   //!
   //!   @groupheader{Header file}
   //!

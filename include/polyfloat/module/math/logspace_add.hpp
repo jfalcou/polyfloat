@@ -42,10 +42,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(logspace_add_t, logspace_add_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_logspace_add plf::logspace_add
+  //! @ingroup math
+  //! @brief computes \f$\log\left(\sum_{i = 0}^n e^{x_i}\right)\f$ from the logarithms \f$x_i\f$.
   //! @{
   //!   @var logspace_add
-  //!   @brief computes \f$\log\left(\sum_{i = 0}^n e^{x_i}\right)\f$ from the logarithms \f$x_i\f$.
   //!
   //!   @groupheader{Header file}
   //!

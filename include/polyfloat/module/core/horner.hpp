@@ -42,11 +42,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(horner_t, horner_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @defgroup plf_horner plf::horner
+  //! @ingroup functions
+  //! @brief Implement the horner scheme to evaluate polynomials with coefficients
+  //!   in decreasing power order
   //! @{
   //!   @var horner
-  //!   @brief Implement the horner scheme to evaluate polynomials with coefficients
-  //!   in decreasing power order
   //!
   //!   @groupheader{Header file}
   //!

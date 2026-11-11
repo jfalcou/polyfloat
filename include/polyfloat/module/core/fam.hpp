@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fam_t, fam_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fam plf::fam
+  //! @ingroup core
+  //! @brief return the fused add multiply \f$x + y z\f$.
   //! @{
   //!   @var fam
-  //!   @brief return the fused add multiply \f$x + y z\f$.
   //!
   //!   @groupheader{Header file}
   //!

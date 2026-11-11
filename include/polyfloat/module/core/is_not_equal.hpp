@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_not_equal_t, is_not_equal_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_not_equal plf::is_not_equal
+  //! @ingroup core
+  //! @brief test the parameters for inequality.
   //! @{
   //!   @var is_not_equal
-  //!   @brief test the parameters for inequality.
   //!
   //!   @groupheader{Header file}
   //!

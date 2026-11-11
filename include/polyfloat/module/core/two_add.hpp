@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_add_t, two_add_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_two_add plf::two_add
+  //! @ingroup core_accuracy
+  //! @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded sum of two values and its rounding error.
   //! @{
   //!   @var two_add
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded sum of two values and its rounding error.
   //!
   //!   @groupheader{Header file}
   //!

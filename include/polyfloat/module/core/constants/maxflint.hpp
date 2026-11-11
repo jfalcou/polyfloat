@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(maxflint_t, maxflint_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_maxflint plf::maxflint
+  //! @ingroup constants
+  //! @brief return the integer beyond which not every integer is representable in the type.
   //! @{
   //!   @var maxflint
-  //!   @brief return the integer beyond which not every integer is representable in the type.
   //!
   //!   @groupheader{Header file}
   //!

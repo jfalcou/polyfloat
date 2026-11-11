@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log_10_t, log_10_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_log_10 plf::log_10
+  //! @ingroup constants
+  //! @brief return the log(10) value.
   //! @{
   //!   @var log_10
-  //!   @brief return the log(10) value.
   //!
   //!   @groupheader{Header file}
   //!

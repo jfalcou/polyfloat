@@ -36,10 +36,11 @@ namespace plf
   };
 
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_if_else plf::if_else
+  //! @ingroup core
+  //! @brief Select a value between two arguments based on a logical mask
   //! @{
   //!   @var if_else
-  //!   @brief Select a value between two arguments based on a logical mask
   //!
   //!   @groupheader{Header file}
   //!

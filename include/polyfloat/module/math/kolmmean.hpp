@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(kolmmean_t, kolmmean_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_kolmmean plf::kolmmean
+  //! @ingroup math
+  //! @brief  computes \f$g\left(\frac1n \sum f(x_i)\right)\f$, the Kolmogorov-Nagumo-de Finetti mean when \f$g\f$ is the inverse of \f$f\f$.
   //! @{
   //!   @var kolmmean
-  //!   @brief  computes \f$g\left(\frac1n \sum f(x_i)\right)\f$, the Kolmogorov-Nagumo-de Finetti mean when \f$g\f$ is the inverse of \f$f\f$.
   //!
   //!   @groupheader{Header file}
   //!

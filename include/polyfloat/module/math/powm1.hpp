@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(powm1_t, powm1_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_powm1 plf::powm1
+  //! @ingroup math
+  //! @brief return \f$x^y-1\f$.
   //! @{
   //!   @var powm1
-  //!   @brief return \f$x^y-1\f$.
   //!
   //!   @groupheader{Header file}
   //!

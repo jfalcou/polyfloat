@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(minmag_t, minmag_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_minmag plf::minmag
+  //! @ingroup core
+  //! @brief return the value having the minimum of the absolute values.
   //! @{
   //!   @var minmag
-  //!   @brief return the value having the minimum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

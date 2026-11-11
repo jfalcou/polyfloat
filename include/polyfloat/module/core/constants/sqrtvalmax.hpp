@@ -42,10 +42,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sqrtvalmax_t, sqrtvalmax_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_sqrtvalmax plf::sqrtvalmax
+  //! @ingroup constants
+  //! @brief return the sqrt of the maximal representable value.
   //! @{
   //!   @var sqrtvalmax
-  //!   @brief return the sqrt of the maximal representable value.
   //!
   //!   @groupheader{Header file}
   //!

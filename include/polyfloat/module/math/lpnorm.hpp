@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(lpnorm_t, lpnorm_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_lpnorm plf::lpnorm
+  //! @ingroup math
+  //! @brief object computing the lpnorm operation \f$ \left(\sum_{i = 0}^n  |x_i|^p\right)^{\frac1p} \f$.
   //! @{
   //!   @var lpnorm
-  //!   @brief object computing the lpnorm operation \f$ \left(\sum_{i = 0}^n  |x_i|^p\right)^{\frac1p} \f$.
   //!
   //!
   //!   @groupheader{Header file}

@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(csch_t, csch_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_csch plf::csch
+  //! @ingroup math
+  //! @brief return the hyperbolic cosecant value.
   //! @{
   //!   @var csch
-  //!   @brief return the hyperbolic cosecant value.
   //!
   //!   @groupheader{Header file}
   //!

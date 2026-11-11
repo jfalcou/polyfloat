@@ -42,10 +42,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(covariance_t, covariance_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_covariance plf::covariance
+  //! @ingroup core
+  //! @brief return the covariance of the vector of the first half of the parameters and the vector of the second half.
   //! @{
   //!   @var covariance
-  //!   @brief return the covariance of the vector of the first half of the parameters and the vector of the second half.
   //!
   //!   @groupheader{Header file}
   //!

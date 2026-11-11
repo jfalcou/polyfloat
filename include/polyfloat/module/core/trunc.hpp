@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(trunc_t, trunc_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_trunc plf::trunc
+  //! @ingroup core
+  //! @brief return the truncated toward zero value.
   //! @{
   //!   @var trunc
-  //!   @brief return the truncated toward zero value.
   //!
   //!   @groupheader{Header file}
   //!

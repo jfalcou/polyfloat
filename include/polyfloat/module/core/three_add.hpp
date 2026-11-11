@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(three_add_t, three_add_);
   };
   //======================================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_three_add plf::three_add
+  //! @ingroup core_accuracy
+  //! @brief Computes the triple of the rounded sum of three values and its two error terms.
   //! @{
   //!   @var three_add
-  //!   @brief Computes the triple of the rounded sum of three values and its two error terms.
   //!
   //!   @groupheader{Header file}
   //!

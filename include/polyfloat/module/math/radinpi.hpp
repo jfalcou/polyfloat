@@ -27,11 +27,11 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup math
-  //! @{
-  //! @var radinpi
-  //!
+  //! @defgroup plf_radinpi plf::radinpi
+  //! @ingroup math
   //! @brief `elementwise_callable` object multiplying the input by \f$1/\pi\f$.
+  //! @{
+  //!   @var radinpi
   //!
   //!   @groupheader{Header file}
   //!

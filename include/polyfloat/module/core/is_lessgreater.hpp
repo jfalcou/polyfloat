@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_lessgreater_t, is_lessgreater_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_lessgreater plf::is_lessgreater
+  //! @ingroup core
+  //! @brief  return a logical true if and only if the values are ordered and differ.
   //! @{
   //!   @var is_lessgreater
-  //!   @brief  return a logical true if and only if the values are ordered and differ.
   //!
   //!   @groupheader{Header file}
   //!

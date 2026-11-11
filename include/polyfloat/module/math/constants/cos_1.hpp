@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cos_1_t, cos_1_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_cos_1 plf::cos_1
+  //! @ingroup constants
+  //! @brief return \f$\cos 1\f$.
   //! @{
   //!   @var cos_1
-  //!   @brief return \f$\cos 1\f$.
   //!
   //!   @groupheader{Header file}
   //!

@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_split_t, two_split_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_two_split plf::two_split
+  //! @ingroup core_accuracy
+  //! @brief Computes the pair of the high and low parts of a value, by splitting its significand.
   //! @{
   //!   @var two_split
-  //!   @brief Computes the pair of the high and low parts of a value, by splitting its significand.
   //!
   //!   @groupheader{Header file}
   //!

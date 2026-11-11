@@ -45,10 +45,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(tan_t, tan_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_tan plf::tan
+  //! @ingroup math
+  //! @brief return the tangent value.
   //! @{
   //!   @var tan
-  //!   @brief return the tangent value.
   //!
   //!   @groupheader{Header file}
   //!

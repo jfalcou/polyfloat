@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fnms_t, fnms_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fnms plf::fnms
+  //! @ingroup core
+  //! @brief return the fused negated multiply subtract \f$-x y - z\f$.
   //! @{
   //!   @var fnms
-  //!   @brief return the fused negated multiply subtract \f$-x y - z\f$.
   //!
   //!   @groupheader{Header file}
   //!

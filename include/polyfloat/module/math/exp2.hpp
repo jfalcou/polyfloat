@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp2_t, exp2_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_exp2 plf::exp2
+  //! @ingroup math
+  //! @brief return \f$2^x\f$.
   //! @{
   //!   @var exp2
-  //!   @brief return \f$2^x\f$.
   //!
   //!   @groupheader{Header file}
   //!

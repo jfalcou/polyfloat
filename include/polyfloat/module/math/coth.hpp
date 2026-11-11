@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(coth_t, coth_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_coth plf::coth
+  //! @ingroup math
+  //! @brief return the hyperbolic cotangent value.
   //! @{
   //!   @var coth
-  //!   @brief return the hyperbolic cotangent value.
   //!
   //!   @groupheader{Header file}
   //!

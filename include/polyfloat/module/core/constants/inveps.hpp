@@ -49,10 +49,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(inveps_t, inveps_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_inveps plf::inveps
+  //! @ingroup constants
+  //! @brief return the inverse of the eps value.
   //! @{
   //!   @var inveps
-  //!   @brief return the inverse of the eps value.
   //!
   //!   @groupheader{Header file}
   //!

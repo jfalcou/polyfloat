@@ -38,10 +38,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(atan2_t, atan2_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_atan2 plf::atan2
+  //! @ingroup math
+  //! @brief return the arctangent of \f$y/x\f$, in the quadrant of the point \f$(x, y)\f$.
   //! @{
   //!   @var atan2
-  //!   @brief return the arctangent of \f$y/x\f$, in the quadrant of the point \f$(x, y)\f$.
   //!
   //!   @groupheader{Header file}
   //!

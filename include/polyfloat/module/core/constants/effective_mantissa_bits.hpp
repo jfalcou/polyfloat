@@ -33,10 +33,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(effective_mantissa_bits_t, effective_mantissa_bits_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_effective_mantissa_bits plf::effective_mantissa_bits
+  //! @ingroup constants
+  //! @brief the number of mantissa bits of the type, the implicit bit of each part included.
   //! @{
   //!   @var effective_mantissa_bits
-  //!   @brief the number of mantissa bits of the type, the implicit bit of each part included.
   //!
   //!   @groupheader{Header file}
   //!

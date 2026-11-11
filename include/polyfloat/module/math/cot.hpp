@@ -45,10 +45,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cot_t, cot_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_cot plf::cot
+  //! @ingroup math
+  //! @brief return the cotangent value.
   //! @{
   //!   @var cot
-  //!   @brief return the cotangent value.
   //!
   //!   @groupheader{Header file}
   //!

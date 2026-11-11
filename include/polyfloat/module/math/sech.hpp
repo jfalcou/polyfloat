@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sech_t, sech_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sech plf::sech
+  //! @ingroup math
+  //! @brief return the hyperbolic secant value.
   //! @{
   //!   @var sech
-  //!   @brief return the hyperbolic secant value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(pown_t, pown_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_pown plf::pown
+  //! @ingroup core
+  //! @brief return the integral power \f$x^n\f$.
   //! @{
   //!   @var pown
-  //!   @brief return the integral power \f$x^n\f$.
   //!
   //!   @groupheader{Header file}
   //!

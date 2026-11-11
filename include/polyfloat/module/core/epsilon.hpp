@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(epsilon_t, epsilon_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_epsilon plf::epsilon
+  //! @ingroup core
+  //! @brief return the distance from the absolute value of the parameter to the next representable value.
   //! @{
   //!   @var epsilon
-  //!   @brief return the distance from the absolute value of the parameter to the next representable value.
   //!
   //!   @groupheader{Header file}
   //!

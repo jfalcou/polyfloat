@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(inv_2pi_t, inv_2pi_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_inv_2pi plf::inv_2pi
+  //! @ingroup constants
+  //! @brief return \f$1/(2\pi)\f$.
   //! @{
   //!   @var inv_2pi
-  //!   @brief return \f$1/(2\pi)\f$.
   //!
   //!   @groupheader{Header file}
   //!

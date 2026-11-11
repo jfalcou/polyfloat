@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acoth_t, acoth_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_acoth plf::acoth
+  //! @ingroup math
+  //! @brief return the inverse hyperbolic cotangent value.
   //! @{
   //!   @var acoth
-  //!   @brief return the inverse hyperbolic cotangent value.
   //!
   //!   @groupheader{Header file}
   //!

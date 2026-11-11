@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sqrt_t, sqrt_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sqrt plf::sqrt
+  //! @ingroup core
+  //! @brief return the square root value.
   //! @{
   //!   @var sqrt
-  //!   @brief return the square root value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(inc_t, inc_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_inc plf::inc
+  //! @ingroup core
+  //! @brief return the value plus one.
   //! @{
   //!   @var inc
-  //!   @brief return the value plus one.
   //!
   //!   @groupheader{Header file}
   //!

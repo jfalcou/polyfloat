@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_div_approx_t, two_div_approx_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_two_div_approx plf::two_div_approx
+  //! @ingroup core_accuracy
+  //! @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded quotient of two values and an approximation of its rounding error.
   //! @{
   //!   @var two_div_approx
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded quotient of two values and an approximation of its rounding error.
   //!
   //!   @groupheader{Header file}
   //!

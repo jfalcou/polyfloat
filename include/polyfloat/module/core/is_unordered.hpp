@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_unordered_t, is_unordered_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_unordered plf::is_unordered
+  //! @ingroup core
+  //! @brief return a logical true if and only if at least one parameter is NaN.
   //! @{
   //!   @var is_unordered
-  //!   @brief return a logical true if and only if at least one parameter is NaN.
   //!
   //!   @groupheader{Header file}
   //!

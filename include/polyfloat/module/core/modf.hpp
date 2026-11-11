@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(modf_t, modf_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_modf plf::modf
+  //! @ingroup core
+  //! @brief returns the fractional and truncated parts of the value.
   //! @{
   //!   @var modf
-  //!   @brief returns the fractional and truncated parts of the value.
   //!
   //!   @groupheader{Header file}
   //!

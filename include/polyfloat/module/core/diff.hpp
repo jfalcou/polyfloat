@@ -62,10 +62,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(diff_t, diff_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_diff plf::diff
+  //! @ingroup core
+  //! @brief computes the adjacent differences of its arguments, applied n times.
   //! @{
   //!   @var diff
-  //!   @brief computes the adjacent differences of its arguments, applied n times.
   //!
   //!   @groupheader{Header file}
   //!

@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rat_t, rat_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_rat plf::rat
+  //! @ingroup core
+  //! @brief return a rational approximation of the value, as a numerator and a denominator.
   //! @{
   //!   @var rat
-  //!   @brief return a rational approximation of the value, as a numerator and a denominator.
   //!
   //!   @groupheader{Header file}
   //!

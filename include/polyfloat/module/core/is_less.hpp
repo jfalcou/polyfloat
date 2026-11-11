@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_less_t, is_less_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_less plf::is_less
+  //! @ingroup core
+  //! @brief return  true if z1 < z2.
   //! @{
   //!   @var is_less
-  //!   @brief return  true if z1 < z2.
   //!
   //!   @groupheader{Header file}
   //!

@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negminabs_t, negminabs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negminabs plf::negminabs
+  //! @ingroup core
+  //! @brief return the negated minimum of the absolute values.
   //! @{
   //!   @var negminabs
-  //!   @brief return the negated minimum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

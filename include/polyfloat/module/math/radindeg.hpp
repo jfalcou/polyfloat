@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(radindeg_t, radindeg_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_radindeg plf::radindeg
+  //! @ingroup math
+  //! @brief `elementwise_callable` object multiplying the input by \f$180/\pi\f$.
   //! @{
   //!   @var radindeg
-  //! @brief `elementwise_callable` object multiplying the input by \f$180/\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!

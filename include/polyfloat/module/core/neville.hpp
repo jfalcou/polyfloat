@@ -35,11 +35,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(neville_t, neville_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @defgroup plf_neville plf::neville
+  //! @ingroup functions
+  //! @brief `callable` computing the value of the interpolation polynomial \f$p\f$ of degree n, satisfying:
+  //!   \f$p(x_i) = y_i\f$ for \f$i = 0..n\f$
   //! @{
   //!   @var neville
-  //!   @brief `callable` computing the value of the interpolation polynomial \f$p\f$ of degree n, satisfying:
-  //!   \f$p(x_i) = y_i\f$ for \f$i = 0..n\f$
   //!
   //!   @groupheader{Header file}
   //!
