@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_finite_t, is_finite_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_finite plf::is_finite
+  //! @ingroup core
+  //! @brief test the parameter finiteness.
   //! @{
   //!   @var is_finite
-  //!   @brief test the parameter finiteness.
   //!
   //!   @groupheader{Header file}
   //!

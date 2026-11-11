@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(convert_t, convert_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_convert plf::convert
+  //! @ingroup core
+  //! @brief convert to a target type
   //! @{
   //!   @var convert
-  //!   @brief convert to a target type
   //!
   //!   @groupheader{Header file}
   //!

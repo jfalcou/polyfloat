@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(copysign_t, copysign_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_copysign plf::copysign
+  //! @ingroup core
+  //! @brief return the first parameter with the sign of the second.
   //! @{
   //!   @var copysign
-  //!   @brief return the first parameter with the sign of the second.
   //!
   //!   @groupheader{Header file}
   //!

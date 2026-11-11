@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(pow1p_t, pow1p_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_pow1p plf::pow1p
+  //! @ingroup math
+  //! @brief return \f$(1+x)^y\f$.
   //! @{
   //!   @var pow1p
-  //!   @brief return \f$(1+x)^y\f$.
   //!
   //!   @groupheader{Header file}
   //!

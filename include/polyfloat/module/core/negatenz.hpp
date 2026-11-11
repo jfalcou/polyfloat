@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negatenz_t, negatenz_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negatenz plf::negatenz
+  //! @ingroup core
+  //! @brief return the first parameter multiplied by the never zero sign of the second.
   //! @{
   //!   @var negatenz
-  //!   @brief return the first parameter multiplied by the never zero sign of the second.
   //!
   //!   @groupheader{Header file}
   //!

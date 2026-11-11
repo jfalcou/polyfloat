@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(pow_abs_t, pow_abs_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_pow_abs plf::pow_abs
+  //! @ingroup math
+  //! @brief return \f$|x|^y\f$.
   //! @{
   //!   @var pow_abs
-  //!   @brief return \f$|x|^y\f$.
   //!
   //!   @groupheader{Header file}
   //!

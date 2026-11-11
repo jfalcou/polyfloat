@@ -41,11 +41,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cumsum_t, cumsum_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_cumsum plf::cumsum
+  //! @ingroup core
+  //! @brief convert a pack of values into
+  //!   a tuple of the cumulative sum of its values
   //! @{
   //!   @var cumsum
-  //!   @brief convert a pack of values into
-  //!     a tuple of the cumulative sum of its values
   //!
   //!   @groupheader{Header file}
   //!

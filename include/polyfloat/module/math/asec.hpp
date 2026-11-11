@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(asec_t, asec_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_asec plf::asec
+  //! @ingroup math
+  //! @brief return the arc secant value.
   //! @{
   //!   @var asec
-  //!   @brief return the arc secant value.
   //!
   //!   @groupheader{Header file}
   //!

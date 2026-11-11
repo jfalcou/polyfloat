@@ -26,11 +26,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_nan_t, is_nan_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_nan plf::is_nan
+  //! @ingroup core
+  //! @brief returns a logical true if the element
+  //!   is a Nan
   //! @{
   //!   @var is_nan
-  //!   @brief returns a logical true if the element
-  //!    is a Nan
   //!
   //!   @groupheader{Header file}
   //!

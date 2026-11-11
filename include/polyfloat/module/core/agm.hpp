@@ -39,10 +39,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(agm_t, agm_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_agm plf::agm
+  //! @ingroup core
+  //! @brief return the arithmetic-geometric mean.
   //! @{
   //!   @var agm
-  //!   @brief return the arithmetic-geometric mean.
   //!
   //!   @groupheader{Header file}
   //!

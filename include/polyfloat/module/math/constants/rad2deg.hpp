@@ -47,10 +47,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rad2deg_t, rad2deg_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_rad2deg plf::rad2deg
+  //! @ingroup constants
+  //! @brief return \f$180/\pi\f$, the number of degrees in a radian.
   //! @{
   //!   @var rad2deg
-  //!   @brief return \f$180/\pi\f$, the number of degrees in a radian.
   //!
   //!   @groupheader{Header file}
   //!

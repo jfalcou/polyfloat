@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(average_t, average_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_average plf::average
+  //! @ingroup core
+  //! @brief return the mean value.
   //! @{
   //!   @var average
-  //!   @brief return the mean value.
   //!
   //!   @groupheader{Header file}
   //!

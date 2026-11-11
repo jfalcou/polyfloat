@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(arg_t, arg_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_arg plf::arg
+  //! @ingroup math
+  //! @brief return the phase angle, in radians.
   //! @{
   //!   @var arg
-  //!   @brief return the phase angle, in radians.
   //!
   //!   @groupheader{Header file}
   //!

@@ -24,10 +24,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(mantissa_t, mantissa_);
   };
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_mantissa plf::mantissa
+  //! @ingroup core
+  //! @brief  computes the IEEE mantissa of the floating value.
   //! @{
   //!   @var mantissa
-  //!   @brief  computes the IEEE mantissa of the floating value.
   //!
   //!   @groupheader{Header file}
   //!

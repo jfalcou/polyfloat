@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(pio_4_t, pio_4_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_pio_4 plf::pio_4
+  //! @ingroup constants
+  //! @brief return \f$\pi/4\f$.
   //! @{
   //!   @var pio_4
-  //!   @brief return \f$\pi/4\f$.
   //!
   //!   @groupheader{Header file}
   //!

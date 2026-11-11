@@ -36,10 +36,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nthroot_t, nthroot_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_nthroot plf::nthroot
+  //! @ingroup math
+  //! @brief return  the nth root: \f$x^{1/n}\f$.
   //! @{
   //!   @var nthroot
-  //!   @brief return  the nth root: \f$x^{1/n}\f$.
   //!
   //!   @groupheader{Header file}
   //!

@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(invlog_2_t, invlog_2_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_invlog_2 plf::invlog_2
+  //! @ingroup constants
+  //! @brief return the log(2) inverse value.
   //! @{
   //!   @var invlog_2
-  //!   @brief return the log(2) inverse value.
   //!
   //!   @groupheader{Header file}
   //!

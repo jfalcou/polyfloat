@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(minmax_t, minmax_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_minmax plf::minmax
+  //! @ingroup core
+  //! @brief return the minimum and maximum values.
   //! @{
   //!   @var minmax
-  //!   @brief return the minimum and maximum values.
   //!
   //!   @groupheader{Header file}
   //!

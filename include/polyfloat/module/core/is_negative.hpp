@@ -27,11 +27,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_negative_t, is_negative_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_negative plf::is_negative
+  //! @ingroup core
+  //! @brief returns a logical true if and only if the element
+  //!   has its sign bit set
   //! @{
   //!   @var is_negative
-  //!   @brief returns a logical true if and only if the element
-  //!    has its sign bit set
   //!
   //!   @groupheader{Header file}
   //!

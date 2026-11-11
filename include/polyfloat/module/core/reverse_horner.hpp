@@ -51,11 +51,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(reverse_horner_t, reverse_horner_);
   };
   //======================================================================================================================
-  //! @addtogroup functions
+  //! @defgroup plf_reverse_horner plf::reverse_horner
+  //! @ingroup functions
+  //! @brief Implement the reverse_horner scheme to evaluate polynomials with coefficients
+  //!   in decreasing power order
   //! @{
   //!   @var reverse_horner
-  //!   @brief Implement the reverse_horner scheme to evaluate polynomials with coefficients
-  //!   in decreasing power order
   //!
   //!   @groupheader{Header file}
   //!

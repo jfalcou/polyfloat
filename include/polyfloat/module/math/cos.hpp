@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cos_t, cos_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_cos plf::cos
+  //! @ingroup math
+  //! @brief return the cosine value.
   //! @{
   //!   @var cos
-  //!   @brief return the cosine value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fms_t, fms_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fms plf::fms
+  //! @ingroup core
+  //! @brief return the fused multiply subtract \f$x y - z\f$.
   //! @{
   //!   @var fms
-  //!   @brief return the fused multiply subtract \f$x y - z\f$.
   //!
   //!   @groupheader{Header file}
   //!

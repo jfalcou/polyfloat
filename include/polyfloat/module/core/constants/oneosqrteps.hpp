@@ -47,10 +47,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(oneosqrteps_t, oneosqrteps_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_oneosqrteps plf::oneosqrteps
+  //! @ingroup constants
+  //! @brief return the inverse of sqrteps value.
   //! @{
   //!   @var oneosqrteps
-  //!   @brief return the inverse of sqrteps value.
   //!
   //!   @groupheader{Header file}
   //!

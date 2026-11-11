@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nan_t, nan_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_nan plf::nan
+  //! @ingroup constants
+  //! @brief a quiet NaN.
   //! @{
   //!   @var nan
-  //!   @brief a quiet NaN.
   //!
   //!   @groupheader{Header file}
   //!

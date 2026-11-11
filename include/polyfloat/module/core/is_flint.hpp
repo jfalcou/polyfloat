@@ -28,11 +28,12 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_flint plf::is_flint
+  //! @ingroup core
+  //! @brief  returns a logical true  if and only if the element value is a floating value
+  //!   representing an integer
   //! @{
   //!   @var is_flint
-  //!   @brief  returns a logical true  if and only if the element value is a floating value
-  //!   representing an integer
   //!
   //!   @groupheader{Header file}
   //!

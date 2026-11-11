@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(quadrant_t, quadrant_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_quadrant plf::quadrant
+  //! @ingroup core
+  //! @brief return the integral part of the value modulo 4.
   //! @{
   //!   @var quadrant
-  //!   @brief return the integral part of the value modulo 4.
   //!
   //!   @groupheader{Header file}
   //!

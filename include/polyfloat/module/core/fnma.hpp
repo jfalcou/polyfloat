@@ -33,10 +33,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(fnma_t, fnma_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_fnma plf::fnma
+  //! @ingroup core
+  //! @brief return the fused negated multiply add \f$-x y + z\f$.
   //! @{
   //!   @var fnma
-  //!   @brief return the fused negated multiply add \f$-x y + z\f$.
   //!
   //!   @groupheader{Header file}
   //!

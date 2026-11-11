@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(rsqrt_t, rsqrt_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_rsqrt plf::rsqrt
+  //! @ingroup core
+  //! @brief return the inverse square root value.
   //! @{
   //!   @var rsqrt
-  //!   @brief return the inverse square root value.
   //!
   //!   @groupheader{Header file}
   //!

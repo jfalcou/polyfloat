@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_ltz_t, is_ltz_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_ltz plf::is_ltz
+  //! @ingroup core
+  //! @brief test the parameter for less than zero.
   //! @{
   //!   @var is_ltz
-  //!   @brief test the parameter for less than zero.
   //!
   //!   @groupheader{Header file}
   //!

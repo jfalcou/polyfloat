@@ -45,10 +45,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(maxlog_t, maxlog_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_maxlog plf::maxlog
+  //! @ingroup constants
+  //! @brief return the largest value whose exponential is finite.
   //! @{
   //!   @var maxlog
-  //!   @brief return the largest value whose exponential is finite.
   //!
   //!   @groupheader{Header file}
   //!

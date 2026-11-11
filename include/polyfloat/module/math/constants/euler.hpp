@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(euler_t, euler_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_euler plf::euler
+  //! @ingroup constants
+  //! @brief return the exp(1) value.
   //! @{
   //!   @var euler
-  //!   @brief return the exp(1) value.
   //!
   //!   @groupheader{Header file}
   //!

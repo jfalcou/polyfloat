@@ -26,11 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(div_180_t, div_180_);
   };
   //======================================================================================================================
-  //! @addtogroup math
-  //! @{
-  //! @var div_180
-  //!
+  //! @defgroup plf_div_180 plf::div_180
+  //! @ingroup math
   //! @brief `elementwise_callable` object computing the product of the input by \f$1/180\f$.
+  //! @{
+  //!   @var div_180
   //!
   //!   @groupheader{Callable Signatures}
   //!

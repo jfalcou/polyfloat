@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(atan_t, atan_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_atan plf::atan
+  //! @ingroup math
+  //! @brief return the arctangent value.
   //! @{
   //!   @var atan
-  //!   @brief return the arctangent value.
   //!
   //!   @groupheader{Header file}
   //!

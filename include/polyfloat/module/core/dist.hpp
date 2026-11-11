@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(dist_t, dist_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_dist plf::dist
+  //! @ingroup core
+  //! @brief return the distance \f$|x - y|\f$.
   //! @{
   //!   @var dist
-  //!   @brief return the distance \f$|x - y|\f$.
   //!
   //!   @groupheader{Header file}
   //!

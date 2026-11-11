@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(add_t, add_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_add plf::add
+  //! @ingroup core
+  //! @brief return the sum of the parameters.
   //! @{
   //!   @var add
-  //!   @brief return the sum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

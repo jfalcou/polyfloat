@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(egamma_t, egamma_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_egamma plf::egamma
+  //! @ingroup constants
+  //! @brief the Euler-Mascheroni constant, \f$\gamma = \lim_{n\to\infty}\left(\sum_{k = 1}^n \frac1k - \log n\right)\f$.
   //! @{
   //!   @var egamma
-  //!   @brief the Euler-Mascheroni constant, \f$\gamma = \lim_{n\to\infty}\left(\sum_{k = 1}^n \frac1k - \log n\right)\f$.
   //!
   //!   @groupheader{Header file}
   //!

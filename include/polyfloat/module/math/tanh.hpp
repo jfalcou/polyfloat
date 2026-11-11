@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(tanh_t, tanh_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_tanh plf::tanh
+  //! @ingroup math
+  //! @brief return the hyperbolic tangent value.
   //! @{
   //!   @var tanh
-  //!   @brief return the hyperbolic tangent value.
   //!
   //!   @groupheader{Header file}
   //!

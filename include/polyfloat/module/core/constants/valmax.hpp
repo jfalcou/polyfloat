@@ -40,10 +40,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(valmax_t, valmax_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_valmax plf::valmax
+  //! @ingroup constants
+  //! @brief the largest finite value of the type.
   //! @{
   //!   @var valmax
-  //!   @brief the largest finite value of the type.
   //!
   //!   @groupheader{Header file}
   //!

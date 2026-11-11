@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(maxabs_t, maxabs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_maxabs plf::maxabs
+  //! @ingroup core
+  //! @brief return the maximum of the absolute values.
   //! @{
   //!   @var maxabs
-  //!   @brief return the maximum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

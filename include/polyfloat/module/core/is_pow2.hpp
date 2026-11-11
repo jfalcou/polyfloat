@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_pow2_t, is_pow2_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_pow2 plf::is_pow2
+  //! @ingroup core
+  //! @brief test the parameter for equality to a power of 2.
   //! @{
   //!   @var is_pow2
-  //!   @brief test the parameter for equality to a power of 2.
   //!
   //!   @groupheader{Header file}
   //!

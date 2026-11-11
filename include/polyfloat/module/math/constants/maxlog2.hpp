@@ -46,10 +46,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(maxlog2_t, maxlog2_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_maxlog2 plf::maxlog2
+  //! @ingroup constants
+  //! @brief return the largest value whose base 2 exponential is finite.
   //! @{
   //!   @var maxlog2
-  //!   @brief return the largest value whose base 2 exponential is finite.
   //!
   //!   @groupheader{Header file}
   //!

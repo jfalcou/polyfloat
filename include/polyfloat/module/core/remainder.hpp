@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(remainder_t, remainder_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_remainder plf::remainder
+  //! @ingroup core
+  //! @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded to the nearest integer, as `std::remainder`.
   //! @{
   //!   @var remainder
-  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded to the nearest integer, as `std::remainder`.
   //!
   //!   @groupheader{Header file}
   //!

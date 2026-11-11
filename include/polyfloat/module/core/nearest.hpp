@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nearest_t, nearest_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_nearest plf::nearest
+  //! @ingroup core
+  //! @brief return the nearest integral value.
   //! @{
   //!   @var nearest
-  //!   @brief return the nearest integral value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -28,11 +28,12 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_not_denormal plf::is_not_denormal
+  //! @ingroup core
+  //! @brief returns a logical true  if and only if the element value
+  //!   is not a denormal value
   //! @{
   //!   @var is_not_denormal
-  //!   @brief returns a logical true  if and only if the element value
-  //!    is not a denormal value
   //!
   //!   @groupheader{Header file}
   //!

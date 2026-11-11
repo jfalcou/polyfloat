@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp_t, exp_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_exp plf::exp
+  //! @ingroup math
+  //! @brief return the exponential value.
   //! @{
   //!   @var exp
-  //!   @brief return the exponential value.
   //!
   //!   @groupheader{Header file}
   //!

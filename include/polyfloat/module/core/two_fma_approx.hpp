@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(two_fma_approx_t, two_fma_approx_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_two_fma_approx plf::two_fma_approx
+  //! @ingroup core_accuracy
+  //! @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded fma of three values and an approximation of its rounding error.
   //! @{
   //!   @var two_fma_approx
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded fma of three values and an approximation of its rounding error.
   //!
   //!   @groupheader{Header file}
   //!

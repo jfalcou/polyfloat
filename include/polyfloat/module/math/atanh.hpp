@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(atanh_t, atanh_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_atanh plf::atanh
+  //! @ingroup math
+  //! @brief return the inverse hyperbolic tangent value.
   //! @{
   //!   @var atanh
-  //!   @brief return the inverse hyperbolic tangent value.
   //!
   //!   @groupheader{Header file}
   //!

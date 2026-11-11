@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_minf_t, is_minf_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_minf plf::is_minf
+  //! @ingroup core
+  //! @brief test the parameter equal \f$-\infty\f$.
   //! @{
   //!   @var is_minf
-  //!   @brief test the parameter equal \f$-\infty\f$.
   //!
   //!   @groupheader{Header file}
   //!

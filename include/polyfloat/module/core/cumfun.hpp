@@ -41,10 +41,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cumfun_t, cumfun_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_cumfun plf::cumfun
+  //! @ingroup core
+  //! @brief convert a pack of values into a tuple of the cumulative application of an associative function of two parameters with an identity.
   //! @{
   //!   @var cumfun
-  //!   @brief convert a pack of values into a tuple of the cumulative application of an associative function of two parameters with an identity.
   //!
   //!   @groupheader{Header file}
   //!

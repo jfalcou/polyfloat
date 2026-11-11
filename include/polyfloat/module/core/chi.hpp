@@ -38,11 +38,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(chi_t, chi_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_chi plf::chi
+  //! @ingroup core
+  //! @brief  indicatrix of the interval \f$[lo, hi[\f$ or
+  //!   of the set for which the invocable returns true.
   //! @{
   //!   @var chi
-  //!   @brief  indicatrix of the interval \f$[lo, hi[\f$ or
-  //!  of the set for which the invocable returns true.
   //!
   //!   @groupheader{Header file}
   //!

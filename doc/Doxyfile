@@ -19,7 +19,6 @@ EXAMPLE_PATH           = ../test/doc .
 FILE_PATTERNS          = *.hpp *.md
 
 ## One page per member, this library being small enough for each to be worth its own
-SEPARATE_MEMBER_PAGES  = YES
 
 TOC_INCLUDE_HEADINGS   = 5
 GENERATE_LATEX         = NO

@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(nextafter_t, nextafter_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_nextafter plf::nextafter
+  //! @ingroup core
+  //! @brief return the next representable value after `x` in the direction of `y`.
   //! @{
   //!   @var nextafter
-  //!   @brief return the next representable value after `x` in the direction of `y`.
   //!
   //!   @groupheader{Header file}
   //!

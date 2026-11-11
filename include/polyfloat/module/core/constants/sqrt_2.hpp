@@ -42,10 +42,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sqrt_2_t, sqrt_2_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_sqrt_2 plf::sqrt_2
+  //! @ingroup constants
+  //! @brief return the sqrt of 2.
   //! @{
   //!   @var sqrt_2
-  //!   @brief return the sqrt of 2.
   //!
   //!   @groupheader{Header file}
   //!

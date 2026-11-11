@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_nlez_t, is_nlez_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_nlez plf::is_nlez
+  //! @ingroup core
+  //! @brief test the parameter for not less or equal to zero.
   //! @{
   //!   @var is_nlez
-  //!   @brief test the parameter for not less or equal to zero.
   //!
   //!   @groupheader{Header file}
   //!

@@ -38,10 +38,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(div_t, div_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_div plf::div
+  //! @ingroup core
+  //! @brief return the ratio of the values.
   //! @{
   //!   @var div
-  //!   @brief return the ratio of the values.
   //!
   //!   @groupheader{Header file}
   //!

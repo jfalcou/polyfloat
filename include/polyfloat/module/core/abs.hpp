@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(abs_t, abs_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_abs plf::abs
+  //! @ingroup core
+  //! @brief return the absolute value.
   //! @{
   //!   @var abs
-  //!   @brief return the absolute value.
   //!
   //!   @groupheader{Header file}
   //!

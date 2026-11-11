@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(asech_t, asech_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_asech plf::asech
+  //! @ingroup math
+  //! @brief return the inverse hyperbolic secant value.
   //! @{
   //!   @var asech
-  //!   @brief return the inverse hyperbolic secant value.
   //!
   //!   @groupheader{Header file}
   //!

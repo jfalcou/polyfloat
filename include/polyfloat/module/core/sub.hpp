@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sub_t, sub_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sub plf::sub
+  //! @ingroup core
+  //! @brief return the difference of the values.
   //! @{
   //!   @var sub
-  //!   @brief return the difference of the values.
   //!
   //!   @groupheader{Header file}
   //!

@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(floor_t, floor_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_floor plf::floor
+  //! @ingroup core
+  //! @brief return the floor value.
   //! @{
   //!   @var floor
-  //!   @brief return the floor value.
   //!
   //!   @groupheader{Header file}
   //!

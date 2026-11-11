@@ -51,11 +51,12 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(dot_t, dot_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_dot plf::dot
+  //! @ingroup core
+  //! @brief return the dot product  of the vector of the first half of parameters by
+  //!   the vector of the second half.
   //! @{
   //!   @var dot
-  //!   @brief return the dot product  of the vector of the first half of parameters by
-  //!    the vector of the second half.
   //!
   //!   @groupheader{Header file}
   //!

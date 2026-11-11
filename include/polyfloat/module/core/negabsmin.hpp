@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(negabsmin_t, negabsmin_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_negabsmin plf::negabsmin
+  //! @ingroup core
+  //! @brief return the opposite of the absolute value of the minimum of the parameters.
   //! @{
   //!   @var negabsmin
-  //!   @brief return the opposite of the absolute value of the minimum of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

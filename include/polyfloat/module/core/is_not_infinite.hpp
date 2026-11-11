@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_not_infinite_t, is_not_infinite_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_not_infinite plf::is_not_infinite
+  //! @ingroup core
+  //! @brief test the parameter for being not infinite.
   //! @{
   //!   @var is_not_infinite
-  //!   @brief test the parameter for being not infinite.
   //!
   //!   @groupheader{Header file}
   //!

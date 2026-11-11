@@ -38,10 +38,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(csc_t, csc_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_csc plf::csc
+  //! @ingroup math
+  //! @brief return the cosecant value.
   //! @{
   //!   @var csc
-  //!   @brief return the cosecant value.
   //!
   //!   @groupheader{Header file}
   //!

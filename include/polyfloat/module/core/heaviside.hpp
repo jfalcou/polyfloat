@@ -33,10 +33,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(heaviside_t, heaviside_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_heaviside plf::heaviside
+  //! @ingroup core
+  //! @brief  return  1 or 0 according to strict positiveness of the input value.
   //! @{
   //!   @var heaviside
-  //!   @brief  return  1 or 0 according to strict positiveness of the input value.
   //!
   //!   @groupheader{Header file}
   //!

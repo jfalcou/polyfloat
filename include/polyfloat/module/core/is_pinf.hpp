@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_pinf_t, is_pinf_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_pinf plf::is_pinf
+  //! @ingroup core
+  //! @brief test the parameter equal \f$\infty\f$.
   //! @{
   //!   @var is_pinf
-  //!   @brief test the parameter equal \f$\infty\f$.
   //!
   //!   @groupheader{Header file}
   //!

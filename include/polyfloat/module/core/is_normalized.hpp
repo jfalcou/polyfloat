@@ -30,10 +30,11 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_normalized plf::is_normalized
+  //! @ingroup core
+  //! @brief returns a logical true if and only if two successive parts \f$x\f$ and \f$y\f$ of the value satisfy \f$x + y = x\f$ in the base type, two NaN comparing equal.
   //! @{
   //!   @var is_normalized
-  //!   @brief returns a logical true if and only if two successive parts \f$x\f$ and \f$y\f$ of the value satisfy \f$x + y = x\f$ in the base type, two NaN comparing equal.
   //!
   //!   @groupheader{Header file}
   //!

@@ -25,11 +25,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(mul_pi_t, mul_pi_);
   };
   //======================================================================================================================
-  //! @addtogroup math
-  //! @{
-  //! @var mul_pi
-  //!
+  //! @defgroup plf_mul_pi plf::mul_pi
+  //! @ingroup math
   //! @brief `elementwise_callable` object computing accurately the product of the input by \f$\pi\f$.
+  //! @{
+  //!   @var mul_pi
   //!
   //!   @groupheader{Callable Signatures}
   //!

@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(dec_t, dec_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_dec plf::dec
+  //! @ingroup core
+  //! @brief return the value minus one.
   //! @{
   //!   @var dec
-  //!   @brief return the value minus one.
   //!
   //!   @groupheader{Header file}
   //!

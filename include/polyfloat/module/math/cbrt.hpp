@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cbrt_t, cbrt_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_cbrt plf::cbrt
+  //! @ingroup math
+  //! @brief return the cube root.
   //! @{
   //!   @var cbrt
-  //!   @brief return the cube root.
   //!
   //!   @groupheader{Header file}
   //!

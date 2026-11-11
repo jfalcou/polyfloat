@@ -42,10 +42,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sum_of_squares_t, sum_of_squares_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sum_of_squares plf::sum_of_squares
+  //! @ingroup core
+  //! @brief return the sum of squares of the vector components.
   //! @{
   //!   @var sum_of_squares
-  //!   @brief return the sum of squares of the vector components.
   //!
   //!   @groupheader{Header file}
   //!

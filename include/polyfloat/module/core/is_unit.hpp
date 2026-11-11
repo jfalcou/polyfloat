@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_unit_t, is_unit_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_unit plf::is_unit
+  //! @ingroup core
+  //! @brief test the parameter for equality to \f$\pm1\f$.
   //! @{
   //!   @var is_unit
-  //!   @brief test the parameter for equality to \f$\pm1\f$.
   //!
   //!   @groupheader{Header file}
   //!

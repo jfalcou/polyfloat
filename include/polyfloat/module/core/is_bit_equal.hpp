@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_bit_equal_t, is_bit_equal_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_bit_equal plf::is_bit_equal
+  //! @ingroup core
+  //! @brief returns a logical true  if and only if the element bits are all equal.
   //! @{
   //!   @var is_bit_equal
-  //!   @brief returns a logical true  if and only if the element bits are all equal.
   //!
   //!   @groupheader{Header file}
   //!

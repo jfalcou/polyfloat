@@ -40,10 +40,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sinc_t, sinc_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sinc plf::sinc
+  //! @ingroup math
+  //! @brief return the sine cardinal \f$\sin(x)/x\f$.
   //! @{
   //!   @var sinc
-  //!   @brief return the sine cardinal \f$\sin(x)/x\f$.
   //!
   //!   @groupheader{Header file}
   //!

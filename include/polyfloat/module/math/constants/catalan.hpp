@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(catalan_t, catalan_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_catalan plf::catalan
+  //! @ingroup constants
+  //! @brief return Catalan's constant \f$G\f$.
   //! @{
   //!   @var catalan
-  //!   @brief return Catalan's constant \f$G\f$.
   //!
   //!   @groupheader{Header file}
   //!

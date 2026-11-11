@@ -37,10 +37,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sum_of_prod_t, sum_of_prod_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_sum_of_prod plf::sum_of_prod
+  //! @ingroup core
+  //! @brief returns `a*b+c*d`.
   //! @{
   //!   @var sum_of_prod
-  //!   @brief returns `a*b+c*d`.
   //!
   //!   @groupheader{Header file}
   //!

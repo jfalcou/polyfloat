@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acosh_t, acosh_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_acosh plf::acosh
+  //! @ingroup math
+  //! @brief return the inverse hyperbolic cosine value.
   //! @{
   //!   @var acosh
-  //!   @brief return the inverse hyperbolic cosine value.
   //!
   //!   @groupheader{Header file}
   //!

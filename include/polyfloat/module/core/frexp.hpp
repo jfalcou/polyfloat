@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(frexp_t, frexp_);
   };
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_frexp plf::frexp
+  //! @ingroup core
+  //! @brief `elementwise_callable` computing  pair of mantissa and exponent of a polyfloat value,
   //! @{
   //!   @var frexp
-  //!   @brief `elementwise_callable` computing  pair of mantissa and exponent of a polyfloat value,
   //!
   //!   @groupheader{Header file}
   //!

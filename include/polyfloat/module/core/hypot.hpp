@@ -43,10 +43,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(hypot_t, hypot_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_hypot plf::hypot
+  //! @ingroup core
+  //! @brief return the square root of the sum of the squares of the parameters.
   //! @{
   //!   @var hypot
-  //!   @brief return the square root of the sum of the squares of the parameters.
   //!
   //!   @groupheader{Header file}
   //!

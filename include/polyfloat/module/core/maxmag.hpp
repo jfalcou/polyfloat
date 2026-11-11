@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(maxmag_t, maxmag_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_maxmag plf::maxmag
+  //! @ingroup core
+  //! @brief return the value having  the maximum of the absolute values.
   //! @{
   //!   @var maxmag
-  //!   @brief return the value having  the maximum of the absolute values.
   //!
   //!   @groupheader{Header file}
   //!

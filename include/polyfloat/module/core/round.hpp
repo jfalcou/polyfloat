@@ -37,10 +37,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(round_t, round_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_round plf::round
+  //! @ingroup core
+  //! @brief rounds a value, to nearest unless an option says otherwise.
   //! @{
   //!   @var round
-  //!   @brief rounds a value, to nearest unless an option says otherwise.
   //!
   //!   @groupheader{Header file}
   //!

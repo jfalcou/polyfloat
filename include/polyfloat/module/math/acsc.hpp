@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acsc_t, acsc_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_acsc plf::acsc
+  //! @ingroup math
+  //! @brief return the arc cosecant value.
   //! @{
   //!   @var acsc
-  //!   @brief return the arc cosecant value.
   //!
   //!   @groupheader{Header file}
   //!

@@ -54,14 +54,12 @@ namespace plf::_
 //======================================================================================================================
 namespace plf
 {
-  //====================================================================================================================
-  //! @addtogroup constants
-  //! @{
-  //====================================================================================================================
-
-  //! @var allbits
+  //! @defgroup plf_allbits plf::allbits
+  //! @ingroup constants
   //! @brief every bit set in the high part, the pattern of a quiet NaN, and the other parts zero, for the requested
-  //! polyfloat type.
+  //!   polyfloat type.
+  //! @{
+  //!   @var allbits
   //!
   //! @groupheader{Header file}
   //!
@@ -89,10 +87,14 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var bitincrement
+  //! @defgroup plf_bitincrement plf::bitincrement
+  //! @ingroup constants
   //! @brief the value whose high part has only its lowest bit set and whose other parts are zero, for the requested
-  //! polyfloat type, equal to plf::mindenormal.
+  //!   polyfloat type, equal to plf::mindenormal.
+  //! @{
+  //!   @var bitincrement
   //!
   //! @groupheader{Header file}
   //!
@@ -120,9 +122,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var half
+  //! @defgroup plf_half plf::half
+  //! @ingroup constants
   //! @brief one half, for the requested polyfloat type.
+  //! @{
+  //!   @var half
   //!
   //! @groupheader{Header file}
   //!
@@ -150,9 +156,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var maxexponent
+  //! @defgroup plf_maxexponent plf::maxexponent
+  //! @ingroup constants
   //! @brief the largest exponent of a finite value of the base type, for the requested polyfloat type.
+  //! @{
+  //!   @var maxexponent
   //!
   //! @groupheader{Header file}
   //!
@@ -180,9 +190,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var maxexponentm1
+  //! @defgroup plf_maxexponentm1 plf::maxexponentm1
+  //! @ingroup constants
   //! @brief plf::maxexponent minus one, for the requested polyfloat type.
+  //! @{
+  //!   @var maxexponentm1
   //!
   //! @groupheader{Header file}
   //!
@@ -210,9 +224,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var maxexponentp1
+  //! @defgroup plf_maxexponentp1 plf::maxexponentp1
+  //! @ingroup constants
   //! @brief plf::maxexponent plus one, for the requested polyfloat type.
+  //! @{
+  //!   @var maxexponentp1
   //!
   //! @groupheader{Header file}
   //!
@@ -240,9 +258,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var mhalf
+  //! @defgroup plf_mhalf plf::mhalf
+  //! @ingroup constants
   //! @brief minus one half, for the requested polyfloat type.
+  //! @{
+  //!   @var mhalf
   //!
   //! @groupheader{Header file}
   //!
@@ -270,10 +292,14 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var mindenormal
+  //! @defgroup plf_mindenormal plf::mindenormal
+  //! @ingroup constants
   //! @brief the smallest positive denormal of the base type in the high part, the other parts zero, for the requested
-  //! polyfloat type.
+  //!   polyfloat type.
+  //! @{
+  //!   @var mindenormal
   //!
   //! @groupheader{Header file}
   //!
@@ -301,9 +327,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var minexponent
+  //! @defgroup plf_minexponent plf::minexponent
+  //! @ingroup constants
   //! @brief the smallest exponent of a normal value of the base type, for the requested polyfloat type.
+  //! @{
+  //!   @var minexponent
   //!
   //! @groupheader{Header file}
   //!
@@ -331,9 +361,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var mone
+  //! @defgroup plf_mone plf::mone
+  //! @ingroup constants
   //! @brief minus one, for the requested polyfloat type.
+  //! @{
+  //!   @var mone
   //!
   //! @groupheader{Header file}
   //!
@@ -361,9 +395,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var mzero
+  //! @defgroup plf_mzero plf::mzero
+  //! @ingroup constants
   //! @brief negative zero, for the requested polyfloat type.
+  //! @{
+  //!   @var mzero
   //!
   //! @groupheader{Header file}
   //!
@@ -391,9 +429,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var one
+  //! @defgroup plf_one plf::one
+  //! @ingroup constants
   //! @brief one, for the requested polyfloat type.
+  //! @{
+  //!   @var one
   //!
   //! @groupheader{Header file}
   //!
@@ -421,9 +463,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var smallestposval
+  //! @defgroup plf_smallestposval plf::smallestposval
+  //! @ingroup constants
   //! @brief the smallest positive normal value, for the requested polyfloat type.
+  //! @{
+  //!   @var smallestposval
   //!
   //! @groupheader{Header file}
   //!
@@ -451,9 +497,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var false_
+  //! @defgroup plf_false_ plf::false_
+  //! @ingroup constants
   //! @brief the false logical value, for the requested polyfloat type.
+  //! @{
+  //!   @var false_
   //!
   //! @groupheader{Header file}
   //!
@@ -481,9 +531,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var true_
+  //! @defgroup plf_true_ plf::true_
+  //! @ingroup constants
   //! @brief the true logical value, for the requested polyfloat type.
+  //! @{
+  //!   @var true_
   //!
   //! @groupheader{Header file}
   //!
@@ -511,9 +565,13 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
+  //! @}
 
-  //! @var zero
+  //! @defgroup plf_zero plf::zero
+  //! @ingroup constants
   //! @brief zero, for the requested polyfloat type.
+  //! @{
+  //!   @var zero
   //!
   //! @groupheader{Header file}
   //!
@@ -541,10 +599,7 @@ namespace plf
   //! @groupheader{Example}
   //!
   //! @godbolt{doc/core/wrapped_constants.cpp}
-
-  //====================================================================================================================
   //! @}
-  //====================================================================================================================
 
   // Direct reuse
   using eve::false_;

@@ -28,10 +28,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(mul_t, mul_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_mul plf::mul
+  //! @ingroup core
+  //! @brief return the product of the values.
   //! @{
   //!   @var mul
-  //!   @brief return the product of the values.
   //!
   //!   @groupheader{Header file}
   //!

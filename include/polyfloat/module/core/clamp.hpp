@@ -32,10 +32,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(clamp_t, clamp_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_clamp plf::clamp
+  //! @ingroup core
+  //! @brief clamp the value between two bounds.
   //! @{
   //!   @var clamp
-  //!   @brief clamp the value between two bounds.
   //!
   //!   @groupheader{Header file}
   //!

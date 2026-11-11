@@ -29,10 +29,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(gd_t, gd_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_gd plf::gd
+  //! @ingroup math
+  //! @brief return the Gudermannian function, \f$\int_0^x \frac1{\cosh t}\, dt\f$.
   //! @{
   //!   @var gd
-  //!   @brief return the Gudermannian function, \f$\int_0^x \frac1{\cosh t}\, dt\f$.
   //!
   //!   @groupheader{Header file}
   //!

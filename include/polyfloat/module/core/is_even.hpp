@@ -30,11 +30,12 @@ namespace plf
   };
 
   //================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_even plf::is_even
+  //! @ingroup core
+  //! @brief returns a logical true  if and only if the element value is a floating value
+  //!   representing an even integer
   //! @{
   //!   @var is_even
-  //!   @brief returns a logical true  if and only if the element value is a floating value
-  //!   representing an even integer
   //!
   //!   @groupheader{Header file}
   //!

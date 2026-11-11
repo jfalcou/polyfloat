@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(is_ordered_t, is_ordered_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_is_ordered plf::is_ordered
+  //! @ingroup core
+  //! @brief return a logical true  if and only if no parameter is NaN.
   //! @{
   //!   @var is_ordered
-  //!   @brief return a logical true  if and only if no parameter is NaN.
   //!
   //!   @groupheader{Header file}
   //!

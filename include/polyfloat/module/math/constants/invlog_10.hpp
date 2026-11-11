@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(invlog_10_t, invlog_10_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_invlog_10 plf::invlog_10
+  //! @ingroup constants
+  //! @brief return the inverse of \f$\log 10\f$.
   //! @{
   //!   @var invlog_10
-  //!   @brief return the inverse of \f$\log 10\f$.
   //!
   //!   @groupheader{Header file}
   //!

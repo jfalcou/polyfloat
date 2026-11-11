@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(prev_t, prev_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_prev plf::prev
+  //! @ingroup core
+  //! @brief return the previous representable value.
   //! @{
   //!   @var prev
-  //!   @brief return the previous representable value.
   //!
   //!   @groupheader{Header file}
   //!

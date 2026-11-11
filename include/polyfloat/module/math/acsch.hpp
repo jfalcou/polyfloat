@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(acsch_t, acsch_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_acsch plf::acsch
+  //! @ingroup math
+  //! @brief return the inverse hyperbolic cosecant value.
   //! @{
   //!   @var acsch
-  //!   @brief return the inverse hyperbolic cosecant value.
   //!
   //!   @groupheader{Header file}
   //!

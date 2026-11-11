@@ -44,10 +44,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(cbrt_pi_t, cbrt_pi_);
   };
   //======================================================================================================================
-  //! @addtogroup constants
+  //! @defgroup plf_cbrt_pi plf::cbrt_pi
+  //! @ingroup constants
+  //! @brief return \f$\sqrt[3]\pi\f$.
   //! @{
   //!   @var cbrt_pi
-  //!   @brief return \f$\sqrt[3]\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!

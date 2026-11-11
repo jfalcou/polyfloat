@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(signnz_t, signnz_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_signnz plf::signnz
+  //! @ingroup core
+  //! @brief return the never zero sign value.
   //! @{
   //!   @var signnz
-  //!   @brief return the never zero sign value.
   //!
   //!   @groupheader{Header file}
   //!

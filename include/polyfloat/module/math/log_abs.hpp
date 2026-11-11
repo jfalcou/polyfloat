@@ -26,10 +26,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(log_abs_t, log_abs_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_log_abs plf::log_abs
+  //! @ingroup math
+  //! @brief return the natural logarithm of the absolute value.
   //! @{
   //!   @var log_abs
-  //!   @brief return the natural logarithm of the absolute value.
   //!
   //!   @groupheader{Header file}
   //!

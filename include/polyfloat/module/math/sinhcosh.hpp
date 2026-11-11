@@ -27,10 +27,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(sinhcosh_t, sinhcosh_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_sinhcosh plf::sinhcosh
+  //! @ingroup math
+  //! @brief return the hyperbolic sine and cosine values.
   //! @{
   //!   @var sinhcosh
-  //!   @brief return the hyperbolic sine and cosine values.
   //!
   //!   @groupheader{Header file}
   //!

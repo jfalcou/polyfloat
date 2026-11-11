@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(asin_t, asin_);
   };
   //======================================================================================================================
-  //! @addtogroup math
+  //! @defgroup plf_asin plf::asin
+  //! @ingroup math
+  //! @brief return the arcsine value.
   //! @{
   //!   @var asin
-  //!   @brief return the arcsine value.
   //!
   //!   @groupheader{Header file}
   //!

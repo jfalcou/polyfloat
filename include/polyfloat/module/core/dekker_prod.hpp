@@ -31,10 +31,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(dekker_prod_t, dekker_prod_);
   };
   //================================================================================================
-  //! @addtogroup core_accuracy
+  //! @defgroup plf_dekker_prod plf::dekker_prod
+  //! @ingroup core_accuracy
+  //! @brief Computes the pair of the rounded product of two values and its rounding error, without an fma.
   //! @{
   //!   @var dekker_prod
-  //!   @brief Computes the pair of the rounded product of two values and its rounding error, without an fma.
   //!
   //!   @groupheader{Header file}
   //!

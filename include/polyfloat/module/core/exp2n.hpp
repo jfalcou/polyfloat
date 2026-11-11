@@ -34,10 +34,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(exp2n_t, exp2n_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_exp2n plf::exp2n
+  //! @ingroup core
+  //! @brief return \f$2^n\f$ where n is flint or integral.
   //! @{
   //!   @var exp2n
-  //!   @brief return \f$2^n\f$ where n is flint or integral.
   //!
   //!   @groupheader{Header file}
   //!
