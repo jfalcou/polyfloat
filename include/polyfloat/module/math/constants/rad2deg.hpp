@@ -50,26 +50,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var rad2deg
-  //!   @brief return the rad2deg value.
+  //!   @brief return \f$180/\pi\f$, the number of degrees in a radian.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto rad2deg(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto rad2deg(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -77,7 +77,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/rad2deg.cpp}
+  //!  @godbolt{doc/math/rad2deg.cpp}
   //======================================================================================================================
 
   inline constexpr auto rad2deg = eve::functor<rad2deg_t>;

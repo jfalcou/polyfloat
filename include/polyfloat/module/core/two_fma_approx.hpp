@@ -34,19 +34,18 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var two_fma_approx
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
-  //!   division and its resulting approximate rounding error.
+  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded fma of three values and an approximation of its rounding error.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto two_fma_approx( auto x, auto y, auto z)            noexcept; // 1
@@ -58,25 +57,19 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `x`, `y`:  polyfloatt arguments](@ref eve::floating_value) of same dimension.
+  //!     * `x`, `y`, `z`: three values of the same type, `float` or `double`, or their registers.
   //!
   //!   **Return value**
   //!
-  //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
-  //!       * `a` is `fma(x, y, z)`
-  //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
-  //!          where \f$\oplus\f$ fma_approxs its two parameters with infinite precision.
-  //!
-  //!     The algorithm depends on the overload:
-  //!
-  //!     1. algorithm using fma.
-  //!     2. Handles overflow.
+  //!     A pair \f$(a, e)\f$ where \f$a = \mathrm{RN}(x y + z)\f$, and \f$a + e\f$ approximates \f$x y + z\f$, the
+  //!     exact error of an fma needing two values in general. The algorithm is ErrFmaApprox of Boldo and Muller,
+  //!     in rounding to nearest, without overflow or underflow.
   //!
   //!  @groupheader{External references}
-  //!   *  [Exact and Approximated error of the FMA](https://inria.hal.science/inria-00429617/document)
+  //!   *  [S. Boldo, J.-M. Muller, Exact and Approximated error of the FMA](https://inria.hal.science/inria-00429617/document)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/core/core/two_fma_approx.cpp}
+  //!  @godbolt{doc/core/two_fma_approx.cpp}
   //================================================================================================
   inline constexpr auto two_fma_approx = eve::functor<two_fma_approx_t>;
   //================================================================================================

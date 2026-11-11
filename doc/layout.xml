@@ -3,27 +3,27 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
-    <tab type="usergroup" visible="yes" title="Tutorials" url="@ref setup">
-      <tab type="user" url="@ref setup"                title="Installation &amp; Quick Start"/>
-      <tab type="usergroup" visible="yes" title="Getting Started" url="@ref tutorial-basics">
-        <tab type="user" url="@ref tutorial-basics"    title="polyfloat Numbers"/>
-        <tab type="user" url="@ref tutorial-simd"       title="Many Values At Once"/>
-      </tab>
+    <tab type="usergroup" visible="yes" title="Getting Started" url="@ref setup">
+      <tab type="user" url="@ref setup"           title="Installation"/>
+      <tab type="user" url="@ref tutorial-basics" title="Polyfloat numbers"/>
+      <tab type="user" url="@ref tutorial-simd"   title="SIMD support"/>
     </tab>
-
-    <!-- <tab type="user" url="@ref polyfloat101" title="Getting Started"/> -->
     <tab type="usergroup" visible="yes" title="Reference Documentation" url="@ref types">
-      <tab type="user" url="@ref types" title="Types"/>
-      <tab type="user" url="@ref core" title="Core Functions"/>
-      <tab type="user" url="@ref math" title="Math Functions"/>
-      <tab type="user" url="@ref traits" title="Traits"/>
+      <tab type="user" url="@ref types"         title="Types"/>
+      <tab type="user" url="@ref core"          title="Core functions"/>
+      <tab type="user" url="@ref math"          title="Elementary functions"/>
+      <tab type="user" url="@ref constants"     title="Constants"/>
+      <tab type="user" url="@ref core_accuracy" title="Error-free transformations"/>
+      <tab type="user" url="@ref functions"     title="Polynomial evaluation"/>
+      <tab type="user" url="@ref traits"        title="Traits"/>
       <tab type="concepts" visible="yes" title=""/>
     </tab>
-    <tab type="usergroup" visible="yes" title="Informations" url="@ref licence">
-       <!-- <tab type="user" url="@ref setup" title="Setup"/> -->
-       <!-- <tab type="user" url="@ref rationale" title="Rationale"/> -->
-       <!-- <tab type="user" url="@ref changelog" title="Changelog"/> -->
-       <tab type="user" url="@ref licence" title="Licence"/>
+    <tab type="usergroup" visible="yes" title="Informations" url="@ref implementation_precisions">
+      <tab type="user" url="@ref implementation_precisions" title="Precision"/>
+      <tab type="user" url="@ref biblio"                    title="Bibliography"/>
+      <tab type="user" url="@ref building"                  title="Building for Testing"/>
+      <tab type="user" url="@ref changelog"                 title="Changelog"/>
+      <tab type="user" url="@ref licence"                   title="Licence"/>
     </tab>
   </navindex>
 
@@ -180,6 +180,7 @@
       <variables title=""/>
       <membergroups visible="yes"/>
     </memberdecl>
+    <detaileddescription title=""/>
     <memberdef>
       <pagedocs/>
       <inlineclasses title=""/>

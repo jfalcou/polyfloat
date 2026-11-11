@@ -21,9 +21,8 @@ namespace plf
 
   //====================================================================================================================
   //! @typedef triple_real_t
-  //! @brief Type alias for  triple_real numbers
-  //!
-  //! Triple_Real numbers are implemented as Poly Float numbers of dimension 3.
+  //! @brief Floating-point expansion of three values of type `T`, `plf::polyfloat<T, 3>`, and
+  //! `eve::wide<plf::polyfloat<E, 3>>` when `T` is the register `eve::wide<E>`.
   //====================================================================================================================
   template<eve::floating_value T> using triple_real_t = as_polyfloat_n_t<3, T>;
 

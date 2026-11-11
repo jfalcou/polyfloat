@@ -20,7 +20,8 @@ namespace plf
   template<typename Options>
   struct negabsmax_t : eve::strict_tuple_callable<negabsmax_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -50,15 +51,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2> constexpr auto negabsmax(Z1 z1, Z2 z2) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2> constexpr auto negabsmax(Z1 z1, Z2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -72,7 +73,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/negabsmax.cpp}
+  //!  @godbolt{doc/core/negabsmax.cpp}
   //======================================================================================================================
 
   inline constexpr auto negabsmax = eve::functor<negabsmax_t>;

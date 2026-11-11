@@ -17,7 +17,8 @@ namespace plf
 
   template<typename Options> struct fms_t : eve::strict_tuple_callable<fms_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -33,20 +34,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var fms
-  //!   @brief return the fused multiply substract of the parameters.
+  //!   @brief return the fused multiply subtract \f$x y - z\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fms(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2, concepts::polyfloat_like Z3> constexpr auto fms(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,13 +57,13 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the fused  multiply substract of the arguments.
+  //!     Returns the fused multiply subtract of the arguments, `z1*z2-z3`.
   //!
   //! @note contrarily to `eve::fms`,  `plf::fms` garanties the correct fused multiply add rounding behaviour,  even if it has to be emulated.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/fms.cpp}
+  //!  @godbolt{doc/core/fms.cpp}
   //======================================================================================================================
 
   inline constexpr auto fms = eve::functor<fms_t>;

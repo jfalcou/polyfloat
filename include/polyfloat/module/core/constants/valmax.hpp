@@ -43,20 +43,20 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var valmax
-  //!   @brief return the maximal representable flint value.
+  //!   @brief the largest finite value of the type.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto valmax(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto valmax(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -66,7 +66,7 @@ namespace plf
   //!
   //!    **Return value**
   //!
-  //!     Returns the effective number of bits of the mantissa value.
+  //!     Returns the largest finite value of the type of the constant.
   //!
   //!  @groupheader{Example}
   //!

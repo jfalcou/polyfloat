@@ -19,7 +19,8 @@ namespace plf
   template<typename Options>
   struct logspace_add_t : eve::strict_tuple_callable<logspace_add_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -44,20 +45,20 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var logspace_add
-  //!   @brief object computing the logspace_add operation: \f$\log\left(\sum_{i = 0}^n e^{\log x_i}\right)\f$
+  //!   @brief computes \f$\log\left(\sum_{i = 0}^n e^{x_i}\right)\f$ from the logarithms \f$x_i\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z, polyfloat_like ... Zs> constexpr auto logspace_add(Z z, Zs... zs) noexcept;
+  //!      template<concepts::polyfloat_like Z, concepts::polyfloat_like ... Zs> constexpr auto logspace_add(Z z, Zs... zs) noexcept;
   //!   }
   //!   @endcode
   //!

@@ -34,15 +34,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_gez(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto is_gez(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,7 +56,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/core/is_gez.cpp}
+  //!  @godbolt{doc/core/is_gez.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_gez = eve::functor<is_gez_t>;

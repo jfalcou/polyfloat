@@ -57,15 +57,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inveps(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto inveps(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -76,7 +76,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/inveps.cpp}
+  //!  @godbolt{doc/core/inveps.cpp}
   //======================================================================================================================
 
   inline constexpr auto inveps = eve::functor<inveps_t>;

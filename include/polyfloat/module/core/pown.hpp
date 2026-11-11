@@ -37,20 +37,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var pown
-  //!   @brief return the square value.
+  //!   @brief return the integral power \f$x^n\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto pown(T z, auto n) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto pown(T z, auto n) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -61,7 +61,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns  \f$z^\tilda{n}\f$. where \f$\tilda{n}\f$ is the truncature of \f$n\f$n.
+  //!     Returns  \f$z^{\tilde{n}}\f$, where \f$\tilde{n}\f$ is the truncation of \f$n\f$.
   //!
   //!  @groupheader{Example}
   //!

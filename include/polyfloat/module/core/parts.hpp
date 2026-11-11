@@ -38,12 +38,12 @@ namespace plf
 
   //====================================================================================================================
   //!   @var hi
-  //!   @brief Extracts the hi part of a value.
+  //!   @brief returns the high part of a value, its first part, the largest in magnitude when the value is normalized.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <plf/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -62,23 +62,23 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!   1. Returns a properly const-qualified reference to the hi part of `v`.
+  //!   1. Returns a properly const-qualified reference to the first part of `v`.
   //!   2. Returns a properly const-qualified reference to `v`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/hi.cpp}
+  //!  @godbolt{doc/core/hi.cpp}
   //====================================================================================================================
   inline constexpr auto hi = extractor<0>{};
 
   //====================================================================================================================
   //!   @var md
-  //!   @brief Extracts the md part of a value.
+  //!   @brief returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <plf/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -97,26 +97,23 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!   1. Returns a properly const-qualified reference to the md part of `v`.
-  //!   2. Returns a properly const-qualified reference to `v`.
-  //!
-  //!  @note the md part of a floating point value is always 0, for polyfloat the md part
-  //!    always refers to the second component.
+  //!   1. Returns a properly const-qualified reference to the second part of `v`.
+  //!   2. Returns zero, of the type of `v`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/md.cpp}
+  //!  @godbolt{doc/core/md.cpp}
   //====================================================================================================================
   inline constexpr auto md = extractor<1>{};
 
   //====================================================================================================================
   //!   @var lo
-  //!   @brief Extracts the lo part of a value.
+  //!   @brief returns the low part of a value, its last part, the smallest in magnitude when the value is normalized.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <plf/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -135,15 +132,12 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!   1. Returns a properly const-qualified reference to the lo part of `v`.
-  //!   2. Returns a properly const-qualified reference to `v`.
-  //!
-  //!  @note the lo part of a floating point value is always 0, for polyfloat the lo part
-  //!    always refers to the last component.
+  //!   1. Returns a properly const-qualified reference to the last part of `v`.
+  //!   2. Returns zero, of the type of `v`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/lo.cpp}
+  //!  @godbolt{doc/core/lo.cpp}
   //====================================================================================================================
 
   // TODO

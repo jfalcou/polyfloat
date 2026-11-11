@@ -38,15 +38,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto minf(as<T>) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto minf(as<T>) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -60,7 +60,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/minf.cpp}
+  //!  @godbolt{doc/core/minf.cpp}
   //======================================================================================================================
 
   inline constexpr auto minf = eve::functor<minf_t>;

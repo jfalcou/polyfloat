@@ -47,26 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var inv_pi
-  //!   @brief return the inv_pi value.
+  //!   @brief return \f$1/\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto inv_pi(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto inv_pi(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/inv_pi.cpp}
+  //!  @godbolt{doc/math/inv_pi.cpp}
   //======================================================================================================================
 
   inline constexpr auto inv_pi = eve::functor<inv_pi_t>;

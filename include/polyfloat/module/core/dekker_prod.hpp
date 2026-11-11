@@ -34,19 +34,18 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var dekker_prod
-  //!   @brief Computes the pair consisting of the
-  //!   product and its resulting rounding error without using fma.
+  //!   @brief Computes the pair of the rounded product of two values and its rounding error, without an fma.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto dekker_prod( auto x, auto y)            noexcept; // 1
@@ -57,25 +56,21 @@ namespace plf
   //!
   //!   **Parameters**
   //!
-  //!     * `x`, `y`:  polyfloat arguments](@ref eve::floating_value) of same dimension.
+  //!     * `x`, `y`: two values of `float` or `double`, or their registers, converted to their common type.
   //!
   //!   **Return value**
   //!
-  //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
-  //!       * `a` is `x+y`
-  //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\oplus\f$`y`,
-  //!          where \f$\oplus\f$ adds its dekker parameters with infinite precision.
-  //!
-  //!     The algorithm depends on the overload:
-  //!
-  //!     1. Dekker algorithm.
-  //!     2. Handles overflow.
+  //!     A pair \f$(a, e)\f$ where \f$a = \mathrm{RN}(x y)\f$, and \f$e\f$ is computed from the splittings of `x`
+  //!     and `y` by plf::two_split. In rounding to nearest, \f$a + e = x y\f$ exactly when neither the
+  //!     product nor the splittings overflow, which excludes `x` and `y` close to the largest finite value,
+  //!     and \f$e_x + e_y \ge e_{\min} + p - 1\f$. The error is zero when the product is not finite. The option
+  //!     `pedantic` does not change the result.
   //!
   //!  @groupheader{External references}
-  //!   *  [On the Computation of Correctly-Rounded Sums](https://www.vinc17.net/research/papers/rr_ccrsums2.pdf)
+  //!   *  [T. J. Dekker, A floating-point technique for extending the available precision](https://doi.org/10.1007/BF01397083)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/core/dekker_prod.cpp}
+  //!  @godbolt{doc/core/dekker_prod.cpp}
   //================================================================================================
   inline constexpr auto dekker_prod = eve::functor<dekker_prod_t>;
   //================================================================================================

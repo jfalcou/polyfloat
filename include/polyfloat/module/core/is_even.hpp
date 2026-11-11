@@ -39,7 +39,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -48,7 +48,7 @@ namespace plf
   //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto is_even(floating_value auto x)                 noexcept;
+  //!      constexpr auto is_even(eve::floating_value auto x)                 noexcept;
   //!   }
   //!   @endcode
   //!

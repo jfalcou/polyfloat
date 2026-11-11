@@ -22,24 +22,25 @@ namespace plf::_
 
 //======================================================================================================================
 //! @defgroup concepts Concepts
-//! @brief The concepts POLYFLOAT constrains its functions with.
+//! @brief The concepts **POLYFLOAT** constrains its functions with.
 //! @{
 //======================================================================================================================
 namespace plf::concepts
 {
-  //! @brief Any value a POLYFLOAT function accepts: a real, or an actual polyfloat.
+  //! @brief Any value a **POLYFLOAT** function accepts: a scalar integer, a floating-point scalar or register, or a
+  //! polyfloat scalar or register.
   template<typename T>
   concept polyfloat_like = _::rank<std::remove_cvref_t<T>> != 0;
 
-  //! @brief A polyfloat_like of rank at most two, so a real or a double-real.
+  //! @brief A polyfloat_like of dimension at most two, a real or a value of dimension 2.
   template<typename T>
   concept doublereal_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 2;
 
-  //! @brief A polyfloat_like of rank at most three.
+  //! @brief A polyfloat_like of dimension at most three.
   template<typename T>
   concept triplereal_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 3;
 
-  //! @brief An actual polyfloat, of rank strictly greater than one, excluding plain reals.
+  //! @brief A polyfloat_like of dimension 2 or more, which excludes the reals.
   template<typename T>
   concept polyfloat = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> > 1;
 
@@ -47,7 +48,7 @@ namespace plf::concepts
   template<typename T>
   concept scalar_polyfloat = polyfloat<T> && eve::scalar_value<T>;
 
-  //! @brief A polyfloat_like of rank one, that is, a plain real.
+  //! @brief A polyfloat_like of dimension one, a scalar integer or a floating-point scalar or register.
   template<typename T>
   concept real = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> == 1;
 

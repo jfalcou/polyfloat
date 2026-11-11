@@ -32,30 +32,29 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_not_flint
-  //!   @brief returns a logical true  if and only if the element value is a floating value
-  //!   representing an integer
+  //!   @brief returns a logical true if and only if the element value is not a floating value representing an integer.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto is_not_flint(floating_value auto x)                 noexcept; // 1
-  //!      constexpr auto is_not_flint(integer_value auto x)                  noexcept; // 2
+  //!      constexpr auto is_not_flint(eve::floating_value auto x)                 noexcept; // 1
+  //!      constexpr auto is_not_flint(eve::integral_value auto x)                  noexcept; // 2
   //!
   //!      // Lanes masking
-  //!      constexpr auto is_not_flint[conditional_expr auto c](value auto x) noexcept; // 3
-  //!      constexpr auto is_not_flint[logical_value auto m](value auto x)    noexcept; // 3
+  //!      constexpr auto is_not_flint[eve::conditional_expr auto c](eve::value auto x) noexcept; // 3
+  //!      constexpr auto is_not_flint[eve::logical_value auto m](eve::value auto x)    noexcept; // 3
   //!
   //!      // Semantic options
-  //!      constexpr auto is_not_flint[pedantic](floating_value auto x)       noexcept; // 4
+  //!      constexpr auto is_not_flint[pedantic](eve::floating_value auto x)       noexcept; // 4
   //!   }
   //!   @endcode
   //!
@@ -67,15 +66,14 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     1. The call `is_not_flint(x)` is semantically  equivalent to `is_not_flint (eve::frac(x))`;
-  //!        This means that x represents an integral value.
+  //!     1. Returns true if and only if `x` does not represent an integer, the opposite of plf::is_flint.
   //!     2. Always returns `true`
   //!     3. [The operation is performed conditionnaly](@ref conditional).
   //!     4. The call `is_not_flint[pedantic](x)` also check that the input is not greater or equal to the
   //!        largest consecutive integer in the element type of `x` (`maxflint(as(x))`).
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/is_not_flint.cpp}
+  //!  @godbolt{doc/core/is_not_flint.cpp}
   //================================================================================================
   inline constexpr auto is_not_flint = eve::functor<is_not_flint_t>;
   //======================================================================================================================

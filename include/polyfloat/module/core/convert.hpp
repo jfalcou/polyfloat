@@ -49,13 +49,13 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!     template<eve::scalar_value U> constexpr auto convert(auto x, eve::as<U> ) noexcept;
   //!   }

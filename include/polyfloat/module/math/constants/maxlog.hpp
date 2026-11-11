@@ -48,31 +48,31 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var maxlog
-  //!   @brief return the exp(1) value.
+  //!   @brief return the largest value whose exponential is finite.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto maxlog(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto maxlog(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!
   //!   **Return value**
   //!
-  //!     Returns exp(1).
+  //!     Returns the largest value whose exponential is finite.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/maxlog.cpp}
+  //!  @godbolt{doc/math/maxlog.cpp}
   //======================================================================================================================
 
   inline constexpr auto maxlog = eve::functor<maxlog_t>;

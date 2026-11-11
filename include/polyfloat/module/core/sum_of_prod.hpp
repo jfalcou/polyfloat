@@ -19,7 +19,8 @@ namespace plf
   template<typename Options>
   struct sum_of_prod_t : eve::strict_tuple_callable<sum_of_prod_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -44,13 +45,13 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!     constexpr auto sum_of_prod(auto a,  auto,  auto c,  auto d) noexcept;
   //!   }
@@ -66,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sum_of_prod.cpp}
+  //!  @godbolt{doc/core/sum_of_prod.cpp}
   //======================================================================================================================
 
   inline constexpr auto sum_of_prod = eve::functor<sum_of_prod_t>;

@@ -52,7 +52,7 @@ namespace plf
 
   //====================================================================================================================
   //! @struct elementwise_callable
-  //! @brief [polyfloat](@ref plf) counterpart of eve::elementwise_callable.
+  //! @brief **POLYFLOAT** counterpart of eve::elementwise_callable.
   //!
   //! Behaves as eve::elementwise_callable except when all its parameters have a dimension_v equal to 1, in which case
   //! it forwards to [EVE](https://jfalcou.github.io/eve/) directly.
@@ -69,7 +69,7 @@ namespace plf
 
   //====================================================================================================================
   //! @struct strict_tuple_callable
-  //! @brief [polyfloat](@ref plf) counterpart of eve::strict_tuple_callable.
+  //! @brief **POLYFLOAT** counterpart of eve::strict_tuple_callable.
   //!
   //! Behaves as eve::strict_tuple_callable except when all its parameters have a dimension_v equal to 1, in which case
   //! it forwards to [EVE](https://jfalcou.github.io/eve/) directly.
@@ -86,7 +86,7 @@ namespace plf
 
   //====================================================================================================================
   //! @struct callable
-  //! @brief [polyfloat](@ref plf) counterpart of eve::callable.
+  //! @brief **POLYFLOAT** counterpart of eve::callable.
   //!
   //! Behaves as eve::callable except when all its parameters have a dimension_v equal to 1, in which case it forwards
   //! to [EVE](https://jfalcou.github.io/eve/) directly.
@@ -103,7 +103,7 @@ namespace plf
 
   //====================================================================================================================
   //! @struct constant_callable
-  //! @brief [polyfloat](@ref plf) counterpart of eve::constant_callable.
+  //! @brief **POLYFLOAT** counterpart of eve::constant_callable.
   //!
   //! Behaves as eve::constant_callable except when its target type has a dimension_v equal to 1, in which case it
   //! forwards to [EVE](https://jfalcou.github.io/eve/) directly.

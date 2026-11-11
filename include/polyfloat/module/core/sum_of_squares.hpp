@@ -20,7 +20,8 @@ namespace plf
   struct sum_of_squares_t
     : plf::callable<sum_of_squares_t, eve::sum_of_squares_t, Options, kahan_option, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -49,17 +50,17 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
   //!      constexpr auto sum_of_squares(auto ... xss)        noexcept; // 1
-  //!      constexpr auto sum_of_squares(kumi::tuple xs)      noexcept; // 2
+  //!      constexpr auto sum_of_squares(eve::non_empty_product_type auto xs)      noexcept; // 2
   //!   }
   //!   @endcode
   //!

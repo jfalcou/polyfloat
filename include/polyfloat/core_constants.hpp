@@ -7,6 +7,18 @@
 //======================================================================================================================
 #pragma once
 
+//======================================================================================================================
+//! @defgroup constants Constants
+//! @brief Constants of every polyfloat type, from the limits of the representation to the mathematical constants.
+//!
+//! A constant takes the type of its result, `plf::pi(eve::as<plf::double_real_t<double>>())`. The constants are of
+//! three kinds:
+//!
+//! - the limits of the representation, plf::eps, plf::valmax, or plf::effective_mantissa_bits,
+//! - the arithmetic constants of EVE, plf::half, plf::inf, or plf::mindenormal, whose high part is the EVE value,
+//! - the mathematical constants, plf::pi, plf::euler, or plf::catalan, rounded to the precision of the type.
+//======================================================================================================================
+
 #include <polyfloat/module/core/constants/wrapped.hpp>
 #include <polyfloat/module/core/constants/effective_mantissa_bits.hpp>
 #include <polyfloat/module/core/constants/eps.hpp>

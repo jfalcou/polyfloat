@@ -33,13 +33,12 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_normalized
-  //!   @brief returns a logical true  if and only if the element value is normalized i.e. its
-  //!   successive components satisfy Zhang condition of strong domination.
+  //!   @brief returns a logical true if and only if two successive parts \f$x\f$ and \f$y\f$ of the value satisfy \f$x + y = x\f$ in the base type, two NaN comparing equal.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -64,7 +63,7 @@ namespace plf
   //!     the polyfloat returned MUST satisfy is_normalized.
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/is_normalized.cpp}
+  //!  @godbolt{doc/core/is_normalized.cpp}
   //================================================================================================
   inline constexpr auto is_normalized = eve::functor<is_normalized_t>;
   //======================================================================================================================

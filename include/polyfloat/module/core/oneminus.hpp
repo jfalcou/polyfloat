@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var oneminus
-  //!   @brief return the value plus one.
+  //!   @brief return one minus the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto oneminus(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto oneminus(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,11 +54,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the value of z+1.
+  //!     Returns the value of `1 - z`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/oneminus.cpp}
+  //!  @godbolt{doc/core/oneminus.cpp}
   //======================================================================================================================
 
   inline constexpr auto oneminus = eve::functor<oneminus_t>;

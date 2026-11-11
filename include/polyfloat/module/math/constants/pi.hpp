@@ -46,26 +46,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var pi
-  //!   @brief return the pi value.
+  //!   @brief return \f$\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto pi(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto pi(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -73,7 +73,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/pi.cpp}
+  //!  @godbolt{doc/math/pi.cpp}
   //======================================================================================================================
 
   inline constexpr auto pi = eve::functor<pi_t>;

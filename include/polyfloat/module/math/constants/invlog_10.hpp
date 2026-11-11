@@ -47,12 +47,12 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var invlog_10
-  //!   @brief return the log(2) value.
+  //!   @brief return the inverse of \f$\log 10\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <kyosu/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -60,18 +60,18 @@ namespace plf
   //!   @code
   //!   namespace kyosu
   //!   {
-  //!      template<kyosu::concepts::polyfloat_like T> constexpr auto invlog_10(T z) noexcept;
+  //!      template<plf::concepts::polyfloat_like T> constexpr auto invlog_10(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!
   //!   **Return value**
   //!
-  //!     Returns log(2).
+  //!     Returns \f$1/\log 10\f$.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/invlog_10.cpp}
+  //!  @godbolt{doc/math/invlog_10.cpp}
   //======================================================================================================================
 
   inline constexpr auto invlog_10 = eve::functor<invlog_10_t>;

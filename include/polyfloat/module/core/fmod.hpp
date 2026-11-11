@@ -33,12 +33,12 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var fmod
-  //!   @brief return the remainder of the values.
+  //!   @brief return \f$x - n y\f$, where \f$n\f$ is \f$x/y\f$ rounded toward zero, as `std::fmod`.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -48,11 +48,11 @@ namespace plf
   //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto fmod(floating_value auto x, floating_value auto y)                          noexcept; // 1
+  //!      constexpr auto fmod(eve::floating_value auto x, eve::floating_value auto y)                          noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto fmod[conditional_expr auto c](floating_value auto x, floating_value auto y) noexcept; // 2
-  //!      constexpr auto fmod[logical_value auto m](floating_value auto x, floating_value auto y)    noexcept; // 2
+  //!      constexpr auto fmod[eve::conditional_expr auto c](eve::floating_value auto x, eve::floating_value auto y) noexcept; // 2
+  //!      constexpr auto fmod[eve::logical_value auto m](eve::floating_value auto x, eve::floating_value auto y)    noexcept; // 2
   //!   }
   //!   @endcode
   //!

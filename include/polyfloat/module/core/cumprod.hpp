@@ -50,7 +50,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -60,7 +60,7 @@ namespace plf
   //!   {
   //!      // Regular overloads
   //!      constexpr auto cumprod(auto ... xs)                noexcept; // 1
-  //!      constexpr auto cumprod(non_empty_product_type tup) noexcept; // 2
+  //!      constexpr auto cumprod(eve::non_empty_product_type auto tup) noexcept; // 2
   //!
   //!   }
   //!   @endcode

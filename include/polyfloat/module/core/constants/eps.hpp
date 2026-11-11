@@ -49,34 +49,34 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var eps
-  //!   @brief return the ep value.
+  //!   @brief the machine epsilon of the type.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto eps(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto eps(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
-  //!     Returns the eps value of z.
+  //!     Returns the machine epsilon of the type of the constant.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/eps.cpp}
+  //!  @godbolt{doc/core/eps.cpp}
   //======================================================================================================================
 
   inline constexpr auto eps = eve::functor<eps_t>;

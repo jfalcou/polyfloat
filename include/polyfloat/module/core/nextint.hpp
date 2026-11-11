@@ -29,34 +29,34 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var nextint
-  //!   @brief returns the greatest flint less than the input.
+  //!   @brief returns the least flint strictly greater than the input.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      constexpr auto nextint(value auto x)                            noexcept;
+  //!      constexpr auto nextint(eve::value auto x)                            noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `x`: value to process.
   //!
   //!   **Return value**
   //!
-  //!     Returns the greatest flint less than the input.
+  //!     Returns the least flint strictly greater than `x`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/nextint.cpp}
+  //!  @godbolt{doc/core/nextint.cpp}
   //======================================================================================================================
 
   inline constexpr auto nextint = eve::functor<nextint_t>;

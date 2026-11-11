@@ -7,7 +7,7 @@
 //======================================================================================================================
 #pragma once
 
-/// Main POLYFLOAT namespace
+/// Main **POLYFLOAT** namespace
 namespace plf
 {
 }

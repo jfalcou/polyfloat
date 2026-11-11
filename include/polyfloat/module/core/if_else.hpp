@@ -44,13 +44,13 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!     constexpr auto if_else(auto x, auto y, auto z ) noexcept;
   //!   }
@@ -67,7 +67,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/if_else.cpp}
+  //!  @godbolt{doc/core/if_else.cpp}
   //======================================================================================================================
   inline constexpr auto if_else = eve::functor<if_else_t>;
   //======================================================================================================================

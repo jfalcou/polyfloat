@@ -42,16 +42,16 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T>                        constexpr auto exp2n(T n) noexcept;            //1
-  //!      template<eve::integral_value I, polyfloat::concepts::polyfloat_like U> constexpr auto exp2n(I n, eve::as<U>) noexcept;//2
+  //!      template<concepts::polyfloat_like T>                        constexpr auto exp2n(T n) noexcept;            //1
+  //!      template<eve::integral_value I, concepts::polyfloat_like U> constexpr auto exp2n(I n, eve::as<U>) noexcept;//2
   //!   }
   //!   @endcode
   //!

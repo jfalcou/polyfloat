@@ -35,19 +35,19 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto exponent(floating_value auto x)       noexcept; // 1
+  //!      constexpr auto exponent(eve::floating_value auto x)       noexcept; // 1
   //!
   //!      // Semantic options
-  //!      constexpr auto exponent[raw](floating_value auto x)  noexcept; // 2
+  //!      constexpr auto exponent[raw](eve::floating_value auto x)  noexcept; // 2
   //!   }
   //!   @endcode
   //!

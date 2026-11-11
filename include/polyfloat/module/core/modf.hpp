@@ -29,20 +29,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var modf
-  //!   @brief returns fractionnal and trncated parts of the value.
+  //!   @brief returns the fractional and truncated parts of the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto modf(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto modf(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,7 +52,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the  fractionnal and trncated parts of z.
+  //!     Returns the fractional and the truncated parts of `z`.
   //!
   //!  @groupheader{Example}
   //!

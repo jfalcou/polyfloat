@@ -37,20 +37,20 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/math.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto pow1p(auto x, auto y)                       noexcept; // 1
   //!
   //!      // Lanes masking
   //!      constexpr auto pow1p[conditional_expr c](auto x, auto y)   noexcept; // 2
-  //!      constexpr auto pow1p[logical_value auto m](auto x, auto y) noexcept; // 2
+  //!      constexpr auto pow1p[eve::logical_value auto m](auto x, auto y) noexcept; // 2
   //!
   //!      // Semantic options
   //!      constexpr auto pow1p[raw]( auto x,  auto y)                noexcept; // 3

@@ -44,14 +44,12 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var cumfun
-  //!   @brief convert a pack of values into
-  //!     a tuple of the cumulative application of a two parameter eve fonction defining
-  //!     an abelian monoid.
+  //!   @brief convert a pack of values into a tuple of the cumulative application of an associative function of two parameters with an identity.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -61,7 +59,7 @@ namespace plf
   //!   {
   //!      // Regular overloads
   //!      constexpr auto cumfun(auto f, eve::value auto ... xs)     noexcept; // 1
-  //!      constexpr auto cumfun(auto f, non_empty_product_type tup) noexcept; // 2
+  //!      constexpr auto cumfun(auto f, eve::non_empty_product_type auto tup) noexcept; // 2
   //!
   //!   }
   //!   @endcode
@@ -78,7 +76,7 @@ namespace plf
   //!         the element type of the common value of the `xs` using f.
   //!     2. same as 1., using the tuple elements.
   //!
-  //!  @note currently cumfun can only be applied with `f` being one of these POLYFLOAT functors :
+  //!  @note currently cumfun can only be applied with `f` being one of these **POLYFLOAT** functors :
   //!   `add`, `mul`, `min`, `max` that define abelian monoids and each possess
   //!   a well defined neutral element.
   //!

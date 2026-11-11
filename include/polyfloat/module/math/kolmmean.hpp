@@ -32,20 +32,20 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var kolmmean
-  //!   @brief  Callable object computing the  'Kolmogorov-Nagumo-de Finetti' mean of the inputs: \f$ \mathbf{g}(\sum \mathbf{f}(x_s)) \f$.
+  //!   @brief  computes \f$g\left(\frac1n \sum f(x_i)\right)\f$, the Kolmogorov-Nagumo-de Finetti mean when \f$g\f$ is the inverse of \f$f\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like ... Ts> constexpr auto kolmmean(auto f,  auto g, Ts ... ts) noexcept;
+  //!      template<concepts::polyfloat_like ... Ts> constexpr auto kolmmean(auto f,  auto g, Ts ... ts) noexcept;
   //!   }
   //!   @endcode
   //!

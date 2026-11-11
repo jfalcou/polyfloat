@@ -31,20 +31,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var negate
-  //!   @brief return the first parametermultiplied with the  sign of the second.
+  //!   @brief return the first parameter multiplied by the sign of the second.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto negate(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto negate(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -54,11 +54,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the z1 multiplied by the sign of z2
+  //!     Returns `z1` multiplied by the sign of `z2`.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/negate.cpp}
+  //!  @godbolt{doc/core/negate.cpp}
   //======================================================================================================================
 
   inline constexpr auto negate = eve::functor<negate_t>;

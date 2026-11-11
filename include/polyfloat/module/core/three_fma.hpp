@@ -33,34 +33,40 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var three_fma
-  //!   @brief return the fma of the parameters with errors.
+  //!   @brief Computes the triple of the rounded fma of three values and its two error terms.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto three_fma(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z> constexpr auto three_fma(Z z1, Z z2, Z z3) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z1`, `z2`, `z3`: Values to process.
+  //!     * `z1`, `z2`, `z3`: three values of the same type, `float` or `double`, or their registers.
   //!
   //!   **Return value**
   //!
-  //!     Returns the fma of the arguments and two errors .
+  //!     A triple \f$(s, e_1, e_2)\f$ where \f$s\f$ is \f$z_1 z_2 + z_3\f$ rounded to nearest, computed by
+  //!     plf::dekker_prod then Algorithm 7 of Graillat and Muller, which returns \f$s + e_1 + e_2\f$ equal to the
+  //!     exact result in rounding to nearest, without overflow or underflow, the overflow bound of the
+  //!     splittings of plf::dekker_prod included.
+  //!
+  //!  @groupheader{External references}
+  //!   *  [S. Graillat, J.-M. Muller, Emulation of the FMA and the correctly-rounded sum of three numbers](https://hal.science/hal-04575249)
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/core/three_fma.cpp}
+  //!  @godbolt{doc/core/three_fma.cpp}
   //======================================================================================================================
   inline constexpr auto three_fma = eve::functor<three_fma_t>;
   //======================================================================================================================

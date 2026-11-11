@@ -32,49 +32,43 @@ namespace plf
   //! @addtogroup core_accuracy
   //! @{
   //!   @var two_div_approx
-  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair consisting of the
-  //!   division and its resulting approximate rounding error.
+  //!   @brief Computes the [elementwise](@ref glossary_elementwise) pair of the rounded quotient of two values and an approximation of its rounding error.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto two_div_approx( auto x, auto y, auto z)            noexcept; // 1
+  //!      constexpr auto two_div_approx(auto x, auto y)            noexcept; // 1
   //!
   //!      // Semantic options
-  //!      constexpr auto two_div_approx[pedantic](auto x, auto y, auto z)  noexcept; // 2
+  //!      constexpr auto two_div_approx[pedantic](auto x, auto y)  noexcept; // 2
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `x`, `y`:  polyfloatt arguments](@ref eve::floating_value) of same dimension.
+  //!     * `x`, `y`: two values of the same type, `float` or `double`, or their registers.
   //!
   //!   **Return value**
   //!
-  //!     Computes [elementwise](@ref glossary_elementwise) a pair of values `[a,e]` such that:
-  //!       * `a` is `div(x, y, z)`
-  //!       * `e` is a value such that `a`\f$\oplus\f$`e` is equal to `x`\f$\odiv\f$`y`,
-  //!          where \f$\oplus\f$ div_approxs its two parameters with infinite precision.
-  //!
-  //!     The algorithm depends on the overload:
-  //!
-  //!     1. algorithm using div.
-  //!     2. Handles overflow.
+  //!     A pair \f$(a, e)\f$ where \f$a = \mathrm{RN}(x / y)\f$ and \f$e = \mathrm{RN}(r / y)\f$, with the remainder
+  //!     \f$r = \mathrm{fma}(-a, y, x)\f$. In rounding to nearest, with \f$y \ne 0\f$ and without underflow,
+  //!     \f$r = x - a y\f$ exactly, and \f$a + e\f$ approximates \f$x / y\f$. The error is zero when the quotient is
+  //!     not finite.
   //!
   //!  @groupheader{External references}
-  //!   *  [Exact and Approximated error of the DIV](https://inria.hal.science/inria-00429617/document)
+  //!   *  [J.-M. Muller et al., Handbook of Floating-Point Arithmetic, 2nd edition](https://doi.org/10.1007/978-3-319-76526-6)
   //!
   //!  @groupheader{Example}
-  //!  @godbolt_todo{doc/core/core/core/two_div_approx.cpp}
+  //!  @godbolt{doc/core/two_div_approx.cpp}
   //================================================================================================
   inline constexpr auto two_div_approx = eve::functor<two_div_approx_t>;
   //================================================================================================

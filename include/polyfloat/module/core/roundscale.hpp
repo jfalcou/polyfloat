@@ -38,21 +38,21 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var roundscale
-  //!   @brief return the roundscaletionnal part of the value.
+  //!   @brief return the value rounded to \f$n\f$ binary digits after the point, \f$2^{-n}\mathrm{round}(2^n x)\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/module/core/roundscale.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!      // Regular overload
-  //!      constexpr auto roundscale(floating_value auto x, index_t<scale>)       noexcept; // 1
-  //!      constexpr auto roundscale(floating_value auto x, integral_value scale) noexcept; // 1
+  //!      template<auto S> constexpr auto roundscale(eve::floating_value auto x, eve::index_t<S> s)       noexcept; // 1
+  //!      constexpr auto roundscale(eve::floating_value auto x, eve::integral_value auto scale) noexcept; // 1
   //!
   //!      // Semantic option
   //!      constexpr auto roundscale[downward](/*any of the above overloads*/)    noexcept; // 2
@@ -69,9 +69,8 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!      1. Returns the [elementwise](@ref glossary_elementwise) reduced part of the scaled input.
-  //!         The number of roundtion bits retained is specified by scale. By default the internal
-  //!         rounding after scaling is done to nearest integer.
+  //!      1. Returns the [elementwise](@ref glossary_elementwise) input rounded to `scale` binary digits
+  //!         after the point. By default the rounding after scaling is to the nearest integer.
   //!         The call `roundscale(x, scale)` is equivalent to  `eve::ldexp(eve::nearest(eve::ldexp(x,scale), -scale))`
   //!      2. with `o` denoting one of these options the call is equivalent to  `eve::ldexp(eve::round[o](eve::ldexp(x,scale), -scale))`
   //!

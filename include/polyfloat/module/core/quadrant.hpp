@@ -37,20 +37,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var quadrant
-  //!   @brief return the quadrant value.
+  //!   @brief return the integral part of the value modulo 4.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto quadrant(T n) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto quadrant(T n) noexcept;
   //!   }
   //!   @endcode
   //!

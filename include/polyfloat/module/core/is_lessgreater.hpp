@@ -32,30 +32,30 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_lessgreater
-  //!   @brief  return a logical true  if and only if the elements pair are not equal or unordered.
+  //!   @brief  return a logical true if and only if the values are ordered and differ.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_lessgreater(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto is_lessgreater(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: values to compare.
   //!
   //!   **Return value**
   //!
-  //!     Returns true if z1 > z2 || z1 <  z2.
+  //!     Returns true if `z1 > z2 || z1 < z2`, which is false when one of them is NaN.
   //!
   //!  @groupheader{Example}
   //!

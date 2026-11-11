@@ -47,26 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var cosh_1
-  //!   @brief return the cosh_1 value.
+  //!   @brief return \f$\cosh 1\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto cosh_1(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto cosh_1(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!

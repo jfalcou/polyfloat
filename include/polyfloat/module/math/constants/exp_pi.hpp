@@ -47,26 +47,26 @@ namespace plf
   //! @addtogroup constants
   //! @{
   //!   @var exp_pi
-  //!   @brief return the exp_pi value.
+  //!   @brief return \f$e^\pi\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto exp_pi(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto exp_pi(eve::as<T> z) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z`: [Type wrapper](@ref eve::as) of the type of the constant.
   //!
   //!   **Return value**
   //!
@@ -74,7 +74,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/exp_pi.cpp}
+  //!  @godbolt{doc/math/exp_pi.cpp}
   //======================================================================================================================
 
   inline constexpr auto exp_pi = eve::functor<exp_pi_t>;

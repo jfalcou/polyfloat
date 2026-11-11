@@ -30,30 +30,30 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_unordered
-  //!   @brief return the is_unorderedance value.
+  //!   @brief return a logical true if and only if at least one parameter is NaN.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like Z2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto is_unordered(T1 z1, T2 z2) noexcept;
   //!   }
   //!   @endcode
   //!
   //!   **Parameters**
   //!
-  //!     * `z`: Value to process.
+  //!     * `z1`, `z2`: values to compare.
   //!
   //!   **Return value**
   //!
-  //!     Returns the is_unorderedolute value of z.
+  //!     Returns true if and only if `z1` or `z2` is NaN.
   //!
   //!  @groupheader{Example}
   //!

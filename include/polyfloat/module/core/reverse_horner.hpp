@@ -28,7 +28,8 @@ namespace plf
                                                        raw_option,
                                                        pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -59,28 +60,28 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/functions.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto reverse_horner(floating_value auto x, value auto ...ci)                      noexcept; // 1
-  //!      constexpr auto reverse_horner(floating_value auto x, eve::coefficients auto tci)            noexcept; // 2
+  //!      constexpr auto reverse_horner(eve::floating_value auto x, eve::value auto ...ci)                      noexcept; // 1
+  //!      constexpr auto reverse_horner(eve::floating_value auto x, eve::non_empty_product_type auto tci)            noexcept; // 2
   //!
   //!      // Lanes masking
-  //!      constexpr auto reverse_horner[conditional_expr auto c](/*any of the above overloads*/)       noexcept; // 3
-  //!      constexpr auto reverse_horner[logical_value auto m](/*any of the above overloads*/)          noexcept; // 3
+  //!      constexpr auto reverse_horner[eve::conditional_expr auto c](/*any of the above overloads*/)       noexcept; // 3
+  //!      constexpr auto reverse_horner[eve::logical_value auto m](/*any of the above overloads*/)          noexcept; // 3
   //!
   //!      // Semantic options
   //!      constexpr auto reverse_horner[pedantic](/*any of the above overloads*/)                     noexcept; // 4

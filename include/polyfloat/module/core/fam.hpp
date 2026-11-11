@@ -17,7 +17,8 @@ namespace plf
 
   template<typename Options> struct fam_t : eve::strict_tuple_callable<fam_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -33,20 +34,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var fam
-  //!   @brief return the fused add multiply  of the parameters.
+  //!   @brief return the fused add multiply \f$x + y z\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z1, polyfloat_like Z2, polyfloat_like Z3> constexpr auto fam(Z1 z1, Z2 z2, Z3 z3) noexcept;
+  //!      template<concepts::polyfloat_like Z1, concepts::polyfloat_like Z2, concepts::polyfloat_like Z3> constexpr auto fam(Z1 z1, Z2 z2, Z3 z3) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -56,13 +57,13 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the fused  add multiply of the arguments.
+  //!     Returns the fused add multiply of the arguments, `z1+z2*z3`.
   //!
   //! @note contrarily to `eve::fam`,  `plf::fam` garanties the correct fused multiply add rounding behaviour,  even if it has to be emulated.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/fam.cpp}
+  //!  @godbolt{doc/core/fam.cpp}
   //======================================================================================================================
 
   inline constexpr auto fam = eve::functor<fam_t>;

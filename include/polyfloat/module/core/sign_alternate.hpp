@@ -37,20 +37,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var sign_alternate
-  //!   @brief return the sign_alternateender after division of the values.
+  //!   @brief return \f$(-1)^n\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T1, polyfloat_like T2> constexpr auto sign_alternate(T1 x, T2 y) noexcept; //1
+  //!      template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto sign_alternate(T1 x, T2 y) noexcept; //1
   //!
   //!      // Semantic exclusive options
   //!      constexpr auto sign_alternate[upward](/*any of the above overloads*/)                   noexcept; // 2
@@ -66,13 +66,13 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!      1. Return  \f$(-1)^\tilde n\f$ is returned,  where \f$\tilde n\f$ is the truncation of `n`.
-  //!      2. The chosen rounding option is applyied to `n` before computation, instead of truncation.
+  //!      1. Returns \f$(-1)^{\tilde n}\f$,  where \f$\tilde n\f$ is the truncation of `n`.
+  //!      2. The chosen rounding option is applied to `n` before computation, instead of truncation.
   //!
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/sign_alternate.cpp}
+  //!  @godbolt{doc/core/sign_alternate.cpp}
   //======================================================================================================================
 
   inline constexpr auto sign_alternate = eve::functor<sign_alternate_t>;

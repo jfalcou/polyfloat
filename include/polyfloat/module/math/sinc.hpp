@@ -43,20 +43,20 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var sinc
-  //!   @brief return the sine cardinal value.
+  //!   @brief return the sine cardinal \f$\sin(x)/x\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto sinc(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto sinc(T z) noexcept;
   //!   }
   //!   @endcode
   //!

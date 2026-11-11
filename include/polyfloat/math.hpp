@@ -6,6 +6,11 @@
 */
 //======================================================================================================================
 #pragma once
+
+//======================================================================================================================
+//! @defgroup math Elementary functions
+//! @brief Exponentials, logarithms, powers, and the circular and hyperbolic functions and their inverses.
+//======================================================================================================================
 #include <polyfloat/core.hpp>
 #include <polyfloat/math_constants.hpp>
 #include <polyfloat/module/math/acos.hpp>

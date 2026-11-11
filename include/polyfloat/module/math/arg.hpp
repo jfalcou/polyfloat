@@ -37,31 +37,31 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var arg
-  //!   @brief return the the phase angle (in radians).
+  //!   @brief return the phase angle, in radians.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overload
-  //!      constexpr auto arg(floating_value auto x)                  noexcept; // 1
+  //!      constexpr auto arg(eve::floating_value auto x)                  noexcept; // 1
   //!
   //!      // Lanes masking
-  //!      constexpr auto arg[conditional_expr auto c](value auto x)  noexcept; // 2
-  //!      constexpr auto arg[logical_value auto m](value auto x)     noexcept; // 2
+  //!      constexpr auto arg[eve::conditional_expr auto c](eve::value auto x)  noexcept; // 2
+  //!      constexpr auto arg[eve::logical_value auto m](eve::value auto x)     noexcept; // 2
   //!
   //!      // Semantic option
-  //!      constexpr auto arg[pedantic](floating_value auto x)        noexcept; // 3
-  //!      constexpr auto arg[rad](floating_value auto x)             noexcept; // 1
-  //!      constexpr auto arg[deg](floating_value auto x)             noexcept; // 4
-  //!      constexpr auto arg[radpi](floating_value auto x)           noexcept; // 5
+  //!      constexpr auto arg[pedantic](eve::floating_value auto x)        noexcept; // 3
+  //!      constexpr auto arg[rad](eve::floating_value auto x)             noexcept; // 1
+  //!      constexpr auto arg[deg](eve::floating_value auto x)             noexcept; // 4
+  //!      constexpr auto arg[radpi](eve::floating_value auto x)           noexcept; // 5
   //!   }
   //!   @endcode
   //!
@@ -85,7 +85,7 @@ namespace plf
   //!  @groupheader{External references}
   //!   *  [C++ standard reference](https://en.cppreference.com/w/cpp/numeric/complex/arg)
   //!
-  //!  @godbolt_todo{doc/core/arg.cpp}
+  //!  @godbolt{doc/math/arg.cpp}
   //======================================================================================================================
 
   inline constexpr auto arg = eve::functor<arg_t>;

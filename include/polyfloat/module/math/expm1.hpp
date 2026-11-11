@@ -29,20 +29,20 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var expm1
-  //!   @brief return the the exponential minus one value.
+  //!   @brief return the exponential minus one.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto expm1(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto expm1(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -52,7 +52,7 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the exponential minus one  value of z.
+  //!     Returns \f$e^z - 1\f$.
   //!
   //!  @groupheader{Example}
   //!

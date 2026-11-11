@@ -30,20 +30,20 @@ namespace plf
   //! @addtogroup math
   //! @{
   //!   @var acsc
-  //!   @brief return the arc secant value.
+  //!   @brief return the arc cosecant value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto acsc(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto acsc(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -57,7 +57,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/acsc.cpp}
+  //!  @godbolt{doc/math/acsc.cpp}
   //======================================================================================================================
 
   inline constexpr auto acsc = eve::functor<acsc_t>;

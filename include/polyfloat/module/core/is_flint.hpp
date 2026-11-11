@@ -37,24 +37,24 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto is_flint(floating_value auto x)                 noexcept; // 1
-  //!      constexpr auto is_flint(integer_value auto x)                  noexcept; // 2
+  //!      constexpr auto is_flint(eve::floating_value auto x)                 noexcept; // 1
+  //!      constexpr auto is_flint(eve::integral_value auto x)                  noexcept; // 2
   //!
   //!      // Lanes masking
-  //!      constexpr auto is_flint[conditional_expr auto c](value auto x) noexcept; // 3
-  //!      constexpr auto is_flint[logical_value auto m](value auto x)    noexcept; // 3
+  //!      constexpr auto is_flint[eve::conditional_expr auto c](eve::value auto x) noexcept; // 3
+  //!      constexpr auto is_flint[eve::logical_value auto m](eve::value auto x)    noexcept; // 3
   //!
   //!      // Semantic options
-  //!      constexpr auto is_flint[pedantic](floating_value auto x)       noexcept; // 4
+  //!      constexpr auto is_flint[pedantic](eve::floating_value auto x)       noexcept; // 4
   //!   }
   //!   @endcode
   //!

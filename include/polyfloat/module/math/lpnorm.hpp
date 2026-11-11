@@ -20,7 +20,8 @@ namespace plf
   template<typename Options>
   struct lpnorm_t : eve::strict_tuple_callable<lpnorm_t, Options, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -51,15 +52,15 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like Z, polyfloat_like ... Zs> constexpr auto lpnorm(Z z, Zs... zs) noexcept;
+  //!      template<concepts::polyfloat_like Z, concepts::polyfloat_like ... Zs> constexpr auto lpnorm(Z z, Zs... zs) noexcept;
   //!   }
   //!   @endcode
   //!

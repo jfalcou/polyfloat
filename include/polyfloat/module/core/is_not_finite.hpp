@@ -30,20 +30,20 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var is_not_finite
-  //!   @brief test the parameter infiniteness.
+  //!   @brief test the parameter for being infinite or NaN.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
-  //!      template<polyfloat::concepts::polyfloat_like T> constexpr auto is_not_finite(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto is_not_finite(T z) noexcept;
   //!   }
   //!   @endcode
   //!
@@ -53,11 +53,11 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns true if and only if z is not finite.
+  //!     Returns true if and only if `z` is infinite or NaN.
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/is_not_finite.cpp}
+  //!  @godbolt{doc/core/is_not_finite.cpp}
   //======================================================================================================================
 
   inline constexpr auto is_not_finite = eve::functor<is_not_finite_t>;

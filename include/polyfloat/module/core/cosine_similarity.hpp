@@ -20,7 +20,8 @@ namespace plf
   struct cosine_similarity_t
     : eve::strict_tuple_callable<cosine_similarity_t, Options, kahan_option, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -54,23 +55,22 @@ namespace plf
   //! @addtogroup core
   //! @{
   //!   @var cosine_similarity
-  //!   @brief return the cosine_similarity product  of the vector of the first half of parameters by
-  //!    the vector of the second half.
+  //!   @brief return the cosine similarity \f$u \cdot v / (|u|\,|v|)\f$ of the vector \f$u\f$ of the first half of the parameters and the vector \f$v\f$ of the second half.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace polyfloat
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto cosine_similarity(auto ... xs, auto value... ys)        noexcept; // 1
-  //!      constexpr auto cosine_similarity(kumi::tuple xs, kumi::tuple ys)       noexcept; // 2
+  //!      constexpr auto cosine_similarity(concepts::polyfloat_like auto... zs)        noexcept; // 1
+  //!      constexpr auto cosine_similarity(eve::non_empty_product_type auto xs, eve::non_empty_product_type auto ys)       noexcept; // 2
   //!   }
   //!   @endcode
   //!
@@ -87,7 +87,7 @@ namespace plf
   //!
   //!  @groupheader{Example}
   //!
-  //!  @godbolt_todo{doc/core/core/cosine_similarity.cpp}
+  //!  @godbolt{doc/core/cosine_similarity.cpp}
   //======================================================================================================================
 
   inline constexpr auto cosine_similarity = eve::functor<cosine_similarity_t>;

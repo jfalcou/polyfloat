@@ -50,7 +50,7 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -60,7 +60,7 @@ namespace plf
   //!   {
   //!      // Regular overloads
   //!      constexpr auto cumsum(auto ... xs)                noexcept; // 1
-  //!      constexpr auto cumsum(non_empty_product_type tup) noexcept; // 2
+  //!      constexpr auto cumsum(eve::non_empty_product_type auto tup) noexcept; // 2
   //!
   //!   }
   //!   @endcode
@@ -76,7 +76,7 @@ namespace plf
   //!         the element type of the common polyfloat like value of the `xs`.
   //!     2. same as 1., using the tuple elements.
   //!
-  //!  @note currently cumsum can only be applied with `f` being one of these POLYFLOAT sumctors :
+  //!  @note currently cumsum can only be applied with `f` being one of these **POLYFLOAT** sumctors :
   //!   `add`, `mul`, `min`, `max` that define abelian monoids and each possess
   //!   a well defined neutral element.
   //!

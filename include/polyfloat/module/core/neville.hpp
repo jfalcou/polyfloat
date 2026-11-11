@@ -20,7 +20,8 @@ namespace plf
   struct neville_t
     : plf::strict_tuple_callable<neville_t, eve::neville_t, Options, kahan_option, raw_option, pedantic_option>
   {
-    template<typename... Ts> struct result : as_polyfloat_like<Ts...>
+    template<typename... Ts> struct result;
+    template<concepts::polyfloat_like... Ts> struct result<Ts...> : as_polyfloat_like<Ts...>
     {
     };
 
@@ -43,16 +44,16 @@ namespace plf
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overloads
-  //!      constexpr auto neville(auto x, auto const& xs..., auto const& ys...)                                                    noexcept; // 1
+  //!      constexpr auto neville(auto x, auto const&... zs)                                                    noexcept; // 1
   //!      constexpr auto neville(auto x, eve::non_empty_product_type auto const& xx,  eve::non_empty_product_type auto const& yy) noexcept; // 2
   //!   }
   //!   @endcode
