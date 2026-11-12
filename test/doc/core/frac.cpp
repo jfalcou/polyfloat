@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "frac(wb) " << frac(wb) << std::endl;
   std::cout << "frac(wc) " << frac(wc) << std::endl;
-
-  return 0;
 }

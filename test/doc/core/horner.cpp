@@ -49,5 +49,4 @@ int main()
             << plf::horner(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0})) << '\n'
             << "-> horner(dx, 1.0f, 2.0f, 3.0f)           = " << plf::horner(dx, 1.0f, 2.0f, 3.0f) << '\n'
             << "-> horner(tx, 1.0f, 2.0f, 3.0f)           = " << plf::horner(tx, 1.0f, 2.0f, 3.0f) << '\n';
-  return 0;
 }

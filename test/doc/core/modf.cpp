@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "modf(wb) " << modf(wb) << std::endl;
   std::cout << "modf(wc) " << modf(wc) << std::endl;
-
-  return 0;
 }

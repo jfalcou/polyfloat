@@ -58,5 +58,4 @@ int main()
     auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd)) + double(get<2>(pdd));
     std::cout << rpdd - dd << std::endl;
   }
-  return 0;
 }

@@ -34,6 +34,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_odd(wb) " << is_odd(wb) << std::endl;
   std::cout << "is_odd(wc) " << is_odd(wc) << std::endl;
-
-  return 0;
 }

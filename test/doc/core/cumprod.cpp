@@ -40,6 +40,4 @@ int main()
   std::cout << "cumprod(wc, wc) " << cumprod(wc, wc) << std::endl;
   std::cout << "cumprod(wc, wb) " << cumprod(wc, wb) << std::endl;
   std::cout << "cumprod(wc, wb, b) " << cumprod(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

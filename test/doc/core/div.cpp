@@ -37,6 +37,4 @@ int main()
   std::cout << "div(wb, wb) " << div(wb, wb) << std::endl;
   std::cout << "div(wc, wc) " << div(wc, wc) << std::endl;
   std::cout << "div(wc, wb) " << div(wc, wb) << std::endl;
-
-  return 0;
 }

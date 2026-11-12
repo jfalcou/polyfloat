@@ -25,6 +25,4 @@ int main()
   std::cout << "ldexpb,-1) " << ldexp(b, -1) << std::endl;
   std::cout << "ldexpc,-1) " << ldexp(c, -1) << std::endl;
   std::cout << "ldexpf,-1) " << ldexp(f, -1) << std::endl;
-
-  return 0;
 }

@@ -35,6 +35,4 @@ int main()
   std::cout << "is_equal(wb, wb) " << is_equal(wb, wb) << std::endl;
   std::cout << "is_equal(wc, wc) " << is_equal(wc, wc) << std::endl;
   std::cout << "is_equal(wc, wb) " << is_equal(wc, wb) << std::endl;
-
-  return 0;
 }

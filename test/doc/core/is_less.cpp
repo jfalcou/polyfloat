@@ -36,6 +36,4 @@ int main()
   std::cout << "is_less(wc, wc) " << is_less(wc, wc) << std::endl;
   std::cout << "is_less(wc, wb) " << is_less(wc, wb) << std::endl;
   std::cout << "is_less(wc, wb) " << (wc < wb) << std::endl;
-
-  return 0;
 }

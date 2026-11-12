@@ -32,6 +32,4 @@ int main()
   std::cout << "heaviside(wc) " << heaviside(wc) << std::endl;
   std::cout << "heaviside(wb, wc) " << heaviside(wb, wc) << std::endl;
   std::cout << "heaviside(wc, wb) " << heaviside(wc, wb) << std::endl;
-
-  return 0;
 }

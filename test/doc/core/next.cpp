@@ -30,6 +30,4 @@ int main()
   std::cout << "wc       " << wc << std::endl;
   std::cout << "next(wb) " << next(wb) << std::endl;
   std::cout << "next(wc) " << next(wc) << std::endl;
-
-  return 0;
 }

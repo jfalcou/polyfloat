@@ -37,6 +37,4 @@ int main()
   std::cout << "minabs(wb, wb) " << minabs(wb, wb) << std::endl;
   std::cout << "minabs(wc, wc) " << minabs(wc, wc) << std::endl;
   std::cout << "minabs(wc, wb) " << minabs(wc, wb) << std::endl;
-
-  return 0;
 }

@@ -38,6 +38,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "epsilon(wb) " << epsilon(wb) << std::endl;
   std::cout << "epsilon(wc) " << epsilon(wc) << std::endl;
-
-  return 0;
 }

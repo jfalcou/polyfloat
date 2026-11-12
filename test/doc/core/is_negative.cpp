@@ -35,6 +35,4 @@ int main()
   std::cout << "d  " << d << std::endl;
   std::cout << "is_negative(d)  " << is_negative(d) << std::endl;
   std::cout << "-d  " << -d << std::endl;
-
-  return 0;
 }

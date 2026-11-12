@@ -16,5 +16,4 @@ int main()
   std::cout << get<1>(b) << std::endl;
   std::cout << get<1>(c) << std::endl;
   std::cout << get<2>(c) << std::endl;
-  return 0;
 }

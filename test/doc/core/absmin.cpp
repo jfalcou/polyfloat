@@ -38,6 +38,4 @@ int main()
   std::cout << "absmin(wc, wc) " << absmin(wc, wc) << std::endl;
   std::cout << "absmin(wc, wb) " << absmin(wc, wb) << std::endl;
   std::cout << "absmin(wc, wb, b, c, 1) " << absmin(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

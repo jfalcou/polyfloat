@@ -13,5 +13,4 @@ int main()
   std::cout << (a == a) << std::endl;
   std::cout << (d0 == d1) << std::endl;
   std::cout << (d0 == d0) << std::endl;
-  return 0;
 }

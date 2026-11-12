@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "dec(wb) " << dec(wb) << std::endl;
   std::cout << "dec(wc) " << dec(wc) << std::endl;
-
-  return 0;
 }

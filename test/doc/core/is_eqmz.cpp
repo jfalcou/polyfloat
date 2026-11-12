@@ -31,6 +31,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_eqmz(wb) " << is_eqmz(wb) << std::endl;
   std::cout << "is_eqmz(wc) " << is_eqmz(wc) << std::endl;
-
-  return 0;
 }

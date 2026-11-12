@@ -13,5 +13,4 @@ int main()
   std::cout << plf::dimension_v<decltype(a)> << std::endl;
   std::cout << plf::dimension_v<decltype(b)> << std::endl;
   std::cout << plf::dimension_v<decltype(c)> << std::endl;
-  return 0;
 }

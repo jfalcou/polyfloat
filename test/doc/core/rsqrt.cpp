@@ -33,6 +33,4 @@ int main()
   auto vlm = plf::valmax(eve::as(a));
   auto zz = plf::rsqrt(vlm);
   std::cout << "rsqrt(valmax) " << zz << std::endl;
-
-  return 0;
 }

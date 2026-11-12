@@ -17,6 +17,4 @@ int main()
             << "<- zf                               = " << zf << '\n'
             << "-> logspace_add( xf, yf, zf)        = " << plf::logspace_add(xf, yf, zf) << '\n'
             << "-> logspace_add( xf, yf, zf)        = " << eve::logspace_add(hi(xf), hi(yf), hi(zf)) << '\n';
-
-  return 0;
 }

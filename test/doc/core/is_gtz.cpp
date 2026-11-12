@@ -28,6 +28,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_gtz(wb) " << is_gtz(wb) << std::endl;
   std::cout << "is_gtz(wc) " << is_gtz(wc) << std::endl;
-
-  return 0;
 }

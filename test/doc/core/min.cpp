@@ -39,6 +39,4 @@ int main()
   std::cout << "min(wc, wc) " << min(wc, wc) << std::endl;
   std::cout << "min(wc, wb) " << min(wc, wb) << std::endl;
   std::cout << "min(wc, f)  " << min(wc, f) << std::endl;
-
-  return 0;
 }

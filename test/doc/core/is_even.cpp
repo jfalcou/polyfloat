@@ -34,6 +34,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_even(wb) " << is_even(wb) << std::endl;
   std::cout << "is_even(wc) " << is_even(wc) << std::endl;
-
-  return 0;
 }

@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "floor(wb) " << floor(wb) << std::endl;
   std::cout << "floor(wc) " << floor(wc) << std::endl;
-
-  return 0;
 }

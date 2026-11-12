@@ -38,6 +38,4 @@ int main()
   std::cout << "absmax(wc, wc) " << absmax(wc, wc) << std::endl;
   std::cout << "absmax(wc, wb) " << absmax(wc, wb) << std::endl;
   std::cout << "absmax(wc, wb, b, c, 1) " << absmax(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

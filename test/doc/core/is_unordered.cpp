@@ -36,6 +36,4 @@ int main()
   std::cout << "is_unordered(wc, wc) " << is_unordered(wc, wc) << std::endl;
   std::cout << "is_unordered(wc, wb) " << is_unordered(wc, wb) << std::endl;
   std::cout << "is_unordered(wc, wb) " << (wc < wb) << std::endl;
-
-  return 0;
 }

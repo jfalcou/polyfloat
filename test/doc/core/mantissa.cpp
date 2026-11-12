@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "mantissa(wb) " << mantissa(wb) << std::endl;
   std::cout << "mantissa(wc) " << mantissa(wc) << std::endl;
-
-  return 0;
 }
