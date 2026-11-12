@@ -92,18 +92,37 @@ namespace plf::_
 {
   template<eve::integral_value N, typename Z, eve::callable_options O>
   constexpr auto exp2n_(POLYFLOAT_DELAY(), O const&, N const& n, eve::as<Z>) noexcept
+  requires(((sizeof(eve::underlying_type_t<N>) == sizeof(eve::underlying_type_t<Z>)) && (eve::same_lanes<N, Z>)) ||
+           eve::scalar_value<N>)
   {
-    using c_t = as_component_type_t<Z>;
-    using e_t = eve::element_type_t<Z>;
-    using u_t = eve::underlying_type_t<e_t>;
-    auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
-    auto r = eve::bit_cast(bits, eve::as(c_t()));
-    if constexpr (O::contains(eve::raw)) return Z(r);
+    if constexpr (eve::scalar_value<N>)
+    {
+      using e_t = eve::element_type_t<decltype(plf::hi(Z()))>;
+      using u_t = eve::underlying_type_t<e_t>;
+      auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
+      auto r = eve::bit_cast(bits, eve::as(e_t()));
+      if constexpr (O::contains(eve::raw)) return Z(r);
+      else
+      {
+        auto test1 = eve::minexponent(eve::as<u_t>()) > n;
+        auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
+        return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+      }
+    }
     else
     {
-      auto test1 = eve::minexponent(eve::as<u_t>()) > n;
-      auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
-      return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+      using e_t = eve::element_type_t<Z>;
+      using u_t = eve::underlying_type_t<e_t>;
+      auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
+      using z_t = std::remove_cvref_t<decltype(plf::hi(Z()))>;
+      auto r = eve::bit_cast(bits, eve::as<z_t>());
+      if constexpr (O::contains(eve::raw)) return Z(r);
+      else
+      {
+        auto test1 = eve::minexponent(eve::as<u_t>()) > n;
+        auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
+        return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+      }
     }
   }
 
