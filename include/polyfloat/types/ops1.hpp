@@ -46,20 +46,20 @@ namespace plf
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   as_polyfloat_t<T1, T2> operator+(T1 const& a, T2 const& b) noexcept
   {
-    using type = as_polyfloat_t<T1, T2>;
-    type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
-    return that += b;
+    if constexpr (dimension_v<T1> < dimension_v<T2>) return b + a;
+    else
+    {
+      auto that = a;
+      return that += b;
+    }
   }
-
   //! @brief Returns the difference of two poly float values
   //! @related polyfloat
   template<eve::value T1, eve::value T2>
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   as_polyfloat_t<T1, T2> operator-(T1 const& a, T2 const& b) noexcept
   {
-    using type = as_polyfloat_t<T1, T2>;
-    type that{plf::convert(a, eve::as<eve::element_type_t<type>>())};
-    return that -= b;
+    return a + (-b);
   }
 
   //! @brief Returns the product of two poly float values
