@@ -39,6 +39,7 @@ TTS_CASE_WITH("Check add two params",
     TTS_IEEE_EQUAL(add(minf, pa), minf);
     TTS_IEEE_EQUAL(add(pa, minf), minf);
     TTS_IEEE_EQUAL(add(inf, minf), nan);
+    TTS_IEEE_EQUAL(add(pa, 1), plf::inc(pa));
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
@@ -58,6 +59,11 @@ TTS_CASE_WITH("Check add two params",
     TTS_IEEE_EQUAL(add(minf, pa), minf);
     TTS_IEEE_EQUAL(add(pa, minf), minf);
     TTS_IEEE_EQUAL(add(inf, minf), nan);
+    TTS_IEEE_EQUAL(add(pa, 1), plf::inc(pa));
+    using pv2_t = plf::polyfloat<T, 2>;
+    pv2_t pb2(a3, a4);
+    pv_t pb3(a3, a4, T(0));
+    TTS_IEEE_EQUAL(add(pa, pb2), add(pa, pb3));
   }
 };
 
