@@ -25,7 +25,6 @@ TTS_CASE_WITH("Check ldexp",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pa);
     TTS_RELATIVE_EQUAL(ldexp(wpab, n), wpab * 4, tts::epsprec<T>());
-    auto e = plf::exponent(wpab);
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
@@ -35,6 +34,5 @@ TTS_CASE_WITH("Check ldexp",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pa);
     TTS_RELATIVE_EQUAL(ldexp(wpab, n), wpab * 4, tts::epsprec<T>());
-    auto e = plf::exponent(wpab);
   }
 };
