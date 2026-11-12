@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
-#include <polyfloat/details/printing.hpp>
 
 int main()
 {

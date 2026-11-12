@@ -3,11 +3,9 @@
 #include <iostream>
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
-#include <polyfloat/details/printing.hpp>
 
 int main()
 {
-  using mpfr::mpreal;
   {
     using t1_t = double;
     using t2_t = plf::polyfloat<double, 2>;
