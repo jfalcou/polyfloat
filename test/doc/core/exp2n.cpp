@@ -4,6 +4,51 @@
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
 
+// template<eve::integral_value N, typename Z>
+// constexpr auto exp2nn(N n, eve::as<Z>) noexcept
+// requires(((sizeof(eve::underlying_type_t<N>) == sizeof(eve::underlying_type_t<Z>)) &&
+//           (eve::same_lanes<N, Z>)) || eve::scalar_value<N>)
+// {
+//   if constexpr(eve::scalar_value<N>)
+//   {
+//     using e_t = eve::element_type_t<decltype(plf::hi(Z()))>;
+//     using u_t = eve::underlying_type_t<e_t>;
+//     auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
+//     auto r = eve::bit_cast(bits, eve::as(e_t()));
+//     if constexpr (O::contains(eve::raw)) return Z(r);
+//     else
+//     {
+//       auto test1 = eve::minexponent(eve::as<u_t>()) > n;
+//       auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
+//       return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+//     }
+//   }
+//   else
+//   {
+// //    using c_t = plf::as_component_type_t<Z>;
+//     using e_t = eve::element_type_t<Z>;
+//     using u_t = eve::underlying_type_t<e_t>;
+//     auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
+// //     std::cout <<       " bits  "<<        bits <<                        std::endl;
+// //     std::cout << sizeof(bits) <<  "   " << sizeof(plf::hi(Z())) << std::endl;
+//     using z_t = std::remove_cvref_t<decltype(plf::hi(Z()))>;
+//     auto r = eve::bit_cast(bits, eve::as<z_t>());
+//     if constexpr (O::contains(eve::raw)) return Z(r);
+//     else
+//     {
+//       auto test1 = eve::minexponent(eve::as<u_t>()) > n;
+//       auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
+//       return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+//     }
+//   }
+// //     else
+// //     {
+// //       auto test1 = eve::minexponent(eve::as<u_t>()) > n;
+// //       auto test2 = eve::maxexponent(eve::as<u_t>()) < n;
+// //       return Z(eve::if_else(test1, eve::zero, eve::if_else(test2, eve::inf(eve::as<u_t>()), r)));
+// //     }
+// }
+
 int main()
 {
   std::cout << std::setprecision(15);
@@ -44,5 +89,21 @@ int main()
   std::cout << "exp2n(inf) " << exp2n(inf) << std::endl;
   auto minf = pf2_t(eve::minf(eve::as<double>()));
   std::cout << "exp2n(minf) " << exp2n(minf) << std::endl;
+
+  std::cout << "exp2n(2, eve::as<pf1_t>()) " << exp2n(2, eve::as<pf1_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf1_t>()) " << exp2n(2, eve::as<pf1_t>()) << std::endl;
+  std::cout << "exp2n(2, eve::as<pf2_t>()) " << exp2n(2, eve::as<pf2_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf2_t>()) " << exp2n(2, eve::as<pf2_t>()) << std::endl;
+  std::cout << "exp2n(2, eve::as<pf3_t>()) " << exp2n(2, eve::as<pf3_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf3_t>()) " << exp2n(2, eve::as<pf3_t>()) << std::endl;
+
+  eve::wide<eve::as_integer_t<double>, 2> n(2, 4);
+
+  std::cout << "exp2n(n, eve::as<pf1_t>()) " << exp2n(n, eve::as<pf1_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf1_t>()) " << exp2n(n, eve::as<pf1_t>()) << std::endl;
+  std::cout << "exp2n(n, eve::as<pf2_t>()) " << exp2n(n, eve::as<pf2_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf2_t>()) " << exp2n(n, eve::as<pf2_t>()) << std::endl;
+  std::cout << "exp2n(n, eve::as<pf3_t>()) " << exp2n(n, eve::as<pf3_t>()) << std::endl;
+  std::cout << "exp2n(2ul, eve::as<pf3_t>()) " << exp2n(n, eve::as<pf3_t>()) << std::endl;
   return 0;
 }

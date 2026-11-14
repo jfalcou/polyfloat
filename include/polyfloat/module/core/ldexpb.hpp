@@ -1,8 +1,8 @@
 //======================================================================================================================
 /*
- POLYFLOAT - Extended precision floating points
- Copyright : POLYFLOAT Contributors & Maintainers
- SPDX-License-Identifier: BSL-1.0
+  POLYFLOAT - Extended precision floating points
+  Copyright : POLYFLOAT Contributors & Maintainers
+  SPDX-License-Identifier: BSL-1.0
 */
 //======================================================================================================================
 #pragma once
@@ -45,24 +45,23 @@ namespace plf
   template<typename Options>
   struct ldexpb_t : plf::callable<ldexpb_t, eve::ldexp_t, Options, raw_option, pedantic_option>
   {
-    template<concepts::polyfloat_like Z1, eve::integral_value N>
-    POLYFLOAT_ABI constexpr eve::as_wide_as_t<Z1, N> operator()(Z1 z1, N n) const noexcept
+    template<concepts::polyfloat_like Z, eve::integral_scalar_value N>
+    POLYFLOAT_ABI constexpr Z operator()(Z z, N n) const noexcept
     {
-      using r_t = eve::element_type_t<decltype(hi(Z1()))>;
-      //      auto r =
-      return POLYFLOAT_CALL(z1, eve::convert(n, eve::as<r_t>()));
-      //      std::cout << toto::typename_<decltype(r) > << "\n";
-      //      return r;
+      return POLYFLOAT_CALL(z, n);
     }
 
-    template<concepts::polyfloat_like Z, typename N>
+    template<concepts::polyfloat_like Z, eve::integral_simd_value N>
     POLYFLOAT_ABI constexpr eve::as_wide_as_t<Z, N> operator()(Z z, N n) const noexcept
     {
-      using r_t = eve::element_type_t<as_component_type_t<Z>>;
-      //      auto r =
-      return POLYFLOAT_CALL(z, plf::convert(n, eve::as<r_t>()));
-      //      std::cout << toto::typename_<decltype(r) > << "\n";
-      //      return r;
+      return POLYFLOAT_CALL(z, n);
+    }
+
+    template<concepts::polyfloat_like Z, concepts::polyfloat_like Z1>
+    POLYFLOAT_ABI constexpr plf::as_polyfloat_t<Z, Z1> operator()(Z z, Z1 n) const noexcept
+    requires(!eve::integral_value<Z1>)
+    {
+      return POLYFLOAT_CALL(z, n);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(ldexpb_t, ldexpb_);
@@ -126,80 +125,20 @@ namespace plf
   //================================================================================================
 }
 
-// namespace plf::_
-// {
-//   template<typename Z, typename N, eve::callable_options O>
-//   constexpr auto ldexpb_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
-//   {
-//     if constexpr (dimension_v<Z> == 2)
-//     {
-//       auto [zh, zl] = z;
-//       auto h = eve::ldexp(zh, n);
-//       auto l = eve::ldexpb(zl, n);
-//       return Z(h, l);
-//     }
-//     else if constexpr (dimension_v<Z> == 3)
-//     {
-//       auto [zh, zm, zl] = z;
-//       auto h = eve::ldexpb(zh, n);
-//       auto m = eve::ldexpb(zm, n);
-//       auto l = eve::ldexpb(zl, n);
-// //       Z z(h);
-// //       md(z) = m;
-// //       lo(z) = l;
-//        EVE_ASSERT(eve::all(plf::is_normalized(Z(h, m, l))), "output of ldexpb is not normalized");
-// //       return z;
-//          return Z(h, m, l);
-//     }
-//   }
-
-// };
-
-// template<typename Z>
-// auto my_is_normalized(Z const& z) noexcept
-// {
-//   auto eqnum = eve::is_equal[eve::numeric];
-//   if constexpr (plf::dimension_v<Z> == 1)
-//   {
-//     return eve::true_(eve::as(z));
-//   }
-//   else if constexpr (plf::dimension_v<Z> == 2)
-//   {
-//     auto [h, l] = z;
-//     return eqnum(h + l, h);
-//   }
-//   else if constexpr (plf::dimension_v<Z> == 3)
-//   {
-//     auto [h, m, l] = z;
-//     return eqnum(h + m, h) && eqnum(m + l, m);
-//   }
-// }
-
 namespace plf::_
 {
   template<typename Z, typename N, eve::callable_options O>
-  constexpr auto ldexpb_(POLYFLOAT_DELAY(), O const&, Z const& zz, N const& n) noexcept
+  constexpr auto ldexpb_(POLYFLOAT_DELAY(), O const&, Z const& z, N const& n) noexcept
   {
-    using r_t = eve::as_wide_as_t<Z, N>;
-    auto z = r_t(zz);
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (eve::scalar_value<N>) return z * plf::hi(exp2n(n, eve::as(z)));
+    else if constexpr (eve::scalar_value<Z>)
     {
-      auto [zh, zl] = z;
-      auto h = eve::ldexp(zh, n);
-      auto l = eve::ldexp(zl, n);
-      r_t r(h, l);
-      EVE_ASSERT(eve::all(inner_is_normalized(r)), "output of ldexpb is not normalized");
-      return r;
+      auto wz = eve::as_wide_as_t<N, Z>(z);
+      return wz * plf::hi(exp2n(n, eve::as(wz)));
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else
     {
-      auto [zh, zm, zl] = z;
-      auto h = eve::ldexp(zh, n);
-      auto m = eve::ldexp(zm, n);
-      auto l = eve::ldexp(zl, n);
-      auto r = plf::three_add(h, m, l);
-      EVE_ASSERT(eve::all(inner_is_normalized(r)), "output of ldexpb is not normalized");
-      return r;
+      return z * plf::hi(exp2n(n, eve::as(z)));
     }
   }
 }
