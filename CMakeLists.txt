@@ -22,6 +22,7 @@ copa_add_option(POLYFLOAT_ENABLE_SANITIZERS "Build tests with AddressSanitizer +
 copa_add_option(POLYFLOAT_ENABLE_COVERAGE "Build tests with code coverage instrumentation" OFF LABEL "Coverage")
 copa_add_option(POLYFLOAT_USE_PCH "Build tests with precompiled headers" ON)
 copa_add_option(POLYFLOAT_COMPILE_COST "Measure what every test unit costs to compile" OFF)
+copa_add_option(POLYFLOAT_EXTERNAL_DEPENDENCIES "Take dependencies from the environment instead of fetching them" OFF)
 copa_project_version(
   MAJOR 0
   MINOR 1
@@ -76,7 +77,7 @@ endif()
 ## Tests setup
 ##======================================================================================================================
 if(POLYFLOAT_BUILD_TEST)
-  CPMGetPackage(TTS)
+  polyfloat_get_package(TTS)
   include(${PROJECT_SOURCE_DIR}/cmake/compiler.cmake)
 
   ## After compiler.cmake, which declares the interfaces the precompiled headers are attached to.
