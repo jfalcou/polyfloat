@@ -28,6 +28,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_unit(wb) " << is_unit(wb) << std::endl;
   std::cout << "is_unit(wc) " << is_unit(wc) << std::endl;
-
-  return 0;
 }

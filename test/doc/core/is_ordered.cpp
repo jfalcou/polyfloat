@@ -36,6 +36,4 @@ int main()
   std::cout << "is_ordered(wc, wc) " << is_ordered(wc, wc) << std::endl;
   std::cout << "is_ordered(wc, wb) " << is_ordered(wc, wb) << std::endl;
   std::cout << "is_ordered(wc, wb) " << (wc < wb) << std::endl;
-
-  return 0;
 }

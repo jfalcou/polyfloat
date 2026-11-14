@@ -34,5 +34,4 @@ int main()
   pf3_t m([](auto i, auto) { return plf::polyfloat<double, 3>(i); });
   std::cout << "m           " << m << std::endl;
   std::cout << "pown(wc, m) " << pown(wc, m) << std::endl;
-  return 0;
 }

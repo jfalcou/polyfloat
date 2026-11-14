@@ -38,6 +38,4 @@ int main()
   std::cout << "sub(wc, wc) " << sub(wc, wc) << std::endl;
   std::cout << "sub(wc, wb) " << sub(wc, wb) << std::endl;
   std::cout << "sub(wb, wc) " << sub(wb, wc) << std::endl;
-
-  return 0;
 }

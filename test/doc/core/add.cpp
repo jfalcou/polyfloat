@@ -46,6 +46,4 @@ int main()
   std::cout << "cc " << cc << std::endl;
   std::cout << "inf+1 " << inf + 1 << std::endl;
   std::cout << "inf-1 " << inf - 1 << std::endl;
-
-  return 0;
 }

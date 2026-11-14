@@ -17,6 +17,4 @@ int main()
             << "<- zf                               = " << zf << '\n'
             << "-> logspace_sub( xf, yf, zf)        = " << plf::logspace_sub(xf, yf, zf) << '\n'
             << "-> logspace_sub( xf, yf, zf)        = " << eve::logspace_sub(hi(xf), hi(yf), hi(zf)) << '\n';
-
-  return 0;
 }

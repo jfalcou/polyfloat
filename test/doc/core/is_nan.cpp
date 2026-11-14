@@ -31,6 +31,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_nan(wb) " << is_nan(wb) << std::endl;
   std::cout << "is_nan(wc) " << is_nan(wc) << std::endl;
-
-  return 0;
 }

@@ -38,5 +38,4 @@ int main()
     std::cout << std::setprecision(15) << "pi  = " << pi << std::endl;
     std::cout << rpi - pi << std::endl;
   }
-  return 0;
 }

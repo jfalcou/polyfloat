@@ -34,6 +34,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_flint(wb) " << is_flint(wb) << std::endl;
   std::cout << "is_flint(wc) " << is_flint(wc) << std::endl;
-
-  return 0;
 }

@@ -33,6 +33,4 @@ int main()
   std::cout << "is_bit_equal(wb, wb) " << is_bit_equal(wb, wb) << std::endl;
   std::cout << "is_bit_equal(wc, wc) " << is_bit_equal(wc, wc) << std::endl;
   std::cout << "is_bit_equal(wabab, waabb) " << is_bit_equal(wabab, waabb) << std::endl;
-
-  return 0;
 }

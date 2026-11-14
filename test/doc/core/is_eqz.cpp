@@ -28,6 +28,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_eqz(wb) " << is_eqz(wb) << std::endl;
   std::cout << "is_eqz(wc) " << is_eqz(wc) << std::endl;
-
-  return 0;
 }

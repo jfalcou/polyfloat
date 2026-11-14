@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "ldexp(wb) " << ldexp(wb, 2) << std::endl;
   std::cout << "ldexp(wc) " << ldexp(wc, 2) << std::endl;
-
-  return 0;
 }

@@ -30,5 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "ceil(wb) " << ceil(wb) << std::endl;
   std::cout << "ceil(wc) " << ceil(wc) << std::endl;
-  return 0;
 }

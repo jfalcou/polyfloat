@@ -28,5 +28,4 @@ int main()
     std::cout << " -> diff(index_t<7>, tt)       = " << plf::diff(kumi::index_t<7>{}, tt) << std::endl;
     std::cout << " -> diff(index_t<8>, tt)       = " << plf::diff(kumi::index_t<8>{}, tt) << std::endl;
   }
-  return 0;
 }

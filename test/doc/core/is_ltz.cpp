@@ -28,6 +28,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_ltz(wb) " << is_ltz(wb) << std::endl;
   std::cout << "is_ltz(wc) " << is_ltz(wc) << std::endl;
-
-  return 0;
 }

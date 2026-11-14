@@ -37,6 +37,4 @@ int main()
   std::cout << "copysign(wb, wb) " << copysign(wb, wb) << std::endl;
   std::cout << "copysign(wc, wc) " << copysign(wc, wc) << std::endl;
   std::cout << "copysign(wc, wb) " << copysign(wc, wb) << std::endl;
-
-  return 0;
 }

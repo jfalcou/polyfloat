@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "sqr(wb) " << sqr(wb) << std::endl;
   std::cout << "sqr(wc) " << sqr(wc) << std::endl;
-
-  return 0;
 }

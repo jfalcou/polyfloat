@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "sign(wb) " << sign(wb) << std::endl;
   std::cout << "sign(wc) " << sign(wc) << std::endl;
-
-  return 0;
 }

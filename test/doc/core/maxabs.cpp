@@ -37,6 +37,4 @@ int main()
   std::cout << "maxabs(wb, wb) " << maxabs(wb, wb) << std::endl;
   std::cout << "maxabs(wc, wc) " << maxabs(wc, wc) << std::endl;
   std::cout << "maxabs(wc, wb) " << maxabs(wc, wb) << std::endl;
-
-  return 0;
 }

@@ -38,6 +38,4 @@ int main()
   std::cout << "sum_of_squares(wc, wc) " << sum_of_squares(wc, wc) << std::endl;
   std::cout << "sum_of_squares(wc, wb) " << sum_of_squares(wc, wb) << std::endl;
   std::cout << "sum_of_squares(wc, wb, b) " << sum_of_squares(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

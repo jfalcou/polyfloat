@@ -36,5 +36,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "rat(wb) " << rat(wb) << std::endl;
   std::cout << "rat(wc) " << rat(wc) << std::endl;
-  return 0;
 }

@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "minus(wb) " << minus(wb) << std::endl;
   std::cout << "minus(wc) " << minus(wc) << std::endl;
-
-  return 0;
 }

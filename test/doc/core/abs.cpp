@@ -30,5 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "abs(wb) " << abs(wb) << std::endl;
   std::cout << "abs(wc) " << abs(wc) << std::endl;
-  return 0;
 }

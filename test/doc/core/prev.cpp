@@ -30,6 +30,4 @@ int main()
   std::cout << "wc       " << wc << std::endl;
   std::cout << "prev(wb) " << prev(wb) << std::endl;
   std::cout << "prev(wc) " << prev(wc) << std::endl;
-
-  return 0;
 }

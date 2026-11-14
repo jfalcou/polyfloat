@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "trunc(wb) " << trunc(wb) << std::endl;
   std::cout << "trunc(wc) " << trunc(wc) << std::endl;
-
-  return 0;
 }

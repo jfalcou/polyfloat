@@ -36,6 +36,4 @@ int main()
   std::cout << "is_greater_equal(wc, wc) " << is_greater_equal(wc, wc) << std::endl;
   std::cout << "is_greater_equal(wc, wb) " << is_greater_equal(wc, wb) << std::endl;
   std::cout << "is_greater_equal(wc, wb) " << (wc < wb) << std::endl;
-
-  return 0;
 }

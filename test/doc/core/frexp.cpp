@@ -29,6 +29,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "frexp(wb) " << frexp(wb) << std::endl;
   std::cout << "frexp(wc) " << frexp(wc) << std::endl;
-
-  return 0;
 }

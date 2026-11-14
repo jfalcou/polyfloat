@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "nearest(wb) " << nearest(wb) << std::endl;
   std::cout << "nearest(wc) " << nearest(wc) << std::endl;
-
-  return 0;
 }

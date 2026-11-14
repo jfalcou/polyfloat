@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "exponent(wb) " << exponent(wb) << std::endl;
   std::cout << "exponent(wc) " << exponent(wc) << std::endl;
-
-  return 0;
 }

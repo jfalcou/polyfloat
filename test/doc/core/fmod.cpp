@@ -37,6 +37,4 @@ int main()
   std::cout << "fmod(wb, wb) " << fmod(wb, wb) << std::endl;
   std::cout << "fmod(wc, wc) " << fmod(wc, wc) << std::endl;
   std::cout << "fmod(wc, wb) " << fmod(wc, wb) << std::endl;
-
-  return 0;
 }

@@ -19,6 +19,4 @@ int main()
             << "<- zf                               = " << zf << '\n'
             << "-> lpnorm(pf, xf, yf, zf)           = " << plf::lpnorm(pf, xf, yf, zf) << '\n'
             << "-> lpnorm[pedantic](pf, xf, yf, zf) = " << plf::lpnorm[plf::pedantic](pf, xf, yf, zf) << '\n';
-
-  return 0;
 }

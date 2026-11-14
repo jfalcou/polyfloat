@@ -38,6 +38,4 @@ int main()
   std::cout << "dot(wc, wc) " << dot(wc, wc) << std::endl;
   std::cout << "dot(wc, wb) " << dot(wc, wb) << std::endl;
   std::cout << "dot(wc, wb, wb, b, c, 1) " << dot(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

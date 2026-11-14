@@ -30,6 +30,4 @@ int main()
   std::cout << b << std::endl;
   c += f;
   std::cout << c << std::endl;
-
-  return 0;
 }

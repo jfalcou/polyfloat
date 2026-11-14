@@ -38,6 +38,4 @@ int main()
 
   w1_t wd{1.0, 2.0, 3.0, 4.0};
   std::cout << plf::convert(wd, eve::as<d3_t>()) << std::endl;
-
-  return 0;
 }

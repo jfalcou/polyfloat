@@ -28,6 +28,4 @@ int main()
   std::cout << "wc          " << wc << std::endl;
   std::cout << "is_infinite(wb) " << is_infinite(wb) << std::endl;
   std::cout << "is_infinite(wc) " << is_infinite(wc) << std::endl;
-
-  return 0;
 }

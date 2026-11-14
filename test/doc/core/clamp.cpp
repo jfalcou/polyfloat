@@ -22,5 +22,4 @@ int main()
   std::cout << " <- hi                      = " << whi << '\n';
   std::cout << " -> clamp(x, wlo, whi)      = " << plf::clamp(x, wlo, whi) << '\n';
   std::cout << " -> clamp(x, lo, hi)        = " << plf::clamp(x, lo, hi) << '\n';
-  return 0;
 }

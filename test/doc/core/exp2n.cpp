@@ -44,5 +44,4 @@ int main()
   std::cout << "exp2n(inf) " << exp2n(inf) << std::endl;
   auto minf = pf2_t(eve::minf(eve::as<double>()));
   std::cout << "exp2n(minf) " << exp2n(minf) << std::endl;
-  return 0;
 }

@@ -22,6 +22,4 @@ int main()
   std::cout << " -> chi(x, belongs2)         = " << plf::chi(x, belongs2) << '\n';
   std::cout << " -> chi(x, lo, hi)          = " << plf::chi(x, lo, hi) << '\n';
   std::cout << " -> chi[x > -2](x, lo, hi)  = " << plf::chi[x > -2](x, lo, hi) << '\n';
-
-  return 0;
 }

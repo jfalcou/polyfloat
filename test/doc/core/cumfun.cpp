@@ -40,6 +40,4 @@ int main()
   std::cout << "cumfun(max, wc, wc) " << cumfun(max, wc, wc) << std::endl;
   std::cout << "cumfun(max, wc, wb) " << cumfun(max, wc, wb) << std::endl;
   std::cout << "cumfun(max, wc, wb, b) " << cumfun(max, wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }

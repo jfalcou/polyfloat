@@ -30,6 +30,4 @@ int main()
   std::cout << "wc      " << wc << std::endl;
   std::cout << "inc(wb) " << inc(wb) << std::endl;
   std::cout << "inc(wc) " << inc(wc) << std::endl;
-
-  return 0;
 }

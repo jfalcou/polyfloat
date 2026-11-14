@@ -28,5 +28,4 @@ int main()
             << "<- tx                                  = " << tx << '\n'
             << "-> neville(dx, 1.0f, 2.0f, 3.0f, 10.0f)= " << plf::neville(dx, 1.0f, 2.0f, 3.0f, 10.0f) << '\n'
             << "-> neville(tx, 1.0f, 2.0f, 3.0f, 10.0f)= " << plf::neville(tx, 1.0f, 2.0f, 3.0f, 10.0f) << '\n';
-  return 0;
 }

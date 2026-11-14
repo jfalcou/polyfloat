@@ -50,6 +50,4 @@ int main()
             << "-> reverse_horner(xs, kumi::tuple{1.5, 2.0, 4.0}) = "
             << plf::reverse_horner(xs, eve::coefficients(kumi::tuple{d2_t(1.5, 1.0e-18, 1.0e-40), d2_t(2.0), 4.0}))
             << '\n';
-
-  return 0;
 }

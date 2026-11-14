@@ -39,6 +39,4 @@ int main()
   std::cout << "cumsum(wc, wc) " << cumsum(wc, wc) << std::endl;
   std::cout << "cumsum(wc, wb) " << cumsum(wc, wb) << std::endl;
   std::cout << "cumsum(wc, wb, b) " << cumsum(wb, wb, wb, b, c, 1) << std::endl;
-
-  return 0;
 }
