@@ -191,44 +191,37 @@ Variables</h2></td></tr>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;polyfloat/details/printing.hpp&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="keyword">using </span>mpfr::mpreal;</div>
-<div class="line">  <span class="keyword">using </span>plf::_::to_mpreal;</div>
+<div class="line">  <span class="comment">// The expected components are log(plf::eps) from mpmath at 600 bits, each rounded to nearest.</span></div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">using </span>t1_t = double;</div>
 <div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
 <div class="line">    <span class="keyword">using </span>t3_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 3&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">    mpfr::mpreal::set_default_prec(200);</div>
-<div class="line">    mpreal leps1 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>())));</div>
-<div class="line">    mpreal leps2 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>())));</div>
-<div class="line">    mpreal leps3 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>())));</div>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; eve::logeps(eve::as&lt;double&gt;()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps1, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps2, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps3, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t3_t())) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.205966f2b4f12p+5&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.205966f2b4f12p+6 - 0x1.6dca0480f5c1ap-48&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.b0861a6c0f69cp+6 + 0x1.db50f93e8f5d9p-48 + 0x1.fc6b4d1af0c52p-102&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>()) &lt;&lt; std::endl;</div>
 <div class="line">  }</div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">using </span>t1_t = float;</div>
 <div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 2&gt;</a>;</div>
 <div class="line">    <span class="keyword">using </span>t3_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;float, 3&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">    mpfr::mpreal::set_default_prec(200);</div>
-<div class="line">    mpreal leps1 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>())));</div>
-<div class="line">    mpreal leps2 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>())));</div>
-<div class="line">    mpreal leps3 = mpfr::log(to_mpreal(<a class="code hl_variable" href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>())));</div>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; eve::logeps(eve::as&lt;float&gt;()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps1, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps2, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; plf::_::to_polyfloat(leps3, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t3_t())) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.fe2804p+3&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.0a2b24p+5 + 0x1.88a91ap-24&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>()) &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.8f40b6p+5 + 0x1.267ed2p-23 + 0x1.c7af38p-48&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>()) &lt;&lt; std::endl;</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__plf__eps_html_gacd69b768b1e3278712c5dd2b3cd7b58c"><div class="ttname"><a href="group__plf__eps.html#gacd69b768b1e3278712c5dd2b3cd7b58c">plf::eps</a></div><div class="ttdeci">constexpr auto eps</div><div class="ttdef"><b>Definition</b> eps.hpp:83</div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html"><div class="ttname"><a href="structplf_1_1polyfloat.html">plf::polyfloat</a></div><div class="ttdoc">Floating-point expansion of N values of type Type, of decreasing magnitude and without overlap.</div><div class="ttdef"><b>Definition</b> polyfloat.hpp:31</div></div>
 </div><!-- fragment --> 
 </div>

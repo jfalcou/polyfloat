@@ -1,16 +1,16 @@
 {
-    "branch_covered": 364,
-    "branch_percent": 89.9,
-    "branch_total": 405,
+    "branch_covered": 324,
+    "branch_percent": 88.8,
+    "branch_total": 365,
     "files": [
         {
             "branch_covered": 4,
             "branch_percent": 100.0,
             "branch_total": 4,
             "filename": "include/polyfloat/details/callable.hpp",
-            "function_covered": 1816,
+            "function_covered": 1828,
             "function_percent": 96.4,
-            "function_total": 1884,
+            "function_total": 1896,
             "line_covered": 6,
             "line_percent": 100.0,
             "line_total": 6
@@ -62,18 +62,6 @@
             "line_covered": 33,
             "line_percent": 100.0,
             "line_total": 33
-        },
-        {
-            "branch_covered": 40,
-            "branch_percent": 100.0,
-            "branch_total": 40,
-            "filename": "include/polyfloat/details/printing.hpp",
-            "function_covered": 20,
-            "function_percent": 100.0,
-            "function_total": 20,
-            "line_covered": 25,
-            "line_percent": 100.0,
-            "line_total": 25
         },
         {
             "branch_covered": 0,
@@ -235,6 +223,18 @@
             "branch_covered": 0,
             "branch_percent": null,
             "branch_total": 0,
+            "filename": "include/polyfloat/module/core/constants/logeps.hpp",
+            "function_covered": 10,
+            "function_percent": 100.0,
+            "function_total": 10,
+            "line_covered": 7,
+            "line_percent": 100.0,
+            "line_total": 7
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
             "filename": "include/polyfloat/module/core/constants/maxflint.hpp",
             "function_covered": 8,
             "function_percent": 100.0,
@@ -278,6 +278,18 @@
             "line_covered": 4,
             "line_percent": 100.0,
             "line_total": 4
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "include/polyfloat/module/core/constants/oneosqrteps.hpp",
+            "function_covered": 10,
+            "function_percent": 100.0,
+            "function_total": 10,
+            "line_covered": 7,
+            "line_percent": 100.0,
+            "line_total": 7
         },
         {
             "branch_covered": 0,
@@ -3136,12 +3148,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 13289,
+    "function_covered": 13301,
     "function_percent": 97.6,
-    "function_total": 13615,
+    "function_total": 13627,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2602,
+    "line_covered": 2591,
     "line_percent": 99.0,
-    "line_total": 2628,
+    "line_total": 2617,
     "root": "../../.."
 }
