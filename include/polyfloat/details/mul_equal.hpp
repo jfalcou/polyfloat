@@ -9,21 +9,18 @@
 
 namespace plf::_
 {
+
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& mul_equal(T1& self, T2 other) noexcept
   requires(dimension_v<T1> == 2u) && (dimension_v<T2> == 1u)
-  { //TODO
+  {
     auto [xhi, xlo] = self;
-    auto yhi = other;
-    auto ylo = eve::zero(eve::as(yhi));
-    auto [p00, e00] = eve::two_prod(xhi, yhi);
-    auto p01 = xhi * ylo;
-    auto p10 = xlo * yhi;
-    p01 += p10;
-    e00 += p01;
-    auto [p, e] = eve::two_add[raw](p00, e00);
+    auto [p, e] = eve::two_prod(xhi, other);
+    auto pp = p;
+    auto phm = xlo * other;
+    fasttwoadd(p, e + phm, p, e);
     auto test = eve::is_not_finite(p + e);
-    self = plf::if_else(test, T1(p00), plf::_::from_pair(p, e));
+    self = plf::if_else(test, T1(pp), plf::_::from_pair(p, e));
     EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
     return self;
   }
@@ -31,17 +28,15 @@ namespace plf::_
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& mul_equal(T1& self, T2 other) noexcept
   requires(dimension_v<T1> == 2u) && (dimension_v<T2> == 2u)
-  { //TODO
+  {
     auto [xhi, xlo] = self;
     auto [yhi, ylo] = other;
-    auto [p00, e00] = eve::two_prod(xhi, yhi);
-    auto p01 = xhi * ylo;
-    auto p10 = xlo * yhi;
-    p01 += p10;
-    e00 += p01;
-    auto [p, e] = eve::two_add[raw](p00, e00);
+    auto [p, e] = eve::two_prod(xhi, yhi);
+    auto pp = p;
+    auto phm = xhi * ylo + xlo * yhi;
+    fasttwoadd(p, e + phm, p, e);
     auto test = eve::is_not_finite(p + e);
-    self = plf::if_else(test, T1(p00), plf::_::from_pair(p, e));
+    self = plf::if_else(test, T1(pp), plf::_::from_pair(p, e));
     EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
     return self;
   }
@@ -54,18 +49,10 @@ namespace plf::_
     auto yhi = other;
     auto [phh, ehh] = eve::two_prod(xhi, yhi);
     auto p = phh;
-    auto phm = eve::zero(eve::as(yhi));
-    auto ehm = eve::zero(eve::as(yhi));
-    auto [pmh, emh] = eve::two_prod(xmd, yhi);
-    auto plh = (yhi * xlo);
-    twoadd(phm, pmh, phm, pmh);
-    ehm += emh;
+    auto [phm, emh] = eve::two_prod(xmd, yhi);
     twoadd(ehh, phm, ehh, phm);
     fasttwoadd(phh, ehh, phh, ehh);
-    phm += pmh;
-    ehm += plh;
-    phm += ehm;
-    twoadd(ehh, phm, ehh, phm);
+    twoadd(ehh, (phm + emh) + (yhi * xlo), ehh, phm);
     fasttwoadd(phh, ehh, phh, ehh);
     fasttwoadd(ehh, phm, ehh, phm);
     fasttwoadd(phh, ehh, phh, ehh);

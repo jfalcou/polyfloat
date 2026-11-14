@@ -10,15 +10,15 @@
 
 TTS_CASE_WITH("Check fma",
               plf::scalar_real_types,
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000),
-              tts::randoms(eve::zero, 1000))
+              tts::randoms(-1000, 1000),
+              tts::randoms(1, 1.0e-20),
+              tts::randoms(1, 1.0e-30),
+              tts::randoms(-1000, 1000),
+              tts::randoms(0, 1.0e-20),
+              tts::randoms(0, 1.0e-30),
+              tts::randoms(-1000, 1000),
+              tts::randoms(0, 1.0e-20),
+              tts::randoms(0, 1.0e-30))
 <typename T>(
   T const& a0, T const& a1, T const& a2, T const& a3, T const& a4, T const& a5, T const& a6, T const& a7, T const& a8)
 {

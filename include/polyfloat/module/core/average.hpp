@@ -95,7 +95,7 @@ namespace plf::_
     {
       auto cvt = [](auto a) { return plf::convert(a, eve::as_element<r_t>{}); };
       constexpr auto N = sizeof...(Ts) + 1;
-      u_t const invn = plf::rec(u_t(N));
+      r_t const invn = plf::rec(r_t(N));
       if constexpr (O::contains(raw))
       {
         return eve::mul[o](add[o.drop(raw)](cvt(a0), cvt(args)...), invn);
@@ -104,7 +104,11 @@ namespace plf::_
       {
         auto that(cvt(a0) * invn);
         auto next = [invn](auto avg, auto x) {
-          return plf::fma(x, invn, avg);
+          std::cout << " x    " << x << std::endl;
+          std::cout << " invn " << invn << std::endl;
+          std::cout << " avg  " << avg << std::endl;
+          std::cout << x * invn + avg << " ==  " << plf::fma(x, invn, avg) << std::endl;
+          return x * invn + avg; //plf::fma(x, invn, avg);
         }; //return x * invn + avg; }; //plf::fma(x, invn, avg); }; //fma ?
         ((that = next(that, cvt(args))), ...);
         return that;

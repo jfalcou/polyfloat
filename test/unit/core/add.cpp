@@ -33,6 +33,7 @@ TTS_CASE_WITH("Check add two params",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(add(wpab, wpab), wpab + wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab), 2 * wpab, tts::epsprec<T>());
     pv_t inf = plf::inf(eve::as(pa));
     pv_t nan = plf::nan(eve::as(pa));
     pv_t minf = plf::minf(eve::as(pa));
@@ -98,6 +99,10 @@ TTS_CASE_WITH("Check add three params",
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
     TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab + wpab + wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab * T(3), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab * 3, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), T(3) * wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), 3 * wpab, tts::epsprec<T>());
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
