@@ -102,10 +102,6 @@ namespace plf::_
     r_t r(eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn))));
     auto dn = plf::dec(nn);
     r = (r * dn + xx * plf::pown(r, -dn)) / nn;
-    std::cout << "r  " << r << std::endl;
-    std::cout << "dn " << dn << std::endl;
-    std::cout << "type r  " << toto::typename_<decltype(r)> << std::endl;
-    std::cout << "type dn " << toto::typename_<decltype(dn)> << std::endl;
     if constexpr (dimension_v<T> == 3)
     {
       r = (r * dn + xx * plf::pown(r, -dn)) / nn;
