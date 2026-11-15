@@ -49,7 +49,8 @@ namespace plf
     if constexpr (dimension_v<T1> < dimension_v<T2>) return b + a;
     else
     {
-      auto that = a;
+      using r_t = as_polyfloat_t<T1, T2>;
+      auto that = r_t(a);
       return that += b;
     }
   }
@@ -71,7 +72,8 @@ namespace plf
     if constexpr (dimension_v<T1> < dimension_v<T2>) return b * a;
     else
     {
-      auto that = a;
+      using r_t = as_polyfloat_t<T1, T2>;
+      auto that = r_t(a);
       return that *= b;
     }
   }

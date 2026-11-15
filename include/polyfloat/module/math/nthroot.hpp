@@ -97,12 +97,18 @@ namespace plf::_
     auto xx = plf::convert(x, eve::as<e_t>());
     auto nn = plf::convert(n, eve::as<e_t>());
     auto ltz = plf::is_ltz(xx);
-    r_t r{};
-    hi(r) = eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn)));
-    r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
+    //     r_t r{};
+    //     hi(r) =
+    r_t r(eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn))));
+    auto dn = plf::dec(nn);
+    r = (r * dn + xx * plf::pown(r, -dn)) / nn;
+    std::cout << "r  " << r << std::endl;
+    std::cout << "dn " << dn << std::endl;
+    std::cout << "type r  " << toto::typename_<decltype(r)> << std::endl;
+    std::cout << "type dn " << toto::typename_<decltype(dn)> << std::endl;
     if constexpr (dimension_v<T> == 3)
     {
-      r = (plf::dec(nn) * r + xx * plf::pown(r, -dec(nn))) / nn;
+      r = (r * dn + xx * plf::pown(r, -dn)) / nn;
     }
     auto res = plf::if_else(plf::is_eqz(xx), xx, r);
     if constexpr (!O::contains(raw)) res = plf::if_else(plf::is_not_finite(xx), xx, res);
