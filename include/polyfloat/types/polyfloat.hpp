@@ -12,7 +12,7 @@
 #include <polyfloat/details/helpers.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-//#include <polyfloat/details/inner_graillat.hpp>
+#include <polyfloat/details/inner_graillat.hpp>
 #include <polyfloat/details/add_utility.hpp>
 
 namespace plf
