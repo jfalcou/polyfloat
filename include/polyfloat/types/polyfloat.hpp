@@ -58,6 +58,8 @@ namespace plf
     constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
     {
       kumi::get<0>(contents) = static_cast<Type>(v0);
+      kumi::get<1>(contents) = Type(0);
+      kumi::get<2>(contents) = Type(0);
       contents = plf::_::a31(contents, static_cast<Type>(v1));
       contents = plf::_::a31(contents, static_cast<Type>(v2));
     }
