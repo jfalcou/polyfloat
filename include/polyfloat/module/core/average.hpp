@@ -89,7 +89,6 @@ namespace plf::_
   constexpr auto average_(POLYFLOAT_DELAY(), O const& o, T1 a0, Ts... args) noexcept
   {
     using r_t = as_polyfloat_like_t<T1, Ts...>;
-    using u_t = eve::element_type_t<r_t>;
     if constexpr (sizeof...(Ts) == 0) return a0;
     else
     {
@@ -103,13 +102,7 @@ namespace plf::_
       else
       {
         auto that(cvt(a0) * invn);
-        auto next = [invn](auto avg, auto x) {
-          std::cout << " x    " << x << std::endl;
-          std::cout << " invn " << invn << std::endl;
-          std::cout << " avg  " << avg << std::endl;
-          std::cout << x * invn + avg << " ==  " << plf::fma(x, invn, avg) << std::endl;
-          return x * invn + avg; //plf::fma(x, invn, avg);
-        }; //return x * invn + avg; }; //plf::fma(x, invn, avg); }; //fma ?
+        auto next = [invn](auto avg, auto x) { return x * invn + avg; };
         ((that = next(that, cvt(args))), ...);
         return that;
       }
