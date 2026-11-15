@@ -12,7 +12,8 @@
 #include <polyfloat/details/helpers.hpp>
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
-#include <polyfloat/details/inner_graillat.hpp>
+//#include <polyfloat/details/inner_graillat.hpp>
+#include <polyfloat/details/add_utility.hpp>
 
 namespace plf
 {
@@ -42,27 +43,6 @@ namespace plf
     /// Constructs a value from a real of the base type, in the high part, the other parts zero.
     constexpr polyfloat(Type v) noexcept : contents{} { kumi::get<0>(contents) = v; }
 
-    /// Constructs a value from a real of another floating-point type, split over the parts when it is wider.
-    template<eve::floating_scalar_value T> constexpr polyfloat(T v) noexcept : contents{}
-    {
-      using elt_t = eve::element_type_t<T>;
-      using elt_type = eve::element_type_t<Type>;
-      if constexpr (sizeof(elt_t) <= sizeof(elt_type)) kumi::get<0>(contents) = v;
-      else
-      {
-        auto h = eve::convert(v, eve::as<elt_type>());
-        kumi::get<0>(contents) = h;
-        auto hc = eve::convert(h, eve::as<elt_t>());
-        auto m = eve::convert(v - hc, eve::as<elt_type>());
-        kumi::get<1>(contents) = m;
-        if constexpr (N == 3)
-        {
-          auto l = eve::convert(v - (hc + eve::convert(m, eve::as<elt_t>())), eve::as<elt_type>());
-          kumi::get<2>(contents) = l;
-        }
-      }
-    }
-
     /// Constructs a value from two reals converted to the base type, as their exact sum by 2Sum, the rest zero.
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1>
     requires(2 <= static_dimension)
@@ -76,8 +56,10 @@ namespace plf
     template<std::convertible_to<Type> T0, std::convertible_to<Type> T1, std::convertible_to<Type> T2>
     requires(3 <= static_dimension)
     constexpr polyfloat(T0 v0, T1 v1, T2 v2) noexcept
-      : contents(plf::_::inner_three_add(static_cast<Type>(v0), static_cast<Type>(v1), static_cast<Type>(v2)))
     {
+      kumi::get<0>(contents) = static_cast<Type>(v0);
+      contents = plf::_::a31(contents, static_cast<Type>(v1));
+      contents = plf::_::a31(contents, static_cast<Type>(v2));
     }
 
     /// Constructs a value from a product type of `N` parts, taken as they are, without normalization.
@@ -107,14 +89,14 @@ namespace plf
     //! Pre-incrementation operator
     POLYFLOAT_ABI auto& operator++() noexcept
     {
-      kumi::get<0>(contents)++;
+      contents = _::a31(contents, Type(1));
       return *this;
     };
 
     //! Pre-decrementation operator
     POLYFLOAT_ABI auto& operator--() noexcept
     {
-      kumi::get<0>(contents)--;
+      contents = _::a31(contents, Type(-1));
       return *this;
     }
 
