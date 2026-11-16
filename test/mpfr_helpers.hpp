@@ -43,8 +43,8 @@ namespace tts
   {
     using u_t = decltype(plf::hi(T()));
     if constexpr (plf::dimension_v<T> == 1) return (sizeof(u_t) == 8 ? 53 : 24);
-    if constexpr (plf::dimension_v<T> == 2) return (sizeof(u_t) == 8 ? 106 : 48);
-    else if constexpr (plf::dimension_v<T> == 3) return (sizeof(u_t) == 8 ? 159 : 72);
+    if constexpr (plf::dimension_v<T> == 2) return (sizeof(u_t) == 8 ? 104 : 46);
+    else if constexpr (plf::dimension_v<T> == 3) return (sizeof(u_t) == 8 ? 156 : 69);
   }
 
   template<typename T> auto to_mpreal(T a)
