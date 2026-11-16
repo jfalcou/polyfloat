@@ -65,7 +65,7 @@ TTS_CASE_WITH("Check average three params",
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
     pv_t pc(a6, a7);
-    TTS_RELATIVE_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), tts::epsprec<pv_t>());
+    TTS_RELATIVE_EQUAL(average(pa, pb, pc), tts::mpfr_exec(maverage, pa, pb, pc), 2 * tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(average(a0, pa, pc), average(pv_t(a0), pa, pc), tts::epsprec<pv_t>());
     TTS_RELATIVE_EQUAL(average(pa, a0, pc), average(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
   }

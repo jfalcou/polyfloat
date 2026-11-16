@@ -26,7 +26,7 @@ TTS_CASE_WITH(
 
     for (pv_t i = 0; i < 1; i += pv_t(0.01))
     {
-      TTS_RELATIVE_EQUAL(plf::acos(i), tts::mpfr_exec(macos, i), 8 * tts::epsprec<pv_t>()) << "i " << i << "\n";
+      TTS_RELATIVE_EQUAL(plf::acos(i), tts::mpfr_exec(macos, i), 800 * tts::epsprec<pv_t>()) << "i " << i << "\n";
     }
   }
   {

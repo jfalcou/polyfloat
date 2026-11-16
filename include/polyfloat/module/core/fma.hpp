@@ -87,7 +87,7 @@ namespace plf::_
       auto cvt = [](auto a) { return r_t(plf::convert(a, eve::as<eve::element_type_t<r_t>>())); };
 
       auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
-      return plf::_::cr_dw_fp_add(xl, xh, cvt(z));
+      return plf::_::cr_dw_fp_add(xh, xl, cvt(z));
     }
     else if constexpr ((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) && (dimension_v<Z3> == 2))
     {

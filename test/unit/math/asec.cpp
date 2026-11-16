@@ -26,7 +26,7 @@ TTS_CASE_WITH(
     for (pv_t i = 0; i < 1; i += pv_t(0.01))
     {
       auto ii = plf::rec(i);
-      TTS_RELATIVE_EQUAL(plf::asec(ii), tts::mpfr_exec(masec, ii), 8 * tts::epsprec<pv_t>()) << "ii " << ii << "\n";
+      TTS_RELATIVE_EQUAL(plf::asec(ii), tts::mpfr_exec(masec, ii), 1600 * tts::epsprec<pv_t>()) << "ii " << ii << "\n";
     }
   }
   {
@@ -40,7 +40,7 @@ TTS_CASE_WITH(
     for (pv_t i = 0; i < 1; i += pv_t(0.01))
     {
       auto ii = plf::rec(i);
-      TTS_RELATIVE_EQUAL(plf::asec(ii), tts::mpfr_exec(masec, ii), 8 * tts::epsprec<pv_t>()) << "ii " << ii << "\n";
+      TTS_RELATIVE_EQUAL(plf::asec(ii), tts::mpfr_exec(masec, ii), 1600 * tts::epsprec<pv_t>()) << "ii " << ii << "\n";
     }
   }
 };

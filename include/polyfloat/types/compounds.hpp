@@ -14,10 +14,39 @@
 #include <polyfloat/module/core/is_normalized.hpp>
 #include <polyfloat/types/triple_real.hpp>
 #include <polyfloat/types/double_real.hpp>
+#include <polyfloat/details/plus_equal.hpp>
+#include <polyfloat/details/mul_equal.hpp>
+
+namespace toto
+{
+  template<typename T> struct typename_impl
+  {
+    static auto value() noexcept
+    {
+#if defined(_MSC_VER)
+      std::string_view data(__FUNCSIG__);
+      auto i = data.find('<') + 1, j = data.find(">::value");
+      auto name = data.substr(i, j - i);
+#else
+      std::string_view data(__PRETTY_FUNCTION__);
+      auto i = data.find('=') + 2, j = data.find_last_of(']');
+      auto name = data.substr(i, j - i);
+#endif
+      return std::string(name.data(), name.size());
+    }
+  };
+
+  template<typename T> inline auto const typename_ = typename_impl<T>::value();
+  template<typename T> constexpr auto name(T const&)
+  {
+    return typename_<T>;
+  }
+}
 
 namespace plf
 {
-
+  using _::fasttwoadd;
+  using _::twoadd;
   //====================================================================================================================
   //! @name Compound Assignment Operators
   //! @related polyfloat
@@ -29,46 +58,10 @@ namespace plf
   constexpr auto& operator+=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
   {
-    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
-    if constexpr (dimension_v<T1> == 2u)
+    if constexpr (eve::integral_value<T2>) return self += eve::convert(other, eve::as(eve::underlying_type_t<T1>()));
+    else
     {
-      auto [xhi, xlo] = self;
-      auto [yhi, ylo] = oth;
-      auto [a, b] = eve::two_add(xhi, yhi);
-      auto [c, d] = eve::two_add(xlo, ylo);
-      auto [aa, cc] = eve::two_add[eve::raw](a, c);
-      b += d;
-      b += cc;
-      auto [e, f] = eve::two_add(aa, b);
-      auto test = eve::is_not_finite(e + f);
-      self = plf::if_else(test, T1(a), plf::_::from_pair(e, f));
-      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
-      return self;
-    }
-    else if constexpr (dimension_v<T1> == 3u)
-    {
-      auto [xhi, xmd, xlo] = self;
-      auto [yhi, ymd, ylo] = oth;
-      auto [a1, b1] = eve::two_add(xhi, yhi);
-      auto [c1, d1] = eve::two_add(xmd, ymd);
-      auto [e1, f1] = eve::two_add(xlo, ylo);
-      auto [a2, c2] = eve::two_add[raw](a1, c1);
-      b1 += f1;
-      auto [d2, e2] = eve::two_add(d1, e1);
-      auto [a3, d3] = eve::two_add[raw](a2, d2);
-      auto [b2, c3] = eve::two_add(b1, c2);
-      c3 += e2;
-      auto [c4, d4] = eve::two_add(c3, d3);
-      auto [b3, c5] = eve::two_add(b2, c4);
-      auto [a4, b4] = eve::two_add[raw](a3, b3);
-      c4 += d4;
-      auto [b5, c6] = eve::two_add[raw](b4, c5);
-      auto [a5, b6] = eve::two_add[raw](a4, b5);
-      auto [b7, c7] = eve::two_add[raw](b6, c6);
-      auto test = eve::is_not_finite(a5 + b7 + c7);
-      self = plf::if_else(test, T1(a1), plf::_::from_triple(a5, b7, c7));
-      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
-      return self;
+      return _::plus_equal(self, other);
     }
   }
 
@@ -77,72 +70,19 @@ namespace plf
   constexpr auto& operator-=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
   {
-    return self += -other;
+    return _::plus_equal(self, -other); //self += -other;
   }
 
   /// Multiply the polyfloat value `other` to `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
-  constexpr auto& operator*=(T1& self, T2 other) noexcept
+  constexpr T1& operator*=(T1& self, T2 other) noexcept
   requires(dimension_v<T1> >= dimension_v<T2>)
   {
-    T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
-    if constexpr (dimension_v<T1> == 2u)
+    if constexpr (eve::integral_value<T2>) return self *= eve::convert(other, eve::as(eve::underlying_type_t<T1>()));
+    else
     {
-      auto [xhi, xlo] = self;
-      auto [yhi, ylo] = oth;
-      auto [p00, e00] = eve::two_prod(xhi, yhi);
-      auto p01 = xhi * ylo;
-      auto p10 = xlo * yhi;
-      p01 += p10;
-      e00 += p01;
-      auto [p, e] = eve::two_add[raw](p00, e00);
-      auto test = eve::is_not_finite(p + e);
-      self = plf::if_else(test, T1(p00), plf::_::from_pair(p, e));
-      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of += is not normalized");
-      return self;
-    }
-    else if constexpr (dimension_v<T1> == 3u)
-    {
-      auto [xh, xm, xl] = self;
-      auto [yh, ym, yl] = oth;
-      auto [p00, e00] = eve::two_prod(xh, yh);
-      auto p = p00;
-      auto [p01, e01] = eve::two_prod(xh, ym);
-      auto [p10, e10] = eve::two_prod(xm, yh);
-      auto p02 = eve::mul(xh, yl);
-      auto p11 = eve::mul(xm, ym);
-      auto p20 = eve::mul(xl, yh);
-      auto [a1, b1] = eve::two_add(p01, p10);
-      p01 = a1;
-      p10 = b1;
-      e01 += e10;
-      p02 += p20;
-      auto [a2, b2] = eve::two_add(e00, p01);
-      e00 = a2;
-      p01 = b2;
-      p02 += p11;
-      auto [a3, b3] = eve::two_add[eve::raw](p00, e00);
-      p00 = a3;
-      e00 = b3;
-      p01 += p10;
-      e01 += p02;
-      p01 += e01;
-      auto [a4, b4] = eve::two_add(e00, p01);
-      e00 = a4;
-      p01 = b4;
-      auto [a5, b5] = eve::two_add[eve::raw](p00, e00);
-      p00 = a5;
-      e00 = b5;
-      auto [a6, b6] = eve::two_add[eve::raw](e00, p01);
-      e00 = a6;
-      p01 = b6;
-      auto [a7, b7] = eve::two_add[eve::raw](p00, e00);
-      p00 = a7;
-      e00 = b7;
-      auto test = eve::is_not_finite(p00 + e00 + p01);
-      self = plf::if_else(test, T1(p), plf::_::from_triple(p00, e00, p01));
-      EVE_ASSERT(eve::all(plf::is_normalized(self)), "output of *= is not normalized");
-      return self;
+      //     T1 oth{plf::convert(other, eve::as<eve::element_type_t<T1>>())};
+      return _::mul_equal(self, other);
     }
   }
 }

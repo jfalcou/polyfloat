@@ -25,11 +25,14 @@ TTS_CASE_WITH("Check add two params",
     using pv_t = plf::polyfloat<T, 2>;
     pv_t pa(a0, a1);
     pv_t pb(a3, a4);
+    pa += T(1.0e-35);
+    pb += T(1.0e-37);
     TTS_RELATIVE_EQUAL(add(pa, pb), tts::mpfr_exec(madd, pa, pb), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(add(a0, pa), add(pv_t(a0), pa), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(add(pa, a0), add(pa, pv_t(a0)), tts::epsprec<pv_t>());
+    TTS_EQUAL(add(a0, pa), add(pv_t(a0), pa));
+    TTS_EQUAL(add(pa, a0), add(pa, pv_t(a0)));
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(add(wpab, wpab), wpab + wpab, tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(add(wpab, wpab), 2 * wpab, tts::epsprec<T>());
     pv_t inf = plf::inf(eve::as(pa));
     pv_t nan = plf::nan(eve::as(pa));
@@ -39,17 +42,20 @@ TTS_CASE_WITH("Check add two params",
     TTS_IEEE_EQUAL(add(minf, pa), minf);
     TTS_IEEE_EQUAL(add(pa, minf), minf);
     TTS_IEEE_EQUAL(add(inf, minf), nan);
+    TTS_IEEE_EQUAL(add(pa, 1), plf::inc(pa));
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     pv_t pb(a3, a4, a5);
+    pa += T(1.0e-35);
+    pb += T(1.0e-37);
     TTS_RELATIVE_EQUAL(add(pa, pb), tts::mpfr_exec(madd, pa, pb), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(add(a0, pa), add(pv_t(a0), pa), tts::epsprec<pv_t>());
-    TTS_RELATIVE_EQUAL(add(pa, a0), add(pa, pv_t(a0)), tts::epsprec<pv_t>());
+    TTS_EQUAL(add(a0, pa), add(pv_t(a0), pa));
+    TTS_EQUAL(add(pa, a0), add(pa, pv_t(a0)));
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
-    TTS_RELATIVE_EQUAL(add(wpab, wpab), 2 * wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab), wpab + wpab, tts::epsprec<T>());
     pv_t inf = plf::inf(eve::as(pa));
     pv_t nan = plf::nan(eve::as(pa));
     pv_t minf = plf::minf(eve::as(pa));
@@ -58,6 +64,11 @@ TTS_CASE_WITH("Check add two params",
     TTS_IEEE_EQUAL(add(minf, pa), minf);
     TTS_IEEE_EQUAL(add(pa, minf), minf);
     TTS_IEEE_EQUAL(add(inf, minf), nan);
+    TTS_IEEE_EQUAL(add(pa, 1), plf::inc(pa));
+    using pv2_t = plf::polyfloat<T, 2>;
+    pv2_t pb2(a3, a4);
+    pv_t pb3(a3, a4, T(0));
+    TTS_IEEE_EQUAL(add(pa, pb2), add(pa, pb3));
   }
 };
 
@@ -87,6 +98,10 @@ TTS_CASE_WITH("Check add three params",
     TTS_RELATIVE_EQUAL(add(pa, a0, pc), add(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab + wpab + wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab * T(3), tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab * 3, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), T(3) * wpab, tts::epsprec<T>());
     TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), 3 * wpab, tts::epsprec<T>());
   }
   {
@@ -99,6 +114,6 @@ TTS_CASE_WITH("Check add three params",
     TTS_RELATIVE_EQUAL(add(pa, a0, pc), add(pa, pv_t(a0), pc), tts::epsprec<pv_t>());
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pb);
-    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), 3 * wpab, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(add(wpab, wpab, wpab), wpab + wpab + wpab, tts::epsprec<T>());
   }
 };
