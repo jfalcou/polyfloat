@@ -68,6 +68,7 @@
 #include <polyfloat/module/core/fmod.hpp>
 #include <polyfloat/module/core/frac.hpp>
 #include <polyfloat/module/core/frexp.hpp>
+#include <polyfloat/module/core/from_string.hpp>
 #include <polyfloat/module/core/heaviside.hpp>
 #include <polyfloat/module/core/horner.hpp>
 #include <polyfloat/module/core/hypot.hpp>

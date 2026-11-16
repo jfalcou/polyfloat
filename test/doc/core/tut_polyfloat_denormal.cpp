@@ -7,6 +7,8 @@ int main()
   auto d1 = plf::mindenormal(eve::as<double>());
   auto d3 = plf::mindenormal(eve::as<plf::triple_real_t<double>>());
 
+  std::cout << plf::showparts;
+
   std::cout << "d1        = " << d1 << "\n";
   std::cout << "d3        = " << d3 << "\n";
   std::cout << "d3 + d3   = " << d3 + d3 << "\n";
