@@ -178,10 +178,6 @@ template&lt;unsigned int M&gt; <br />
 requires (N &gt; 1)</td></tr>
 <tr class="memitem:a1d09ab160ac18d2406ef85f99c06febf template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (polyfloat&lt; Type, M &gt; const &amp;a) noexcept</td></tr>
 <tr class="memdesc:a1d09ab160ac18d2406ef85f99c06febf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a polyfloat of the same base type and of dimension 2 to <span class="tt">N</span>, the missing parts zero. <br /></td></tr>
-<tr class="memitem:a6b08a160d470da14cb201f61404b0a9b" id="r_a6b08a160d470da14cb201f61404b0a9b"><td class="memTemplParams" colspan="2"><a id="a6b08a160d470da14cb201f61404b0a9b" name="a6b08a160d470da14cb201f61404b0a9b"></a>
-template&lt;<a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__scalar__value.html">eve::floating_scalar_value</a> T&gt; </td></tr>
-<tr class="memitem:a6b08a160d470da14cb201f61404b0a9b template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (T v) noexcept</td></tr>
-<tr class="memdesc:a6b08a160d470da14cb201f61404b0a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a value from a real of another floating-point type, split over the parts when it is wider. <br /></td></tr>
 <tr class="memitem:a93d98a333193dec59b5a3aaffa6dc4f6" id="r_a93d98a333193dec59b5a3aaffa6dc4f6"><td class="memTemplParams" colspan="2"><a id="a93d98a333193dec59b5a3aaffa6dc4f6" name="a93d98a333193dec59b5a3aaffa6dc4f6"></a>
 template&lt;std::convertible_to&lt; Type &gt; T0, std::convertible_to&lt; Type &gt; T1&gt; </td></tr>
 <tr class="memitem:a93d98a333193dec59b5a3aaffa6dc4f6 template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0 v0, T1 v1) noexcept</td></tr>
@@ -207,10 +203,10 @@ template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 <tr class="memitem:aef49920793b4da92e687b8d178be4835 template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator-=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
 <tr class="memdesc:aef49920793b4da92e687b8d178be4835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the polyfloat value <span class="tt">other</span> from <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
-<tr class="memitem:a58e25f46704ea034002c861386db069c" id="r_a58e25f46704ea034002c861386db069c"><td class="memTemplParams" colspan="2"><a id="a58e25f46704ea034002c861386db069c" name="a58e25f46704ea034002c861386db069c"></a>
+<tr class="memitem:a360eb56323e6297cc8b531aa36c59537" id="r_a360eb56323e6297cc8b531aa36c59537"><td class="memTemplParams" colspan="2"><a id="a360eb56323e6297cc8b531aa36c59537" name="a360eb56323e6297cc8b531aa36c59537"></a>
 template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
-<tr class="memitem:a58e25f46704ea034002c861386db069c template"><td class="memItemLeft">constexpr auto &amp;&#160;</td><td class="memItemRight"><b>operator*=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
-<tr class="memdesc:a58e25f46704ea034002c861386db069c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the polyfloat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
+<tr class="memitem:a360eb56323e6297cc8b531aa36c59537 template"><td class="memItemLeft">constexpr T1 &amp;&#160;</td><td class="memItemRight"><b>operator*=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
+<tr class="memdesc:a360eb56323e6297cc8b531aa36c59537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the polyfloat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
 <tr id="related-1" class="groupHeader"><td colspan="2"><div class="groupHeader">Streaming Operators</div></td></tr>
 <tr class="memitem:a1d50add5f2f5370f64b20919751ccdcf" id="r_a1d50add5f2f5370f64b20919751ccdcf"><td class="memTemplParams" colspan="2"><a id="a1d50add5f2f5370f64b20919751ccdcf" name="a1d50add5f2f5370f64b20919751ccdcf"></a>
 template&lt;typename C, typename Ct, concepts::polyfloat CD&gt; </td></tr>

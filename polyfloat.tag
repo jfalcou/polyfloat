@@ -104,13 +104,6 @@
       <type>constexpr</type>
       <name>polyfloat</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
-      <anchor>a6b08a160d470da14cb201f61404b0a9b</anchor>
-      <arglist>(T v) noexcept</arglist>
-    </member>
-    <member kind="function">
-      <type>constexpr</type>
-      <name>polyfloat</name>
-      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
       <anchor>a93d98a333193dec59b5a3aaffa6dc4f6</anchor>
       <arglist>(T0 v0, T1 v1) noexcept</arglist>
     </member>
@@ -143,10 +136,10 @@
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
-      <type>constexpr auto &amp;</type>
+      <type>constexpr T1 &amp;</type>
       <name>operator*=</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
-      <anchor>a58e25f46704ea034002c861386db069c</anchor>
+      <anchor>a360eb56323e6297cc8b531aa36c59537</anchor>
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
@@ -241,10 +234,10 @@
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
-      <type>constexpr auto &amp;</type>
+      <type>constexpr T1 &amp;</type>
       <name>operator*=</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
-      <anchor>a58e25f46704ea034002c861386db069c</anchor>
+      <anchor>a360eb56323e6297cc8b531aa36c59537</anchor>
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
@@ -1413,13 +1406,6 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
-      <name>ldexpb</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga7d76dbaf783e2205873c423084100a3b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
       <name>lerp</name>
       <anchorfile>group__plf__lerp.html</anchorfile>
       <anchor>ga8875d0b61cf3fbeeaa6ed18b29e5ca9f</anchor>
@@ -2252,10 +2238,10 @@
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
-      <type>constexpr auto &amp;</type>
+      <type>constexpr T1 &amp;</type>
       <name>operator*=</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
-      <anchor>a58e25f46704ea034002c861386db069c</anchor>
+      <anchor>a360eb56323e6297cc8b531aa36c59537</anchor>
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
@@ -2545,13 +2531,6 @@
       <name>plf::ldexp</name>
       <anchorfile>group__core.html</anchorfile>
       <anchor>gaaafb5f51797ebd81c0fdc1011e0275a3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr auto</type>
-      <name>plf::ldexpb</name>
-      <anchorfile>group__core.html</anchorfile>
-      <anchor>ga7d76dbaf783e2205873c423084100a3b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

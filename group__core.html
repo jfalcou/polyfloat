@@ -411,8 +411,6 @@ Topics</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:gaaafb5f51797ebd81c0fdc1011e0275a3" id="r_gaaafb5f51797ebd81c0fdc1011e0275a3"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">plf::ldexp</a> = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;ldexp_t&gt;</td></tr>
 <tr class="memdesc:gaaafb5f51797ebd81c0fdc1011e0275a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes \(\textstyle x 2^n\).  <br /></td></tr>
-<tr class="memitem:ga7d76dbaf783e2205873c423084100a3b" id="r_ga7d76dbaf783e2205873c423084100a3b"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#ga7d76dbaf783e2205873c423084100a3b">plf::ldexpb</a> = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;ldexpb_t&gt;</td></tr>
-<tr class="memdesc:ga7d76dbaf783e2205873c423084100a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes \(\textstyle x 2^n\).  <br /></td></tr>
 <tr class="memitem:ga7e269986153d615f074a5497e163999a" id="r_ga7e269986153d615f074a5497e163999a"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#ga7e269986153d615f074a5497e163999a">plf::roundscale</a> = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;roundscale_t&gt;</td></tr>
 <tr class="memdesc:ga7e269986153d615f074a5497e163999a"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the value rounded to \(n\) binary digits after the point, \(2^{-n}\mathrm{round}(2^n x)\).  <br /></td></tr>
 <tr class="memitem:ga74d8d2b14e149dc9b687e324a7392700" id="r_ga74d8d2b14e149dc9b687e324a7392700"><td class="memItemLeft">constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#ga74d8d2b14e149dc9b687e324a7392700">plf::ulp</a> = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;ulp_t&gt;</td></tr>
@@ -527,73 +525,6 @@ Variables</h2></td></tr>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="ga7d76dbaf783e2205873c423084100a3b" name="ga7d76dbaf783e2205873c423084100a3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7d76dbaf783e2205873c423084100a3b">&#9670;&#160;</a></span>ldexpb</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto plf::ldexpb = <a class="elRef" href="https://jfalcou.github.io/eve/group__eve__extensions.html#ga406269d77123b31f9bc18b38b78c8e25">eve::functor</a>&lt;ldexpb_t&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><code>#include &lt;polyfloat/module/core/ldexpb.hpp&gt;</code></p>
-
-<p>computes \(\textstyle x 2^n\). </p>
-<h2 class="groupheader">Header file </h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;eve/module/module/core.hpp&gt;</span></div>
-</div><!-- fragment --><h2 class="groupheader">Callable Signatures </h2>
-<div class="fragment"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespaceRef" href="https://jfalcou.github.io/eve/namespaceeve.html">eve</a></div>
-<div class="line">{</div>
-<div class="line">   <span class="comment">// Regular overload</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7d76dbaf783e2205873c423084100a3b">ldexpb</a>(polyfloat_like <span class="keyword">auto</span> x, value N)                           <span class="keyword">noexcept</span>; <span class="comment">// 1</span></div>
-<div class="line"> </div>
-<div class="line">   <span class="comment">// Lanes masking</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7d76dbaf783e2205873c423084100a3b">ldexpb</a>[conditional_expr <span class="keyword">auto</span> c](polyfloat_like <span class="keyword">auto</span> x), value N) <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7d76dbaf783e2205873c423084100a3b">ldexpb</a>[logical_value <span class="keyword">auto</span> m](polyfloat_like <span class="keyword">auto</span> x, value N)     <span class="keyword">noexcept</span>; <span class="comment">// 2</span></div>
-<div class="line"> </div>
-<div class="line">   <span class="comment">// Semantic options</span></div>
-<div class="line">   <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="#ga7d76dbaf783e2205873c423084100a3b">ldexpb</a>[pedantic](floating_value <span class="keyword">auto</span> x, integral_value N)        <span class="keyword">noexcept</span>; <span class="comment">// 3</span></div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__core_html_ga7d76dbaf783e2205873c423084100a3b"><div class="ttname"><a href="#ga7d76dbaf783e2205873c423084100a3b">plf::ldexpb</a></div><div class="ttdeci">constexpr auto ldexpb</div><div class="ttdoc">computes .</div><div class="ttdef"><b>Definition</b> ldexpb.hpp:123</div></div>
-</div><!-- fragment --><p><b>Parameters</b></p>
-<ul>
-<li><span class="tt">x</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1value.html" title="eve::value">value</a>.</li>
-<li><span class="tt">c</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1conditional__expr.html" title="eve::conditional_expr">Conditional expression</a> masking the operation.</li>
-<li><span class="tt">n</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1integral__value.html" title="eve::integral_value">integral or flint value argument</a>.</li>
-<li><span class="tt">m</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1logical__value.html" title="eve::logical_value">Logical value</a> masking the operation.</li>
-</ul>
-<p><b>Return value</b></p>
-<ol type="1">
-<li>The value of \(\textstyle x 2^n\) is returned.</li>
-<li><a class="elRef" href="https://jfalcou.github.io/eve/conditional.html" title="Conditional operations">The operation is performed conditionnaly</a>.</li>
-<li>Takes extra care to handling limit values.<ul>
-<li>If <span class="tt">x</span> is \(\pm0\), it is returned, unmodified.</li>
-<li>If <span class="tt">x</span> is \(\pm\infty\), it is returned, unmodified.</li>
-<li>If <span class="tt">n</span> is 0, then <span class="tt">x</span> is returned, unmodified.</li>
-<li>If <span class="tt">x</span> is NaN, NaN is returned.</li>
-</ul>
-</li>
-</ol>
-<h2 class="groupheader">External references </h2>
-<ul>
-<li><a href="https://en.cppreference.com/w/cpp/numeric/math/ldexpb">C++ standard reference</a></li>
-</ul>
-<h2 class="groupheader">Example </h2>
-<dl class="section attention"><dt>Attention</dt><dd>An example for this function is still to be written, as <span class="tt">doc/core/ldexpb.cpp</span>. </dd></dl>
-
-</div>
-</div>
 <a id="ga7e269986153d615f074a5497e163999a" name="ga7e269986153d615f074a5497e163999a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7e269986153d615f074a5497e163999a">&#9670;&#160;</a></span>roundscale</h2>
 
@@ -632,7 +563,7 @@ Variables</h2></td></tr>
 <div class="line">   constexpr auto <a class="code hl_variable" href="#ga7e269986153d615f074a5497e163999a">roundscale</a>[toward_zero](<span class="comment">/*any of the above overloads*/</span>) noexcept; <span class="comment">// 2</span></div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__core_html_ga7e269986153d615f074a5497e163999a"><div class="ttname"><a href="#ga7e269986153d615f074a5497e163999a">plf::roundscale</a></div><div class="ttdeci">constexpr auto roundscale</div><div class="ttdoc">return the value rounded to  binary digits after the point, .</div><div class="ttdef"><b>Definition</b> roundscale.hpp:82</div></div>
-<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> callable.hpp:14</div></div>
+<div class="ttc" id="anamespaceplf_html"><div class="ttname"><a href="namespaceplf.html">plf</a></div><div class="ttdoc">Main POLYFLOAT namespace.</div><div class="ttdef"><b>Definition</b> add_utility.hpp:10</div></div>
 </div><!-- fragment --><p><b>Parameters</b></p>
 <ul>
 <li><span class="tt">x</span>: <a class="elRef" href="https://jfalcou.github.io/eve/concepteve_1_1floating__value.html" title="eve::floating_value">real floating value</a>.</li>
