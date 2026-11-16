@@ -6,7 +6,7 @@
 
 int main()
 {
-  // The expected components are 1/sqrt(plf::eps) from mpmath at 600 bits, each rounded to nearest.
+  // Each expected value rounds 1/sqrt(plf::eps) to nearest part by part, from mpmath at 600 bits.
   {
     using t1_t = double;
     using t2_t = plf::polyfloat<double, 2>;
@@ -15,9 +15,9 @@ int main()
     std::cout << std::hexfloat << std::endl;
     std::cout << "expected    0x1p+26" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t1_t>()) << std::endl;
-    std::cout << "expected    0x1p+52 + 0x0p+0" << std::endl;
+    std::cout << "expected    0x1p+52" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t2_t>()) << std::endl;
-    std::cout << "expected    0x1p+78 + 0x0p+0 + 0x0p+0" << std::endl;
+    std::cout << "expected    0x1p+78" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t3_t>()) << std::endl;
   }
   {
@@ -28,9 +28,9 @@ int main()
     std::cout << std::hexfloat << std::endl;
     std::cout << "expected    0x1.6a09e6p+11" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t1_t>()) << std::endl;
-    std::cout << "expected    0x1p+24 + 0x0p+0" << std::endl;
+    std::cout << "expected    0x1p+23" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t2_t>()) << std::endl;
-    std::cout << "expected    0x1p+36 + 0x0p+0 + 0x0p+0" << std::endl;
+    std::cout << "expected    0x1.6a09e667f3bcc908b3p+34" << std::endl;
     std::cout << "oneosqrteps " << plf::oneosqrteps(eve::as<t3_t>()) << std::endl;
   }
 }
