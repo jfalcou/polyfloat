@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   using plf::epsilon;
   auto f = -1.0;
   auto a = plf::polyfloat(-1.3);
@@ -15,7 +15,7 @@ int main()
   auto d = plf::polyfloat(-1.0, 1.0e-30, 0.0);
   auto e = plf::polyfloat(1.0, 0.0, 0.0);
   auto g = plf::polyfloat(1.0, 0.0);
-  std::setprecision(15);
+  std::setprecision(48);
   std::cout << "f  " << f << std::endl;
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;
