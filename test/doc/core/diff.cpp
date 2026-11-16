@@ -8,7 +8,7 @@ int main()
 {
   using u_t2 = plf::double_real_t<double>;
 
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(32);
   using plf::diff;
   auto a = 1.0;
   auto b = u_t2(1.0, 1.0e-300);
