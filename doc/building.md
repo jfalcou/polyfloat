@@ -16,6 +16,7 @@ project that uses the library builds neither, and installs it as in @ref setup.
 | `gcc-sanitize`, `clang-sanitize` | AddressSanitizer and UndefinedBehaviorSanitizer |
 | `gcc-coverage`, `clang-coverage` | coverage instrumentation |
 | `clang-compile-cost` | the compilation time and memory of every test unit |
+| `gcc-bench`, `clang-bench` | the benchmarks, with AVX2 and FMA, and without `EVE_NO_FORCEINLINE` |
 | `clang-macos`, `clang-macos-libc++` | macOS, against libstdc++ and libc++ |
 
 ```bash
@@ -58,6 +59,7 @@ with the separators replaced by dots:
 | Target | Content |
 | ------ | ------- |
 | `polyfloat-test` | every test |
+| `polyfloat-bench` | every benchmark, outside of `polyfloat-test` |
 | `unit.exe` | all unit tests |
 | `unit.api.exe` | unit tests of the types, the traits, and the operators |
 | `unit.core.exe` | unit tests of the core functions |

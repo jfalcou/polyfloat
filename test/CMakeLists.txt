@@ -60,4 +60,5 @@ copa_glob_unit(
   DESTINATION benchmarks
   RELATIVE ${TEST_ROOT}
   INTERFACE polyfloat_bench ${BENCH_PCH}
-  EXTERNALS mpfr gmp)
+  EXTERNALS mpfr gmp
+  TARGET polyfloat-bench)
