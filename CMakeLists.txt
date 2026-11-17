@@ -16,6 +16,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake ${COPACAB
 include(${COPACABANA_SOURCE_DIR}/copacabana/cmake/copacabana.cmake)
 
 copa_add_option(POLYFLOAT_BUILD_TEST "Build tests for POLYFLOAT" ON LABEL "Unit tests")
+copa_add_option(POLYFLOAT_BUILD_BENCHMARKS "Build benchmarks for POLYFLOAT" OFF LABEL "Benchmarks")
 copa_add_option(POLYFLOAT_BUILD_DOCUMENTATION "Build Doxygen for POLYFLOAT" OFF LABEL "Doxygen")
 copa_add_option(POLYFLOAT_ENABLE_SANITIZERS "Build tests with AddressSanitizer + UndefinedBehaviorSanitizer" OFF
                 LABEL "Sanitizers")
@@ -74,9 +75,9 @@ if(POLYFLOAT_BUILD_DOCUMENTATION)
 endif()
 
 ##======================================================================================================================
-## Tests setup
+## Tests and benchmarks setup
 ##======================================================================================================================
-if(POLYFLOAT_BUILD_TEST)
+if(POLYFLOAT_BUILD_TEST OR POLYFLOAT_BUILD_BENCHMARKS)
   polyfloat_get_package(TTS)
   include(${PROJECT_SOURCE_DIR}/cmake/compiler.cmake)
 

@@ -39,11 +39,12 @@ cmake -S . -B build -G Ninja \
 need and which dominates their compilation time otherwise. `clang++` replaces `g++`, in any
 version that meets the requirements of @ref setup.
 
-Six options select the targets, and the presets set them:
+Seven options select the targets, and the presets set them:
 
 | Option | Default | Effect |
 | ------ | ------- | ------ |
 | `POLYFLOAT_BUILD_TEST` | `ON` | declare the test targets |
+| `POLYFLOAT_BUILD_BENCHMARKS` | `OFF` | declare the `polyfloat-bench` target |
 | `POLYFLOAT_USE_PCH` | `ON` | build the tests against a precompiled header |
 | `POLYFLOAT_BUILD_DOCUMENTATION` | `OFF` | declare the `polyfloat-doxygen` target |
 | `POLYFLOAT_ENABLE_SANITIZERS` | `OFF` | AddressSanitizer and UndefinedBehaviorSanitizer |

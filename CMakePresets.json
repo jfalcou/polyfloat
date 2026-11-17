@@ -50,8 +50,9 @@
     { "name": "clang-coverage" , "inherits": ["clang", "coverage"] },
     { "name": "clang-compile-cost" , "inherits": ["clang", "no-pch", "compile-cost"] },
 
-    { "name": "gcc-bench"  , "inherits": ["unix-base"], "cacheVariables": { "CMAKE_CXX_COMPILER": "g++"    , "CMAKE_CXX_FLAGS": "-mavx2 -mfma" } },
-    { "name": "clang-bench", "inherits": ["unix-base"], "cacheVariables": { "CMAKE_CXX_COMPILER": "clang++", "CMAKE_CXX_FLAGS": "-mavx2 -mfma" } },
+    { "name": "bench"      , "hidden": true, "cacheVariables": { "POLYFLOAT_BUILD_BENCHMARKS": "ON" } },
+    { "name": "gcc-bench"  , "inherits": ["unix-base", "bench"], "cacheVariables": { "CMAKE_CXX_COMPILER": "g++"    , "CMAKE_CXX_FLAGS": "-mavx2 -mfma" } },
+    { "name": "clang-bench", "inherits": ["unix-base", "bench"], "cacheVariables": { "CMAKE_CXX_COMPILER": "clang++", "CMAKE_CXX_FLAGS": "-mavx2 -mfma" } },
 
     {
       "name": "clang-macos",
