@@ -8,28 +8,31 @@
 #pragma once
 
 // A plf::bench::benchmark times each of its runs with nanobench and prints them as a Markdown table when it goes out
-// of scope, its first run being the baseline of the Speedup column. An executable run with -d or --dump also writes
-// the time of every epoch to <name>.csv.
+// of scope, its first run being the baseline of the Speedup column. The runs of a table read the same buffers, drawn
+// once by plf::bench::random, and each time is divided by the number of values. An executable run with -d or --dump
+// also writes the time of every epoch to <name>.csv.
 //
 // @code
 // using pf2_t = plf::polyfloat<double, 2>;
-// auto rnd    = plf::bench::random<pf2_t>(-10, 10);
-// auto mp     = plf::bench::random_mpfr<pf2_t>(-10, 10);
+// auto x      = plf::bench::random<pf2_t>(-10, 10);
 //
 // plf::bench::benchmark _("polyfloat<double, 2> exp");
-// TTS_RUN_BENCHMARK_TPL(_, pf2_t, "plf::scalar", plf::exp, rnd);
-// TTS_RUN_BENCHMARK_TPL(_, mpfr::mpreal, "MPFR", plf::bench::mpfr_call<pf2_t>(mpfr_exp), mp);
-// TTS_RUN_BENCHMARK_TPL(_, eve::wide<pf2_t>, "plf::wide", plf::exp, rnd);
+// TTS_RUN_BENCHMARK_TPL(_, pf2_t, "plf::scalar", plf::exp, x);
+// TTS_RUN_BENCHMARK_TPL(_, mpfr::mpreal, "MPFR", plf::bench::mpfr_call<pf2_t>(mpfr_exp), x);
+// TTS_RUN_BENCHMARK_TPL(_, eve::wide<pf2_t>, "plf::wide", plf::exp, x);
 // @endcode
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
+#include <random>
 #include <sstream>
 #include <string>
 #include <cstdlib>
 #include <limits>
 #include <utility>
 #include <type_traits>
+#include <vector>
 
 #define ANKERL_NANOBENCH_IMPLEMENT
 #include <nanobench.h>
@@ -45,18 +48,31 @@
 
 namespace plf::bench
 {
-  // Draws a normalized expansion with every part nonzero: the constructor from one real leaves the low parts at 0.
-  template<plf::concepts::polyfloat P> auto random(double mini, double maxi)
+  // The generator of every buffer, at its default seed as in the benchmarks of EVE, so two executions time the same
+  // values.
+  inline std::mt19937 prng = {};
+
+  // The number of values of a buffer, a multiple of the width of every eve::wide of polyfloat.
+  inline constexpr std::size_t size = 1024;
+
+  // Draws size normalized expansions: x uniform on [mini, maxi], then x * eps * u and x * eps * eps * u', with u and u'
+  // uniform on [-1/2, 1/2], so every part carries data.
+  template<plf::concepts::polyfloat P> std::vector<P> random(double mini, double maxi)
   {
     using T = typename P::underlying_type;
 
-    return [=]() {
-      T const e = eve::eps(eve::as<T>());
-      T const x = tts::random_value<T>(static_cast<T>(mini), static_cast<T>(maxi));
-      P v(x, x * e * tts::random_value<T>(T(-0.5), T(0.5)));
-      if constexpr (P::static_dimension == 3) v += P(x * e * e * tts::random_value<T>(T(-0.5), T(0.5)));
-      return v;
-    };
+    T const e = eve::eps(eve::as<T>());
+    std::uniform_real_distribution<T> first(static_cast<T>(mini), static_cast<T>(maxi));
+    std::uniform_real_distribution<T> fraction(T(-0.5), T(0.5));
+
+    std::vector<P> values(size);
+    for (auto& v : values)
+    {
+      T const x = first(prng);
+      v = P(x, x * e * fraction(prng));
+      if constexpr (P::static_dimension == 3) v += P(x * e * e * fraction(prng));
+    }
+    return values;
   }
 
   // The precision of P in bits, the digits of its parts added up, 106 for polyfloat<double, 2>.
@@ -64,14 +80,12 @@ namespace plf::bench
   inline constexpr mpfr_prec_t mpfr_digits =
     P::static_dimension * std::numeric_limits<typename P::underlying_type>::digits;
 
-  // Draws as random<P> does, and rounds the value to an MPFR number of the precision of P.
-  template<plf::concepts::polyfloat P> auto random_mpfr(double mini, double maxi)
+  // The value of an expansion, rounded to an MPFR number of the precision of P.
+  template<plf::concepts::polyfloat P> mpfr::mpreal to_mpfr(P const& x)
   {
-    return [g = random<P>(mini, maxi)]() {
-      mpfr::mpreal v(0, mpfr_digits<P>);
-      kumi::for_each([&](auto part) { v += mpfr::mpreal(static_cast<double>(part), mpfr_digits<P>); }, g());
-      return v;
-    };
+    mpfr::mpreal v(0, mpfr_digits<P>);
+    kumi::for_each([&](auto part) { v += mpfr::mpreal(static_cast<double>(part), mpfr_digits<P>); }, x);
+    return v;
   }
 
   // Calls an MPFR function such as mpfr_exp into one result of the precision of P, which every call reuses.
@@ -100,53 +114,75 @@ namespace plf::bench
       bench.epochs(repetitions);
     }
 
-    template<typename TestType, typename Func, typename... Gens>
-    void execute_single_run(tts::text const& name, Func&& func, kumi::tuple<Gens...> const& gens)
+    // The buffer a run of TestType reads, built before the timing: the expansions as drawn, their MPFR values, or the
+    // expansions packed into wides.
+    template<typename TestType, typename P> static std::vector<TestType> inputs(std::vector<P> const& values)
+    {
+      if constexpr (std::same_as<TestType, mpfr::mpreal>)
+      {
+        std::vector<TestType> out;
+        out.reserve(values.size());
+        for (auto const& v : values) out.push_back(to_mpfr(v));
+        return out;
+      }
+      else if constexpr (eve::simd_value<TestType>)
+      {
+        constexpr std::size_t N = eve::width_v<TestType>;
+        std::vector<TestType> out;
+        out.reserve(values.size() / N);
+        for (std::size_t i = 0; i + N <= values.size(); i += N)
+        {
+          out.push_back(TestType([&](auto j, auto) { return values[i + j]; }));
+        }
+        return out;
+      }
+      else
+      {
+        return std::vector<TestType>(values.begin(), values.end());
+      }
+    }
+
+    template<typename TestType, typename Func, typename... Inputs>
+    void time_run(tts::text const& name, Func& func, Inputs const&... in)
     {
       constexpr std::ptrdiff_t N = eve::width_v<TestType>;
       run_cardinals.push_back(N);
 
-      auto args = kumi::map([](auto const& g) -> TestType { return TestType(g()); }, gens);
-
-      bench.batch(N);
+      std::size_t const count = std::min({in.size()...});
+      bench.batch(count * N);
 
       bench.run(name.data(), [&]() {
-        // Do not drop this anchor: the compiler would hoist the call on unchanged inputs out of the loop.
-        kumi::for_each(
-          [](auto& arg) {
-            if constexpr (eve::product_type<std::decay_t<decltype(arg)>>)
-            {
-              kumi::for_each([](auto& v) { ankerl::nanobench::doNotOptimizeAway(v); }, arg);
-            }
-            else
-            {
-              ankerl::nanobench::doNotOptimizeAway(arg);
-            }
-          },
-          args);
-
-        // Do not write auto: it would copy the result of mpfr_call, and the copy allocates.
-        decltype(auto) res = kumi::apply(std::forward<Func>(func), args);
-
-        if constexpr (eve::product_type<std::decay_t<decltype(res)>>)
+        for (std::size_t i = 0; i < count; ++i)
         {
-          kumi::for_each([](auto const& v) { ankerl::nanobench::doNotOptimizeAway(v); }, res);
-        }
-        else
-        {
-          ankerl::nanobench::doNotOptimizeAway(res);
+          // Do not write auto: it would copy the result of mpfr_call, and the copy allocates.
+          decltype(auto) res = func(in[i]...);
+
+          if constexpr (eve::product_type<std::decay_t<decltype(res)>>)
+          {
+            kumi::for_each([](auto const& v) { ankerl::nanobench::doNotOptimizeAway(v); }, res);
+          }
+          else
+          {
+            ankerl::nanobench::doNotOptimizeAway(res);
+          }
         }
       });
     }
 
+    template<typename TestType, typename Func, typename... Values>
+    void execute_single_run(tts::text const& name, Func& func, Values const&... values)
+    {
+      time_run<TestType>(name, func, inputs<TestType>(values)...);
+    }
+
   public:
-    benchmark(std::size_t repetitions = 2000) : repetitions(repetitions), base_file_name(tts::text("benchmark"))
+    benchmark(std::size_t repetitions = 100) : repetitions(repetitions), base_file_name(tts::text("benchmark"))
     {
       configure_bench();
     }
 
     // Do not drop the constraint: an integer would select this constructor and be taken as a name.
-    benchmark(auto const& name, std::size_t repetitions = 2000)
+    benchmark(auto const& name, std::size_t repetitions = 100)
     requires(!std::is_integral_v<std::decay_t<decltype(name)>>)
       : repetitions(repetitions), base_file_name(tts::text(name))
     {
@@ -164,10 +200,10 @@ namespace plf::bench
       return *this;
     }
 
-    template<typename TestType, typename Name, typename Func, typename... Generators>
-    benchmark& run(Name const& name, Func&& func, Generators const&... g)
+    template<typename TestType, typename Name, typename Func, typename... Values>
+    benchmark& run(Name const& name, Func&& func, Values const&... values)
     {
-      execute_single_run<TestType>(tts::text(name), std::forward<Func>(func), kumi::tuple<Generators...>{g...});
+      execute_single_run<TestType>(tts::text(name), func, values...);
       return *this;
     }
 
