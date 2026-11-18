@@ -80,7 +80,6 @@ namespace plf::_
   {
     using u_t = eve::element_type_t<Z>;
     constexpr u_t h(0.5);
-    constexpr u_t one(1.0);
     constexpr u_t th(1.5);
     if constexpr (!O::contains(eve::raw)) //avoid overflow;
     {
