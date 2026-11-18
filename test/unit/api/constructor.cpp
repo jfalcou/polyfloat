@@ -6,8 +6,6 @@
 */
 //======================================================================================================================
 #include "test.hpp"
-#include <sstream>
-#include <string>
 
 //==================================================================================================
 // Types tests
@@ -24,57 +22,49 @@ TTS_CASE_TPL("Check constructors", plf::scalar_real_types)
   TTS_EXPR_IS(eve::wide<pv_t>(), wpv_t);
   TTS_EXPR_IS((plf::as_polyfloat_n_t<2, wT>()), wpv_t);
 
-  auto text = [](auto const& v) {
-    std::ostringstream os;
-    os << v;
-    return os.str();
-  };
-  auto lanes = [](std::string const& v, std::ptrdiff_t n) {
-    std::string s = "(" + v;
-    for (std::ptrdiff_t i = 1; i < n; ++i) s += ", " + v;
-    return s + ")";
-  };
+  auto parts = [](auto... v) { return plf::polyfloat<T, sizeof...(v)>(kumi::tuple{v...}); };
   auto const inf = eve::inf(eve::as<T>());
   auto const nan = eve::nan(eve::as<T>());
   auto const zero = eve::zero(eve::as<T>());
+  auto const [s, e] = eve::two_add(T(1.0), T(0.1));
 
-  TTS_EQUAL(text(plf::double_real_t<T>(T(1))), std::string("1"));
-  TTS_EQUAL(text(plf::double_real_t<wT>(wT(1))), lanes("1", wT::size()));
+  TTS_IEEE_EQUAL(plf::double_real_t<T>(T(1)), parts(T(1), zero));
+  TTS_IEEE_EQUAL(plf::double_real_t<wT>(wT(1)), wpv_t(parts(T(1), zero)));
 
   {
     pv_t a2(T(1.0), T(0.1));
-    TTS_EQUAL(text(a2), std::string("1.1"));
+    TTS_IEEE_EQUAL(a2, parts(s, e));
     using wT2 = eve::wide<T, 2>;
     using wpv_t2 = eve::wide<plf::polyfloat<T, 2>, 2>;
     wpv_t2 wa2(wT2(1.0), wT2(0.1));
-    TTS_EQUAL(text(wa2), lanes("1.1", 2));
+    TTS_IEEE_EQUAL(wa2, wpv_t2(parts(s, e)));
 
-    TTS_EQUAL(text(pv_t(inf)), std::string("inf"));
-    TTS_EQUAL(text(pv_t(nan)), std::string("nan"));
-    TTS_EQUAL(text(wpv_t(inf)), lanes("inf", wpv_t::size()));
-    TTS_EQUAL(text(wpv_t(nan)), lanes("nan", wpv_t::size()));
-    TTS_EQUAL(text(pv_t(inf, zero)), std::string("inf"));
-    TTS_EQUAL(text(pv_t(nan, zero)), std::string("nan"));
-    TTS_EQUAL(text(wpv_t(inf, zero)), lanes("inf", wpv_t::size()));
-    TTS_EQUAL(text(wpv_t(nan, zero)), lanes("nan", wpv_t::size()));
-    TTS_EQUAL(text(wpv_t(inf, inf)), lanes("inf", wpv_t::size()));
+    TTS_EXPECT(plf::is_pinf(pv_t(inf)));
+    TTS_EXPECT(plf::is_nan(pv_t(nan)));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t(inf))));
+    TTS_EXPECT(eve::all(plf::is_nan(wpv_t(nan))));
+    TTS_EXPECT(plf::is_pinf(pv_t(inf, zero)));
+    TTS_EXPECT(plf::is_nan(pv_t(nan, zero)));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t(wT(inf), wT(zero)))));
+    TTS_EXPECT(eve::all(plf::is_nan(wpv_t(wT(nan), wT(zero)))));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t(wT(inf), wT(inf)))));
   }
   {
     using pv_t3 = plf::polyfloat<T, 3>;
     using wpv_t3 = eve::wide<plf::polyfloat<T, 3>, 2>;
     using wT = eve::wide<T, 2>;
     wpv_t3 wa3(wT(1.0), wT(0.1));
-    TTS_EQUAL(text(wa3), lanes("1.1", 2));
+    TTS_IEEE_EQUAL(wa3, wpv_t3(parts(s, e, zero)));
 
-    TTS_EQUAL(text(pv_t3(inf)), std::string("inf"));
-    TTS_EQUAL(text(pv_t3(nan)), std::string("nan"));
-    TTS_EQUAL(text(wpv_t3(inf)), lanes("inf", 2));
-    TTS_EQUAL(text(wpv_t3(nan)), lanes("nan", 2));
-    TTS_EQUAL(text(pv_t3(inf, zero)), std::string("inf"));
-    TTS_EQUAL(text(pv_t3(nan, zero)), std::string("nan"));
-    TTS_EQUAL(text(wpv_t3(inf, zero)), lanes("inf", 2));
-    TTS_EQUAL(text(wpv_t3(nan, zero)), lanes("nan", 2));
-    TTS_EQUAL(text(wpv_t3(inf, inf)), lanes("inf", 2));
+    TTS_EXPECT(plf::is_pinf(pv_t3(inf)));
+    TTS_EXPECT(plf::is_nan(pv_t3(nan)));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t3(inf))));
+    TTS_EXPECT(eve::all(plf::is_nan(wpv_t3(nan))));
+    TTS_EXPECT(plf::is_pinf(pv_t3(inf, zero)));
+    TTS_EXPECT(plf::is_nan(pv_t3(nan, zero)));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t3(wT(inf), wT(zero)))));
+    TTS_EXPECT(eve::all(plf::is_nan(wpv_t3(wT(nan), wT(zero)))));
+    TTS_EXPECT(eve::all(plf::is_pinf(wpv_t3(wT(inf), wT(inf)))));
   }
 };
 
