@@ -156,6 +156,8 @@ CMake setup</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">clang-compile-cost</span>  </td><td class="markdownTableBodyNone">the compilation time and memory of every test unit  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">gcc-bench</span>, <span class="tt">clang-bench</span>  </td><td class="markdownTableBodyNone">the benchmarks, with AVX2 and FMA, and without <span class="tt">EVE_NO_FORCEINLINE</span>  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">clang-macos</span>, <span class="tt">clang-macos-libc++</span>  </td><td class="markdownTableBodyNone">macOS, against libstdc++ and libc++  </td></tr>
 </table>
 <div class="fragment"><div class="line">cmake --preset=gcc</div>
@@ -165,21 +167,23 @@ CMake setup</h1>
 <div class="line">      -DCMAKE_CXX_COMPILER=g++ \</div>
 <div class="line">      -DCMAKE_CXX_FLAGS=&quot;-O0 -DEVE_NO_FORCEINLINE&quot;</div>
 </div><!-- fragment --><p><span class="tt">EVE_NO_FORCEINLINE</span> removes the forced inlining of the functions of EVE, which the tests do not need and which dominates their compilation time otherwise. <span class="tt">clang++</span> replaces <span class="tt">g++</span>, in any version that meets the requirements of <a class="el" href="setup.html" title="Installation">Installation</a>.</p>
-<p>Six options select the targets, and the presets set them:</p>
+<p>Seven options select the targets, and the presets set them:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Option  </th><th class="markdownTableHeadNone">Default  </th><th class="markdownTableHeadNone">Effect  </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_BUILD_TEST</span>  </td><td class="markdownTableBodyNone"><span class="tt">ON</span>  </td><td class="markdownTableBodyNone">declare the test targets  </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_BUILD_BENCHMARKS</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">declare the <span class="tt">polyfloat-bench</span> target  </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_USE_PCH</span>  </td><td class="markdownTableBodyNone"><span class="tt">ON</span>  </td><td class="markdownTableBodyNone">build the tests against a precompiled header  </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_BUILD_DOCUMENTATION</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">declare the <span class="tt">polyfloat-doxygen</span> target  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_ENABLE_SANITIZERS</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">AddressSanitizer and UndefinedBehaviorSanitizer  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_ENABLE_COVERAGE</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">coverage instrumentation  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_ENABLE_SANITIZERS</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">AddressSanitizer and UndefinedBehaviorSanitizer  </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_ENABLE_COVERAGE</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">coverage instrumentation  </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">POLYFLOAT_COMPILE_COST</span>  </td><td class="markdownTableBodyNone"><span class="tt">OFF</span>  </td><td class="markdownTableBodyNone">measure the compilation of every test unit  </td></tr>
 </table>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
@@ -191,20 +195,22 @@ Compiling the tests</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">polyfloat-test</span>  </td><td class="markdownTableBodyNone">every test  </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">polyfloat-bench</span>  </td><td class="markdownTableBodyNone">every benchmark, outside of <span class="tt">polyfloat-test</span>  </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">unit.exe</span>  </td><td class="markdownTableBodyNone">all unit tests  </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">unit.api.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the types, the traits, and the operators  </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">unit.core.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the core functions  </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">unit.math.exe</span>  </td><td class="markdownTableBodyNone">unit tests of the elementary functions  </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">doc.exe</span>  </td><td class="markdownTableBodyNone">every example of the documentation  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">doc.core.exe</span>  </td><td class="markdownTableBodyNone">the examples of the core functions and of the tutorials  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">doc.math.exe</span>  </td><td class="markdownTableBodyNone">the examples of the elementary functions  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">doc.core.exe</span>  </td><td class="markdownTableBodyNone">the examples of the core functions and of the tutorials  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">doc.math.exe</span>  </td><td class="markdownTableBodyNone">the examples of the elementary functions  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">doc.&lt;module&gt;.&lt;function&gt;.exe</span>  </td><td class="markdownTableBodyNone">the example of one function, <span class="tt">doc.core.sqrt.exe</span> and so on  </td></tr>
 </table>
 <p>The unit test of <a class="el" href="group__plf__acos.html#ga16bd93f50121516a6f2321aec146b4c1">plf::acos</a> is one file, compiled by its own target:</p>

@@ -1787,9 +1787,9 @@
             "function_covered": 86,
             "function_percent": 100.0,
             "function_total": 86,
-            "line_covered": 21,
+            "line_covered": 18,
             "line_percent": 100.0,
-            "line_total": 21
+            "line_total": 18
         },
         {
             "branch_covered": 0,
@@ -3116,9 +3116,9 @@
             "branch_percent": 94.4,
             "branch_total": 54,
             "filename": "include/polyfloat/types/ops1.hpp",
-            "function_covered": 366,
-            "function_percent": 97.9,
-            "function_total": 374,
+            "function_covered": 393,
+            "function_percent": 98.0,
+            "function_total": 401,
             "line_covered": 40,
             "line_percent": 100.0,
             "line_total": 40
@@ -3172,12 +3172,12 @@
             "line_total": 5
         }
     ],
-    "function_covered": 13335,
+    "function_covered": 13362,
     "function_percent": 97.6,
-    "function_total": 13657,
+    "function_total": 13684,
     "gcovr/summary_format_version": "0.6",
-    "line_covered": 2653,
+    "line_covered": 2650,
     "line_percent": 99.0,
-    "line_total": 2679,
+    "line_total": 2676,
     "root": "../../.."
 }
