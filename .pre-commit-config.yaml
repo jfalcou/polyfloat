@@ -1,5 +1,6 @@
-## CPM is vendored upstream code, in both copies, and doc/ holds the Doxygen sources rather than library code.
-exclude: ^(doc/.*|cmake/CPM\.cmake|test/integration/cpm-test/cpm\.cmake)$
+## CPM, in both copies, and nanobench are vendored upstream code, and doc/ holds the Doxygen sources rather than
+## library code.
+exclude: ^(doc/.*|cmake/CPM\.cmake|test/integration/cpm-test/cpm\.cmake|test/benchmarks/nanobench\.h)$
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
