@@ -13,9 +13,9 @@ TTS_CASE_TPL("Benchmark plf::sqr", float, double)
 {
   using pf2_t = plf::polyfloat<T, 2>;
   using pf3_t = plf::polyfloat<T, 3>;
-  T const v = eve::valmax(eve::as<T>());
-  auto x2 = plf::bench::random<pf2_t>(0, v);
-  auto x3 = plf::bench::random<pf3_t>(0, v);
+
+  auto x2 = plf::bench::random<pf2_t>(-10, 10);
+  auto x3 = plf::bench::random<pf3_t>(-10, 10);
 
   {
     plf::bench::benchmark _("polyfloat<" + tts::as_text(tts::typename_<T>) + ", 2> sqr");
