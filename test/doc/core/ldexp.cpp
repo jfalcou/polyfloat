@@ -4,6 +4,11 @@
 #include <iomanip>
 #include <polyfloat/polyfloat.hpp>
 
+auto myldexp(auto a, int n)
+{
+  return a * plf::exp2n(n, eve::as(a));
+}
+
 int main()
 {
   std::cout << std::setprecision(15);
@@ -21,6 +26,11 @@ int main()
   std::cout << "ldexp(a, 2) " << ldexp(a, 2) << std::endl;
   std::cout << "ldexp(b, 2) " << ldexp(b, 2) << std::endl;
   std::cout << "ldexp(c, 2) " << ldexp(c, 2) << std::endl;
+
+  std::cout << "myldexp(f, 2) " << myldexp(f, 2) << std::endl;
+  std::cout << "myldexp(a, 2) " << myldexp(a, 2) << std::endl;
+  std::cout << "myldexp(b, 2) " << myldexp(b, 2) << std::endl;
+  std::cout << "myldexp(c, 2) " << myldexp(c, 2) << std::endl;
 
   using pf3_t = eve::wide<plf::polyfloat<double, 3>>;
   using pf2_t = eve::wide<plf::polyfloat<double, 2>>;
