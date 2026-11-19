@@ -27,9 +27,7 @@
 #include <iostream>
 #include <fstream>
 #include <random>
-#include <sstream>
 #include <string>
-#include <cstdlib>
 #include <limits>
 #include <utility>
 #include <type_traits>
@@ -254,61 +252,26 @@ namespace plf::bench
         tts::text filename = base_file_name + ".csv";
         std::ofstream out_file(filename.data());
 
-        std::stringstream ss;
-        bench.render("{{#result}}{{#measurement}}{{elapsed}} {{/measurement}}\n{{/result}}", ss);
-
-        std::string raw_dump = ss.str();
-        char const* ptr = raw_dump.c_str();
-
-        tts::buffer<tts::buffer<double>> grid;
-        for (std::size_t i = 0; i < results.size(); ++i)
+        std::size_t epochs = 0;
+        for (std::size_t r = 0; r < results.size(); ++r)
         {
-          tts::buffer<double> row;
-          double current_N = static_cast<double>(run_cardinals[i]);
+          out_file << results[r].config().mBenchmarkName << (r + 1 < results.size() ? "," : "\n");
+          epochs = tts::_::max(epochs, results[r].size());
+        }
 
-          while (*ptr != '\n' && *ptr != '\0')
+        for (std::size_t e = 0; e < epochs; ++e)
+        {
+          for (std::size_t r = 0; r < results.size(); ++r)
           {
-            char* end = nullptr;
-            double val = std::strtod(ptr, &end);
-            if (ptr != end)
+            auto const& res = results[r];
+            if (e < res.size())
             {
-              row.push_back(val / current_N);
-              ptr = end;
-            }
-            else
-            {
-              break;
-            }
-            while (*ptr == ' ') ++ptr;
-          }
-          if (*ptr == '\n') ++ptr;
-          grid.push_back(std::move(row));
-        }
-
-        for (std::size_t i = 0; i < results.size(); ++i)
-        {
-          tts::text header{"%s", results[i].config().mBenchmarkName.c_str()};
-          out_file << header.data();
-          if (i + 1 < results.size()) out_file << ",";
-        }
-        out_file << "\n";
-
-        std::size_t max_epochs = 0;
-        for (std::size_t i = 0; i < grid.size(); ++i)
-        {
-          max_epochs = tts::_::max(max_epochs, grid[i].size());
-        }
-
-        for (std::size_t epoch = 0; epoch < max_epochs; ++epoch)
-        {
-          for (std::size_t col = 0; col < grid.size(); ++col)
-          {
-            if (epoch < grid[col].size())
-            {
-              tts::text val{"%g", grid[col][epoch]};
+              // Do not divide by the cardinal of the run: an epoch times one call of the lambda, a pass over the batch.
+              double const elapsed = res.get(e, ankerl::nanobench::Result::Measure::elapsed);
+              tts::text val{"%g", elapsed / static_cast<double>(res.config().mBatch)};
               out_file << val.data();
             }
-            if (col + 1 < grid.size()) out_file << ",";
+            if (r + 1 < results.size()) out_file << ",";
           }
           out_file << "\n";
         }
