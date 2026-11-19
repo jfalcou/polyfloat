@@ -23,6 +23,7 @@
 // @endcode
 
 #include <algorithm>
+#include <concepts>
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -75,6 +76,24 @@ namespace plf::bench
     return values;
   }
 
+  template<std::integral I> std::vector<I> random(I mini, I maxi)
+  {
+    std::uniform_int_distribution<I> draw(mini, maxi);
+
+    std::vector<I> values(size);
+    for (auto& v : values) v = draw(prng);
+    return values;
+  }
+
+  template<std::floating_point T> std::vector<T> random(T mini, T maxi)
+  {
+    std::uniform_real_distribution<T> draw(mini, maxi);
+
+    std::vector<T> values(size);
+    for (auto& v : values) v = draw(prng);
+    return values;
+  }
+
   // The precision of P in bits, the digits of its parts added up, 106 for polyfloat<double, 2>.
   template<plf::concepts::polyfloat P>
   inline constexpr mpfr_prec_t mpfr_digits =
@@ -88,12 +107,18 @@ namespace plf::bench
     return v;
   }
 
+  template<typename A> auto mpfr_arg(A const& a)
+  {
+    if constexpr (std::same_as<A, mpfr::mpreal>) return a.mpfr_srcptr();
+    else return a;
+  }
+
   // Calls an MPFR function such as mpfr_exp into one result of the precision of P, which every call reuses.
   // Do not return an mpreal by value instead: its allocation would be part of the time of the MPFR row.
   template<plf::concepts::polyfloat P, typename F> auto mpfr_call(F f)
   {
     return [f, r = mpfr::mpreal(0, mpfr_digits<P>)](auto const&... a) mutable -> mpfr::mpreal const& {
-      f(r.mpfr_ptr(), a.mpfr_srcptr()..., MPFR_RNDN);
+      f(r.mpfr_ptr(), mpfr_arg(a)..., MPFR_RNDN);
       return r;
     };
   }
@@ -114,11 +139,29 @@ namespace plf::bench
       bench.epochs(repetitions);
     }
 
+    template<typename W, typename P> static std::vector<W> pack(std::vector<P> const& values)
+    {
+      constexpr std::size_t N = eve::width_v<W>;
+      std::vector<W> out;
+      out.reserve(values.size() / N);
+      for (std::size_t i = 0; i + N <= values.size(); i += N)
+      {
+        out.push_back(W([&](auto j, auto) { return values[i + j]; }));
+      }
+      return out;
+    }
+
     // The buffer a run of TestType reads, built before the timing: the expansions as drawn, their MPFR values, or the
     // expansions packed into wides.
-    template<typename TestType, typename P> static std::vector<TestType> inputs(std::vector<P> const& values)
+    template<typename TestType, typename P> static auto inputs(std::vector<P> const& values)
     {
-      if constexpr (std::same_as<TestType, mpfr::mpreal>)
+      // Do not test eve::scalar_value instead: a polyfloat satisfies it.
+      if constexpr (std::is_arithmetic_v<P>)
+      {
+        if constexpr (eve::simd_value<TestType>) return pack<eve::as_wide_as_t<P, TestType>>(values);
+        else return values;
+      }
+      else if constexpr (std::same_as<TestType, mpfr::mpreal>)
       {
         std::vector<TestType> out;
         out.reserve(values.size());
@@ -127,14 +170,7 @@ namespace plf::bench
       }
       else if constexpr (eve::simd_value<TestType>)
       {
-        constexpr std::size_t N = eve::width_v<TestType>;
-        std::vector<TestType> out;
-        out.reserve(values.size() / N);
-        for (std::size_t i = 0; i + N <= values.size(); i += N)
-        {
-          out.push_back(TestType([&](auto j, auto) { return values[i + j]; }));
-        }
-        return out;
+        return pack<TestType>(values);
       }
       else
       {
