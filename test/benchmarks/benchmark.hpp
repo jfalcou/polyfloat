@@ -135,6 +135,7 @@ namespace plf::bench
       bench.output(nullptr);
       bench.performanceCounters(true);
       bench.epochs(repetitions);
+      bench.warmup(1);
     }
 
     template<typename W, typename P> static std::vector<W> pack(std::vector<P> const& values)
@@ -286,11 +287,11 @@ namespace plf::bench
         name_width = tts::_::max(name_width, res.config().mBenchmarkName.size());
       }
 
-      int const w_n = 4, w_spd = 9, w_eff = 8, w_cyc = 10, w_min = 8, w_max = 8, w_elem = 12, w_ins = 10;
+      int const w_n = 4, w_spd = 9, w_eff = 8, w_cyc = 10, w_min = 8, w_max = 8, w_elem = 12, w_err = 6, w_ins = 10;
 
       auto print_row = [&](char const* n_val, char const* n, char const* spd, char const* eff, char const* cyc,
-                           char const* min, char const* max, char const* elem, char const* ins) {
-        tts::text row{"| %-*s | %*s | %*s | %*s | %*s | %*s | %*s | %*s | %*s |\n",
+                           char const* min, char const* max, char const* elem, char const* err, char const* ins) {
+        tts::text row{"| %-*s | %*s | %*s | %*s | %*s | %*s | %*s | %*s | %*s | %*s |\n",
                       static_cast<int>(name_width),
                       n_val,
                       w_n,
@@ -307,12 +308,14 @@ namespace plf::bench
                       max,
                       w_elem,
                       elem,
+                      w_err,
+                      err,
                       w_ins,
                       ins};
         out_stream << row.data();
       };
 
-      print_row("Name", "N", "Speedup", "Eff.", "cyc/elem", "min", "max", "elem/s", "ins/elem");
+      print_row("Name", "N", "Speedup", "Eff.", "cyc/elem", "min", "max", "elem/s", "err%", "ins/elem");
 
       auto dashes = [&](int count) {
         while (count-- > 0) out_stream << '-';
@@ -334,6 +337,8 @@ namespace plf::bench
       dashes(w_max + 1);
       out_stream << ":|";
       dashes(w_elem + 1);
+      out_stream << ":|";
+      dashes(w_err + 1);
       out_stream << ":|";
       dashes(w_ins + 1);
       out_stream << ":|\n";
@@ -359,6 +364,7 @@ namespace plf::bench
         double cyc_per_elem = res.median(ankerl::nanobench::Result::Measure::cpucycles) / batch_size;
         double min_cyc_elem = res.minimum(ankerl::nanobench::Result::Measure::cpucycles) / batch_size;
         double max_cyc_elem = res.maximum(ankerl::nanobench::Result::Measure::cpucycles) / batch_size;
+        double error = res.medianAbsolutePercentError(ankerl::nanobench::Result::Measure::elapsed);
 
         if (cyc_per_elem == 0.0 && ins_per_elem == 0.0)
         {
@@ -372,10 +378,11 @@ namespace plf::bench
         tts::text min_str{"%.2f", min_cyc_elem};
         tts::text max_str{"%.2f", max_cyc_elem};
         tts::text elem_str{"%.0f", elem_per_sec};
+        tts::text err_str{"%.1f%%", error * 100.0};
         tts::text ins_str{"%.2f", ins_per_elem};
 
         print_row(res.config().mBenchmarkName.c_str(), n_str.data(), spd_str.data(), eff_str.data(), cyc_str.data(),
-                  min_str.data(), max_str.data(), elem_str.data(), ins_str.data());
+                  min_str.data(), max_str.data(), elem_str.data(), err_str.data(), ins_str.data());
       }
 
       if (counters_failed)
