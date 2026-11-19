@@ -373,7 +373,7 @@ namespace plf::bench
 
         tts::text n_str{"%td", N};
         tts::text spd_str = (speedup == 1.0) ? tts::text("x1.00") : tts::text("x%.2f", speedup);
-        tts::text eff_str{"%.1f%%", efficiency * 100.0};
+        tts::text eff_str = (N == 1 && i != 0) ? tts::text("-") : tts::text("%.1f%%", efficiency * 100.0);
         tts::text cyc_str{"%.2f", cyc_per_elem};
         tts::text min_str{"%.2f", min_cyc_elem};
         tts::text max_str{"%.2f", max_cyc_elem};
