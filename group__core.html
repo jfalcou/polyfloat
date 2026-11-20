@@ -493,6 +493,11 @@ Variables</h2></td></tr>
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> myldexp(<span class="keyword">auto</span> a, <span class="keywordtype">int</span> n)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> a * <a class="code hl_variable" href="group__plf__exp2n.html#ga9c7c797f076bcdb2062d2bd3205bb325">plf::exp2n</a>(n, <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(a));</div>
+<div class="line">}</div>
+<div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
@@ -506,10 +511,15 @@ Variables</h2></td></tr>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;c  &quot;</span> &lt;&lt; c &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(f, 2) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(f, 2) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(a, 2) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(a, 2) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(b, 2) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(b, 2) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(c, 2) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(c, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(f, 2) &quot;</span> &lt;&lt; ldexp(f, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(a, 2) &quot;</span> &lt;&lt; ldexp(a, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(b, 2) &quot;</span> &lt;&lt; ldexp(b, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(c, 2) &quot;</span> &lt;&lt; ldexp(c, 2) &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;myldexp(f, 2) &quot;</span> &lt;&lt; myldexp(f, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;myldexp(a, 2) &quot;</span> &lt;&lt; myldexp(a, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;myldexp(b, 2) &quot;</span> &lt;&lt; myldexp(b, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;myldexp(c, 2) &quot;</span> &lt;&lt; myldexp(c, 2) &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">using </span>pf3_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 3&gt;</a>&gt;;</div>
 <div class="line">  <span class="keyword">using </span>pf2_t = <a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide&lt;plf::polyfloat&lt;double, 2&gt;</a>&gt;;</div>
@@ -517,9 +527,11 @@ Variables</h2></td></tr>
 <div class="line">  pf3_t wc(c);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wb      &quot;</span> &lt;&lt; wb &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;wc      &quot;</span> &lt;&lt; wc &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(wb) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(wb, 2) &lt;&lt; std::endl;</div>
-<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(wc) &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">ldexp</a>(wc, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(wb) &quot;</span> &lt;&lt; ldexp(wb, 2) &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;ldexp(wc) &quot;</span> &lt;&lt; ldexp(wc, 2) &lt;&lt; std::endl;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__plf__exp2n_html_ga9c7c797f076bcdb2062d2bd3205bb325"><div class="ttname"><a href="group__plf__exp2n.html#ga9c7c797f076bcdb2062d2bd3205bb325">plf::exp2n</a></div><div class="ttdeci">constexpr auto exp2n</div><div class="ttdef"><b>Definition</b> exp2n.hpp:85</div></div>
+<div class="ttc" id="astructeve_1_1as_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a></div></div>
 <div class="ttc" id="astructeve_1_1wide_html"><div class="ttname"><a href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a></div></div>
 <div class="ttc" id="astructplf_1_1polyfloat_html_a5bc8d3714e201b591e64a8901fdeb667"><div class="ttname"><a href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat::polyfloat</a></div><div class="ttdeci">polyfloat(T0) -&gt; polyfloat&lt; T0, 2u &gt;</div><div class="ttdoc">Deduces dimension 2 from one value.</div></div>
 </div><!-- fragment --> 

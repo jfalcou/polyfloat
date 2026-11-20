@@ -14,7 +14,7 @@ var searchData=
   ['next_17',['next',['../group__plf__next.html#ga60c7f280243a468485f42421a2c06739',1,'plf::next']]],
   ['nextafter_19',['nextafter',['../group__plf__nextafter.html#ga09f396a43b0cf65385e8a586a2b410e9',1,'plf::nextafter']]],
   ['nextint_20',['nextint',['../group__plf__nextint.html#gaf1c232d7bc7f81fc1a42edb3c7b7cd88',1,'plf::nextint']]],
-  ['normalization_28',['Normalization',['../tutorial-basics.html#autotoc_md1',1,'']]],
-  ['nthroot_31',['nthroot',['../group__plf__nthroot.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
-  ['numbers_32',['Polyfloat numbers',['../tutorial-basics.html',1,'']]],
+  ['normalization_27',['Normalization',['../tutorial-basics.html#autotoc_md1',1,'']]],
+  ['nthroot_30',['nthroot',['../group__plf__nthroot.html#ga51f47a92f62d391bf10c55c304a691da',1,'plf::nthroot']]],
+  ['numbers_31',['Polyfloat numbers',['../tutorial-basics.html',1,'']]],
 ];
