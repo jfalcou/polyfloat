@@ -94,10 +94,7 @@ namespace plf::_
   template<typename T0, typename T1, eve::callable_options O>
   constexpr auto div_(POLYFLOAT_DELAY(), O const&, T0 const& a, T1 const& b) noexcept
   {
-    using t_t = as_polyfloat_t<T0, T1>;
-    using u_t = eve::element_type_t<t_t>;
-    auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-    auto d = cvt(a) / cvt(b);
+    auto d = a / b;
     if constexpr (O::contains(to_nearest)) return nearest(d);
     else if constexpr (O::contains(toward_zero)) return trunc(d);
     else if constexpr (O::contains(downward)) return floor(d);

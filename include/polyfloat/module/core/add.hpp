@@ -99,19 +99,7 @@ namespace plf::_
   template<typename T1, typename T2, eve::callable_options O>
   constexpr auto add_(POLYFLOAT_DELAY(), O const&, T1 const& t1, T2 const& t2) noexcept
   {
-    auto t12 = t1 + t2;
-    //    if constexpr(O::contains(pedantic))
-    //     {
-    //       auto inf = plf::is_not_finite(t1) || plf::is_not_finite(t2);
-    //       if (eve::any(inf))
-    //       {
-    //         return if_else(inf, plf::hi(t1)+plf::hi(t2), t12);
-    //       }
-    //       else
-    //         return t12;
-    //     }
-    //     else
-    return t12;
+    return t1 + t2;
   }
 
   template<eve::callable_options O,
@@ -124,10 +112,10 @@ namespace plf::_
     if constexpr (concepts::real<t_t>) return eve::add[o](t0, t1, ts...);
     else
     {
-      using u_t = eve::element_type_t<t_t>;
-      auto cvt = [](auto a) { return plf::convert(a, as<u_t>()); };
-      auto p0 = add[o](cvt(t0), cvt(t1));
-      ((p0 = add[o](p0, cvt(ts))), ...);
+      using e_t = eve::element_type_t<t_t>;
+      auto cvt = [](auto a) { return plf::convert(a, as<e_t>()); };
+      auto p0 = add[o](cvt(t0), t1);
+      ((p0 = add[o](p0, ts)), ...);
       return p0;
     }
   }
