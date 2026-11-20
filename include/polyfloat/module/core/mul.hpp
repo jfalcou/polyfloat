@@ -91,7 +91,7 @@ namespace plf::_
       using e_t = eve::element_type_t<r_t>;
       auto cvt = [](auto a) { return plf::convert(a, as<e_t>()); };
       r_t r0 = cvt(z1);
-      ((r0 = mul[o](r0, cvt(zs))), ...);
+      ((r0 = mul[o](r0, zs)), ...);
       return r0;
     }
   }

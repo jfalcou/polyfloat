@@ -8,6 +8,11 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
+auto myldexp(auto a, int n)
+{
+  return a * plf::exp2n(n, eve::as(a));
+}
+
 TTS_CASE_WITH("Check ldexp",
               plf::scalar_real_types,
               tts::randoms(eve::valmin, eve::valmax),
@@ -22,19 +27,21 @@ TTS_CASE_WITH("Check ldexp",
     pv_t pa(a0, a1);
     auto n = 2;
     TTS_EQUAL(ldexp(pa, n), pa * 4);
+    TTS_EQUAL(ldexp(pa, n), myldexp(pa, n));
     using wpv_t = eve::wide<pv_t, 2>;
     wpv_t wpab(pa, pa);
-    std::cout << ldexp(wpab, n) << std::endl;
     TTS_RELATIVE_EQUAL(ldexp(wpab, n), wpab * 4, tts::epsprec<T>());
-    auto e = plf::exponent(wpab);
-    std::cout << tts::typename_<decltype(e)> << std::endl;
-    std::cout << tts::typename_<decltype(wpab)> << std::endl;
-    std::cout << ldexp(wpab, -e) << std::endl;
+    TTS_RELATIVE_EQUAL(ldexp(wpab, n), myldexp(wpab, n), tts::epsprec<T>());
   }
   {
     using pv_t = plf::polyfloat<T, 3>;
     pv_t pa(a0, a1, a2);
     auto n = 2;
     TTS_EQUAL(ldexp(pa, n), pa * 4);
+    TTS_EQUAL(ldexp(pa, n), myldexp(pa, n));
+    using wpv_t = eve::wide<pv_t, 2>;
+    wpv_t wpab(pa, pa);
+    TTS_RELATIVE_EQUAL(ldexp(wpab, n), wpab * 4, tts::epsprec<T>());
+    TTS_RELATIVE_EQUAL(ldexp(wpab, n), myldexp(wpab, n), tts::epsprec<T>());
   }
 };

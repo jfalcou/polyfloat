@@ -96,7 +96,8 @@ namespace plf::_
     using c_t = as_component_type_t<Z>;
     using e_t = eve::element_type_t<Z>;
     using u_t = eve::underlying_type_t<e_t>;
-    auto bits = (n + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
+    auto nz = eve::as_integer_t<c_t, signed>(n);
+    auto bits = (nz + eve::maxexponent(eve::as<u_t>())) << eve::nbmantissabits(eve::as<u_t>());
     auto r = eve::bit_cast(bits, eve::as(c_t()));
     if constexpr (O::contains(eve::raw)) return Z(r);
     else
