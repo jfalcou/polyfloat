@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
 
   auto f = 1.0;
   auto a = plf::polyfloat(1.0);
@@ -40,7 +40,7 @@ int main()
     auto dd = sqt2 * tsqt2;
     auto pdd = psqt2;
     pdd *= ptsqt2;
-    std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
+    std::cout << std::setprecision(48) << "dd  " << dd << std::endl;
     std::cout << std::setprecision(7) << "pdd " << pdd << std::endl;
     auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd));
     std::cout << rpdd - dd << std::endl;
@@ -53,7 +53,7 @@ int main()
     auto dd = sqt2 * tsqt2;
     auto pdd = psqt2;
     pdd *= ptsqt2;
-    std::cout << std::setprecision(15) << "dd  " << dd << std::endl;
+    std::cout << std::setprecision(48) << "dd  " << dd << std::endl;
     std::cout << std::setprecision(7) << "pdd " << pdd << std::endl;
     auto rpdd = double(get<0>(pdd)) + double(get<1>(pdd)) + double(get<2>(pdd));
     std::cout << rpdd - dd << std::endl;

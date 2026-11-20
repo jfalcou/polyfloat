@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   using w_t = eve::wide<plf::double_real_t<double>, 4>;
 
   w_t xd = {-0.3, 0.5, 0.0, 2.0};

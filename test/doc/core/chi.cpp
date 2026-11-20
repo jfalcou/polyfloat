@@ -6,7 +6,7 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(32);
   using plf::chi;
   using dd = plf::double_real_t<double>;
   eve::wide lo = {2.0, -4.0, -10.0, 0.0};
