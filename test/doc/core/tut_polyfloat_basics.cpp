@@ -9,7 +9,7 @@ int main()
   auto z1 = 2.0 + half_eps;
   auto z2 = plf::double_real_t<double>(2.0, half_eps);
   auto z3 =
-    plf::from_string("2.00000000000000011102230246251565404236316680908203125", eve::as<plf::triple_real_t<double>>());
+    plf::from_string(eve::as<plf::triple_real_t<double>>(), "2.00000000000000011102230246251565404236316680908203125");
 
   std::cout << std::setprecision(16) << "z1       = " << z1 << "\n";
   std::cout << std::setprecision(32) << "z2       = " << z2 << "\n";

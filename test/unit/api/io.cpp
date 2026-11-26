@@ -6,11 +6,13 @@
 */
 //======================================================================================================================
 #include "test.hpp"
+#include <array>
 #include <cmath>
 #include <iomanip>
 #include <locale>
 #include <sstream>
 #include <string>
+#include <string_view>
 
 namespace
 {
@@ -84,18 +86,18 @@ TTS_CASE_TPL("Check from_string", plf::scalar_real_types)
   using pv2 = plf::polyfloat<T, 2>;
   using pv3 = plf::polyfloat<T, 3>;
 
-  auto r2 = plf::from_string(sqrt2_digits, eve::as<pv2>());
+  auto r2 = plf::from_string(eve::as<pv2>(), sqrt2_digits);
   auto e2 = plf::sqrt_2(eve::as<pv2>());
   TTS_EQUAL(plf::hi(r2), plf::hi(e2));
   TTS_EQUAL(plf::lo(r2), plf::lo(e2));
 
-  auto r3 = plf::from_string(sqrt2_digits, eve::as<pv3>());
+  auto r3 = plf::from_string(eve::as<pv3>(), sqrt2_digits);
   auto e3 = plf::sqrt_2(eve::as<pv3>());
   TTS_EQUAL(plf::hi(r3), plf::hi(e3));
   TTS_EQUAL(plf::md(r3), plf::md(e3));
   TTS_EQUAL(plf::lo(r3), plf::lo(e3));
 
-  auto tenth = plf::from_string("0.1", eve::as<pv2>());
+  auto tenth = plf::from_string(eve::as<pv2>(), "0.1");
   if constexpr (std::same_as<T, double>)
   {
     TTS_EQUAL(plf::hi(tenth), 0x1.999999999999ap-4);
@@ -107,19 +109,19 @@ TTS_CASE_TPL("Check from_string", plf::scalar_real_types)
     TTS_EQUAL(plf::lo(tenth), -0x1.99999ap-30f);
   }
 
-  TTS_EQUAL(plf::hi(plf::from_string("0X1.8P+1", eve::as<pv2>())), T(3));
-  TTS_EQUAL(plf::lo(plf::from_string("0x1.8p1", eve::as<pv2>())), T(0));
-  TTS_EQUAL(plf::hi(plf::from_string("-0", eve::as<pv2>())), T(0));
-  TTS_EXPECT(std::signbit(plf::hi(plf::from_string("-0", eve::as<pv2>()))));
-  TTS_EQUAL(plf::hi(plf::from_string("-Infinity", eve::as<pv2>())), eve::minf(eve::as<T>()));
-  TTS_EQUAL(plf::hi(plf::from_string("1e400", eve::as<pv2>())), eve::inf(eve::as<T>()));
-  TTS_EQUAL(plf::hi(plf::from_string("1e-400", eve::as<pv2>())), T(0));
-  TTS_EXPECT(eve::is_nan(plf::hi(plf::from_string("NaN", eve::as<pv2>()))));
-  TTS_EXPECT(std::signbit(plf::hi(plf::from_string("-nan", eve::as<pv2>()))));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "0X1.8P+1")), T(3));
+  TTS_EQUAL(plf::lo(plf::from_string(eve::as<pv2>(), "0x1.8p1")), T(0));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "-0")), T(0));
+  TTS_EXPECT(std::signbit(plf::hi(plf::from_string(eve::as<pv2>(), "-0"))));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "-Infinity")), eve::minf(eve::as<T>()));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e400")), eve::inf(eve::as<T>()));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e-400")), T(0));
+  TTS_EXPECT(eve::is_nan(plf::hi(plf::from_string(eve::as<pv2>(), "NaN"))));
+  TTS_EXPECT(std::signbit(plf::hi(plf::from_string(eve::as<pv2>(), "-nan"))));
   for (auto s : {"", "-", "1.2.3", "0x", "0x.p1", "1e", "1e+", " 1", "1 ", "abc", "1.5x", "--1", "infinit"})
   {
-    TTS_EXPECT(!plf::from_string[plf::pedantic](s, eve::as<pv2>()).has_value());
-    TTS_EXPECT(eve::is_nan(plf::hi(plf::from_string(s, eve::as<pv2>()))));
+    TTS_EXPECT(!plf::from_string[plf::pedantic](eve::as<pv2>(), s).has_value());
+    TTS_EXPECT(eve::is_nan(plf::hi(plf::from_string(eve::as<pv2>(), s))));
   }
 };
 
@@ -127,17 +129,75 @@ TTS_CASE_TPL("Check from_string for a real, a register, and under pedantic", plf
 <typename T>(tts::type<T>)
 {
   using pv2 = plf::polyfloat<T, 2>;
-  TTS_EQUAL(plf::from_string("0.1", eve::as<T>()), T(0.1));
-  TTS_EXPECT(eve::all(plf::from_string("0x1.8p1", eve::as<eve::wide<T>>()) == T(3)));
+  TTS_EQUAL(plf::from_string(eve::as<T>(), "0.1"), T(0.1));
+  TTS_EXPECT(eve::all(plf::from_string(eve::as<eve::wide<T>>(), "0x1.8p1") == T(3)));
 
-  auto w = plf::from_string("0.1", eve::as<eve::wide<pv2>>());
-  auto x = plf::from_string("0.1", eve::as<pv2>());
+  auto w = plf::from_string(eve::as<eve::wide<pv2>>(), "0.1");
+  auto x = plf::from_string(eve::as<pv2>(), "0.1");
   TTS_EXPECT(eve::all(plf::hi(w) == plf::hi(x)) && eve::all(plf::lo(w) == plf::lo(x)));
 
-  auto checked = plf::from_string[plf::pedantic]("0.1", eve::as<pv2>());
+  auto checked = plf::from_string[plf::pedantic](eve::as<pv2>(), "0.1");
   TTS_EXPECT(checked.has_value());
   TTS_EQUAL(plf::hi(*checked), plf::hi(x));
-  TTS_EXPECT(plf::from_string[plf::pedantic]("nan", eve::as<pv2>()).has_value());
+  TTS_EXPECT(plf::from_string[plf::pedantic](eve::as<pv2>(), "nan").has_value());
+};
+
+TTS_CASE_TPL("Check from_string of one string per lane", plf::scalar_real_types)
+<typename T>(tts::type<T>)
+{
+  using pv2 = plf::polyfloat<T, 2>;
+  using wpv2 = eve::wide<pv2, 4>;
+  using wT = eve::wide<T, 4>;
+
+  char const* pointer = "3'125'569.000'1";
+  std::string string = "-0x1.8p1";
+  std::string_view view = "1e-5";
+  std::array expected{plf::from_string(eve::as<pv2>(), "0.1"), plf::from_string(eve::as<pv2>(), pointer),
+                      plf::from_string(eve::as<pv2>(), string), plf::from_string(eve::as<pv2>(), view)};
+
+  auto w = plf::from_string(eve::as<wpv2>(), "0.1", pointer, string, view);
+  auto checked = plf::from_string[plf::pedantic](eve::as<wpv2>(), "0.1", pointer, string, view);
+  auto bad = plf::from_string(eve::as<wpv2>(), "0.1", pointer, "1.5x", view);
+  TTS_EXPECT(checked.has_value(), REQUIRED);
+  for (std::ptrdiff_t i = 0; i < 4; ++i)
+  {
+    TTS_IEEE_EQUAL(plf::hi(w.get(i)), plf::hi(expected[i]));
+    TTS_IEEE_EQUAL(plf::lo(w.get(i)), plf::lo(expected[i]));
+    TTS_IEEE_EQUAL(plf::hi(checked->get(i)), plf::hi(expected[i]));
+    TTS_IEEE_EQUAL(plf::lo(checked->get(i)), plf::lo(expected[i]));
+    if (i != 2) TTS_IEEE_EQUAL(plf::hi(bad.get(i)), plf::hi(expected[i]));
+  }
+  TTS_EXPECT(plf::is_nan(bad.get(2)));
+  TTS_EXPECT(!plf::from_string[plf::pedantic](eve::as<wpv2>(), "0.1", pointer, "1.5x", view).has_value());
+
+  auto spaced =
+    plf::from_string[plf::pedantic][plf::separator = ' '](eve::as<wpv2>(), "0.1", "3 125 569.000 1", string, view);
+  TTS_EXPECT(spaced.has_value(), REQUIRED);
+  for (std::ptrdiff_t i = 0; i < 4; ++i)
+  {
+    TTS_IEEE_EQUAL(plf::hi(spaced->get(i)), plf::hi(expected[i]));
+    TTS_IEEE_EQUAL(plf::lo(spaced->get(i)), plf::lo(expected[i]));
+  }
+
+  auto pair = plf::from_string(eve::as<eve::wide<pv2, 2>>(), "0.1", pointer);
+  for (std::ptrdiff_t i = 0; i < 2; ++i)
+  {
+    TTS_IEEE_EQUAL(plf::hi(pair.get(i)), plf::hi(expected[i]));
+    TTS_IEEE_EQUAL(plf::lo(pair.get(i)), plf::lo(expected[i]));
+  }
+
+  TTS_IEEE_EQUAL(plf::from_string(eve::as<wT>(), "1", "2.5", "-0x1.8p1", "inf"),
+                 wT(T(1), T(2.5), T(-3), eve::inf(eve::as<T>())));
+  TTS_IEEE_EQUAL(plf::from_string[plf::separator = ' '](eve::as<wT>(), "1 000", "2 000", "3 000", "4 000"),
+                 wT(T(1000), T(2000), T(3000), T(4000)));
+  TTS_EXPECT(eve::all(eve::is_nan(plf::from_string[plf::separator = '\0'](eve::as<wT>(), "1'0", "2'0", "3'0", "4'0"))));
+
+  TTS_EXPECT_NOT_COMPILES(view, { plf::from_string(eve::as<wT>(), view, view, view); });
+  TTS_EXPECT_NOT_COMPILES(view, { plf::from_string(eve::as<T>(), view, view); });
+  TTS_EXPECT_NOT_COMPILES(view, { plf::from_string(eve::as<eve::wide<T, 2>>(), ' ', view); });
+  TTS_EXPECT_NOT_COMPILES(view, { plf::from_string[plf::separator = view](eve::as<T>(), view); });
+  int none = 0;
+  TTS_EXPECT_NOT_COMPILES(view, none, { plf::from_string[plf::separator = none](eve::as<T>(), view); });
 };
 
 TTS_CASE_TPL("Check from_string with a separator", plf::scalar_real_types)
@@ -145,24 +205,28 @@ TTS_CASE_TPL("Check from_string with a separator", plf::scalar_real_types)
 {
   using pv2 = plf::polyfloat<T, 2>;
   auto same = [](pv2 a, pv2 b) { return plf::hi(a) == plf::hi(b) && plf::lo(a) == plf::lo(b); };
-  auto plain = plf::from_string("3.14566599923332566", eve::as<pv2>());
+  auto plain = plf::from_string(eve::as<pv2>(), "3.14566599923332566");
 
-  TTS_EXPECT(same(plf::from_string("3.1456'65999'2333'2566", eve::as<pv2>()), plain));
-  TTS_EXPECT(same(plf::from_string("3'125'569", eve::as<pv2>()), pv2(T(3125569))));
-  TTS_EXPECT(same(plf::from_string("3.1456 65999 2333 2566", eve::as<pv2>(), ' '), plain));
-  TTS_EXPECT(same(plf::from_string("3.1456_65999_2333_2566", eve::as<pv2>(), '_'), plain));
-  TTS_EXPECT(same(plf::from_string("3,125,569", eve::as<pv2>(), ','), pv2(T(3125569))));
-  TTS_EXPECT(!plf::from_string[plf::pedantic]("1'2", eve::as<pv2>(), ' ').has_value());
-  TTS_EXPECT(same(plf::from_string("-1'234.5e-3", eve::as<pv2>(), '\''), plf::from_string("-1.2345", eve::as<pv2>())));
-  TTS_EXPECT(same(plf::from_string("0x1'8p1", eve::as<pv2>(), '\''), pv2(T(48))));
-  TTS_EXPECT(same(plf::from_string("1e1'0", eve::as<pv2>()), pv2(T(1e10))));
-  TTS_EXPECT(same(plf::from_string("0x1p1'0", eve::as<pv2>()), pv2(T(1024))));
+  TTS_EXPECT(same(plf::from_string(eve::as<pv2>(), "3.1456'65999'2333'2566"), plain));
+  TTS_EXPECT(same(plf::from_string(eve::as<pv2>(), "3'125'569"), pv2(T(3125569))));
+  TTS_EXPECT(same(plf::from_string[plf::separator = ' '](eve::as<pv2>(), "3.1456 65999 2333 2566"), plain));
+  TTS_EXPECT(same(plf::from_string[plf::separator = '_'](eve::as<pv2>(), "3.1456_65999_2333_2566"), plain));
+  TTS_EXPECT(same(plf::from_string[plf::separator = ','](eve::as<pv2>(), "3,125,569"), pv2(T(3125569))));
+  TTS_EXPECT(!plf::from_string[plf::pedantic][plf::separator = ' '](eve::as<pv2>(), "1'2").has_value());
+  auto checked = plf::from_string[plf::separator = ' '][plf::pedantic](eve::as<pv2>(), "3 125 569");
+  TTS_EXPECT(checked.has_value(), REQUIRED);
+  TTS_EXPECT(same(*checked, pv2(T(3125569))));
+  TTS_EXPECT(same(plf::from_string[plf::separator = '\''](eve::as<pv2>(), "-1'234.5e-3"),
+                  plf::from_string(eve::as<pv2>(), "-1.2345")));
+  TTS_EXPECT(same(plf::from_string[plf::separator = '\''](eve::as<pv2>(), "0x1'8p1"), pv2(T(48))));
+  TTS_EXPECT(same(plf::from_string(eve::as<pv2>(), "1e1'0"), pv2(T(1e10))));
+  TTS_EXPECT(same(plf::from_string(eve::as<pv2>(), "0x1p1'0"), pv2(T(1024))));
   for (auto s : {"'1", "1'", "1''2", "1'.5", "1.'5", "1'e5", "1e'10", "1e+'1", "1e1'", "0x'1", "'"})
-    TTS_EXPECT(!plf::from_string[plf::pedantic](s, eve::as<pv2>()).has_value());
-  TTS_EXPECT(!plf::from_string[plf::pedantic]("1'2", eve::as<pv2>(), 0).has_value());
-  TTS_EXPECT(!plf::from_string[plf::pedantic]("1 2", eve::as<pv2>()).has_value());
-  TTS_EXPECT(!plf::from_string[plf::pedantic]("1.5", eve::as<pv2>(), '.').has_value());
-  TTS_EXPECT(!plf::from_string[plf::pedantic]("15", eve::as<pv2>(), '5').has_value());
+    TTS_EXPECT(!plf::from_string[plf::pedantic](eve::as<pv2>(), s).has_value());
+  TTS_EXPECT(!plf::from_string[plf::pedantic][plf::separator = '\0'](eve::as<pv2>(), "1'2").has_value());
+  TTS_EXPECT(!plf::from_string[plf::pedantic](eve::as<pv2>(), "1 2").has_value());
+  TTS_EXPECT(!plf::from_string[plf::pedantic][plf::separator = '.'](eve::as<pv2>(), "1.5").has_value());
+  TTS_EXPECT(!plf::from_string[plf::pedantic][plf::separator = '5'](eve::as<pv2>(), "15").has_value());
 };
 
 TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_real_types)
@@ -175,46 +239,46 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
   // reading cuts the digits before it.
   std::string tie =
     std::same_as<T, double> ? "1.00000000000000011102230246251565404236316680908203125" : "1.000000059604644775390625";
-  auto at = plf::from_string(tie, eve::as<pv2>());
+  auto at = plf::from_string(eve::as<pv2>(), tie);
   TTS_EQUAL(plf::hi(at), T(1));
   TTS_EQUAL(plf::lo(at), eps / 2);
   for (std::size_t zeros : {10u, 5000u, 100000u})
   {
-    auto above = plf::from_string(tie + std::string(zeros, '0') + "1", eve::as<pv2>());
+    auto above = plf::from_string(eve::as<pv2>(), tie + std::string(zeros, '0') + "1");
     TTS_EQUAL(plf::hi(above), T(1) + eps);
     TTS_EQUAL(plf::lo(above), -eps / 2);
   }
 
   // Half the smallest subnormal is a tie that goes to 0, and anything above it to the smallest subnormal.
   auto e = std::ilogb(eve::mindenormal(eve::as<T>()));
-  TTS_EQUAL(plf::hi(plf::from_string("0x1p" + std::to_string(e - 1), eve::as<pv2>())), T(0));
-  TTS_EQUAL(plf::hi(plf::from_string("0x1.8p" + std::to_string(e - 1), eve::as<pv2>())),
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "0x1p" + std::to_string(e - 1))), T(0));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "0x1.8p" + std::to_string(e - 1))),
             eve::mindenormal(eve::as<T>()));
 
   // The same tie written in decimal, with all the digits of half the smallest subnormal, then broken by one more digit.
   std::string half = std::same_as<T, double> ? half_min_double : half_min_float;
-  TTS_EQUAL(plf::hi(plf::from_string(half, eve::as<pv2>())), T(0));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), half)), T(0));
   auto e10 = half.find('e');
-  TTS_EQUAL(plf::hi(plf::from_string(half.substr(0, e10) + "1" + half.substr(e10), eve::as<pv2>())),
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), half.substr(0, e10) + "1" + half.substr(e10))),
             eve::mindenormal(eve::as<T>()));
 
   // Decimal values near the ends of the range read as the literals of T.
   if constexpr (std::same_as<T, double>)
   {
-    TTS_EQUAL(plf::hi(plf::from_string("1e305", eve::as<pv2>())), 1e305);
-    TTS_EQUAL(plf::hi(plf::from_string("1e-305", eve::as<pv2>())), 1e-305);
+    TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e305")), 1e305);
+    TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e-305")), 1e-305);
   }
   else
   {
-    TTS_EQUAL(plf::hi(plf::from_string("1e38", eve::as<pv2>())), 1e38f);
-    TTS_EQUAL(plf::hi(plf::from_string("1e-38", eve::as<pv2>())), 1e-38f);
+    TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e38")), 1e38f);
+    TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e-38")), 1e-38f);
   }
 
   // The largest value and half its unit in the last place is a tie that goes to infinity, and just below it is not.
   auto top = std::same_as<T, double> ? std::string("0x1.fffffffffffff8p1023") : std::string("0x1.ffffffp127");
   auto below = std::same_as<T, double> ? std::string("0x1.fffffffffffff7ffp1023") : std::string("0x1.fffffefp127");
-  TTS_EQUAL(plf::hi(plf::from_string(top, eve::as<pv2>())), eve::inf(eve::as<T>()));
-  TTS_EQUAL(plf::hi(plf::from_string(below, eve::as<pv2>())), eve::valmax(eve::as<T>()));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), top)), eve::inf(eve::as<T>()));
+  TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), below)), eve::valmax(eve::as<T>()));
 };
 
 TTS_CASE_WITH("Check that a printed value reads back",
@@ -230,8 +294,8 @@ TTS_CASE_WITH("Check that a printed value reads back",
   // The exact value reads back, which std::hexfloat shows. The parts can differ, since the constructor may leave a
   // triple that is not normalized.
   auto exact = text(x, std::hexfloat);
-  TTS_EQUAL(text(plf::from_string(exact, eve::as<pv3>()), std::hexfloat), exact);
-  TTS_EQUAL(text(plf::from_string(text(x, std::setprecision(1200)), eve::as<pv3>()), std::hexfloat), exact);
+  TTS_EQUAL(text(plf::from_string(eve::as<pv3>(), exact), std::hexfloat), exact);
+  TTS_EQUAL(text(plf::from_string(eve::as<pv3>(), text(x, std::setprecision(1200))), std::hexfloat), exact);
 };
 
 TTS_CASE_TPL("Check that a value a double holds prints as the double", plf::scalar_real_types)
@@ -332,14 +396,14 @@ TTS_CASE_TPL("Check stream output", plf::scalar_real_types)
   TTS_EQUAL(text(r2, plf::showparts, std::setw(30), std::setfill('*')), std::string(30 - parts.size(), '*') + parts);
 
   std::wostringstream ws;
-  ws << plf::from_string("0.1", eve::as<pv2>());
+  ws << plf::from_string(eve::as<pv2>(), "0.1");
   TTS_EXPECT(ws.str() == L"0.1");
 };
 
 TTS_CASE("Check half precision")
 {
   using pv2 = plf::polyfloat<eve::float16_t, 2>;
-  auto x = plf::from_string("0.1", eve::as<pv2>());
+  auto x = plf::from_string(eve::as<pv2>(), "0.1");
   TTS_EQUAL(static_cast<double>(plf::hi(x)), 0x1.998p-4);
   TTS_EQUAL(static_cast<double>(plf::lo(x)), 0x1.9ap-16);
   TTS_EQUAL(text(x), std::string("0.1"));
@@ -347,12 +411,12 @@ TTS_CASE("Check half precision")
   TTS_EQUAL(text(x, plf::showparts), std::string("0.0999756 + 2.44379e-05"));
 
   // Half the smallest subnormal goes to 0, even, and the largest value plus half its unit to infinity.
-  auto hi = [](char const* s) { return static_cast<double>(plf::hi(plf::from_string(s, eve::as<pv2>()))); };
+  auto hi = [](char const* s) { return static_cast<double>(plf::hi(plf::from_string(eve::as<pv2>(), s))); };
   TTS_EQUAL(hi("0x1p-25"), 0.0);
   TTS_EQUAL(hi("0x1.8p-25"), 0x1p-24);
   TTS_EXPECT(std::isinf(hi("0x1.ffep15")));
   TTS_EQUAL(hi("65519"), 65504.0);
-  TTS_EQUAL(static_cast<double>(plf::lo(plf::from_string("65519", eve::as<pv2>()))), 15.0);
+  TTS_EQUAL(static_cast<double>(plf::lo(plf::from_string(eve::as<pv2>(), "65519"))), 15.0);
 };
 
 TTS_CASE_TPL("Check stream output of a register", plf::scalar_real_types)

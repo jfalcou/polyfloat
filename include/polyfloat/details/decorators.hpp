@@ -88,4 +88,28 @@ namespace plf
   using eve::quarter_circle;
   using eve::rad;
   using eve::radpi;
+
+  namespace _
+  {
+    struct separator_mode
+    {
+    };
+  }
+
+  //! @ingroup plf_from_string
+  //! @hideinitializer
+  //! @brief Option of plf::from_string that names the character allowed between two digits, `'` by default and
+  //! `'\0'` for none.
+  inline constexpr auto separator = rbr::keyword<char>(_::separator_mode{});
+
+  struct separator_option
+  {
+    constexpr auto process(auto const& base, eve::exactly<separator> auto const& o) const
+    {
+      auto news = rbr::merge(eve::options{o}, base);
+      return eve::options<decltype(news)>{news};
+    }
+
+    constexpr auto default_to(auto const& base) const { return base; }
+  };
 }

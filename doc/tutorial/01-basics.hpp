@@ -18,19 +18,22 @@
 //! they hold fewer bits than its mantissa.
 //!
 //! The function plf::from_string reads a decimal or hexadecimal number exactly,
-//! `plf::from_string("0.1", eve::as<plf::double_real_t<double>>())`, and returns a NaN when the
-//! string is malformed, a space or any character outside the number included. Under plf::pedantic,
-//! it returns instead a [`std::optional`](https://en.cppreference.com/w/cpp/utility/optional) that
-//! holds no value for a malformed string, which tells it apart from `nan`. The digit separator `'`
-//! of C++ may stand between two digits, as in `3'125.256'966`, and a third argument names another
-//! separator, or none with 0. The high part is the number rounded to nearest, ties to even, and
-//! each next part rounds in the same way what the previous parts leave, computed exactly. A
-//! `double` literal such as `0.1` is instead rounded to `double` before any part is built.
+//! `plf::from_string(eve::as<plf::double_real_t<double>>(), "0.1")`, and returns a NaN when the
+//! string is malformed. Spaces before or after the number are not skipped, and make the string
+//! malformed. Under plf::pedantic, it returns instead a
+//! [`std::optional`](https://en.cppreference.com/w/cpp/utility/optional) that holds no value for a
+//! malformed string, which tells it apart from `"nan"`. The digit separator `'` of C++ may stand
+//! between two digits, as in `3'125.256'966`, and the option plf::separator names another
+//! separator, `plf::from_string[plf::separator = ' ']`, or none with `'\0'`. The high part is the
+//! number rounded to nearest, ties to even, and each next part is the exact rest that the previous
+//! parts leave, rounded in the same way. A `double` literal such as `0.1` is instead rounded to
+//! `double` before any part is built.
 //!
 //! A value prints as one number, the exact sum of its parts rounded to nearest, under the
 //! precision, the format flags, the locale, and the width of the stream, as a `double` prints:
 //!
-//! - `std::setprecision(n)` shows n significant digits.
+//! - `std::setprecision(n)` shows n significant digits, or n digits after the point under
+//!   `std::fixed`.
 //! - `std::hexfloat` shows the value exactly.
 //! - plf::showparts shows the parts instead, joined by `+` or `-`, `1.41421 - 9.66729e-17` for
 //!   instance, the largest first, each with the precision and the format of the stream, until
