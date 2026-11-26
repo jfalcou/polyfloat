@@ -241,8 +241,22 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
   for (std::size_t zeros : {10u, 5000u, 100000u})
   {
     auto above = plf::from_string(eve::as<pv2>(), tie + std::string(zeros, '0') + "1");
-    TTS_EQUAL(plf::hi(above), T(1) + eps);
-    TTS_EQUAL(plf::lo(above), -eps / 2);
+    TTS_EQUAL(plf::hi(above), T(1));
+    TTS_EQUAL(plf::lo(above), eps / 2);
+  }
+
+  std::string lo_tie = std::same_as<T, double>
+                         ? "1.0000000000000000008673617379884036435024594600577460219395221292463659"
+                           "2690508241076940976199693977832794189453125"
+                         : "1.000000000931322630126629746882827021181583404541015625";
+  auto lo_even = std::same_as<T, double> ? T(0x1p-60) : T(0x1p-30);
+  auto lo_odd = lo_even + (std::same_as<T, double> ? T(0x1p-112) : T(0x1p-53));
+  TTS_EQUAL(plf::lo(plf::from_string(eve::as<pv2>(), lo_tie)), lo_even);
+  for (std::size_t zeros : {10u, 5000u, 100000u})
+  {
+    auto above = plf::from_string(eve::as<pv2>(), lo_tie + std::string(zeros, '0') + "1");
+    TTS_EQUAL(plf::hi(above), T(1));
+    TTS_EQUAL(plf::lo(above), lo_odd);
   }
 
   auto e = std::ilogb(eve::mindenormal(eve::as<T>()));
