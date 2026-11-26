@@ -26,8 +26,8 @@
 //! between two digits, as in `3'125.256'966`, and the option plf::separator names another
 //! separator, `plf::from_string[plf::separator = ' ']`, or none with `'\0'`. The high part is the
 //! number rounded to nearest, ties to even, and each next part is the exact rest that the previous
-//! parts leave, rounded in the same way. A `double` literal such as `0.1` is instead rounded to
-//! `double` before any part is built.
+//! parts leave, rounded in the same way, before the parts are normalized. A `double` literal such
+//! as `0.1` is instead rounded to `double` before any part is built.
 //!
 //! A value prints as one number, the exact sum of its parts rounded to nearest, under the
 //! precision, the format flags, the locale, and the width of the stream, as a `double` prints:

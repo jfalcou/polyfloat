@@ -279,6 +279,12 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
   auto below = std::same_as<T, double> ? std::string("0x1.fffffffffffff7ffp1023") : std::string("0x1.fffffefp127");
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), top)), eve::inf(eve::as<T>()));
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), below)), eve::valmax(eve::as<T>()));
+
+  auto odd =
+    std::same_as<T, double> ? std::string("0x1.00000000000017fffffffffffffp0") : std::string("0x1.000002ffffffcp0");
+  auto normalized = plf::from_string(eve::as<pv2>(), odd);
+  TTS_EQUAL(plf::hi(normalized), T(1) + 2 * eps);
+  TTS_EQUAL(plf::lo(normalized), -eps / 2);
 };
 
 TTS_CASE_WITH("Check that a printed value reads back",

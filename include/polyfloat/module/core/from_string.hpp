@@ -17,6 +17,7 @@
 #include <limits>
 #include <optional>
 #include <string_view>
+#include <utility>
 
 namespace plf
 {
@@ -37,10 +38,12 @@ namespace plf
       char const between = this->options()[separator | '\''];
       auto read = [&](std::string_view text) { return _::decimal::parse_parts<base_t, n>(text, between); };
       auto make = [](std::array<double, n> const& parts) {
-        element_t v{};
-        if constexpr (n == 1) v = static_cast<element_t>(parts[0]);
-        else kumi::for_each_index([&](auto i, auto& part) { part = static_cast<base_t>(parts[i]); }, v.contents);
-        return v;
+        if constexpr (n == 1) return static_cast<element_t>(parts[0]);
+        else if (parts[1] == 0) return element_t(static_cast<base_t>(parts[0]));
+        else
+          return [&]<std::size_t... I>(std::index_sequence<I...>) {
+            return element_t(static_cast<base_t>(parts[I])...);
+          }(std::make_index_sequence<n>{});
       };
 
       if constexpr (Options::contains(pedantic))
@@ -102,7 +105,9 @@ namespace plf
   //!   **Return value**
   //!
   //!     The result is the value the string denotes. The high part is that value rounded to nearest, ties to even,
-  //!     and each next part is the exact rest that the previous parts leave, rounded in the same way.
+  //!     and each next part is the exact rest that the previous parts leave, rounded in the same way. The parts are
+  //!     then normalized as by the constructor of plf::polyfloat, which changes them at a tie of a next part and
+  //!     gives an infinity when their sum rounds past the largest finite value.
   //!
   //!     Infinities, zeros, and NaNs are read into the high part, with the sign of the string, and the next parts are
   //!     zero. An infinity and a zero also come from a value whose high part rounds past the largest finite value of
