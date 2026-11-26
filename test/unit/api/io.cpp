@@ -23,7 +23,6 @@ namespace
     return os.str();
   }
 
-  // A decimal comma, and thousands grouped by three and separated by a period.
   struct comma : std::numpunct<char>
   {
     char do_decimal_point() const override { return ','; }
@@ -63,7 +62,6 @@ namespace
     return s + ")";
   }
 
-  // Half the smallest subnormal of double and of float, every digit of their decimal expansion.
   constexpr auto half_min_double =
     "2."
     "470328229206232720882843964341106861825299013071623822127928412503377536351043759326499181808179961898982823477228"
@@ -235,8 +233,6 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
   using pv2 = plf::polyfloat<T, 2>;
   auto eps = eve::eps(eve::as<T>());
 
-  // 1 + eps/2 is a tie for the high part, which goes to 1, even. A nonzero digit far after it breaks the tie, and
-  // reading cuts the digits before it.
   std::string tie =
     std::same_as<T, double> ? "1.00000000000000011102230246251565404236316680908203125" : "1.000000059604644775390625";
   auto at = plf::from_string(eve::as<pv2>(), tie);
@@ -249,20 +245,17 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
     TTS_EQUAL(plf::lo(above), -eps / 2);
   }
 
-  // Half the smallest subnormal is a tie that goes to 0, and anything above it to the smallest subnormal.
   auto e = std::ilogb(eve::mindenormal(eve::as<T>()));
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "0x1p" + std::to_string(e - 1))), T(0));
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "0x1.8p" + std::to_string(e - 1))),
             eve::mindenormal(eve::as<T>()));
 
-  // The same tie written in decimal, with all the digits of half the smallest subnormal, then broken by one more digit.
   std::string half = std::same_as<T, double> ? half_min_double : half_min_float;
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), half)), T(0));
   auto e10 = half.find('e');
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), half.substr(0, e10) + "1" + half.substr(e10))),
             eve::mindenormal(eve::as<T>()));
 
-  // Decimal values near the ends of the range read as the literals of T.
   if constexpr (std::same_as<T, double>)
   {
     TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e305")), 1e305);
@@ -274,7 +267,6 @@ TTS_CASE_TPL("Check the rounding of from_string at its boundaries", plf::scalar_
     TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), "1e-38")), 1e-38f);
   }
 
-  // The largest value and half its unit in the last place is a tie that goes to infinity, and just below it is not.
   auto top = std::same_as<T, double> ? std::string("0x1.fffffffffffff8p1023") : std::string("0x1.ffffffp127");
   auto below = std::same_as<T, double> ? std::string("0x1.fffffffffffff7ffp1023") : std::string("0x1.fffffefp127");
   TTS_EQUAL(plf::hi(plf::from_string(eve::as<pv2>(), top)), eve::inf(eve::as<T>()));
@@ -297,8 +289,6 @@ TTS_CASE_WITH("Check that a printed value reads back",
   using pv3 = plf::polyfloat<T, 3>;
   pv3 x(a0, a1, a2);
 
-  // The exact value reads back, which std::hexfloat shows. The parts can differ, since the constructor may leave a
-  // triple that is not normalized.
   auto exact = text(x, std::hexfloat);
   TTS_EQUAL(text(plf::from_string(eve::as<pv3>(), exact), std::hexfloat), exact);
   TTS_EQUAL(text(plf::from_string(eve::as<pv3>(), text(x, std::setprecision(1200))), std::hexfloat), exact);
@@ -372,7 +362,6 @@ TTS_CASE_TPL("Check stream output", plf::scalar_real_types)
   TTS_EQUAL(text(above_one, std::showpoint), std::string("1.00000"));
   TTS_EQUAL(text(r2, std::scientific, std::showpoint, std::setprecision(0)), std::string("1.e+00"));
 
-  // The grouping follows libstdc++: it ends at its first 0, and in hexadecimal it reaches 0x.
   auto grouped = [](auto x, std::string g, std::ios_base::fmtflags flags) {
     struct dot : std::numpunct<char>
     {
@@ -416,7 +405,6 @@ TTS_CASE("Check half precision")
   TTS_EQUAL(text(x, std::hexfloat), std::string("0x1.9999ap-4"));
   TTS_EQUAL(text(x, plf::showparts), std::string("0.0999756 + 2.44379e-05"));
 
-  // Half the smallest subnormal goes to 0, even, and the largest value plus half its unit to infinity.
   auto hi = [](char const* s) { return static_cast<double>(plf::hi(plf::from_string(eve::as<pv2>(), s))); };
   TTS_EQUAL(hi("0x1p-25"), 0.0);
   TTS_EQUAL(hi("0x1.8p-25"), 0x1p-24);
