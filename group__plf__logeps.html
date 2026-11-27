@@ -194,7 +194,7 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">// The expected components are log(plf::eps) from mpmath at 600 bits, each rounded to nearest.</span></div>
+<div class="line">  <span class="comment">// Each expected value rounds log(plf::eps) to nearest part by part, from mpmath at 600 bits.</span></div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">using </span>t1_t = double;</div>
 <div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
@@ -203,9 +203,9 @@ Variables</h2></td></tr>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.205966f2b4f12p+5&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.205966f2b4f12p+6 - 0x1.6dca0480f5c1ap-48&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.205966f2b4f125b7281203d7068p+6&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.b0861a6c0f69cp+6 + 0x1.db50f93e8f5d9p-48 + 0x1.fc6b4d1af0c52p-102&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.b0861a6c0f69b892bc1b05c289a0394b2e50f3aep+6&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>()) &lt;&lt; std::endl;</div>
 <div class="line">  }</div>
 <div class="line">  {</div>
@@ -216,9 +216,9 @@ Variables</h2></td></tr>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.fe2804p+3&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t1_t&gt;</a>()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.0a2b24p+5 + 0x1.88a91ap-24&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.fe2804e87b34p+4&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t2_t&gt;</a>()) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.8f40b6p+5 + 0x1.267ed2p-23 + 0x1.c7af38p-48&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected -0x1.7e9e03ae5c675e5a6b4p+5&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;logeps   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#gad27792bcc40b8ac1693bacbd95570d68">plf::logeps</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as&lt;t3_t&gt;</a>()) &lt;&lt; std::endl;</div>
 <div class="line">  }</div>
 <div class="line">}</div>

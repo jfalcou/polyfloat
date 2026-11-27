@@ -19,6 +19,7 @@ var searchData=
   ['frac_46',['frac',['../group__plf__frac.html#ga6cbff9063806f25141fbe0f5863becae',1,'plf::frac']]],
   ['free_20transformations_49',['Error-free transformations',['../group__core__accuracy.html',1,'']]],
   ['frexp_51',['frexp',['../group__plf__frexp.html#ga89334551f0d0c2f81bf852d2a0b9f502',1,'plf::frexp']]],
-  ['fsm_53',['fsm',['../group__plf__fsm.html#gab6ffa7b2b7b589bc9bbf790c8555e7f3',1,'plf::fsm']]],
-  ['functions_58',['functions',['../group__core.html',1,'Core functions'],['../group__math.html',1,'Elementary functions']]],
+  ['from_5fstring_52',['from_string',['../group__plf__from__string.html#gacc79fcee7ef221fd2d596192be90f0f3',1,'plf']]],
+  ['fsm_54',['fsm',['../group__plf__fsm.html#gab6ffa7b2b7b589bc9bbf790c8555e7f3',1,'plf::fsm']]],
+  ['functions_59',['functions',['../group__core.html',1,'Core functions'],['../group__math.html',1,'Elementary functions']]],
 ];

@@ -145,7 +145,7 @@ Registers of reals</h1>
 <li>four with AVX,</li>
 <li>eight with AVX-512.</li>
 </ul>
-<p>The width is selected at compile time from the target, and the source never names it.</p>
+<p>This width is the default, selected at compile time for the target, and a second argument names another one: <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double, 4&gt;</span> holds four <span class="tt">double</span>.</p>
 <p>A register is built from a function of two arguments, the lane index and the width, called once per lane, or from one value copied into every lane, <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;(2.0)</span>. <span class="tt"><a class="elRef" href="https://jfalcou.github.io/eve/structeve_1_1wide.html">eve::wide</a>&lt;double&gt;::size()</span> is the number of <span class="tt">double</span> in the register, <span class="tt">x.get(i)</span> reads lane <span class="tt">i</span>, and <span class="tt">x.set(i, v)</span> writes it. Below, a <a href="https://en.cppreference.com/w/cpp/language/lambda">lambda</a> puts \(-1 + k\) in lane \(k\) and leaves the width unused:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;polyfloat/polyfloat.hpp&gt;</span></div>

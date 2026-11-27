@@ -208,6 +208,8 @@ Topics</h2></td></tr>
 <tr class="memdesc:group__plf__frac"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fractional part of the value. <br /></td></tr>
 <tr class="memitem:plf_5Ffrexp" id="r_plf_5Ffrexp"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="group__plf__frexp.html">plf::frexp</a></td></tr>
 <tr class="memdesc:group__plf__frexp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt"><a class="el" href="structplf_1_1elementwise__callable.html" title="POLYFLOAT counterpart of eve::elementwise_callable.">elementwise_callable</a></span> computing pair of mantissa and exponent of a polyfloat value, <br /></td></tr>
+<tr class="memitem:plf_5Ffrom_5Fstring" id="r_plf_5Ffrom_5Fstring"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="group__plf__from__string.html">plf::from_string</a></td></tr>
+<tr class="memdesc:group__plf__from__string"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to a polyfloat value or to a real, each part rounded to nearest in turn. <br /></td></tr>
 <tr class="memitem:plf_5Ffsm" id="r_plf_5Ffsm"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="group__plf__fsm.html">plf::fsm</a></td></tr>
 <tr class="memdesc:group__plf__fsm"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the fused subtract multiply \(-x + y z\). <br /></td></tr>
 <tr class="memitem:plf_5Fheaviside" id="r_plf_5Fheaviside"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="group__plf__heaviside.html">plf::heaviside</a></td></tr>
@@ -500,13 +502,13 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  std::cout &lt;&lt; std::setprecision(15);</div>
+<div class="line">  std::cout &lt;&lt; std::setprecision(48);</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_variable" href="#gaaafb5f51797ebd81c0fdc1011e0275a3">plf::ldexp</a>;</div>
 <div class="line">  <span class="keyword">auto</span> f = -1.0;</div>
 <div class="line">  <span class="keyword">auto</span> a = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-1.3);</div>
 <div class="line">  <span class="keyword">auto</span> b = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(1.0, -1.0e-300);</div>
 <div class="line">  <span class="keyword">auto</span> c = <a class="code hl_function" href="structplf_1_1polyfloat.html#a5bc8d3714e201b591e64a8901fdeb667">plf::polyfloat</a>(-1.0, 1.0e-10, -1.0e-300);</div>
-<div class="line">  std::setprecision(15);</div>
+<div class="line">  std::setprecision(48);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;f  &quot;</span> &lt;&lt; f &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;a  &quot;</span> &lt;&lt; a &lt;&lt; std::endl;</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;b  &quot;</span> &lt;&lt; b &lt;&lt; std::endl;</div>

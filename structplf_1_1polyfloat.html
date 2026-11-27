@@ -208,10 +208,14 @@ template&lt;concepts::polyfloat T1, concepts::polyfloat_like T2&gt; </td></tr>
 <tr class="memitem:a360eb56323e6297cc8b531aa36c59537 template"><td class="memItemLeft">constexpr T1 &amp;&#160;</td><td class="memItemRight"><b>operator*=</b> (T1 &amp;self, T2 other) noexcept</td></tr>
 <tr class="memdesc:a360eb56323e6297cc8b531aa36c59537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the polyfloat value <span class="tt">other</span> to <span class="tt">self</span> and returns the new value of <span class="tt">self</span>. <br /></td></tr>
 <tr id="related-1" class="groupHeader"><td colspan="2"><div class="groupHeader">Streaming Operators</div></td></tr>
-<tr class="memitem:a1d50add5f2f5370f64b20919751ccdcf" id="r_a1d50add5f2f5370f64b20919751ccdcf"><td class="memTemplParams" colspan="2"><a id="a1d50add5f2f5370f64b20919751ccdcf" name="a1d50add5f2f5370f64b20919751ccdcf"></a>
-template&lt;typename C, typename Ct, concepts::polyfloat CD&gt; </td></tr>
-<tr class="memitem:a1d50add5f2f5370f64b20919751ccdcf template"><td class="memItemLeft">auto &amp;&#160;</td><td class="memItemRight"><b>operator&lt;&lt;</b> (std::basic_ostream&lt; C, Ct &gt; &amp;os, CD const &amp;z)</td></tr>
-<tr class="memdesc:a1d50add5f2f5370f64b20919751ccdcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion for Poly-Float based types. <br /></td></tr>
+<tr class="memitem:a5e7a983471b17e48d43ae491213b5db3" id="r_a5e7a983471b17e48d43ae491213b5db3"><td class="memItemLeft"><a id="a5e7a983471b17e48d43ae491213b5db3" name="a5e7a983471b17e48d43ae491213b5db3"></a>
+std::ios_base &amp;&#160;</td><td class="memItemRight"><b>showparts</b> (std::ios_base &amp;s)</td></tr>
+<tr class="memdesc:a5e7a983471b17e48d43ae491213b5db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the stream show the parts of a polyfloat, the largest first, each with the precision of the stream. <br /></td></tr>
+<tr class="memitem:a37f27b72ec915d2e82b346cd8ab5afb9" id="r_a37f27b72ec915d2e82b346cd8ab5afb9"><td class="memItemLeft"><a id="a37f27b72ec915d2e82b346cd8ab5afb9" name="a37f27b72ec915d2e82b346cd8ab5afb9"></a>
+std::ios_base &amp;&#160;</td><td class="memItemRight"><b>noshowparts</b> (std::ios_base &amp;s)</td></tr>
+<tr class="memdesc:a37f27b72ec915d2e82b346cd8ab5afb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the stream show a polyfloat as one number, the default. <br /></td></tr>
+<tr class="memitem:a1d50add5f2f5370f64b20919751ccdcf" id="r_a1d50add5f2f5370f64b20919751ccdcf"><td class="memTemplParams" colspan="2">template&lt;typename C, typename Ct, concepts::scalar_polyfloat CD&gt; </td></tr>
+<tr class="memitem:a1d50add5f2f5370f64b20919751ccdcf template"><td class="memItemLeft">auto &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a1d50add5f2f5370f64b20919751ccdcf">operator&lt;&lt;</a> (std::basic_ostream&lt; C, Ct &gt; &amp;os, CD const &amp;z)</td></tr>
 <tr id="related-2" class="groupHeader"><td colspan="2"><div class="groupHeader">Unary Operators</div></td></tr>
 <tr class="memitem:a18cec006320794126c85b238a68fc91c" id="r_a18cec006320794126c85b238a68fc91c"><td class="memTemplParams" colspan="2"><a id="a18cec006320794126c85b238a68fc91c" name="a18cec006320794126c85b238a68fc91c"></a>
 template&lt;concepts::polyfloat Z&gt; </td></tr>
@@ -257,6 +261,39 @@ template&lt;typename T0, std::convertible_to&lt; T0 &gt;... Ts&gt; </td></tr>
 <tr class="memitem:acb02165730e7ed765fdde7603c186597 template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><b>polyfloat</b> (T0, Ts...) -&gt; polyfloat&lt; T0, 1+sizeof...(Ts)&gt;</td></tr>
 <tr class="memdesc:acb02165730e7ed765fdde7603c186597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the dimension from the number of values, two or three. <br /></td></tr>
 </table>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a1d50add5f2f5370f64b20919751ccdcf" name="a1d50add5f2f5370f64b20919751ccdcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d50add5f2f5370f64b20919751ccdcf">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C, typename Ct, concepts::scalar_polyfloat CD&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::basic_ostream&lt; C, Ct &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CD const &amp;</td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel related">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Inserts the sum of the parts as one number, rounded to nearest, as a <span class="tt">double</span> is inserted: with the precision, the format flags, the locale, and the width of the stream. <span class="tt">std::setprecision(32)</span> shows 32 significant digits, and <span class="tt">std::hexfloat</span> shows the value exactly, a subnormal value as <span class="tt">0x1p-1074</span> rather than <span class="tt">0x0.0000000000001p-1022</span>. After <a class="el" href="#a5e7a983471b17e48d43ae491213b5db3" title="Makes the stream show the parts of a polyfloat, the largest first, each with the precision of the str...">plf::showparts</a>, it inserts the parts, <span class="tt">1 - 1.2e-17</span> for instance, as one text the width applies to. A SIMD register shows its lanes in turn. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

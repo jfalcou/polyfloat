@@ -194,7 +194,7 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">// The expected components come from mpmath at 600 bits, each rounded to nearest.</span></div>
+<div class="line">  <span class="comment">// Each expected value rounds sqrt(2) to nearest part by part, from mpmath at 600 bits.</span></div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">using </span>t1_t = double;</div>
 <div class="line">    <span class="keyword">using </span>t2_t = <a class="code hl_class" href="structplf_1_1polyfloat.html">plf::polyfloat&lt;double, 2&gt;</a>;</div>
@@ -203,9 +203,9 @@ Variables</h2></td></tr>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcdp+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcdp+0 - 0x1.bdd3413b26456p-54&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcc908b2fb1366ea8p+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcdp+0 - 0x1.bdd3413b26456p-54 + 0x1.57d3e3adec175p-108&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcc908b2fb1366ea957d3e3adec175p+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t3_t())) &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <a class="code hl_variable" href="group__plf__sqr.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a>(<a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t()))) &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <a class="code hl_variable" href="group__plf__sqr.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a>(<a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t()))) &lt;&lt; std::endl;</div>
@@ -220,9 +220,9 @@ Variables</h2></td></tr>
 <div class="line">    std::cout &lt;&lt; std::hexfloat &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e6p+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e6p+0 + 0x1.9fcef4p-26&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bdp+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t())) &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e6p+0 + 0x1.9fcef4p-26 - 0x1.b7ba68p-51&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;expected 0x1.6a09e667f3bcc908b3p+0&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;sqrt_2   &quot;</span> &lt;&lt; <a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t3_t())) &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <a class="code hl_variable" href="group__plf__sqr.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a>(<a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t1_t()))) &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <a class="code hl_variable" href="group__plf__sqr.html#gac72a278d06c43be14dce2cfbd8e67bdf">plf::sqr</a>(<a class="code hl_variable" href="#ga4242d1daac24e1aa6e29ce62d230d171">plf::sqrt_2</a>(<a class="code hl_structRef" href="https://jfalcou.github.io/eve/structeve_1_1as.html">eve::as</a>(t2_t()))) &lt;&lt; std::endl;</div>

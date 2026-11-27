@@ -143,6 +143,20 @@
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>showparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a5e7a983471b17e48d43ae491213b5db3</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>noshowparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a37f27b72ec915d2e82b346cd8ab5afb9</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
+    </member>
+    <member kind="function">
       <type>auto &amp;</type>
       <name>operator&lt;&lt;</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
@@ -239,6 +253,20 @@
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
       <anchor>a360eb56323e6297cc8b531aa36c59537</anchor>
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>showparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a5e7a983471b17e48d43ae491213b5db3</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>noshowparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a37f27b72ec915d2e82b346cd8ab5afb9</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
     </member>
     <member kind="function">
       <type>auto &amp;</type>
@@ -926,6 +954,13 @@
       <name>frexp</name>
       <anchorfile>group__plf__frexp.html</anchorfile>
       <anchor>ga89334551f0d0c2f81bf852d2a0b9f502</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>from_string</name>
+      <anchorfile>group__plf__from__string.html</anchorfile>
+      <anchor>gacc79fcee7ef221fd2d596192be90f0f3</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -1987,6 +2022,13 @@
     </member>
     <member kind="variable">
       <type>constexpr auto</type>
+      <name>separator</name>
+      <anchorfile>group__plf__from__string.html</anchorfile>
+      <anchor>ga9a96b98b82224fbc30934b00faca9876</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
       <name>sigmoid</name>
       <anchorfile>group__plf__sigmoid.html</anchorfile>
       <anchor>gab9a23ada2593afbfcb3adc93c5be697a</anchor>
@@ -2245,6 +2287,20 @@
       <arglist>(T1 &amp;self, T2 other) noexcept</arglist>
     </member>
     <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>showparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a5e7a983471b17e48d43ae491213b5db3</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::ios_base &amp;</type>
+      <name>noshowparts</name>
+      <anchorfile>structplf_1_1polyfloat.html</anchorfile>
+      <anchor>a37f27b72ec915d2e82b346cd8ab5afb9</anchor>
+      <arglist>(std::ios_base &amp;s)</arglist>
+    </member>
+    <member kind="function">
       <type>auto &amp;</type>
       <name>operator&lt;&lt;</name>
       <anchorfile>structplf_1_1polyfloat.html</anchorfile>
@@ -2427,6 +2483,7 @@
     <subgroup>plf_fnms</subgroup>
     <subgroup>plf_frac</subgroup>
     <subgroup>plf_frexp</subgroup>
+    <subgroup>plf_from_string</subgroup>
     <subgroup>plf_fsm</subgroup>
     <subgroup>plf_heaviside</subgroup>
     <subgroup>plf_hi</subgroup>
@@ -3573,6 +3630,25 @@
       <name>plf::frexp</name>
       <anchorfile>group__plf__frexp.html</anchorfile>
       <anchor>ga89334551f0d0c2f81bf852d2a0b9f502</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>plf_from_string</name>
+    <title>plf::from_string</title>
+    <filename>group__plf__from__string.html</filename>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::from_string</name>
+      <anchorfile>group__plf__from__string.html</anchorfile>
+      <anchor>gacc79fcee7ef221fd2d596192be90f0f3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr auto</type>
+      <name>plf::separator</name>
+      <anchorfile>group__plf__from__string.html</anchorfile>
+      <anchor>ga9a96b98b82224fbc30934b00faca9876</anchor>
       <arglist></arglist>
     </member>
   </compound>
