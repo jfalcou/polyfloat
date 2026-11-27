@@ -5,7 +5,7 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
 
   auto a = plf::polyfloat(1.0);
   auto b = plf::polyfloat(1.0, 1.0e-300);
@@ -22,8 +22,8 @@ int main()
     std::cout << "get<1>(ppi)" << get<1>(ppi) << std::endl;
     double rpi = double(get<0>(ppi)) + double(get<1>(ppi));
 
-    std::cout << std::setprecision(15) << "rpi = " << rpi << std::endl;
-    std::cout << std::setprecision(15) << "pi  = " << pi << std::endl;
+    std::cout << std::setprecision(48) << "rpi = " << rpi << std::endl;
+    std::cout << std::setprecision(48) << "pi  = " << pi << std::endl;
     std::cout << rpi - pi << std::endl;
   }
   {
@@ -34,8 +34,8 @@ int main()
     std::cout << "get<2>(ppi)" << get<2>(ppi) << std::endl;
     double rpi = double(get<0>(ppi)) + double(get<1>(ppi)) + double(get<2>(ppi));
 
-    std::cout << std::setprecision(15) << "rpi = " << rpi << std::endl;
-    std::cout << std::setprecision(15) << "pi  = " << pi << std::endl;
+    std::cout << std::setprecision(48) << "rpi = " << rpi << std::endl;
+    std::cout << std::setprecision(48) << "pi  = " << pi << std::endl;
     std::cout << rpi - pi << std::endl;
   }
 }

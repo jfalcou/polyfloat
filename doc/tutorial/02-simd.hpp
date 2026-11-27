@@ -18,7 +18,8 @@
 //! - four with AVX,
 //! - eight with AVX-512.
 //!
-//! The width is selected at compile time from the target, and the source never names it.
+//! This width is the default, selected at compile time for the target, and a second argument names
+//! another one: `eve::wide<double, 4>` holds four `double`.
 //!
 //! A register is built from a function of two arguments, the lane index and the width, called once
 //! per lane, or from one value copied into every lane, `eve::wide<double>(2.0)`.

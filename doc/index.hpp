@@ -37,16 +37,11 @@
 //!
 //! ## Options
 //!
-//! The functions accept two options, which exclude each other:
-//!
-//! - `raw` selects the fastest implementation, at the cost of accuracy or of the IEEE 754 results
-//!   at the edges of the domain,
-//! - `pedantic` selects the most accurate implementation, which returns the IEEE 754 results on
-//!   the infinities, the NaN, and the signed zeros at the edges of the domain.
-//!
-//! An option is given between brackets, `plf::sqrt[plf::pedantic](x)`. Most functions behave the
-//! same with either option and without it. The reference entry of a function describes the options
-//! only when they change its result.
+//! An option is given between brackets, `plf::sqrt[plf::pedantic](x)`. The options of
+//! [EVE](https://jfalcou.github.io/eve/), such as eve::pedantic and eve::raw, keep their names in
+//! the namespace `plf` and the meaning the reference of EVE gives them. Most functions behave the
+//! same with eve::raw or eve::pedantic and without them, and the reference entry of a function
+//! describes an option only when it changes its result.
 //!
 //! ## Half-turns
 //!

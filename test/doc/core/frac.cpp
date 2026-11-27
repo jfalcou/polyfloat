@@ -6,13 +6,13 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   using plf::frac;
   auto f = -1.0;
   auto a = plf::polyfloat(-1.3);
   auto b = plf::polyfloat(1.0, -1.0e-300);
   auto c = plf::polyfloat(-1.0, 1.0e-10, -1.0e-300);
-  std::setprecision(15);
+  std::setprecision(48);
   std::cout << "f  " << f << std::endl;
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;

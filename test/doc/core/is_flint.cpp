@@ -12,7 +12,7 @@ int main()
   auto c = plf::polyfloat(100.0, 12.0, 1.0);
   auto d = plf::polyfloat(100.0, 12.0, 1.0e-10);
   auto e = plf::polyfloat(100.0, 12.3);
-  std::cout << std::setprecision(15) << std::hexfloat;
+  std::cout << std::setprecision(48) << std::hexfloat;
   std::cout << "f  " << f << std::endl;
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;

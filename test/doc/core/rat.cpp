@@ -6,12 +6,12 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   using plf::rat;
   auto a = 1.23456;
   auto b = plf::polyfloat(1.23456, 0.0);
   auto c = plf::polyfloat(1.23456, 0.0, 0.0);
-  std::setprecision(15);
+  std::setprecision(48);
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;
   std::cout << "c  " << c << std::endl;

@@ -8,6 +8,7 @@
 #pragma once
 #define TTS_MAIN
 #define TTS_CUSTOM_DRIVER_FUNCTION polyfloat_entry_point
+#include <iomanip>
 #include <sstream>
 
 #include <tts/tts.hpp>
@@ -164,6 +165,7 @@ namespace tts
     static text render(T const& v)
     {
       std::ostringstream ss;
+      if constexpr (plf::concepts::polyfloat<T>) ss << std::setprecision(17 * plf::dimension_v<T>);
       ss << v;
       return text(ss.str().c_str());
     }

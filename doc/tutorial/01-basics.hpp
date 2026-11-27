@@ -13,14 +13,42 @@
 //! # Construction and printing
 //!
 //! A value is built by the constructor of plf::polyfloat from as many values as its dimension at
-//! most, each converted to its base type, and prints as the sum of its parts, the largest first,
-//! the precision of the stream applying to each part. The default constructor gives zero. A single
-//! value of a wider type, a `double` into a polyfloat of `float`, is split over the parts, and
-//! rounded when they hold fewer bits than its mantissa. A constant of EVE or of **POLYFLOAT** takes the type of its result as an
-//! argument, `eve::eps(eve::as<double>())` being the machine epsilon of `double`. A function such
-//! as plf::sqrt returns a value of the type of its argument, with the precision of that type:
+//! most, each converted to its base type. The default constructor gives zero. A single value of a
+//! wider type, a `double` into a polyfloat of `float`, is split over the parts, and rounded when
+//! they hold fewer bits than its mantissa.
+//!
+//! The function plf::from_string reads a decimal or hexadecimal number exactly,
+//! `plf::from_string(eve::as<plf::double_real_t<double>>(), "0.1")`, and returns a NaN when the
+//! string is malformed. Spaces before or after the number are not skipped, and make the string
+//! malformed. Under plf::pedantic, it returns instead a
+//! [`std::optional`](https://en.cppreference.com/w/cpp/utility/optional) that holds no value for a
+//! malformed string, which tells it apart from `"nan"`. The digit separator `'` of C++ may stand
+//! between two digits, as in `3'125.256'966`, and the option plf::separator names another
+//! separator, `plf::from_string[plf::separator = ' ']`, or none with `'\0'`. The high part is the
+//! number rounded to nearest, ties to even, and each next part is the exact rest that the previous
+//! parts leave, rounded in the same way, before the parts are normalized. A `double` literal such
+//! as `0.1` is instead rounded to `double` before any part is built.
+//!
+//! A value prints as one number, the exact sum of its parts rounded to nearest, under the
+//! precision, the format flags, the locale, and the width of the stream, as a `double` prints:
+//!
+//! - `std::setprecision(n)` shows n significant digits, or n digits after the point under
+//!   `std::fixed`.
+//! - `std::hexfloat` shows the value exactly.
+//! - plf::showparts shows the parts instead, joined by `+` or `-`, `1.41421 - 9.66729e-17` for
+//!   instance, the largest first, each with the precision and the format of the stream, until
+//!   plf::noshowparts.
+//!
+//! In EVE and **POLYFLOAT**, a constant is called with `eve::as<T>()`, where `T` is the type of the
+//! value it returns, so `eve::eps(eve::as<double>())` is the machine epsilon of `double`. A
+//! function such as plf::sqrt returns a value of the type of its argument, with the precision of
+//! that type:
 //!
 //! @godbolt{doc/core/tut_polyfloat_basics.cpp}
+//!
+//! @warning A value whose parts lie far apart, \f$1 + 2^{-1000}\f$ in
+//! `plf::double_real_t<double>`, prints as 1 at 32 digits. `std::hexfloat` shows it exactly, and
+//! plf::showparts shows its two parts.
 //!
 //! # Normalization
 //!

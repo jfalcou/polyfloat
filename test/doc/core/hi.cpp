@@ -14,7 +14,7 @@ int main()
   auto a = plf::polyfloat(1.3);
   auto b = plf::polyfloat(1.0, 0x1p-60);
   auto c = plf::polyfloat(1.0, 0x1p-60, 0x1p-120);
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   std::cout << "f  " << f << std::endl;
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;

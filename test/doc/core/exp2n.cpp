@@ -6,12 +6,12 @@
 
 int main()
 {
-  std::cout << std::setprecision(15);
+  std::cout << std::setprecision(48);
   using plf::exp2n;
   auto a = -2.0;
   auto b = plf::polyfloat(-2.0, 0.0);
   auto c = plf::polyfloat(-2.0, 0.0, 0.0);
-  std::setprecision(15);
+  std::setprecision(48);
   std::cout << "a  " << a << std::endl;
   std::cout << "b  " << b << std::endl;
   std::cout << "c  " << c << std::endl;
