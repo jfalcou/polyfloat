@@ -99,7 +99,7 @@ namespace plf::_
   template<typename Z, typename N, eve::callable_options O>
   constexpr auto ldexp_(POLYFLOAT_DELAY(), O const& o, Z const& z, N const& n) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [zh, zl] = z;
       auto h = eve::ldexp[o](zh, n);
@@ -108,7 +108,7 @@ namespace plf::_
       EVE_ASSERT(eve::all(is_normalized(r)), "output of ldexp is not normalized");
       return r;
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [zh, zm, zl] = z;
       auto h = eve::ldexp[o](zh, n);

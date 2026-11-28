@@ -19,8 +19,8 @@ namespace plf
   {
     template<typename T> POLYFLOAT_ABI static constexpr auto value(eve::as<T> const&, auto const&)
     {
-      if constexpr (dimension_v<T> == 2) return T(ldexp(1.0, 106), ldexp(1.0, 53));
-      else if constexpr (dimension_v<T> == 3) return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
+      if constexpr (limbs_v<T> == 2) return T(ldexp(1.0, 106), ldexp(1.0, 53));
+      else if constexpr (limbs_v<T> == 3) return T(ldexp(1.0, 159), ldexp(1.0, 106), ldexp(1.0, 53));
     }
 
     template<concepts::polyfloat_like T> POLYFLOAT_ABI constexpr T operator()(as<T> const& v) const

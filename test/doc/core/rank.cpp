@@ -10,7 +10,7 @@ int main()
   auto a = plf::polyfloat(1.0);
   auto b = plf::polyfloat(1.0, 1.0e-300);
   auto c = plf::polyfloat(1.0, 1.0e-10, 1.0e-300);
-  std::cout << plf::dimension_v<decltype(a)> << std::endl;
-  std::cout << plf::dimension_v<decltype(b)> << std::endl;
-  std::cout << plf::dimension_v<decltype(c)> << std::endl;
+  std::cout << plf::limbs_v<decltype(a)> << std::endl;
+  std::cout << plf::limbs_v<decltype(b)> << std::endl;
+  std::cout << plf::limbs_v<decltype(c)> << std::endl;
 }

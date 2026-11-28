@@ -89,7 +89,7 @@ namespace plf::_
   requires(!eve::integral_value<N>)
   {
     using r_t = eve::as_wide_as_t<Z, N>;
-    if constexpr (dimension_v<Z> == 1 && !eve::integral_value<N>) return eve::pow(z, nn);
+    if constexpr (limbs_v<Z> == 1 && !eve::integral_value<N>) return eve::pow(z, nn);
     else
     {
       auto isneg = plf::is_ltz(nn);

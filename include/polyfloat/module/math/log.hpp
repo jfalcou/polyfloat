@@ -78,7 +78,7 @@ namespace plf::_
     auto ex = plf::exp[eve::pedantic](-r);
     ex = if_else(eve::is_nan(ex), eve::zero, ex);
     r -= plf::oneminus(xx * ex);
-    if constexpr (dimension_v<T> == 3)
+    if constexpr (limbs_v<T> == 3)
     {
       r -= plf::oneminus(xx * plf::exp[pedantic](-r));
       r -= plf::oneminus(xx * plf::exp[pedantic](-r));

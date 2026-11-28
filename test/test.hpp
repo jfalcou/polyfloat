@@ -165,7 +165,7 @@ namespace tts
     static text render(T const& v)
     {
       std::ostringstream ss;
-      if constexpr (plf::concepts::polyfloat<T>) ss << std::setprecision(17 * plf::dimension_v<T>);
+      if constexpr (plf::concepts::polyfloat<T>) ss << std::setprecision(17 * plf::limbs_v<T>);
       ss << v;
       return text(ss.str().c_str());
     }

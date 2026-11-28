@@ -46,7 +46,7 @@ namespace plf
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   as_polyfloat_t<T1, T2> operator+(T1 const& a, T2 const& b) noexcept
   {
-    if constexpr (dimension_v<T1> < dimension_v<T2>) return b + a;
+    if constexpr (limbs_v<T1> < limbs_v<T2>) return b + a;
     else
     {
       using r_t = as_polyfloat_t<T1, T2>;
@@ -69,7 +69,7 @@ namespace plf
   requires(concepts::polyfloat<T1> || concepts::polyfloat<T2>)
   as_polyfloat_t<T1, T2> operator*(T1 const& a, T2 const& b) noexcept
   {
-    if constexpr (dimension_v<T1> < dimension_v<T2>) return b * a;
+    if constexpr (limbs_v<T1> < limbs_v<T2>) return b * a;
     else
     {
       using r_t = as_polyfloat_t<T1, T2>;
@@ -83,18 +83,18 @@ namespace plf
   template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto operator==(T1 const& a, T2 b)
   {
     using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
-    if constexpr (dimension_v<T1> > dimension_v<T2>) return b == a;
-    else if constexpr (dimension_v<T1> == 1)
+    if constexpr (limbs_v<T1> > limbs_v<T2>) return b == a;
+    else if constexpr (limbs_v<T1> == 1)
     {
-      if constexpr (dimension_v<T2> == 1) return r_t(a == b);
-      else if constexpr (dimension_v<T2> >= 2) return r_t(a == hi(b)) && eve::is_eqz(md(b));
+      if constexpr (limbs_v<T2> == 1) return r_t(a == b);
+      else if constexpr (limbs_v<T2> >= 2) return r_t(a == hi(b)) && eve::is_eqz(md(b));
     }
-    else if constexpr (dimension_v<T1> == 2)
+    else if constexpr (limbs_v<T1> == 2)
     {
-      if constexpr (dimension_v<T2> == 2) return r_t((hi(a) == hi(b)) && (md(a) == md(b)));
-      else if constexpr (dimension_v<T2> == 3) return r_t((hi(a) == b) && (md(a) == md(b)) && eve::is_eqz(lo(b)));
+      if constexpr (limbs_v<T2> == 2) return r_t((hi(a) == hi(b)) && (md(a) == md(b)));
+      else if constexpr (limbs_v<T2> == 3) return r_t((hi(a) == b) && (md(a) == md(b)) && eve::is_eqz(lo(b)));
     }
-    else if constexpr (dimension_v<T1> == 3) return r_t((hi(a) == hi(b)) && (md(a) == md(b)) && (lo(a) == lo(b)));
+    else if constexpr (limbs_v<T1> == 3) return r_t((hi(a) == hi(b)) && (md(a) == md(b)) && (lo(a) == lo(b)));
   }
 
   //! @brief Compares two polyfloat_like for inequality
@@ -102,18 +102,18 @@ namespace plf
   template<concepts::polyfloat_like T1, concepts::polyfloat_like T2> constexpr auto operator!=(T1 const& a, T2 b)
   {
     using r_t = eve::common_logical_t<as_component_type_t<T1>, as_component_type_t<T2>>;
-    if constexpr (dimension_v<T1> > dimension_v<T2>) return b != a;
-    else if constexpr (dimension_v<T1> == 1) //now dimension_v<T1> <=  dimension_v<T2>
+    if constexpr (limbs_v<T1> > limbs_v<T2>) return b != a;
+    else if constexpr (limbs_v<T1> == 1) //now limbs_v<T1> <=  limbs_v<T2>
     {
-      if constexpr (dimension_v<T2> == 1) return r_t(a != b);
-      else if constexpr (dimension_v<T2> >= 2) return r_t(a != hi(b)) || eve::is_nez(md(b));
+      if constexpr (limbs_v<T2> == 1) return r_t(a != b);
+      else if constexpr (limbs_v<T2> >= 2) return r_t(a != hi(b)) || eve::is_nez(md(b));
     }
-    else if constexpr (dimension_v<T1> == 2)
+    else if constexpr (limbs_v<T1> == 2)
     {
-      if constexpr (dimension_v<T2> == 2) return r_t((hi(a) != hi(b)) || (md(a) != md(b)));
-      else if constexpr (dimension_v<T2> == 3) return r_t((hi(a) != b) || (md(a) != md(b)) || eve::is_nez(lo(b)));
+      if constexpr (limbs_v<T2> == 2) return r_t((hi(a) != hi(b)) || (md(a) != md(b)));
+      else if constexpr (limbs_v<T2> == 3) return r_t((hi(a) != b) || (md(a) != md(b)) || eve::is_nez(lo(b)));
     }
-    else if constexpr (dimension_v<T1> == 3) return r_t((hi(a) != hi(b)) || (md(a) != md(b)) || (lo(a) != lo(b)));
+    else if constexpr (limbs_v<T1> == 3) return r_t((hi(a) != hi(b)) || (md(a) != md(b)) || (lo(a) != lo(b)));
   }
 
   //====================================================================================================================
@@ -133,12 +133,12 @@ namespace plf
     using type = as_polyfloat_t<T1, T2>;
     auto aa{plf::convert(a, eve::as<eve::element_type_t<type>>())};
     auto bb{plf::convert(b, eve::as<eve::element_type_t<type>>())};
-    if constexpr (dimension_v<type> == 1) return r_t(aa < bb);
-    else if constexpr (dimension_v<type> == 2)
+    if constexpr (limbs_v<type> == 1) return r_t(aa < bb);
+    else if constexpr (limbs_v<type> == 2)
     {
       return r_t(hi(aa) < hi(bb)) || ((hi(aa) == hi(bb)) && (lo(aa) < lo(bb)));
     }
-    else if constexpr (dimension_v<type> == 3)
+    else if constexpr (limbs_v<type> == 3)
     {
       return r_t((hi(aa) < hi(bb)) || ((hi(aa) == hi(bb)) && (md(aa) < md(bb))) ||
                  ((hi(aa) == hi(bb)) && (md(aa) == md(bb)) && (lo(aa) < lo(bb))));
@@ -152,12 +152,12 @@ namespace plf
     using type = as_polyfloat_t<T1, T2>;
     auto aa{plf::convert(a, eve::as<eve::element_type_t<type>>())};
     auto bb{plf::convert(b, eve::as<eve::element_type_t<type>>())};
-    if constexpr (dimension_v<type> == 1) return aa > bb;
-    else if constexpr (dimension_v<type> == 2)
+    if constexpr (limbs_v<type> == 1) return aa > bb;
+    else if constexpr (limbs_v<type> == 2)
     {
       return (hi(aa) > hi(bb)) || ((hi(aa) == hi(bb)) && (lo(aa) > lo(bb)));
     }
-    else if constexpr (dimension_v<type> == 3)
+    else if constexpr (limbs_v<type> == 3)
     {
       return ((hi(aa) > hi(bb)) || ((hi(aa) == hi(bb)) && (md(aa) > md(bb))) ||
               ((hi(aa) == hi(bb)) && (md(aa) == md(bb)) && (lo(aa) > lo(bb))));

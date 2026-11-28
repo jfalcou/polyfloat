@@ -21,10 +21,10 @@
 //!
 //! @godbolt{doc/core/tut_polyfloat_basics.cpp}
 //!
-//! ## Mixed dimensions
+//! ## Mixed limb counts
 //!
-//! An operation accepts a `float` or a `double` and polyfloat values of different dimensions over
-//! the same base type. The result has the largest dimension of its operands, the missing parts
+//! An operation accepts a `float` or a `double` and polyfloat values of different limbs counts over
+//! the same base type. The result has the largest limbs count of its operands, the missing parts
 //! being zero.
 //!
 //! @godbolt{doc/core/tut_polyfloat_mixed.cpp}
@@ -53,7 +53,7 @@
 //!
 //! **POLYFLOAT** defines two types over a base type `T`, `float` or `double`:
 //!
-//! | Type                      | Dimension | Alias of               |
+//! | Type                      | limbs     | Alias of               |
 //! |---------------------------|-----------|------------------------|
 //! | `plf::double_real_t<T>`   | 2         | `plf::polyfloat<T,2>`  |
 //! | `plf::triple_real_t<T>`   | 3         | `plf::polyfloat<T,3>`  |
@@ -69,9 +69,9 @@
 //! Three concepts classify the operands:
 //!
 //! - plf::concepts::polyfloat_like holds for `float`, `double`, their EVE registers, and the
-//!   polyfloat values, which the functions accept, except a few restricted to some dimensions,
-//! - plf::concepts::polyfloat holds for the values of dimension 2 or more,
-//! - plf::concepts::real holds for `float`, `double`, and their registers, of dimension 1.
+//!   polyfloat values, which the functions accept, except a few restricted to some limbs counts,
+//! - plf::concepts::polyfloat holds for the values of limbs counts 2 or more,
+//! - plf::concepts::real holds for `float`, `double`, and their registers, of limbs count 1.
 //!
 //! # References
 //!

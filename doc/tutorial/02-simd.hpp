@@ -45,9 +45,9 @@
 //! # Generic code
 //!
 //! A [function template](https://en.cppreference.com/w/cpp/language/function_template) accepts
-//! scalars and registers of every dimension with the same body. It is instantiated once for each
+//! scalars and registers of every limbs count with the same body. It is instantiated once for each
 //! argument type, and `energy` below returns a value of the type of its argument, a scalar or a
-//! register, of dimension 1, 2, or 3, with no code written per width or per dimension:
+//! register, of limbs count  1, 2, or 3, with no code written per width or per limbs count:
 //!
 //! @godbolt{doc/core/tut_simd_generic.cpp}
 //!

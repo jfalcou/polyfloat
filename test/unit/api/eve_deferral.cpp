@@ -8,7 +8,7 @@
 #include "test.hpp"
 #include <polyfloat/polyfloat.hpp>
 
-TTS_CASE_WITH("Check that dimension 1 calls go to eve with their options",
+TTS_CASE_WITH("Check that limbs count 1 calls go to eve with their options",
               plf::real_types,
               tts::randoms(-10, 10),
               tts::randoms(-10, 10))
@@ -27,7 +27,7 @@ TTS_CASE_WITH("Check that dimension 1 calls go to eve with their options",
   TTS_EQUAL(plf::is_greater_equal(a0, a1), eve::is_greater_equal(a0, a1));
 };
 
-TTS_CASE_TPL("Check that dimension 1 constants go to eve with their options", plf::real_types)
+TTS_CASE_TPL("Check that limbs count 1 constants go to eve with their options", plf::real_types)
 <typename T>(tts::type<T>)
 {
   TTS_EQUAL(plf::pi(eve::as<T>()), eve::pi(eve::as<T>()));

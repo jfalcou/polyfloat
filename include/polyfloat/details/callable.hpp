@@ -30,7 +30,7 @@ namespace plf
       template<eve::callable_options O, typename... Ts>
       constexpr auto behavior(auto arch, O const& opts, Ts... xs) const
       {
-        if constexpr (((dimension_v<Ts> == 1) && ...)) return eve::functor<Eve>[opts](xs...);
+        if constexpr (((limbs_v<Ts> == 1) && ...)) return eve::functor<Eve>[opts](xs...);
         else return Base::behavior(arch, opts, xs...);
       }
     };
@@ -39,7 +39,7 @@ namespace plf
     {
       template<typename O, typename T> constexpr auto behavior(auto arch, O const& opts, eve::as<T> target) const
       {
-        if constexpr (dimension_v<T> == 1) return eve::functor<Eve>[opts](target);
+        if constexpr (limbs_v<T> == 1) return eve::functor<Eve>[opts](target);
         else return Base::behavior(arch, opts, target);
       }
     };
@@ -54,7 +54,7 @@ namespace plf
   //! @struct elementwise_callable
   //! @brief **POLYFLOAT** counterpart of eve::elementwise_callable.
   //!
-  //! Behaves as eve::elementwise_callable except when all its parameters have a dimension_v equal to 1, in which case
+  //! Behaves as eve::elementwise_callable except when all its parameters have a limbs_v equal to 1, in which case
   //! it forwards to [EVE](https://jfalcou.github.io/eve/) directly.
   //!
   //! @tparam Func          The callable being defined
@@ -71,7 +71,7 @@ namespace plf
   //! @struct strict_tuple_callable
   //! @brief **POLYFLOAT** counterpart of eve::strict_tuple_callable.
   //!
-  //! Behaves as eve::strict_tuple_callable except when all its parameters have a dimension_v equal to 1, in which case
+  //! Behaves as eve::strict_tuple_callable except when all its parameters have a limbs_v equal to 1, in which case
   //! it forwards to [EVE](https://jfalcou.github.io/eve/) directly.
   //!
   //! @tparam Func          The callable being defined
@@ -88,7 +88,7 @@ namespace plf
   //! @struct callable
   //! @brief **POLYFLOAT** counterpart of eve::callable.
   //!
-  //! Behaves as eve::callable except when all its parameters have a dimension_v equal to 1, in which case it forwards
+  //! Behaves as eve::callable except when all its parameters have a limbs_v equal to 1, in which case it forwards
   //! to [EVE](https://jfalcou.github.io/eve/) directly.
   //!
   //! @tparam Func          The callable being defined
@@ -105,7 +105,7 @@ namespace plf
   //! @struct constant_callable
   //! @brief **POLYFLOAT** counterpart of eve::constant_callable.
   //!
-  //! Behaves as eve::constant_callable except when its target type has a dimension_v equal to 1, in which case it
+  //! Behaves as eve::constant_callable except when its target type has a limbs_v equal to 1, in which case it
   //! forwards to [EVE](https://jfalcou.github.io/eve/) directly.
   //!
   //! @tparam Func          The constant being defined

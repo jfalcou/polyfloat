@@ -80,12 +80,12 @@ namespace plf::_
 {
   template<typename Z, eve::callable_options O> constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [h, l] = z;
       return Z(h, eve::next(l));
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto r = Z(h, m, eve::next(l));
@@ -96,12 +96,12 @@ namespace plf::_
   template<typename Z, typename N, eve::callable_options O>
   constexpr auto next_(POLYFLOAT_DELAY(), O const&, Z const& z, N n) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [h, l] = z;
       return Z(h, eve::next(l, n));
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto r = Z(h, m, eve::next(l, n));

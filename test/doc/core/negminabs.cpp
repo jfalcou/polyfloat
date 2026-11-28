@@ -5,7 +5,7 @@
 
 int main()
 {
-  // Each pair mixes values of the same or of different dimensions.
+  // Each pair mixes values of the same or of different limbs counts.
   using plf::negminabs;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);

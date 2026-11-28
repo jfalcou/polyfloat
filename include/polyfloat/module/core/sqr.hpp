@@ -74,7 +74,7 @@ namespace plf::_
 
   template<typename Z, eve::callable_options O> constexpr auto sqr_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [xh, xl] = z;
       auto [p00, e00] = eve::two_prod(xh, xh);
@@ -91,7 +91,7 @@ namespace plf::_
       //       auto [l, h] = eve::two_add[eve::raw](p1, p2);
       //       return Z(l, h);
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [xh, xm, xl] = z;
       auto [p00, e00] = eve::two_prod(xh, xh);

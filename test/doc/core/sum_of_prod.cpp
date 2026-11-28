@@ -5,7 +5,7 @@
 
 int main()
 {
-  // The four arguments mix the dimensions 1, 2, and 3.
+  // The four arguments mix the limbs counts 1, 2, and 3.
   using plf::sum_of_prod;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);

@@ -39,7 +39,7 @@ namespace plf::_
   template<typename T, eve::callable_options O>
   constexpr T Rempio2_limit_(POLYFLOAT_DELAY(), O const&, eve::as<T> const& at) noexcept
   {
-    if constexpr (dimension_v<T> == 1) return eve::Rempio2_limit(at);
+    if constexpr (limbs_v<T> == 1) return eve::Rempio2_limit(at);
     else if constexpr (concepts::polyfloat_like<T>)
     {
       if constexpr (O::contains(eve::quarter_circle)) return plf::prev(pio_4(eve::as<T>()));

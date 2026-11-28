@@ -82,7 +82,7 @@ namespace plf
     template<typename T, eve::callable_options O> constexpr auto two_prod_(POLYFLOAT_DELAY(), O const&, T a, T b)
     {
       auto r0 = a * b;
-      if constexpr (dimension_v<T> == 1)
+      if constexpr (limbs_v<T> == 1)
       {
         auto e0 = if_else(plf::is_not_finite(r0), zero, eve::fma[pedantic](a, b, -r0));
         return eve::zip(r0, e0);

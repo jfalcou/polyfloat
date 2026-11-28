@@ -81,15 +81,15 @@ namespace plf::_
   constexpr auto fma_(POLYFLOAT_DELAY(), O const&, Z1 const& x, Z2 const& y, Z3 const& z) noexcept
   {
     using r_t = as_polyfloat_t<Z1, Z2, Z3>;
-    if constexpr (dimension_v<r_t> == 1) return eve::fma[pedantic](x, y, z);
-    else if constexpr ((dimension_v<Z1> > 2) || (dimension_v<Z2> > 2) || (dimension_v<Z3> > 2))
+    if constexpr (limbs_v<r_t> == 1) return eve::fma[pedantic](x, y, z);
+    else if constexpr ((limbs_v<Z1> > 2) || (limbs_v<Z2> > 2) || (limbs_v<Z3> > 2))
     {
       auto cvt = [](auto a) { return r_t(plf::convert(a, eve::as<eve::element_type_t<r_t>>())); };
 
       auto [xh, xl] = dekker_prod(cvt(x), cvt(y));
       return plf::_::cr_dw_fp_add(xh, xl, cvt(z));
     }
-    else if constexpr ((dimension_v<Z1> == 2) && (dimension_v<Z2> == 2) && (dimension_v<Z3> == 2))
+    else if constexpr ((limbs_v<Z1> == 2) && (limbs_v<Z2> == 2) && (limbs_v<Z3> == 2))
     {
       auto [xhi, xlo] = x;
       auto [yhi, ylo] = y;
@@ -109,7 +109,7 @@ namespace plf::_
       auto [hi, lo] = eve::two_add[eve::raw](vhi, w);
       return r_t(hi, lo);
     }
-    else if constexpr ((dimension_v<Z1> == 1) && (dimension_v<Z2> == 1))
+    else if constexpr ((limbs_v<Z1> == 1) && (limbs_v<Z2> == 1))
     {
       auto [zhi, zlo] = z;
       auto [chi, c1] = eve::two_prod(x, y);

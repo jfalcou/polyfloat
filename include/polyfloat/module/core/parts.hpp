@@ -75,7 +75,7 @@ namespace plf
   //====================================================================================================================
   //! @defgroup plf_md plf::md
   //! @ingroup core
-  //! @brief returns the second part of a value, the low part in dimension 2 and the middle one in dimension 3.
+  //! @brief returns the second part of a value, the low part in limbs count 2 and the middle one in limbs count 3.
   //! @{
   //!   @var md
   //!
@@ -155,8 +155,8 @@ namespace plf
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr decltype(auto) operator()(Z&& z) const noexcept
     {
-      if constexpr (dimension_v<Z> == 1) return extractor<1>{}(z);
-      else return extractor<dimension_v<Z> - 1>{}(z);
+      if constexpr (limbs_v<Z> == 1) return extractor<1>{}(z);
+      else return extractor<limbs_v<Z> - 1>{}(z);
     }
 
     POLYFLOAT_CALLABLE_OBJECT(lo_t, lo_);

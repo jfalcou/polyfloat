@@ -18,7 +18,7 @@ namespace tts
   template<typename T> T to_polyfloat(mpfr::mpreal mpa, eve::as<T>)
   {
     using mu_t = decltype(mpa);
-    if constexpr (plf::dimension_v<T> == 1)
+    if constexpr (plf::limbs_v<T> == 1)
     {
       return T(mpa);
     }
@@ -27,11 +27,11 @@ namespace tts
       using u_t = decltype(plf::hi(T()));
       auto h = u_t(mpa);
       auto m = u_t(mpa - mu_t(h));
-      if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::limbs_v<T> == 2)
       {
         return plf::as_polyfloat_n_t<2, u_t>(h, m);
       }
-      else if constexpr (plf::dimension_v<T> == 3)
+      else if constexpr (plf::limbs_v<T> == 3)
       {
         auto l = u_t(mpa - (mu_t(h) + mu_t(m)));
         return plf::as_polyfloat_n_t<3, u_t>(h, m, l);
@@ -42,18 +42,18 @@ namespace tts
   template<typename T> constexpr auto bitprec()
   {
     using u_t = decltype(plf::hi(T()));
-    if constexpr (plf::dimension_v<T> == 1) return (sizeof(u_t) == 8 ? 53 : 24);
-    if constexpr (plf::dimension_v<T> == 2) return (sizeof(u_t) == 8 ? 104 : 46);
-    else if constexpr (plf::dimension_v<T> == 3) return (sizeof(u_t) == 8 ? 156 : 69);
+    if constexpr (plf::limbs_v<T> == 1) return (sizeof(u_t) == 8 ? 53 : 24);
+    if constexpr (plf::limbs_v<T> == 2) return (sizeof(u_t) == 8 ? 104 : 46);
+    else if constexpr (plf::limbs_v<T> == 3) return (sizeof(u_t) == 8 ? 156 : 69);
   }
 
   template<typename T> auto to_mpreal(T a)
   {
     using mpfr::mpreal;
     mpfr::mpreal::set_default_prec(bitprec<T>() * 10);
-    if constexpr (plf::dimension_v<T> == 1) return mpreal(a);
-    else if constexpr (plf::dimension_v<T> == 2) return mpreal(plf::hi(a)) + mpreal(plf::lo(a));
-    else if constexpr (plf::dimension_v<T> == 3) return mpreal(plf::hi(a)) + mpreal(plf::md(a)) + mpreal(plf::lo(a));
+    if constexpr (plf::limbs_v<T> == 1) return mpreal(a);
+    else if constexpr (plf::limbs_v<T> == 2) return mpreal(plf::hi(a)) + mpreal(plf::lo(a));
+    else if constexpr (plf::limbs_v<T> == 3) return mpreal(plf::hi(a)) + mpreal(plf::md(a)) + mpreal(plf::lo(a));
   }
 
   template<typename T> constexpr auto epsprec()

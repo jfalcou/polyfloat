@@ -32,15 +32,15 @@ namespace plf::concepts
   template<typename T>
   concept polyfloat_like = _::rank<std::remove_cvref_t<T>> != 0;
 
-  //! @brief A polyfloat_like of dimension at most two, a real or a value of dimension 2.
+  //! @brief A polyfloat_like of limbs count at most two, a real or a value of limbs count 2.
   template<typename T>
   concept doublereal_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 2;
 
-  //! @brief A polyfloat_like of dimension at most three.
+  //! @brief A polyfloat_like of limbs count at most three.
   template<typename T>
   concept triplereal_like = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> <= 3;
 
-  //! @brief A polyfloat_like of dimension 2 or more, which excludes the reals.
+  //! @brief A polyfloat_like of limbs count 2 or more, which excludes the reals.
   template<typename T>
   concept polyfloat = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> > 1;
 
@@ -48,7 +48,7 @@ namespace plf::concepts
   template<typename T>
   concept scalar_polyfloat = polyfloat<T> && eve::scalar_value<T>;
 
-  //! @brief A polyfloat_like of dimension one, a scalar integer or a floating-point scalar or register.
+  //! @brief A polyfloat_like of limbs count one, a scalar integer or a floating-point scalar or register.
   template<typename T>
   concept real = polyfloat_like<T> && _::rank<std::remove_cvref_t<T>> == 1;
 

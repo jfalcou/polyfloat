@@ -15,7 +15,7 @@ namespace plf
   {
     template<concepts::polyfloat V, concepts::scalar_polyfloat Tgt>
     POLYFLOAT_ABI constexpr eve::as_wide_as_t<Tgt, V> operator()(V v, as<Tgt> tgt) const noexcept
-    requires(dimension_v<V> <= dimension_v<Tgt>)
+    requires(limbs_v<V> <= limbs_v<Tgt>)
     {
       return POLYFLOAT_CALL(v, tgt);
     }
@@ -96,7 +96,7 @@ namespace plf::_
         auto vr = eve::convert(v, eve::as<eve::underlying_type_t<Z>>());
         return type{plf::convert(vr, eve::as<eve::element_type_t<Z>>{})};
       }
-      else if constexpr (dimension_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
+      else if constexpr (limbs_v<T> == 1ULL) return type{eve::convert(v, plf::as<plf::as_component_type_t<Z>>{})};
       else
       {
         using u_t = as_component_type_t<Z>;

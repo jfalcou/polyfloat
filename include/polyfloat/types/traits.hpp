@@ -56,30 +56,30 @@ namespace plf
   //====================================================================================================================
 
   //====================================================================================================================
-  //! @brief Obtains the dimension of a type, the number of its parts.
+  //! @brief Obtains the limbs count of a type, the number of its limbs.
   //!
-  //! If `T` satisfies plf::concepts::polyfloat, evaluates to the number of parts of a
-  //! poly-float. If `T` is another product type, evaluates to the largest dimension of its elements.
+  //! If `T` satisfies plf::concepts::polyfloat, evaluates to the number of limbs of a
+  //! poly-float. If `T` is another product type, evaluates to the largest limbs count of its elements.
   //!
   //! @tparam T Type to analyze.
   //====================================================================================================================
 
 #if !defined(POLYFLOAT_DOXYGEN_INVOKED)
-  template<typename T> inline constexpr unsigned int dimension_v = 1;
+  template<typename T> inline constexpr unsigned int limbs_v = 1;
 #else
-  template<typename T> inline constexpr unsigned int dimension_v = *implementation - defined*;
+  template<typename T> inline constexpr unsigned int limbs_v = *implementation - defined*;
 #endif
 
   template<concepts::polyfloat T>
-  inline constexpr auto dimension_v<T> = eve::element_type_t<std::remove_cvref_t<T>>::static_dimension;
+  inline constexpr auto limbs_v<T> = eve::element_type_t<std::remove_cvref_t<T>>::static_dimension;
 
-  template<typename T> inline constexpr auto dimension_v<eve::as<T>> = dimension_v<T>;
+  template<typename T> inline constexpr auto limbs_v<eve::as<T>> = limbs_v<T>;
 
 #if !defined(POLYFLOAT_DOXYGEN_INVOKED)
   template<typename T>
   requires(kumi::concepts::product_type<T> && !concepts::polyfloat<T>)
-  inline constexpr unsigned int dimension_v<T> = []<std::size_t... I>(std::index_sequence<I...>) {
-    return std::max({1u, dimension_v<kumi::element_t<I, T>>...});
+  inline constexpr unsigned int limbs_v<T> = []<std::size_t... I>(std::index_sequence<I...>) {
+    return std::max({1u, limbs_v<kumi::element_t<I, T>>...});
   }(std::make_index_sequence<kumi::size_v<T>>{});
 #endif
 
@@ -140,16 +140,16 @@ namespace plf
 #endif
 
   //====================================================================================================================
-  //! @brief Computes a Poly-Float type of a given dimension
+  //! @brief Computes a Poly-Float type of a given limbs_v
   //!
-  //! @tparam Dim Dimension of the Poly-Float to use.
+  //! @tparam Dim limbs count of the Poly-Float to use.
   //! @tparam Ts  Types used to compute the Poly-Float underlying type.
   //====================================================================================================================
   template<unsigned int Dim, typename... Ts> using as_polyfloat_n_t = typename as_polyfloat_n<Dim, Ts...>::type;
 
   template<typename... Ts>
-  requires(requires(Ts... ts) { typename as_polyfloat_n<std::max({dimension_v<Ts>...}), Ts...>::type; })
-  struct as_polyfloat : as_polyfloat_n<std::max({dimension_v<Ts>...}), Ts...>
+  requires(requires(Ts... ts) { typename as_polyfloat_n<std::max({limbs_v<Ts>...}), Ts...>::type; })
+  struct as_polyfloat : as_polyfloat_n<std::max({limbs_v<Ts>...}), Ts...>
   {
   };
 }
@@ -170,7 +170,7 @@ namespace plf
 
   template<auto Callable, typename... Ts>
   using expected_result_t =
-    as_polyfloat_n_t<std::max({dimension_v<Ts>...}), decltype(Callable(std::declval<as_component_type_t<Ts>>()...))>;
+    as_polyfloat_n_t<std::max({limbs_v<Ts>...}), decltype(Callable(std::declval<as_component_type_t<Ts>>()...))>;
 
   using eve::as;
 

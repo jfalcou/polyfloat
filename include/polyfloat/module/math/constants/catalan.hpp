@@ -20,14 +20,14 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::limbs_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>)
           return plf::_::from_pair<u_t>(0x1.d4f9720000000p-1, -0x1.82fd940000000p-26);
         else if constexpr (std::same_as<u_t, double>)
           return plf::_::from_pair<u_t>(0x1.d4f9713e8135dp-1, 0x1.1485608b8df4dp-58);
       }
-      else if constexpr (plf::dimension_v<T> == 3)
+      else if constexpr (plf::limbs_v<T> == 3)
       {
         if constexpr (std::same_as<u_t, float>)
           return plf::_::from_triple<u_t>(0x1.d4f9720000000p-1, -0x1.82fd940000000p-26, -0x1.7badea0000000p-52);

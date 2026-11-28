@@ -13,7 +13,7 @@ namespace plf::_
   {
     using u_t = eve::underlying_type_t<T>;
     //   using e_t =  eve::element_type_t<T>;
-    if constexpr (dimension_v<T> == 1)
+    if constexpr (limbs_v<T> == 1)
     {
       if constexpr (std::same_as<u_t, float>)
       {
@@ -36,7 +36,7 @@ namespace plf::_
         return kumi::tuple{double(0x1.921f800000000p+0), double(0x1.aa22000000000p-19), double(0x1.68c234c4c6629p-39)};
       }
     }
-    else if constexpr (dimension_v<T> == 2)
+    else if constexpr (limbs_v<T> == 2)
     {
       if constexpr (std::same_as<u_t, float>)
       {
@@ -64,7 +64,7 @@ namespace plf::_
                            from_pair<double>(0x1.1a62633145c07p-54, -0x1.f1976b7ed8fbcp-110)};
       }
     }
-    else if constexpr (dimension_v<T> == 3)
+    else if constexpr (limbs_v<T> == 3)
     {
       if constexpr (std::same_as<u_t, float>)
       {

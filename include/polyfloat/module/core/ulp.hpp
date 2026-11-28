@@ -80,12 +80,12 @@ namespace plf::_
   {
     //     if constexpr(O::contains(plf::structural))
     //     {
-    //       if constexpr (dimension_v<Z> == 2)
+    //       if constexpr (limbs_v<Z> == 2)
     //       {
     //         auto [h, l] = z;
     //         return if_else(is_nez(l), ulp(l), ulp(h));
     //       }
-    //       else if constexpr (dimension_v<Z> == 3)
+    //       else if constexpr (limbs_v<Z> == 3)
     //       {
     //         auto [h, m, l] = z;
     //         return plf::if_else(eve::is_nez(l), eve::ulp(l), plf::if_else(eve::is_nez(m), eve::ulp(m), eve::ulp(h)));

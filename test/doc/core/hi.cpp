@@ -5,7 +5,7 @@
 
 int main()
 {
-  // Parts of values of dimensions 2 and 3, and of registers of them.
+  // Parts of values of limbs counts 2 and 3, and of registers of them.
   // Each argument is under half an ulp of the one before it, so the parts stay as written.
   using plf::hi;
   using plf::lo;

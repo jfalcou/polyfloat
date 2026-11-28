@@ -1,7 +1,7 @@
 #include <iostream>
 #include <polyfloat/polyfloat.hpp>
 
-// One body for a scalar or a register, of any dimension.
+// One body for a scalar or a register, of any limbs count.
 auto energy(auto z)
 {
   return plf::sqr(z) + plf::exp(z);

@@ -87,8 +87,8 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   constexpr auto is_not_flint_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2) return eve::is_not_flint(lo(z)) || eve::is_not_flint(hi(z));
-    else if constexpr (dimension_v<Z> == 3)
+    if constexpr (limbs_v<Z> == 2) return eve::is_not_flint(lo(z)) || eve::is_not_flint(hi(z));
+    else if constexpr (limbs_v<Z> == 3)
       return eve::is_not_flint(lo(z)) || eve::is_not_flint(md(z)) || (eve::is_not_flint(hi(z)));
   }
 }

@@ -33,7 +33,7 @@ namespace plf
     {
       using element_t = eve::element_type_t<T>;
       using base_t = as_component_type_t<element_t>;
-      constexpr std::size_t n = dimension_v<element_t>;
+      constexpr std::size_t n = limbs_v<element_t>;
 
       char const between = this->options()[separator | '\''];
       auto read = [&](std::string_view text) { return _::decimal::parse_parts<base_t, n>(text, between); };

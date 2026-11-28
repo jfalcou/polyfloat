@@ -10,7 +10,7 @@
 
 int main()
 {
-  // Each constant takes the type of its result, here a value of dimension 2 and a register of dimension 3.
+  // Each constant takes the type of its result, here a value of limbs count 2 and a register of limbs count 3.
   using d2_t = plf::double_real_t<double>;
   using wf3_t = eve::wide<plf::triple_real_t<float>>;
   std::cout << std::hexfloat;

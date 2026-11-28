@@ -89,13 +89,13 @@ namespace plf::_
       n = plf::dec[oddn](n);
       return ldexp(rsqrt[eve::raw](zz), -n / 2);
     }
-    else if constexpr (dimension_v<Z> == 2)
+    else if constexpr (limbs_v<Z> == 2)
     {
       auto x0 = eve::rsqrt(plf::hi(z));
       Z x1 = x0 * (th - z * (h * eve::sqr(x0)));
       return x1 * (th - h * plf::sqr(x1) * z);
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto x0 = eve::rsqrt(plf::hi(z));
       Z x1 = x0 * (th - z * (h * eve::sqr(x0)));

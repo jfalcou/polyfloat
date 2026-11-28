@@ -5,7 +5,7 @@
 
 int main()
 {
-  // The three arguments mix the dimensions 1, 2, and 3.
+  // The three arguments mix the limbs counts 1, 2, and 3.
   using plf::fam;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);

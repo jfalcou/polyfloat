@@ -16,7 +16,7 @@ template<typename aT> auto mk(auto mval, aT)
 
 template<typename T> void print(T a)
 {
-  constexpr auto dim = plf::dimension_v<T>;
+  constexpr auto dim = plf::limbs_v<T>;
   using u_t = plf::as_component_type_t<T>;
   if constexpr (dim == 1)
   {

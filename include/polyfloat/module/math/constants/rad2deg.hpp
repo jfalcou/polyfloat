@@ -19,18 +19,18 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 1)
+      if constexpr (plf::limbs_v<T> == 1)
       {
         return 180 / eve::pi(eve::as(u_t()));
       }
-      if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::limbs_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>)
           return plf::_::from_pair<u_t>(0x1.ca5dc20000000p+5, -0x1.670f820000000p-21);
         else if constexpr (std::same_as<u_t, double>)
           return plf::_::from_pair<u_t>(0x1.ca5dc1a63c1f8p+5, -0x1.1e7ab456405f9p-49);
       }
-      else if constexpr (plf::dimension_v<T> == 3)
+      else if constexpr (plf::limbs_v<T> == 3)
       {
         if constexpr (std::same_as<u_t, float>)
           return plf::_::from_triple<u_t>(0x1.ca5dc20000000p+5, -0x1.670f820000000p-21, -0x1.1e7ab40000000p-49);

@@ -21,12 +21,12 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
 
-      if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::limbs_v<T> == 2)
       {
         if constexpr (sizeof(u_t) == 8) return plf::_::from_pair<u_t>(0x1.6a09e667f3bcdp+0, -0x1.bdd3413b26456p-54);
         else return plf::_::from_pair<u_t>(0x1.6a09e6p+0, 0x1.9fcef4p-26);
       }
-      else if constexpr (plf::dimension_v<T> == 3)
+      else if constexpr (plf::limbs_v<T> == 3)
       {
         if constexpr (sizeof(u_t) == 8)
           return plf::_::from_triple<u_t>(0x1.6a09e667f3bcdp+0, -0x1.bdd3413b26456p-54, 0x1.57d3e3adec175p-108);
