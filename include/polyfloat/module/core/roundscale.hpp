@@ -35,15 +35,16 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(roundscale_t, roundscale_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_roundscale plf::roundscale
+  //! @ingroup core
+  //! @brief return the value rounded to \f$n\f$ binary digits after the point, \f$2^{-n}\mathrm{round}(2^n x)\f$.
   //! @{
   //!   @var roundscale
-  //!   @brief return the value rounded to \f$n\f$ binary digits after the point, \f$2^{-n}\mathrm{round}(2^n x)\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core/roundscale.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
