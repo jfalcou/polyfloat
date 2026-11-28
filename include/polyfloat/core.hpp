@@ -11,10 +11,10 @@
 //! @defgroup core Core functions
 //! @brief Arithmetic, rounding, comparison, and classification of polyfloat values.
 //!
-//! The core functions involve no transcendental computation, except plf::sqrt and plf::rsqrt.
+//! The core functions involve only arithmetic computations. plf::sqrt and plf::rsqrt are computed using newton-Raphson iterations.
 //!
-//! @note The predicates of one argument and the comparisons to zero, except plf::is_even, plf::is_odd, and
-//! plf::is_flint, test the high part alone, and are faster than the predicates of two arguments.
+//! @note The predicates of one argument, except plf::is_even, plf::is_odd, and
+//! plf::is_flint, only test the high part, and are faster than the predicates of two arguments.
 //======================================================================================================================
 
 //======================================================================================================================
