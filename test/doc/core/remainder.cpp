@@ -5,7 +5,7 @@
 
 int main()
 {
-  // The divisor is smaller than the dividend, of the same or of a lower dimension.
+  // The divisor is smaller than the dividend, of the same or of a lower limbs count.
   using plf::remainder;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);

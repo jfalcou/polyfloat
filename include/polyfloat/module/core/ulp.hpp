@@ -11,14 +11,17 @@
 #include <polyfloat/types/concepts.hpp>
 #include <polyfloat/types/traits.hpp>
 #include <type_traits>
-#include <polyfloat/module/core/minus.hpp>
-#include <polyfloat/module/core/is_negative.hpp>
+#include <polyfloat/module/core/is_nez.hpp>
 
 namespace plf
 {
 
   template<typename Options>
-  struct ulp_t : plf::elementwise_callable<ulp_t, eve::ulp_t, Options, raw_option, pedantic_option>
+  struct ulp_t : plf::elementwise_callable<ulp_t,
+                                           eve::ulp_t,
+                                           Options,
+                                           raw_option,
+                                           pedantic_option> //, effective_option, structural_option>
   {
     template<concepts::polyfloat_like Z> POLYFLOAT_ABI constexpr Z operator()(Z z) const noexcept
     {
@@ -28,15 +31,16 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(ulp_t, ulp_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_ulp plf::ulp
+  //! @ingroup core
+  //! @brief return the effective unit in the last place of the value.
   //! @{
   //!   @var ulp
-  //!   @brief return the unit in the last place of the value.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <polyfloat/module/core/ulp.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
@@ -44,7 +48,9 @@ namespace plf
   //!   @code
   //!   namespace plf
   //!   {
-  //!      template<concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;
+  //!      template<concepts::polyfloat_like T> constexpr auto ulp(T z) noexcept;                //1
+  //!      template<concepts::polyfloat_like T> constexpr auto ulp[effective](T z) noexcept;     //1
+  //!      template<concepts::polyfloat_like T> constexpr auto ulp[structural](T z) noexcept;    //2
   //!   }
   //!   @endcode
   //!
@@ -54,7 +60,8 @@ namespace plf
   //!
   //!   **Return value**
   //!
-  //!     Returns the unit in the last place of `z`.
+  //!     1. Returns the effective unit in the last place of `z`.
+  //!     2. Returns the structural unit in the last place of `z`.
   //!
   //!  @groupheader{Example}
   //!
@@ -71,15 +78,22 @@ namespace plf::_
 {
   template<typename Z, eve::callable_options O> constexpr auto ulp_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    //     if constexpr(O::contains(plf::structural))
+    //     {
+    //       if constexpr (limbs_v<Z> == 2)
+    //       {
+    //         auto [h, l] = z;
+    //         return if_else(is_nez(l), ulp(l), ulp(h));
+    //       }
+    //       else if constexpr (limbs_v<Z> == 3)
+    //       {
+    //         auto [h, m, l] = z;
+    //         return plf::if_else(eve::is_nez(l), eve::ulp(l), plf::if_else(eve::is_nez(m), eve::ulp(m), eve::ulp(h)));
+    //       }
+    //     }
+    //     else
     {
-      auto [h, l] = z;
-      return if_else(is_nez(l), ulp(l), ulp(h));
-    }
-    else if constexpr (dimension_v<Z> == 3)
-    {
-      auto [h, m, l] = z;
-      return plf::if_else(eve::is_nez(l), eve::ulp(l), plf::if_else(eve::is_nez(m), eve::ulp(m), eve::ulp(h)));
+      return exp2n(exponent(hi(x) - nbmantissabits(as(z)) + 1));
     }
   }
 }

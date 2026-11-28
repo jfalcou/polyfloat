@@ -11,7 +11,7 @@ namespace plf::_
 {
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& plus_equal(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> == 2u) && (dimension_v<T2> == 1u)
+  requires(limbs_v<T1> == 2u) && (limbs_v<T2> == 1u)
   {
     auto [xhi, xlo] = self;
     auto [a, b] = eve::two_add(xhi, other);
@@ -27,7 +27,7 @@ namespace plf::_
 
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& plus_equal(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> == 2u) && (dimension_v<T2> == 2u)
+  requires(limbs_v<T1> == 2u) && (limbs_v<T2> == 2u)
   {
     auto [xhi, xlo] = self;
     auto [yhi, ylo] = other;
@@ -44,7 +44,7 @@ namespace plf::_
 
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& plus_equal(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> == 3u) && (dimension_v<T2> == 1u)
+  requires(limbs_v<T1> == 3u) && (limbs_v<T2> == 1u)
   {
     auto [xhi, xmd, xlo] = self;
     auto yhi = other;
@@ -66,7 +66,7 @@ namespace plf::_
 
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& plus_equal(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> == 3u) && (dimension_v<T2> == 2u)
+  requires(limbs_v<T1> == 3u) && (limbs_v<T2> == 2u)
   {
     auto [xhi, xmd, xlo] = self;
     auto [yhi, ymd] = other;
@@ -92,7 +92,7 @@ namespace plf::_
 
   template<typename T1, typename T2>
   POLYFLOAT_ABI T1& plus_equal(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> == 3u) && (dimension_v<T2> == 3u)
+  requires(limbs_v<T1> == 3u) && (limbs_v<T2> == 3u)
   {
     auto [xhi, xmd, xlo] = self;
     auto [yhi, ymd, ylo] = other;

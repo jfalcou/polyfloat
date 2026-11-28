@@ -21,7 +21,7 @@ namespace plf
     POLYFLOAT_ABI static constexpr eve::as_integer_t<as_component_type_t<T>> value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      return (eve::nbmantissabits(eve::as<u_t>()) + 1) * dimension_v<T>;
+      return (eve::nbmantissabits(eve::as<u_t>()) + 1) * limbs_v<T>;
     }
 
     template<concepts::polyfloat_like T>

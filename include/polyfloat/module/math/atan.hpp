@@ -99,7 +99,7 @@ namespace plf::_
       T r(eve::atan(plf::hi(axxx)));
       auto t = plf::tan[quarter_circle](r);
       r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));
-      if constexpr (dimension_v<T> == 2)
+      if constexpr (limbs_v<T> == 2)
       {
         r = if_else(thresh && invax, pio_4(eve::as(a0)) + r, r);
         r = if_else(thresh && !invax, pio_4(eve::as(a0)) - r, r);
@@ -107,7 +107,7 @@ namespace plf::_
         r = if_else(a0pos, r, -r);
         return r;
       }
-      else if constexpr (dimension_v<T> == 3)
+      else if constexpr (limbs_v<T> == 3)
       {
         t = plf::tan[quarter_circle](r);
         r -= (t - axxx) * plf::rec(plf::inc(plf::sqr(t)));

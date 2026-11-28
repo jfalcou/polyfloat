@@ -30,7 +30,7 @@ namespace plf
   /// Adds the polyfloat value `other` to `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator+=(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> >= dimension_v<T2>)
+  requires(limbs_v<T1> >= limbs_v<T2>)
   {
     if constexpr (eve::integral_value<T2>) return self += eve::convert(other, eve::as(eve::underlying_type_t<T1>()));
     else
@@ -42,7 +42,7 @@ namespace plf
   /// Subtracts the polyfloat value `other` from `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr auto& operator-=(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> >= dimension_v<T2>)
+  requires(limbs_v<T1> >= limbs_v<T2>)
   {
     return _::plus_equal(self, -other); //self += -other;
   }
@@ -50,7 +50,7 @@ namespace plf
   /// Multiply the polyfloat value `other` to `self` and returns the new value of `self`.
   template<concepts::polyfloat T1, concepts::polyfloat_like T2>
   constexpr T1& operator*=(T1& self, T2 other) noexcept
-  requires(dimension_v<T1> >= dimension_v<T2>)
+  requires(limbs_v<T1> >= limbs_v<T2>)
   {
     if constexpr (eve::integral_value<T2>) return self *= eve::convert(other, eve::as(eve::underlying_type_t<T1>()));
     else
@@ -70,7 +70,7 @@ namespace plf
   {
     template<concepts::polyfloat_like T> auto rec(T a) noexcept
     {
-      if constexpr (dimension_v<T> == 1 && std::is_floating_point_v<T>) return eve::rec[pedantic](a);
+      if constexpr (limbs_v<T> == 1 && std::is_floating_point_v<T>) return eve::rec[pedantic](a);
       else
       {
         a = eve::if_else(eve::is_denormal(hi(a)), T(hi(a) * eve::zero(as(hi(a)))), a);
@@ -82,14 +82,14 @@ namespace plf
         using u_t = eve::element_type_t<T>;
         constexpr u_t t(2);
 
-        if constexpr (dimension_v<T> == 2)
+        if constexpr (limbs_v<T> == 2)
         {
           auto a0 = plf::hi(a);
           auto x0 = eve::rec[pedantic](a0);
           auto x1 = x0 * (t - a * x0);
           return correct(x1);
         }
-        else if constexpr (dimension_v<T> == 3)
+        else if constexpr (limbs_v<T> == 3)
         {
           auto a0 = plf::_::from_pair(plf::hi(a), plf::md(a));
           auto x0 = plf::_::rec(a0);

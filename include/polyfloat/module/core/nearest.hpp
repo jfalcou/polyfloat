@@ -72,6 +72,6 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   constexpr auto nearest_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> >= 2) return trunc(z + eve::copysign(eve::half(eve::as(hi(z))), hi(z)));
+    if constexpr (limbs_v<Z> >= 2) return trunc(z + eve::copysign(eve::half(eve::as(hi(z))), hi(z)));
   }
 }

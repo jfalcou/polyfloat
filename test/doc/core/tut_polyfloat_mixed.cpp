@@ -10,6 +10,6 @@ int main()
 
   auto r = x + y * z;
 
-  std::cout << "x + y * z = " << r << "\n";
-  std::cout << "dimension = " << plf::dimension_v<decltype(r)> << "\n";
+  std::cout << "x + y * z   = " << r << "\n";
+  std::cout << "limbs count = " << plf::limbs_v<decltype(r)> << "\n";
 }

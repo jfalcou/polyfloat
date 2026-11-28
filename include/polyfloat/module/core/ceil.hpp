@@ -73,7 +73,7 @@ namespace plf::_
 {
   template<typename Z, eve::callable_options O> constexpr auto ceil_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [h, l] = z;
 
@@ -83,7 +83,7 @@ namespace plf::_
       auto z1 = if_else(!iflh, Z(ch), Z(ch, ceil(l)));
       return if_else(iflh && ifll, z, z1);
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [h, m, l] = z;
       auto iflh = eve::is_flint(h);

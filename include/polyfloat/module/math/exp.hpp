@@ -78,7 +78,7 @@ namespace plf::_
     xx = plf::if_else(out_of_range, inf, xx);
     auto x = plf::if_else(out_of_range || nan, zero, xx);
 
-    constexpr int shift = dimension_v<T> == 2 ? -6 : -16;
+    constexpr int shift = limbs_v<T> == 2 ? -6 : -16;
     constexpr u_t p = 1ul << (-shift);
     auto e = plf::euler(eve::as<eve::element_type_t<T>>());
     auto n = plf::hi(nearest(x));

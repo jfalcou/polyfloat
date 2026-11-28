@@ -22,11 +22,11 @@ TTS_CASE_WITH(
     auto loodd = eve::is_odd(lo(z));
     auto loeqz = eve::is_eqz(lo(z));
 
-    if constexpr (plf::dimension_v<Z> == 2)
+    if constexpr (plf::limbs_v<Z> == 2)
     {
       return t && ((hiodd && loeqz) || (loodd && !loeqz));
     }
-    else if constexpr (plf::dimension_v<Z> == 3)
+    else if constexpr (plf::limbs_v<Z> == 3)
     {
       auto mdeqz = eve::is_eqz(md(z));
       auto mdodd = eve::is_odd(md(z));

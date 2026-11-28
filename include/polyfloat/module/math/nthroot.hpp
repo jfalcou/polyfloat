@@ -102,7 +102,7 @@ namespace plf::_
     r_t r(eve::pow[o](plf::abs(plf::hi(xx)), eve::rec[pedantic](hi(nn))));
     auto dn = plf::dec(nn);
     r = (r * dn + xx * plf::pown(r, -dn)) / nn;
-    if constexpr (dimension_v<T> == 3)
+    if constexpr (limbs_v<T> == 3)
     {
       r = (r * dn + xx * plf::pown(r, -dn)) / nn;
     }

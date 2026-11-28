@@ -67,7 +67,7 @@ namespace plf
     /// Constructs a value from a product type of `N` parts, taken as they are, without normalization.
     constexpr polyfloat(eve::sized_product_type<N> auto const& vs) : contents{vs} {}
 
-    /// Constructs a value from a polyfloat of the same base type and of dimension 2 to `N`, the missing parts zero.
+    /// Constructs a value from a polyfloat of the same base type and of limbs count 2 to `N`, the missing parts zero.
     template<unsigned int M>
     requires(M > 1 && M <= N)
     constexpr polyfloat(polyfloat<Type, M> const& a) noexcept
@@ -144,9 +144,9 @@ namespace plf
   //   template<eve::product_type Tuple>
   //   polyfloat(Tuple const&) -> polyfloat<kumi::element_t<0, Tuple>, kumi::size_v<Tuple>>;
 
-  /// Deduces dimension 2 from one value.
+  /// Deduces limbs count 2 from one value.
   template<typename T0, std::convertible_to<T0>... Ts> polyfloat(T0) -> polyfloat<T0, 2u>;
-  /// Deduces the dimension from the number of values, two or three.
+  /// Deduces the limb count from the number of values, two or three.
   template<typename T0, std::convertible_to<T0>... Ts> polyfloat(T0, Ts...) -> polyfloat<T0, 1 + sizeof...(Ts)>;
   //====================================================================================================================
   //! @}

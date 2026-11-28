@@ -20,12 +20,12 @@ namespace plf
     {
       using u_t = eve::underlying_type_t<T>;
       auto vlm = eve::valmax(eve::as<u_t>());
-      if constexpr (dimension_v<T> == 2)
+      if constexpr (limbs_v<T> == 2)
       {
         auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
         return plf::_::from_pair(vlm, eve::ldexp(vlm, mnbts));
       }
-      else if constexpr (dimension_v<T> == 3)
+      else if constexpr (limbs_v<T> == 3)
       {
         auto mnbts = -plf::effective_mantissa_bits(eve::as<u_t>());
         return plf::_::from_triple(vlm, eve::ldexp(vlm, mnbts), eve::ldexp(vlm, 2 * mnbts - 1));

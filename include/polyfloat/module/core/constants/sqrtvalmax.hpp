@@ -22,12 +22,12 @@ namespace plf
     template<typename T> POLYFLOAT_ABI static constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      if constexpr (dimension_v<T> == 2)
+      if constexpr (limbs_v<T> == 2)
       {
         if constexpr (sizeof(u_t) == 8) return plf::_::from_pair<u_t>(0x1p+512, -0x1p+405);
         else return plf::_::from_pair<u_t>(0x1p+64, -0x1p+15);
       }
-      else if constexpr (dimension_v<T> == 3)
+      else if constexpr (limbs_v<T> == 3)
       {
         if constexpr (sizeof(u_t) == 8) return plf::_::from_triple<u_t>(0x1p+512, -0x1p+352, -0x1p+191);
         else return plf::_::from_triple<u_t>(0x1p+64, -0x1p-9, -0x1p-83);

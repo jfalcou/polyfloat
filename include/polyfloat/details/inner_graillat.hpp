@@ -28,16 +28,16 @@ namespace plf::_
   template<typename Z> constexpr auto inner_is_normalized(Z const& z) noexcept
   {
     auto eqnum = eve::is_equal[eve::numeric];
-    if constexpr (plf::dimension_v<Z> == 1)
+    if constexpr (plf::limbs_v<Z> == 1)
     {
       return eve::true_(eve::as(z));
     }
-    else if constexpr (plf::dimension_v<Z> == 2)
+    else if constexpr (plf::limbs_v<Z> == 2)
     {
       auto [h, l] = z;
       return eqnum(h + l, h);
     }
-    else if constexpr (plf::dimension_v<Z> == 3)
+    else if constexpr (plf::limbs_v<Z> == 3)
     {
       auto [h, m, l] = z;
       return eqnum(h + m, h) && eqnum(m + l, m);

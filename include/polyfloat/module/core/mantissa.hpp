@@ -87,12 +87,12 @@ namespace plf
     {
       auto n = plf::exponent(z);
       auto h = eve::ldexp[o](hi(z), -n);
-      if constexpr (dimension_v<Z> == 2)
+      if constexpr (limbs_v<Z> == 2)
       {
         auto l = eve::ldexp[o](lo(z), -n);
         return plf::_::from_pair(h, l);
       }
-      else if constexpr (dimension_v<Z> == 3)
+      else if constexpr (limbs_v<Z> == 3)
       {
         auto m = eve::ldexp[o](md(z), -n);
         auto l = eve::ldexp[o](lo(z), -n);

@@ -35,21 +35,22 @@ namespace plf
   };
 
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_ldexp plf::ldexp
+  //! @ingroup core
+  //! @brief computes \f$\textstyle x 2^n\f$.
   //! @{
   //!   @var ldexp
-  //!   @brief computes \f$\textstyle x 2^n\f$.
   //!
   //!   @groupheader{Header file}
   //!
   //!   @code
-  //!   #include <eve/module/module/core.hpp>
+  //!   #include <polyfloat/polyfloat.hpp>
   //!   @endcode
   //!
   //!   @groupheader{Callable Signatures}
   //!
   //!   @code
-  //!   namespace eve
+  //!   namespace plf
   //!   {
   //!      // Regular overload
   //!      constexpr auto ldexp(floating_value auto x, integral_value N)                           noexcept; // 1
@@ -86,6 +87,7 @@ namespace plf
   //!  @groupheader{Example}
   //!  @godbolt{doc/core/ldexp.cpp}
   //================================================================================================
+
   inline constexpr auto ldexp = eve::functor<ldexp_t>;
   //================================================================================================
   //! @}
@@ -97,7 +99,7 @@ namespace plf::_
   template<typename Z, typename N, eve::callable_options O>
   constexpr auto ldexp_(POLYFLOAT_DELAY(), O const& o, Z const& z, N const& n) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [zh, zl] = z;
       auto h = eve::ldexp[o](zh, n);
@@ -106,7 +108,7 @@ namespace plf::_
       EVE_ASSERT(eve::all(is_normalized(r)), "output of ldexp is not normalized");
       return r;
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [zh, zm, zl] = z;
       auto h = eve::ldexp[o](zh, n);

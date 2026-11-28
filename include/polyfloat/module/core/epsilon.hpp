@@ -73,12 +73,12 @@ namespace plf::_
   template<typename Z, eve::callable_options O>
   constexpr auto epsilon_(POLYFLOAT_DELAY(), O const&, Z const& z) noexcept
   {
-    if constexpr (dimension_v<Z> == 2)
+    if constexpr (limbs_v<Z> == 2)
     {
       auto [h, l] = z;
       return if_else(eve::is_nez(l), eve::epsilon(l), eve::epsilon(eve::sulp(h)));
     }
-    else if constexpr (dimension_v<Z> == 3)
+    else if constexpr (limbs_v<Z> == 3)
     {
       auto [h, m, l] = z;
       return plf::if_else(

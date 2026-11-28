@@ -20,19 +20,19 @@ namespace plf
     {
       using u_t = plf::as_component_type_t<T>;
       if constexpr (std::integral<T>) return T(1);
-      else if constexpr (plf::dimension_v<u_t> == 1)
+      else if constexpr (plf::limbs_v<u_t> == 1)
       {
         if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p10);
         else if constexpr (std::same_as<u_t, float>) return u_t(0x1p23);
         else if constexpr (std::same_as<u_t, double>) return u_t(0x1p52);
       }
-      else if constexpr (plf::dimension_v<u_t> == 2)
+      else if constexpr (plf::limbs_v<u_t> == 2)
       {
         if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p20);
         else if constexpr (std::same_as<u_t, float>) return u_t(0x1p46);
         else if constexpr (std::same_as<u_t, double>) return u_t(0x1p104);
       }
-      else if constexpr (plf::dimension_v<u_t> == 3)
+      else if constexpr (plf::limbs_v<u_t> == 3)
       {
         if constexpr (std::same_as<u_t, eve::float16_t>) return u_t(0x1p30);
         else if constexpr (std::same_as<u_t, float>) return u_t(0x1p69);

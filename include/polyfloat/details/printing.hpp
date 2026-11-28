@@ -23,18 +23,18 @@ namespace plf::_
   {
     using u_t = eve::underlying_type_t<T>;
     using mu_t = decltype(mpa);
-    if constexpr (plf::dimension_v<T> == 1)
+    if constexpr (plf::limbs_v<T> == 1)
     {
       auto h = u_t(mpa);
       return h;
     }
-    else if constexpr (plf::dimension_v<T> == 2)
+    else if constexpr (plf::limbs_v<T> == 2)
     {
       auto h = u_t(mpa);
       auto l = u_t(mpa - mu_t(h));
       return plf::as_polyfloat_n_t<2, u_t>(h, l);
     }
-    else if constexpr (plf::dimension_v<T> == 3)
+    else if constexpr (plf::limbs_v<T> == 3)
     {
       auto h = u_t(mpa);
       auto m = u_t(mpa - mu_t(h));
@@ -48,9 +48,9 @@ namespace plf::_
   template<typename T> constexpr auto bitprec()
   {
     using u_t = decltype(plf::hi(T()));
-    if constexpr (plf::dimension_v<T> == 1) return (sizeof(u_t) == 8 ? 53 : 24);
-    if constexpr (plf::dimension_v<T> == 2) return (sizeof(u_t) == 8 ? 106 : 48);
-    else if constexpr (plf::dimension_v<T> == 3) return (sizeof(u_t) == 8 ? 159 : 72);
+    if constexpr (plf::limbs_v<T> == 1) return (sizeof(u_t) == 8 ? 53 : 24);
+    if constexpr (plf::limbs_v<T> == 2) return (sizeof(u_t) == 8 ? 106 : 48);
+    else if constexpr (plf::limbs_v<T> == 3) return (sizeof(u_t) == 8 ? 159 : 72);
   }
 
   template<typename T> auto from_string(std::string const& s, eve::as<T> target)
@@ -65,9 +65,9 @@ namespace plf::_
   {
     using mpfr::mpreal;
     mpfr::mpreal::set_default_prec(bitprec<T>() * 10);
-    if constexpr (plf::dimension_v<T> == 1) return mpreal(a);
-    else if constexpr (plf::dimension_v<T> == 2) return mpreal(plf::hi(a)) + mpreal(plf::lo(a));
-    else if constexpr (plf::dimension_v<T> == 3) return mpreal(plf::hi(a)) + mpreal(plf::md(a)) + mpreal(plf::lo(a));
+    if constexpr (plf::limbs_v<T> == 1) return mpreal(a);
+    else if constexpr (plf::limbs_v<T> == 2) return mpreal(plf::hi(a)) + mpreal(plf::lo(a));
+    else if constexpr (plf::limbs_v<T> == 3) return mpreal(plf::hi(a)) + mpreal(plf::md(a)) + mpreal(plf::lo(a));
   }
 
   template<typename T> void print(std::string s, T a)

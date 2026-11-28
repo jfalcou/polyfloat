@@ -90,12 +90,12 @@ namespace plf
     constexpr auto frexp_(POLYFLOAT_DELAY(), O const& o, Z const& z) noexcept
     {
       auto [h, n] = eve::frexp[o](hi(z));
-      if constexpr (dimension_v<Z> == 2)
+      if constexpr (limbs_v<Z> == 2)
       {
         auto l = eve::ldexp[o](lo(z), -n);
         return kumi::tuple{_::from_pair(h, l), n};
       }
-      else if constexpr (dimension_v<Z> == 3)
+      else if constexpr (limbs_v<Z> == 3)
       {
         auto l = eve::ldexp[o](lo(z), -n);
         auto m = eve::ldexp[o](md(z), -n);

@@ -19,7 +19,7 @@ namespace plf
     template<typename T> POLYFLOAT_ABI static constexpr auto value(eve::as<T> const&, auto const&)
     {
       using u_t = eve::underlying_type_t<T>;
-      return eve::nbmantissabits(eve::as<u_t>()) * dimension_v<T>;
+      return eve::nbmantissabits(eve::as<u_t>()) * limbs_v<T>;
     }
 
     template<concepts::polyfloat_like T>

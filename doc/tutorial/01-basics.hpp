@@ -12,7 +12,7 @@
 //!
 //! # Construction and printing
 //!
-//! A value is built by the constructor of plf::polyfloat from as many values as its dimension at
+//! A value is built by the constructor of plf::polyfloat from as many values as its limbs count at
 //! most, each converted to its base type. The default constructor gives zero. A single value of a
 //! wider type, a `double` into a polyfloat of `float`, is split over the parts, and rounded when
 //! they hold fewer bits than its mantissa.
@@ -65,12 +65,12 @@
 //! constructor from a product type takes its parts as they are, and the constructors from values
 //! normalize arbitrary parts.
 //!
-//! # Mixed dimensions
+//! # Mixed limbs count
 //!
-//! An operation accepts operands of different dimensions over the same base type, a `double` being
-//! of dimension 1, each operand satisfying plf::concepts::polyfloat_like. The result has the
-//! largest dimension, with zero in the missing parts of the other operands, and plf::dimension_v
-//! gives the dimension of a type:
+//! An operation accepts operands of different limbs over the same base type, a `double` being
+//! of limbs count 1, each operand satisfying plf::concepts::polyfloat_like. The result has the
+//! largest limbs count, with zero in the missing parts of the other operands, and plf::limbs_v
+//! gives the limbs count of a type:
 //!
 //! @godbolt{doc/core/tut_polyfloat_mixed.cpp}
 //!

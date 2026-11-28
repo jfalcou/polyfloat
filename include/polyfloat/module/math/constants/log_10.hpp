@@ -21,13 +21,13 @@ namespace plf
     template<typename T> POLYFLOAT_ABI static constexpr T value(eve::as<T> const&, auto const&)
     {
       using u_t = plf::as_component_type_t<T>;
-      if constexpr (plf::dimension_v<T> == 2)
+      if constexpr (plf::limbs_v<T> == 2)
       {
         if constexpr (std::same_as<u_t, float>) return plf::_::from_pair<float>(0x1.26bb1cp+1, -0x1.12aabap-25);
         else if constexpr (std::same_as<u_t, double>)
           return plf::_::from_pair<double>(0x1.26bb1bbb55516p+1, -0x1.f48ad494ea3e9p-53);
       }
-      else if constexpr (plf::dimension_v<T> == 3)
+      else if constexpr (plf::limbs_v<T> == 3)
       {
         if constexpr (std::same_as<u_t, float>)
           return plf::_::from_triple<float>(0x1.26bb1cp+1, -0x1.12aabap-25, -0x1.3e915ap-50);

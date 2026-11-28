@@ -5,7 +5,7 @@
 
 int main()
 {
-  // The values mix the dimensions 1, 2, and 3.
+  // The values mix the limbs counts 1, 2, and 3.
   using plf::variance;
   auto f = 1.0;
   auto a = plf::polyfloat(1.3);

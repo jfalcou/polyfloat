@@ -30,10 +30,11 @@ namespace plf
     POLYFLOAT_CALLABLE_OBJECT(ulpdist_t, ulpdist_);
   };
   //======================================================================================================================
-  //! @addtogroup core
+  //! @defgroup plf_ulpdist plf::ulpdist
+  //! @ingroup core
+  //! @brief return the distance between the values in effective units in the last place.
   //! @{
   //!   @var ulpdist
-  //!   @brief return the distance between the values in units in the last place.
   //!
   //!   @groupheader{Header file}
   //!
